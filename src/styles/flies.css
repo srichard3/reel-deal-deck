@@ -5,6 +5,18 @@
    components.css and are used, not redefined.
    ========================================================================== */
 
+/* --- suit colour ---------------------------------------------------------
+   components.css colours every index with --c-accent. On a real card only
+   hearts and diamonds are red; spades and clubs are black. For a brand whose
+   whole identity is a playing card, this is not a detail worth getting wrong. */
+.playing-card__index[data-suit="spades"],
+.playing-card__index[data-suit="clubs"] { color: var(--c-text); }
+
+.playing-card__index[data-suit="hearts"],
+.playing-card__index[data-suit="diamonds"] { color: var(--c-red); }
+
+.playing-card__index[data-suit="joker"] { color: var(--c-egg); }
+
 /* --- pill variants the deck needs beyond the shared set ------------------ */
 .pill--egg    { color: var(--c-egg);    border-color: color-mix(in oklab, var(--c-egg) 40%, transparent); }
 .pill--worm   { color: var(--c-red);    border-color: color-mix(in oklab, var(--c-red) 40%, transparent); }
@@ -14,9 +26,6 @@
 .library { padding-block-end: var(--s-8); }
 
 .library-filters {
-  position: sticky;
-  top: 0;
-  z-index: 5;
   margin-block: var(--s-5) var(--s-6);
   padding: var(--s-4);
   background-color: var(--c-surface);
@@ -37,6 +46,14 @@
     grid-template-columns: 2fr repeat(4, 1fr) auto;
   }
   .library-filters__search { grid-column: 1; }
+
+  /* Only pin it once it collapses to a single row. Stacked on a phone it is
+     five full-height fields and would occupy the entire viewport. */
+  .library-filters {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
 }
 
 .library-filters__reset { justify-self: start; }

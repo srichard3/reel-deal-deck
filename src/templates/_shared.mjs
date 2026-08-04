@@ -23,16 +23,27 @@ export const TYPES = {
 /** Order sections read in on the library index. */
 export const TYPE_ORDER = ['dry', 'terrestrial', 'nymph', 'wet', 'streamer', 'attractor', 'egg', 'worm'];
 
-export const suitGlyph = (fly) => SUITS[String(fly?.card?.suit || '').toLowerCase()] || SUITS.spade;
+/** Normalise however the data spells a suit ("spades", "spade", "♠") to a key. */
+export function suitKey(fly) {
+  const raw = String(fly?.card?.suit || '').toLowerCase().replace(/s$/, '');
+  if (raw in SUITS) return `${raw}s`.replace('jokers', 'joker');
+  const fromGlyph = Object.entries(SUITS).find(([, g]) => g === raw);
+  return fromGlyph ? `${fromGlyph[0]}s`.replace('jokers', 'joker') : 'spades';
+}
+
+export const suitGlyph = (fly) => {
+  const k = suitKey(fly).replace(/s$/, '');
+  return SUITS[k] || SUITS.spade;
+};
+
 export const cardIndex = (fly) =>
   fly?.card?.rank === 'JOKER' ? '★' : `${fly?.card?.rank ?? ''}${suitGlyph(fly)}`;
 
 /** Human label for a card, for screen readers. */
 export function cardLabel(fly) {
   if (fly?.card?.rank === 'JOKER') return 'Joker';
-  const suit = SUIT_NAME[suitGlyph(fly)] || 'spades';
   const rank = { A: 'Ace', K: 'King', Q: 'Queen', J: 'Jack' }[fly?.card?.rank] || fly?.card?.rank;
-  return `${rank} of ${suit}`;
+  return `${rank} of ${suitKey(fly)}`;
 }
 
 const HOOK = `
@@ -83,7 +94,7 @@ export function flyArt(type, cls = 'playing-card__art') {
 export function flyCard(fly, { link = true } = {}) {
   const idx = cardIndex(fly);
   const inner = `
-      <span class="playing-card__index" data-index="${esc(idx)}" aria-hidden="true">${esc(idx)}</span>
+      <span class="playing-card__index" data-suit="${esc(suitKey(fly))}" data-index="${esc(idx)}" aria-hidden="true">${esc(idx)}</span>
       <span class="playing-card__body">
         ${flyArt(fly.type)}
         <span class="playing-card__name">${esc(fly.name)}</span>

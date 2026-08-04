@@ -3,7 +3,7 @@
    reference an experienced angler would respect — the product pitch is a
    footnote, not the point. */
 
-import { esc, flyArt, flyCard, cardIndex, cardLabel, TYPES, titleCase } from './_shared.mjs';
+import { esc, flyArt, flyCard, cardIndex, cardLabel, suitKey, TYPES, titleCase } from './_shared.mjs';
 
 const list = (arr) => (Array.isArray(arr) ? arr.filter(Boolean) : []);
 
@@ -131,7 +131,7 @@ export default function ({ fly, flies, site }) {
       </div>
       <div class="fly-head__card">
         <div class="playing-card playing-card--lg">
-          <span class="playing-card__index" data-index="${esc(cardIndex(fly))}" aria-hidden="true">${esc(cardIndex(fly))}</span>
+          <span class="playing-card__index" data-suit="${esc(suitKey(fly))}" data-index="${esc(cardIndex(fly))}" aria-hidden="true">${esc(cardIndex(fly))}</span>
           <span class="playing-card__body">
             ${flyArt(fly.type)}
             <span class="playing-card__name">${esc(fly.name)}</span>
