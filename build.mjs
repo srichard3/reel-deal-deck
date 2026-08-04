@@ -16,9 +16,11 @@
 import { readFile, readdir, mkdir, writeFile, cp, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 
-const ROOT = path.dirname(new URL(import.meta.url).pathname);
+// fileURLToPath (not URL.pathname) — the repo path may contain spaces or other
+// percent-encoded characters that pathname would hand back still encoded.
+const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
 

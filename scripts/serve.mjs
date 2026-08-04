@@ -3,8 +3,9 @@
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const DIST = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'dist');
+const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
 const PORT = Number(process.env.PORT || 4173);
 
 const TYPES = {

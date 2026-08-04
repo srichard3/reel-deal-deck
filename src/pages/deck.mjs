@@ -132,7 +132,7 @@ const FAQ = [
 
 export const meta = {
   path: '/deck/',
-  title: 'The Deck — 54 hand-drawn flies on genuine Bicycle stock',
+  title: '54 Hand-Drawn Fly Fishing Cards',
   description:
     '54 original hand-drawn flies, each with what it imitates, on genuine Bicycle stock. $24. Not yet shipping — reserve a deck and be first in line.',
   priority: 1.0,

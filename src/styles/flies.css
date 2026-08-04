@@ -1,0 +1,212 @@
+/* ==========================================================================
+   Fly Library — /flies/ and /flies/<slug>/
+   Consumes tokens.css only. Shared components (.wrap .section .card .btn
+   .pill .playing-card .prose .stack .cluster .breadcrumbs) live in
+   components.css and are used, not redefined.
+   ========================================================================== */
+
+/* --- pill variants the deck needs beyond the shared set ------------------ */
+.pill--egg    { color: var(--c-egg);    border-color: color-mix(in oklab, var(--c-egg) 40%, transparent); }
+.pill--worm   { color: var(--c-red);    border-color: color-mix(in oklab, var(--c-red) 40%, transparent); }
+
+/* ==========================================================  index  ====== */
+
+.library { padding-block-end: var(--s-8); }
+
+.library-filters {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin-block: var(--s-5) var(--s-6);
+  padding: var(--s-4);
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-1);
+}
+
+.library-filters__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-3);
+  align-items: end;
+}
+
+@media (min-width: 720px) {
+  .library-filters__row {
+    grid-template-columns: 2fr repeat(4, 1fr) auto;
+  }
+  .library-filters__search { grid-column: 1; }
+}
+
+.library-filters__reset { justify-self: start; }
+
+.library-status {
+  margin: var(--s-3) 0 0;
+  font-size: var(--t-sm);
+  color: var(--c-text-faint);
+}
+
+.library-empty {
+  margin-block: var(--s-7);
+  padding: var(--s-5);
+  text-align: center;
+  color: var(--c-text-muted);
+  background-color: var(--c-bg-sunk);
+  border: 1px dashed var(--c-border);
+  border-radius: var(--r-sm);
+}
+
+.library-group { margin-block-end: var(--s-8); scroll-margin-top: var(--s-9); }
+.library-group[hidden] { display: none; }
+
+/* ==========================================================  fly page  === */
+
+.fly { padding-block-start: var(--s-4); }
+
+.fly-head {
+  display: grid;
+  gap: var(--s-6);
+  align-items: start;
+  margin-block: var(--s-5) var(--s-7);
+  padding-block-end: var(--s-6);
+  border-bottom: 1px solid var(--c-border);
+}
+
+@media (min-width: 860px) {
+  .fly-head { grid-template-columns: minmax(0, 1fr) 15rem; gap: var(--s-8); }
+}
+
+.fly-head__title { margin-block: var(--s-2) var(--s-3); }
+
+.fly-head__aka {
+  margin: 0 0 var(--s-3);
+  font-size: var(--t-sm);
+  color: var(--c-text-faint);
+  font-style: italic;
+}
+
+.fly-head__pills { margin-block-start: var(--s-4); gap: var(--s-2); }
+
+.fly-head__card { justify-self: start; width: 100%; max-width: 15rem; }
+@media (min-width: 860px) { .fly-head__card { justify-self: end; } }
+
+.playing-card--lg { font-size: var(--t-md); }
+
+/* --- body + sidebar ----------------------------------------------------- */
+
+.fly-layout { display: grid; gap: var(--s-7); align-items: start; }
+
+@media (min-width: 900px) {
+  .fly-layout { grid-template-columns: minmax(0, 1fr) 19rem; gap: var(--s-8); }
+  .fly-aside { position: sticky; top: var(--s-6); }
+}
+
+.fly-main > h2 { margin-block-start: var(--s-6); }
+
+.fly-tips, .fly-materials { padding-inline-start: 0; list-style: none; }
+
+.fly-tips li {
+  position: relative;
+  padding-inline-start: var(--s-5);
+  margin-block-end: var(--s-3);
+}
+
+.fly-tips li::before {
+  content: "♦";
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--c-red);
+  font-size: var(--t-sm);
+  line-height: var(--lh-body);
+}
+
+.fly-materials li {
+  padding-block: var(--s-2);
+  border-bottom: 1px solid var(--c-border);
+  font-size: var(--t-sm);
+  color: var(--c-text-muted);
+}
+.fly-materials li:last-child { border-bottom: 0; }
+
+/* --- spec table --------------------------------------------------------- */
+
+.fly-spec, .fly-origin { padding: var(--s-5); }
+.fly-origin { margin-block-start: var(--s-4); }
+.fly-origin p { margin: 0; color: var(--c-text-muted); font-size: var(--t-sm); }
+
+.fly-spec__title {
+  margin: 0 0 var(--s-4);
+  font-family: var(--f-body);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-index);
+  color: var(--c-text-faint);
+}
+
+.fly-spec__list { margin: 0; }
+
+.fly-spec__row {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: var(--s-3);
+  padding-block: var(--s-3);
+  border-bottom: 1px solid var(--c-border);
+}
+.fly-spec__row:last-child { border-bottom: 0; padding-block-end: 0; }
+.fly-spec__row:first-child { padding-block-start: 0; }
+
+.fly-spec__key {
+  margin: 0;
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  color: var(--c-text-faint);
+}
+
+.fly-spec__val { margin: 0; font-size: var(--t-sm); color: var(--c-text); }
+
+/* --- related + pager ---------------------------------------------------- */
+
+.fly-related { margin-block: var(--s-8) var(--s-7); }
+.fly-related h2 { margin-block-end: var(--s-4); }
+
+.fly-pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--s-5);
+  margin-block-end: var(--s-8);
+  border-top: 1px solid var(--c-border);
+}
+
+.fly-pager__link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  max-width: 14rem;
+  text-decoration: none;
+  color: var(--c-text);
+}
+.fly-pager__link--next { text-align: end; }
+
+.fly-pager__dir {
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-index);
+  color: var(--c-text-faint);
+}
+
+.fly-pager__name {
+  font-family: var(--f-display);
+  font-size: var(--t-md);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease);
+}
+.fly-pager__link:hover .fly-pager__name,
+.fly-pager__link:focus-visible .fly-pager__name { border-bottom-color: var(--c-accent); }
+
+.fly-cta { margin-block-start: var(--s-6); }

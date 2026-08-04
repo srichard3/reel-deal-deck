@@ -1,0 +1,650 @@
+[
+  {
+    "slug": "adams",
+    "name": "Adams",
+    "aka": ["Adams Dry Fly"],
+    "card": { "rank": "A", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Adult mayflies and midges, generically",
+    "designer": "Leonard Halladay",
+    "yearOrigin": 1922,
+    "originNote": "Tied by Leonard Halladay in Mayfield, Michigan, and named for Charles Adams, the friend who first fished it on the Boardman River.",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Brook trout"],
+    "sizes": "#12-#20",
+    "difficulty": "beginner",
+    "summary": "The most useful dry fly ever tied — a grey, buggy silhouette that passes for almost any mayfly on the water.",
+    "body": [
+      "The Adams is the fly you tie on when you can see rises but cannot see what is causing them. Its grizzly-and-brown mixed hackle reads as mottled rather than any one colour, and the muted grey body sits in the middle of the range covered by most mayfly duns. That vagueness is the whole point. A trout looking up through moving water is reading size, silhouette and posture far more than it is reading colour, and the Adams gets all three approximately right for an enormous number of insects.",
+      "It has survived a century of fly design because it fails gracefully. A pattern tied to imitate one specific insect is superb during that hatch and nearly useless outside it. The Adams is rarely the single best fly on the water and almost never the wrong one. If you carry a box to an unfamiliar river, this is the pattern that keeps you fishing while you work out what is actually going on.",
+      "Size matters more than anything else with this fly. The same dressing in #12 suggests a big spring mayfly; in #20 it reads as a midge cluster or a tiny olive. Most anglers carry it far too large. When fish are refusing, drop two sizes before you change patterns."
+    ],
+    "howToFish": "Dead drift on a fine tippet, upstream or across, with enough slack that the fly moves at exactly the speed of the current. Any drag at all and a good fish will refuse it. Cast to the rise ring rather than to the fish, and give it a foot or two of lead.",
+    "whenToFish": "Any time you see mayfly duns on the surface, and any time you see rises you cannot identify. Strongest from the first spring hatches through autumn, and effective through winter in smaller sizes on tailwaters.",
+    "tips": [
+      "Carry it in #14, #16 and #18 before you carry any other dry fly.",
+      "When fish refuse a standard Adams, switch to the parachute version — the lower profile often solves it.",
+      "Clip the bottom of the hackle flat to sit the fly deeper in the film during a spinner fall."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #12-#20",
+      "Thread: grey 8/0",
+      "Tail: mixed grizzly and brown hackle fibres",
+      "Body: muskrat or grey dubbing",
+      "Wing: grizzly hackle tips, upright and divided",
+      "Hackle: grizzly and brown, mixed"
+    ],
+    "pairsWith": ["parachute-adams", "blue-winged-olive", "elk-hair-caddis", "pheasant-tail-nymph"],
+    "searchTerms": ["what is an adams fly", "adams dry fly pattern", "what does an adams imitate", "adams fly size"]
+  },
+  {
+    "slug": "parachute-adams",
+    "name": "Parachute Adams",
+    "aka": ["Para Adams"],
+    "card": { "rank": "K", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Mayfly duns and emergers sitting in the surface film",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Cutthroat trout"],
+    "sizes": "#12-#22",
+    "difficulty": "beginner",
+    "summary": "The Adams rebuilt to sit low in the film, with a white post you can actually see. Probably the most-fished dry fly in America.",
+    "body": [
+      "The parachute variant takes everything that works about the Adams and fixes its one real weakness. Instead of standing on a collar of hackle wound around the hook shank, the fly hangs its body in the surface film with the hackle wound horizontally around an upright post. The result looks, from below, far more like an insect that has just struggled out of its shuck and is lying flat and vulnerable on the water.",
+      "That lower profile matters most when fish are being selective, which is to say on flat water, in slow currents, and late in a hatch when the easy fish have already been caught. A standard hackled dry perched high on its tiptoes is a convincing mayfly on broken water and a suspicious one on a glassy pool. The parachute is the version that keeps working after the water goes quiet.",
+      "The white or bright post is not for the fish — it is for you. Being able to track a #20 fly at thirty feet in low light is the difference between a hooked trout and a rise you noticed a second too late. This one practical detail is why the pattern has quietly become the default dry fly in most American fly boxes."
+    ],
+    "howToFish": "Fish it exactly like a standard dry — drag-free dead drift — but do not be afraid to let it swing at the very end. A parachute dragging under at the end of the drift is a passable emerger and gets eaten more often than it should.",
+    "whenToFish": "Any mayfly hatch, and particularly on flat or slow water where a high-riding fly gets refused. Excellent in the last hour of light when you cannot see a dark fly.",
+    "tips": [
+      "Use a bright orange or pink post in flat light and a white one against dark water.",
+      "In #20 and smaller, this fly covers most baetis and midge situations by itself.",
+      "If it starts sinking, do not dress it with floatant — change to a dry fly and let the old one dry in your patch."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #12-#22",
+      "Thread: grey 8/0",
+      "Tail: mixed grizzly and brown hackle fibres",
+      "Body: grey dubbing",
+      "Post: white calf body hair or synthetic yarn",
+      "Hackle: grizzly, wound parachute-style around the post"
+    ],
+    "pairsWith": ["adams", "blue-winged-olive", "pale-morning-dun", "zebra-midge"],
+    "searchTerms": ["parachute adams pattern", "what does a parachute adams imitate", "best all around dry fly"]
+  },
+  {
+    "slug": "elk-hair-caddis",
+    "name": "Elk Hair Caddis",
+    "aka": ["EHC"],
+    "card": { "rank": "Q", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Adult caddisflies",
+    "designer": "Al Troth",
+    "yearOrigin": 1957,
+    "originNote": "Developed by Al Troth on Pennsylvania's Loyalsock Creek and later popularised from his home water in Montana.",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Cutthroat trout"],
+    "sizes": "#12-#18",
+    "difficulty": "beginner",
+    "summary": "A buoyant, tent-winged caddis imitation that floats through heavy water and takes abuse all day.",
+    "body": [
+      "Caddisflies do not sit politely on the water the way mayflies do. They skitter, they flutter, they run across the surface, and trout chase them with a violence that mayfly rises never have. The Elk Hair Caddis is built for that world: a stiff palmered hackle through the body and a solid wing of hollow elk hair make it one of the most genuinely buoyant dry flies you can tie.",
+      "That buoyancy is the reason it has outlasted most of its competition. It rides broken pocket water and fast riffles where a delicate mayfly imitation drowns on the second cast, and it holds up a dropper nymph without going under. On many freestone rivers in summer, an Elk Hair Caddis with a small beadhead hanging eighteen inches below is the entire day's fishing.",
+      "It also earns eats when nothing is hatching. The silhouette is close enough to a stonefly, a small hopper, or a moth blown off the bank that fish in fast water rarely take the time to argue. Fish it as a searching pattern on unfamiliar water and you will find out quickly where the players are."
+    ],
+    "howToFish": "Dead drift through riffles and seams, then let it swing and skate at the end. A deliberate twitch just as it starts to drag imitates an adult caddis running for the bank and will move fish that ignored a clean drift.",
+    "whenToFish": "Late spring through autumn, strongest in evening when caddis are egg-laying. A reliable searching fly on freestone water any time between hatches.",
+    "tips": [
+      "Trim the hackle flat underneath to sit it lower when fish get picky.",
+      "Use it as the dry in a dry-dropper rig — few dries hold a bead better.",
+      "Tan and olive cover most situations; carry a black one for evening."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #12-#18",
+      "Thread: tan 8/0",
+      "Body: hare's ear or antron dubbing",
+      "Rib: fine gold wire, counter-wrapped",
+      "Hackle: brown, palmered over the body",
+      "Wing: bleached or natural elk hair"
+    ],
+    "pairsWith": ["stimulator", "adams", "green-caddis-larva", "partridge-and-orange"],
+    "searchTerms": ["elk hair caddis pattern", "what does an elk hair caddis imitate", "caddis dry fly", "al troth caddis"]
+  },
+  {
+    "slug": "blue-winged-olive",
+    "name": "Blue Winged Olive",
+    "aka": ["BWO", "Baetis dun"],
+    "card": { "rank": "J", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Baetis mayfly duns",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "fall", "winter"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#16-#22",
+    "difficulty": "intermediate",
+    "summary": "The small olive mayfly that hatches when the weather is worst — and brings the biggest fish in the river to the surface.",
+    "body": [
+      "Baetis mayflies are the great contrarians of the insect world. They hatch heaviest on cold, grey, drizzling days when every sensible angler has gone home, and they hatch twice a year, in spring and again in autumn. A Blue Winged Olive hatch on a miserable November afternoon will put fish on the surface that you would never otherwise see feeding.",
+      "The reason is the weather itself. A newly emerged dun needs time for its wings to dry before it can fly, and on a cold damp day that can take a minute or more. The insect rides the current, helpless and conspicuous, and trout that normally hold deep move up into feeding lanes because the opportunity is genuinely worth it.",
+      "The practical challenge is size. These are small insects, commonly #18 to #22, and anglers routinely fish them two sizes too big. If fish are rising steadily and refusing, the problem is almost always size or drag, in that order — not colour, and not pattern."
+    ],
+    "howToFish": "Fine tippet, long leader, and an obsessive dead drift. Position yourself so the fly reaches the fish before the leader does. On flat water, downstream presentations with a reach cast outfish upstream casts by a wide margin.",
+    "whenToFish": "Spring and autumn, and through winter on tailwaters. Best on overcast, cold, drizzling days — the worse the weather feels, the better the hatch.",
+    "tips": [
+      "Go down to 6X and be honest about whether your drift is really drag-free.",
+      "Carry the emerger and the spinner as well as the dun; fish often key on one stage.",
+      "A cloudy day in October is worth two bright ones."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #16-#22",
+      "Thread: olive 8/0",
+      "Tail: dun hackle fibres or Microfibbets",
+      "Body: olive-grey dubbing, sparse",
+      "Wing: dun hackle tips or CDC",
+      "Hackle: blue dun"
+    ],
+    "pairsWith": ["parachute-adams", "pheasant-tail-nymph", "rusty-spinner", "perdigon"],
+    "searchTerms": ["blue winged olive fly", "bwo hatch", "what does a blue winged olive imitate", "baetis dry fly"]
+  },
+  {
+    "slug": "pale-morning-dun",
+    "name": "Pale Morning Dun",
+    "aka": ["PMD"],
+    "card": { "rank": "10", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Ephemerella mayfly duns",
+    "waters": ["river"],
+    "seasons": ["summer"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Cutthroat trout"],
+    "sizes": "#14-#20",
+    "difficulty": "intermediate",
+    "summary": "The defining western summer hatch — a pale yellow mayfly that brings big trout up in the best hours of the day.",
+    "body": [
+      "If the Blue Winged Olive is the hatch of bad weather, the Pale Morning Dun is the hatch of good. Through summer on western rivers, PMDs come off in the late morning and early afternoon in numbers heavy enough to get every fish in a run looking up, and they do it in pleasant conditions on beautiful water. It is, for a lot of anglers, the best fishing of the year.",
+      "The colour is genuinely distinctive — a soft pale yellow with an olive or pinkish cast depending on the river — and unlike with the Adams, colour here does matter. Fish see a great many of these insects over several weeks and get educated. Matching the specific shade on your water is worth the trouble.",
+      "The other thing worth knowing is that PMD hatches produce famously difficult cripples and stuck-in-the-shuck emergers. When fish are refusing a well-drifted dun during a heavy PMD hatch, they are usually eating something that never fully made it out. A crippled or emerger pattern solves more PMD refusals than any change of tippet."
+    ],
+    "howToFish": "Dead drift to individual working fish rather than fishing the water. Watch the rise form: a clean nose means duns, a bulge or a dorsal fin means emergers just under the film.",
+    "whenToFish": "Late morning to mid-afternoon through summer, roughly June to August depending on elevation and latitude. Spinner falls in the evening can be even better than the hatch.",
+    "tips": [
+      "Match the shade of yellow on your particular river — it varies more than you would expect.",
+      "Keep a cripple pattern in the same size; it answers most refusals.",
+      "Fish the spinner fall at dusk. It is quieter, and often bigger fish."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #14-#20",
+      "Thread: pale yellow 8/0",
+      "Tail: light dun Microfibbets",
+      "Body: pale morning dun dubbing",
+      "Wing: light dun poly yarn or hackle tips",
+      "Hackle: light ginger or cream"
+    ],
+    "pairsWith": ["parachute-adams", "rusty-spinner", "sparkle-dun", "frenchie"],
+    "searchTerms": ["pale morning dun fly", "pmd hatch", "what is a pmd fly", "pmd dry fly pattern"]
+  },
+  {
+    "slug": "royal-wulff",
+    "name": "Royal Wulff",
+    "aka": ["Wulff"],
+    "card": { "rank": "9", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Nothing in particular — a high-visibility attractor",
+    "designer": "Lee Wulff",
+    "originNote": "Lee Wulff's hair-wing reworking of the older Royal Coachman, built to float better and last longer in rough water.",
+    "waters": ["river"],
+    "seasons": ["summer"],
+    "targetSpecies": ["Cutthroat trout", "Brook trout", "Rainbow trout"],
+    "sizes": "#10-#16",
+    "difficulty": "beginner",
+    "summary": "A peacock-and-red attractor with white calf wings that floats high, shows up at any distance, and catches fish that have never seen it before.",
+    "body": [
+      "The Royal Wulff imitates nothing that has ever lived. It is a banded peacock body with a bright red floss belt and two white wings, and no entomologist has ever found its equal in a stream sample. It also catches an enormous number of trout, which is a useful reminder that matching the hatch is a tactic rather than a religion.",
+      "What it does have is contrast, buoyancy and visibility. The peacock herl has a natural iridescence that reads as something alive; the red band gives a trigger point; the white calf hair wings let you follow the fly through fast water at forty feet. On tumbling freestone streams and in cutthroat country, fish get a fraction of a second to decide, and a fly that looks generally edible and definitely visible wins that argument.",
+      "It is at its best where fish are opportunistic rather than educated — small mountain streams, high-country cutthroat water, and pocket water on big freestone rivers. On a heavily fished spring creek it will get looked at and refused. Know which river you are on."
+    ],
+    "howToFish": "Cast it into the fast, broken, awkward water most people walk past. Pocket water, plunge pools, seams behind boulders. Short casts, high rod, and keep it drifting cleanly for the two feet that matter.",
+    "whenToFish": "Summer on freestone and mountain streams, especially when nothing is hatching and you want to cover water quickly.",
+    "tips": [
+      "Perfect as the dry in a dry-dropper — it floats a heavy nymph better than almost anything.",
+      "If a fish refuses it twice, it is not going to eat it. Move on.",
+      "In cutthroat country this is often the only dry fly you need."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #10-#16",
+      "Thread: black 8/0",
+      "Tail: moose body hair",
+      "Body: peacock herl with a red floss band",
+      "Wing: white calf body hair, upright and divided",
+      "Hackle: brown"
+    ],
+    "pairsWith": ["royal-coachman", "stimulator", "humpy", "elk-hair-caddis"],
+    "searchTerms": ["royal wulff fly", "attractor dry fly", "what does a royal wulff imitate", "lee wulff fly pattern"]
+  },
+  {
+    "slug": "griffiths-gnat",
+    "name": "Griffith's Gnat",
+    "card": { "rank": "8", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Clusters of mating midges",
+    "designer": "George Griffith",
+    "originNote": "Named for George Griffith, one of the founders of Trout Unlimited.",
+    "waters": ["river", "stillwater"],
+    "seasons": ["winter", "spring", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#18-#24",
+    "difficulty": "intermediate",
+    "summary": "Peacock herl palmered with grizzly hackle — a tiny scruffy fly that reads as a knot of mating midges.",
+    "body": [
+      "Midges hatch every month of the year, which makes them the most reliably available trout food there is and the reason winter fishing is possible at all. Individually they are almost too small to imitate. But midges mate in clusters on the surface, several insects tangled together into a single drifting mass, and that cluster is a target a trout will move for.",
+      "The Griffith's Gnat is that cluster. Peacock herl gives the dark, iridescent mass; the grizzly hackle palmered over it gives the impression of many legs and wings at once without resolving into any single insect. Squint at one on the water and it looks like a small piece of dark chaos, which is exactly right.",
+      "It is a fly that rewards patience over distance. Midging fish rise quietly and repeatedly in slow water, often in the same lane, and they are not going far to eat. Find one, watch it for a minute to learn its rhythm, and put the fly where it is going to be."
+    ],
+    "howToFish": "Fine tippet and a genuinely drag-free drift in slow water. Because the fly is nearly invisible, watch the water where you believe it to be and set on any rise in that area.",
+    "whenToFish": "Winter above all, when midges are the only thing hatching. Also excellent on calm mornings and evenings year-round, and on tailwaters any time.",
+    "tips": [
+      "If you cannot see it, fish it eighteen inches behind a small visible dry as an indicator.",
+      "Grease the leader but not the fly if you want it riding in the film.",
+      "In deep winter, go smaller than feels reasonable — #22 and #24 earn their keep."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #18-#24",
+      "Thread: black 8/0",
+      "Body: peacock herl",
+      "Hackle: grizzly, palmered the length of the body"
+    ],
+    "pairsWith": ["zebra-midge", "chironomid-pupa", "parachute-adams", "blue-winged-olive"],
+    "searchTerms": ["griffiths gnat pattern", "midge cluster fly", "winter dry fly trout", "what does a griffiths gnat imitate"]
+  },
+  {
+    "slug": "stimulator",
+    "name": "Stimulator",
+    "aka": ["Stimi"],
+    "card": { "rank": "7", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Adult stoneflies, large caddis and hoppers",
+    "designer": "Randall Kaufmann",
+    "waters": ["river"],
+    "seasons": ["summer"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Cutthroat trout"],
+    "sizes": "#8-#16",
+    "difficulty": "beginner",
+    "summary": "A big, bushy, high-floating searching fly that covers stoneflies, large caddis and hoppers all at once.",
+    "body": [
+      "The Stimulator is the workhorse of western summer dry fly fishing. It is large enough to be worth a trout's attention, buoyant enough to ride heavy pocket water and to suspend a weighted nymph beneath it, and visible enough that you can actually fish it in glare and fading light. Very few flies do all three jobs at once.",
+      "Its imprecision is deliberate. In orange it reads as a salmonfly or golden stone; in yellow as a big caddis or a small hopper; in olive as almost anything terrestrial that has fallen in. On rough freestone water, where a trout has a moment to decide before the food is gone, that generality is worth more than exact imitation.",
+      "This is also the fly that makes dry-dropper fishing practical. A #10 Stimulator will hold a beadhead nymph on eighteen inches of tippet without drowning, which means you are effectively fishing two depths at once while still getting the pleasure of watching a dry fly disappear."
+    ],
+    "howToFish": "Fish it aggressively — pound the banks, the pocket water, the foam lines, the seams behind rocks. Do not be precious about drift on rough water. An occasional twitch helps.",
+    "whenToFish": "Summer, particularly during and after stonefly hatches, and any time you want to search unfamiliar water quickly.",
+    "tips": [
+      "Orange for salmonfly and golden stone season; yellow the rest of summer.",
+      "The best all-round dry-dropper anchor there is — start at #10.",
+      "Fish it tight to the bank. Really tight. Closer than that."
+    ],
+    "materials": [
+      "Hook: 3XL dry fly, #8-#16",
+      "Thread: orange or yellow 6/0",
+      "Tail: elk hair",
+      "Abdomen: orange or yellow dubbing, palmered with brown hackle",
+      "Thorax: amber dubbing, palmered with grizzly hackle",
+      "Wing: elk hair"
+    ],
+    "pairsWith": ["elk-hair-caddis", "chubby-chernobyl", "pats-rubber-legs", "golden-stonefly-nymph"],
+    "searchTerms": ["stimulator fly pattern", "stonefly dry fly", "best dry dropper fly", "what does a stimulator imitate"]
+  },
+  {
+    "slug": "comparadun",
+    "name": "Comparadun",
+    "card": { "rank": "6", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Mayfly duns riding flush in the film",
+    "designer": "Al Caucci and Bob Nastasi",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Brown trout", "Rainbow trout"],
+    "sizes": "#14-#22",
+    "difficulty": "intermediate",
+    "summary": "A hackle-free mayfly dun with a deer hair wing, built for flat water and educated fish.",
+    "body": [
+      "The Comparadun throws away hackle entirely. Instead of standing the fly up on fibre tips, a fan of deer hair flared across the top of the hook provides support and wing silhouette at once, and the body sits directly in the surface film. From below, a trout sees a clean insect body and a wing, with no halo of hackle points distorting the picture.",
+      "This matters on flat, slow, clear water where fish have both the time and the light to inspect what they are eating. Spring creeks and tailwater flats are where the Comparadun earns its reputation, and where a conventionally hackled dun often gets a long look and a refusal.",
+      "The trade-off is buoyancy. It will not ride a riffle all afternoon and it will not float a dropper. This is a specialist's fly for specific water, and carrying it alongside a parachute pattern rather than instead of one is the sensible approach."
+    ],
+    "howToFish": "Downstream and across with a reach cast so the fly arrives ahead of the leader. Long fine tippet. Aim to put it in the feeding lane of a specific fish rather than covering water.",
+    "whenToFish": "Mayfly hatches on flat water — spring creeks, tailwaters, slow pools. Best when fish are visibly feeding and refusing conventional dries.",
+    "tips": [
+      "Use quality deer hair with fine tips; coarse hair will not flare cleanly at small sizes.",
+      "Dress the leader, not the fly, to keep it riding flush.",
+      "Tie the body sparse — bulk is what gets it refused."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #14-#22",
+      "Thread: to match the natural",
+      "Tail: split Microfibbets",
+      "Body: fine dubbing to match the hatch",
+      "Wing: deer hair, flared in a 180-degree fan"
+    ],
+    "pairsWith": ["sparkle-dun", "pale-morning-dun", "blue-winged-olive", "rusty-spinner"],
+    "searchTerms": ["comparadun pattern", "no hackle dry fly", "spring creek dry fly", "flat water mayfly pattern"]
+  },
+  {
+    "slug": "sparkle-dun",
+    "name": "Sparkle Dun",
+    "card": { "rank": "5", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Emerging mayflies trailing a nymphal shuck",
+    "designer": "Craig Mathews and John Juracek",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Brown trout", "Rainbow trout"],
+    "sizes": "#14-#22",
+    "difficulty": "intermediate",
+    "summary": "A Comparadun with a trailing shuck — the answer when trout are eating cripples instead of clean duns.",
+    "body": [
+      "During any heavy mayfly hatch, a meaningful share of the insects never make it. They hang half out of the nymphal shuck, unable to fly, and drift downstream in a state of permanent vulnerability. Trout learn this fast. A crippled emerger cannot escape, so it is worth moving for in a way that a healthy dun about to fly away is not.",
+      "The Sparkle Dun takes the Comparadun's flush-riding profile and adds a trailing tuft of sparkle yarn where the tail would be. That tuft is the shuck, still attached, and it changes the fly from a picture of a successful insect into a picture of a failed one. During selective feeding it frequently outfishes the standard dun by an embarrassing margin.",
+      "This is the fly to reach for when you are certain you have the right size and colour and the fish still will not eat. Nine times out of ten they are not refusing your pattern — they are eating a different stage of the same insect."
+    ],
+    "howToFish": "Identical to a dun: drag-free, downstream presentation where possible. Because it rides in the film rather than on it, watch for subtle sipping takes rather than splashy ones.",
+    "whenToFish": "The middle and late stages of a mayfly hatch, when fish have stopped taking clean duns but are still working.",
+    "tips": [
+      "Amber or brown shuck material for most hatches; grey for baetis.",
+      "If fish are bulging rather than nosing, this is your fly.",
+      "Keep the shuck short — barely longer than the body."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #14-#22",
+      "Thread: to match the natural",
+      "Shuck: sparkle yarn or Zelon, trailing",
+      "Body: fine dubbing",
+      "Wing: deer hair, fanned"
+    ],
+    "pairsWith": ["comparadun", "pale-morning-dun", "blue-winged-olive", "frenchie"],
+    "searchTerms": ["sparkle dun pattern", "trailing shuck fly", "emerger dry fly", "cripple mayfly pattern"]
+  },
+  {
+    "slug": "rusty-spinner",
+    "name": "Rusty Spinner",
+    "card": { "rank": "4", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Spent mayfly spinners lying flat on the surface",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Brown trout", "Rainbow trout"],
+    "sizes": "#14-#22",
+    "difficulty": "advanced",
+    "summary": "The final act of a mayfly's life — wings flat, body spent, drifting dead in the film. Quiet fishing, often the day's best.",
+    "body": [
+      "A mayfly's last act is to mate above the water and fall onto it, wings splayed flat, and die. This happens most evenings through the hatch season, usually in the last hour of light, and it produces some of the most consistent and least crowded fishing of the day. Most anglers have gone to dinner by then.",
+      "Spinners lie absolutely flush and absolutely still. There is no wing upright, no hackle, no movement — just a thin rusty body and two transparent wings splayed sideways in the film. That is why hackled patterns fail during a spinner fall and why the imitation is so minimal: anything more is wrong.",
+      "The hard part is seeing it. A spent spinner is invisible at any real distance in fading light, and the rises are the softest of the day — a small dimple with no sound. Fish close, fish to specific rises, and accept that you will be setting the hook on faith more than once."
+    ],
+    "howToFish": "Dead drift, no exceptions. Fish to individual rise rings in the last light. Because you often cannot see the fly, set gently on any rise within a foot of where you think it is.",
+    "whenToFish": "Evenings through the mayfly season, typically the last hour before dark. Also early morning after a heavy overnight fall.",
+    "tips": [
+      "Rusty brown covers a remarkable share of spinner falls.",
+      "Grease the leader to within six inches of the fly and leave the fly ungreased.",
+      "The rises are dimples, not splashes. Slow your hookset down."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #14-#22",
+      "Thread: rusty brown 8/0",
+      "Tail: split Microfibbets, long",
+      "Body: rusty brown dubbing, very sparse",
+      "Wing: white or clear poly yarn, tied spent and flat"
+    ],
+    "pairsWith": ["pale-morning-dun", "blue-winged-olive", "comparadun", "light-cahill"],
+    "searchTerms": ["rusty spinner pattern", "spinner fall fly fishing", "spent mayfly pattern", "evening dry fly trout"]
+  },
+  {
+    "slug": "light-cahill",
+    "name": "Light Cahill",
+    "card": { "rank": "3", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Cream and pale yellow mayfly duns",
+    "waters": ["river"],
+    "seasons": ["summer"],
+    "targetSpecies": ["Brook trout", "Brown trout", "Rainbow trout"],
+    "sizes": "#12-#18",
+    "difficulty": "beginner",
+    "summary": "A classic cream-coloured eastern dry fly for the pale mayflies of early summer evenings.",
+    "body": [
+      "The Light Cahill is one of the old American dry flies that has stayed in boxes because it keeps working. Its pale cream body and light ginger hackle match a whole family of pale summer mayflies, and on eastern and midwestern freestone streams it covers most of what comes off in June and July evenings.",
+      "It is a fly of a particular hour. Pale mayflies tend to emerge as the light goes flat and the water cools, and the Cahill's light colouring is far easier to track against dark water at dusk than a grey or olive pattern. That practical visibility is part of why it endured while flashier contemporaries did not.",
+      "On small brook trout streams it functions as a general attractor as much as an imitation. Brookies in shaded mountain water are not conducting entomology, and a well-drifted cream dry fly in the seam below a plunge pool is usually enough."
+    ],
+    "howToFish": "Standard upstream dead drift. On small streams, short accurate casts into pockets and seams matter far more than distance.",
+    "whenToFish": "Early summer evenings, June through July on most eastern and midwestern water, during pale mayfly emergences.",
+    "tips": [
+      "Excellent choice for small-stream brook trout when nothing is hatching.",
+      "Its visibility at dusk is a real advantage — do not underrate it.",
+      "Carry it alongside a darker fly; light and dark covers most evenings."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #12-#18",
+      "Thread: cream 8/0",
+      "Tail: light ginger hackle fibres",
+      "Body: cream fox or synthetic dubbing",
+      "Wing: wood duck flank, upright and divided",
+      "Hackle: light ginger"
+    ],
+    "pairsWith": ["adams", "rusty-spinner", "elk-hair-caddis", "royal-coachman"],
+    "searchTerms": ["light cahill fly", "cream mayfly dry fly", "classic eastern dry fly", "brook trout dry fly"]
+  },
+  {
+    "slug": "humpy",
+    "name": "Humpy",
+    "aka": ["Goofus Bug"],
+    "card": { "rank": "2", "suit": "spades" },
+    "type": "dry",
+    "imitates": "Nothing specific — a buoyant rough-water attractor",
+    "waters": ["river"],
+    "seasons": ["summer"],
+    "targetSpecies": ["Cutthroat trout", "Rainbow trout", "Brook trout"],
+    "sizes": "#10-#18",
+    "difficulty": "intermediate",
+    "summary": "A deer hair humpback attractor that floats like a cork through water where nothing else stays up.",
+    "body": [
+      "The Humpy is a strange-looking fly built around one idea: flotation. A shell of deer hair pulled over a floss underbody traps air, and a heavy double hackle keeps the whole thing riding high. In whitewater, plunge pools and boiling pocket water where a conventional dry is drowned within two drifts, a Humpy is still up and visible.",
+      "It imitates nothing in particular and reads as everything in general — a stonefly, a big caddis, a beetle blown in from the bank. Fast-water trout make quick decisions on limited information, and a chunky buoyant silhouette drifting overhead is enough information.",
+      "It is a genuinely difficult fly to tie well, which is why fewer people fish it than should. In high-country cutthroat streams and steep freestone creeks it remains one of the most effective dry flies available."
+    ],
+    "howToFish": "Short casts into heavy pocket water and plunge pools. Keep the line off the water with a high rod and fish the two or three feet of good drift you get before drag sets in.",
+    "whenToFish": "Summer on freestone and mountain streams, especially in fast broken water where flotation is the limiting factor.",
+    "tips": [
+      "Yellow and red are the classic underbodies; both work.",
+      "A superb dry-dropper anchor for steep water.",
+      "If it is not floating, you are not fishing it in the water it was designed for."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #10-#18",
+      "Thread: yellow or red 6/0",
+      "Tail: elk or moose hair",
+      "Underbody: floss",
+      "Overbody: deer hair pulled forward as a hump",
+      "Wing: deer hair tips, upright and divided",
+      "Hackle: grizzly and brown, mixed"
+    ],
+    "pairsWith": ["royal-wulff", "stimulator", "elk-hair-caddis", "renegade"],
+    "searchTerms": ["humpy fly pattern", "goofus bug fly", "high floating dry fly", "pocket water dry fly"]
+  },
+  {
+    "slug": "chernobyl-ant",
+    "name": "Chernobyl Ant",
+    "card": { "rank": "A", "suit": "clubs" },
+    "type": "terrestrial",
+    "imitates": "Large terrestrial insects — beetles, ants, hoppers, stoneflies",
+    "waters": ["river"],
+    "seasons": ["summer"],
+    "targetSpecies": ["Cutthroat trout", "Brown trout", "Rainbow trout"],
+    "sizes": "#6-#12",
+    "difficulty": "beginner",
+    "summary": "A slab of foam with rubber legs that floats forever and moves big fish in the heat of summer.",
+    "body": [
+      "The Chernobyl Ant is not subtle and does not need to be. It is layered foam, rubber legs and an indicator strip of bright foam on top, and it looks like a piece of litter until a twenty-inch brown eats it off the surface in flat calm water. Terrestrial fishing is about opportunity rather than deception, and this fly represents a large, clumsy, land-based insect that has fallen in and cannot get out.",
+      "Foam is the reason it works. It floats indefinitely without dressing, survives dozens of fish, and holds up the heaviest dropper nymph you care to hang beneath it. On western rivers through July and August, a Chernobyl with a beadhead below is the default rig for a reason.",
+      "The rubber legs do real work. Even on a dead drift they twitch with every micro-current, and that movement is often what converts a fish that has come up to look. Do not trim them short."
+    ],
+    "howToFish": "Fish it hard against banks, under overhanging brush and grass, and along undercut edges. Let it land with an audible plop — the sound is a trigger, not a mistake. Occasional twitches help.",
+    "whenToFish": "High summer, especially hot windy afternoons when terrestrials get blown onto the water. Best from July through early September.",
+    "tips": [
+      "The splat matters. Do not present this fly delicately.",
+      "Black and tan cover most situations; add a purple one for low light.",
+      "The best dropper anchor in the box for heavy nymphs."
+    ],
+    "materials": [
+      "Hook: 2XL dry fly, #6-#12",
+      "Thread: black 6/0",
+      "Body: layered black and tan foam",
+      "Legs: rubber or Sili Legs",
+      "Indicator: bright foam strip on top"
+    ],
+    "pairsWith": ["chubby-chernobyl", "daves-hopper", "foam-beetle", "pats-rubber-legs"],
+    "searchTerms": ["chernobyl ant pattern", "foam terrestrial fly", "hopper dropper rig", "summer dry fly trout"]
+  },
+  {
+    "slug": "daves-hopper",
+    "name": "Dave's Hopper",
+    "aka": ["Hopper"],
+    "card": { "rank": "K", "suit": "clubs" },
+    "type": "terrestrial",
+    "imitates": "Adult grasshoppers",
+    "designer": "Dave Whitlock",
+    "waters": ["river"],
+    "seasons": ["summer", "fall"],
+    "targetSpecies": ["Brown trout", "Cutthroat trout", "Rainbow trout"],
+    "sizes": "#6-#12",
+    "difficulty": "intermediate",
+    "summary": "The classic deer hair grasshopper — a mouthful of protein that brings the biggest fish in the run to the surface.",
+    "body": [
+      "By late summer the grass along a trout river is full of hoppers, and a meaningful number of them end up in the water every windy afternoon. A grasshopper is an enormous meal compared to a mayfly, and trout that have spent all season sipping tiny insects will abandon a feeding lane entirely to intercept one.",
+      "Dave Whitlock's pattern is the standard against which hopper flies are still measured. The spun and clipped deer hair head gives it a convincing blunt profile, the knotted legs suggest the real insect's distinctive kick, and the turkey wing lies over the body the way a hopper's does. It looks like the animal in a way that foam patterns, for all their practicality, do not quite manage.",
+      "Hopper fishing is fundamentally about the bank. The insects come from land, so the fish that eat them hold tight to the edges — under grass, against undercuts, in the eighteen inches of water closest to shore. Fishing the middle of the river with a hopper is mostly wasted effort."
+    ],
+    "howToFish": "Cast tight to grassy banks and let it land hard. Dead drift along the edge, with an occasional twitch. Takes are often violent; wait until the fish has turned down before setting.",
+    "whenToFish": "Late July through September, best on hot, windy afternoons when hoppers are getting blown into the water.",
+    "tips": [
+      "Wind is your friend. The windier the afternoon, the better hopper fishing gets.",
+      "Fish it within a foot of the bank, then closer.",
+      "Pause after the take — hopper eats are slow and deliberate more often than not."
+    ],
+    "materials": [
+      "Hook: 3XL dry fly, #6-#12",
+      "Thread: yellow 6/0",
+      "Body: yellow poly yarn or dubbing with a red tail tuft",
+      "Wing: mottled turkey quill, lacquered",
+      "Legs: knotted pheasant tail fibres",
+      "Head: spun and clipped deer hair"
+    ],
+    "pairsWith": ["chernobyl-ant", "chubby-chernobyl", "foam-beetle", "pats-rubber-legs"],
+    "searchTerms": ["daves hopper pattern", "grasshopper fly fishing", "hopper fly trout", "dave whitlock hopper"]
+  },
+  {
+    "slug": "foam-beetle",
+    "name": "Foam Beetle",
+    "card": { "rank": "Q", "suit": "clubs" },
+    "type": "terrestrial",
+    "imitates": "Terrestrial beetles",
+    "waters": ["river", "stillwater"],
+    "seasons": ["summer"],
+    "targetSpecies": ["Brown trout", "Brook trout", "Rainbow trout"],
+    "sizes": "#12-#18",
+    "difficulty": "beginner",
+    "summary": "A small black slab that sits flush in the film — the most underrated terrestrial there is.",
+    "body": [
+      "Beetles are the most abundant terrestrial insect on earth and they fall into trout streams constantly, yet most anglers reach for a hopper first. That is a mistake. A beetle imitation catches fish through the whole summer, on water where a hopper would be too much fly, and it does so with no hatch, no timing and no entomology required.",
+      "The critical detail is how it sits. A real beetle is dense and does not float high — it lies flush in the surface film, half in and half out, showing a solid black oval from below. A properly tied foam beetle does the same. If your beetle is riding up on hackle points, it is the wrong shape entirely.",
+      "It is also a superb fly for shaded small streams and for spooky fish in slow, clear water. It lands quietly, it looks like an accident, and it does not demand a drag-free drift the way a mayfly imitation does. Fish that have refused three dries will often eat a beetle without hesitation."
+    ],
+    "howToFish": "Cast under overhanging trees, along shaded banks, and to fish holding in slow clear water. Dead drift. Because it sits flush it is hard to see — use a small bright indicator post or fish it behind a visible dry.",
+    "whenToFish": "All summer, and especially good on bright hot days when nothing is hatching. Excellent on tree-lined small streams.",
+    "tips": [
+      "Sitting flush is the whole trick — do not add hackle that lifts it up.",
+      "A peacock herl underbody adds the iridescence real beetles have.",
+      "When a fish refuses everything on a hot afternoon, try a #16 beetle."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #12-#18",
+      "Thread: black 8/0",
+      "Underbody: peacock herl",
+      "Shell: black foam pulled over the top",
+      "Legs: black rubber, splayed",
+      "Indicator: small bright foam dot"
+    ],
+    "pairsWith": ["black-flying-ant", "chernobyl-ant", "griffiths-gnat", "daves-hopper"],
+    "searchTerms": ["foam beetle fly", "beetle fly pattern trout", "terrestrial fly fishing", "small stream summer fly"]
+  },
+  {
+    "slug": "black-flying-ant",
+    "name": "Black Flying Ant",
+    "aka": ["Flying Ant"],
+    "card": { "rank": "J", "suit": "clubs" },
+    "type": "terrestrial",
+    "imitates": "Winged ants during a mating flight",
+    "waters": ["river", "stillwater"],
+    "seasons": ["summer", "fall"],
+    "targetSpecies": ["Brown trout", "Rainbow trout", "Cutthroat trout"],
+    "sizes": "#14-#20",
+    "difficulty": "intermediate",
+    "summary": "When a flying ant fall happens, trout eat nothing else. A two-lump body and a flat wing is all it takes.",
+    "body": [
+      "Ant falls are the closest thing in fly fishing to a lottery win. Winged ants swarm for mating flights on specific warm, still afternoons, usually in late summer, and when the swarm drifts over water thousands of them land and cannot get off. Every trout in the river feeds, often recklessly, and they will refuse anything that is not an ant.",
+      "The imitation is almost comically simple: two distinct lumps separated by a pinched waist, and a flat wing lying over the back. That waist is the single most important feature. It is the silhouette a trout uses to identify an ant, and a fly without a clear pinch between the segments gets refused during a serious fall.",
+      "Ants are also worth fishing when nothing is happening at all. Wingless ants fall into streams all summer, and a small black ant fished dead drift under overhanging trees is one of the more reliable ways to move a fish on a slow, hot afternoon."
+    ],
+    "howToFish": "Dead drift on fine tippet. The fly rides flush and low, so track it by the leader or fish it as a dropper behind a visible dry. Takes are quiet sips.",
+    "whenToFish": "Late summer and early autumn on warm, humid, windless afternoons — the classic conditions for a mating flight. Wingless versions work all summer.",
+    "tips": [
+      "If you see fish feeding steadily on nothing visible in August, suspect ants.",
+      "Keep the waist pinched and distinct. It is the trigger.",
+      "Carry black and cinnamon in #16 and #18."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #14-#20",
+      "Thread: black 8/0",
+      "Body: two black dubbing or foam segments with a pinched waist",
+      "Wing: white poly yarn or hackle tips, tied flat over the back",
+      "Hackle: black, sparse, at the waist"
+    ],
+    "pairsWith": ["foam-beetle", "griffiths-gnat", "chernobyl-ant", "parachute-adams"],
+    "searchTerms": ["flying ant fly pattern", "ant fall fly fishing", "black ant dry fly", "terrestrial ant trout"]
+  },
+  {
+    "slug": "chubby-chernobyl",
+    "name": "Chubby Chernobyl",
+    "aka": ["Chubby"],
+    "card": { "rank": "10", "suit": "clubs" },
+    "type": "terrestrial",
+    "imitates": "Large stoneflies, hoppers and big terrestrials",
+    "waters": ["river"],
+    "seasons": ["summer"],
+    "targetSpecies": ["Cutthroat trout", "Brown trout", "Rainbow trout"],
+    "sizes": "#8-#14",
+    "difficulty": "beginner",
+    "summary": "A foam body with poly wings that never sinks, shows up in any light, and carries the heaviest dropper you own.",
+    "body": [
+      "The Chubby Chernobyl took the original Chernobyl Ant and added two tufts of white or amber poly wing, and in doing so created what may be the most-fished dry fly on western rivers today. The wings do two jobs at once: they make the fly visible at distance in glare and shadow, and they add just enough surface area that it will not sink under any dropper you reasonably attach.",
+      "It reads convincingly as a salmonfly, a golden stone, a hopper or a large caddis depending on colour and size. Through the summer on a big freestone river, a tan Chubby in #10 covers a remarkable share of what a trout is likely to see falling in.",
+      "There is a fair argument that it is overused, and on heavily pressured water fish do learn it. But its combination of visibility, flotation and general edibility means it will keep earning a slot in the box, particularly for anyone fishing unfamiliar water from a boat."
+    ],
+    "howToFish": "Bank-focused. Cast tight to structure, let it land with weight, and dead drift with occasional twitches. As a dropper anchor, run twelve to thirty inches of tippet from the bend to a beadhead.",
+    "whenToFish": "Summer, particularly during stonefly emergences and the terrestrial season from July into September.",
+    "tips": [
+      "Tan, purple and gold cover most water.",
+      "The most reliable dry-dropper anchor in production.",
+      "On pressured rivers, drop a size and go to a more subdued colour."
+    ],
+    "materials": [
+      "Hook: 2XL dry fly, #8-#14",
+      "Thread: tan 6/0",
+      "Body: layered foam",
+      "Wings: white or amber poly yarn, two tufts",
+      "Legs: rubber or Sili Legs"
+    ],
+    "pairsWith": ["chernobyl-ant", "stimulator", "daves-hopper", "pats-rubber-legs"],
+    "searchTerms": ["chubby chernobyl pattern", "best hopper dropper fly", "foam stonefly dry", "western dry fly summer"]
+  }
+]
