@@ -1,0 +1,73 @@
+{
+  "name": "The Reel Deal Deck",
+  "legalName": "The Reel Deal Deck",
+  "tagline": "54 flies. One deck worth owning.",
+  "url": "https://reeldealdeck.com",
+  "defaultOgImage": "/og/default.png",
+
+  "positioning": "The first fly-fishing deck an angler would be proud to own. Original hand-drawn art, printed on genuine Bicycle stock, with a portion of every deck going to Trout Unlimited.",
+
+  "founders": [
+    { "name": "Ken", "role": "Founder", "bio": "Lifelong entrepreneur, 5th-generation Idaho farmer, and the avid amateur angler who went looking for fly-fishing flashcards, couldn't find a set he'd actually want to own, and drew his own." },
+    { "name": "Audrey", "role": "Co-founder", "bio": "Entrepreneurship graduate, Loyola Marymount University College of Business Administration. Handles design direction, brand, and community." }
+  ],
+
+  "location": { "city": "Eagle", "region": "ID", "regionName": "Idaho", "country": "US" },
+
+  "product": {
+    "name": "The Reel Deal Deck",
+    "cardCount": 54,
+    "stock": "Genuine Bicycle / USPCC card stock with the patented Air-Cushion finish",
+    "material": "FSC-certified paper, starch-based laminating glue, vegetable-based inks",
+    "dimensions": "Poker size, 2.5in x 3.5in",
+    "priceIntended": 24,
+    "priceCurrency": "USD",
+    "status": "preorder",
+    "availabilityNote": "Not yet shipping. Join the list to be first in line."
+  },
+
+  "conservation": {
+    "partner": "Trout Unlimited",
+    "partnerUrl": "https://www.tu.org/",
+    "commitment": "TODO-CONFIRM: state a hard number here (e.g. \"$1 from every deck\"). A specific figure converts; \"a portion of proceeds\" does not."
+  },
+
+  "social": {
+    "instagram": "https://instagram.com/reeldealdeck",
+    "tiktok": "https://tiktok.com/@reeldealdeck",
+    "youtube": "",
+    "email": "hello@reeldealdeck.com"
+  },
+
+  "nav": [
+    { "label": "The Deck", "href": "/deck/" },
+    { "label": "Fly Library", "href": "/flies/" },
+    { "label": "Gifts", "href": "/gifts/" },
+    { "label": "Wholesale", "href": "/wholesale/" },
+    { "label": "Our Story", "href": "/story/" }
+  ],
+
+  "footerNav": [
+    { "heading": "Shop", "links": [
+      { "label": "The Deck", "href": "/deck/" },
+      { "label": "Gift Guide", "href": "/gifts/" },
+      { "label": "Fly Shops & Guides", "href": "/wholesale/" }
+    ]},
+    { "heading": "Learn", "links": [
+      { "label": "Fly Library", "href": "/flies/" },
+      { "label": "Dry Flies", "href": "/flies/?type=dry" },
+      { "label": "Nymphs", "href": "/flies/?type=nymph" },
+      { "label": "Streamers", "href": "/flies/?type=streamer" }
+    ]},
+    { "heading": "About", "links": [
+      { "label": "Our Story", "href": "/story/" },
+      { "label": "Conservation", "href": "/conservation/" },
+      { "label": "Contact", "href": "/contact/" }
+    ]}
+  ],
+
+  "placeholders": {
+    "note": "All purchase actions are intentionally stubbed. See docs/COMMERCE.md for the swap-in plan.",
+    "checkoutProvider": "TODO: Shopify Buy Button | Stripe Payment Link | Lemon Squeezy"
+  }
+}

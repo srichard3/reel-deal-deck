@@ -1,0 +1,43 @@
+<header class="site-header" data-header>
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="{{ site.name }} — home">
+      <span class="brand__index" aria-hidden="true">R<span class="brand__suit">&#9830;</span></span>
+      <span class="brand__word">The Reel Deal Deck</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul class="site-nav__list">
+        <li><a href="/deck/">The Deck</a></li>
+        <li><a href="/flies/">Fly Library</a></li>
+        <li><a href="/gifts/">Gifts</a></li>
+        <li><a href="/wholesale/">Wholesale</a></li>
+        <li><a href="/story/">Our Story</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <button class="theme-toggle" type="button" data-theme-toggle
+              aria-label="Switch colour theme" title="Switch colour theme">
+        <span aria-hidden="true" data-theme-icon>&#9789;</span>
+      </button>
+      <a class="btn btn--primary btn--sm" href="/deck/#reserve">Reserve a deck</a>
+      <button class="nav-toggle" type="button" data-nav-toggle
+              aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav" hidden>
+    <ul>
+      <li><a href="/deck/">The Deck</a></li>
+      <li><a href="/flies/">Fly Library</a></li>
+      <li><a href="/gifts/">Gifts</a></li>
+      <li><a href="/wholesale/">Wholesale</a></li>
+      <li><a href="/story/">Our Story</a></li>
+      <li><a href="/conservation/">Conservation</a></li>
+    </ul>
+    <a class="btn btn--primary btn--block" href="/deck/#reserve">Reserve a deck</a>
+  </div>
+</header>
