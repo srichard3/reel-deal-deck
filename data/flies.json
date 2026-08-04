@@ -646,5 +646,982 @@
     ],
     "pairsWith": ["chernobyl-ant", "stimulator", "daves-hopper", "pats-rubber-legs"],
     "searchTerms": ["chubby chernobyl pattern", "best hopper dropper fly", "foam stonefly dry", "western dry fly summer"]
+  },
+  {
+    "slug": "pheasant-tail-nymph",
+    "name": "Pheasant Tail Nymph",
+    "aka": ["PT", "PTN"],
+    "card": { "rank": "A", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Mayfly nymphs, especially baetis",
+    "designer": "Frank Sawyer",
+    "yearOrigin": 1958,
+    "originNote": "Devised by Frank Sawyer, a river keeper on the Wiltshire Avon, using only pheasant tail fibres and copper wire — no thread at all.",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "summer", "fall", "winter"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Grayling"],
+    "sizes": "#12-#22",
+    "difficulty": "beginner",
+    "summary": "The most effective mayfly nymph ever tied — a slim bundle of pheasant fibres that has been catching trout for seventy years.",
+    "body": [
+      "Frank Sawyer built this fly out of two materials because that was all he thought it needed: pheasant tail fibres for the body and fine copper wire to bind them and add weight. There is no thread in the original dressing. Seventy years later it remains the first nymph most anglers tie on and the last one they give up on.",
+      "It works because mayfly nymphs are slim, tapered, brown and translucent, and pheasant tail fibres are all four of those things at once. The colour shifts subtly as it wets, the fibre tips make convincing tails and legs, and the wire gives it just enough weight to get down without the fly looking like a piece of hardware. Nothing about it is loud.",
+      "Its range is remarkable. In #18 and smaller it is a baetis nymph on a winter tailwater; in #12 it is a larger mayfly nymph on a spring freestone. Beadhead versions get it deeper faster; the original unweighted version fishes beautifully in the film during an emergence. If you had to fish one nymph for the rest of your life, the argument for this one is difficult to beat."
+    ],
+    "howToFish": "Dead drift under an indicator or as the point fly in a two-nymph rig. Also deadly fished as a dropper below a dry. At the end of the drift let it swing and rise — the lift imitates an emerging nymph and draws savage takes.",
+    "whenToFish": "Every month of the year. Strongest before and during mayfly hatches, when nymphs are active and moving toward the surface.",
+    "tips": [
+      "The unweighted original is a superb emerger; do not assume you always want a bead.",
+      "Size down before you change patterns — #18 solves more problems than a new fly.",
+      "Let it swing at the end of every drift. That is where a third of the takes come from."
+    ],
+    "materials": [
+      "Hook: standard nymph, #12-#22",
+      "Weight: copper wire underbody, optional bead",
+      "Tail: pheasant tail fibre tips",
+      "Body: pheasant tail fibres wound and ribbed with copper wire",
+      "Thorax: peacock herl or built-up copper wire",
+      "Wing case: pheasant tail fibres pulled over"
+    ],
+    "pairsWith": ["gold-ribbed-hares-ear", "copper-john", "zebra-midge", "blue-winged-olive"],
+    "searchTerms": ["pheasant tail nymph pattern", "what does a pheasant tail imitate", "best nymph for trout", "frank sawyer pheasant tail"]
+  },
+  {
+    "slug": "gold-ribbed-hares-ear",
+    "name": "Gold-Ribbed Hare's Ear",
+    "aka": ["GRHE", "Hare's Ear"],
+    "card": { "rank": "K", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Mayfly nymphs, caddis pupae and scuds — deliberately ambiguous",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "summer", "fall", "winter"],
+    "targetSpecies": ["Brown trout", "Rainbow trout", "Brook trout"],
+    "sizes": "#10-#20",
+    "difficulty": "beginner",
+    "summary": "A scruffy bundle of hare's mask fur that suggests half a dozen insects at once and has never gone out of style.",
+    "body": [
+      "Where the Pheasant Tail is slim and precise, the Hare's Ear is deliberately messy. It is dubbed from the mask of a hare, guard hairs and all, and the whole point is that the guard hairs stick out at every angle. Underwater those fibres move constantly, and that suggestion of legs and gills and general life is worth more than any anatomical accuracy.",
+      "Its ambiguity is a feature. Depending on size and how you fish it, the same fly reads as a mayfly nymph, a caddis pupa, a scud, a sowbug, or a small stonefly. On unfamiliar water where you have no idea what the fish are eating, a Hare's Ear is a reasonable first guess and a hard fly to be badly wrong with.",
+      "It is at its very best during caddis emergences, fished with a swing at the end of the drift. The buggy silhouette rising through the water column is close enough to a pupa struggling toward the surface that fish commit hard. Old, simple and still one of the best nymphs in any box."
+    ],
+    "howToFish": "Dead drift under an indicator, or as a dropper below a dry. Deliberately swing it up at the end of the drift during caddis activity. Do not be afraid to let it tumble along the bottom.",
+    "whenToFish": "Year round. Particularly good in spring and during caddis emergences, and as a searching nymph on water you do not know.",
+    "tips": [
+      "Pick out the dubbing with a needle after tying — scruffier fishes better.",
+      "Carry it beaded and unbeaded; they fish like two different flies.",
+      "A superb dropper behind an Elk Hair Caddis in summer."
+    ],
+    "materials": [
+      "Hook: standard nymph, #10-#20",
+      "Bead: gold, optional",
+      "Tail: hare's mask guard hairs",
+      "Body: hare's mask dubbing, picked out",
+      "Rib: fine gold tinsel or wire",
+      "Wing case: turkey or pheasant tail"
+    ],
+    "pairsWith": ["pheasant-tail-nymph", "prince-nymph", "green-caddis-larva", "elk-hair-caddis"],
+    "searchTerms": ["gold ribbed hares ear nymph", "hares ear fly pattern", "what does a hares ear imitate", "best searching nymph"]
+  },
+  {
+    "slug": "copper-john",
+    "name": "Copper John",
+    "card": { "rank": "Q", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Mayfly and stonefly nymphs, with an attractor's flash",
+    "designer": "John Barr",
+    "originNote": "Designed by John Barr in Colorado as a heavy point fly that would sink a nymph rig fast.",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#12-#20",
+    "difficulty": "beginner",
+    "summary": "A wire-bodied nymph built to sink fast and flash hard — as much an anchor as an imitation.",
+    "body": [
+      "John Barr designed the Copper John to solve a practical problem: getting a nymph rig to the bottom quickly in fast water. A body of wound copper wire, a tungsten or brass bead, and a lacquered wing case make it one of the densest nymphs you can fish, and it drags a lighter trailing fly down with it.",
+      "But it is not merely ballast. The wire body has a hard, segmented, translucent look that reads convincingly as a mayfly or small stonefly nymph, and the flash of copper in moving water is a genuine trigger. Trout in fast riffles have very little time to decide, and a bright, dense, buggy object tumbling past gets eaten.",
+      "It comes in a dozen wire colours and most of them catch fish. Copper is the original and still the most reliable; red and chartreuse have their days, particularly in off-coloured water. As the lead fly in a two-nymph rig with something softer behind it, this is one of the most productive setups in western fly fishing."
+    ],
+    "howToFish": "Fish it as the heavy point fly in a two-nymph rig, or as the anchor in Euro-nymphing. Dead drift close to the bottom — if you are not occasionally ticking rocks, you are not deep enough.",
+    "whenToFish": "Spring through autumn in fast, broken water. Especially useful in high or coloured water when you need weight and visibility.",
+    "tips": [
+      "Use it as the anchor and hang a soft, natural nymph eighteen inches behind.",
+      "Red is worth carrying for off-coloured spring flows.",
+      "Tungsten bead versions sink noticeably faster and are worth the extra cost."
+    ],
+    "materials": [
+      "Hook: 1XL nymph, #12-#20",
+      "Bead: gold or black tungsten",
+      "Tail: brown goose biots",
+      "Body: copper wire, wound",
+      "Thorax: peacock herl",
+      "Wing case: black Thin Skin over flash, epoxied",
+      "Legs: mottled hen"
+    ],
+    "pairsWith": ["pheasant-tail-nymph", "prince-nymph", "perdigon", "pats-rubber-legs"],
+    "searchTerms": ["copper john nymph", "john barr copper john", "heavy nymph anchor fly", "best point fly nymph rig"]
+  },
+  {
+    "slug": "prince-nymph",
+    "name": "Prince Nymph",
+    "card": { "rank": "J", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Stonefly and mayfly nymphs, with attractor flash",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Cutthroat trout"],
+    "sizes": "#10-#18",
+    "difficulty": "beginner",
+    "summary": "Peacock herl and two white biot wings — an old attractor nymph that keeps outfishing more accurate patterns.",
+    "body": [
+      "The Prince Nymph should not work as well as it does. Real nymphs do not have two bright white wings folded over their backs. But peacock herl has an iridescence that no synthetic has ever quite matched, and those white biots give a fish something specific to aim at in murky, broken, fast-moving water.",
+      "It is best understood as an attractor that happens to be nymph-shaped. Fished in pocket water and riffles where trout decide quickly, it gets eaten by fish that are not examining anything closely. On flat, clear, heavily fished water it is far less convincing, and there are better choices.",
+      "In the larger sizes it makes a credible stonefly nymph, which is why it is so productive on western freestone rivers in spring and early summer. Fish it big and deep in high water, and small as a dropper in summer."
+    ],
+    "howToFish": "Dead drift deep under an indicator, or as the lead fly ahead of a smaller natural nymph. Also very good on the swing at the end of a drift.",
+    "whenToFish": "Spring through autumn, particularly in fast or slightly coloured water and during stonefly activity.",
+    "tips": [
+      "Go bigger than you think in spring high water — #10 and #12 earn their place.",
+      "The white biots are the trigger; if they are chewed off, change the fly.",
+      "Pairs beautifully as the lead fly ahead of a Pheasant Tail."
+    ],
+    "materials": [
+      "Hook: 1XL nymph, #10-#18",
+      "Bead: gold",
+      "Tail: brown goose biots",
+      "Body: peacock herl",
+      "Rib: flat gold tinsel",
+      "Wings: white goose biots, tied flat over the back",
+      "Hackle: brown hen, collared"
+    ],
+    "pairsWith": ["copper-john", "gold-ribbed-hares-ear", "golden-stonefly-nymph", "woolly-bugger"],
+    "searchTerms": ["prince nymph pattern", "what does a prince nymph imitate", "peacock nymph fly", "attractor nymph trout"]
+  },
+  {
+    "slug": "zebra-midge",
+    "name": "Zebra Midge",
+    "card": { "rank": "10", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Midge pupae",
+    "waters": ["river", "stillwater"],
+    "seasons": ["winter", "spring", "summer", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#16-#24",
+    "difficulty": "beginner",
+    "summary": "Thread, wire and a bead. The simplest fly in the box and the one that saves winter tailwater days.",
+    "body": [
+      "A Zebra Midge is a bead, a thread body and a wire rib. That is the entire fly. It takes ninety seconds to tie and it is, on many tailwaters, the single most productive pattern in the box for eight months of the year.",
+      "Midge pupae are the most consistently available trout food in cold water. They are present in enormous numbers, they are active every month including January, and they are small, dark and slim — which is precisely what a thread body with a wire rib looks like. The bead adds the flash of a gas bubble forming under the pupal skin as the insect prepares to rise.",
+      "The discipline it demands is going small enough. Anglers routinely fish a #18 when the fish are eating a #22. On a pressured tailwater in winter, dropping two sizes and lengthening the tippet solves more problems than any other adjustment."
+    ],
+    "howToFish": "Dead drift deep on a long leader under an indicator, usually as the trailing fly behind something heavier. On stillwaters, fish it static under a bobber and let the fish hook themselves.",
+    "whenToFish": "All year, and essential in winter. Tailwaters in particular fish midges almost every day of the season.",
+    "tips": [
+      "Black with a silver bead and red with a copper bead cover most water.",
+      "Go smaller than feels sensible. #20 and #22 are not extreme.",
+      "The trailing fly in a two-nymph rig is where this pattern belongs."
+    ],
+    "materials": [
+      "Hook: curved scud or standard nymph, #16-#24",
+      "Bead: silver, copper or black tungsten",
+      "Body: black, red or olive thread",
+      "Rib: fine silver or copper wire"
+    ],
+    "pairsWith": ["griffiths-gnat", "chironomid-pupa", "pheasant-tail-nymph", "perdigon"],
+    "searchTerms": ["zebra midge pattern", "midge nymph fly", "winter tailwater fly", "best small nymph trout"]
+  },
+  {
+    "slug": "perdigon",
+    "name": "Perdigon",
+    "card": { "rank": "9", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Mayfly nymphs, fished as a fast-sinking competition pattern",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall", "winter"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Grayling"],
+    "sizes": "#14-#20",
+    "difficulty": "intermediate",
+    "summary": "A slim, resin-coated Euro-nymph built for one purpose: getting to the bottom faster than anything else in the box.",
+    "body": [
+      "The Perdigon came out of European competition fishing, where getting a fly to the correct depth in the shortest possible distance is the entire game. The body is thread and tinsel coated in UV resin, which makes it hard, smooth and completely non-absorbent. Water slides off it rather than dragging on it, and with a tungsten bead it drops through a run like a stone.",
+      "That sink rate changes what is possible. In a fast, deep pocket where a conventional dubbed nymph would still be in the upper third of the water column by the time it left the seam, a Perdigon is on the bottom in the first metre. It puts the fly in front of fish that most anglers never reach.",
+      "The hot spot — a band of bright thread behind the bead — is doing real work. In broken water it gives a trout a point of focus, and in competition testing the difference between a hot-spotted and plain version is consistent enough that almost nobody ties them plain any more."
+    ],
+    "howToFish": "Built for tight-line and Euro-nymphing: short casts upstream, rod tip leading the fly, contact maintained throughout, no indicator. Also works well as the anchor in a conventional indicator rig.",
+    "whenToFish": "Year round, and particularly valuable in fast, deep water and in cold months when fish hold hard on the bottom.",
+    "tips": [
+      "Tungsten, not brass. The whole point is sink rate.",
+      "A hot spot in orange, pink or chartreuse consistently outfishes a plain body.",
+      "Keep the profile slim — bulk defeats the purpose of the fly."
+    ],
+    "materials": [
+      "Hook: jig or competition nymph, #14-#20",
+      "Bead: slotted tungsten",
+      "Tail: coq de Leon fibres",
+      "Body: thread with tinsel rib, coated in UV resin",
+      "Hot spot: fluorescent thread collar behind the bead"
+    ],
+    "pairsWith": ["frenchie", "copper-john", "zebra-midge", "rainbow-warrior"],
+    "searchTerms": ["perdigon nymph pattern", "euro nymphing flies", "fast sinking nymph", "competition nymph fly"]
+  },
+  {
+    "slug": "rainbow-warrior",
+    "name": "Rainbow Warrior",
+    "card": { "rank": "8", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Midge and small mayfly pupae, with heavy flash",
+    "designer": "Lance Egan",
+    "waters": ["river"],
+    "seasons": ["winter", "spring", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#16-#22",
+    "difficulty": "beginner",
+    "summary": "A small flashy attractor nymph with a silver bead and pearl body that fish see from a long way off.",
+    "body": [
+      "The Rainbow Warrior is what happens when you take a small, sober midge pupa and make it as bright as you dare. A silver bead, a body of pearl flash and a thorax of rainbow dubbing add up to a fly that catches light from every angle. On a grey winter day in slightly stained water, that visibility is exactly what gets it noticed.",
+      "It occupies a useful middle ground between imitation and attraction. It is small enough to be a plausible midge or baetis pupa, so a trout does not have to suspend disbelief entirely, but bright enough to pull fish from outside the immediate feeding lane. That combination makes it a reliable trailer behind a heavier, drabber fly.",
+      "It is especially good on tailwaters and in winter, when fish are holding deep, moving little, and need a reason to open their mouths. It also tends to work best in the first hour on a run before the fish have seen it repeatedly."
+    ],
+    "howToFish": "Trail it eighteen to twenty-four inches behind a heavier nymph, dead drifted deep. Effective in Euro-nymphing rigs as the dropper.",
+    "whenToFish": "Winter and early spring especially, and any time water is slightly off-colour and fish need help finding the fly.",
+    "tips": [
+      "First fly through a run — its edge fades as fish see it repeatedly.",
+      "Silver bead in clear water, copper in stained.",
+      "Pairs naturally behind a Copper John or Perdigon."
+    ],
+    "materials": [
+      "Hook: standard nymph, #16-#22",
+      "Bead: silver tungsten",
+      "Tail: coq de Leon fibres",
+      "Body: pearl Mylar tinsel",
+      "Thorax: rainbow-coloured dubbing"
+    ],
+    "pairsWith": ["zebra-midge", "perdigon", "frenchie", "copper-john"],
+    "searchTerms": ["rainbow warrior nymph", "flashy midge nymph", "lance egan fly pattern", "winter nymph trout"]
+  },
+  {
+    "slug": "pats-rubber-legs",
+    "name": "Pat's Rubber Legs",
+    "aka": ["Girdle Bug", "Rubber Legs"],
+    "card": { "rank": "7", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Stonefly nymphs",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall", "winter"],
+    "targetSpecies": ["Brown trout", "Rainbow trout", "Cutthroat trout"],
+    "sizes": "#4-#12",
+    "difficulty": "beginner",
+    "summary": "Chenille and rubber legs. It looks like nothing much in the hand and like a stonefly nymph in the water.",
+    "body": [
+      "Stonefly nymphs live in freestone rivers for up to three years before emerging, which means there is a substantial population of large, meaty nymphs available to trout every single day of the year. That is an unusual thing in fly fishing: a big food item that is never out of season.",
+      "Pat's Rubber Legs is the simplest credible imitation of one. A chenille body, a set of rubber legs at each end and a bead or lead underbody to sink it. In the hand it looks crude. In the water the rubber legs undulate constantly with the current, and that movement is the whole fly — it is the difference between a piece of chenille and something a trout believes is alive.",
+      "It is most valuable as the heavy fly in a two-nymph rig on a big freestone river. Fish it deep and slow through the runs and along the drop-offs. In spring high water, when everything is brown and pushing, this is frequently the fly that keeps working when nothing subtle will."
+    ],
+    "howToFish": "Deep and slow. Fish it as the anchor fly under an indicator with a smaller nymph trailing behind, and get it genuinely on the bottom. Do not strip it — dead drift is what stoneflies do.",
+    "whenToFish": "All year on freestone rivers, and outstanding in spring high water and during the pre-emergence period before a stonefly hatch.",
+    "tips": [
+      "Coffee/black and brown/tan are the two colours worth carrying.",
+      "If you are not losing the occasional fly to the bottom, you are fishing too shallow.",
+      "The bigger sizes are not a gimmick — #6 and #8 catch large fish."
+    ],
+    "materials": [
+      "Hook: 3XL nymph, #4-#12",
+      "Weight: lead wire underbody or tungsten bead",
+      "Body: variegated chenille",
+      "Legs: round rubber legs at tail, thorax and head"
+    ],
+    "pairsWith": ["golden-stonefly-nymph", "copper-john", "prince-nymph", "stimulator"],
+    "searchTerms": ["pats rubber legs pattern", "stonefly nymph fly", "girdle bug fly", "big nymph for trout"]
+  },
+  {
+    "slug": "frenchie",
+    "name": "Frenchie",
+    "card": { "rank": "6", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Mayfly nymphs with a bright hot spot",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall", "winter"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Grayling"],
+    "sizes": "#14-#20",
+    "difficulty": "beginner",
+    "summary": "A Pheasant Tail with a hot pink collar — the small change that made an old fly a competition staple.",
+    "body": [
+      "The Frenchie is a Pheasant Tail nymph with the thorax replaced by a band of bright pink or orange dubbing. That is the entire modification, and it is enough to have made it one of the most widely fished nymphs in competition and guide circles.",
+      "The hot spot works by giving the trout a specific point to focus on. In moving water, a fish has a fraction of a second to locate and intercept a small object, and a concentrated flash of contrasting colour makes that easier. The rest of the fly stays sober and imitative, so it does not tip over into looking artificial.",
+      "It fishes exactly like a Pheasant Tail but tends to outperform it in faster, deeper, or slightly coloured water where visibility is the limiting factor. On clear, slow, heavily pressured water the plain version is often still the better choice — carry both and let the water decide."
+    ],
+    "howToFish": "Dead drift deep, tight-line or under an indicator. Excellent as the dropper behind a heavier anchor fly.",
+    "whenToFish": "Year round. Particularly effective in faster or slightly stained water, and during baetis activity in spring and autumn.",
+    "tips": [
+      "Pink is the classic hot spot; orange and chartreuse both have their days.",
+      "Carry a plain Pheasant Tail alongside for clear, pressured water.",
+      "A jig hook and slotted tungsten bead makes it far more snag-resistant."
+    ],
+    "materials": [
+      "Hook: jig or standard nymph, #14-#20",
+      "Bead: slotted tungsten",
+      "Tail: coq de Leon fibres",
+      "Body: pheasant tail fibres, wire ribbed",
+      "Thorax: hot pink or orange dubbing"
+    ],
+    "pairsWith": ["pheasant-tail-nymph", "perdigon", "rainbow-warrior", "pale-morning-dun"],
+    "searchTerms": ["frenchie nymph pattern", "hot spot nymph", "euro nymph pheasant tail", "best jig nymph trout"]
+  },
+  {
+    "slug": "scud",
+    "name": "Scud",
+    "aka": ["Freshwater Shrimp"],
+    "card": { "rank": "5", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Freshwater scuds and shrimp",
+    "waters": ["river", "stillwater"],
+    "seasons": ["winter", "spring", "summer", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#12-#18",
+    "difficulty": "beginner",
+    "summary": "A curved, segmented crustacean pattern that is the staple food on most tailwaters and spring creeks.",
+    "body": [
+      "Scuds are small freshwater crustaceans that live in weed beds and gravel in cold, mineral-rich water. On tailwaters and spring creeks they exist in extraordinary densities, and trout in those systems eat them constantly and grow fat doing it. Where scuds are abundant, they are often the single largest component of a trout's diet.",
+      "The imitation is straightforward: a curved hook, a translucent dubbed body picked out for legs, and a shellback with a fine wire rib for segmentation. The curve matters — a scud at rest curls, and although a swimming scud actually straightens out, the curved silhouette has caught fish for decades and there is little reason to argue with it.",
+      "Colour is worth paying attention to. Live scuds are usually olive, grey or tan; dead and dying ones turn distinctly orange or pink, and trout key on that. An orange scud after a sudden flow change or in the winter can be dramatically more effective than a natural colour."
+    ],
+    "howToFish": "Dead drift near the bottom, ideally along weed bed edges and drop-offs. Small twitches during the drift imitate the erratic swimming motion and often draw the take.",
+    "whenToFish": "Year round on tailwaters and spring creeks. Especially good in winter, and immediately after a change in flow when scuds get dislodged.",
+    "tips": [
+      "Carry orange and pink as well as olive — dying scuds are a real trigger.",
+      "Fish it tight to weed edges rather than in open water.",
+      "Pick out the dubbing generously; the legs are what sells it."
+    ],
+    "materials": [
+      "Hook: curved scud hook, #12-#18",
+      "Weight: lead wire or bead",
+      "Body: olive, tan or orange scud dubbing, picked out",
+      "Shellback: clear Scud Back or thin plastic strip",
+      "Rib: fine wire or monofilament"
+    ],
+    "pairsWith": ["sowbug", "zebra-midge", "pheasant-tail-nymph", "chironomid-pupa"],
+    "searchTerms": ["scud fly pattern", "freshwater shrimp fly", "tailwater scud fly", "what does a scud imitate"]
+  },
+  {
+    "slug": "sowbug",
+    "name": "Sowbug",
+    "aka": ["Cressbug"],
+    "card": { "rank": "4", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Aquatic sowbugs and isopods",
+    "waters": ["river"],
+    "seasons": ["winter", "spring", "summer", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#14-#18",
+    "difficulty": "beginner",
+    "summary": "A flat grey crustacean that tailwater trout eat every day of the year without ever getting suspicious.",
+    "body": [
+      "Sowbugs are the unglamorous staple of tailwater fishing. They are flat, grey, slow, and utterly abundant in weedy, mineral-rich water, and unlike a mayfly or caddis they do not hatch — which means there is no season for them and no point at which trout stop eating them. On rivers like the White or the Bighorn, sowbugs may account for more trout calories than everything else combined.",
+      "Because trout see them constantly and they never behave dramatically, fish are not especially cautious about them. A well-drifted sowbug rarely gets refused. What it does require is depth: these are bottom-dwelling animals and a fly drifting through the middle of the water column is in the wrong place.",
+      "The pattern is deliberately simple — grey dubbing, a shellback, a wire rib and a lot of picked-out fibres to suggest the many small legs. Getting it flat rather than round is worth the effort; the real animal is noticeably wider than it is deep."
+    ],
+    "howToFish": "Dead drift right on the bottom under an indicator, usually as the trailing fly. On heavily pressured tailwaters, long leaders and light tippet matter more than pattern choice.",
+    "whenToFish": "Every month of the year on tailwaters and spring creeks. A default winter fly where scuds and sowbugs dominate.",
+    "tips": [
+      "Grey is the colour. Resist the urge to make it interesting.",
+      "Depth is everything — add weight before you change flies.",
+      "Pairs naturally as the second fly behind a scud."
+    ],
+    "materials": [
+      "Hook: standard or curved nymph, #14-#18",
+      "Weight: lead wire, flattened",
+      "Body: grey muskrat or synthetic dubbing, picked out wide",
+      "Shellback: grey Scud Back",
+      "Rib: fine silver wire"
+    ],
+    "pairsWith": ["scud", "zebra-midge", "gold-ribbed-hares-ear", "rainbow-warrior"],
+    "searchTerms": ["sowbug fly pattern", "cressbug fly", "tailwater nymph fly", "what does a sowbug imitate"]
+  },
+  {
+    "slug": "golden-stonefly-nymph",
+    "name": "Golden Stonefly Nymph",
+    "card": { "rank": "3", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Golden stonefly nymphs",
+    "waters": ["river"],
+    "seasons": ["spring", "summer"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Cutthroat trout"],
+    "sizes": "#6-#12",
+    "difficulty": "intermediate",
+    "summary": "A big amber nymph for the most important large insect on most western freestone rivers.",
+    "body": [
+      "Golden stoneflies are the workhorse big bug of western rivers. They are less famous than the giant salmonfly but far more widely distributed and available for a longer window, and their nymphs — amber and brown, heavily segmented, with prominent tails and antennae — spend years crawling around in the cobble where trout can reach them.",
+      "The critical period is the migration. In the weeks before emergence, mature nymphs crawl toward the banks to hatch, which puts an enormous quantity of large protein in the shallow margins where it is easy for trout to intercept. Fishing a golden stone nymph tight to the bank during that window is one of the more dependable ways to find a big fish.",
+      "Because the natural is large, the imitation needs weight, and because it lives on the bottom the drift needs to be genuinely deep. This is not a fly to fish tentatively. Get it down, keep it there, and accept that you will lose some to the rocks."
+    ],
+    "howToFish": "Dead drift deep along the bank and through cobble runs, especially in the two to four weeks before a stonefly emergence. Use it as the anchor in a two-nymph rig.",
+    "whenToFish": "Spring and early summer, peaking during the pre-emergence migration. Effective as a searching pattern on freestone rivers year round.",
+    "tips": [
+      "Fish it close to the bank during the migration, not in the middle of the river.",
+      "Amber and brown; the naturals are not as dark as most flies suggest.",
+      "Pair it with a Pat's Rubber Legs to cover two stonefly sizes at once."
+    ],
+    "materials": [
+      "Hook: 3XL curved nymph, #6-#12",
+      "Weight: lead wire underbody plus tungsten bead",
+      "Tail: brown goose biots",
+      "Body: amber and brown dubbing with a segmented shellback",
+      "Legs: mottled rubber or hen",
+      "Antennae: brown biots"
+    ],
+    "pairsWith": ["pats-rubber-legs", "stimulator", "prince-nymph", "copper-john"],
+    "searchTerms": ["golden stonefly nymph pattern", "stonefly nymph fly fishing", "big western nymph", "pre hatch stonefly"]
+  },
+  {
+    "slug": "green-caddis-larva",
+    "name": "Green Caddis Larva",
+    "aka": ["Caddis Worm"],
+    "card": { "rank": "2", "suit": "hearts" },
+    "type": "nymph",
+    "imitates": "Free-living caddis larvae",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall", "winter"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#12-#18",
+    "difficulty": "beginner",
+    "summary": "A bright green grub that imitates the caddis larvae trout eat every day, whether or not anything is hatching.",
+    "body": [
+      "Not all caddis build cases. The free-living species crawl around loose on the riverbed and get dislodged constantly by current, wading anglers and their own clumsiness. A trout in a caddis-rich river sees drifting green larvae every day of its life, which is why this fly works with no hatch and no timing at all.",
+      "The colour is the giveaway and the trigger. Live caddis larvae are a distinct, almost startling bright green — considerably brighter than most anglers expect — with a dark head. That contrast between a vivid segmented body and a dark thorax is the entire pattern, and getting the green right matters more than any refinement of shape.",
+      "It is at its most useful as an everyday searching nymph on freestone rivers, and it comes into its own after any disturbance to the riverbed. High water, a sudden flow change, or simply a group of anglers wading upstream will put larvae in the drift and switch fish onto them."
+    ],
+    "howToFish": "Dead drift deep, as the trailing fly behind a heavier nymph. Especially productive fished through riffles and the heads of runs where the current keeps dislodging naturals.",
+    "whenToFish": "Year round. Best in spring, after high water, and any time the riverbed has been disturbed.",
+    "tips": [
+      "Use a brighter green than looks natural in the hand — it is right in the water.",
+      "A dark thorax or black bead makes a real difference.",
+      "Fish it immediately after someone wades through a riffle upstream of you."
+    ],
+    "materials": [
+      "Hook: curved scud hook, #12-#18",
+      "Bead: black or copper, optional",
+      "Body: bright green Antron or Vinyl Rib",
+      "Rib: fine clear monofilament",
+      "Thorax: dark hare's ear or peacock"
+    ],
+    "pairsWith": ["gold-ribbed-hares-ear", "elk-hair-caddis", "partridge-and-orange", "copper-john"],
+    "searchTerms": ["green caddis larva fly", "caddis worm pattern", "free living caddis nymph", "green rock worm fly"]
+  },
+  {
+    "slug": "damselfly-nymph",
+    "name": "Damselfly Nymph",
+    "card": { "rank": "5", "suit": "clubs" },
+    "type": "nymph",
+    "imitates": "Damselfly nymphs migrating to shore",
+    "waters": ["stillwater"],
+    "seasons": ["spring", "summer"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#10-#14",
+    "difficulty": "intermediate",
+    "summary": "A slim olive stillwater nymph with a wiggling tail — the key to early summer lake fishing.",
+    "body": [
+      "Damselfly nymphs are among the most important stillwater foods there are, and their annual migration is one of the few genuinely predictable events on a lake. In early summer, mature nymphs swim from the weed beds toward shore and any emergent structure they can climb to hatch, and trout intercept them in numbers along that route.",
+      "The swimming motion is the thing to imitate. A damsel nymph moves with a distinct side-to-side wiggle of its abdomen, slow and continuous rather than darting. A marabou tail on the fly does this work automatically, and a retrieve that is far slower than feels productive is usually the correct one.",
+      "Olive is the colour, though the exact shade varies from lake to lake and the naturals can shift toward tan or light brown. Fishing it just under the surface along a weed line during the migration is one of the more visual and exciting forms of stillwater fishing there is."
+    ],
+    "howToFish": "Cast along weed lines and toward shore, and retrieve with slow, steady, short pulls — much slower than instinct suggests. During the migration, fish it high in the water column.",
+    "whenToFish": "Late spring and early summer on lakes and ponds, during the shoreward migration. Effective through summer around weed beds.",
+    "tips": [
+      "Slow down. Then slow down again.",
+      "Fish it parallel to a weed line rather than casting across it.",
+      "Match the olive shade to the naturals in your lake — kick a weed bed and look."
+    ],
+    "materials": [
+      "Hook: 2XL nymph, #10-#14",
+      "Tail: olive marabou, short",
+      "Body: olive dubbing, slim",
+      "Wing case: olive Thin Skin or turkey",
+      "Eyes: mono or bead chain",
+      "Legs: partridge or hen"
+    ],
+    "pairsWith": ["chironomid-pupa", "woolly-bugger", "scud", "balanced-leech"],
+    "searchTerms": ["damselfly nymph pattern", "stillwater fly fishing lake", "damsel nymph trout", "lake fly pattern summer"]
+  },
+  {
+    "slug": "chironomid-pupa",
+    "name": "Chironomid Pupa",
+    "aka": ["Buzzer", "Chironomid"],
+    "card": { "rank": "4", "suit": "clubs" },
+    "type": "nymph",
+    "imitates": "Chironomid midge pupae rising through the water column",
+    "waters": ["stillwater"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#12-#18",
+    "difficulty": "intermediate",
+    "summary": "The most important stillwater insect there is, imitated by a slim segmented pupa fished agonisingly slowly.",
+    "body": [
+      "On lakes, chironomids are not one food among many — they are the food. In most productive stillwaters they make up the largest share of a trout's diet by a wide margin, hatching from spring through autumn in enormous numbers. Anglers who learn to fish them well catch dramatically more lake fish than those who do not.",
+      "The pupa hangs vertically in the water column, rising with painful slowness toward the surface where it will emerge. It barely moves. This is why chironomid fishing looks like doing nothing: the fly is suspended under an indicator at a precisely measured depth, and it sits there. Any retrieve at all is usually wrong.",
+      "Depth is the entire game. Chironomid pupae rise from the bottom, and trout patrol a specific band of water eating them. Being a foot too high or too low is the difference between a blank day and a memorable one. Serious stillwater anglers measure depth carefully and adjust in small increments until they find the band."
+    ],
+    "howToFish": "Suspend it under an indicator at a measured depth, typically within a foot or two of the bottom, and leave it alone. Let wind drift provide any movement. Adjust depth in small increments until you find fish.",
+    "whenToFish": "Spring through autumn on lakes and ponds, with the heaviest hatches in late spring and early summer.",
+    "tips": [
+      "Do not retrieve. The natural barely moves.",
+      "Measure your depth properly — a foot matters.",
+      "A red or black body with a silver rib and a white breather covers most lakes."
+    ],
+    "materials": [
+      "Hook: curved nymph or buzzer hook, #12-#18",
+      "Body: black, red or olive thread, coated",
+      "Rib: fine silver wire or flashabou",
+      "Thorax: peacock or black dubbing",
+      "Breathers: white antron at the head"
+    ],
+    "pairsWith": ["damselfly-nymph", "zebra-midge", "scud", "griffiths-gnat"],
+    "searchTerms": ["chironomid pupa pattern", "buzzer fly pattern", "stillwater chironomid fishing", "lake midge pupa fly"]
+  },
+  {
+    "slug": "woolly-bugger",
+    "name": "Woolly Bugger",
+    "card": { "rank": "A", "suit": "diamonds" },
+    "type": "streamer",
+    "imitates": "Leeches, baitfish, large nymphs and crayfish — anything alive and swimming",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "summer", "fall", "winter"],
+    "targetSpecies": ["Brown trout", "Rainbow trout", "Smallmouth bass", "Brook trout"],
+    "sizes": "#2-#12",
+    "difficulty": "beginner",
+    "summary": "The most versatile fly ever tied. A marabou tail, a chenille body and a palmered hackle that catches everything, everywhere.",
+    "body": [
+      "If you could only take one fly anywhere in the world and fish it for anything, the argument for the Woolly Bugger is close to unanswerable. It has caught trout, bass, panfish, carp, pike, steelhead and saltwater species, in rivers, lakes and estuaries, on every continent that holds fish. That is not because it imitates one thing brilliantly — it is because it imitates the general idea of prey.",
+      "The marabou tail is the engine. Even at rest in still water, marabou breathes and pulses with the faintest current, and the palmered hackle along the body adds a second layer of movement. Underwater the fly never stops looking alive, which is a quality very few materials deliver as reliably or as cheaply.",
+      "Depending on how you fish it, it becomes different things. Stripped fast in olive it is a baitfish. Crawled slowly along the bottom in black it is a leech. Dead drifted in brown under an indicator it is a big stonefly nymph. The pattern has not changed in decades; the fisherman changes what it means."
+    ],
+    "howToFish": "Cast across and down, let it swing, and strip it back in varied pulls. Also excellent dead drifted deep like a large nymph, or crawled slowly along the bottom of a lake. Vary the retrieve until something happens.",
+    "whenToFish": "Every month, every water type. Particularly good in high or coloured water, at dawn and dusk, and when nothing is hatching.",
+    "tips": [
+      "Black, olive and brown in #6 and #8 covers an extraordinary amount of fishing.",
+      "A cone head or bead changes it from a mid-column fly to a bottom fly.",
+      "When in doubt anywhere in the world, this is the fly."
+    ],
+    "materials": [
+      "Hook: 3XL streamer, #2-#12",
+      "Weight: lead wire or cone head, optional",
+      "Tail: marabou, with optional Krystal Flash",
+      "Body: chenille",
+      "Hackle: saddle hackle, palmered the length of the body"
+    ],
+    "pairsWith": ["muddler-minnow", "bunny-leech", "prince-nymph", "slumpbuster"],
+    "searchTerms": ["woolly bugger pattern", "best all around streamer", "what does a woolly bugger imitate", "woolly bugger colors"]
+  },
+  {
+    "slug": "muddler-minnow",
+    "name": "Muddler Minnow",
+    "card": { "rank": "K", "suit": "diamonds" },
+    "type": "streamer",
+    "imitates": "Sculpins, baitfish, grasshoppers and stoneflies",
+    "designer": "Don Gapen",
+    "yearOrigin": 1937,
+    "originNote": "Tied by Don Gapen for brook trout on Ontario's Nipigon River, to imitate the sculpins the fish were feeding on.",
+    "waters": ["river", "stillwater"],
+    "seasons": ["summer", "fall"],
+    "targetSpecies": ["Brown trout", "Brook trout", "Rainbow trout", "Smallmouth bass"],
+    "sizes": "#4-#12",
+    "difficulty": "advanced",
+    "summary": "A spun deer hair head over a turkey wing — one of the great American flies, and one that fishes as sculpin, hopper or streamer.",
+    "body": [
+      "Don Gapen tied the Muddler to imitate the sculpins that big Nipigon brook trout were eating, and in doing so created a fly that has been reinterpreted more than almost any other. The broad, flat, spun deer hair head is the signature: it pushes water, it gives the fly a wide blunt profile, and it makes the whole thing behave differently from any slim streamer.",
+      "What makes it endure is its ambiguity. Fished deep and stripped, it is a sculpin. Fished dry on a greased line, it is a grasshopper — and a very good one. Fished on the swing in the surface film, it is a large emerging caddis or stonefly. Very few patterns can be fished at three depths and mean three different things.",
+      "It is genuinely difficult to tie well. Spinning and clipping deer hair to a clean profile takes practice, which is part of why fewer anglers fish it than its record deserves. It is worth the trouble, particularly for large brown trout in autumn."
+    ],
+    "howToFish": "Swing it down and across like a wet fly, strip it back through likely water, or dead drift it in the film as a hopper. Weighted versions fish deep; unweighted ones can be dressed and fished dry.",
+    "whenToFish": "Late summer and autumn especially, when sculpins are active and big browns are aggressive. Also excellent as a hopper substitute in August.",
+    "tips": [
+      "Fish it unweighted and greased as a grasshopper — it is one of the best.",
+      "Swing it through the tail of a pool at dusk for big browns.",
+      "Trim the head flatter and wider for a more convincing sculpin profile."
+    ],
+    "materials": [
+      "Hook: 3XL streamer, #4-#12",
+      "Tail: mottled turkey quill",
+      "Body: flat gold tinsel",
+      "Underwing: grey squirrel tail",
+      "Wing: mottled turkey quill sections",
+      "Head: spun and clipped deer hair with a flared collar"
+    ],
+    "pairsWith": ["woolly-bugger", "slumpbuster", "zonker", "daves-hopper"],
+    "searchTerms": ["muddler minnow pattern", "sculpin fly pattern", "don gapen muddler", "deer hair head streamer"]
+  },
+  {
+    "slug": "clouser-deep-minnow",
+    "name": "Clouser Deep Minnow",
+    "aka": ["Clouser"],
+    "card": { "rank": "Q", "suit": "diamonds" },
+    "type": "streamer",
+    "imitates": "Baitfish and minnows",
+    "designer": "Bob Clouser",
+    "originNote": "Developed by Bob Clouser for smallmouth bass on the Susquehanna River, and since credited with more species caught than nearly any other fly.",
+    "waters": ["river", "stillwater", "saltwater"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Smallmouth bass", "Brown trout", "Striped bass", "Rainbow trout"],
+    "sizes": "#1/0-#8",
+    "difficulty": "beginner",
+    "summary": "Dumbbell eyes and bucktail. It swims hook-point-up with a jigging motion and has probably caught more species than any other fly.",
+    "body": [
+      "The Clouser Minnow is built around one mechanical idea: put heavy dumbbell eyes on top of the hook shank, and the fly will flip over and ride point-up. That single decision does two things. It makes the fly almost snag-proof over rock and weed, and it gives it a pronounced jigging action on the retrieve — rising and diving with every strip rather than swimming flat.",
+      "That darting, wounded motion is what predatory fish respond to. A healthy baitfish swims steadily; an injured one falls and recovers, falls and recovers. The Clouser does the latter automatically, without the angler having to do anything clever.",
+      "Bob Clouser designed it for Susquehanna smallmouth, but it has since been used to catch a genuinely absurd range of species in fresh and salt water. Chartreuse over white is the classic, and remains the first choice almost everywhere; olive over white is the better trout colour on most rivers."
+    ],
+    "howToFish": "Cast across and strip back in sharp pulls with pauses. The pause is where the take usually comes — the fly is dropping and looks wounded. Vary strip length and speed until you find the pattern.",
+    "whenToFish": "Spring through autumn wherever fish are eating baitfish. Prime time is any period of low light or high aggression.",
+    "tips": [
+      "The take almost always comes on the pause. Do not strip continuously.",
+      "Chartreuse/white for bass and salt, olive/white for trout.",
+      "It rides hook-up — fish it confidently over rock and structure."
+    ],
+    "materials": [
+      "Hook: standard streamer, #1/0-#8",
+      "Eyes: lead or brass dumbbell, tied on top of the shank",
+      "Belly: white bucktail",
+      "Flash: Krystal Flash",
+      "Wing: chartreuse or olive bucktail"
+    ],
+    "pairsWith": ["woolly-bugger", "mickey-finn", "zonker", "black-ghost"],
+    "searchTerms": ["clouser minnow pattern", "bob clouser fly", "baitfish streamer fly", "smallmouth bass fly pattern"]
+  },
+  {
+    "slug": "zonker",
+    "name": "Zonker",
+    "card": { "rank": "J", "suit": "diamonds" },
+    "type": "streamer",
+    "imitates": "Baitfish and small trout",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "fall", "winter"],
+    "targetSpecies": ["Brown trout", "Rainbow trout", "Pike"],
+    "sizes": "#2-#8",
+    "difficulty": "intermediate",
+    "summary": "A rabbit strip over a flashy body. In the water the fur breathes like nothing else and big fish take it hard.",
+    "body": [
+      "Rabbit strip is the most seductive streamer material there is. A strip of hide with the fur still attached undulates through its entire length with the smallest movement of water, and on the pause it does not go still the way synthetic materials do — it keeps pulsing. The Zonker is the classic expression of that, a rabbit strip laid over a bright mylar body.",
+      "The trade-off is water absorption. A wet Zonker is heavy to cast, and the strip can wrap around the hook bend if you are careless with your casting stroke. Most tiers solve the second problem with a mono loop under the tail. Neither issue is enough to give up the movement.",
+      "It is a fly for big fish rather than many fish. Fished on a sink tip through deep runs and undercut banks in autumn and early spring, it is one of the more reliable ways to move a genuinely large brown trout. Expect fewer takes and better ones."
+    ],
+    "howToFish": "Sink tip or heavy leader, cast across and down, and strip back with long slow pulls punctuated by pauses. Work it close to banks, log jams and drop-offs. Hold on.",
+    "whenToFish": "Autumn and early spring when big trout are aggressive, and in high or coloured water when a large silhouette helps.",
+    "tips": [
+      "Natural, olive and black. Do not overthink colour on streamers.",
+      "Use a mono loop under the tail to stop the strip fouling the hook.",
+      "Fewer, better fish. Be patient and cover water."
+    ],
+    "materials": [
+      "Hook: 3XL streamer, #2-#8",
+      "Body: mylar tubing or flat tinsel",
+      "Wing: rabbit zonker strip, tied down at the tail",
+      "Weight: lead wire or cone head",
+      "Collar: hen hackle or dubbing"
+    ],
+    "pairsWith": ["woolly-bugger", "muddler-minnow", "bunny-leech", "slumpbuster"],
+    "searchTerms": ["zonker fly pattern", "rabbit strip streamer", "big brown trout streamer", "zonker strip fly"]
+  },
+  {
+    "slug": "mickey-finn",
+    "name": "Mickey Finn",
+    "card": { "rank": "10", "suit": "diamonds" },
+    "type": "streamer",
+    "imitates": "Small baitfish — a bright bucktail attractor",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "fall"],
+    "targetSpecies": ["Brook trout", "Brown trout", "Rainbow trout", "Landlocked salmon"],
+    "sizes": "#4-#10",
+    "difficulty": "beginner",
+    "summary": "Red and yellow bucktail over a silver body — a classic bright streamer that still moves fish in stained water.",
+    "body": [
+      "The Mickey Finn is one of the old North American bucktail streamers, and it belongs to an era when flies were expected to be bright and visible rather than subtle. A silver tinsel body with a wing of yellow, red and yellow bucktail is about as loud as a trout fly gets, and it has been catching brook trout and landlocked salmon since the 1930s.",
+      "It works best precisely where subtlety fails: high spring water, stained rivers, tea-coloured northern streams, and low light. In those conditions a fish is hunting by silhouette and contrast, and the flash of silver with a slash of red gets seen from a distance that a natural olive streamer would not.",
+      "Bucktail is also more durable and less water-absorbent than marabou or rabbit, which makes this an easier fly to cast on light gear all day. On small northern rivers for brook trout it remains genuinely hard to beat in spring."
+    ],
+    "howToFish": "Cast across and down and swing it through the current, stripping in short pulls. Also effective stripped upstream fast in slower pools, which triggers a chase.",
+    "whenToFish": "Spring high water and autumn, particularly in stained or tea-coloured water and in low light.",
+    "tips": [
+      "It shines in coloured water. Do not expect much from it on a clear flat.",
+      "Excellent for brook trout and landlocked salmon on northern rivers.",
+      "Bucktail lasts — one fly will handle a lot of fish."
+    ],
+    "materials": [
+      "Hook: 4XL streamer, #4-#10",
+      "Body: flat silver tinsel",
+      "Rib: oval silver tinsel",
+      "Wing: yellow bucktail, then red bucktail, then yellow bucktail"
+    ],
+    "pairsWith": ["black-ghost", "clouser-deep-minnow", "woolly-bugger", "march-brown-wet"],
+    "searchTerms": ["mickey finn fly pattern", "bucktail streamer classic", "brook trout streamer", "stained water streamer fly"]
+  },
+  {
+    "slug": "black-ghost",
+    "name": "Black Ghost",
+    "card": { "rank": "9", "suit": "diamonds" },
+    "type": "streamer",
+    "imitates": "Small baitfish, with a strong dark silhouette",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Brook trout", "Brown trout", "Landlocked salmon"],
+    "sizes": "#4-#10",
+    "difficulty": "intermediate",
+    "summary": "A black-bodied classic with white wings and a yellow throat — built for low light and dark water.",
+    "body": [
+      "The Black Ghost is a New England classic and one of the great low-light streamers. Its logic is the opposite of the Mickey Finn's: instead of maximum brightness, it uses a solid black body to create the strongest possible silhouette, with white saddle wings and a yellow throat to break it up and give a fish something to key on.",
+      "That dark-against-light contrast is what makes it work at dawn, at dusk, and on heavily overcast days. A trout looking up at a fly in dim conditions is seeing a shape against the sky, and black is the most visible colour there is in that situation. Anglers who instinctively reach for something bright in low light have it backwards.",
+      "It has a long association with landlocked salmon and brook trout in Maine and eastern Canada, where it is still trolled and cast in spring. On trout rivers it is worth fishing in the last half hour of light, when a big brown will move a long way for a clear silhouette."
+    ],
+    "howToFish": "Swing and strip through pools and along drop-offs. Best in the first and last light of the day. On lakes, fish it on a sinking line along shoreline structure.",
+    "whenToFish": "Dawn, dusk and overcast days from spring through autumn. A traditional choice for spring landlocked salmon.",
+    "tips": [
+      "Black in low light. Counterintuitive, and correct.",
+      "The last thirty minutes of light is prime time for this fly.",
+      "Classic for landlocked salmon and eastern brook trout."
+    ],
+    "materials": [
+      "Hook: 4XL streamer, #4-#10",
+      "Tail: yellow hackle fibres",
+      "Body: black floss",
+      "Rib: flat silver tinsel",
+      "Throat: yellow hackle fibres",
+      "Wing: four white saddle hackles"
+    ],
+    "pairsWith": ["mickey-finn", "woolly-bugger", "muddler-minnow", "zonker"],
+    "searchTerms": ["black ghost streamer pattern", "classic maine streamer", "landlocked salmon fly", "low light streamer trout"]
+  },
+  {
+    "slug": "slumpbuster",
+    "name": "Slumpbuster",
+    "card": { "rank": "8", "suit": "diamonds" },
+    "type": "streamer",
+    "imitates": "Sculpins and small baitfish",
+    "designer": "John Barr",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Brown trout", "Rainbow trout", "Cutthroat trout"],
+    "sizes": "#2-#10",
+    "difficulty": "beginner",
+    "summary": "A cone-head pine squirrel streamer that gets deep fast and does the fishing for you.",
+    "body": [
+      "John Barr designed the Slumpbuster to be the streamer you tie on when nothing else is working, and the name is entirely literal. It is a cone head, a sparkle braid body and a pine squirrel strip wrapped as a collar and laid over the back. That is all. It sinks quickly, it swims with a pronounced dive-and-rise motion, and the squirrel fur does not stop moving.",
+      "Pine squirrel is the key material. It is finer and softer than rabbit, so it moves more freely at smaller sizes and absorbs less water, which makes the fly far easier to cast than a comparable rabbit-strip streamer. For anglers fishing streamers on a normal trout rod rather than a dedicated streamer setup, that difference is significant.",
+      "It is genuinely versatile in size. In #2 and #4 it is a full sculpin imitation for big browns; in #8 and #10 it becomes a very effective small streamer for cutthroat and rainbows in smaller water, and can even be dead drifted like a large nymph."
+    ],
+    "howToFish": "Cast to the bank, let the cone head take it down, and strip back with short sharp pulls. Also excellent swung through runs, and can be dead drifted under an indicator in the smaller sizes.",
+    "whenToFish": "Spring through autumn, and particularly effective in the smaller sizes when fish are not committing to a full-size streamer.",
+    "tips": [
+      "Olive, natural and black. Rust is worth carrying for autumn.",
+      "The small sizes are underused — a #10 catches a lot of fish.",
+      "Easier to cast all day than a rabbit-strip fly of the same size."
+    ],
+    "materials": [
+      "Hook: 3XL streamer, #2-#10",
+      "Cone: gold or black tungsten",
+      "Body: sparkle braid",
+      "Collar and wing: pine squirrel strip"
+    ],
+    "pairsWith": ["muddler-minnow", "woolly-bugger", "zonker", "bunny-leech"],
+    "searchTerms": ["slumpbuster fly pattern", "pine squirrel streamer", "john barr slumpbuster", "sculpin streamer trout"]
+  },
+  {
+    "slug": "partridge-and-orange",
+    "name": "Partridge and Orange",
+    "aka": ["Soft Hackle"],
+    "card": { "rank": "7", "suit": "diamonds" },
+    "type": "wet",
+    "imitates": "Emerging caddis and mayflies",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Brown trout", "Rainbow trout", "Grayling"],
+    "sizes": "#12-#18",
+    "difficulty": "beginner",
+    "summary": "Orange silk and a turn of partridge hackle. Two materials, three hundred years of history, and it still works.",
+    "body": [
+      "The North Country soft hackles are among the oldest surviving fly patterns in the English-speaking world, and the Partridge and Orange is the most enduring of them. It is a body of orange silk and a single turn of grey partridge hackle. Nothing else. It should have been superseded a century ago and it has not been.",
+      "The reason is the hackle. Partridge fibres are soft, mottled and long, and in current they collapse and pulse around the body constantly. That movement suggests legs, gills, an emerging wing, a struggling insect — the whole impression of something alive and vulnerable in the water column, without committing to any specific insect.",
+      "It is fished on the swing, which is a technique many modern anglers have quietly abandoned in favour of indicator nymphing. That is a shame, because a team of soft hackles swung through a riffle during a caddis emergence is not just effective — it is one of the most pleasant ways to fish a river, and the takes are unmistakable."
+    ],
+    "howToFish": "Cast down and across, let it swing across the current on a tight line, and hold on. Do not strike — the fish hooks itself against the swing. Fish two or three on a team for more water coverage.",
+    "whenToFish": "Spring through autumn, and especially during caddis emergences and the hour before a hatch begins.",
+    "tips": [
+      "Do not set the hook. Let the fish take against the tension.",
+      "Fish a team of two or three at different depths.",
+      "Orange, yellow and green silk covers most emergences."
+    ],
+    "materials": [
+      "Hook: standard wet fly, #12-#18",
+      "Body: orange silk thread",
+      "Thorax: hare's ear dubbing, sparse",
+      "Hackle: grey partridge, one or two turns"
+    ],
+    "pairsWith": ["soft-hackle-pheasant-tail", "march-brown-wet", "elk-hair-caddis", "green-caddis-larva"],
+    "searchTerms": ["partridge and orange soft hackle", "soft hackle wet fly", "north country spider fly", "swinging wet flies trout"]
+  },
+  {
+    "slug": "soft-hackle-pheasant-tail",
+    "name": "Soft Hackle Pheasant Tail",
+    "card": { "rank": "6", "suit": "diamonds" },
+    "type": "wet",
+    "imitates": "Emerging mayflies rising through the water column",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Grayling"],
+    "sizes": "#14-#20",
+    "difficulty": "beginner",
+    "summary": "A Pheasant Tail with a soft hackle collar — the nymph and the emerger in one fly.",
+    "body": [
+      "This is the fly that bridges nymph fishing and wet fly fishing. The body is a standard Pheasant Tail, slim and imitative; the addition of a collar of partridge or hen hackle turns it into something that pulses and breathes as it moves through water. Dead drifted it is a nymph. Swung and lifted it is an emerger.",
+      "That dual identity matters most in the twenty minutes before and during a mayfly hatch, when nymphs are actively leaving the bottom and rising toward the surface. A fly that is drifting near the bottom and then swings up through the water column is doing exactly what the naturals are doing, and fish respond to it accordingly.",
+      "It is a good example of how small a change needs to be to matter. One turn of soft hackle on an existing pattern roughly doubles the number of situations it covers, at a cost of about fifteen seconds at the vice."
+    ],
+    "howToFish": "Fish it dead drift like a nymph, then deliberately let it swing and rise at the end of the drift — the induced take on the lift is the whole point. Also fishes well on a team of wets.",
+    "whenToFish": "Immediately before and during mayfly hatches. Spring and autumn baetis activity is the prime window.",
+    "tips": [
+      "The lift at the end of the drift is where most takes come from.",
+      "Unweighted versions fish better in the film; add a bead for depth.",
+      "One or two turns of hackle only — more kills the movement."
+    ],
+    "materials": [
+      "Hook: standard wet or nymph, #14-#20",
+      "Body: pheasant tail fibres ribbed with copper wire",
+      "Thorax: peacock herl or hare's ear",
+      "Hackle: partridge or hen, one turn"
+    ],
+    "pairsWith": ["partridge-and-orange", "pheasant-tail-nymph", "blue-winged-olive", "march-brown-wet"],
+    "searchTerms": ["soft hackle pheasant tail", "wet fly emerger pattern", "induced take fly fishing", "swinging soft hackles"]
+  },
+  {
+    "slug": "march-brown-wet",
+    "name": "March Brown Wet",
+    "card": { "rank": "5", "suit": "diamonds" },
+    "type": "wet",
+    "imitates": "Drowned and emerging March Brown mayflies",
+    "waters": ["river"],
+    "seasons": ["spring"],
+    "targetSpecies": ["Brown trout", "Brook trout", "Rainbow trout"],
+    "sizes": "#10-#14",
+    "difficulty": "beginner",
+    "summary": "A traditional winged wet fly for early spring, when the first big mayflies come off cold water.",
+    "body": [
+      "The March Brown is one of the first substantial mayflies of the year, hatching in early spring when water is still cold and fish are not yet looking hard at the surface. That makes the wet fly version more useful than the dry on many days: trout are feeding, but a foot down rather than on top.",
+      "The traditional dressing — a hare's ear body, a mottled brown partridge or hen hackle and a paired quill wing — is a classic example of the old winged wet fly, a style largely displaced by nymphs and now enjoying a quiet revival. Fished on the swing it presents a drowned or emerging insect at exactly the depth cold-water fish want it.",
+      "Early season fishing rewards covering water rather than waiting for rises, and a team of wets swung through likely runs is one of the more efficient ways to do that. On a cold April afternoon it will often outfish an indicator rig, and it is considerably more enjoyable."
+    ],
+    "howToFish": "Down and across on a swing, allowing the flies to hang at the end before recasting. Fish it as the point or middle fly on a team of two or three wets.",
+    "whenToFish": "Early spring during March Brown emergences, and generally through the first weeks of the season when water is cold.",
+    "tips": [
+      "Cover water rather than waiting for rises in early season.",
+      "Let the flies hang for several seconds at the end of the swing.",
+      "A team of three wets covers three depths at once."
+    ],
+    "materials": [
+      "Hook: standard wet fly, #10-#14",
+      "Tail: brown partridge fibres",
+      "Body: hare's ear dubbing",
+      "Rib: fine gold wire",
+      "Hackle: brown partridge or hen",
+      "Wing: mottled hen quill sections"
+    ],
+    "pairsWith": ["partridge-and-orange", "soft-hackle-pheasant-tail", "gold-ribbed-hares-ear", "light-cahill"],
+    "searchTerms": ["march brown wet fly", "traditional winged wet fly", "early season trout fly", "spring wet fly swing"]
+  },
+  {
+    "slug": "balanced-leech",
+    "name": "Balanced Leech",
+    "card": { "rank": "4", "suit": "diamonds" },
+    "type": "streamer",
+    "imitates": "Leeches suspended horizontally in the water column",
+    "waters": ["stillwater"],
+    "seasons": ["spring", "summer", "fall", "winter"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#8-#12",
+    "difficulty": "intermediate",
+    "summary": "A leech tied on an extended pin so it hangs perfectly level under an indicator instead of nose-down.",
+    "body": [
+      "A conventional weighted fly suspended under an indicator hangs nose-down, which looks nothing like a leech. The balanced pattern solves this by mounting a bead on a pin extending forward from the hook eye, moving the centre of gravity ahead of the hook so the fly hangs horizontally — exactly the posture a leech holds when it stops swimming.",
+      "It matters more than it sounds. Stillwater trout cruising a shoreline see a suspended fly for several seconds before deciding, and posture is one of the few cues available when the fly is not moving. A level leech reads as the real animal; a vertical one reads as a jig.",
+      "Fished under an indicator over a drop-off or weed edge, it is one of the most effective stillwater techniques there is, and it works in cold water when trout will not chase a stripped fly. In winter and early spring on a lake it is frequently the difference between fish and no fish."
+    ],
+    "howToFish": "Suspend under an indicator at a measured depth over drop-offs and weed edges. Let wind drift and small twitches provide the movement — do not retrieve steadily.",
+    "whenToFish": "Year round on stillwaters, and especially valuable in cold water when trout will not chase.",
+    "tips": [
+      "Black, maroon and olive are the colours that matter.",
+      "Set the depth so the fly sits just above the weed or bottom.",
+      "A tiny twitch every twenty seconds is often all the movement needed."
+    ],
+    "materials": [
+      "Hook: jig hook, #8-#12",
+      "Pin: straight pin extending from the hook eye with a tungsten bead",
+      "Tail: marabou",
+      "Body: dubbing or chenille with a wire rib",
+      "Collar: soft hackle"
+    ],
+    "pairsWith": ["bunny-leech", "chironomid-pupa", "damselfly-nymph", "woolly-bugger"],
+    "searchTerms": ["balanced leech pattern", "stillwater leech fly", "indicator lake fishing fly", "balanced fly under bobber"]
+  },
+  {
+    "slug": "egg-sucking-leech",
+    "name": "Egg-Sucking Leech",
+    "card": { "rank": "3", "suit": "diamonds" },
+    "type": "streamer",
+    "imitates": "A leech feeding on a salmon egg — two triggers on one hook",
+    "waters": ["river"],
+    "seasons": ["fall", "winter", "spring"],
+    "targetSpecies": ["Rainbow trout", "Steelhead", "Dolly Varden", "Brown trout"],
+    "sizes": "#2-#8",
+    "difficulty": "beginner",
+    "summary": "A black leech with a hot pink bead head — crude, effective, and a staple wherever salmon spawn.",
+    "body": [
+      "The Egg-Sucking Leech is exactly what its name says: a black marabou leech with a bright pink or orange head suggesting a salmon egg being carried off. It is not subtle and it is not pretending to be. In systems where salmon spawn, trout and char gorge on both eggs and the leeches that gather around redds, and this fly presents both triggers at once.",
+      "It is a foundational fly in Alaska and the Pacific Northwest, and it works far beyond them. The black body gives the silhouette and movement of a leech; the hot bead gives an attractor's point of focus that shows up in glacial melt, coloured water and low light. On steelhead and big rainbows it is a genuine confidence pattern.",
+      "It also has a quiet second life as an early-season fly on ordinary trout rivers. In high, cold, off-coloured spring water, a black leech with a bright head swung through a deep run moves fish that will not look at anything smaller."
+    ],
+    "howToFish": "Swing it through runs on a sink tip, or dead drift it deep under an indicator near spawning gravel. Strip it back with slow pulls in stillwater.",
+    "whenToFish": "Autumn through spring, and especially during and after salmon spawning runs. Excellent in high, cold or coloured water.",
+    "tips": [
+      "Pink and orange heads both work; carry each.",
+      "Fish it below spawning gravel, not on it — respect active redds.",
+      "In coloured spring water this is often the fly that saves the day."
+    ],
+    "materials": [
+      "Hook: 3XL streamer, #2-#8",
+      "Bead or head: hot pink or orange chenille or tungsten bead",
+      "Tail: black marabou",
+      "Body: black chenille",
+      "Hackle: black saddle, palmered"
+    ],
+    "pairsWith": ["egg-pattern", "bunny-leech", "woolly-bugger", "san-juan-worm"],
+    "searchTerms": ["egg sucking leech pattern", "alaska trout fly", "steelhead leech fly", "pink head black leech"]
+  },
+  {
+    "slug": "bunny-leech",
+    "name": "Bunny Leech",
+    "card": { "rank": "2", "suit": "diamonds" },
+    "type": "streamer",
+    "imitates": "Leeches",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "summer", "fall", "winter"],
+    "targetSpecies": ["Brown trout", "Rainbow trout", "Pike", "Smallmouth bass"],
+    "sizes": "#2-#10",
+    "difficulty": "beginner",
+    "summary": "A strip of rabbit fur on a hook. Almost nothing to it, and few flies move as convincingly in the water.",
+    "body": [
+      "Leeches are present in almost every trout water in the world, they are available all year, and they are a substantial meal. They also move in a distinctive way — a slow, undulating swim followed by a sink, then another undulation. Any fly that reproduces that motion catches fish.",
+      "The Bunny Leech reduces the problem to its simplest form: a rabbit strip, some weight, and very little else. Wet rabbit fur has a life to it that no synthetic has matched, and on the pause the strip keeps waving long after the fly has stopped moving. That continued motion during the pause is when most takes happen.",
+      "It is one of the best flies for a beginner to fish because it is nearly impossible to fish badly. Cast it out, let it sink, and pull it back in slow irregular strips. Fish eat it in rivers, lakes, in summer and in the middle of winter."
+    ],
+    "howToFish": "Count it down to depth, then retrieve in slow irregular strips with long pauses. In rivers, swing it through runs and along undercut banks. Let it sink on the pause.",
+    "whenToFish": "Year round, in rivers and stillwaters alike. Particularly good in cold water and low light when fish want a slow, large, easy target.",
+    "tips": [
+      "Black and maroon outfish everything else in most water.",
+      "The pause is not dead time — it is when the fly looks most alive.",
+      "If you are new to streamers, start here."
+    ],
+    "materials": [
+      "Hook: 3XL streamer, #2-#10",
+      "Weight: lead wire, cone or dumbbell eyes",
+      "Tail and body: rabbit zonker strip, palmered or laid over",
+      "Flash: a few strands of Krystal Flash, optional"
+    ],
+    "pairsWith": ["woolly-bugger", "balanced-leech", "zonker", "egg-sucking-leech"],
+    "searchTerms": ["bunny leech pattern", "rabbit strip leech fly", "simple streamer for beginners", "leech fly trout"]
   }
 ]
