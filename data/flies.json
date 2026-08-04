@@ -1623,5 +1623,274 @@
     ],
     "pairsWith": ["woolly-bugger", "balanced-leech", "zonker", "egg-sucking-leech"],
     "searchTerms": ["bunny leech pattern", "rabbit strip leech fly", "simple streamer for beginners", "leech fly trout"]
+  },
+  {
+    "slug": "royal-coachman",
+    "name": "Royal Coachman",
+    "card": { "rank": "9", "suit": "clubs" },
+    "type": "attractor",
+    "imitates": "Nothing in nature — the original American attractor",
+    "waters": ["river"],
+    "seasons": ["summer"],
+    "targetSpecies": ["Brook trout", "Cutthroat trout", "Rainbow trout"],
+    "sizes": "#10-#16",
+    "difficulty": "beginner",
+    "summary": "Peacock, red floss and white wings. The most famous American fly that imitates absolutely nothing.",
+    "body": [
+      "The Royal Coachman is the fly that taught American anglers that imitation is optional. It descends from the older English Coachman, to which someone added a band of red silk, and the result is a fly of such obvious artificiality that its continued success is slightly embarrassing to anyone who takes matching the hatch seriously.",
+      "It catches fish because it combines three strong triggers: the iridescence of peacock herl, a sharp band of contrasting colour, and bright white wings that a trout can locate instantly. On small streams and in wild-fish country where trout must eat opportunistically or go hungry, those triggers are enough. Curiosity and competition do the rest.",
+      "It also occupies a genuine place in the history of the sport — for decades in the late nineteenth and early twentieth centuries it was probably the best-known trout fly in America, tied as a dry, a wet and a streamer. Fishing one on a small brook trout stream is a pleasantly direct connection to that period."
+    ],
+    "howToFish": "Fish it as a searching dry on small streams and pocket water — short casts, quick drifts, cover a lot of water. Also fishes well as a wet fly on the swing.",
+    "whenToFish": "Summer on small streams and high-country water, particularly for wild brook trout and cutthroat that see few anglers.",
+    "tips": [
+      "Best where fish are opportunistic rather than educated.",
+      "Its white wings make it one of the easiest flies to track in shade.",
+      "Try it as a wet fly on the swing — that is how it was originally fished."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #10-#16",
+      "Tail: golden pheasant tippets",
+      "Body: peacock herl with a red floss band",
+      "Wing: white duck quill or calf body hair",
+      "Hackle: brown"
+    ],
+    "pairsWith": ["royal-wulff", "renegade", "light-cahill", "humpy"],
+    "searchTerms": ["royal coachman fly pattern", "classic american attractor fly", "brook trout dry fly", "what does a royal coachman imitate"]
+  },
+  {
+    "slug": "renegade",
+    "name": "Renegade",
+    "card": { "rank": "8", "suit": "clubs" },
+    "type": "attractor",
+    "imitates": "Nothing specific — a double-hackled attractor read as a spent insect or emerger",
+    "waters": ["river", "stillwater"],
+    "seasons": ["summer", "fall"],
+    "targetSpecies": ["Cutthroat trout", "Rainbow trout", "Brook trout"],
+    "sizes": "#10-#18",
+    "difficulty": "beginner",
+    "summary": "A peacock body with a hackle at each end — fished dry, damp or wet, and famously hard to fish wrong.",
+    "body": [
+      "The Renegade is a fore-and-aft pattern: a brown hackle at the rear, a peacock herl body, and a white hackle at the front. It has no wings, no tail and no discernible orientation, which turns out to be its greatest strength. It looks approximately the same from every angle and in every attitude, so it never looks obviously wrong.",
+      "Anglers in the Rocky Mountain West have fished it for generations as a general-purpose fly for high-country lakes and streams. Fished dry it reads as a mating pair of insects or a spent caddis; fished damp in the film it reads as an emerger; fished wet on a swing it reads as a drowned insect. It is, in effect, three flies.",
+      "It is particularly associated with cutthroat trout and high-elevation stillwaters, where fish are opportunistic and the light is bright. The white front hackle makes it visible on rippled water at a distance that a darker fly would not be."
+    ],
+    "howToFish": "Fish it dry in the film, or let it sink and swing it as a wet. On lakes, cast it out, let it sit, and twitch it occasionally. It is difficult to present incorrectly.",
+    "whenToFish": "Summer and autumn, especially on high-country lakes and streams and for cutthroat trout.",
+    "tips": [
+      "Let it sink and fish it wet when the dry stops producing.",
+      "The white hackle is your indicator — track that.",
+      "A classic high-lake fly. Take it above tree line."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #10-#18",
+      "Tag: flat gold tinsel",
+      "Rear hackle: brown",
+      "Body: peacock herl",
+      "Front hackle: white"
+    ],
+    "pairsWith": ["royal-coachman", "griffiths-gnat", "humpy", "woolly-worm"],
+    "searchTerms": ["renegade fly pattern", "fore and aft fly", "high lake trout fly", "cutthroat attractor fly"]
+  },
+  {
+    "slug": "purple-haze",
+    "name": "Purple Haze",
+    "card": { "rank": "7", "suit": "clubs" },
+    "type": "attractor",
+    "imitates": "Mayfly duns, with an attractor's colour shift",
+    "designer": "Andy Carlson",
+    "waters": ["river"],
+    "seasons": ["summer", "fall"],
+    "targetSpecies": ["Cutthroat trout", "Rainbow trout", "Brown trout"],
+    "sizes": "#12-#20",
+    "difficulty": "beginner",
+    "summary": "A Parachute Adams with a purple body. It should not matter that much, and on a lot of rivers it plainly does.",
+    "body": [
+      "The Purple Haze is a Parachute Adams with the grey body swapped for purple. That is the whole idea, and it is a good demonstration of how narrow the gap between an imitative fly and an attractor can be. Everything about the silhouette, size and posture stays imitative; only the colour goes strange.",
+      "Purple appears to work as a trigger in a way that is not fully explained. One plausible reading is that against a bright sky, a purple body produces a darker, more defined silhouette than grey does, giving a fish a clearer target. Whatever the mechanism, on Montana and Idaho rivers it has become a genuine confidence pattern for a lot of guides.",
+      "It is most useful in the middle of a hatch when fish have started refusing conventional imitations, and as a searching dry when nothing is coming off at all. Because the profile is a proper parachute mayfly, it does not carry the penalty that a loud attractor usually does on selective fish."
+    ],
+    "howToFish": "Fish it exactly like a Parachute Adams — drag-free dead drift, fine tippet. Also excellent as the dry in a dry-dropper rig.",
+    "whenToFish": "Summer and autumn. Effective during mayfly hatches when fish start refusing standard patterns, and as a searching dry between hatches.",
+    "tips": [
+      "Try it when fish have refused a Parachute Adams twice.",
+      "Works remarkably well on cutthroat water.",
+      "The silhouette is imitative, so it survives scrutiny better than most attractors."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #12-#20",
+      "Tail: moose or dun hackle fibres",
+      "Body: purple dubbing or thread",
+      "Post: white calf or synthetic yarn",
+      "Hackle: grizzly, parachute-style"
+    ],
+    "pairsWith": ["parachute-adams", "adams", "royal-wulff", "renegade"],
+    "searchTerms": ["purple haze fly pattern", "purple parachute adams", "montana dry fly", "attractor mayfly pattern"]
+  },
+  {
+    "slug": "woolly-worm",
+    "name": "Woolly Worm",
+    "card": { "rank": "6", "suit": "clubs" },
+    "type": "attractor",
+    "imitates": "Caterpillars, large nymphs and hellgrammites",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Brook trout", "Brown trout", "Smallmouth bass", "Panfish"],
+    "sizes": "#6-#12",
+    "difficulty": "beginner",
+    "summary": "The Woolly Bugger's older, tailless ancestor — a palmered chenille body that has been catching fish for a century.",
+    "body": [
+      "Before there was a Woolly Bugger there was a Woolly Worm: a chenille body palmered along its whole length with a soft hackle, usually with a short red tag at the tail. It is one of the oldest general-purpose American flies and it predates most of the entomology that fly fishing now takes for granted.",
+      "The palmered hackle is doing the same job it does on its more famous descendant. Every fibre moves independently in current, so the fly reads as something with legs and gills and intent rather than a piece of yarn. It suggests a caterpillar, a large stonefly nymph, a hellgrammite, or a damselfly larva, without settling on any of them.",
+      "It remains an excellent fly for warmwater species and for wild brook trout, and it is one of the best flies for a beginner to learn to fish deep. It is durable, cheap, forgiving of a sloppy drift, and it catches nearly everything that swims."
+    ],
+    "howToFish": "Dead drift it deep like a large nymph, or swing and strip it like a small streamer. On stillwaters, retrieve slowly along weed beds and drop-offs.",
+    "whenToFish": "Spring through autumn. A dependable searching fly on small streams, warmwater rivers and lakes.",
+    "tips": [
+      "Black and olive with grizzly hackle covers most water.",
+      "Superb for smallmouth bass and panfish as well as trout.",
+      "An excellent first streamer-style fly for a new angler."
+    ],
+    "materials": [
+      "Hook: 2XL nymph, #6-#12",
+      "Weight: lead wire underbody, optional",
+      "Tag: short red yarn",
+      "Body: chenille",
+      "Hackle: grizzly saddle, palmered the length of the body"
+    ],
+    "pairsWith": ["woolly-bugger", "renegade", "green-weenie", "prince-nymph"],
+    "searchTerms": ["woolly worm fly pattern", "palmered chenille fly", "old american wet fly", "beginner trout fly pattern"]
+  },
+  {
+    "slug": "green-weenie",
+    "name": "Green Weenie",
+    "card": { "rank": "3", "suit": "clubs" },
+    "type": "attractor",
+    "imitates": "Inchworms and caddis larvae",
+    "waters": ["river"],
+    "seasons": ["spring", "summer"],
+    "targetSpecies": ["Brook trout", "Brown trout", "Rainbow trout"],
+    "sizes": "#12-#16",
+    "difficulty": "beginner",
+    "summary": "A loop of bright green chenille. Absurdly simple, faintly ridiculous, and deadly on Appalachian streams.",
+    "body": [
+      "The Green Weenie is a loop of chartreuse chenille on a hook, sometimes with a bead. It is one of the simplest flies anyone fishes, it looks like nothing an entomologist would recognise, and on eastern and Appalachian streams it catches trout with a consistency that irritates people who prefer their flies dignified.",
+      "The most likely explanation is inchworms. Green caterpillars drop out of streamside trees in enormous numbers in late spring and early summer, and a bright green tube is a decent representation of one. It also passes for a caddis larva, and in the smaller sizes for a variety of green grubs that end up in the drift.",
+      "It is worth carrying for exactly the days when nothing else is working. On a bright, low, clear stream in June where every trout has refused three respectable patterns, a Green Weenie under an indicator will often produce the first fish of the afternoon."
+    ],
+    "howToFish": "Dead drift under an indicator or as a dropper below a dry fly. Fish it close to overhanging trees and brush where real inchworms would be falling in.",
+    "whenToFish": "Late spring and early summer, when inchworms are dropping from streamside vegetation. Effective through summer on freestone streams.",
+    "tips": [
+      "Fish it tight under overhanging trees — that is where the naturals fall.",
+      "A superb dropper beneath a dry fly on small streams.",
+      "Do not let its appearance put you off. It works."
+    ],
+    "materials": [
+      "Hook: 1XL nymph or scud hook, #12-#16",
+      "Bead: gold or black, optional",
+      "Body: chartreuse chenille, tied as a loop or short tag"
+    ],
+    "pairsWith": ["green-caddis-larva", "woolly-worm", "san-juan-worm", "gold-ribbed-hares-ear"],
+    "searchTerms": ["green weenie fly pattern", "inchworm fly", "appalachian trout fly", "chartreuse chenille fly"]
+  },
+  {
+    "slug": "crackleback",
+    "name": "Crackleback",
+    "card": { "rank": "2", "suit": "clubs" },
+    "type": "attractor",
+    "imitates": "Nothing specific — fished dry as a beetle or caddis, wet as an emerger",
+    "designer": "Ed Story",
+    "waters": ["river", "stillwater"],
+    "seasons": ["spring", "summer", "fall"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Panfish"],
+    "sizes": "#10-#16",
+    "difficulty": "beginner",
+    "summary": "A peacock body with a palmered hackle and a peacock back strip — one fly that fishes dry, damp and wet.",
+    "body": [
+      "The Crackleback is a Missouri pattern with an unusually broad brief: it is designed to be fished on the surface, in the film, or under it, and to be reasonably convincing in all three. A peacock herl body, a palmered hackle and a strip of peacock pulled over the back give it a dark, iridescent, slightly chaotic look that reads as a lot of different things.",
+      "Fished dry it passes for a beetle or a small caddis. Pulled under and stripped it becomes a small emerger or drowned insect, and it is often at its best fished this way — cast across, allowed to sink an inch or two, and retrieved in short pulls just under the surface.",
+      "It has a strong following on midwestern trout parks and spring creeks, and it is an excellent panfish fly as well. Like the Renegade, its value is that a single pattern covers several situations, which matters more on a small stream where you do not want to carry six boxes."
+    ],
+    "howToFish": "Fish it dry on a dead drift, or deliberately pull it under and strip it back in short pulls just beneath the surface. The subsurface retrieve is often the more productive of the two.",
+    "whenToFish": "Spring through autumn. Good during caddis activity and as a general searching pattern on small streams and stillwaters.",
+    "tips": [
+      "If the dry presentation is not working, sink it and strip it.",
+      "Peacock is the whole fly — do not substitute cheap herl.",
+      "An excellent panfish fly as well as a trout fly."
+    ],
+    "materials": [
+      "Hook: standard dry fly, #10-#16",
+      "Body: peacock herl",
+      "Hackle: brown or grizzly, palmered",
+      "Back: peacock herl strip pulled over the top"
+    ],
+    "pairsWith": ["renegade", "foam-beetle", "woolly-worm", "elk-hair-caddis"],
+    "searchTerms": ["crackleback fly pattern", "ed story crackleback", "dry or wet fly pattern", "midwest trout fly"]
+  },
+  {
+    "slug": "san-juan-worm",
+    "name": "San Juan Worm",
+    "aka": ["Worm"],
+    "card": { "rank": "JOKER", "suit": "joker" },
+    "type": "worm",
+    "imitates": "Aquatic worms",
+    "waters": ["river"],
+    "seasons": ["spring", "summer", "fall", "winter"],
+    "targetSpecies": ["Rainbow trout", "Brown trout"],
+    "sizes": "#10-#16",
+    "difficulty": "beginner",
+    "summary": "A piece of red chenille that catches trout everywhere and starts arguments in every fly shop in America.",
+    "body": [
+      "The San Juan Worm is a short length of red or pink chenille on a hook, and it is the most divisive fly in the sport. Purists dismiss it as bait with a hook in it. Everyone who has fished the San Juan, the Bighorn, or any tailwater in high water knows perfectly well that it works, and works when almost nothing else does.",
+      "It is not a trick. Aquatic worms genuinely live in silt and gravel in enormous numbers, and every time flows rise or the riverbed is disturbed they get washed into the drift. Trout eat them eagerly because they are large, soft and defenceless. A drifting red worm is a real and frequent event in a trout's life, not an insult to its intelligence.",
+      "Its finest hour is high, off-coloured water — spring runoff, a dam release, or the day after heavy rain, when clarity is poor and the fish need something substantial and visible. Under those conditions it is not merely effective; it is often the correct answer."
+    ],
+    "howToFish": "Dead drift deep under an indicator, usually as the top fly with something smaller trailing. Get it right down on the bottom — worms do not swim.",
+    "whenToFish": "Year round, and at its very best in high, coloured or rising water after rain or a flow change.",
+    "tips": [
+      "Red, pink and wine all have their days; carry more than one.",
+      "The day after heavy rain is San Juan Worm weather.",
+      "Fish it deep. If it is not near the bottom, it is not doing its job."
+    ],
+    "materials": [
+      "Hook: curved scud or standard nymph, #10-#16",
+      "Bead: optional, for depth",
+      "Body: red, pink or wine ultra chenille, singed at both ends"
+    ],
+    "pairsWith": ["egg-pattern", "green-weenie", "zebra-midge", "egg-sucking-leech"],
+    "searchTerms": ["san juan worm pattern", "red worm fly trout", "high water trout fly", "is the san juan worm a real fly"]
+  },
+  {
+    "slug": "egg-pattern",
+    "name": "Egg Pattern",
+    "aka": ["Glo Bug", "Egg Fly"],
+    "card": { "rank": "JOKER", "suit": "joker" },
+    "type": "egg",
+    "imitates": "Loose fish eggs drifting downstream from a spawning bed",
+    "waters": ["river"],
+    "seasons": ["fall", "winter", "spring"],
+    "targetSpecies": ["Rainbow trout", "Brown trout", "Steelhead", "Dolly Varden"],
+    "sizes": "#10-#16",
+    "difficulty": "beginner",
+    "summary": "A ball of bright yarn imitating a loose fish egg — the highest-calorie, lowest-effort meal in the river.",
+    "body": [
+      "When fish spawn, a significant proportion of the eggs never make it into the gravel. They wash loose and drift downstream, and every trout below the redd knows it. An egg is pure protein and fat requiring no pursuit whatsoever, and during a spawning run trout will position themselves specifically to intercept them and eat little else.",
+      "The imitation is a ball of bright yarn — chartreuse, peach, orange, pink — trimmed round. Colour matters more than you would expect: fresh eggs are brighter and more translucent, older ones go pale and opaque, and matching what is actually drifting can make a real difference on a pressured river.",
+      "It carries an ethical obligation. Fishing eggs below spawning fish is legitimate; wading through active redds to do it is not. Learn to recognise a redd — a clean, pale patch of disturbed gravel — and stay off it. Fish the water below, and leave spawning fish alone."
+    ],
+    "howToFish": "Dead drift deep under an indicator, in the water below spawning gravel. No action, no strip — an egg simply tumbles with the current.",
+    "whenToFish": "Autumn through spring, during and immediately after salmon and trout spawning runs.",
+    "tips": [
+      "Never wade through a redd. Fish the run below it.",
+      "Match the shade of the naturals — fresh eggs are brighter than old ones.",
+      "Trail a small nymph eighteen inches behind it."
+    ],
+    "materials": [
+      "Hook: egg or scud hook, #10-#16",
+      "Bead: optional, for depth",
+      "Body: Glo Bug yarn in chartreuse, peach, orange or pink, trimmed to a sphere"
+    ],
+    "pairsWith": ["san-juan-worm", "egg-sucking-leech", "zebra-midge", "scud"],
+    "searchTerms": ["egg pattern fly fishing", "glo bug fly", "fishing eggs for trout", "spawning run fly pattern"]
   }
 ]
