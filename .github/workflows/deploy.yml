@@ -1,0 +1,112 @@
+# ---------------------------------------------------------------------------
+# The Reel Deal Deck — build, gate, deploy.
+#
+# Two jobs:
+#   check   runs on every push and every pull request. Builds the site and runs
+#           the quality gate. This is the thing that stops a broken internal
+#           link or a missing og:image reaching production.
+#   deploy  runs only on main, only if check passed. Publishes dist/.
+#
+# The site has zero dependencies, so there is no npm install step and no
+# lockfile — `npm run build` is plain Node.
+#
+# DEPLOY TARGET: this repository can publish either to Netlify or to GitHub
+# Pages. Netlify is the default because static/_headers and static/_redirects
+# only take effect there (GitHub Pages cannot set response headers at all —
+# no HSTS, no CSP, no cache control, no redirects). Pick one:
+#
+#   Netlify  — the usual setup is Netlify's own Git integration, in which case
+#              you do not need the deploy job below at all; delete it and let
+#              Netlify build. Use the job only if you want GitHub to own the
+#              deploy, and add the two repository secrets it references.
+#   Pages    — set the `pages` job's `if:` to true and disable the netlify one.
+#              Accept that you lose every header in static/_headers.
+#
+# See docs/DEPLOY.md.
+# ---------------------------------------------------------------------------
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: build + quality gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build
+        run: npm run build
+
+      - name: Quality gate
+        run: npm run check
+
+      - name: Confirm discoverability assets exist
+        run: |
+          set -e
+          for f in dist/index.html dist/sitemap.xml dist/robots.txt \
+                   dist/favicon.svg dist/apple-touch-icon.png \
+                   dist/site.webmanifest dist/og/default.png dist/404.html; do
+            if [ ! -s "$f" ]; then echo "::error file=$f::missing or empty"; exit 1; fi
+          done
+          echo "sitemap URLs: $(grep -c '<loc>' dist/sitemap.xml)"
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
+
+  deploy:
+    name: deploy to Netlify
+    needs: check
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://reeldealdeck.com
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build
+        run: npm run build
+
+      # Requires two repository secrets, set in
+      # Settings → Secrets and variables → Actions:
+      #   NETLIFY_AUTH_TOKEN  — Netlify user settings → Applications → new token
+      #   NETLIFY_SITE_ID     — Netlify site settings → Site information → Site ID
+      # If Netlify builds from Git directly (the simpler setup), delete this job.
+      # The presence check is done in the shell rather than in an `if:`
+      # expression, because the `secrets` context is not available to `if:`.
+      - name: Publish
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "::notice::NETLIFY_AUTH_TOKEN / NETLIFY_SITE_ID are not set."
+            echo "::notice::Build and quality gate passed; nothing was published."
+            echo "::notice::Add the secrets, or let Netlify build from Git — see docs/DEPLOY.md."
+            exit 0
+          fi
+          npx --yes netlify-cli@17 deploy --dir=dist --prod --message "$GITHUB_SHA"

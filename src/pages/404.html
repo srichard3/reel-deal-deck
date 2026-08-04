@@ -1,0 +1,110 @@
+<!--meta
+{
+  "path": "/404/",
+  "title": "Page Not Found",
+  "description": "That page isn't here. Jump to the Fly Library, the deck, or search all 54 fly reference pages.",
+  "noindex": true,
+  "bodyClass": "page-404",
+  "ogImage": "/og/default.png"
+}
+-->
+<section class="wrap section">
+  <div class="prose stack">
+    <p class="notfound__index" aria-hidden="true">R&#9830;</p>
+
+    <h1>That card isn&rsquo;t in this deck</h1>
+
+    <p>
+      The page you asked for doesn&rsquo;t exist &mdash; either the link was wrong, or it
+      moved. Nothing is broken on your end. Here is where you probably wanted to go.
+    </p>
+  </div>
+</section>
+
+<section class="wrap section">
+  <h2>Looking for a specific fly?</h2>
+  <p class="prose">
+    Every one of the 54 flies in the deck has its own reference page &mdash; what it
+    imitates, when to fish it, and how to fish it. Start at the library index and
+    use your browser&rsquo;s find (<kbd>Ctrl</kbd>&#8202;/&#8202;<kbd>&#8984;</kbd> + <kbd>F</kbd>) to jump straight to a pattern.
+  </p>
+  <div class="cluster">
+    <a class="btn btn--primary" href="/flies/">Browse all 54 flies</a>
+    <a class="btn" href="/flies/?type=dry">Dry flies</a>
+    <a class="btn" href="/flies/?type=nymph">Nymphs</a>
+    <a class="btn" href="/flies/?type=streamer">Streamers</a>
+  </div>
+</section>
+
+<section class="wrap section">
+  <h2>Or pick up where you left off</h2>
+  <ul class="notfound__list stack">
+    <li>
+      <a href="/deck/">The Deck</a>
+      &mdash; what&rsquo;s in the box, what it&rsquo;s printed on, and why that matters.
+    </li>
+    <li>
+      <a href="/gifts/">Gifts</a>
+      &mdash; buying for an angler and not sure what they already own.
+    </li>
+    <li>
+      <a href="/wholesale/">Fly shops &amp; guides</a>
+      &mdash; stocking the deck in a shop, lodge, or guide service.
+    </li>
+    <li>
+      <a href="/story/">Our story</a>
+      &mdash; a father and daughter in Eagle, Idaho, and 54 drawings.
+    </li>
+    <li>
+      <a href="/conservation/">Conservation</a>
+      &mdash; the Trout Unlimited commitment.
+    </li>
+    <li>
+      <a href="/">Home</a>
+      &mdash; start over from the top.
+    </li>
+  </ul>
+</section>
+
+<section class="wrap section">
+  <h2>Still stuck?</h2>
+  <p class="prose">
+    If you followed a link from somewhere else and it landed here, we&rsquo;d genuinely
+    like to know so we can fix it &mdash;
+    <a href="mailto:{{ site.social.email }}?subject=Broken%20link%20on%20reeldealdeck.com">{{ site.social.email }}</a>.
+    Tell us where the link was and we&rsquo;ll put a redirect in.
+  </p>
+</section>
+
+<style>
+  /* Scoped to this template only. Everything else uses the shared component
+     classes (.wrap, .section, .btn, .prose, .stack, .cluster) from
+     src/styles/components.css — do not grow this block. */
+  .page-404 .notfound__index {
+    font-family: var(--f-display);
+    font-size: var(--t-2xl);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-index);
+    color: var(--c-accent);
+    margin-block-end: var(--s-4);
+  }
+  .page-404 .notfound__list {
+    list-style: none;
+    padding-inline-start: 0;
+    max-inline-size: var(--measure);
+  }
+  .page-404 .notfound__list > li {
+    padding-block: var(--s-3);
+    border-block-start: 1px solid var(--c-border);
+    color: var(--c-text-muted);
+  }
+  .page-404 kbd {
+    font-family: var(--f-mono);
+    font-size: var(--t-xs);
+    padding: 0.1em 0.4em;
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    background: var(--c-bg-sunk);
+    color: var(--c-text);
+  }
+</style>

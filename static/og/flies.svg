@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="The Fly Library — The Reel Deal Deck">
+  <title>The Fly Library — The Reel Deal Deck</title>
+  <defs>
+    <style>
+      .paper { fill: #fbfaf7 }
+      .rule  { stroke: #e7e3da; fill: none }
+      .ink   { fill: #16191c }
+      .ink2  { fill: #4a5157 }
+      .ink3  { fill: #7c858c }
+      .suit  { fill: #2b4a55 }
+      .display { font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif; }
+      .body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .index { font-size: 64px; font-weight: 600; letter-spacing: 0.02em }
+      .kicker { font-size: 24px; letter-spacing: 0.16em; text-transform: uppercase }
+      .title { font-size: 128px; letter-spacing: -0.02em }
+      .sub { font-size: 34px; letter-spacing: 0 }
+      .meta { font-size: 21px; letter-spacing: 0.16em; text-transform: uppercase }
+    </style>
+    <g id="index">
+      <text class="display index ink" x="0" y="52" text-anchor="middle">R</text>
+      <path class="suit" d="M0 66 L17 88 L0 110 L-17 88 Z"/>
+    </g>
+  </defs>
+
+  <rect class="paper" width="1200" height="630"/>
+  <rect class="rule" x="34.5" y="34.5" width="1131" height="561" stroke-width="2"/>
+  <rect class="rule" x="43.5" y="43.5" width="1113" height="543" stroke-width="1" opacity="0.7"/>
+
+  <use href="#index" x="110" y="86"/>
+  <use href="#index" x="1090" y="86" transform="rotate(180 1090 200)"/>
+
+  <text class="body kicker ink3" x="600" y="188" text-anchor="middle">Free Reference</text>
+  <text class="display title ink" text-anchor="middle">
+      <tspan x="600" y="340">The Fly Library</tspan>
+  </text>
+  <rect class="suit" x="540" y="384" width="120" height="5"/>
+  <text class="body sub ink2" x="600" y="450" text-anchor="middle">A free reference to all 54 flies in the deck.</text>
+
+  <text class="body meta ink3" x="96" y="556">reeldealdeck.com</text>
+  <text class="body meta ink3" x="1104" y="556" text-anchor="end">Eagle, Idaho</text>
+</svg>

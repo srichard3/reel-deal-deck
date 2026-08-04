@@ -1,0 +1,56 @@
+# ---------------------------------------------------------------------------
+# The Reel Deal Deck — redirects
+#
+# Netlify-style; Cloudflare Pages reads the same format. First match wins, so
+# order matters. `301!` forces the rule even when a file exists at that path.
+#
+# The single most valuable thing in this file is host canonicalisation. Every
+# page carries <link rel="canonical"> pointing at https://reeldealdeck.com/…,
+# so if www. or http:// also serve 200s you are splitting link equity between
+# four addresses for the same page and confusing every crawler that finds one.
+# Pick one host. It is the apex. Never change it after launch.
+# ---------------------------------------------------------------------------
+
+# --- Canonical host --------------------------------------------------------
+# Netlify also does this automatically once reeldealdeck.com is set as the
+# Primary domain in Domain management. These rules make it explicit and make
+# the site portable to any other host.
+http://reeldealdeck.com/*        https://reeldealdeck.com/:splat      301!
+http://www.reeldealdeck.com/*    https://reeldealdeck.com/:splat      301!
+https://www.reeldealdeck.com/*   https://reeldealdeck.com/:splat      301!
+
+# --- Trailing-slash / index consistency ------------------------------------
+# Every route this site emits is a directory with an index.html, so the
+# canonical form always ends in "/". Netlify's Pretty URLs already 301s
+# /deck -> /deck/ for any directory, including all 54 fly pages; these rules
+# pin the nav routes explicitly so the behaviour does not depend on a toggle
+# in a dashboard someone might switch off.
+/index.html                      /                                    301!
+/deck/index.html                 /deck/                               301!
+/deck                            /deck/                               301
+/flies                           /flies/                              301
+/gifts                           /gifts/                              301
+/wholesale                       /wholesale/                          301
+/story                           /story/                              301
+/conservation                    /conservation/                       301
+/contact                         /contact/                            301
+
+# --- Reserved alias --------------------------------------------------------
+# Singular /fly/<slug>/ is the URL people guess and type, and the one a forum
+# post is most likely to get wrong. Reserve it now; it costs nothing and it
+# means no inbound link to the Fly Library can ever land on a 404.
+/fly/*                           /flies/:splat                        301
+/flys/*                          /flies/:splat                        301
+/fly-library/*                   /flies/:splat                        301
+/patterns/*                      /flies/:splat                        301
+
+# --- Legacy / off-platform entry points ------------------------------------
+# Add here as they appear. Examples of the shape they should take:
+#   /kickstarter    https://www.kickstarter.com/…       302
+#   /ig             https://instagram.com/reeldealdeck  302
+# TODO-CONFIRM: the Kickstarter campaign URL, before adding a /kickstarter alias.
+
+# --- Fallback --------------------------------------------------------------
+# Not a wildcard SPA rewrite. dist/404.html (written by scripts/postbuild.mjs)
+# is picked up by Netlify automatically and served with a real 404 status,
+# which is what search engines need to see. Do not add `/* /index.html 200`.

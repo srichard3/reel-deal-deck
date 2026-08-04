@@ -1,0 +1,48 @@
+# ---------------------------------------------------------------------------
+# The Reel Deal Deck — Netlify configuration
+#
+# Headers and redirects are NOT defined here on purpose. They live in
+# static/_headers and static/_redirects, which build.mjs copies verbatim to the
+# dist root. One source of truth means they can never drift, and the same two
+# files work unchanged on Cloudflare Pages if we ever move. Netlify gives
+# _headers/_redirects precedence over this file anyway, so duplicating them
+# here would only create a trap for whoever edits the wrong one.
+#
+# See docs/DEPLOY.md for the click-by-click version of all of this.
+# ---------------------------------------------------------------------------
+
+[build]
+  command  = "npm run build"
+  publish  = "dist"
+  # There are no dependencies to install; npm ci would fail without a lockfile.
+  ignore   = "false"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS    = "--no-audit --no-fund"
+  # The generator is dependency-free. Nothing to fetch, nothing to cache.
+  NETLIFY_USE_YARN = "false"
+
+# Deploy Previews and branch builds must not be indexable — a preview URL that
+# gets crawled competes with the real site for its own keywords. Netlify sets
+# X-Robots-Tag: noindex on *.netlify.app automatically, and the check below
+# fails the build before a broken preview ever goes up.
+[context.production]
+  command = "npm run build && npm run check"
+
+[context.deploy-preview]
+  command = "npm run build && npm run check"
+
+[context.branch-deploy]
+  command = "npm run build && npm run check"
+
+# `netlify dev` mirrors the local dev server so previews behave the same way.
+[dev]
+  command      = "npm run dev"
+  targetPort   = 4173
+  publish      = "dist"
+  autoLaunch   = false
+
+# No plugins. Netlify's Lighthouse plugin pulls a Chromium download on every
+# build for a number we can measure locally; the asset optimiser rewrites
+# markup we control precisely. Both are off by design.

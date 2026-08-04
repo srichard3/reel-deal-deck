@@ -1,0 +1,30 @@
+/* TEAM */
+
+  Founder: Ken
+  Lifelong entrepreneur, 5th-generation Idaho farmer, and the avid amateur
+  angler who went looking for fly-fishing flashcards, couldn't find a set he'd
+  actually want to own, and drew his own. Every illustration in the deck is his.
+  Location: Eagle, Idaho, US
+
+  Co-founder: Audrey
+  Entrepreneurship graduate, Loyola Marymount University College of Business
+  Administration. Design direction, brand, and community.
+  Location: Eagle, Idaho, US
+
+/* THANKS */
+
+  Trout Unlimited — tu.org
+  A portion of every deck goes to their coldwater conservation work.
+
+  The United States Playing Card Company — for making stock worth printing on.
+
+/* SITE */
+
+  Standards: HTML5, CSS custom properties, progressive enhancement
+  Components: none. No framework, no CDN, no webfonts, no analytics scripts,
+              no third-party requests of any kind. The site is a static
+              generator written in ~200 lines of Node with zero dependencies.
+  Typography: system font stacks only — instant first paint, zero layout shift
+  Software:   Node 20, a text editor, and a pen
+
+  Every page is readable with JavaScript disabled.

@@ -1,0 +1,37 @@
+# ---------------------------------------------------------------------------
+# The Reel Deal Deck — robots.txt
+#
+# Policy: crawl everything. This site is a 60-odd page reference library whose
+# entire acquisition strategy is organic search. There is nothing here worth
+# hiding from a crawler, and every Disallow is a chance to accidentally
+# de-index the Fly Library. The only rules below strip tracking parameters,
+# which create infinite duplicate URLs of pages we want indexed exactly once.
+#
+# Do NOT add Disallow lines for /flies/ or its facet URLs (/flies/?type=dry).
+# Those facets are linked from the footer and are legitimate crawl paths.
+#
+# Verify after any change: Search Console → Settings → robots.txt report.
+# ---------------------------------------------------------------------------
+
+User-agent: *
+Allow: /
+
+# Campaign / referral parameters. These duplicate real pages under junk URLs
+# and dilute the signal for the canonical version. Canonical tags already
+# handle this; these rules stop the crawl budget being spent to find that out.
+Disallow: /*?*utm_
+Disallow: /*?*gclid=
+Disallow: /*?*fbclid=
+Disallow: /*?*msclkid=
+Disallow: /*?*igshid=
+Disallow: /*?*mc_cid=
+Disallow: /*?*mc_eid=
+Disallow: /*?*_hsenc=
+Disallow: /*?*ck_subscriber_id=
+
+# The 404 template is a real route so it can be styled and tested. It is
+# marked noindex in its front matter (kept out of sitemap.xml) and served with
+# X-Robots-Tag: noindex — see static/_headers.
+Disallow: /404/
+
+Sitemap: https://reeldealdeck.com/sitemap.xml

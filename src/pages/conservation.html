@@ -1,0 +1,165 @@
+<!--meta
+{
+  "path": "/conservation/",
+  "title": "Conservation & Trout Unlimited",
+  "description": "A set amount from every Reel Deal Deck goes to Trout Unlimited, and we hold a Trout Unlimited Business membership. Here is exactly what that means.",
+  "priority": 0.6,
+  "changefreq": "yearly",
+  "bodyClass": "page-conservation",
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Conservation",
+      "url": "https://reeldealdeck.com/conservation/",
+      "description": "How The Reel Deal Deck supports Trout Unlimited: a Trout Unlimited Business membership and a per-deck contribution.",
+      "about": {
+        "@type": "NGO",
+        "name": "Trout Unlimited",
+        "url": "https://www.tu.org/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "The Reel Deal Deck",
+        "url": "https://reeldealdeck.com/"
+      }
+    }
+  ]
+}
+-->
+
+<!-- TODO-CONFIRM (commercially important, not cosmetic):
+     data/site.json -> conservation.commitment is still a placeholder. State the
+     contribution as a HARD PER-DECK NUMBER ("$1 from every deck") rather than
+     "a portion of proceeds". A specific figure is verifiable, is what a donor-
+     minded buyer is actually asking, and converts; a vague one reads as a
+     marketing hedge and converts materially worse. Until that number is fixed,
+     every mention on this page says "a set amount" and is flagged below.
+
+     Also confirm before publishing:
+       - the exact Trout Unlimited Business membership tier and the year joined
+       - whether TU has approved any use of its name/marks in marketing copy
+       - whether the contribution is per deck sold or an annual minimum
+     Do NOT describe this as a partnership, sponsorship, endorsement or
+     co-branding unless TU has agreed to those words in writing. -->
+
+<section class="page-head">
+  <div class="wrap wrap--narrow">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><span aria-current="page">Conservation</span></li>
+      </ol>
+    </nav>
+    <p class="eyebrow" style="margin-block-start:var(--s-5)">Cold water &middot; Trout Unlimited</p>
+    <h1 class="h1 page-head__title">A deck of fish is worth less than the water they live in.</h1>
+    <p class="lede page-head__lede">
+      We draw trout flies for a living, which is a strange thing to do if the trout are gone.
+      A set amount from every deck goes to Trout Unlimited, and we hold a Trout Unlimited
+      Business membership. Here is precisely what that does and does not mean.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap wrap--narrow">
+    <div class="prose">
+      <h2>What we actually do</h2>
+      <p>
+        Two things, both small and both specific:
+      </p>
+      <ul>
+        <li>
+          <strong>A per-deck contribution.</strong> A set amount from every deck sold goes to
+          <a href="https://www.tu.org/" rel="noopener">Trout Unlimited</a>. It is a fixed figure
+          per deck, not a share of profit, so it does not quietly become zero in a bad quarter.
+        </li>
+        <li>
+          <strong>A Trout Unlimited Business membership.</strong> We joined as a business member.
+          That is a membership, which anyone can buy &mdash; it is not a partnership, a sponsorship,
+          or an endorsement, and Trout Unlimited has not vouched for this product.
+        </li>
+      </ul>
+
+      <!-- TODO-CONFIRM: replace the sentence below with the real number, e.g.
+           "$1 from every deck goes to Trout Unlimited." -->
+      <p class="notice notice--info">
+        <strong>TODO-CONFIRM &mdash; the number.</strong> This page should name the exact
+        per-deck figure. Until Ken and Audrey fix it, the copy reads &ldquo;a set amount&rdquo;,
+        which is honest but weaker than it needs to be. A stated dollar figure is checkable,
+        which is the entire reason it works.
+      </p>
+
+      <h2>Why Trout Unlimited</h2>
+      <p>
+        Trout Unlimited works on cold-water habitat: reconnecting streams that culverts and
+        old dams cut in half, restoring the shade and gravel that spawning depends on, and
+        arguing for water policy in rooms where anglers usually aren't. It is unglamorous,
+        long-horizon work on the exact resource this deck depends on. Every fly we drew
+        imitates something that hatches in cold, clean, connected water &mdash; or it imitates
+        nothing at all.
+      </p>
+      <p>
+        You can read their work, or join directly, at
+        <a href="https://www.tu.org/" rel="noopener">tu.org</a>. If you'd rather send them a
+        membership than buy a deck of cards, that is a straightforwardly better use of the
+        money and we will not be offended.
+      </p>
+
+      <h2>What we are careful not to claim</h2>
+      <ul class="list-index">
+        <li>
+          We do not say Trout Unlimited endorses The Reel Deal Deck. It does not.
+        </li>
+        <li>
+          We do not say we are a Trout Unlimited partner. We are a business member,
+          which is a different and smaller thing.
+        </li>
+        <li>
+          We do not say &ldquo;a portion of proceeds&rdquo; and leave it there. That phrase can
+          mean a cent, and shoppers have learned to read it that way for good reason.
+        </li>
+      </ul>
+
+      <h2>The deck itself</h2>
+      <p>
+        The materials are the other half of this. The deck is printed by USPCC on genuine
+        Bicycle stock &mdash; {{ site.product.material }} &mdash; and at {{ site.product.dimensions }}
+        it is a real playing card deck, which means it lasts long enough to be worth having
+        printed at all. The most sustainable deck of cards is the one nobody throws away.
+      </p>
+    </div>
+
+    <hr class="rule" style="margin-block:var(--s-8)">
+
+    <div class="card-grid" style="--min:14rem">
+      <div class="stat">
+        <span class="stat__num">Per deck</span>
+        <span class="stat__label">Fixed contribution, not a share of profit</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">Business member</span>
+        <span class="stat__label">Trout Unlimited &mdash; not a partnership</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">FSC</span>
+        <span class="stat__label">Certified paper, vegetable-based inks</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="wrap wrap--narrow">
+    <p class="section-num" aria-hidden="true">A&#9830;</p>
+    <h2 class="h2" style="margin-block-start:var(--s-4)">Support the water directly</h2>
+    <p class="lede" style="margin-block-start:var(--s-4)">
+      Trout Unlimited takes memberships and donations from anyone, with or without a deck
+      of cards involved.
+    </p>
+    <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
+      <a class="btn btn--primary" href="https://www.tu.org/" rel="noopener">Visit tu.org</a>
+      <a class="btn btn--ghost" href="/deck/">See the deck</a>
+    </p>
+  </div>
+</section>

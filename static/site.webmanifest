@@ -1,0 +1,25 @@
+{
+  "id": "/",
+  "name": "The Reel Deal Deck",
+  "short_name": "Reel Deal",
+  "description": "54 flies. One deck worth owning. Original hand-drawn fly-fishing playing cards on genuine Bicycle stock, plus a free reference library for all 54 flies.",
+  "lang": "en-US",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "minimal-ui",
+  "orientation": "any",
+  "background_color": "#FBFAF7",
+  "theme_color": "#FBFAF7",
+  "categories": ["reference", "shopping", "sports"],
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Fly Library", "short_name": "Flies", "url": "/flies/", "description": "Reference pages for all 54 flies in the deck." },
+    { "name": "The Deck", "short_name": "Deck", "url": "/deck/", "description": "What is in the box and what it is printed on." }
+  ]
+}
