@@ -13,7 +13,7 @@
  * DO NOT EDIT without coordinating — every page in the site depends on the
  * contracts documented in README.md.
  */
-import { readFile, readdir, mkdir, writeFile, cp, stat } from 'node:fs/promises';
+import { readFile, readdir, mkdir, writeFile, cp, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -182,7 +182,7 @@ async function buildSitemap() {
 /* ------------------------------------------------------------------ main -- */
 
 const t0 = Date.now();
-if (existsSync(DIST)) await cp(DIST, DIST, { recursive: true }).catch(() => {});
+await rm(DIST, { recursive: true, force: true });
 await mkdir(DIST, { recursive: true });
 await buildPages();
 await buildFlies();
