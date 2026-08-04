@@ -26,6 +26,34 @@
     "availabilityNote": "Not yet shipping. Join the list to be first in line."
   },
 
+  "campaign": {
+    "note": "The CTA component reads `endsAt` against build time and swaps to `after` automatically. When the campaign closes, nothing needs editing — but set active:false if it is cancelled or paused early.",
+    "active": true,
+    "platform": "Kickstarter",
+    "url": "https://www.kickstarter.com/projects/reeldealdeck/the-reel-deal-decktm-fly-fishing-custom-playing-cards",
+    "endsAt": "2026-09-19T09:43:00-04:00",
+    "live": {
+      "eyebrow": "Live on Kickstarter",
+      "headline": "The Reel Deal Deck is funding now.",
+      "sub": "54 hand-drawn flies on genuine Bicycle stock, with a contribution to Trout Unlimited from every deck.",
+      "cta": "Back the deck on Kickstarter"
+    },
+    "after": {
+      "eyebrow": "Coming soon",
+      "headline": "The Reel Deal Deck is in production.",
+      "sub": "54 hand-drawn flies on genuine Bicycle stock. Join the list and we will tell you the day it ships.",
+      "cta": "Reserve a deck",
+      "url": "/deck/#reserve"
+    }
+  },
+
+  "blog": {
+    "path": "/blog/",
+    "name": "Fly Fishing Guides",
+    "description": "Straight answers to the questions anglers actually ask — gear, technique, knots, seasons and getting started.",
+    "authorNote": "TODO-CONFIRM: articles are attributed to the brand, not a named person. If Ken wants a byline (recommended — it is a real expertise signal for both Google and AI answer engines), add him here and to the Person schema."
+  },
+
   "conservation": {
     "partner": "Trout Unlimited",
     "partnerUrl": "https://www.tu.org/",

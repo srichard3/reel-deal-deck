@@ -66,6 +66,10 @@ const shell = await read(path.join(SRC, '_partials', 'shell.html'));
 
 const routes = [];
 
+/* Populated by buildPosts() before buildPages() runs, so /blog/ and any other
+   page can list posts via the `posts` key in its render context. */
+let allPosts = [];
+
 function jsonldBlock(entries) {
   if (!entries || !entries.length) return '';
   return entries
@@ -114,7 +118,7 @@ async function buildPages() {
       // JS page: `export const meta = {...}; export default (ctx) => htmlString`
       const mod = await import(pathToFileURL(full).href + `?t=${Date.now()}`);
       const meta = mod.meta;
-      const body = await mod.default({ site, flies, meta });
+      const body = await mod.default({ site, flies, posts: allPosts, meta });
       await emit(meta.path, meta, body);
       continue;
     }
@@ -140,6 +144,36 @@ async function buildFlies() {
     const { meta, body } = await tpl.default({ fly, flies, site });
     await emit(meta.path, meta, body);
   }
+}
+
+/* ------------------------------------------------------------ blog posts -- */
+
+async function buildPosts() {
+  const dir = path.join(SRC, 'content', 'blog');
+  const tplPath = path.join(SRC, 'templates', 'post.mjs');
+  if (!existsSync(dir) || !existsSync(tplPath)) return;
+
+  const tpl = await import(pathToFileURL(tplPath).href + `?t=${Date.now()}`);
+
+  const posts = [];
+  for (const file of (await readdir(dir)).sort()) {
+    if (!file.endsWith('.mjs') || file.startsWith('_')) continue;
+    const mod = await import(pathToFileURL(path.join(dir, file)).href + `?t=${Date.now()}`);
+    if (!mod.meta) throw new Error(`blog/${file} must export a \`meta\` object`);
+    posts.push({ ...mod.meta, render: mod.default, file });
+  }
+
+  // Newest first, so index pages and feeds get a sane default order.
+  posts.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+
+  allPosts = posts;
+
+  for (const post of posts) {
+    const { meta, body } = await tpl.default({ post, posts, site, flies });
+    await emit(meta.path, meta, body);
+  }
+
+  return posts;
 }
 
 /* ---------------------------------------------------------------- assets -- */
@@ -186,6 +220,7 @@ async function buildSitemap() {
 const t0 = Date.now();
 await rm(DIST, { recursive: true, force: true });
 await mkdir(DIST, { recursive: true });
+const posts = (await buildPosts()) || [];
 await buildPages();
 await buildFlies();
 await copyAssets();
@@ -194,7 +229,7 @@ await buildSitemap();
 const post = path.join(ROOT, 'scripts', 'postbuild.mjs');
 if (existsSync(post)) {
   const mod = await import(pathToFileURL(post).href + `?t=${Date.now()}`);
-  await mod.default?.({ site, flies, routes, DIST, ROOT });
+  await mod.default?.({ site, flies, posts, routes, DIST, ROOT });
 }
 
 console.log(`built ${routes.length} routes in ${Date.now() - t0}ms → dist/`);
