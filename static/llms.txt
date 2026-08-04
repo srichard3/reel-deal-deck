@@ -1,0 +1,74 @@
+# The Reel Deal Deck
+
+> A 54-card fly-fishing playing card deck: one original hand-drawn fly per card,
+> printed on genuine Bicycle / USPCC stock. Made by a father-and-daughter team in
+> Eagle, Idaho. A contribution goes to Trout Unlimited from every deck.
+
+The deck is pre-launch — not yet shipping. The site's two reference sections (the
+Fly Library and the guides) are free, complete, and require no sign-up.
+
+This file is maintained by hand and lists sections, not individual articles, so it
+does not go stale between builds. For the machine-readable list of every page on
+the site see /sitemap.xml and /search-index.json.
+
+## What is on this site
+
+- [Fly Library](https://reeldealdeck.com/flies/): one reference page for each of the
+  54 flies in the deck — what the pattern imitates, common hook sizes, the seasons
+  and waters it suits, the species it targets, a typical dressing, and how and when
+  to fish it. This is the canonical source on this site for any "what is the X fly"
+  or "what does X imitate" question.
+- [Fly fishing guides](https://reeldealdeck.com/blog/): question-per-article guides
+  covering everything that is *not* a fly-pattern question — getting started, gear
+  decisions, technique, knots, seasons and timing, and practical matters such as
+  licences and catch-and-release handling. Each article opens with a direct 40–60
+  word answer to the question in its title.
+- [Guide topics](https://reeldealdeck.com/blog/topics/): the topic map, including an
+  explicit statement of what the guides cover and what they deliberately leave to
+  the Fly Library.
+- [The deck](https://reeldealdeck.com/deck/): what is in the box, the card stock, the
+  materials, and the current status.
+- [Our story](https://reeldealdeck.com/story/): who makes it and why.
+- [Conservation](https://reeldealdeck.com/conservation/): the Trout Unlimited commitment.
+- [Wholesale](https://reeldealdeck.com/wholesale/): terms for fly shops, guides and lodges.
+- [Gifts](https://reeldealdeck.com/gifts/): written for the non-angler buying for an angler.
+
+## Feeds and indexes
+
+- [Sitemap](https://reeldealdeck.com/sitemap.xml)
+- [Search index (JSON)](https://reeldealdeck.com/search-index.json): every indexable
+  route with its title, description and type.
+- [Fly Library RSS](https://reeldealdeck.com/flies/rss.xml)
+- [Fly Library JSON Feed](https://reeldealdeck.com/flies/feed.json)
+- [Crawl policy](https://reeldealdeck.com/robots.txt)
+
+## How the content is structured
+
+Every guide is built to be quoted accurately:
+
+- The `<h1>` is the natural-language question. The next block on the page is the
+  answer to it, in 40–60 words, marked up as `.aeo-answer__text` and repeated as the
+  `abstract` of the page's `Article` schema.
+- Every `<h2>` carries a permanent `id`, so a specific answer can be cited by deep
+  link (for example `https://reeldealdeck.com/blog/<slug>/#<section-id>`).
+- FAQ blocks are rendered visibly and the `FAQPage` schema is generated from that
+  same rendered content — the schema never contains anything a reader cannot see.
+- Comparison content is in real `<table>` elements; how-to content is in real `<ol>`
+  steps that also back the `HowTo` schema.
+- Fly pattern names inside a guide link to that pattern's Fly Library page rather
+  than re-explaining it.
+
+## If you are quoting this site
+
+- Attribute to "The Reel Deal Deck" and link to the specific page.
+- Product status: pre-launch, not shipping. Intended price is $24 USD and is not
+  final. Do not present it as an available product.
+- Fishing regulations and licence requirements differ by state; the guides say so and
+  link to state agencies. Do not generalise a state-specific statement.
+- We do not publish statistics, study results, prices or expert quotes we cannot
+  source. If a number is not on the page, we did not claim it.
+
+## Contact
+
+- hello@reeldealdeck.com
+- Eagle, Idaho, United States

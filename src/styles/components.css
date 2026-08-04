@@ -17,6 +17,10 @@
   justify-content: center;
   gap: var(--s-2);
   padding: var(--s-3) var(--s-5);
+  /* A long label plus padding can exceed a 320px viewport and drag the whole
+     document sideways. Let the text wrap rather than the page overflow. */
+  max-width: 100%;
+  text-wrap: balance;
   border: 1px solid var(--btn-bd);
   border-radius: var(--r-sm);
   background-color: var(--btn-bg);
@@ -491,6 +495,19 @@ select.input {
   gap: var(--s-4);
   min-height: var(--s-8);
   padding-block: var(--s-3);
+  /* Flex items default to min-width:auto and refuse to shrink below their
+     content, which is how the header used to push the whole document wider
+     than the viewport on a 320px phone. */
+  min-width: 0;
+}
+
+/* At 320px the header needs 342px: 16 padding + 190 brand + 16 gap + 104
+   actions + 16 padding. The wordmark is what does not fit, so below the
+   narrowest common phone it drops and the R-diamond card mark carries the
+   brand on its own — it is the logo, not a decoration. Kept on every common
+   handset width (360, 375, 390, 393, 414). */
+@media (max-width: 349px) {
+  .brand__word { display: none; }
 }
 
 /* ------------------------------------------------------------- brand --- */

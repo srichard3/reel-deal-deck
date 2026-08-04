@@ -181,7 +181,7 @@
 .buy-tiers {
   display: grid;
   gap: var(--s-4);
-  grid-template-columns: repeat(auto-fit, minmax(var(--cx-col-min), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--cx-col-min), 100%), 1fr));
   align-items: stretch;
   margin-top: var(--s-6);
 }
@@ -216,7 +216,7 @@
 .buy-tier--wide .form-inline .btn { flex: 0 0 auto; }
 
 .buy-tier--wide .buy-tier__list {
-  grid-template-columns: repeat(auto-fit, minmax(var(--cx-col-min), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--cx-col-min), 100%), 1fr));
   display: grid;
 }
 
@@ -459,7 +459,10 @@
 .buy-why {
   display: grid;
   gap: var(--s-5);
-  grid-template-columns: repeat(auto-fit, minmax(var(--cx-col-wide), 1fr));
+  /* min() guards the classic auto-fit trap: when the track minimum is wider
+     than the available space the grid overflows instead of collapsing to one
+     column. Below ~360px --cx-col-wide exceeds the content box. */
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--cx-col-wide), 100%), 1fr));
   margin-top: var(--s-6);
 }
 
@@ -533,7 +536,7 @@
 .gift-occasions {
   display: grid;
   gap: var(--s-4);
-  grid-template-columns: repeat(auto-fit, minmax(var(--cx-col-min), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--cx-col-min), 100%), 1fr));
   margin-top: var(--s-6);
   list-style: none;
   padding: 0;
@@ -607,7 +610,7 @@
 .ws-audience {
   display: grid;
   gap: var(--s-4);
-  grid-template-columns: repeat(auto-fit, minmax(var(--cx-col-min), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--cx-col-min), 100%), 1fr));
   margin-top: var(--s-6);
   list-style: none;
   padding: 0;
@@ -682,7 +685,7 @@
 .ws-terms {
   display: grid;
   gap: var(--s-5);
-  grid-template-columns: repeat(auto-fit, minmax(var(--cx-col-min), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--cx-col-min), 100%), 1fr));
   margin-top: var(--s-6);
 }
 
@@ -712,7 +715,7 @@
 .ws-form__grid {
   display: grid;
   gap: var(--s-4);
-  grid-template-columns: repeat(auto-fit, minmax(var(--cx-col-min), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--cx-col-min), 100%), 1fr));
 }
 
 .ws-form__full { grid-column: 1 / -1; }
@@ -734,7 +737,7 @@
 .cx-crosslink {
   display: grid;
   gap: var(--s-4);
-  grid-template-columns: repeat(auto-fit, minmax(var(--cx-col-wide), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--cx-col-wide), 100%), 1fr));
   margin-top: var(--s-6);
 }
 

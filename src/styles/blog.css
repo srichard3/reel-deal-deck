@@ -1,0 +1,578 @@
+/* ==========================================================================
+   THE REEL DEAL DECK — blog + answer-engine styles
+   --------------------------------------------------------------------------
+   Loaded per-page by /blog/, /blog/topics/ and every article (a <link> at the
+   top of the page body), so the 60-odd non-blog pages never pay for it.
+
+   Consumes tokens.css only. No hard-coded colours, type sizes or spacing.
+   Prefixes: .aeo-  (answer-engine furniture: bar, answer, takeaways, CTA)
+             .post- (article page)
+             .blog- (index + topic map)
+   ========================================================================== */
+
+/* =================================================== 1. CAMPAIGN BAR ===== */
+/*  Constraints from docs/BLOG-CONTRACT.md: one line, one link, <= 3rem tall,
+    dismissible, and it must never push the answer block below the fold. It is
+    therefore a single flex row of --t-xs text that truncates rather than
+    wrapping, and it sits in normal flow above the sticky header's content —
+    it never overlays anything.                                              */
+
+.aeo-bar {
+  background-color: var(--c-bg-sunk);
+  border-block-end: 1px solid var(--c-border);
+}
+
+.aeo-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  min-height: var(--s-6);          /* 2rem  */
+  max-height: var(--s-7);          /* 3rem — the hard ceiling */
+  padding-block: var(--s-1);
+}
+
+.aeo-bar__text {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  min-width: 0;                    /* lets the ellipsis actually engage */
+  font-size: var(--t-xs);
+  line-height: var(--lh-snug);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aeo-bar__eyebrow {
+  flex: 0 0 auto;
+  font-weight: 650;
+  letter-spacing: var(--ls-index);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+
+.aeo-bar__link {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--c-accent);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.aeo-bar__close {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--s-5);
+  height: var(--s-5);
+  border-radius: var(--r-sm);
+  color: var(--c-text-faint);
+  font-size: var(--t-base);
+  line-height: 1;
+}
+.aeo-bar__close:hover {
+  color: var(--c-text);
+  background-color: color-mix(in oklab, var(--c-text) 8%, transparent);
+}
+
+/* Below the "eyebrow + link" comfort width, drop the eyebrow rather than
+   letting the bar wrap to two lines. */
+@media (max-width: 28rem) {
+  .aeo-bar__eyebrow { display: none; }
+}
+
+/* ==================================================== 2. THE ANSWER ====== */
+/*  The single most important block on the page: 40–60 words, directly under
+    the h1, before any preamble. Given a card-edge keyline so a human reads it
+    first and a left rule so it survives being lifted out of context.        */
+
+.aeo-answer {
+  margin-block-start: var(--s-5);
+  padding: var(--s-5);
+  border: 1px solid var(--c-border);
+  border-inline-start: 3px solid var(--c-accent);
+  border-radius: var(--r-sm);
+  background-color: var(--c-surface);
+  box-shadow: var(--shadow-1);
+}
+
+.aeo-answer__label {
+  margin-block-end: var(--s-2);
+  font-size: var(--t-xs);
+  font-weight: 650;
+  letter-spacing: var(--ls-index);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+
+.aeo-answer__text {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  line-height: var(--lh-snug);
+  color: var(--c-text);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------- takeaways ------ */
+
+.aeo-takeaways {
+  margin-block-start: var(--s-6);
+  padding: var(--s-5);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  background-color: var(--c-bg-sunk);
+}
+
+.aeo-takeaways__title {
+  font-size: var(--t-lg);
+  margin-block-start: 0;
+}
+
+.aeo-takeaways__list {
+  margin-block-start: var(--s-4);
+  display: grid;
+  gap: var(--s-3);
+  color: var(--c-text-muted);
+  font-size: var(--t-base);
+  line-height: var(--lh-body);
+}
+
+.aeo-takeaways__list > li {
+  position: relative;
+  padding-inline-start: var(--s-5);
+}
+.aeo-takeaways__list > li::before {
+  content: "\2666";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  font-size: var(--t-sm);
+  color: var(--c-accent);
+}
+
+/* ======================================================== 3. ARTICLE ===== */
+
+.post { padding-block-end: var(--s-7); }
+
+.post-breadcrumbs { padding-block-start: var(--s-5); }
+
+.post-head { padding-block: var(--s-5) 0; border-bottom: 0; }
+
+/* A question-shaped h1 is long by design. --t-3xl is the display size for a
+   two-word page title and would put the answer block below the fold on a
+   phone; --t-2xl keeps the whole head + answer above it. */
+.post-head__title {
+  margin-block-start: var(--s-3);
+  font-size: var(--t-2xl);
+  max-width: 24ch;
+}
+
+.post-head__topic { color: inherit; text-decoration: none; }
+.post-head__topic:hover { color: var(--c-accent); text-decoration: underline; }
+
+.post-byline {
+  margin-block-start: var(--s-4);
+  padding-block-end: var(--s-4);
+  border-bottom: 1px solid var(--c-border);
+}
+.post-byline a { color: var(--c-text-muted); }
+
+.post-body { margin-block-start: var(--s-6); max-width: none; }
+
+/* Sections own their own rhythm; .prose's owl selector handles the gaps. */
+.post-section + .post-section { margin-block-start: var(--s-7); }
+
+.post-h2 {
+  font-family: var(--f-display);
+  font-size: var(--t-xl);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+  text-wrap: balance;
+  scroll-margin-block-start: var(--s-9);   /* clears the sticky header */
+}
+
+.post-section > * + * { margin-block-start: var(--s-4); }
+.post-section > .post-h2 + * { margin-block-start: var(--s-3); }
+
+/* ------------------------------------------------------------ tables ---- */
+/*  A wide comparison table scrolls inside its own container. The page body
+    must never scroll horizontally on a phone. tabindex makes the scroll
+    container reachable — and scrollable — from the keyboard.               */
+
+.post-tablewrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* The table inside sets min-width:28rem so columns stay readable. Without
+     these two the wrapper inherits min-width:auto from its parent layout,
+     grows to the table's width, and takes the whole document with it. */
+  max-width: 100%;
+  min-width: 0;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  background-color: var(--c-surface);
+}
+.post-tablewrap:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 2px; }
+
+.post-table {
+  width: 100%;
+  min-width: 28rem;
+  border-collapse: collapse;
+  font-size: var(--t-base);
+  line-height: var(--lh-snug);
+}
+
+.post-table__caption {
+  padding: var(--s-3) var(--s-4);
+  text-align: start;
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+  border-block-end: 1px solid var(--c-border);
+}
+
+.post-table th,
+.post-table td {
+  padding: var(--s-3) var(--s-4);
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--c-border);
+}
+
+.post-table thead th {
+  background-color: var(--c-bg-sunk);
+  color: var(--c-text);
+  font-size: var(--t-xs);
+  font-weight: 650;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.post-table tbody th { color: var(--c-text); font-weight: 650; }
+.post-table tbody td { color: var(--c-text-muted); }
+.post-table tbody tr:last-child th,
+.post-table tbody tr:last-child td { border-block-end: 0; }
+
+/* ------------------------------------------------------------- steps ---- */
+
+.post-steps {
+  counter-reset: post-step;
+  display: grid;
+  gap: var(--s-4);
+  padding-inline-start: 0;
+}
+
+.post-steps__item {
+  position: relative;
+  list-style: none;
+  padding-inline-start: var(--s-8);
+  counter-increment: post-step;
+}
+
+.post-steps__item::before {
+  content: counter(post-step);
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--s-6);
+  height: var(--s-7);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  background-color: var(--c-surface);
+  box-shadow: var(--shadow-1);
+  font-family: var(--f-display);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--c-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.post-steps__name {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+}
+.post-steps__text { margin-block-start: var(--s-2); color: var(--c-text-muted); }
+
+/* ----------------------------------------------------------- callouts --- */
+
+.post-note { margin-block: var(--s-5); }
+.post-note--warn { --notice-tint: var(--c-red); }
+
+/* ---------------------------------------------------------- fly links --- */
+
+.post-flylink { font-weight: 600; }
+/* An unresolved slug: readable text, never a broken link, never a build fail. */
+.post-flyref { color: var(--c-text); font-weight: 600; }
+
+/* ------------------------------------------------------------- FAQ ------ */
+
+.post-faq,
+.post-sources,
+.post-related { margin-block-start: var(--s-7); }
+
+.post-faq__list { margin-block-start: var(--s-5); display: grid; gap: var(--s-5); }
+
+.post-faq__item {
+  padding-block-end: var(--s-5);
+  border-block-end: 1px solid var(--c-border);
+}
+.post-faq__item:last-child { padding-block-end: 0; border-block-end: 0; }
+
+.post-faq__q {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+  scroll-margin-block-start: var(--s-9);
+}
+
+.post-faq__a {
+  margin-block-start: var(--s-3);
+  color: var(--c-text-muted);
+  line-height: var(--lh-body);
+  max-width: var(--measure);
+}
+
+/* ----------------------------------------------------------- sources ---- */
+
+.post-sources__list {
+  margin-block-start: var(--s-4);
+  display: grid;
+  gap: var(--s-2);
+  padding-inline-start: var(--s-5);
+  font-size: var(--t-base);
+  color: var(--c-text-muted);
+}
+.post-sources__list > li { list-style: decimal; }
+.post-sources__list li::marker { color: var(--c-text-faint); }
+
+/* ----------------------------------------------------------- related ---- */
+
+.post-related__list {
+  margin-block-start: var(--s-5);
+  display: grid;
+  gap: var(--s-3);
+}
+
+.post-related__link {
+  display: grid;
+  gap: var(--s-1);
+  padding: var(--s-4);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  background-color: var(--c-surface);
+  text-decoration: none;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.post-related__link:hover {
+  border-color: color-mix(in oklab, var(--c-accent) 50%, var(--c-border));
+  box-shadow: var(--shadow-1);
+}
+
+.post-related__q {
+  font-family: var(--f-display);
+  font-size: var(--t-md);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+}
+.post-related__d { font-size: var(--t-sm); color: var(--c-text-muted); line-height: var(--lh-snug); }
+
+.post-related__note,
+.post-related__more {
+  margin-block-start: var(--s-3);
+  font-size: var(--t-sm);
+  color: var(--c-text-muted);
+  max-width: var(--measure);
+}
+
+.post-flies { margin-block-start: var(--s-5); }
+
+/* ========================================================= 4. THE CTAs === */
+/*  Placed after the answer has been earned — never before it.               */
+
+.aeo-cta {
+  margin-block-start: var(--s-7);
+  padding: var(--s-5);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-card);
+  background-color: var(--c-bg-sunk);
+}
+.aeo-cta > * + * { margin-block-start: var(--s-3); }
+
+.aeo-cta__headline {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+  text-wrap: balance;
+}
+
+.aeo-cta__sub { color: var(--c-text-muted); font-size: var(--t-base); max-width: var(--measure); }
+
+.post-endcta { margin-block-start: var(--s-8); }
+
+/* ==================================================== 5. INDEX + TOPICS == */
+
+.blog-head { border-bottom: 0; padding-block-end: var(--s-4); }
+
+.blog-topicnav { padding-block-end: var(--s-6); border-bottom: 1px solid var(--c-border); }
+.blog-topicnav__list { --gap: var(--s-2); }
+.blog-topicnav__pill { --pill-tint: var(--c-river); }
+:root[data-theme="dark"] .blog-topicnav__pill { --pill-tint: var(--c-riffle); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .blog-topicnav__pill { --pill-tint: var(--c-riffle); }
+}
+
+.blog-index { padding-block: var(--s-7); }
+.blog-empty { max-width: var(--measure); }
+
+.blog-group { scroll-margin-block-start: var(--s-9); }
+.blog-group + .blog-group { margin-block-start: var(--s-8); }
+
+.blog-group__head { max-width: var(--measure); }
+.blog-group__title { font-size: var(--t-xl); }
+.blog-group__blurb {
+  margin-block-start: var(--s-2);
+  color: var(--c-text-muted);
+  font-size: var(--t-base);
+}
+.blog-group__empty { margin-block-start: var(--s-4); font-size: var(--t-base); }
+
+.blog-list { margin-block-start: var(--s-5); display: grid; gap: var(--s-4); }
+
+.blog-card {
+  padding: var(--s-5);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  background-color: var(--c-surface);
+  box-shadow: var(--shadow-1);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.blog-card:hover {
+  border-color: color-mix(in oklab, var(--c-accent) 50%, var(--c-border));
+  box-shadow: var(--shadow-2);
+}
+
+.blog-card__title {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  text-wrap: balance;
+}
+.blog-card__title a { color: var(--c-text); text-decoration: none; }
+.blog-card__title a:hover { color: var(--c-accent); text-decoration: underline; }
+/* Whole card clickable without nesting interactive elements. */
+.blog-card__title a::after { content: ""; position: absolute; inset: 0; }
+.blog-list__item { position: relative; }
+
+.blog-card__text {
+  margin-block-start: var(--s-3);
+  color: var(--c-text-muted);
+  font-size: var(--t-base);
+  line-height: var(--lh-body);
+  max-width: var(--measure);
+}
+
+.blog-card__meta {
+  margin-block-start: var(--s-3);
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+.blog-card__meta:empty { display: none; }
+
+/* --------------------------------------------------------- topic map ---- */
+
+.blog-topics { padding-block: var(--s-7); display: grid; gap: var(--s-7); }
+
+.blog-topic { scroll-margin-block-start: var(--s-9); }
+
+.blog-topic__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding-block-end: var(--s-2);
+  border-block-end: 1px solid var(--c-border);
+}
+.blog-topic__title a { color: var(--c-text); text-decoration: none; }
+.blog-topic__title a:hover { color: var(--c-accent); text-decoration: underline; }
+.blog-topic__count { font-size: var(--t-xs); letter-spacing: var(--ls-wide); text-transform: uppercase; }
+
+.blog-topic__blurb {
+  margin-block-start: var(--s-4);
+  color: var(--c-text-muted);
+  font-size: var(--t-base);
+  max-width: var(--measure);
+}
+
+.blog-topic__covers {
+  margin-block-start: var(--s-4);
+  color: var(--c-text-muted);
+  font-size: var(--t-base);
+  max-width: var(--measure);
+}
+
+.blog-topic__not {
+  margin-block-start: var(--s-4);
+  font-size: var(--t-sm);
+  color: var(--c-text-faint);
+  max-width: var(--measure);
+}
+.blog-topic__not strong { color: var(--c-text-muted); }
+
+.blog-topic__posts {
+  margin-block-start: var(--s-4);
+  display: grid;
+  gap: var(--s-2);
+  font-size: var(--t-base);
+}
+.blog-topic__posts--empty { font-size: var(--t-sm); }
+
+.blog-boundary { max-width: var(--measure); margin-block-end: var(--s-7); }
+
+/* ======================================================== 6. SMALL ======= */
+/*  On a short phone viewport every pixel above the answer block is a pixel of
+    the answer pushed below the fold. Tighten the head — never the answer.   */
+
+@media (max-width: 30rem) {
+  .post-breadcrumbs { padding-block-start: var(--s-4); }
+  .post-head { padding-block-start: var(--s-2); }
+  .post-head__title { margin-block-start: var(--s-2); }
+  .post-byline { margin-block-start: var(--s-3); padding-block-end: var(--s-3); }
+  .aeo-answer { margin-block-start: var(--s-4); padding: var(--s-4); }
+}
+
+/* ============================================================ 7. WIDE ==== */
+
+@media (min-width: 48rem) {
+  .post-head { padding-block-start: var(--s-6); }
+  .aeo-answer { padding: var(--s-6); }
+  .aeo-cta { padding: var(--s-6); }
+}
