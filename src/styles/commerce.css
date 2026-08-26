@@ -789,6 +789,9 @@
 /* --- Product hero: the real box and card back --------------------------- */
 .buy-deckart__pack {
   position: relative;
+  /* The card back is absolutely positioned and rotated 7deg; clip horizontally
+     so the rotated corner can never widen the document. */
+  overflow-x: clip;
   margin: 0;
   display: grid;
   place-items: center;
