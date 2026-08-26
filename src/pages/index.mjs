@@ -47,6 +47,8 @@ export const meta = {
 
 /* ----------------------------------------------------------------- utils -- */
 
+import { flyCard as sharedFlyCard } from '../templates/_shared.mjs';
+
 const esc = (s) =>
   String(s ?? '')
     .replace(/&/g, '&amp;')
@@ -142,51 +144,34 @@ const ART_FOR_TYPE = (t) =>
 /* ------------------------------------------------------------- sections --- */
 
 function heroFan() {
-  return `<div class="card-fan" aria-hidden="true">
-      ${FAN.map((c) => {
-        const idx = `${c.rank}${c.suit}`;
-        return `<div class="card-fan__card">
-          <span class="card-fan__index" data-index="${esc(idx)}">${esc(idx)}</span>
-          ${flyArt(c.art, 'card-fan__art')}
-          <span class="card-fan__name">${esc(c.name)}</span>
-        </div>`;
-      }).join('\n      ')}
-    </div>`;
+  /* The printed tuck box. It already carries the logo, the engraved trout and
+     a fan of three real cards, so it does the job the CSS sketch used to. */
+  return `<figure class="hero-pack">
+      <img class="hero-pack__img"
+        src="/brand/box-front-600.webp"
+        srcset="/brand/box-front-600.webp 600w, /brand/box-front-1200.webp 1200w"
+        sizes="(min-width: 60rem) 24rem, 70vw"
+        width="600" height="874" fetchpriority="high" decoding="async"
+        alt="The Reel Deal Deck tuck box: an engraved green case with two trout, holding a fan of three fly cards">
+    </figure>`;
 }
 
 function libraryCards(flies) {
   const real = Array.isArray(flies) && flies.length > 0;
-  const items = real ? flies.slice(0, 6) : FALLBACK_FLIES;
-
-  const cards = items
-    .map((fly, i) => {
-      const { rank, suit } = cardIndex(fly, i);
-      const idx = `${rank}${suit}`;
-      const type = flyType(fly);
-      const note = flyNote(fly);
-      const inner = `
-          <span class="playing-card__index" data-index="${esc(idx)}" aria-hidden="true">${esc(rank)}<span class="playing-card__suit">${esc(suit)}</span></span>
-          <span class="playing-card__body">
-            ${flyArt(ART_FOR_TYPE(type), 'playing-card__art')}
-            <span class="playing-card__name">${esc(flyName(fly))}</span>
-            ${note ? `<span class="playing-card__note">${esc(String(note).slice(0, 64))}</span>` : ''}
-          </span>`;
-
-      return real && fly?.slug
-        ? `<a class="playing-card" href="/flies/${esc(fly.slug)}/">${inner}\n        </a>`
-        : `<div class="playing-card">${inner}\n        </div>`;
-    })
-    .join('\n        ');
-
-  const placeholderNote = real
-    ? ''
-    : `\n      <!-- Placeholder: data/flies.json is empty at build time. These six are
-           layout stand-ins with no copy attached; the real six render as links
-           automatically once the Fly Library data lands. -->`;
-
-  return `${placeholderNote}
+  if (!real) {
+    return `
+      <!-- data/flies.json is empty at build time; the strip renders once it lands. -->
+      <p class="text-faint">Fly Library loading…</p>`;
+  }
+  /* Six of the best-looking faces in the deck, linked into the library. */
+  const picks = ['royal-coachman', 'chubby-chernobyl', 'woolly-bugger', 'san-juan-worm',
+                 'grasshopper', 'copper-john']
+    .map((sl) => flies.find((f) => f.slug === sl))
+    .filter(Boolean);
+  const items = (picks.length === 6 ? picks : flies.slice(0, 6));
+  return `
       <div class="card-grid fly-strip" style="--gap:var(--s-4)">
-        ${cards}
+        ${items.map((f) => sharedFlyCard(f)).join('\n        ')}
       </div>`;
 }
 

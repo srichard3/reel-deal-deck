@@ -11,17 +11,21 @@ export const SUIT_NAME = { '♠': 'spades', '♥': 'hearts', '♦': 'diamonds', 
 
 export const TYPES = {
   dry:         { label: 'Dry fly',    plural: 'Dry flies',    anchor: 'dry' },
+  emerger:     { label: 'Emerger',    plural: 'Emergers',     anchor: 'emerger' },
+  midge:       { label: 'Midge',      plural: 'Midges',       anchor: 'midge' },
   nymph:       { label: 'Nymph',      plural: 'Nymphs',       anchor: 'nymph' },
-  streamer:    { label: 'Streamer',   plural: 'Streamers',    anchor: 'streamer' },
   wet:         { label: 'Wet fly',    plural: 'Wet flies',    anchor: 'wet' },
   terrestrial: { label: 'Terrestrial',plural: 'Terrestrials', anchor: 'terrestrial' },
+  streamer:    { label: 'Streamer',   plural: 'Streamers',    anchor: 'streamer' },
+  popper:      { label: 'Popper',     plural: 'Poppers',      anchor: 'popper' },
   attractor:   { label: 'Attractor',  plural: 'Attractors',   anchor: 'attractor' },
   egg:         { label: 'Egg',        plural: 'Egg patterns', anchor: 'egg' },
   worm:        { label: 'Worm',       plural: 'Worm patterns',anchor: 'worm' },
 };
 
-/** Order sections read in on the library index. */
-export const TYPE_ORDER = ['dry', 'terrestrial', 'nymph', 'wet', 'streamer', 'attractor', 'egg', 'worm'];
+/** Order sections read in on the library index — roughly surface to bottom. */
+export const TYPE_ORDER = ['dry', 'emerger', 'terrestrial', 'midge', 'nymph', 'wet',
+                           'streamer', 'popper', 'egg', 'worm', 'attractor'];
 
 /** Normalise however the data spells a suit ("spades", "spade", "♠") to a key. */
 export function suitKey(fly) {
@@ -90,19 +94,42 @@ export function flyArt(type, cls = 'playing-card__art') {
 </svg>`;
 }
 
-/** Compact `.playing-card` for a fly, linked to its page. */
-export function flyCard(fly, { link = true } = {}) {
-  const idx = cardIndex(fly);
-  const inner = `
-      <span class="playing-card__index" data-suit="${esc(suitKey(fly))}" data-index="${esc(idx)}" aria-hidden="true">${esc(idx)}</span>
-      <span class="playing-card__body">
-        ${flyArt(fly.type)}
-        <span class="playing-card__name">${esc(fly.name)}</span>
-        <span class="playing-card__note">${esc(String(fly.imitates || '').slice(0, 64))}</span>
-      </span>`;
+/* --- The real thing -------------------------------------------------------
+   Every card in the deck is now a photograph-quality render of the printed
+   v8 face, so the site shows the actual product rather than a CSS sketch.
+   Sources live in static/cards/<slug>-{400,800}.webp.
+   Sources are cropped to the printed card edge, so the artwork IS the card:
+   the true 2.5x3.5 poker ratio, no surrounding white margin. width/height are
+   declared to reserve layout space and keep CLS at zero.                  */
+
+export const CARD_W = 400;
+export const CARD_H = 559;
+
+/** <img> for a card face. `size` picks the art direction, not the file only. */
+export function cardImage(fly, {
+  eager = false,
+  /* The library grid is 6-up on desktop (~11rem a card), 3-up on tablet, 2-up
+     on a phone. Declaring that honestly keeps the browser on the 400w file
+     instead of pulling the 800w for a thumbnail 55 times over. */
+  sizes = '(min-width: 64rem) 11rem, (min-width: 34rem) 22vw, 44vw',
+} = {}) {
+  const base = esc(fly.image || `/cards/${fly.slug}`);
+  return `<img class="card-face__img"
+      src="${base}-400.webp"
+      srcset="${base}-400.webp 400w, ${base}-800.webp 800w"
+      sizes="${esc(sizes)}"
+      width="${CARD_W}" height="${CARD_H}"
+      loading="${eager ? 'eager' : 'lazy'}" decoding="async"
+      alt="${esc(fly.name)} — ${esc(cardLabel(fly))} from The Reel Deal Deck, showing the hand-drawn fly and its description">`;
+}
+
+/** A card face, linked to its Fly Library page. */
+export function flyCard(fly, { link = true, eager = false } = {}) {
+  const inner = `${cardImage(fly, { eager })}
+      <span class="visually-hidden">${esc(fly.name)} — ${esc(fly.cardCategory || '')}</span>`;
   return link
-    ? `<a class="playing-card" href="/flies/${esc(fly.slug)}/"><span class="visually-hidden">${esc(cardLabel(fly))} — </span>${inner}</a>`
-    : `<div class="playing-card">${inner}</div>`;
+    ? `<a class="card-face" href="/flies/${esc(fly.slug)}/">${inner}</a>`
+    : `<figure class="card-face">${inner}</figure>`;
 }
 
 export const titleCase = (s) => String(s).charAt(0).toUpperCase() + String(s).slice(1);

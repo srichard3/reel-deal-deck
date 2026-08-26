@@ -785,3 +785,36 @@
   line-height: var(--lh-body);
   max-width: var(--measure);
 }
+
+/* --- Product hero: the real box and card back --------------------------- */
+.buy-deckart__pack {
+  position: relative;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding-block: var(--s-5);
+}
+.buy-deckart__box {
+  display: block;
+  width: 100%;
+  max-width: 21rem;
+  height: auto;
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-lift);
+}
+/* The back tucked behind the box, angled like a card slid out of the case. */
+.buy-deckart__card-back {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-end: var(--s-6);
+  width: 34%;
+  max-width: 9rem;
+  height: auto;
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-2);
+  transform: rotate(7deg);
+  z-index: -1;
+}
+@media (max-width: 34rem) {
+  .buy-deckart__card-back { display: none; }
+}

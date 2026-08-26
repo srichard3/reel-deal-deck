@@ -54,3 +54,35 @@ https://www.reeldealdeck.com/*   https://reeldealdeck.com/:splat      301!
 # Not a wildcard SPA rewrite. dist/404.html (written by scripts/postbuild.mjs)
 # is picked up by Netlify automatically and served with a real 404 status,
 # which is what search engines need to see. Do not add `/* /index.html 200`.
+
+# --- Fly Library slugs realigned to the printed v8 deck (Aug 2026) ---
+# The card artwork is authoritative; these were the pre-artwork guesses.
+/flies/black-flying-ant/   /flies/ant/   301
+/flies/blue-winged-olive/   /flies/blue-wing-olive/   301
+/flies/clouser-deep-minnow/   /flies/clouser-minnow/   301
+/flies/daves-hopper/   /flies/grasshopper/   301
+/flies/foam-beetle/   /flies/beetle/   301
+/flies/gold-ribbed-hares-ear/   /flies/hares-ear-nymph/   301
+/flies/march-brown-wet/   /flies/march-brown/   301
+/flies/partridge-and-orange/   /flies/soft-hackle/   301
+
+# Patterns that are not in the printed deck. Send them to the library.
+/flies/black-ghost/   /flies/   301
+/flies/bunny-leech/   /flies/   301
+/flies/chernobyl-ant/   /flies/   301
+/flies/chironomid-pupa/   /flies/   301
+/flies/comparadun/   /flies/   301
+/flies/crackleback/   /flies/   301
+/flies/damselfly-nymph/   /flies/   301
+/flies/egg-sucking-leech/   /flies/   301
+/flies/golden-stonefly-nymph/   /flies/   301
+/flies/green-caddis-larva/   /flies/   301
+/flies/light-cahill/   /flies/   301
+/flies/mickey-finn/   /flies/   301
+/flies/renegade/   /flies/   301
+/flies/slumpbuster/   /flies/   301
+/flies/soft-hackle-pheasant-tail/   /flies/   301
+/flies/sowbug/   /flies/   301
+/flies/sparkle-dun/   /flies/   301
+/flies/woolly-worm/   /flies/   301
+/flies/zonker/   /flies/   301

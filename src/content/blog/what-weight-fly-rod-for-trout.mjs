@@ -100,7 +100,7 @@ export default function ({ b }) {
         The overlap is real. A 5-weight and a 6-weight will both fish most trout water competently,
         and the angler matters more than the half-step between them. Where the difference bites is at
         the extremes: a 3-weight genuinely cannot deliver a weighted
-        ${b.flyLink('clouser-deep-minnow')} into a headwind, and an 8-weight genuinely cannot present
+        ${b.flyLink('clouser-minnow')} into a headwind, and an 8-weight genuinely cannot present
         a ${b.flyLink('griffiths-gnat')} to a sipping fish in flat water.
       </p>
     `)}

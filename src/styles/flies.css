@@ -91,7 +91,7 @@
 }
 
 @media (min-width: 860px) {
-  .fly-head { grid-template-columns: minmax(0, 1fr) 15rem; gap: var(--s-8); }
+  .fly-head { grid-template-columns: minmax(0, 1fr) 18rem; gap: var(--s-8); }
 }
 
 .fly-head__title { margin-block: var(--s-2) var(--s-3); }
@@ -105,7 +105,7 @@
 
 .fly-head__pills { margin-block-start: var(--s-4); gap: var(--s-2); }
 
-.fly-head__card { justify-self: start; width: 100%; max-width: 15rem; }
+.fly-head__card { justify-self: start; width: 100%; max-width: 18rem; }
 @media (min-width: 860px) { .fly-head__card { justify-self: end; } }
 
 .playing-card--lg { font-size: var(--t-md); }
@@ -227,3 +227,82 @@
 .fly-pager__link:focus-visible .fly-pager__name { border-bottom-color: var(--c-accent); }
 
 .fly-cta { margin-block-start: var(--s-6); }
+
+/* ==========================================================================
+   REAL CARD FACES
+   The deck is printed, so the site shows the printed card rather than a CSS
+   sketch. The artwork already carries its own white stock, thin keyline and
+   rounded corners — so this adds depth and interaction only, never chrome.
+   ========================================================================== */
+
+.card-face {
+  display: block;
+  position: relative;
+  margin: 0;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background-color: #fff;              /* matches the printed stock exactly */
+  box-shadow: var(--shadow-2);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+a.card-face:hover,
+a.card-face:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+}
+
+a.card-face:focus-visible {
+  outline: 2px solid var(--c-focus);
+  outline-offset: 3px;
+}
+
+.card-face__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* The hero card on a fly page. The image is now the card itself, cropped to
+   the printed edge, so the radius and shadow belong on the image. */
+.fly-head__card { margin: 0; }
+.fly-head__card .card-face__img,
+.fly-head__card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-lift);
+}
+.fly-head__card .figure-note { margin-top: var(--s-3); text-align: center; }
+
+/* The copy printed on the card itself — the product's own words. */
+.fly-cardtext {
+  margin: 0 0 var(--s-6);
+  padding: var(--s-4) var(--s-5);
+  border-inline-start: 3px solid var(--c-green);
+  background-color: var(--c-bg-sunk);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+}
+.fly-cardtext p {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: var(--t-md);
+  line-height: var(--lh-snug);
+  color: var(--c-text);
+}
+.fly-cardtext cite {
+  display: block;
+  margin-top: var(--s-2);
+  font-family: var(--f-body);
+  font-style: normal;
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+
+/* Pills for the categories the real deck actually prints. */
+.pill--emerger { color: var(--c-green-soft); border-color: color-mix(in oklab, var(--c-green-soft) 45%, transparent); }
+.pill--midge   { color: var(--c-bark);       border-color: color-mix(in oklab, var(--c-bark) 45%, transparent); }
+.pill--popper  { color: var(--c-egg);        border-color: color-mix(in oklab, var(--c-egg) 50%, transparent); }

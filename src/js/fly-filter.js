@@ -16,7 +16,7 @@
   }
 
   var cards = {};
-  Array.prototype.forEach.call(document.querySelectorAll('.playing-card[href^="/flies/"]'), function (el) {
+  Array.prototype.forEach.call(document.querySelectorAll('.card-face[href^="/flies/"]'), function (el) {
     var m = el.getAttribute('href').match(/\/flies\/([^/]+)\//);
     if (m) cards[m[1]] = el;
   });

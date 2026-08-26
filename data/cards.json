@@ -1,0 +1,552 @@
+[
+  {
+    "idx": 1,
+    "slug": "rainbow-warrior",
+    "name": "Rainbow Warrior",
+    "rank": "A",
+    "suit": "spades",
+    "category": "Nymph",
+    "sizes": "14-20",
+    "cardText": "All conditions attractor. Doesn't imitate anything, just sparks trout attention/curiosity."
+  },
+  {
+    "idx": 2,
+    "slug": "muddler-minnow",
+    "name": "Muddler Minnow",
+    "rank": "2",
+    "suit": "spades",
+    "category": "Streamer",
+    "sizes": "4-8",
+    "cardText": "Don Gapen, 1930s. Invented to imitate sculpin minnows. Versatile streamer."
+  },
+  {
+    "idx": 3,
+    "slug": "woolly-bugger",
+    "name": "Woolly Bugger",
+    "rank": "3",
+    "suit": "spades",
+    "category": "Streamer",
+    "sizes": "4-10",
+    "cardText": "Russ Blessing's 1967 creation. Most famous streamer; imitates leeches, minnows, crayfish."
+  },
+  {
+    "idx": 4,
+    "slug": "soft-hackle",
+    "name": "Soft Hackle",
+    "rank": "4",
+    "suit": "spades",
+    "category": "Wet Fly",
+    "sizes": "12-18",
+    "cardText": "Sparse and elegant. Imitates emergers/soft-bodied insects."
+  },
+  {
+    "idx": 5,
+    "slug": "caddis-pupa",
+    "name": "Caddis Pupa",
+    "rank": "5",
+    "suit": "spades",
+    "category": "Emerger",
+    "sizes": "14-18",
+    "cardText": "Vital stage for caddis hatches. Swing at end of drift."
+  },
+  {
+    "idx": 6,
+    "slug": "rs2",
+    "name": "RS2",
+    "rank": "6",
+    "suit": "spades",
+    "category": "Emerger",
+    "sizes": "18-22",
+    "cardText": "By Rim Chung. Deadly mayfly emerger for picky trout. Versatile, can be fished near surface or as a nymph."
+  },
+  {
+    "idx": 7,
+    "slug": "wd-40",
+    "name": "WD-40",
+    "rank": "7",
+    "suit": "spades",
+    "category": "Midge/Emerger",
+    "sizes": "18-24",
+    "cardText": "Simple Colorado pattern, deadly imitator of midges and small mayflies."
+  },
+  {
+    "idx": 8,
+    "slug": "serendipity",
+    "name": "Serendipity",
+    "rank": "8",
+    "suit": "spades",
+    "category": "Midge/Larva",
+    "sizes": "16-20",
+    "cardText": "Craig Mathews pattern. Staple for Madison River trout and other midge-hungry trout."
+  },
+  {
+    "idx": 9,
+    "slug": "snow-cone-midge",
+    "name": "Snow Cone Midge",
+    "rank": "9",
+    "suit": "spades",
+    "category": "Chironomid",
+    "sizes": "12-16",
+    "cardText": "White bead imitates gas bubble. Excellent lake pattern."
+  },
+  {
+    "idx": 10,
+    "slug": "disco-midge",
+    "name": "Disco Midge",
+    "rank": "10",
+    "suit": "spades",
+    "category": "Midge",
+    "sizes": "18-24",
+    "cardText": "Flashy midge larva/emerger; deadly in tailwaters in winter."
+  },
+  {
+    "idx": 11,
+    "slug": "zebra-midge",
+    "name": "Zebra Midge",
+    "rank": "J",
+    "suit": "spades",
+    "category": "Midge",
+    "sizes": "18-22",
+    "cardText": "Most effective in cold tailwaters when no dries are visible. Classic go-to midge pattern."
+  },
+  {
+    "idx": 12,
+    "slug": "green-weenie",
+    "name": "Green Weenie",
+    "rank": "Q",
+    "suit": "spades",
+    "category": "Attractor Nymph",
+    "sizes": "12-16",
+    "cardText": "Bright chartreuse chenille. Deadly simple attractor for stocked and recently planted trout."
+  },
+  {
+    "idx": 13,
+    "slug": "lightning-bug",
+    "name": "Lightning Bug",
+    "rank": "K",
+    "suit": "spades",
+    "category": "Attractor Nymph",
+    "sizes": "14-18",
+    "cardText": "Flashy beadhead, imitates mayflies. Great in off-colored water."
+  },
+  {
+    "idx": 14,
+    "slug": "clouser-minnow",
+    "name": "Clouser Minnow",
+    "rank": "A",
+    "suit": "diamonds",
+    "category": "Streamer",
+    "sizes": "2-6",
+    "cardText": "Bob Clouser, 1987. Effective for bass, trout, and saltwater species."
+  },
+  {
+    "idx": 15,
+    "slug": "duracell-nymph",
+    "name": "Duracell Nymph",
+    "rank": "2",
+    "suit": "diamonds",
+    "category": "Euro-Nymph",
+    "sizes": "14-18",
+    "cardText": "Jig-style with UV brown body (purple sheen); versatile attractor/mayfly imitator."
+  },
+  {
+    "idx": 16,
+    "slug": "blowtorch",
+    "name": "Blowtorch",
+    "rank": "3",
+    "suit": "diamonds",
+    "category": "Euro-Nymph",
+    "sizes": "14-18",
+    "cardText": "Attractor with hot spot tag; peacock body triggers strikes."
+  },
+  {
+    "idx": 17,
+    "slug": "frenchie",
+    "name": "Frenchie",
+    "rank": "4",
+    "suit": "diamonds",
+    "category": "Euro-Nymph",
+    "sizes": "14-18",
+    "cardText": "Pheasant tail variant; slim profile, hot spot collar."
+  },
+  {
+    "idx": 18,
+    "slug": "perdigon",
+    "name": "Perdigon",
+    "rank": "5",
+    "suit": "diamonds",
+    "category": "Euro-Nymph",
+    "sizes": "14-20",
+    "cardText": "Spanish fly. Slim, sinks fast. 'Perdigon' = pellet/shot (as in ammo). Many color patterns to imitate different insects."
+  },
+  {
+    "idx": 19,
+    "slug": "hares-ear-nymph",
+    "name": "Hare's Ear Nymph",
+    "rank": "6",
+    "suit": "diamonds",
+    "category": "Nymph",
+    "sizes": "12-18",
+    "cardText": "Versatile nymph, imitates many aquatic insects. Confidence fly."
+  },
+  {
+    "idx": 20,
+    "slug": "pheasant-tail-nymph",
+    "name": "Pheasant Tail Nymph",
+    "rank": "7",
+    "suit": "diamonds",
+    "category": "Nymph",
+    "sizes": "14-20",
+    "cardText": "Frank Sawyer's design, imitates mayflies. A staple in U.S. waters."
+  },
+  {
+    "idx": 21,
+    "slug": "prince-nymph",
+    "name": "Prince Nymph",
+    "rank": "8",
+    "suit": "diamonds",
+    "category": "Nymph",
+    "sizes": "12-18",
+    "cardText": "By Doug Prince, 1930s. White wings, peacock body. Excellent attractor."
+  },
+  {
+    "idx": 22,
+    "slug": "copper-john",
+    "name": "Copper John",
+    "rank": "9",
+    "suit": "diamonds",
+    "category": "Nymph",
+    "sizes": "12-18",
+    "cardText": "By John Barr, 1990s. Weighted with copper wire, gets down quickly. Good mayfly/stonefly imitator."
+  },
+  {
+    "idx": 23,
+    "slug": "pats-rubber-legs",
+    "name": "Pat's Rubber Legs",
+    "rank": "10",
+    "suit": "diamonds",
+    "category": "Stonefly Nymph",
+    "sizes": "6-10",
+    "cardText": "Also called Girdle Bug. Popular Western stonefly imitation."
+  },
+  {
+    "idx": 24,
+    "slug": "balanced-leech",
+    "name": "Balanced Leech",
+    "rank": "J",
+    "suit": "diamonds",
+    "category": "Streamer",
+    "sizes": "6-10",
+    "cardText": "Hangs horizontal under indicator; deadly stillwater/leech imitation."
+  },
+  {
+    "idx": 25,
+    "slug": "deer-hair-mouse",
+    "name": "Deer Hair Mouse",
+    "rank": "Q",
+    "suit": "diamonds",
+    "category": "Surface/Streamer",
+    "sizes": "2-6",
+    "cardText": "Big trout and bass love it. Exciting topwater strikes."
+  },
+  {
+    "idx": 26,
+    "slug": "parachute-adams",
+    "name": "Parachute Adams",
+    "rank": "K",
+    "suit": "diamonds",
+    "category": "Dry Fly",
+    "sizes": "12-18",
+    "cardText": "Mayfly variation with parachute hackle, floats lower, easier to see."
+  },
+  {
+    "idx": 27,
+    "slug": "salmonfly",
+    "name": "Salmonfly",
+    "rank": "K",
+    "suit": "clubs",
+    "category": "Dry Fly",
+    "sizes": "4-8",
+    "cardText": "Giant stonefly imitation; deadly during Western salmonfly hatches."
+  },
+  {
+    "idx": 28,
+    "slug": "yellow-sally",
+    "name": "Yellow Sally",
+    "rank": "Q",
+    "suit": "clubs",
+    "category": "Stonefly",
+    "sizes": "12-16",
+    "cardText": "Imitates Little Yellow Sally stoneflies; great summer hatch-matcher."
+  },
+  {
+    "idx": 29,
+    "slug": "grasshopper",
+    "name": "Grasshopper",
+    "rank": "J",
+    "suit": "clubs",
+    "category": "Terrestrial Dry",
+    "sizes": "8-12",
+    "cardText": "Classic late-summer terrestrial. Big meal that draws aggressive rises from trout."
+  },
+  {
+    "idx": 30,
+    "slug": "ant",
+    "name": "Ant",
+    "rank": "10",
+    "suit": "clubs",
+    "category": "Terrestrial Dry",
+    "sizes": "12-14",
+    "cardText": "Simple but deadly terrestrial. Trout key on ants that fall or blow onto the water."
+  },
+  {
+    "idx": 31,
+    "slug": "beetle",
+    "name": "Beetle",
+    "rank": "9",
+    "suit": "clubs",
+    "category": "Terrestrial Dry",
+    "sizes": "12-14",
+    "cardText": "High-floating foam beetle. The distinctive “plop” often triggers immediate strikes."
+  },
+  {
+    "idx": 32,
+    "slug": "march-brown",
+    "name": "March Brown",
+    "rank": "8",
+    "suit": "clubs",
+    "category": "Dry Fly",
+    "sizes": "14-18",
+    "cardText": "Traditional mayfly imitation. Important spring hatch, especially in Eastern and Midwestern streams."
+  },
+  {
+    "idx": 33,
+    "slug": "pale-morning-dun",
+    "name": "Pale Morning Dun",
+    "rank": "7",
+    "suit": "clubs",
+    "category": "Dry Fly",
+    "sizes": "16-20",
+    "cardText": "Premier summer mayfly, especially in the West. Yellowish body and reliable daytime hatch."
+  },
+  {
+    "idx": 34,
+    "slug": "blue-wing-olive",
+    "name": "Blue Wing Olive",
+    "rank": "6",
+    "suit": "clubs",
+    "category": "Dry Fly",
+    "sizes": "16-20",
+    "cardText": "Classic hatch-matcher. Essential in U.S. streams."
+  },
+  {
+    "idx": 35,
+    "slug": "rusty-spinner",
+    "name": "Rusty Spinner",
+    "rank": "5",
+    "suit": "clubs",
+    "category": "Spinner",
+    "sizes": "16-20",
+    "cardText": "Imitates spent mayflies (often rusty-brown after mating); deadly during spinner falls."
+  },
+  {
+    "idx": 36,
+    "slug": "split-case-pmd",
+    "name": "Split Case PMD",
+    "rank": "4",
+    "suit": "clubs",
+    "category": "Emerger",
+    "sizes": "16-20",
+    "cardText": "Imitates emerging Pale Morning Dun; split wingcase shows nymph shedding shuck."
+  },
+  {
+    "idx": 37,
+    "slug": "barrs-emerger",
+    "name": "Barr's Emerger",
+    "rank": "3",
+    "suit": "clubs",
+    "category": "Emerger",
+    "sizes": "16-20",
+    "cardText": "By John Barr, 1970s. Excellent mayfly emerger; often more effective subsurface during hatches."
+  },
+  {
+    "idx": 38,
+    "slug": "blue-wing-olive-emerger",
+    "name": "Blue Wing Olive Emerger",
+    "rank": "2",
+    "suit": "clubs",
+    "category": "Emerger",
+    "sizes": "18-22",
+    "cardText": "Matches the hatch. Often more effective than the BWO dry."
+  },
+  {
+    "idx": 39,
+    "slug": "green-drake",
+    "name": "Green Drake",
+    "rank": "A",
+    "suit": "clubs",
+    "category": "Dry Fly",
+    "sizes": "10-14",
+    "cardText": "Large mayfly. Famous hatch in American West."
+  },
+  {
+    "idx": 40,
+    "slug": "scud",
+    "name": "Scud",
+    "rank": "K",
+    "suit": "hearts",
+    "category": "Nymph/Wet Fly",
+    "sizes": "12-18",
+    "cardText": "Effective stillwater pattern. Fishes year-round, near bottom or around weed beds."
+  },
+  {
+    "idx": 41,
+    "slug": "elk-hair-caddis",
+    "name": "Elk Hair Caddis",
+    "rank": "Q",
+    "suit": "hearts",
+    "category": "Dry Fly",
+    "sizes": "12-18",
+    "cardText": "Al Troth, 1957. Classic high-floating, durable caddis imitation. Great in fast water."
+  },
+  {
+    "idx": 42,
+    "slug": "royal-wulff",
+    "name": "Royal Wulff",
+    "rank": "J",
+    "suit": "hearts",
+    "category": "Dry Fly",
+    "sizes": "10-16",
+    "cardText": "Lee Wulff's attractor. Bright and visible, great for fast water."
+  },
+  {
+    "idx": 43,
+    "slug": "stimulator",
+    "name": "Stimulator",
+    "rank": "10",
+    "suit": "hearts",
+    "category": "Dry Fly",
+    "sizes": "8-14",
+    "cardText": "Randall Kaufmann's attractor. Stonefly or hopper imitation."
+  },
+  {
+    "idx": 44,
+    "slug": "humpy",
+    "name": "Humpy",
+    "rank": "9",
+    "suit": "hearts",
+    "category": "Dry Fly",
+    "sizes": "12-16",
+    "cardText": "Extra-buoyant and versatile attractor. Stays visible and afloat in fast, broken water."
+  },
+  {
+    "idx": 45,
+    "slug": "madam-x",
+    "name": "Madam X",
+    "rank": "8",
+    "suit": "hearts",
+    "category": "Dry Fly/Attractor",
+    "sizes": "8-12",
+    "cardText": "Hopper/stonefly attractor. Foam, rubber legs. Western classic."
+  },
+  {
+    "idx": 46,
+    "slug": "chubby-chernobyl",
+    "name": "Chubby Chernobyl",
+    "rank": "7",
+    "suit": "hearts",
+    "category": "Dry Fly/Attractor",
+    "sizes": "8-12",
+    "cardText": "Foam attractor; imitates hoppers/stoneflies. High-floating, great for dropper rigs."
+  },
+  {
+    "idx": 47,
+    "slug": "purple-haze",
+    "name": "Purple Haze",
+    "rank": "6",
+    "suit": "hearts",
+    "category": "Dry Fly/Attractor",
+    "sizes": "14-18",
+    "cardText": "Parachute Adams variant with purple body; deadly attractor, especially in pressured water."
+  },
+  {
+    "idx": 48,
+    "slug": "griffiths-gnat",
+    "name": "Griffith's Gnat",
+    "rank": "5",
+    "suit": "hearts",
+    "category": "Dry Fly",
+    "sizes": "18-24",
+    "cardText": "By George Griffith, Michigan, late 1930s. Great cluster midge pattern."
+  },
+  {
+    "idx": 49,
+    "slug": "trico",
+    "name": "Trico",
+    "rank": "4",
+    "suit": "hearts",
+    "category": "Dry Fly",
+    "sizes": "20-26",
+    "cardText": "Tiny mayfly for summer hatches. Demands precision."
+  },
+  {
+    "idx": 50,
+    "slug": "royal-coachman",
+    "name": "Royal Coachman",
+    "rank": "3",
+    "suit": "hearts",
+    "category": "Dry Fly/Attractor",
+    "sizes": "12-16",
+    "cardText": "Classic attractor (1878 origin); peacock/red floss body. Many variants exist."
+  },
+  {
+    "idx": 51,
+    "slug": "pink-albert",
+    "name": "Pink Albert",
+    "rank": "2",
+    "suit": "hearts",
+    "category": "Dry Fly",
+    "sizes": "14-18",
+    "cardText": "Imitates Pink Albert mayfly (Epeorus albertae); effective Western PMD variant."
+  },
+  {
+    "idx": 52,
+    "slug": "adams",
+    "name": "Adams",
+    "rank": "A",
+    "suit": "hearts",
+    "category": "Dry Fly",
+    "sizes": "12-16",
+    "cardText": "Created in Michigan, 1922. Most famous dry. Imitates mayflies broadly."
+  },
+  {
+    "idx": 53,
+    "slug": "egg-pattern",
+    "name": "Egg",
+    "rank": "JOKER",
+    "suit": "joker",
+    "category": "Egg Imitation",
+    "sizes": "10-14",
+    "cardText": "Effective during/after spawns; imitates trout/salmon eggs drifting freely."
+  },
+  {
+    "idx": 54,
+    "slug": "san-juan-worm",
+    "name": "San Juan Worm",
+    "rank": "JOKER",
+    "suit": "joker",
+    "category": "Worm Pattern",
+    "sizes": "10-14",
+    "cardText": "Controversial but effective. Simple chenille worm, deadly after rainstorms."
+  },
+  {
+    "idx": 55,
+    "slug": "bass-popper",
+    "name": "Bass Popper",
+    "rank": "JOKER",
+    "suit": "joker",
+    "category": "Surface Popper",
+    "sizes": "8-10",
+    "cardText": "Imitates injured baitfish, frogs, or large insects skittering on the surface."
+  }
+]

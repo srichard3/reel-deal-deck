@@ -3,7 +3,7 @@
    reference an experienced angler would respect — the product pitch is a
    footnote, not the point. */
 
-import { esc, flyArt, flyCard, cardIndex, cardLabel, suitKey, TYPES, titleCase } from './_shared.mjs';
+import { esc, flyCard, cardImage, cardLabel, TYPES, titleCase } from './_shared.mjs';
 
 const list = (arr) => (Array.isArray(arr) ? arr.filter(Boolean) : []);
 
@@ -129,21 +129,20 @@ export default function ({ fly, flies, site }) {
           ${fly.sizes ? `<span class="pill">${esc(fly.sizes)}</span>` : ''}
         </p>
       </div>
-      <div class="fly-head__card">
-        <div class="playing-card playing-card--lg">
-          <span class="playing-card__index" data-suit="${esc(suitKey(fly))}" data-index="${esc(cardIndex(fly))}" aria-hidden="true">${esc(cardIndex(fly))}</span>
-          <span class="playing-card__body">
-            ${flyArt(fly.type)}
-            <span class="playing-card__name">${esc(fly.name)}</span>
-            <span class="playing-card__note">${esc(String(fly.imitates).slice(0, 64))}</span>
-          </span>
-        </div>
-        <p class="figure-note">${esc(cardLabel(fly))} in the deck</p>
-      </div>
+      <figure class="fly-head__card">
+        ${cardImage(fly, { eager: true, sizes: '(min-width: 54rem) 20rem, 70vw' })}
+        <figcaption class="figure-note">
+          ${esc(cardLabel(fly))}${fly.cardCategory ? ` &middot; ${esc(fly.cardCategory)}` : ''} in the deck
+        </figcaption>
+      </figure>
     </header>
 
     <div class="fly-layout">
       <div class="fly-main prose">
+        ${fly.cardText ? `<blockquote class="fly-cardtext">
+          <p>${esc(fly.cardText)}</p>
+          <cite>Printed on the ${esc(cardLabel(fly))}</cite>
+        </blockquote>` : ''}
         ${list(fly.body).map((p) => `<p>${esc(p)}</p>`).join('\n        ')}
 
         ${fly.howToFish ? `<h2>How to fish ${aAn(fly.name)}</h2>\n        <p>${esc(fly.howToFish)}</p>` : ''}
@@ -166,7 +165,7 @@ export default function ({ fly, flies, site }) {
           <h2 class="fly-spec__title">At a glance</h2>
           <dl class="fly-spec__list">
             ${specRow('Imitates', fly.imitates)}
-            ${specRow('Type', type.label)}
+            ${specRow('Type', fly.cardCategory || type.label)}
             ${specRow('Common sizes', fly.sizes)}
             ${specRow('Season', fly.seasons)}
             ${specRow('Water', fly.waters)}

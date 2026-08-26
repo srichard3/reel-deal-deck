@@ -1173,3 +1173,14 @@ select.input {
 }
 
 .contact-card__addr a { color: var(--c-accent); }
+
+/* --- Hero: the printed tuck box ----------------------------------------- */
+.hero-pack { margin: 0; display: grid; place-items: center; }
+.hero-pack__img {
+  display: block;
+  width: 100%;
+  max-width: 24rem;
+  height: auto;
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-lift);
+}

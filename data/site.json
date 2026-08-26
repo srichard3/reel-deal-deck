@@ -1,19 +1,28 @@
 {
   "name": "The Reel Deal Deck",
-  "legalName": "The Reel Deal Deck",
+  "legalName": "Homer Fry Ranch, LLC",
   "tagline": "54 flies. One deck worth owning.",
   "url": "https://reeldealdeck.com",
   "defaultOgImage": "/og/default.png",
-
   "positioning": "The first fly-fishing deck an angler would be proud to own. Original hand-drawn art, printed on genuine Bicycle stock, with a portion of every deck going to Trout Unlimited.",
-
   "founders": [
-    { "name": "Ken", "role": "Founder", "bio": "Lifelong entrepreneur, 5th-generation Idaho farmer, and the avid amateur angler who went looking for fly-fishing flashcards, couldn't find a set he'd actually want to own, and drew his own." },
-    { "name": "Audrey", "role": "Co-founder", "bio": "Entrepreneurship graduate, Loyola Marymount University College of Business Administration. Handles design direction, brand, and community." }
+    {
+      "name": "Ken",
+      "role": "Founder",
+      "bio": "Lifelong entrepreneur, 5th-generation Idaho farmer, and the avid amateur angler who went looking for fly-fishing flashcards, couldn't find a set he'd actually want to own, and drew his own."
+    },
+    {
+      "name": "Audrey",
+      "role": "Co-founder",
+      "bio": "Entrepreneurship graduate, Loyola Marymount University College of Business Administration. Handles design direction, brand, and community."
+    }
   ],
-
-  "location": { "city": "Eagle", "region": "ID", "regionName": "Idaho", "country": "US" },
-
+  "location": {
+    "city": "Eagle",
+    "region": "ID",
+    "regionName": "Idaho",
+    "country": "US"
+  },
   "product": {
     "name": "The Reel Deal Deck",
     "cardCount": 54,
@@ -23,9 +32,12 @@
     "priceIntended": 24,
     "priceCurrency": "USD",
     "status": "preorder",
-    "availabilityNote": "Not yet shipping. Join the list to be first in line."
+    "availabilityNote": "Not yet shipping. Join the list to be first in line.",
+    "manufacturer": "The United States Playing Card Company",
+    "origin": "Made in the USA",
+    "boxClaim": "54 Unique Cards — Hand Illustrated in Exquisite Detail",
+    "countNote": "TODO-CONFIRM: the printed tuck box says 54 Unique Cards, but the v8 face art contains 55 illustrated fly cards (52 standard + Egg, San Juan Worm, Bass Popper) plus an info card. Confirm the number before it goes in any ad or listing."
   },
-
   "campaign": {
     "note": "The CTA component reads `endsAt` against build time and swaps to `after` automatically. When the campaign closes, nothing needs editing — but set active:false if it is cancelled or paused early.",
     "active": true,
@@ -46,56 +58,107 @@
       "url": "/deck/#reserve"
     }
   },
-
   "blog": {
     "path": "/blog/",
     "name": "Fly Fishing Guides",
     "description": "Straight answers to the questions anglers actually ask — gear, technique, knots, seasons and getting started.",
     "authorNote": "TODO-CONFIRM: articles are attributed to the brand, not a named person. If Ken wants a byline (recommended — it is a real expertise signal for both Google and AI answer engines), add him here and to the Person schema."
   },
-
   "conservation": {
     "partner": "Trout Unlimited",
     "partnerUrl": "https://www.tu.org/",
     "commitment": "TODO-CONFIRM: state a hard number here (e.g. \"$1 from every deck\"). A specific figure converts; \"a portion of proceeds\" does not."
   },
-
   "social": {
     "instagram": "https://instagram.com/reeldealdeck",
     "tiktok": "https://tiktok.com/@reeldealdeck",
     "youtube": "",
     "email": "hello@reeldealdeck.com"
   },
-
   "nav": [
-    { "label": "The Deck", "href": "/deck/" },
-    { "label": "Fly Library", "href": "/flies/" },
-    { "label": "Gifts", "href": "/gifts/" },
-    { "label": "Wholesale", "href": "/wholesale/" },
-    { "label": "Our Story", "href": "/story/" }
+    {
+      "label": "The Deck",
+      "href": "/deck/"
+    },
+    {
+      "label": "Fly Library",
+      "href": "/flies/"
+    },
+    {
+      "label": "Gifts",
+      "href": "/gifts/"
+    },
+    {
+      "label": "Wholesale",
+      "href": "/wholesale/"
+    },
+    {
+      "label": "Our Story",
+      "href": "/story/"
+    }
   ],
-
   "footerNav": [
-    { "heading": "Shop", "links": [
-      { "label": "The Deck", "href": "/deck/" },
-      { "label": "Gift Guide", "href": "/gifts/" },
-      { "label": "Fly Shops & Guides", "href": "/wholesale/" }
-    ]},
-    { "heading": "Learn", "links": [
-      { "label": "Fly Library", "href": "/flies/" },
-      { "label": "Dry Flies", "href": "/flies/?type=dry" },
-      { "label": "Nymphs", "href": "/flies/?type=nymph" },
-      { "label": "Streamers", "href": "/flies/?type=streamer" }
-    ]},
-    { "heading": "About", "links": [
-      { "label": "Our Story", "href": "/story/" },
-      { "label": "Conservation", "href": "/conservation/" },
-      { "label": "Contact", "href": "/contact/" }
-    ]}
+    {
+      "heading": "Shop",
+      "links": [
+        {
+          "label": "The Deck",
+          "href": "/deck/"
+        },
+        {
+          "label": "Gift Guide",
+          "href": "/gifts/"
+        },
+        {
+          "label": "Fly Shops & Guides",
+          "href": "/wholesale/"
+        }
+      ]
+    },
+    {
+      "heading": "Learn",
+      "links": [
+        {
+          "label": "Fly Library",
+          "href": "/flies/"
+        },
+        {
+          "label": "Dry Flies",
+          "href": "/flies/?type=dry"
+        },
+        {
+          "label": "Nymphs",
+          "href": "/flies/?type=nymph"
+        },
+        {
+          "label": "Streamers",
+          "href": "/flies/?type=streamer"
+        }
+      ]
+    },
+    {
+      "heading": "About",
+      "links": [
+        {
+          "label": "Our Story",
+          "href": "/story/"
+        },
+        {
+          "label": "Conservation",
+          "href": "/conservation/"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact/"
+        }
+      ]
+    }
   ],
-
   "placeholders": {
     "note": "All purchase actions are intentionally stubbed. See docs/COMMERCE.md for the swap-in plan.",
     "checkoutProvider": "TODO: Shopify Buy Button | Stripe Payment Link | Lemon Squeezy"
-  }
+  },
+  "motto": "The finest gift to fellow anglers is the fish you gently release.",
+  "edition": "Volume 1",
+  "copyright": "© 2026 Homer Fry Ranch, LLC, Eagle, Idaho"
 }

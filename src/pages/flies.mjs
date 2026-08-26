@@ -7,9 +7,9 @@ import { esc, flyCard, TYPES, TYPE_ORDER, titleCase } from '../templates/_shared
 
 export const meta = {
   path: '/flies/',
-  title: 'Fly Library: 54 Trout Flies Explained',
+  title: 'Fly Library: Every Fly in the Deck',
   description:
-    'A free reference to 54 classic trout flies — what each one imitates, what sizes to carry, and when to fish it. No sign-up, no paywall.',
+    'A free reference to every fly in The Reel Deal Deck — what each one imitates, what sizes to carry, and when to fish it. No sign-up, no paywall.',
   priority: 0.9,
   changefreq: 'monthly',
   bodyClass: 'page-flies',
@@ -56,7 +56,7 @@ export default function ({ site, flies }) {
     {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
-      name: 'The 54 flies of The Reel Deal Deck',
+      name: 'Every fly in The Reel Deal Deck',
       numberOfItems: flies.length,
       itemListElement: flies.map((f, i) => ({
         '@type': 'ListItem',
@@ -84,6 +84,11 @@ export default function ({ site, flies }) {
   </nav>
 
   <header class="page-head">
+    <!-- TODO-CONFIRM: the printed tuck box says "54 Unique Cards", but the v8
+         face artwork contains 55 illustrated fly cards (52 standard + Egg,
+         San Juan Worm and Bass Popper) plus an info card. Confirm which number
+         is correct for marketing copy; site.product.cardCount currently follows
+         the box. The library below lists every illustrated fly card. -->
     <p class="eyebrow">Free reference · ${flies.length} flies</p>
     <h1 class="h1 page-head__title">The Fly Library</h1>
     <p class="page-head__lede lede">

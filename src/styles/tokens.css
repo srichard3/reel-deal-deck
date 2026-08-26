@@ -10,30 +10,42 @@
    ========================================================================== */
 
 :root {
-  /* --- Ink & paper ------------------------------------------------------ */
-  --c-paper:        #FBFAF7;  /* card stock white  */
-  --c-paper-2:      #F2F0EA;  /* recessed surface  */
-  --c-paper-3:      #E7E3DA;  /* borders, rules    */
-  --c-ink:          #16191C;  /* body text         */
-  --c-ink-2:        #4A5157;  /* secondary text    */
-  --c-ink-3:        #7C858C;  /* tertiary / meta   */
+  /* --- Ink & paper ------------------------------------------------------
+     Sampled from the printed v8 card faces and the USPCC tuck box, not
+     invented. This is a two-colour deck: green stands in for red, bark
+     brown for black. The site follows the physical product.              */
+  --c-paper:        #FAF9F5;  /* page ground, a shade off the card stock */
+  --c-paper-2:      #F1EFE8;  /* recessed surface  */
+  --c-paper-3:      #E2DED3;  /* borders, rules    */
+  --c-ink:          #1B1A16;  /* body text         */
+  --c-ink-2:        #4E4739;  /* secondary text    */
+  --c-ink-3:        #837C6D;  /* tertiary / meta   */
 
-  /* --- Suits (the only accents; use sparingly and with intent) ---------- */
-  --c-red:          #A32B33;  /* "San Juan"  — hearts/diamonds, primary CTA */
-  --c-red-deep:     #7E1F26;
-  --c-egg:          #D98032;  /* "Egg Pattern" — highlight, joker, badges   */
-  --c-river:        #2B4A55;  /* deep water — headers, dark sections        */
-  --c-riffle:       #5E7A6B;  /* moss/sage — conservation, success states   */
+  /* --- The deck's own colours ------------------------------------------ */
+  --c-green:        #4A762B;  /* THE brand colour: logo, card back, hearts + diamonds */
+  --c-green-deep:   #35561E;
+  --c-green-soft:   #6E9A4E;
+  --c-bark:         #6F5F46;  /* spades + clubs, rank numerals, card body copy */
+  --c-bark-deep:    #4E4231;
+  --c-egg:          #F4BC4B;  /* the Egg joker — warm highlight, badges */
+  --c-worm:         #B73537;  /* the San Juan Worm — used sparingly */
+
+  /* Legacy aliases kept so existing rules keep resolving. --c-red is no
+     longer the accent: the deck prints green where a normal deck prints red. */
+  --c-red:          var(--c-green);
+  --c-red-deep:     var(--c-green-deep);
+  --c-river:        #35561E;
+  --c-riffle:       #6E9A4E;
 
   /* --- Semantic -------------------------------------------------------- */
   --c-bg:           var(--c-paper);
   --c-bg-sunk:      var(--c-paper-2);
-  --c-surface:      #FFFFFF;
+  --c-surface:      #FFFFFF;   /* pure white: card art sits on it seamlessly */
   --c-border:       var(--c-paper-3);
   --c-text:         var(--c-ink);
   --c-text-muted:   var(--c-ink-2);
   --c-text-faint:   var(--c-ink-3);
-  --c-accent:       var(--c-red);
+  --c-accent:       var(--c-green);
   --c-accent-text:  #FFFFFF;
   --c-focus:        var(--c-egg);
 
@@ -94,40 +106,50 @@
 /* --- Night fishing ------------------------------------------------------ */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --c-bg:         #101417;
-    --c-bg-sunk:    #0B0E10;
-    --c-surface:    #171C20;
-    --c-border:     #2A3237;
-    --c-text:       #ECE8E0;
-    --c-text-muted: #A8B0B6;
-    --c-text-faint: #78828A;
-    --c-red:        #D2565E;
-    --c-egg:        #E9974A;
-    --c-riffle:     #7FA08D;
-    --c-accent:     #D2565E;
-    --c-accent-text:#101417;
-    --shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
-    --shadow-2: 0 4px 12px rgb(0 0 0 / 0.45);
-    --shadow-lift: 0 12px 32px rgb(0 0 0 / 0.55);
+  --c-bg:         #0F1310;
+    --c-bg-sunk:    #0A0D0B;
+    --c-surface:    #161B17;
+    --c-border:     #2A322B;
+    --c-text:       #ECE9E0;
+    --c-text-muted: #ABAE9F;
+    --c-text-faint: #7C8377;
+    --c-green:      #8FBF66;
+    --c-green-deep: #6E9A4E;
+    --c-green-soft: #A9D188;
+    --c-bark:       #B49C77;
+    --c-egg:        #F0C25F;
+    --c-worm:       #D4595C;
+    --c-red:        var(--c-green);
+    --c-riffle:     #8FBF66;
+    --c-accent:     var(--c-green);
+    --c-accent-text:#0F1310;
+    --shadow-1: 0 1px 2px rgb(0 0 0 / 0.45);
+    --shadow-2: 0 4px 12px rgb(0 0 0 / 0.5);
+    --shadow-lift: 0 12px 32px rgb(0 0 0 / 0.6);
   }
 }
 
 :root[data-theme="dark"] {
-  --c-bg:         #101417;
-  --c-bg-sunk:    #0B0E10;
-  --c-surface:    #171C20;
-  --c-border:     #2A3237;
-  --c-text:       #ECE8E0;
-  --c-text-muted: #A8B0B6;
-  --c-text-faint: #78828A;
-  --c-red:        #D2565E;
-  --c-egg:        #E9974A;
-  --c-riffle:     #7FA08D;
-  --c-accent:     #D2565E;
-  --c-accent-text:#101417;
-  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
-  --shadow-2: 0 4px 12px rgb(0 0 0 / 0.45);
-  --shadow-lift: 0 12px 32px rgb(0 0 0 / 0.55);
+  --c-bg:         #0F1310;
+  --c-bg-sunk:    #0A0D0B;
+  --c-surface:    #161B17;
+  --c-border:     #2A322B;
+  --c-text:       #ECE9E0;
+  --c-text-muted: #ABAE9F;
+  --c-text-faint: #7C8377;
+  --c-green:      #8FBF66;
+  --c-green-deep: #6E9A4E;
+  --c-green-soft: #A9D188;
+  --c-bark:       #B49C77;
+  --c-egg:        #F0C25F;
+  --c-worm:       #D4595C;
+  --c-red:        var(--c-green);
+  --c-riffle:     #8FBF66;
+  --c-accent:     var(--c-green);
+  --c-accent-text:#0F1310;
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.45);
+  --shadow-2: 0 4px 12px rgb(0 0 0 / 0.5);
+  --shadow-lift: 0 12px 32px rgb(0 0 0 / 0.6);
 }
 
 @media (prefers-reduced-motion: reduce) {

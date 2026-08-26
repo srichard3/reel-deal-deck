@@ -3,3 +3,7 @@ node_modules/
 .DS_Store
 *.log
 .env*
+
+# Source artwork from the printer (large, and the web assets are generated
+# from it into static/cards and static/brand). Keep the originals out of git.
+new assets/

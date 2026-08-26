@@ -188,27 +188,24 @@ export const meta = {
 /* ------------------------------------------------------------ partials -- */
 
 function deckArt() {
+  /* The printed tuck box and the engraved card back — the real product, not a
+     CSS approximation of it. */
   return `
-  <div class="buy-deckart" role="img"
-       aria-label="The Reel Deal Deck: a stack of poker-size playing cards, top card showing the diamond-lattice back design and the R-diamond mark.">
-    <div class="buy-deckart__stack" aria-hidden="true">
-      <div class="buy-deckart__card buy-deckart__card--c"></div>
-      <div class="buy-deckart__card buy-deckart__card--b"></div>
-      <div class="buy-deckart__card buy-deckart__card--a">
-        <span class="buy-deckart__index">R&#9830;</span>
-        <span class="buy-deckart__back">
-          <svg class="buy-deckart__emblem" viewBox="0 0 64 64" fill="none"
-               stroke="currentColor" stroke-width="2.4"
-               stroke-linecap="round" stroke-linejoin="round" focusable="false">
-            <path d="M20 10v22a12 12 0 0 0 12 12h2a10 10 0 0 0 10-10v-2"/>
-            <path d="M44 32l-4 5 4 5 4-5-4-5z"/>
-            <path d="M14 10h12"/>
-            <path d="M20 18c4-3 9-3 13 0M20 24c5-3 11-3 15 0M20 30c6-3 13-3 17 0"/>
-          </svg>
-        </span>
-        <span class="buy-deckart__index buy-deckart__index--end">R&#9830;</span>
-      </div>
-    </div>
+  <div class="buy-deckart">
+    <figure class="buy-deckart__pack">
+      <img class="buy-deckart__box"
+        src="/brand/box-front-600.webp"
+        srcset="/brand/box-front-600.webp 600w, /brand/box-front-1200.webp 1200w"
+        sizes="(min-width: 60rem) 21rem, 62vw"
+        width="600" height="874" fetchpriority="high" decoding="async"
+        alt="The Reel Deal Deck tuck box: an engraved green case with two trout and a fan of three fly cards.">
+      <img class="buy-deckart__card-back"
+        src="/cards/card-back-400.webp"
+        srcset="/cards/card-back-400.webp 400w, /cards/card-back-800.webp 800w"
+        sizes="(min-width: 60rem) 9rem, 26vw"
+        width="400" height="559" loading="lazy" decoding="async"
+        alt="The card back: a green engraved border framing two rising trout and an angler on the river.">
+    </figure>
   </div>`;
 }
 
