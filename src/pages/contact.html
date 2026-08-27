@@ -1,8 +1,8 @@
 <!--meta
 {
   "path": "/contact/",
-  "title": "Contact",
-  "description": "Reach The Reel Deal Deck in Eagle, Idaho: general questions, fly shop and wholesale enquiries, and press. Typical reply within a few business days.",
+  "title": "Contact Ken and Audrey",
+  "description": "There is no support department. Mail to The Reel Deal Deck in Eagle, Idaho reaches Ken and Audrey, and one of them answers it. General, wholesale and press.",
   "priority": 0.5,
   "changefreq": "yearly",
   "bodyClass": "page-contact",
@@ -70,6 +70,10 @@
      The "few business days" reply window below is a stated policy, not a fact
      from site.json — confirm it before launch or soften it. -->
 
+<!-- TODO-CONFIRM: there is no photography of Ken or Audrey in this repo. The
+     press card below therefore offers card artwork and the tuck box only. Do
+     not promise founder photos until they exist, and do not substitute stock. -->
+
 <section class="page-head">
   <div class="wrap wrap--narrow">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -79,9 +83,11 @@
       </ol>
     </nav>
     <p class="eyebrow" style="margin-block-start:var(--s-5)">Eagle, Idaho</p>
-    <h1 class="h1 page-head__title">Talk to the two people who make this.</h1>
+    <h1 class="h1 page-head__title">Write to Ken and Audrey.</h1>
     <p class="lede page-head__lede">
-      There is no support department. Mail goes to Ken and Audrey, and one of them answers it.
+      There is no support department. This is a father-daughter business in
+      {{ site.location.city }}, {{ site.location.regionName }} &mdash; mail goes to the two of
+      them, and one of them answers it.
     </p>
   </div>
 </section>
@@ -118,8 +124,8 @@
         <span class="point__index" aria-hidden="true">Q&#9829;</span>
         <h2 class="card__title">Press &amp; media</h2>
         <p class="card__text">
-          Interviews, review samples, and high-resolution card art. We can supply original
-          illustrations and founder photos on request.
+          Interviews, review samples, and high-resolution card art. We can supply the original
+          illustrations, the card backs and the tuck box on request.
         </p>
         <address class="contact-card__addr">
           <a href="mailto:hello@reeldealdeck.com?subject=Press%20enquiry">hello@reeldealdeck.com</a>
@@ -136,8 +142,8 @@
         ignored you.
       </p>
       <p>
-        Nothing is shipping yet, so there are no orders to track, no returns to process, and
-        no delivery dates to chase.
+        Nothing is shipping from this site, so there are no orders to track, no returns to
+        process, and no delivery dates to chase.
       </p>
     </div>
   </div>
@@ -208,9 +214,25 @@
       New flies get posted as they're drawn.
     </p>
     <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
-      <a class="btn btn--primary" href="https://instagram.com/reeldealdeck" rel="me noopener">Instagram</a>
-      <a class="btn btn--ghost" href="https://tiktok.com/@reeldealdeck" rel="me noopener">TikTok</a>
-      <a class="btn btn--ghost" href="/flies/">Fly Library</a>
+      <a class="btn btn--primary" href="{{ site.social.instagram }}" rel="me noopener">Instagram</a>
+      <a class="btn btn--ghost" href="{{ site.social.tiktok }}" rel="me noopener">TikTok</a>
+      <a class="btn btn--ghost" href="/cards/">What&rsquo;s in the deck</a>
+      <a class="btn btn--quiet" href="/flies/">Fly Library</a>
+    </p>
+    <p class="contact-signoff">{{ site.voice.signoff }}</p>
+    <p class="figure-note" style="margin-block-start:var(--s-4)">
+      Ken and Audrey sign off that way on the card inside the deck.
+      <a href="/story/">Read the whole note</a>.
     </p>
   </div>
 </section>
+
+<style>
+.contact-signoff {
+  margin-block-start: var(--s-7);
+  font-family: var(--f-display);
+  font-size: var(--t-xl);
+  line-height: var(--lh-snug);
+  color: var(--c-green);
+}
+</style>

@@ -51,15 +51,42 @@
     }
   }
 
+  /* head.html ships two media-scoped <meta name="theme-color"> tags, which the
+     OS honours but a manual override cannot reach. Once the visitor has picked
+     a theme explicitly, publish an unscoped tag carrying the page's real
+     background so the browser chrome follows the choice. The value is read
+     back out of the cascade rather than hard-coded, so tokens.css stays the
+     single source of truth. No stored preference? No tag, and the media
+     queries keep doing their job. */
+  function paintThemeColor() {
+    var meta = doc.querySelector('meta[name="theme-color"][data-rdd-theme-color]');
+    if (!storedTheme()) {
+      if (meta && meta.parentNode) meta.parentNode.removeChild(meta);
+      return;
+    }
+    var bg;
+    try { bg = getComputedStyle(doc.body).backgroundColor; } catch (e) { return; }
+    if (!bg || bg === 'transparent' || bg.indexOf('rgba(0, 0, 0, 0)') === 0) return;
+    if (!meta) {
+      meta = doc.createElement('meta');
+      meta.setAttribute('name', 'theme-color');
+      meta.setAttribute('data-rdd-theme-color', '');
+      doc.head.appendChild(meta);
+    }
+    meta.setAttribute('content', bg);
+  }
+
   function applyTheme(theme) {
     root.dataset.theme = theme;
     try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* private mode */ }
     paintToggles(theme);
+    paintThemeColor();
   }
 
   (function initTheme() {
     var toggles = doc.querySelectorAll('[data-theme-toggle]');
     paintToggles(activeTheme());
+    paintThemeColor();
     for (var i = 0; i < toggles.length; i++) {
       on(toggles[i], 'click', function () {
         applyTheme(activeTheme() === 'dark' ? 'light' : 'dark');
@@ -69,7 +96,7 @@
     try {
       var mq = window.matchMedia('(prefers-color-scheme: dark)');
       var listen = mq.addEventListener ? mq.addEventListener.bind(mq, 'change') : null;
-      if (listen) listen(function () { if (!storedTheme()) paintToggles(systemTheme()); });
+      if (listen) listen(function () { if (!storedTheme()) { paintToggles(systemTheme()); } });
     } catch (e) { /* no matchMedia */ }
   })();
 
@@ -99,8 +126,34 @@
 
     on(toggle, 'click', function () { setOpen(!isOpen()); });
 
+    /* The panel covers the page on a phone, so Tab must not walk out of it
+       into the content behind. Cycle within the panel plus its own toggle;
+       Escape and the outside-click handler below are the ways out. */
+    function tabbables() {
+      var out = [toggle];
+      var nodes = panel.querySelectorAll('a[href], button:not([disabled]), input, select, textarea');
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        if (n.offsetWidth || n.offsetHeight || n.getClientRects().length) out.push(n);
+      }
+      return out;
+    }
+
     on(doc, 'keydown', function (e) {
-      if (e.key === 'Escape' || e.key === 'Esc') close(true);
+      if (e.key === 'Escape' || e.key === 'Esc') { close(true); return; }
+      if (e.key !== 'Tab' || !isOpen()) return;
+      var items = tabbables();
+      if (items.length < 2) return;
+      var first = items[0];
+      var last = items[items.length - 1];
+      var active = doc.activeElement;
+      if (e.shiftKey && (active === first || !panel.contains(active) && active !== toggle)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
 
     /* close on outside click and after following a link */
@@ -131,10 +184,20 @@
 
     var ticking = false;
 
+    /* Publish the header's measured height so scroll-padding-top for #anchor
+       jumps is exact instead of the --s-9 guess base.css falls back to.
+       Costs one read per resize; never runs without JS, and the fallback is
+       generous enough that nothing lands under the header either way. */
+    function measure() {
+      var h = header.offsetHeight;
+      if (h > 0) root.style.setProperty('--rdd-header-h', h + 'px');
+    }
+
     function paint() {
       ticking = false;
       var y = window.pageYOffset || doc.documentElement.scrollTop || 0;
       header.classList.toggle('is-scrolled', y > 4);
+      measure();
     }
 
     function request() {
@@ -172,7 +235,19 @@
       if (!href || href.charAt(0) !== '/') continue;      /* skip external + hash */
       var path = href.split('#')[0].split('?')[0];
       if (path.length > 1 && path.slice(-1) !== '/') path += '/';
-      if (path === here) link.setAttribute('aria-current', 'page');
+
+      if (path === here) {
+        link.setAttribute('aria-current', 'page');
+        continue;
+      }
+
+      /* Section ancestry: a fly page (/flies/adams/) should show that you are
+         inside the Fly Library. That is NOT aria-current="page" — this link
+         does not point at the current page — so it is marked with a data
+         attribute and styled with a quieter rule, leaving the ARIA honest. */
+      if (path.length > 1 && here.indexOf(path) === 0) {
+        link.setAttribute('data-section-current', '');
+      }
     }
   })();
 })();

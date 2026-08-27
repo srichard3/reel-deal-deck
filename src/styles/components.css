@@ -5,6 +5,24 @@
    Consumes tokens.css only. No hard-coded colours, type sizes or spacing.
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   Local constants (not design tokens — deliberately not in tokens.css).
+
+   --rdd-tap is an ergonomics floor, not a step on the spacing scale: the
+   brief's hard requirement is a 44px minimum touch target, and 44px does not
+   and should not exist in the 4px space scale. Declared once here so every
+   control in the file agrees on it.
+
+   --rdd-lift-* are the two speeds of the "pick up a card" interaction. A card
+   rises slowly and is set down fast; one duration for both reads as a button,
+   not as an object.
+   -------------------------------------------------------------------------- */
+:root {
+  --rdd-tap: 2.75rem;          /* 44px */
+  --rdd-lift-in: var(--dur);   /* rise   */
+  --rdd-lift-out: 90ms;        /* set down — faster than it came up */
+}
+
 /* =========================================================== 1. ACTIONS == */
 
 .btn {
@@ -17,6 +35,9 @@
   justify-content: center;
   gap: var(--s-2);
   padding: var(--s-3) var(--s-5);
+  /* Ergonomics floor. Every .btn on the site — including .btn--sm in the
+     header — clears the 44px touch target without changing its type size. */
+  min-height: var(--rdd-tap);
   /* A long label plus padding can exceed a 320px viewport and drag the whole
      document sideways. Let the text wrap rather than the page overflow. */
   max-width: 100%;
@@ -41,6 +62,13 @@
     border-color var(--dur-fast) var(--ease),
     color var(--dur-fast) var(--ease),
     transform var(--dur-fast) var(--ease);
+}
+
+/* nowrap keeps a two-word label on one line where there is room; below the
+   narrowest phones a long CTA must be allowed to break or it drags the whole
+   document sideways. `text-wrap: balance` (already set) evens the result. */
+@media (max-width: 26rem) {
+  .btn { white-space: normal; }
 }
 
 .btn:hover { text-decoration: none; }
@@ -1184,3 +1212,265 @@ select.input {
   border-radius: var(--r-sm);
   box-shadow: var(--shadow-lift);
 }
+
+/* ==========================================================================
+   8. WARMTH, ERGONOMICS AND THE PICKUP
+   --------------------------------------------------------------------------
+   Everything below is an evolution of classes already declared above (and, in
+   one documented case, in flies.css). Nothing is renamed or removed.
+
+   The brief: a family business that makes a beautiful object, without losing
+   the precision. The warmth budget is spent on hairlines, tap ergonomics and
+   two card details — not on texture, ornament or motion for its own sake.
+   ========================================================================== */
+
+/* -------------------------------------------------------- warm hairlines --
+   Panels sat on a warm paper ground inside cold grey keylines. Pulling ~12%
+   of the bark brown into every panel border warms the whole page without
+   touching a single background colour, and it works in both themes because
+   --c-bark is remapped for night fishing. */
+
+.card,
+.door,
+.notice,
+.playing-card,
+.brand__index,
+.point__index,
+.library-filters { border-color: color-mix(in oklab, var(--c-border) 88%, var(--c-bark)); }
+
+/* ---------------------------------------------------------- tap targets --
+   Brief requirement: every touch target >= 44px. .btn is handled at source.
+   These are the remaining interactive runs. Static .pill labels stay compact;
+   only the linked ones become controls. */
+
+.site-nav__list a,
+.mobile-nav a:not(.btn),
+.site-footer__nav a,
+.site-footer__social a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--rdd-tap);
+}
+
+/* the links now carry their own vertical rhythm — the list gap would double it */
+.site-footer__nav ul { gap: 0; }
+.mobile-nav ul { gap: 0; }
+
+.breadcrumbs li { min-height: var(--rdd-tap); }
+.breadcrumbs a { display: inline-flex; align-items: center; align-self: stretch; }
+
+a.pill { min-height: var(--rdd-tap); }
+
+.theme-toggle,
+.nav-toggle { min-width: var(--rdd-tap); min-height: var(--rdd-tap); }
+
+/* ==========================================================================
+   DETAIL ONE — THE PICKUP
+   --------------------------------------------------------------------------
+   .card-face is a photograph of a real printed card. Hovering or focusing it
+   should read as picking that card up off the table, not as a web element
+   growing a shadow:
+
+     · it pivots from near its bottom edge, the way a card does under a thumb
+     · it tilts, and alternate cards in a grid tilt opposite ways, so a row
+       reads as a hand rather than as a carousel
+     · it rises slowly and sets down fast — one duration for both is what makes
+       an interaction feel like a button instead of an object
+     · it lifts above its neighbours while it is up
+
+   NOTE ON SPECIFICITY: .card-face is declared in flies.css, which loads AFTER
+   this file (see src/_partials/head.html). flies.css belongs to another agent,
+   so rather than edit it, these rules are given one extra class of specificity
+   by repeating the selector. That is deliberate, not a typo.
+   ========================================================================== */
+
+a.card-face.card-face {
+  position: relative;
+  transform-origin: 50% 92%;
+  transition:
+    transform var(--rdd-lift-out) var(--ease),
+    box-shadow var(--rdd-lift-out) var(--ease);
+}
+
+a.card-face.card-face:hover,
+a.card-face.card-face:focus-visible {
+  z-index: 2;
+  transform: translateY(calc(var(--s-2) * -1)) rotate(-0.7deg) scale(1.014);
+  box-shadow: var(--shadow-lift);
+  transition-duration: var(--rdd-lift-in);
+}
+
+/* a hand, not a rank: neighbours lean away from each other */
+a.card-face.card-face:nth-child(even):hover,
+a.card-face.card-face:nth-child(even):focus-visible { transform: translateY(calc(var(--s-2) * -1)) rotate(0.7deg) scale(1.014); }
+
+/* set down — faster than the rise, and it lands almost flat */
+a.card-face.card-face:active,
+a.card-face.card-face:nth-child(even):active {
+  transform: translateY(calc(var(--s-1) * -1)) rotate(0deg) scale(1.002);
+  box-shadow: var(--shadow-2);
+  transition-duration: var(--rdd-lift-out);
+}
+
+/* ==========================================================================
+   DETAIL TWO — THE CORNER INDEX, CARRIED THROUGH
+   --------------------------------------------------------------------------
+   The README names the card-corner index as the site's repeating motif. It is
+   already drawn on .playing-card and .brand__index. base.css adds the pip to
+   every .eyebrow and the mirrored index to every pulled quote; here the same
+   idea finishes the two remaining index-shaped objects so the motif reads as
+   a system rather than as three coincidences.
+   ========================================================================== */
+
+/* The brand mark is a card. On hover it should behave like one: it already
+   rotates — give it the lift and the suit warming to match the pickup. */
+.brand__index {
+  transform-origin: 50% 92%;
+  transition:
+    transform var(--rdd-lift-out) var(--ease),
+    border-color var(--rdd-lift-out) var(--ease),
+    box-shadow var(--rdd-lift-out) var(--ease);
+}
+
+.brand:hover .brand__index,
+.brand:focus-visible .brand__index {
+  transform: translateY(calc(var(--s-1) * -1)) rotate(-4deg);
+  box-shadow: var(--shadow-2);
+  transition-duration: var(--rdd-lift-in);
+}
+
+.brand:active .brand__index {
+  transform: translateY(0) rotate(-1.5deg);
+  transition-duration: var(--rdd-lift-out);
+}
+
+/* .point__index is the same object at section scale. Same pivot, same tilt,
+   but it is not interactive, so it only responds when its section is hovered
+   — which on touch means never, and that is correct. */
+.point__index {
+  transform-origin: 50% 92%;
+  transition: transform var(--rdd-lift-in) var(--ease), box-shadow var(--rdd-lift-in) var(--ease);
+}
+.point:hover .point__index {
+  transform: rotate(-3deg);
+  box-shadow: var(--shadow-2);
+}
+
+/* ------------------------------------------------------- reduced motion ---
+   tokens.css already flattens durations globally, which leaves the transforms
+   snapping instantly between two states. For an interaction whose whole point
+   is the movement, the honest reduced-motion answer is no movement at all:
+   keep the depth cue, drop the travel. */
+@media (prefers-reduced-motion: reduce) {
+  a.card-face.card-face:hover,
+  a.card-face.card-face:focus-visible,
+  a.card-face.card-face:active,
+  a.card-face.card-face:nth-child(even):hover,
+  a.card-face.card-face:nth-child(even):focus-visible,
+  .brand:hover .brand__index,
+  .brand:focus-visible .brand__index,
+  .brand:active .brand__index,
+  .point:hover .point__index,
+  a.card:hover,
+  .card--link:hover,
+  .door:hover,
+  a.playing-card:hover,
+  .card-fan:hover .card-fan__card { transform: none; }
+}
+
+/* ==========================================================================
+   9. EVIDENCE, NOT DECORATION
+   --------------------------------------------------------------------------
+   Research finding: this product has no reviews and must never fake any, and
+   only ~43% of shoppers will buy something with none (docs/AUDIENCE.md §2).
+   The substitute is verifiable manufacturing fact — USPCC, Bicycle stock,
+   FSC paper, made in the USA. So the proof strip is typeset as a spec plate
+   off the back of the tuck box: a printed rule over every fact, small-caps
+   labels, tabular figures. Restraint here is the persuasion.
+   ========================================================================== */
+
+.proof .stat {
+  gap: var(--s-2);
+  padding-block-start: var(--s-3);
+  border-top: 1px solid color-mix(in oklab, var(--c-border) 88%, var(--c-bark));
+}
+
+.stat__num { font-variant-numeric: tabular-nums lining-nums; }
+
+/* ==========================================================================
+   10. THE FAMILY
+   --------------------------------------------------------------------------
+   Research finding: what reads as genuine in small family outdoor brands is
+   named, dated, checkable and under-stated — never staged (docs/AUDIENCE.md
+   §3). .person is where Ken and Audrey appear, so it gets real hierarchy and
+   room for a real photograph, and nothing that would make it look art-directed.
+   ========================================================================== */
+
+.person__name { text-wrap: balance; }
+
+.person__role {
+  color: var(--c-text-muted);      /* was --c-text-faint: this is a credential */
+  font-weight: 650;
+}
+
+.person__text { max-width: var(--measure); text-wrap: pretty; }
+
+/* Any image dropped inside a .person block behaves like a print plate: real
+   photograph, honest crop, no vignette, no circle mask, no filter. */
+.person img {
+  width: 100%;
+  max-width: 14rem;
+  border-radius: var(--r-sm);
+  border: 1px solid color-mix(in oklab, var(--c-border) 88%, var(--c-bark));
+  background-color: var(--c-surface);
+}
+
+/* ==========================================================================
+   11. RESPONSIVE + RHYTHM REPAIRS
+   ========================================================================== */
+
+/* .hero clips its own overflow, which also clips a lifted .card-face sitting
+   inside it. Clip only the axis that actually needs clipping. */
+.hero { overflow-x: clip; overflow-y: visible; }
+
+/* Every auto-fit track on the site must guard with min(…, 100%) or it forces
+   the document wider than a 320px viewport. .proof__grid and .fly-strip use
+   fixed counts, so they are already safe; this is the belt for the rest. */
+.card-grid { grid-template-columns: repeat(auto-fit, minmax(min(var(--min, 17rem), 100%), 1fr)); }
+
+/* Long unbroken strings — a URL in a notice, an email in the footer — are the
+   other classic source of horizontal overflow. */
+.notice,
+.card__text,
+.door__text,
+.point__text,
+.person__text,
+.contact-card__addr { overflow-wrap: break-word; }
+
+/* Section rhythm on a phone. --s-7 between sections and --s-7 under a section
+   head put the same interval above and below a heading, which flattens the
+   hierarchy on a small screen. Tighten the trailing space so the heading binds
+   to the content it introduces. */
+@media (max-width: 47.9375rem) {
+  .section-head { margin-block-end: var(--s-6); gap: var(--s-3); }
+  .page-head__title { max-width: none; }
+  .hero__title { max-width: none; }
+  .site-footer__tagline { max-width: 22ch; }
+}
+
+/* The footer bottom row is a space-between flex; at 320px the legal line and
+   the social list fight for the same row before wrapping. Give it a floor. */
+.site-footer__legal { flex: 1 1 18rem; }
+
+/* --- section ancestry ----------------------------------------------------
+   site.js marks the nav link whose section contains the current page (a fly
+   page is inside the Fly Library). Quieter than aria-current="page": the
+   underline is there but half-drawn, so you can see where you are without
+   being told you are somewhere you are not. */
+.site-nav__list a[data-section-current] { color: var(--c-text); }
+.site-nav__list a[data-section-current]::after {
+  transform: scaleX(1);
+  background-color: color-mix(in oklab, var(--c-accent) 45%, transparent);
+}
+.mobile-nav a[data-section-current],
+.site-footer__nav a[data-section-current] { color: var(--c-text); }

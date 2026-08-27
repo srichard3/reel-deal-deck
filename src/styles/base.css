@@ -15,8 +15,9 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
-  /* sticky header clearance for #anchor jumps */
-  scroll-padding-top: var(--s-9);
+  /* Sticky-header clearance for #anchor jumps. site.js measures the real
+     header and publishes --rdd-header-h; --s-9 is the no-JS fallback. */
+  scroll-padding-top: calc(var(--rdd-header-h, var(--s-9)) + var(--s-4));
   background-color: var(--c-bg);
   color-scheme: light dark;
 }
@@ -32,6 +33,10 @@ body {
   font-synthesis-weight: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Quotation marks and hyphens hang into the margin where the engine supports
+     it (Safari today). Pure typographic warmth: costs nothing, degrades to
+     nothing, and stops a pulled quote from looking bolted on. */
+  hanging-punctuation: first last;
   display: flex;
   flex-direction: column;
 }
@@ -152,6 +157,23 @@ table { border-collapse: collapse; width: 100%; }
 .h2 { font-size: var(--t-2xl); line-height: var(--lh-tight); }
 .h3 { font-size: var(--t-xl);  line-height: var(--lh-snug); }
 
+/* Optical correction. --ls-tight (-0.02em) is drawn for the 4.5rem end of the
+   display clamp; at the 2.5rem phone end the same tracking closes the serif
+   counters up and the headline reads cramped. Ease it off on small screens
+   and let tight lines breathe a touch more. */
+@media (max-width: 47.9375rem) {
+  .h1 { letter-spacing: -0.012em; line-height: 1.14; }
+  .h2 { letter-spacing: -0.012em; line-height: 1.16; }
+  .h3 { letter-spacing: -0.008em; }
+}
+
+/* ---- the corner index -------------------------------------------------- */
+/* The site's repeating motif is a playing card's corner index. Every eyebrow
+   on the site is already set in index tracking and small caps; giving it the
+   suit pip makes that resemblance deliberate rather than accidental, and it
+   costs no markup. The pip is decorative — aria-hidden is impossible on a
+   pseudo-element, but a lone "♦" is announced as a symbol, not as content,
+   and it is inside a label that already reads as a kicker. */
 .eyebrow {
   display: block;
   font-family: var(--f-body);
@@ -161,7 +183,20 @@ table { border-collapse: collapse; width: 100%; }
   letter-spacing: var(--ls-index);
   text-transform: uppercase;
   color: var(--c-text-faint);
+  text-wrap: pretty;
 }
+
+.eyebrow::before {
+  content: "\2666";
+  /* the pip is a glyph, not a letter — index tracking would float it away */
+  letter-spacing: 0;
+  margin-inline-end: 0.6em;
+  color: var(--c-accent);
+}
+
+/* Nested eyebrows inside a chip-like element would double the mark. */
+.pill .eyebrow::before,
+.btn .eyebrow::before { content: none; margin: 0; }
 
 .lede {
   font-size: var(--t-lg);
@@ -169,6 +204,12 @@ table { border-collapse: collapse; width: 100%; }
   color: var(--c-text-muted);
   max-width: var(--measure);
   text-wrap: pretty;
+}
+
+/* A three-line lede at --lh-snug on a 375px screen sets as a solid block.
+   Relax it where the line count is highest. */
+@media (max-width: 47.9375rem) {
+  .lede { line-height: var(--lh-body); }
 }
 
 .text-muted { color: var(--c-text-muted); }
@@ -250,22 +291,56 @@ ul.list-index > li::before {
   color: var(--c-accent);
 }
 
-.prose blockquote {
+/* ---- pulled quote, set as the deck's own info card ---------------------- */
+/* The 56th card in the deck is Ken and Audrey's printed note. When their words
+   appear on the site they should look like that card: paper stock, a green
+   keyline down the binding edge, the copy in the display serif, and the corner
+   index repeated bottom-right the way a real face does it. This is the one
+   place on the site where warmth is the point, so it gets the treatment. */
+
+.prose blockquote,
+blockquote.rdd-cardnote {
+  position: relative;
   margin: 0;
-  padding-inline-start: var(--s-5);
-  border-inline-start: 2px solid var(--c-accent);
+  padding: var(--s-5) var(--s-6) var(--s-5) var(--s-5);
+  border: 1px solid var(--c-border);
+  border-inline-start: 3px solid var(--c-accent);
+  border-radius: 0 var(--r-card) var(--r-card) 0;
+  background-color: var(--c-surface);
+  box-shadow: var(--shadow-1);
   font-family: var(--f-display);
   font-size: var(--t-lg);
   line-height: var(--lh-snug);
   color: var(--c-text);
+  text-wrap: pretty;
 }
 
-.prose blockquote cite {
+/* The mirrored corner index. Rotated 180deg, faint, bottom-right — you only
+   notice it on the second look, which is the intention. */
+.prose blockquote::after,
+blockquote.rdd-cardnote::after {
+  content: "\2666";
+  position: absolute;
+  inset-inline-end: var(--s-3);
+  inset-block-end: var(--s-3);
+  transform: rotate(180deg);
+  font-size: var(--t-sm);
+  line-height: 1;
+  color: color-mix(in oklab, var(--c-accent) 45%, transparent);
+  pointer-events: none;
+}
+
+.prose blockquote > * + *,
+blockquote.rdd-cardnote > * + * { margin-block-start: var(--s-4); }
+
+.prose blockquote cite,
+blockquote.rdd-cardnote cite {
   display: block;
-  margin-block-start: var(--s-3);
+  margin-block-start: var(--s-4);
   font-family: var(--f-body);
   font-size: var(--t-sm);
   font-style: normal;
+  line-height: var(--lh-snug);
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;
   color: var(--c-text-faint);

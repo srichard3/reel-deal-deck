@@ -1,18 +1,19 @@
 <!--meta
 {
   "path": "/conservation/",
-  "title": "Conservation & Trout Unlimited",
-  "description": "A set amount from every Reel Deal Deck goes to Trout Unlimited, and we hold a Trout Unlimited Business membership. Here is exactly what that means.",
+  "title": "Catch and Release",
+  "description": "“We are dedicated to catch-and-release fishing and protecting our headwaters and trout habitats.” What that means, and what our Trout Unlimited membership is.",
   "priority": 0.6,
   "changefreq": "yearly",
   "bodyClass": "page-conservation",
+  "ogImage": "/og/conservation.png",
   "jsonld": [
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Conservation",
+      "name": "Catch and release, and Trout Unlimited",
       "url": "https://reeldealdeck.com/conservation/",
-      "description": "How The Reel Deal Deck supports Trout Unlimited: a Trout Unlimited Business membership and a per-deck contribution.",
+      "description": "How The Reel Deal Deck supports cold water: catch-and-release fishing, a Trout Unlimited Business membership and a per-deck contribution.",
       "about": {
         "@type": "NGO",
         "name": "Trout Unlimited",
@@ -23,6 +24,14 @@
         "name": "The Reel Deal Deck",
         "url": "https://reeldealdeck.com/"
       }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://reeldealdeck.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Conservation", "item": "https://reeldealdeck.com/conservation/" }
+      ]
     }
   ]
 }
@@ -51,37 +60,54 @@
         <li><span aria-current="page">Conservation</span></li>
       </ol>
     </nav>
-    <p class="eyebrow" style="margin-block-start:var(--s-5)">Cold water &middot; Trout Unlimited</p>
-    <h1 class="h1 page-head__title">A deck of fish is worth less than the water they live in.</h1>
+    <p class="eyebrow" style="margin-block-start:var(--s-5)">Cold water &middot; {{ site.conservation.partner }}</p>
+    <h1 class="h1 page-head__title">&ldquo;Dedicated to catch-and-release fishing.&rdquo;</h1>
     <p class="lede page-head__lede">
-      We draw trout flies for a living, which is a strange thing to do if the trout are gone.
-      A set amount from every deck goes to Trout Unlimited, and we hold a Trout Unlimited
-      Business membership. Here is precisely what that does and does not mean.
+      That is Ken and Audrey&rsquo;s wording, printed inside the deck. This page is what
+      stands behind it, including the parts we are careful not to overstate.
     </p>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap wrap--narrow">
-    <div class="prose">
-      <h2>What we actually do</h2>
+    <blockquote class="cons-note">
+      <p>{{ site.voice.why }}</p>
+      <cite>Ken and Audrey &middot; <a href="/cards/#info-card">printed on the info card in every deck</a></cite>
+    </blockquote>
+
+    <div class="prose" style="margin-block-start:var(--s-8)">
+      <h2>Why a deck of cards has a conservation page at all</h2>
       <p>
-        Two things, both small and both specific:
+        We draw trout flies for a living, which is a strange thing to do if the trout are
+        gone. Every fly in this deck imitates something that hatches in cold, clean,
+        connected water &mdash; or it imitates nothing at all. The habitat is the product,
+        one step removed.
       </p>
+      <p>
+        {{ site.motto }} That line is printed in the deck too, and it is the plainest
+        argument for catch-and-release we know how to make: the fish you let go is the one
+        somebody else gets to find.
+      </p>
+
+      <h2>What we actually do</h2>
+      <p>Two things, both small and both specific:</p>
       <ul>
         <li>
           <strong>A per-deck contribution.</strong> A set amount from every deck sold goes to
-          <a href="https://www.tu.org/" rel="noopener">Trout Unlimited</a>. It is a fixed figure
-          per deck, not a share of profit, so it does not quietly become zero in a bad quarter.
+          <a href="{{ site.conservation.partnerUrl }}" rel="noopener">{{ site.conservation.partner }}</a>.
+          It is a fixed figure per deck, not a share of profit, so it does not quietly become
+          zero in a bad quarter.
         </li>
         <li>
-          <strong>A Trout Unlimited Business membership.</strong> We joined as a business member.
-          That is a membership, which anyone can buy &mdash; it is not a partnership, a sponsorship,
-          or an endorsement, and Trout Unlimited has not vouched for this product.
+          <strong>A {{ site.conservation.partner }} Business membership.</strong> We joined as
+          a business member, and the mark is printed on the info card inside the deck. That is
+          a membership, which anyone can buy &mdash; it is not a partnership, a sponsorship or
+          an endorsement, and {{ site.conservation.partner }} has not vouched for this product.
         </li>
       </ul>
 
-      <!-- TODO-CONFIRM: replace the sentence below with the real number, e.g.
+      <!-- TODO-CONFIRM: replace the notice below with the real number, e.g.
            "$1 from every deck goes to Trout Unlimited." -->
       <p class="notice notice--info">
         <strong>TODO-CONFIRM &mdash; the number.</strong> This page should name the exact
@@ -90,56 +116,57 @@
         which is the entire reason it works.
       </p>
 
-      <h2>Why Trout Unlimited</h2>
+      <h2>Why {{ site.conservation.partner }}</h2>
       <p>
-        Trout Unlimited works on cold-water habitat: reconnecting streams that culverts and
-        old dams cut in half, restoring the shade and gravel that spawning depends on, and
-        arguing for water policy in rooms where anglers usually aren't. It is unglamorous,
-        long-horizon work on the exact resource this deck depends on. Every fly we drew
-        imitates something that hatches in cold, clean, connected water &mdash; or it imitates
-        nothing at all.
+        {{ site.conservation.partner }} works on cold-water habitat: reconnecting streams that
+        culverts and old dams cut in half, restoring the shade and gravel that spawning
+        depends on, and arguing for water policy in rooms where anglers usually aren&rsquo;t.
+        It is unglamorous, long-horizon work on the exact resource this deck depends on.
       </p>
       <p>
         You can read their work, or join directly, at
-        <a href="https://www.tu.org/" rel="noopener">tu.org</a>. If you'd rather send them a
-        membership than buy a deck of cards, that is a straightforwardly better use of the
-        money and we will not be offended.
+        <a href="{{ site.conservation.partnerUrl }}" rel="noopener">tu.org</a>. If you would
+        rather send them a membership than buy a deck of cards, that is a straightforwardly
+        better use of the money and we will not be offended.
       </p>
 
       <h2>What we are careful not to claim</h2>
       <ul class="list-index">
+        <li>We do not say {{ site.conservation.partner }} endorses The Reel Deal Deck. It does not.</li>
         <li>
-          We do not say Trout Unlimited endorses The Reel Deal Deck. It does not.
-        </li>
-        <li>
-          We do not say we are a Trout Unlimited partner. We are a business member,
-          which is a different and smaller thing.
+          We do not say we are a {{ site.conservation.partner }} partner. We are a business
+          member, which is a different and smaller thing.
         </li>
         <li>
           We do not say &ldquo;a portion of proceeds&rdquo; and leave it there. That phrase can
           mean a cent, and shoppers have learned to read it that way for good reason.
         </li>
+        <li>
+          We do not claim the deck itself is carbon-neutral, plastic-free or climate-positive.
+          It is paper, ink and glue, and the sheet below says which.
+        </li>
       </ul>
 
-      <h2>The deck itself</h2>
+      <h2>The materials</h2>
       <p>
-        The materials are the other half of this. The deck is printed by USPCC on genuine
-        Bicycle stock &mdash; {{ site.product.material }} &mdash; and at {{ site.product.dimensions }}
-        it is a real playing card deck, which means it lasts long enough to be worth having
-        printed at all. The most sustainable deck of cards is the one nobody throws away.
+        The deck is printed by {{ site.product.manufacturer }} on
+        {{ site.product.stock }} &mdash; {{ site.product.material }} &mdash; at
+        {{ site.product.dimensions }}. It is a real playing card deck, which means it lasts
+        long enough to be worth printing at all. The most sustainable deck of cards is the one
+        nobody throws away. <a href="/cards/#printing">The full specification is here</a>.
       </p>
     </div>
 
     <hr class="rule" style="margin-block:var(--s-8)">
 
-    <div class="card-grid" style="--min:14rem">
+    <div class="card-grid" style="--min:min(14rem, 100%)">
       <div class="stat">
         <span class="stat__num">Per deck</span>
         <span class="stat__label">Fixed contribution, not a share of profit</span>
       </div>
       <div class="stat">
         <span class="stat__num">Business member</span>
-        <span class="stat__label">Trout Unlimited &mdash; not a partnership</span>
+        <span class="stat__label">{{ site.conservation.partner }} &mdash; not a partnership</span>
       </div>
       <div class="stat">
         <span class="stat__num">FSC</span>
@@ -154,12 +181,35 @@
     <p class="section-num" aria-hidden="true">A&#9830;</p>
     <h2 class="h2" style="margin-block-start:var(--s-4)">Support the water directly</h2>
     <p class="lede" style="margin-block-start:var(--s-4)">
-      Trout Unlimited takes memberships and donations from anyone, with or without a deck
-      of cards involved.
+      {{ site.conservation.partner }} takes memberships and donations from anyone, with or
+      without a deck of cards involved.
     </p>
     <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
-      <a class="btn btn--primary" href="https://www.tu.org/" rel="noopener">Visit tu.org</a>
-      <a class="btn btn--ghost" href="/deck/">See the deck</a>
+      <a class="btn btn--primary" href="{{ site.conservation.partnerUrl }}" rel="noopener">Visit tu.org</a>
+      <a class="btn btn--ghost" href="/cards/">What&rsquo;s in the deck</a>
+      <a class="btn btn--quiet" href="/deck/#reserve">Reserve a deck</a>
     </p>
   </div>
 </section>
+
+<style>
+.cons-note {
+  margin: 0;
+  border-inline-start: 2px solid var(--c-green);
+  padding-inline-start: var(--s-6);
+}
+.cons-note p {
+  margin: 0 0 var(--s-4);
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  line-height: var(--lh-snug);
+  color: var(--c-text);
+  max-inline-size: var(--measure);
+}
+.cons-note cite {
+  display: block;
+  font-style: normal;
+  font-size: var(--t-sm);
+  color: var(--c-text-faint);
+}
+</style>
