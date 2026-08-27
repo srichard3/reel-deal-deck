@@ -114,6 +114,7 @@ const SITE_HOST = SITE_ORIGIN ? new URL(SITE_ORIGIN).host : null;
 
 const allFiles = await walk(DIST);
 const fileSet = new Set(allFiles.map(rel));
+const linkGraph = new Map();  // route -> Set(routes it links to)
 const htmlFiles = allFiles
   .filter((f) => f.endsWith('.html'))
   // dist/404.html is a byte-identical copy of dist/404/index.html written by
@@ -328,6 +329,7 @@ for (const file of htmlFiles) {
     if (/^\/\//.test(h)) { add(name, 'error', `protocol-relative link: ${h}`, line); continue; }
 
     const state = resolveInternal(h, route);
+    if (state !== 'missing') noteLinkTarget(h, route);
     if (state === 'missing') add(name, 'error', `broken internal link: ${h}`, line);
     else if (state === 'redirect')
       add(name, 'warning', `link costs a redirect hop (no trailing slash): ${h}`, line);
@@ -404,6 +406,64 @@ for (const file of htmlFiles) {
 
   /* --- lang ------------------------------------------------------------ */
   if (!/<html\b[^>]*\slang\s*=/i.test(html)) add(name, 'error', '<html> has no lang attribute');
+}
+
+/* ------------------------------------------------------------- orphans -- */
+/* A page nothing links to is invisible to a reader and close to invisible to a
+   crawler, which reaches it only via the sitemap and passes it no internal
+   authority. This is how 22 guides ended up unreachable from the homepage: the
+   link checker proved every link RESOLVED, and never asked whether anything
+   pointed AT a given page. */
+
+function noteLinkTarget(href, fromRoute) {
+  let t = href.split('#')[0].split('?')[0];
+  if (!t) return;
+  if (!t.startsWith('/')) {
+    t = path.posix.resolve(path.posix.dirname(fromRoute.replace(/\/$/, '/index.html')), t);
+  }
+  if (CHECK_BASE && t.startsWith(CHECK_BASE + '/')) t = t.slice(CHECK_BASE.length);
+  else if (CHECK_BASE && t === CHECK_BASE) t = '/';
+  t = path.posix.normalize(t);
+  if (!t.endsWith('/') && !path.posix.extname(t)) t += '/';
+  if (t === fromRoute) return;
+  if (!linkGraph.has(fromRoute)) linkGraph.set(fromRoute, new Set());
+  linkGraph.get(fromRoute).add(t);
+}
+
+/* Walk the link graph outward from the homepage. Counting inbound links is not
+   enough: a cluster that links only to itself — as the guides did — has inbound
+   links on every page and is still unreachable from the front door. */
+const reachable = new Set(['/']);
+const queue = ['/'];
+while (queue.length) {
+  for (const next of linkGraph.get(queue.shift()) ?? []) {
+    if (!reachable.has(next)) { reachable.add(next); queue.push(next); }
+  }
+}
+
+const unreachable = [];
+for (const file of htmlFiles) {
+  const name = rel(file);
+  const route = name === 'index.html' ? '/' : '/' + name.replace(/index\.html$/, '');
+  if (route === '/' || /^\/404\//.test(route)) continue;
+  if (reachable.has(route)) continue;
+  const html = await readFile(file, 'utf8').catch(() => '');
+  if (/<meta[^>]+name=["']robots["'][^>]*noindex/i.test(html)) continue;
+  unreachable.push({ name, route });
+}
+
+/* Report the cluster, not 23 identical lines. */
+if (unreachable.length) {
+  const roots = unreachable.filter((u) => u.route.split('/').filter(Boolean).length === 1);
+  const head = roots.length ? roots : unreachable.slice(0, 1);
+  for (const r of head) {
+    add(r.name, 'error',
+      `unreachable from the homepage — nothing outside this section links to it` +
+      (unreachable.length > head.length ? ` (${unreachable.length} pages in this cluster)` : ''));
+  }
+  for (const u of unreachable.filter((x) => !head.includes(x)).slice(0, 5)) {
+    add(u.name, 'warning', 'unreachable from the homepage (same cluster as above)');
+  }
 }
 
 /* ------------------------------------------------------------ sitemap --- */

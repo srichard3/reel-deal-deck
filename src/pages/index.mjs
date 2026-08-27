@@ -105,7 +105,21 @@ function flyStrip(flies, picks) {
 
 /* ------------------------------------------------------------------ page -- */
 
-export default function homepage({ site, flies }) {
+export default function homepage({ site, flies, posts }) {
+  /* Four entry points into the guides, chosen as the widest doors: what to buy,
+     what to tie on, how to rig it, and why it is not working. Falls back to the
+     newest four if any slug is missing, so the section never renders empty. */
+  const p = Array.isArray(posts) ? posts : [];
+  const want = ['what-weight-fly-rod-for-trout', 'what-flies-do-i-need-to-start',
+                'nymph-rig-setup', 'why-trout-refuse-your-fly'];
+  const picked = want.map((sl) => p.find((x) => x.slug === sl)).filter(Boolean);
+  const featured = (picked.length === 4 ? picked : p.slice(0, 4)).map((x) => ({
+    path: `/blog/${x.slug}/`,
+    topic: x.topic,
+    title: x.title,
+    question: x.question,
+    blurb: String(x.description || '').split('. ')[0].replace(/\.$/, '') + '.',
+  }));
   const f = Array.isArray(flies) ? flies : [];
   const v = site?.voice ?? {};
   const craft = site?.cardCraft ?? {};
@@ -254,6 +268,40 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
     <p class="text-muted" style="margin-block-start:var(--s-6)">
       <a href="/flies/">Open the Fly Library</a> &mdash; dries, nymphs, streamers, wets,
       terrestrials and attractors, each one indexed like a card.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="guides" aria-labelledby="guides-h">
+  <div class="wrap">
+    <div class="section-head section-head--split">
+      <div>
+        <p class="section-num" aria-hidden="true">4&#9827;</p>
+        <h2 class="h2" id="guides-h">And the questions the cards do not answer.</h2>
+        <p class="lede">
+          Straight answers to what anglers actually ask &mdash; which rod, which tippet,
+          how to rig it, why the fish keep refusing. Written to be useful on the bank,
+          not to sell you a rod.
+        </p>
+      </div>
+      <p><a class="btn btn--ghost" href="/blog/">All ${esc(posts.length)} guides</a></p>
+    </div>
+
+    <div class="card-grid" style="--min:15rem;--gap:var(--s-4)">
+      ${featured
+        .map(
+          (g) => `<a class="card card--link" href="${esc(g.path)}">
+        <p class="eyebrow">${esc(g.topic || 'Guide')}</p>
+        <p class="card__title">${esc(g.question || g.title)}</p>
+        <p class="card__text">${esc(g.blurb)}</p>
+      </a>`
+        )
+        .join('\n      ')}
+    </div>
+
+    <p class="text-muted" style="margin-block-start:var(--s-6)">
+      <a href="/blog/">Open the guides</a> &mdash; gear, technique, knots, seasons and
+      getting started, each one answering a single question.
     </p>
   </div>
 </section>
