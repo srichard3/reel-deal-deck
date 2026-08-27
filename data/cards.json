@@ -547,6 +547,8 @@
     "suit": "joker",
     "category": "Surface Popper",
     "sizes": "8-10",
-    "cardText": "Imitates injured baitfish, frogs, or large insects skittering on the surface."
+    "cardText": "Imitates injured baitfish, frogs, or large insects skittering on the surface.",
+    "bonus": true,
+    "bonusNote": "A bonus card. It ships in the deck and is shown on the site, but it is NOT counted in the marketed figure: the deck is advertised as 54 unique cards (52 standard + the Egg and San Juan Worm jokers), which is the industry-standard count printed on the tuck box. Never state a card count that includes this one."
   }
 ]

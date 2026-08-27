@@ -155,7 +155,7 @@ export default function ({ site, posts = [], flies = [] }) {
     </p>
     <p class="cluster" style="justify-content:center">
       <a class="btn btn--primary" href="/deck/">See the deck</a>
-      <a class="btn btn--ghost" href="/flies/">Browse all ${esc(flies.length || 54)} flies</a>
+      <a class="btn btn--ghost" href="/flies/">Browse the Fly Library</a>
     </p>
   </div>
 </section>

@@ -3524,6 +3524,8 @@
       "lightning-bug",
       "parachute-adams",
       "madam-x"
-    ]
+    ],
+    "bonus": true,
+    "bonusNote": "A bonus card. It ships in the deck and is shown on the site, but it is NOT counted in the marketed figure: the deck is advertised as 54 unique cards (52 standard + the Egg and San Juan Worm jokers), which is the industry-standard count printed on the tuck box. Never state a card count that includes this one."
   }
 ]

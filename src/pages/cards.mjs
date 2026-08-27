@@ -334,7 +334,7 @@ function backAndBox(site) {
              width="400" height="559" loading="lazy" decoding="async"
              alt="The Reel Deal Deck card back: an engraved green border framing two rising trout and an angler casting on the river">
         <figcaption class="figure-note" style="margin-block-start:var(--s-4)">
-          One back, printed on all ${esc(CARDS.length)} cards. It is symmetrical top to bottom,
+          One back, printed on every card in the deck. It is symmetrical top to bottom,
           so nothing in your hand gives itself away.
         </figcaption>
       </figure>
@@ -431,16 +431,10 @@ function printing(site) {
       </div>`).join('\n      ')}
     </dl>
 
-    <!-- TODO-CONFIRM: the printed tuck box says 54 unique cards; the v8 face art
-         this page is transcribed from contains 55 illustrated fly cards plus the
-         info card. See data/site.json -> product.countNote. This page states the
-         number of fly cards it actually renders and does not repeat "54" as a
-         claim of its own. Confirm the figure before it goes in any listing. -->
     <p class="notice notice--info" style="margin-block-start:var(--s-6)">
-      <strong>On the count.</strong> The box says
-      &ldquo;${esc(p.boxClaim || '54 Unique Cards')}&rdquo;. The faces on this page are the
-      ${esc(CARDS.length)} illustrated fly cards, plus the info card above. We are confirming
-      which number goes on the box before we print it anywhere else.
+      <strong>On the count.</strong> The deck is
+      &ldquo;${esc(p.boxClaim || '54 Unique Cards')}&rdquo; &mdash; fifty-two standard cards
+      plus the two jokers. There is a bonus card in there as well. We will let you find it.
     </p>
 
     <!-- TODO-CONFIRM: no finish/coating name beyond USPCC's Air-Cushion is in

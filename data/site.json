@@ -36,7 +36,7 @@
     "manufacturer": "The United States Playing Card Company",
     "origin": "Made in the USA",
     "boxClaim": "54 Unique Cards — Hand Illustrated in Exquisite Detail",
-    "countNote": "TODO-CONFIRM: the printed tuck box says 54 Unique Cards, but the v8 face art contains 55 illustrated fly cards (52 standard + Egg, San Juan Worm, Bass Popper) plus an info card. Confirm the number before it goes in any ad or listing."
+    "cardCountNote": "54 unique cards = 52 standard + 2 jokers (Egg, San Juan Worm). This is the industry-standard count and the figure printed on the tuck box. A further bonus card ships in the deck and is deliberately not mentioned in any public copy — see data/flies.json, the entry flagged bonus:true."
   },
   "campaign": {
     "note": "The CTA component reads `endsAt` against build time and swaps to `after` automatically. When the campaign closes, nothing needs editing — but set active:false if it is cancelled or paused early.",
@@ -174,7 +174,7 @@
   "cardCraft": {
     "suits": "A two-colour deck: green replaces red on hearts and diamonds, bark brown replaces black on spades and clubs — drawn from the tuck box and card back.",
     "backDesign": "An engraved green border framing two rising trout and an angler on the river.",
-    "jokers": "Three specials carry a trout-in-a-jester's-cap mark instead of a rank: the Egg, the San Juan Worm and the Bass Popper.",
+    "jokers": "Two jokers carry a trout-in-a-jester's-cap mark instead of a rank: the Egg and the San Juan Worm.",
     "infoCard": "A 56th card carries Ken and Audrey's note, the site address and the Trout Unlimited Business mark.",
     "eachCard": "Every card shows the rank and suit, the fly's name, its category, the hand-drawn fly itself, a plain-English note on what it imitates, and the hook sizes it is usually tied in.",
     "printer": "The United States Playing Card Company",

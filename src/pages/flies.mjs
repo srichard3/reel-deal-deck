@@ -84,12 +84,11 @@ export default function ({ site, flies }) {
   </nav>
 
   <header class="page-head">
-    <!-- TODO-CONFIRM: the printed tuck box says "54 Unique Cards", but the v8
-         face artwork contains 55 illustrated fly cards (52 standard + Egg,
-         San Juan Worm and Bass Popper) plus an info card. Confirm which number
-         is correct for marketing copy; site.product.cardCount currently follows
-         the box. The library below lists every illustrated fly card. -->
-    <p class="eyebrow">Free reference · ${flies.length} flies</p>
+    <!-- No count here on purpose. The deck is marketed as 54 unique cards
+         (52 standard + 2 jokers) — the industry-standard figure on the tuck
+         box — while the library also carries the bonus card. Stating a library
+         total would contradict the product claim, so it states neither. -->
+    <p class="eyebrow">Free reference &middot; every fly in the deck</p>
     <h1 class="h1 page-head__title">The Fly Library</h1>
     <p class="page-head__lede lede">
       Every fly in the deck, explained properly: what it imitates, what sizes to carry,

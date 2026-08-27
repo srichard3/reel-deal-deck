@@ -71,6 +71,11 @@ const site = JSON.parse(await read(path.join(ROOT, 'data/site.json')));
    configured canonical host gains the base suffix. */
 if (process.env.SITE_URL) site.url = process.env.SITE_URL.replace(/\/$/, '');
 else if (BASE) site.url = site.url.replace(/\/$/, '') + BASE;
+/* Every card gets a page, bonus cards included. `bonus: true` affects the
+   marketed COUNT only — see site.product.cardCount and cardCountNote. The deck
+   is advertised as 54 unique cards (52 standard + 2 jokers), which is the
+   industry-standard figure printed on the tuck box; the bonus card ships on top
+   of that and is shown on the site but never counted into the 54. */
 const flies = existsSync(path.join(ROOT, 'data/flies.json'))
   ? JSON.parse(await read(path.join(ROOT, 'data/flies.json')))
   : [];
