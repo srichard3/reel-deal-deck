@@ -1769,3 +1769,18 @@ a.card-face.card-face:nth-child(even):active {
   border: 1px solid var(--c-border);
 }
 .press-asset figcaption { display: grid; gap: var(--s-1); margin-block-start: var(--s-3); font-size: var(--t-sm); }
+
+/* --- Brand mark: the jester trout ---------------------------------------
+   Vector extracted from the printer's joker_fish.pdf, so it is the same
+   artwork that prints on the deck's jokers. Inline rather than an <img> so
+   it inherits currentColor and follows the theme token — a flat PNG could
+   not track the manual light/dark toggle. */
+.brand__fish {
+  display: block;
+  width: auto;
+  height: 1.6rem;
+  color: var(--c-green);
+  transition: color var(--dur-fast) var(--ease);
+}
+.brand:hover .brand__fish { color: var(--c-green-deep); }
+@media (min-width: 40rem) { .brand__fish { height: 1.85rem; } }
