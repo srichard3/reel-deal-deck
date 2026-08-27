@@ -16,10 +16,13 @@
 <meta name="twitter:description" content="{{ meta.description }}">
 <meta name="twitter:image" content="{{ meta.ogImage }}">
 
-<meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#101417" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAF9F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1310" media="(prefers-color-scheme: dark)">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!-- PNG fallback: Safari's SVG-favicon support is recent and patchy, and a
+     browser that skips the SVG would otherwise show no icon at all. -->
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 

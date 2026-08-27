@@ -1774,14 +1774,23 @@ a.card-face.card-face:nth-child(even):active {
    Vector extracted from the printer's joker_fish.pdf, so it is the same
    artwork that prints on the deck's jokers. Inline rather than an <img> so
    it inherits currentColor and follows the theme token — a flat PNG could
-   not track the manual light/dark toggle. */
+   not track the manual light/dark toggle.
+
+   NB: width is computed from the height, never `auto`. Safari does not derive
+   an intrinsic width from viewBox alone, so `width: auto` collapsed the mark
+   to zero width there while Chrome and Firefox rendered it fine. The element
+   also carries width/height attributes for the same reason. */
 .brand__fish {
+  --fish-ratio: 0.708;              /* 81.9 / 115.7, the viewBox aspect */
+  --fish-h: 1.6rem;
+
   display: block;
-  width: auto;
-  height: 1.6rem;
+  height: var(--fish-h);
+  width: calc(var(--fish-h) * var(--fish-ratio));
+  aspect-ratio: 819 / 1157;
   color: var(--c-green);
   transition: color var(--dur-fast) var(--ease);
 }
 .brand:hover .brand__fish { color: var(--c-green-deep); }
-@media (min-width: 40rem) { .brand__fish { height: 1.85rem; } }
-.brand__fish--lg { height: 2.75rem; color: var(--c-green); }
+@media (min-width: 40rem) { .brand__fish { --fish-h: 1.85rem; } }
+.brand__fish--lg { --fish-h: 2.75rem; color: var(--c-green); }
