@@ -34,6 +34,14 @@ jobs:
     env:
       BASE_PATH: /reel-deal-deck
       SITE_URL: https://srichard3.github.io/reel-deal-deck
+      # This is a staging host, not the real domain. Every page ships
+      # noindex,nofollow so Google never indexes URLs that will be abandoned
+      # when the site moves to reeldealdeck.com — GitHub Pages cannot issue
+      # redirects, so those URLs could never be 301'd afterwards.
+      #
+      # REMOVE THIS (and BASE_PATH/SITE_URL) when moving to the real domain,
+      # or the site will never rank.
+      NOINDEX: '1'
     steps:
       - uses: actions/checkout@v4
 
@@ -47,6 +55,15 @@ jobs:
 
       - name: Quality gate
         run: node scripts/check.mjs
+
+      # A staging deploy that ships indexable is the one mistake here that
+      # cannot be undone cleanly. Fail the build rather than publish it.
+      - name: Assert staging is not indexable
+        run: |
+          n=$(grep -rl 'content="noindex, nofollow"' dist --include=index.html | wc -l)
+          t=$(find dist -name index.html | wc -l)
+          echo "noindex on $n of $t pages"
+          [ "$n" -eq "$t" ] || { echo "::error::staging build is indexable"; exit 1; }
 
       # Pages runs Jekyll unless told not to, which would drop _headers and
       # any future underscore-prefixed file.

@@ -37,6 +37,16 @@ const read = (p) => readFile(p, 'utf8');
  */
 const BASE = (process.env.BASE_PATH || '').replace(/\/+$/, '');
 
+/* NOINDEX=1 keeps a staging deploy out of search results. It emits a
+ * noindex,nofollow meta on every page while STILL allowing crawling — a
+ * robots.txt Disallow would stop crawlers reading the noindex, and pages can
+ * then get indexed URL-only from external links anyway.
+ *
+ * Set this for any host that is not the real domain. Unset it (and only then)
+ * when the site moves to reeldealdeck.com, or nothing will ever rank.
+ */
+const NOINDEX = process.env.NOINDEX === '1';
+
 /** Prefix root-relative URLs in emitted HTML. Leaves //host, http(s):, data:,
  *  mailto:, tel: and #fragments alone. */
 function applyBase(html) {
@@ -133,6 +143,12 @@ async function emit(route, meta, bodyHtml) {
       campaignCta: meta.campaignCta ?? CAMPAIGN.cta,
       campaignUrl: meta.campaignUrl ?? CAMPAIGN.url,
       campaignRel: meta.campaignRel ?? (CAMPAIGN.external ? 'noopener' : ''),
+      /* Always emitted, so the value is the only thing that varies. */
+      robots: NOINDEX
+        ? 'noindex, nofollow'
+        : meta.noindex === true
+          ? 'noindex, follow'
+          : 'index, follow',
     },
   };
 
