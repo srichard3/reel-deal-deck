@@ -1784,3 +1784,4 @@ a.card-face.card-face:nth-child(even):active {
 }
 .brand:hover .brand__fish { color: var(--c-green-deep); }
 @media (min-width: 40rem) { .brand__fish { height: 1.85rem; } }
+.brand__fish--lg { height: 2.75rem; color: var(--c-green); }
