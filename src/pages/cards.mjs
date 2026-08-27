@@ -14,6 +14,7 @@
  * directly here. It is read-only — this page never writes to it.
  */
 import { readFileSync } from 'node:fs';
+import { campaignCta } from '../templates/_blocks.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { esc, cardImage, flyCard } from '../templates/_shared.mjs';
@@ -562,7 +563,7 @@ ${printing(site)}
       you can actually deal.
     </p>
     <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
-      <a class="btn btn--primary" href="/deck/#reserve">Reserve a deck</a>
+      ${campaignCta(site)}
       <a class="btn btn--ghost" href="/flies/">Browse the Fly Library</a>
       <a class="btn btn--quiet" href="/story/">Meet Ken and Audrey</a>
     </p>

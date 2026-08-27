@@ -4,6 +4,7 @@
    filter/search in place. */
 
 import { esc, flyCard, TYPES, TYPE_ORDER, titleCase } from '../templates/_shared.mjs';
+import { campaignCta } from '../templates/_blocks.mjs';
 
 export const meta = {
   path: '/flies/',
@@ -168,7 +169,7 @@ export default function ({ site, flies }) {
       hand-drawn, printed on ${esc(site.product.stock)}.
     </p>
     <p class="cluster" style="justify-content:center">
-      <a class="btn btn--primary" href="/deck/#reserve">Reserve a deck</a>
+      ${campaignCta(site)}
       <a class="btn btn--ghost" href="/gifts/">Buying it as a gift</a>
     </p>
   </div>

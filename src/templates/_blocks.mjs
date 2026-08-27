@@ -100,6 +100,31 @@ const deslug = (s) =>
  * article ever has to know the campaign end date, and none of them can drift
  * out of sync with another.
  */
+/* A ready-made call to action for the campaign, in whatever state it is in.
+   Every campaign link on the site should come through here rather than
+   hard-coding the Kickstarter URL, so that on 20 September the whole site
+   stops pointing at a finished campaign without anyone editing a page. */
+export function campaignCta(site, { variant = 'primary', label = null, now = new Date() } = {}) {
+  const c = campaignState(site, now);
+  const cls = variant === 'ghost' ? 'btn btn--ghost' : 'btn btn--primary';
+  const ext = c.external
+    ? ' target="_blank" rel="noopener"'
+    : '';
+  const hint = c.external
+    ? '<span class="visually-hidden"> (opens Kickstarter in a new tab)</span>'
+    : '';
+  return `<a class="${cls}" href="${esc(c.url)}"${ext} data-campaign-cta="${esc(c.key)}">${esc(label || c.cta)}${hint}</a>`;
+}
+
+/* A one-line inline sentence for use inside prose, again state-aware. */
+export function campaignLine(site, now = new Date()) {
+  const c = campaignState(site, now);
+  const ext = c.external ? ' target="_blank" rel="noopener"' : '';
+  return c.live
+    ? `The deck is funding on ${esc(c.platform || 'Kickstarter')} right now &mdash; <a href="${esc(c.url)}"${ext} data-campaign-cta="live">${esc(c.cta)}</a>.`
+    : `<a href="${esc(c.url)}" data-campaign-cta="after">${esc(c.cta)}</a> and we will email you the day it ships.`;
+}
+
 export function campaignState(site, now = new Date()) {
   const c = (site && site.campaign) || {};
   const endsAt = c.endsAt ? new Date(c.endsAt) : null;

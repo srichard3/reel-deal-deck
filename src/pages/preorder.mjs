@@ -9,6 +9,8 @@
  * this page unless it comes from data the founders have confirmed.
  */
 
+import { TIERS } from './deck.mjs';
+
 import { esc, campaignState } from '../templates/_blocks.mjs';
 
 export const meta = {
@@ -35,13 +37,26 @@ export default function ({ site }) {
   const base = site.url.replace(/\/$/, '');
   const ends = fmtDate(site.campaign?.endsAt);
 
-  /* Two rungs only. The full ladder lives on /deck/; this page answers
-     "how do I get one", not "which one". */
-  const rungs = [
-    { name: 'One deck', qty: '1 deck', price: 24, note: 'The deck. Fifty-four flies in a jacket pocket.' },
-    { name: 'Two decks', qty: '2 decks', price: 44, note: 'Keep one, hand one over on the drive to the put-in.' },
-    { name: 'The brick', qty: '12 decks', price: 216, note: 'A dozen, the way playing cards actually ship. Guide tips, groomsmen, a club raffle.' },
-  ];
+  /* Three rungs only. The full ladder lives on /deck/; this page answers
+     "how do I get one", not "which one".
+
+     Prices are imported rather than restated: the same numbers written in two
+     files is exactly how this page ended up still quoting $24 after the ladder
+     moved to $19.99. One source of truth, and the drift cannot recur. */
+  const NOTES = {
+    single: 'The deck. Fifty-four flies in a jacket pocket.',
+    pair: 'Keep one, hand one over on the drive to the put-in.',
+    brick: 'A dozen, the way playing cards actually ship. Guide tips, groomsmen, a club raffle.',
+  };
+  const rungs = ['single', 'pair', 'brick']
+    .map((id) => TIERS.find((t) => t.id === id))
+    .filter(Boolean)
+    .map((t) => ({
+      name: t.name,
+      qty: t.qty === 1 ? '1 deck' : `${t.qty} decks`,
+      price: t.price,
+      note: NOTES[t.id],
+    }));
 
   const jsonld = [
     {

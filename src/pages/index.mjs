@@ -68,6 +68,7 @@ export const meta = {
 /* ----------------------------------------------------------------- utils -- */
 
 import { flyCard as sharedFlyCard } from '../templates/_shared.mjs';
+import { campaignCta, campaignLine } from '../templates/_blocks.mjs';
 
 const esc = (s) =>
   String(s ?? '')
@@ -142,7 +143,7 @@ export default function homepage({ site, flies, posts }) {
         streamside.
       </p>
       <div class="cluster hero__actions" style="--gap:var(--s-3)">
-        <a class="btn btn--primary btn--lg" href="/deck/#reserve">Reserve a deck</a>
+        ${campaignCta(site, { variant: 'primary' })}
         <a class="btn btn--ghost btn--lg" href="/cards/">See what&rsquo;s in it</a>
       </div>
       <p class="hero__note">

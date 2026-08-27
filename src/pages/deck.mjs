@@ -3,12 +3,13 @@
  *
  * Every purchase control on this page is a placeholder. Nothing ships, no
  * payment is taken, no order is created. The page's job is to make the deck
- * worth $24 in the reader's head and then capture the email.
+ * worth $19.99 in the reader's head and then capture the email.
  *
  * Pricing below is the proposal, not a decision. Search this file for
  * TODO-CONFIRM before launch.
  */
 
+import { campaignCta, campaignLine } from '../templates/_blocks.mjs';
 const esc = (s) => String(s ?? '')
   .replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -16,18 +17,18 @@ const esc = (s) => String(s ?? '')
 const FLY_TYPES = ['dry', 'nymph', 'streamer', 'wet', 'terrestrial', 'attractor'];
 
 /* --------------------------------------------------------------- tiers -- */
-/* Anchored on site.product.priceIntended ($24). The Kickstarter jumped
+/* Anchored on site.product.priceIntended ($19.99). The Kickstarter jumped
    straight from $12 to a $99 twelve-pack with nothing in between; that gap is
    why the middle of the ladder converted at zero. Every rung below is a real
    step in per-deck price, so trading up always looks like arithmetic rather
    than a favour. */
 
-const TIERS = [
+export const TIERS = [
   {
     id: 'single',
     name: 'One Deck',
     qty: 1,
-    price: 24,
+    price: 19.99,
     kicker: 'The deck',
     body: 'Fifty-four flies in your jacket pocket. The one you keep.',
     points: ['54 original hand-drawn flies', 'What each one imitates, on the card', 'Genuine Bicycle / USPCC stock'],
@@ -36,7 +37,7 @@ const TIERS = [
     id: 'pair',
     name: 'Two Decks',
     qty: 2,
-    price: 44,
+    price: 36,
     kicker: 'You and your fishing buddy',
     body: 'Keep one, hand one over on the drive to the put-in. Nobody who fishes owns just one thing they like.',
     points: ['Two decks, one shipment', 'The gift you accidentally keep', 'Saves the second shipping cost'],
@@ -45,7 +46,7 @@ const TIERS = [
     id: 'quad',
     name: 'Four-Pack',
     qty: 4,
-    price: 84,
+    price: 68,
     kicker: 'The boat and the truck',
     body: 'One for the boat bag, one for the truck, two for whoever asks where you got it. Covers a season of gifts in one go.',
     points: ['Four decks, one shipment', 'Covers birthdays and Christmas at once', 'Drops the per-deck price again'],
@@ -54,7 +55,7 @@ const TIERS = [
     id: 'brick',
     name: 'The Brick',
     qty: 12,
-    price: 216,
+    price: 180,
     featured: true,
     flag: 'Best per-deck price',
     kicker: 'Twelve decks',
@@ -65,7 +66,7 @@ const TIERS = [
     id: 'first-edition',
     name: 'Signed First Edition',
     qty: 1,
-    price: 60,
+    price: 49.99,
     limited: true,
     kicker: 'Numbered, from the first print run',
     body: 'One deck from the first run, hand-numbered and signed by Ken and Audrey. For the person who is going to keep it on a shelf, not in a vest.',
@@ -100,7 +101,7 @@ const FAQ = [
     ],
   },
   {
-    q: 'Why is it $24 when I can find fly-fishing cards for ten dollars?',
+    q: 'Why is it $19.99 when I can find fly-fishing cards for ten dollars?',
     a: [
       'Because you are buying different things. The cheaper sets use photography or licensed stock art on generic board. Every fly in this deck was drawn by hand, one at a time, and it is printed on real playing card stock.',
       'And because a deck priced at twelve dollars does not survive its own fees, shipping and manufacturing. We would rather charge a price that lets us print a second run than a price that quietly kills the project.',
@@ -134,7 +135,7 @@ export const meta = {
   path: '/deck/',
   title: '54 Hand-Drawn Fly Fishing Cards',
   description:
-    '54 original hand-drawn flies, each with what it imitates, on genuine Bicycle stock. $24. Not yet shipping — reserve a deck and be first in line.',
+    '54 original hand-drawn flies, each with what it imitates, on genuine Bicycle stock. $19.99. Not yet shipping — reserve a deck and be first in line.',
   priority: 1.0,
   changefreq: 'weekly',
   bodyClass: 'page-deck',
@@ -157,7 +158,7 @@ export const meta = {
       ],
       offers: {
         '@type': 'Offer',
-        price: '24.00',
+        price: '19.99',
         priceCurrency: 'USD',
         availability: 'https://schema.org/PreOrder',
         itemCondition: 'https://schema.org/NewCondition',
@@ -209,9 +210,13 @@ function deckArt() {
   </div>`;
 }
 
+/* The single-deck price is the anchor every other tier is measured against.
+   Derived from the ladder itself so it can never drift from TIERS. */
+const SINGLE = TIERS.find((t) => t.id === 'single').price;
+
 function tierCard(t) {
   const per = t.price / t.qty;
-  const full = 24 * t.qty;
+  const full = SINGLE * t.qty;
   const save = full - t.price;
   const perLabel = t.qty > 1
     ? `${money(per)} a deck`
@@ -308,7 +313,7 @@ function flyCards(flies) {
 
 export default function deckPage({ site, flies }) {
   const p = site.product || {};
-  const price = p.priceIntended ?? 24;
+  const price = p.priceIntended ?? 19.99;
   const list = Array.isArray(flies) ? flies : [];
 
   return `
@@ -345,7 +350,8 @@ export default function deckPage({ site, flies }) {
       </p>
 
       <div class="cluster">
-        <a class="btn btn--primary btn--lg" href="#reserve">Reserve a deck</a>
+        ${campaignCta(site)}
+        <a class="btn btn--ghost btn--lg" href="#reserve">Or just join the list</a>
         <a class="btn btn--ghost btn--lg" href="#tiers">See the tiers</a>
       </div>
     </div>
@@ -363,9 +369,10 @@ export default function deckPage({ site, flies }) {
     </p>
 
     <!-- TODO-CONFIRM: every price in this ladder is a proposal, not a decision.
-         Ken and Audrey must sign off on the $24 anchor and the per-deck steps
-         ($24 / $22 / $21 / $18) once real per-unit COGS, carton weight and
-         fulfilment costs are in hand. The $60 signed edition assumes both
+         Ken and Audrey have set the single-deck retail price at $19.99. The
+         per-deck steps below ($19.99 / $18 / $17 / $15) still need sign-off
+         against real per-unit COGS, carton weight and fulfilment costs. The
+         $49.99 signed edition assumes both
          founders are willing to hand-sign and number every deck in the first
          run and that a rigid mailer is sourced — confirm both before this
          tier is published. Adjust the data-price attributes here, the
@@ -411,6 +418,7 @@ ${TIERS.filter((t) => t.limited).map(specialTier).join('\n')}
     There is no checkout on this site yet, on purpose. Leave an email and you will hear from us
     before decks go on sale &mdash; not after they sell out.
   </p>
+  <p class="buy-hero__note">${campaignLine(site)}</p>
 
   <div class="buy-reserve">
     <noscript>

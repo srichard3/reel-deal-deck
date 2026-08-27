@@ -4,6 +4,7 @@
    footnote, not the point. */
 
 import { esc, flyCard, cardImage, cardLabel, TYPES, titleCase } from './_shared.mjs';
+import { campaignCta } from './_blocks.mjs';
 
 /* Build the answer-first block: 40-60 words, directly under the h1, before any
    other prose. This is the block an answer engine lifts, so it has to answer
@@ -261,7 +262,8 @@ export default function ({ fly, flies, site }) {
       <h2 class="h2">${esc(fly.name)} is ${esc(cardLabel(fly))} in the deck.</h2>
       <p class="lede">All ${site.product.cardCount} flies, hand-drawn, on ${esc(site.product.stock)}. A reference you can actually deal out.</p>
       <p class="cluster" style="justify-content:center">
-        <a class="btn btn--primary" href="/deck/#reserve">Reserve a deck</a>
+        ${campaignCta(site)}
+        <a class="btn btn--ghost" href="/deck/">See the deck</a>
         <a class="btn btn--ghost" href="/flies/">Browse the library</a>
       </p>
     </div>
