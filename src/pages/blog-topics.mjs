@@ -120,7 +120,6 @@ export default function ({ site, posts = [] }) {
 
   return `
 <link rel="stylesheet" href="/styles/blog.css">
-{{> campaign-bar }}
 
 <div class="wrap wrap--narrow">
   <nav class="breadcrumbs" aria-label="Breadcrumb">

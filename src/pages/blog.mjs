@@ -41,7 +41,7 @@ export default function ({ site, posts = [], flies = [] }) {
   const list = Array.isArray(posts) ? posts.filter(Boolean) : [];
   const camp = campaignState(site);
 
-  /* Resolved values for {{> campaign-bar }} — the partial cannot branch. */
+  /* Resolved values for  — the partial cannot branch. */
   meta.campaignKey = camp.key;
   meta.campaignEyebrow = camp.eyebrow;
   meta.campaignCta = camp.cta;
@@ -87,7 +87,6 @@ export default function ({ site, posts = [], flies = [] }) {
 
   return `
 <link rel="stylesheet" href="/styles/blog.css">
-{{> campaign-bar }}
 
 <div class="wrap wrap--narrow">
   <nav class="breadcrumbs" aria-label="Breadcrumb">

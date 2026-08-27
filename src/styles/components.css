@@ -1474,3 +1474,232 @@ a.card-face.card-face:nth-child(even):active {
 }
 .mobile-nav a[data-section-current],
 .site-footer__nav a[data-section-current] { color: var(--c-text); }
+
+
+/* ==========================================================================
+   CAMPAIGN BAR — sitewide
+   Moved here from blog.css: the bar now renders from the shell on every
+   route, so its styles must load on every route. blog.css is only linked
+   from blog pages.
+   ========================================================================== */
+/*  Constraints from docs/BLOG-CONTRACT.md: one line, one link, <= 3rem tall,
+    dismissible, and it must never push the answer block below the fold. It is
+    therefore a single flex row of --t-xs text that truncates rather than
+    wrapping, and it sits in normal flow above the sticky header's content —
+    it never overlays anything.                                              */
+
+.aeo-bar {
+  background-color: var(--c-bg-sunk);
+  border-block-end: 1px solid var(--c-border);
+}
+
+.aeo-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  min-height: var(--s-6);          /* 2rem  */
+  max-height: var(--s-7);          /* 3rem — the hard ceiling */
+  padding-block: var(--s-1);
+}
+
+.aeo-bar__text {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  min-width: 0;                    /* lets the ellipsis actually engage */
+  font-size: var(--t-xs);
+  line-height: var(--lh-snug);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aeo-bar__eyebrow {
+  flex: 0 0 auto;
+  font-weight: 650;
+  letter-spacing: var(--ls-index);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+
+.aeo-bar__link {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--c-accent);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.aeo-bar__close {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--s-5);
+  height: var(--s-5);
+  border-radius: var(--r-sm);
+  color: var(--c-text-faint);
+  font-size: var(--t-base);
+  line-height: 1;
+}
+.aeo-bar__close:hover {
+  color: var(--c-text);
+  background-color: color-mix(in oklab, var(--c-text) 8%, transparent);
+}
+
+/* Below the "eyebrow + link" comfort width, drop the eyebrow rather than
+   letting the bar wrap to two lines. */
+@media (max-width: 28rem) {
+  .aeo-bar__eyebrow { display: none; }
+}
+
+
+/* ==========================================================================
+   SHARED ANSWER + TABLE COMPONENTS
+   Promoted from blog.css. `.aeo-answer` now renders on every fly page and on
+   /preorder/, and `.post-table` is used outside articles, so both must load
+   sitewide. Class names are unchanged deliberately — renaming them would
+   break every existing article.
+   ========================================================================== */
+
+/* ==================================================== 2. THE ANSWER ====== */
+/*  The single most important block on the page: 40–60 words, directly under
+    the h1, before any preamble. Given a card-edge keyline so a human reads it
+    first and a left rule so it survives being lifted out of context.        */
+
+.aeo-answer {
+  margin-block-start: var(--s-5);
+  padding: var(--s-5);
+  border: 1px solid var(--c-border);
+  border-inline-start: 3px solid var(--c-accent);
+  border-radius: var(--r-sm);
+  background-color: var(--c-surface);
+  box-shadow: var(--shadow-1);
+}
+
+.aeo-answer__label {
+  margin-block-end: var(--s-2);
+  font-size: var(--t-xs);
+  font-weight: 650;
+  letter-spacing: var(--ls-index);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+
+.aeo-answer__text {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  line-height: var(--lh-snug);
+  color: var(--c-text);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------- takeaways ------ */
+
+.aeo-takeaways {
+  margin-block-start: var(--s-6);
+  padding: var(--s-5);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  background-color: var(--c-bg-sunk);
+}
+
+.aeo-takeaways__title {
+  font-size: var(--t-lg);
+  margin-block-start: 0;
+}
+
+.aeo-takeaways__list {
+  margin-block-start: var(--s-4);
+  display: grid;
+  gap: var(--s-3);
+  color: var(--c-text-muted);
+  font-size: var(--t-base);
+  line-height: var(--lh-body);
+}
+
+.aeo-takeaways__list > li {
+  position: relative;
+  padding-inline-start: var(--s-5);
+}
+.aeo-takeaways__list > li::before {
+  content: "\2666";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  font-size: var(--t-sm);
+  color: var(--c-accent);
+}
+
+/* ------------------------------------------------------------ tables ---- */
+/*  A wide comparison table scrolls inside its own container. The page body
+    must never scroll horizontally on a phone. tabindex makes the scroll
+    container reachable — and scrollable — from the keyboard.               */
+
+.post-tablewrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* The table inside sets min-width:28rem so columns stay readable. Without
+     these two the wrapper inherits min-width:auto from its parent layout,
+     grows to the table's width, and takes the whole document with it. */
+  max-width: 100%;
+  min-width: 0;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  background-color: var(--c-surface);
+}
+.post-tablewrap:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 2px; }
+
+.post-table {
+  width: 100%;
+  min-width: 28rem;
+  border-collapse: collapse;
+  font-size: var(--t-base);
+  line-height: var(--lh-snug);
+}
+
+.post-table__caption {
+  padding: var(--s-3) var(--s-4);
+  text-align: start;
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+  border-block-end: 1px solid var(--c-border);
+}
+
+.post-table th,
+.post-table td {
+  padding: var(--s-3) var(--s-4);
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--c-border);
+}
+
+.post-table thead th {
+  background-color: var(--c-bg-sunk);
+  color: var(--c-text);
+  font-size: var(--t-xs);
+  font-weight: 650;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.post-table tbody th { color: var(--c-text); font-weight: 650; }
+.post-table tbody td { color: var(--c-text-muted); }
+.post-table tbody tr:last-child th,
+.post-table tbody tr:last-child td { border-block-end: 0; }
+
+/* .aeo-answer responsive refinements — moved with the component so it behaves
+   identically on fly pages, /preorder/ and articles. */
+@media (max-width: 34rem) {
+  .aeo-answer { margin-block-start: var(--s-4); padding: var(--s-4); }
+}
+@media (min-width: 48rem) {
+  .aeo-answer { padding: var(--s-6); }
+}

@@ -314,7 +314,7 @@ export default function ({ post, posts = [], site, flies = [] }) {
     bodyClass: 'page-post',
     ogImage: post?.ogImage || '/og/default.png',
     jsonld,
-    /* Resolved campaign values for {{> campaign-bar }} — see the partial. */
+    /* Resolved campaign values for  — see the partial. */
     campaignKey: camp.key,
     campaignEyebrow: camp.eyebrow,
     campaignCta: camp.cta,
@@ -333,7 +333,6 @@ export default function ({ post, posts = [], site, flies = [] }) {
 
   const body = `
 <link rel="stylesheet" href="/styles/blog.css">
-{{> campaign-bar }}
 
 <article class="post" data-post="${esc(slug)}">
   <div class="wrap wrap--narrow">

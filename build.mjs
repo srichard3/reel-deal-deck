@@ -64,6 +64,15 @@ function interpolate(html, ctx) {
 
 const shell = await read(path.join(SRC, '_partials', 'shell.html'));
 
+/* The campaign bar lives in the shell, so every route carries it. Partials
+   cannot branch, so the single live/after decision is made here — once, at
+   build time — and the resolved values ride on ctx.meta for the partial to
+   print. Pages that set their own campaign* meta keys keep them. */
+const { campaignState } = await import(
+  pathToFileURL(path.join(SRC, 'templates', '_blocks.mjs')).href
+);
+const CAMPAIGN = campaignState(site);
+
 const routes = [];
 
 /* Populated by buildPosts() before buildPages() runs, so /blog/ and any other
@@ -89,6 +98,11 @@ async function emit(route, meta, bodyHtml) {
       description: meta.description,
       ogImage: site.url.replace(/\/$/, '') + (meta.ogImage || site.defaultOgImage),
       bodyClass: meta.bodyClass || '',
+      campaignKey: meta.campaignKey ?? CAMPAIGN.key,
+      campaignEyebrow: meta.campaignEyebrow ?? CAMPAIGN.eyebrow,
+      campaignCta: meta.campaignCta ?? CAMPAIGN.cta,
+      campaignUrl: meta.campaignUrl ?? CAMPAIGN.url,
+      campaignRel: meta.campaignRel ?? (CAMPAIGN.external ? 'noopener' : ''),
     },
   };
 

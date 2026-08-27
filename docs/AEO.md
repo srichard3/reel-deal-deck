@@ -363,3 +363,86 @@ In rough order of damage:
    rather than failing, but a truncated title is a truncated title — fix it in the article.
 9. **Adding a webfont, a CDN or an external request.** `npm run check` fails on it, and it is a
    render-blocking single point of failure in front of the answer.
+
+---
+
+## The Fly Library treatment (added Aug 2026)
+
+The 55 fly pages are the largest surface an answer engine will crawl here, and they
+now get the same treatment the guides do.
+
+### The answer block
+
+`buildAnswer()` in `src/templates/fly.mjs` assembles a **40–60 word** answer and
+renders it immediately after the `<h1>`, before any other prose. It is generated
+from `data/flies.json` only — `cardCategory`, `imitates`, `sizes`, `whenToFish`,
+`howToFish`, `summary` — so it can never contain a claim the data does not make.
+
+It reads: *"The Adams is a dry fly that imitates adult mayflies and midges,
+generically. It is usually tied in sizes 12 to 16. Fish it any time you see mayfly
+duns on the surface…"*
+
+Two details that matter and were bugs the first time:
+
+- The indefinite article agrees with the **category**, not the fly's name.
+  "The Adams is **a** dry fly", never "an dry fly".
+- Slashed categories are spoken, not printed: `Midge/Emerger` renders as
+  "a midge or emerger", because an assistant may read the answer aloud.
+
+The same string is used as the `Article` `description` in the schema, so the page's
+summary and its answer can never drift apart.
+
+**When adding a fly**, check the generated answer lands in range:
+
+```bash
+node build.mjs && node -e "const re=require('fs');" 
+```
+…or simply re-run the range check used when this shipped: every page must produce
+40–60 words. A fly with a very short `imitates` and no `whenToFish` will fall under.
+
+### FAQ schema matches visible headings, exactly
+
+Each fly page emits three `FAQPage` questions, and **each one is rendered as a
+visible `<h2>` with its answer directly beneath it**:
+
+| Schema question | Visible `<h2>` | Answer source |
+|---|---|---|
+| What does *X* imitate? | same | `fly.imitates` |
+| How do you fish *X*? | same | `fly.howToFish` |
+| When should you fish *X*? | same | `fly.whenToFish` |
+
+This was originally wrong — two of the three questions existed only in the schema
+while the headings read "When to fish it" and had no "what does it imitate"
+section at all. That is schema describing invisible content, which is both against
+the rule in this document and a Google structured-data policy risk.
+
+**If you change a heading on a fly page, change the schema question with it.**
+Verify with:
+
+```bash
+node build.mjs && node -e "
+const fs=require('fs'),path=require('path');
+let bad=0;
+for(const d of fs.readdirSync('dist/flies')){
+  const f=path.join('dist/flies',d,'index.html');
+  if(!fs.existsSync(f))continue;
+  const h=fs.readFileSync(f,'utf8');
+  const m=h.match(/<script type=\"application\/ld\+json\">(.*?)<\/script>/gs)||[];
+  const faq=m.map(x=>JSON.parse(x.replace(/<[^>]*>/g,''))).find(j=>j['@type']==='FAQPage');
+  if(!faq)continue;
+  const heads=[...h.matchAll(/<h2[^>]*>(.*?)<\/h2>/gs)].map(x=>x[1].replace(/<[^>]+>/g,'').trim());
+  for(const q of faq.mainEntity) if(!heads.includes(q.name)){console.log('MISMATCH',d,q.name);bad++;}
+}
+console.log(bad?bad+' mismatches':'all fly pages OK');"
+```
+
+### The campaign bar and the answer block
+
+The bar now renders from `src/_partials/shell.html` on **every** route, not just
+blog pages. It is capped at 3rem and sits above the header precisely so it cannot
+displace the answer block — that block is what an engine quotes, and pushing it
+down the page is the one thing that would undo this work.
+
+The live/after decision is made once in `build.mjs` via `campaignState()` and
+injected onto `ctx.meta` for the partial, which stays logic-free. Do not
+reintroduce per-page campaign resolution.

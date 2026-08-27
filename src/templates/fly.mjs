@@ -5,6 +5,51 @@
 
 import { esc, flyCard, cardImage, cardLabel, TYPES, titleCase } from './_shared.mjs';
 
+/* Build the answer-first block: 40-60 words, directly under the h1, before any
+   other prose. This is the block an answer engine lifts, so it has to answer
+   "what is this fly, what does it imitate, when do I fish it" on its own.
+   Assembled only from fields that exist in data/flies.json — nothing invented.
+   `summary` is used as a fallback opener, never as the whole answer. */
+function buildAnswer(fly, type) {
+  const words = (t) => String(t).trim().split(/\s+/).filter(Boolean).length;
+  const trimSentence = (t) => String(t).replace(/\s+/g, ' ').trim().replace(/\.*$/, '');
+
+  /* "Midge/Emerger" reads badly spoken aloud, and an answer engine may well
+     read it aloud. */
+  const label = String(fly.cardCategory || type.label).toLowerCase().replace(/\s*\/\s*/g, ' or ');
+  /* The article must agree with the word that follows it — the category — not
+     with the fly's name. "The Adams is a dry fly", never "an dry fly". */
+  const article = /^[aeiou]/i.test(label) ? 'an' : 'a';
+
+  const parts = [];
+  parts.push(`The ${fly.name} is ${article} ${label} that imitates ${trimSentence(fly.imitates).replace(/^[A-Z]/, (c) => c.toLowerCase())}.`);
+  if (fly.sizes) {
+    const sizes = String(fly.sizes).replace(/#(\d+)\s*-\s*#(\d+)/, 'sizes $1 to $2').replace(/#/g, 'size ');
+    parts.push(`It is usually tied in ${sizes}.`);
+  }
+
+  /* Add the most useful practical sentence available until we clear 40 words. */
+  const extras = [
+    fly.whenToFish && `Fish it ${trimSentence(fly.whenToFish).replace(/^[A-Z]/, (c) => c.toLowerCase())}.`,
+    fly.howToFish && trimSentence(String(fly.howToFish).split(/(?<=\.)\s/)[0]) + '.',
+    fly.summary && trimSentence(fly.summary) + '.',
+  ].filter(Boolean);
+
+  for (const e of extras) {
+    if (words(parts.join(' ')) >= 40) break;
+    parts.push(e);
+  }
+
+  /* Trim back to 60 words on a sentence boundary rather than mid-clause. */
+  while (parts.length > 2 && words(parts.join(' ')) > 60) parts.pop();
+  let out = parts.join(' ');
+  if (words(out) > 60) {
+    const w = out.split(/\s+/).slice(0, 60);
+    out = w.join(' ').replace(/[,;:]$/, '') + '…';
+  }
+  return out;
+}
+
 const list = (arr) => (Array.isArray(arr) ? arr.filter(Boolean) : []);
 
 function specRow(label, value) {
@@ -18,6 +63,9 @@ function specRow(label, value) {
 
 export default function ({ fly, flies, site }) {
   const type = TYPES[fly.type] || TYPES.dry;
+
+  /* Declared early: the answer is also the Article description in the schema. */
+  const answer = buildAnswer(fly, type);
   const idx = flies.findIndex((f) => f.slug === fly.slug);
   const prev = flies[(idx - 1 + flies.length) % flies.length];
   const next = flies[(idx + 1) % flies.length];
@@ -56,7 +104,7 @@ export default function ({ fly, flies, site }) {
 
   /* Only questions that are actually rendered below get FAQ schema. */
   const faqs = [
-    { q: `What does ${aAn(fly.name)} imitate?`, a: fly.imitates },
+    { q: `What does ${aAn(fly.name)} imitate?`, a: `${fly.imitates}.` },
     fly.whenToFish && { q: `When should you fish ${aAn(fly.name)}?`, a: fly.whenToFish },
     fly.howToFish && { q: `How do you fish ${aAn(fly.name)}?`, a: fly.howToFish },
   ].filter(Boolean);
@@ -66,7 +114,7 @@ export default function ({ fly, flies, site }) {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: title,
-      description: fly.summary,
+      description: answer,
       mainEntityOfPage: url,
       about: { '@type': 'Thing', name: `${fly.name} fly pattern` },
       isPartOf: { '@type': 'CollectionPage', name: 'Fly Library', url: `${site.url.replace(/\/$/, '')}/flies/` },
@@ -122,7 +170,12 @@ export default function ({ fly, flies, site }) {
         <p class="eyebrow">${esc(type.label)}${fly.card?.rank === 'JOKER' ? ' · Joker' : ''}</p>
         <h1 class="h1 fly-head__title">${esc(fly.name)}</h1>
         ${list(fly.aka).length ? `<p class="fly-head__aka">Also called ${esc(list(fly.aka).join(', '))}</p>` : ''}
-        <p class="lede">${esc(fly.summary)}</p>
+
+        <div class="aeo-answer">
+          <p class="aeo-answer__label">Short answer</p>
+          <p class="aeo-answer__text">${esc(answer)}</p>
+        </div>
+
         <p class="cluster fly-head__pills">
           <span class="pill pill--${esc(fly.type)}">${esc(type.label)}</span>
           ${fly.difficulty ? `<span class="pill">${esc(titleCase(fly.difficulty))}</span>` : ''}
@@ -145,15 +198,16 @@ export default function ({ fly, flies, site }) {
         </blockquote>` : ''}
         ${list(fly.body).map((p) => `<p>${esc(p)}</p>`).join('\n        ')}
 
-        ${fly.howToFish ? `<h2>How to fish ${aAn(fly.name)}</h2>\n        <p>${esc(fly.howToFish)}</p>` : ''}
-        ${fly.whenToFish ? `<h2>When to fish it</h2>\n        <p>${esc(fly.whenToFish)}</p>` : ''}
+        ${fly.imitates ? `<h2>What does ${aAn(fly.name)} imitate?</h2>\n        <p>${esc(fly.imitates)}.</p>` : ''}
+        ${fly.howToFish ? `<h2>How do you fish ${aAn(fly.name)}?</h2>\n        <p>${esc(fly.howToFish)}</p>` : ''}
+        ${fly.whenToFish ? `<h2>When should you fish ${aAn(fly.name)}?</h2>\n        <p>${esc(fly.whenToFish)}</p>` : ''}
 
-        ${list(fly.tips).length ? `<h2>Quick tips</h2>
+        ${list(fly.tips).length ? `<h2>What are the quick tips for fishing it?</h2>
         <ul class="fly-tips">
           ${list(fly.tips).map((t) => `<li>${esc(t)}</li>`).join('\n          ')}
         </ul>` : ''}
 
-        ${list(fly.materials).length ? `<h2>Typical dressing</h2>
+        ${list(fly.materials).length ? `<h2>How is ${aAn(fly.name)} tied?</h2>
         <ul class="fly-materials">
           ${list(fly.materials).map((m) => `<li>${esc(m)}</li>`).join('\n          ')}
         </ul>

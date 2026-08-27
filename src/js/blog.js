@@ -14,44 +14,4 @@
    new one. Hiding an announcement is not a permanent opt-out of all future
    announcements.
    ========================================================================== */
-(function () {
-  'use strict';
-
-  var PREFIX = 'rdd-campaign-dismissed:';
-
-  function get(key) {
-    try { return localStorage.getItem(PREFIX + key); } catch (e) { return null; }
-  }
-  function set(key) {
-    try { localStorage.setItem(PREFIX + key, '1'); } catch (e) { /* private mode */ }
-  }
-
-  var bars = document.querySelectorAll('[data-campaign-bar]');
-
-  for (var i = 0; i < bars.length; i++) {
-    (function (bar) {
-      var key = bar.getAttribute('data-campaign-key') || 'default';
-      var btn = bar.querySelector('[data-campaign-dismiss]');
-
-      /* Defaults to visible: only an explicit stored dismissal hides it. */
-      if (get(key)) {
-        bar.hidden = true;
-        return;
-      }
-
-      if (!btn) return;
-      btn.hidden = false;
-
-      btn.addEventListener('click', function () {
-        set(key);
-        bar.hidden = true;
-        /* Focus must not vanish into a hidden subtree. */
-        var main = document.getElementById('main');
-        if (main) {
-          if (!main.hasAttribute('tabindex')) main.setAttribute('tabindex', '-1');
-          try { main.focus({ preventScroll: true }); } catch (e) { main.focus(); }
-        }
-      });
-    })(bars[i]);
-  }
-})();
+/* The campaign-bar dismissal moved to site.js when the bar became sitewide. */
