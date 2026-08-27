@@ -30,7 +30,7 @@ export const meta = {
   ],
   howTo: null,
   related: ['leader-vs-tippet', 'how-to-set-up-a-fly-rod', 'what-flies-do-i-need-to-start'],
-  relatedFlies: ['woolly-bugger', 'adams', 'clouser-deep-minnow', 'griffiths-gnat'],
+  relatedFlies: ['woolly-bugger', 'adams', 'clouser-minnow', 'griffiths-gnat'],
   sources: [
     {
       label: 'University of Kentucky — A Beginner’s Guide to Rods, Reels, and Lines',

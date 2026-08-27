@@ -34,13 +34,13 @@ export const meta = {
     'parachute-adams',
     'elk-hair-caddis',
     'pheasant-tail-nymph',
-    'gold-ribbed-hares-ear',
+    'hares-ear-nymph',
     'zebra-midge',
     'copper-john',
     'woolly-bugger',
     'chubby-chernobyl',
     'san-juan-worm',
-    'foam-beetle',
+    'beetle',
   ],
   sources: [
     {

@@ -42,6 +42,11 @@ Sources consulted while building this plan are listed in section 6.
 
 ---
 
+> **Slug note (Aug 2026):** this plan predates the realignment of the Fly
+> Library to the printed v8 deck. Fly Library targets below have been remapped
+> to slugs that exist in `data/flies.json`. Verify any slug before linking:
+> `node -e "console.log(require('./data/flies.json').map(f=>f.slug).join(' '))"`
+
 ## 2. The backlog — 36 articles, ranked
 
 Ranking is by (relative demand × winnability × bridge value). "Bridge" = how naturally the article
@@ -49,7 +54,7 @@ reaches a product that teaches 54 fly patterns.
 
 | # | Target question | Class | Winnability | Fly Library links |
 |---|---|---|---|---|
-| 1 | What weight fly rod do I need for trout? | gear | **High.** Enormous demand, but almost every incumbent answer is a rod-buying page. A neutral table of weights → water types with no product to sell out-answers them. | woolly-bugger, adams, clouser-deep-minnow |
+| 1 | What weight fly rod do I need for trout? | gear | **High.** Enormous demand, but almost every incumbent answer is a rod-buying page. A neutral table of weights → water types with no product to sell out-answers them. | woolly-bugger, adams, clouser-minnow |
 | 2 | What is the difference between leader and tippet? | gear | **High.** The single most repeated beginner confusion. Incumbents explain taper physics; nobody just gives the X-size-to-fly-size table first. | adams, zebra-midge, pheasant-tail-nymph |
 | 3 | How do I set up a fly rod for the first time? | basics | **High.** Purely procedural, so numbered steps win outright. Most existing coverage is video, which AI engines cannot quote. | woolly-bugger, parachute-adams |
 | 4 | Which fly fishing knots do I actually need? | knots | **High.** Existing pages list 12 knots. The winning answer is "four, and here they are". Strong AI-citation shape. | copper-john, elk-hair-caddis |
@@ -58,23 +63,23 @@ reaches a product that teaches 54 fly patterns.
 | 7 | What flies do I actually need to start? | basics | **High.** Perfect bridge. Must be a *selection strategy* page (sizes, categories, how many), never a pattern explainer — patterns live in /flies/. | adams, pheasant-tail-nymph, elk-hair-caddis, woolly-bugger, zebra-midge |
 | 8 | Do I need a fishing licence to fly fish? | practical | **High.** High intent, low competition from anglers (state agencies rank, but they answer per-state). Our win is the national framing + "check your state" done properly. | — (none; regulatory) |
 | 9 | How do I set up a strike-indicator nymph rig? | technique | **High.** Specific numeric answers (indicator at 1.5–2× depth, shot 12–18in above the point fly) that incumbents bury. | pheasant-tail-nymph, zebra-midge, perdigon |
-| 10 | What is the best time of day to fly fish? | seasons | **Medium-high.** Heavily covered, but almost always seasonally vague. Winnable with a season × time-of-day table plus water temperature bands. | zebra-midge, blue-winged-olive |
-| 11 | How much does it cost to start fly fishing? | practical | Medium. Demand is huge; competition is affiliate-driven. Winnable only if we publish honest ranges with sources and refuse to recommend products. |chernobyl-ant |
-| 12 | How do I stop my fly line from dragging? (mending) | technique | High. Narrow, mechanical, under-served. Drag is the #1 unexplained reason beginners get refusals. | parachute-adams, blue-winged-olive |
+| 10 | What is the best time of day to fly fish? | seasons | **Medium-high.** Heavily covered, but almost always seasonally vague. Winnable with a season × time-of-day table plus water temperature bands. | zebra-midge, blue-wing-olive |
+| 11 | How much does it cost to start fly fishing? | practical | Medium. Demand is huge; competition is affiliate-driven. Winnable only if we publish honest ranges with sources and refuse to recommend products. |chubby-chernobyl |
+| 12 | How do I stop my fly line from dragging? (mending) | technique | High. Narrow, mechanical, under-served. Drag is the #1 unexplained reason beginners get refusals. | parachute-adams, blue-wing-olive |
 | 13 | 4wt vs 5wt vs 6wt — which do I buy? | gear | High. Pure comparison, table-shaped, distinct enough from #1 not to cannibalise it (#1 = "what weight", #13 = "which of these three"). | griffiths-gnat, woolly-bugger |
 | 14 | What size tippet for what size fly? | gear | High. A single table answers it. Currently answered inconsistently everywhere. | zebra-midge, chubby-chernobyl |
 | 15 | How do I set the hook on a trout? | technique | High. Dry vs nymph vs streamer hooksets are genuinely different and rarely tabled together. | elk-hair-caddis, woolly-bugger |
-| 16 | Floating vs sinking vs sink-tip line | gear | Medium-high. Comparison shape; incumbents are manufacturer pages. | clouser-deep-minnow, balanced-leech |
+| 16 | Floating vs sinking vs sink-tip line | gear | Medium-high. Comparison shape; incumbents are manufacturer pages. | clouser-minnow, balanced-leech |
 | 17 | Do I need waders to fly fish? | gear | High. Cheap-to-answer, high beginner anxiety, wet-wading is under-covered. | — |
-| 18 | What is "matching the hatch" and do I have to? | basics | Medium-high. Must stay conceptual — the moment it becomes "here are the mayfly patterns" it collides with /flies/. | blue-winged-olive, pale-morning-dun, adams |
-| 19 | How do I fly fish in winter? | seasons | High. Seasonal, low competition outside December–February, evergreen ranking window. | zebra-midge, chironomid-pupa, san-juan-worm |
-| 20 | Can you fly fish in the rain / high water? | seasons | High. Conditions questions are long-tail and under-served. | pats-rubber-legs, egg-sucking-leech |
-| 21 | How do I fish a hopper-dropper rig? | technique | High. Named rig, specific measurements, summer-seasonal. | chubby-chernobyl, daves-hopper, copper-john |
+| 18 | What is "matching the hatch" and do I have to? | basics | Medium-high. Must stay conceptual — the moment it becomes "here are the mayfly patterns" it collides with /flies/. | blue-wing-olive, pale-morning-dun, adams |
+| 19 | How do I fly fish in winter? | seasons | High. Seasonal, low competition outside December–February, evergreen ranking window. | zebra-midge, snow-cone-midge, san-juan-worm |
+| 20 | Can you fly fish in the rain / high water? | seasons | High. Conditions questions are long-tail and under-served. | pats-rubber-legs, san-juan-worm |
+| 21 | How do I fish a hopper-dropper rig? | technique | High. Named rig, specific measurements, summer-seasonal. | chubby-chernobyl, grasshopper, copper-john |
 | 22 | What is euro nymphing and do I need it? | technique | Medium. Competitive (Troutbitten owns it) but the *"do I need it"* framing is open. | perdigon, frenchie |
 | 23 | How do I release a trout without killing it? | practical | High. Genuine authority play; must cite agencies, never invent mortality figures. | — |
 | 24 | What water temperature is too warm to fish? | seasons | High. Conservation-adjacent, specific numbers, rising search interest each summer. | — |
-| 25 | How do I fly fish a lake from shore? | technique | High. Stillwater is badly under-covered relative to rivers. | balanced-leech, damselfly-nymph, chironomid-pupa |
-| 26 | How long should my leader be? | gear | Medium-high. Narrow enough to win; pairs with #2 and #14. | griffiths-gnat, clouser-deep-minnow |
+| 25 | How do I fly fish a lake from shore? | technique | High. Stillwater is badly under-covered relative to rivers. | balanced-leech, balanced-leech, snow-cone-midge |
+| 26 | How long should my leader be? | gear | Medium-high. Narrow enough to win; pairs with #2 and #14. | griffiths-gnat, clouser-minnow |
 | 27 | Why do trout keep refusing my fly? | technique | High. Diagnostic-shaped ("if X then Y") which is highly extractable and rarely written. | parachute-adams, comparadun, rusty-spinner |
 | 28 | How do I fly fish small streams? | technique | High. Specific, low competition, distinct gear answers (short rod, short leader). | royal-wulff, humpy, foam-beetle |
 | 29 | Barbless hooks — required, or just better? | practical | Medium-high. Regulatory + practical, must be state-caveated. | — |
