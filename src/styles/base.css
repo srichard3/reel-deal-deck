@@ -151,6 +151,12 @@ table { border-collapse: collapse; width: 100%; }
   line-height: var(--lh-tight);
   color: var(--c-text);
   text-wrap: balance;
+  /* A display-size heading can hold a word longer than a 320px viewport —
+     "multigenerational" at --t-3xl is ~340px. Without this the word pushes the
+     whole document sideways. Let it break rather than overflow; hyphens make
+     the break read as typography rather than as damage. */
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .h1 { font-size: var(--t-3xl); }
