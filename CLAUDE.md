@@ -83,6 +83,11 @@ A third special ships on top and is shown on the site but excluded from every co
 `build.mjs` reads `meta` *after* the render runs, so patch `meta.jsonld` inside the
 default export (see `flies.mjs`, `deck.mjs`, `about.mjs`).
 
+**JSON embedded in a page does not get the base path.** `applyBase()` rewrites
+`href`/`src`/`action`/`content` attributes only, so root-relative paths inside a
+`<script type="application/json">` stay unprefixed. `hatch.js` recovers the prefix
+from its own rewritten `src`. Any future embedded data must do the same.
+
 **SVG needs explicit dimensions.** Never `width: auto` on a viewBox-only SVG —
 Safari will not infer it and collapses the element to nothing. Chrome hides this.
 
@@ -111,6 +116,7 @@ Safari will not infer it and collapses the element to nothing. Chrome hides this
 | `data/states.json` | the state tier (2 so far) |
 | `src/templates/_blocks.mjs` | campaign helpers, `organizationSchema`, block vocabulary |
 | `src/templates/_shared.mjs` | card rendering, suit logic |
+| `src/js/hatch.js` | the homepage game — rounds built from `HATCH_FLIES` in `index.mjs` |
 | `new assets/` | printer source artwork — gitignored, large |
 
 ## Docs

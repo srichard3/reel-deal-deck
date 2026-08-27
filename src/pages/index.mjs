@@ -82,6 +82,52 @@ function flyStrip(flies, picks) {
       </div>`;
 }
 
+/* ---------------------------------------------------------- match the hatch --
+   Rounds for the homepage game. Each hatch type maps to the real cards in the
+   deck that imitate it, so the game can never offer a fly that is not printed.
+   The slugs are validated against data/flies.json below — an unknown slug is
+   dropped rather than shipped as a broken image. */
+const HATCH_FLIES = {
+  mayfly: ['adams', 'parachute-adams', 'blue-wing-olive', 'pale-morning-dun',
+           'green-drake', 'march-brown', 'trico', 'pink-albert', 'rusty-spinner'],
+  caddis: ['elk-hair-caddis', 'caddis-pupa'],
+  midge: ['zebra-midge', 'griffiths-gnat', 'disco-midge', 'snow-cone-midge',
+          'wd-40', 'serendipity'],
+  terrestrial: ['grasshopper', 'ant', 'beetle', 'chubby-chernobyl', 'madam-x'],
+  stonefly: ['salmonfly', 'yellow-sally', 'pats-rubber-legs'],
+};
+
+const HATCH_NAMES = {
+  mayfly: 'a mayfly', caddis: 'a caddis', midge: 'a midge',
+  terrestrial: 'a hopper', stonefly: 'a stonefly',
+};
+
+/* Silhouettes, not illustrations — the point is that the shape is readable at
+   a glance, because reading the shape at a glance is the actual skill. */
+const HATCH_BUGS = {
+  mayfly: `<svg viewBox="0 0 40 24"><path d="M18 13 C16 6 19 3 21 2 C22 6 22 10 21 13 Z"/><path d="M21 13 C22 8 25 5 27 4 C27 8 25 11 24 13 Z" opacity=".65"/><ellipse cx="20" cy="15" rx="9" ry="2"/><circle cx="11" cy="14.6" r="2.1"/><path d="M29 15 L38 12 M29 15 L38 17" fill="none" stroke="currentColor" stroke-width="1"/></svg>`,
+  caddis: `<svg viewBox="0 0 40 24"><path d="M10 17 L27 6 L32 17 Z"/><ellipse cx="19" cy="17" rx="9" ry="1.8"/><circle cx="10" cy="16" r="2"/><path d="M9 14 L2 10 M9 15 L2 14" fill="none" stroke="currentColor" stroke-width="1"/></svg>`,
+  midge: `<svg viewBox="0 0 40 24"><path d="M19 13 C21 9 25 7 28 6 C27 10 24 13 21 14 Z" opacity=".6"/><path d="M19 14 C22 14 26 15 28 17 C24 18 21 17 19 15 Z" opacity=".45"/><ellipse cx="20" cy="14" rx="6" ry="1.2"/><circle cx="14" cy="13.8" r="1.5"/></svg>`,
+  terrestrial: `<svg viewBox="0 0 40 24"><ellipse cx="21" cy="13" rx="10" ry="3.2"/><path d="M22 11 L32 10 L24 15 Z" opacity=".6"/><path d="M20 15 L23 22 L31 19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="12.5" r="3"/><path d="M9 10 L3 5" fill="none" stroke="currentColor" stroke-width="1"/></svg>`,
+  stonefly: `<svg viewBox="0 0 40 24"><ellipse cx="21" cy="15" rx="11" ry="2.2"/><path d="M12 13 L31 10 L30 14 L13 16 Z" opacity=".6"/><circle cx="9" cy="14" r="2.3"/><path d="M32 15 L38 13 M32 15 L38 18" fill="none" stroke="currentColor" stroke-width="1"/></svg>`,
+};
+
+/** Build the game's round data, dropping anything the deck does not contain. */
+function hatchData(flies) {
+  const byId = new Map(flies.map((x) => [x.slug, x]));
+  const out = {};
+  for (const [type, slugs] of Object.entries(HATCH_FLIES)) {
+    const kept = slugs
+      .filter((sl) => byId.has(sl))
+      .map((sl) => ({ slug: sl, name: byId.get(sl).name, img: `/cards/${sl}` }));
+    if (kept.length) out[type] = kept;
+  }
+  /* Three choices are drawn from three different types, so fewer than three
+     types means no game — the script bails and the fallback copy stands. */
+  const json = JSON.stringify({ flies: out, names: HATCH_NAMES, bugs: HATCH_BUGS });
+  return json.replace(/</g, '\\u003c');   /* never let a "</script>" through */
+}
+
 /* ------------------------------------------------------------------ page -- */
 
 export default function homepage({ site, flies, posts }) {
@@ -290,67 +336,79 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
   </div>
 </section>
 
-<section class="section section--sunk" id="rise" aria-labelledby="rise-h">
-  <div class="wrap wrap--narrow">
-    <div class="section-head">
-      <p class="section-num" aria-hidden="true">5&#9824;</p>
-      <h2 class="h2" id="rise-h">Can you time the take?</h2>
-      <p class="lede">
-        A trout eats a dry fly on the way up and closes its mouth on the way
-        <em>down</em>. Strike at the splash and you pull the fly out of an open mouth.
-        Wait for the turn.
-      </p>
-    </div>
+<!-- ============================================================= the game ==
+     "Match the hatch" — the deck's own premise as a 10-second toy. A bug
+     drifts by, three real cards come up, you pick the one that matches. The
+     rounds are built from data/flies.json below, so every card in play is a
+     card that ships in the box.
 
-    <div class="rise" data-rise tabindex="0" role="group" aria-labelledby="rise-h"
-         aria-describedby="rise-status">
-      <svg class="rise__scene" viewBox="0 0 320 170" role="img"
-           aria-label="A trout rising to a dry fly on the water surface">
-        <!-- leader, running up and off to an implied rod -->
-        <path class="rise__leader" d="M186 44 C 236 22, 286 12, 318 6"/>
+     No-JS: the scene renders as a still illustration and the buttons never
+     appear (they are injected). Nothing on this page depends on it. -->
+<section class="section section--sunk" id="game" aria-labelledby="game-h">
+  <div class="wrap">
+    <p class="eyebrow">Try it</p>
+    <h2 class="h2" id="game-h">Match the hatch</h2>
+    <p class="lede hatch__lede">
+      Half of fly fishing is looking at what is on the water and tying on
+      something that looks like it. That is the whole trick, and it is what the
+      deck is for. Something is drifting past — pick the fly.
+    </p>
 
-        <!-- the fly, sitting in the film -->
-        <g class="rise__fly">
-          <circle cx="184" cy="46" r="3.4"/>
-          <path d="M184 43.2 l4-5M184 43.2 l-3.4-5.2M184 43.2 l0.6-6"/>
-        </g>
+    <div class="hatch" data-hatch>
+      <div class="hatch__scene" data-hatch-scene>
+        <svg class="hatch__water" viewBox="0 0 400 180" role="img"
+             aria-label="A trout holding under the surface of a stream while an insect drifts overhead.">
+          <defs>
+            <linearGradient id="hatch-deep" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="var(--c-green)" stop-opacity=".26"/>
+              <stop offset="100%" stop-color="var(--c-green)" stop-opacity=".05"/>
+            </linearGradient>
+          </defs>
 
-        <!-- rise ring, drawn as the fish reaches the surface -->
-        <ellipse class="rise__ring" data-rise-ring cx="184" cy="49" rx="20" ry="5"/>
+          <!-- water -->
+          <rect x="0" y="86" width="400" height="94" fill="url(#hatch-deep)"/>
+          <path class="hatch__surface" d="M0 86 H400" />
+          <path class="hatch__seam" d="M0 108 C90 104 150 112 250 107 S360 104 400 109" />
+          <path class="hatch__seam" d="M0 132 C80 128 170 136 260 130 S370 128 400 133" />
 
-        <!-- water -->
-        <path class="rise__water" d="M0 49 H320"/>
-        <path class="rise__water rise__water--soft" d="M0 57 H320"/>
+          <!-- the rise ring, drawn on the surface -->
+          <ellipse class="hatch__ring" data-hatch-ring cx="200" cy="86" rx="16" ry="4.5"/>
+          <ellipse class="hatch__ring hatch__ring--2" cx="200" cy="86" rx="16" ry="4.5"/>
 
-        <!-- the fish: nose up and to the right, rising to the fly -->
-        <g class="rise__fish" data-rise-fish>
-          <path class="rise__tail" d="M141 150 C 133 155, 126 163, 124 169 C 133 168, 141 163, 146 156 Z"/>
-          <path class="rise__fin"  d="M166 112 C 171 105, 177 100, 182 98 C 180 104, 176 110, 171 115 Z"/>
-          <path class="rise__body"
-                d="M197 103
-                   C 185 98, 167 105, 155 119
-                   C 147 129, 142 141, 141 151
-                   C 150 154, 166 147, 178 133
-                   C 188 121, 195 110, 197 103 Z"/>
-          <circle class="rise__eye" cx="187" cy="110" r="2.3"/>
-        </g>
-      </svg>
+          <!-- the trout -->
+          <g class="hatch__fish" data-hatch-fish transform="translate(152 118)">
+            <path class="hatch__fish-tail" d="M62 17 L82 4 L78 17 L82 30 Z"/>
+            <path class="hatch__fish-fin"  d="M40 5 L52 -3 L56 7 Z"/>
+            <path class="hatch__fish-fin"  d="M32 24 L38 33 L46 25 Z"/>
+            <path class="hatch__fish-body"
+                  d="M4 17 C16 4 48 1 66 9 C70 12 70 22 66 25 C48 33 16 30 4 17 Z"/>
+            <path class="hatch__fish-line" d="M12 17 C30 14 50 15 64 17"/>
+            <circle class="hatch__fish-spot" cx="30" cy="11" r="1.8"/>
+            <circle class="hatch__fish-spot" cx="42" cy="14" r="1.6"/>
+            <circle class="hatch__fish-spot" cx="36" cy="21" r="1.5"/>
+            <circle class="hatch__fish-spot" cx="50" cy="20" r="1.4"/>
+            <circle class="hatch__fish-eye" cx="12" cy="15" r="2.4"/>
+          </g>
+        </svg>
 
-      <div class="rise__ui">
-        <button class="btn btn--primary btn--sm rise__strike" type="button" data-rise-strike>
-          Set the hook
-        </button>
-        <p class="rise__status" id="rise-status" data-rise-status role="status" aria-live="polite">
-          Turn on JavaScript to play &mdash; or just read the guide.
-        </p>
-        <p class="rise__score" data-rise-score aria-live="polite"></p>
+        <!-- the drifting bug, swapped each round -->
+        <div class="hatch__bug" data-hatch-bug aria-hidden="true"></div>
+        <p class="hatch__label"><span data-hatch-label></span></p>
       </div>
+
+      <p class="hatch__status" data-hatch-status role="status">
+        Turn on JavaScript to play — or just
+        <a href="/flies/">browse all 54 flies</a> instead.
+      </p>
+
+      <div class="hatch__choices" data-hatch-choices></div>
+      <p class="hatch__score" data-hatch-score aria-live="polite"></p>
     </div>
 
-    <p class="text-faint rise__foot">
-      The timing is real, not decorative. The full version &mdash; dry fly, nymph and
-      strip sets, and why a low sideways set beats an overhead one &mdash; is in
-      <a href="/blog/how-to-set-the-hook/">how to set the hook on a trout</a>.
+    <p class="hatch__foot">
+      Every card here is a card in the deck. There are ${count} of them, each with
+      the name, the hatch it matches and how to fish it printed on the face.
+      <a href="/flies/">See the whole library →</a>
     </p>
   </div>
 </section>
@@ -481,6 +539,7 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
 .home-quote cite { display: block; font-style: normal; font-size: var(--t-sm); color: var(--c-text-faint); }
 </style>
 
-
-<script src="/js/rise.js" defer></script>`;
+<script type="application/json" id="hatch-data">${hatchData(f)}</script>
+<script src="/js/hatch.js" defer></script>
+`;
 }
