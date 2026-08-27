@@ -185,7 +185,7 @@
       case 'wholesale':
         return '<strong>Enquiry saved.</strong> Nothing has been ordered and no account has been opened. ' +
                'This site is pre-launch, so your details were stored in this browser only — ' +
-               'email <a href="mailto:hello@reeldealdeck.com">hello@reeldealdeck.com</a> and we will reply personally.';
+               'email <a href="mailto:reeldealdeck@gmail.com">reeldealdeck@gmail.com</a> and we will reply personally.';
       case 'reserve':
         return '<strong>You are on the list.</strong> This is a reservation of interest, not an order: ' +
                'no payment has been taken and nothing has been charged. ' +

@@ -166,7 +166,7 @@ buyer who receives a Father's Day promo unsubscribes and you lose an account.
 |---|---|---|
 | `reserve` | ESP list: **Pre-order waitlist** | The launch announcement list |
 | `gift` | ESP list: **Gift buyers**, tagged with `occasion` | Seasonal sends, timed to the date they gave you |
-| `wholesale` | **Email to `hello@reeldealdeck.com` + a spreadsheet or CRM** | These are sales leads, not subscribers |
+| `wholesale` | **Email to `reeldealdeck@gmail.com` + a spreadsheet or CRM** | These are sales leads, not subscribers |
 
 The whole integration:
 

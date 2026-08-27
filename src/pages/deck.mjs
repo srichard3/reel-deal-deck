@@ -436,13 +436,13 @@ ${TIERS.filter((t) => t.limited).map(specialTier).join('\n')}
     <noscript>
       <p class="notice notice--info">
         This form needs JavaScript to save your details. Email
-        <a href="mailto:hello@reeldealdeck.com?subject=Reserve%20a%20deck">hello@reeldealdeck.com</a>
+        <a href="mailto:reeldealdeck@gmail.com?subject=Reserve%20a%20deck">reeldealdeck@gmail.com</a>
         instead and we will add you to the list by hand.
       </p>
     </noscript>
 
     <form class="cx-form stack" data-capture="reserve"
-          action="mailto:hello@reeldealdeck.com" method="post" enctype="text/plain">
+          action="mailto:reeldealdeck@gmail.com" method="post" enctype="text/plain">
       <div class="field">
         <label class="label" for="reserve-email">Email address</label>
         <input class="input" id="reserve-email" name="email" type="email"
