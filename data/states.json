@@ -1,0 +1,212 @@
+[
+  {
+    "slug": "idaho",
+    "name": "Idaho",
+    "abbr": "ID",
+    "region": "Mountain West",
+    "answer": "Idaho fly fishing is western freestone and spring creek water, with rainbow, cutthroat and brown trout as the mainstays. The Henry's Fork, Silver Creek and the South Fork of the Snake are the headline rivers. A licence is required from age 14; the season runs year-round on many waters, with the best dry-fly fishing from June through September.",
+    "summary": "Rainbow, cutthroat and brown trout on world-class spring creeks and freestone rivers. Technical dry-fly water on the Henry's Fork and Silver Creek, big-water salmonflies on the South Fork.",
+    "whatMakesItDifferent": "Idaho packs two very different kinds of trout water into one state. The Henry's Fork of the Snake and Silver Creek are flat, weed-rich spring creeks where fish get an unhurried look at the fly and refusals are the norm — this is some of the most technical dry-fly water in North America. An hour or two away, the South Fork of the Snake and the Salmon are big, pushy freestone rivers where a size 6 salmonfly gets eaten without much argument. Very few states ask an angler to fish both ends of that spectrum in the same week.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Widespread; the Henry's Fork rainbows are famously selective."
+      },
+      {
+        "name": "Yellowstone cutthroat",
+        "note": "Native. The South Fork of the Snake holds one of the strongest remaining populations."
+      },
+      {
+        "name": "Westslope cutthroat",
+        "note": "Native to the north — the St. Joe and Kelly Creek are the classic waters."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Silver Creek and the Big Wood, and the lower Henry's Fork."
+      },
+      {
+        "name": "Brook trout",
+        "note": "High-country streams and lakes."
+      },
+      {
+        "name": "Bull trout",
+        "note": "Native char, ESA-listed. Catch and release only, and they may not be targeted — check current rules."
+      },
+      {
+        "name": "Steelhead",
+        "note": "Clearwater and Salmon river systems. Requires a separate permit."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Henry's Fork of the Snake",
+        "note": "The Railroad Ranch section is flat, slow and famously difficult. Green Drakes in June, then PMDs and Tricos into autumn."
+      },
+      {
+        "name": "Silver Creek",
+        "note": "A spring creek near Picabo, long associated with Ernest Hemingway, who lived and is buried in nearby Ketchum. Gin-clear, weedy, and unforgiving of drag."
+      },
+      {
+        "name": "South Fork of the Snake",
+        "note": "Big freestone water below Palisades. Salmonflies in early summer, cutthroat on dry flies all season."
+      },
+      {
+        "name": "Big Wood River",
+        "note": "Freestone through Ketchum and Hailey. Accessible, and it fishes well in autumn."
+      },
+      {
+        "name": "St. Joe River",
+        "note": "Northern Idaho, native westslope cutthroat, and a long catch-and-release stretch."
+      },
+      {
+        "name": "Kelly Creek",
+        "note": "Remote northern cutthroat water; a long drive and worth it."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "March – May",
+        "what": "Runoff on freestone rivers. Fish tailwaters and spring creeks; Baetis on grey days."
+      },
+      {
+        "window": "Late May – June",
+        "what": "Salmonflies on the South Fork and Henry's Fork. Green Drakes on the Henry's Fork — the busiest weeks of the year."
+      },
+      {
+        "window": "July – August",
+        "what": "PMDs, Tricos in the mornings, terrestrials on the banks. Dawn and dusk in the heat."
+      },
+      {
+        "window": "September – October",
+        "what": "Mahogany duns, Baetis, aggressive pre-spawn browns. Many anglers' favourite month."
+      },
+      {
+        "window": "November – February",
+        "what": "Midges on tailwaters and spring creeks. Silver Creek and the lower Henry's Fork stay fishable."
+      }
+    ],
+    "flies": [
+      "salmonfly",
+      "green-drake",
+      "pale-morning-dun",
+      "trico",
+      "chubby-chernobyl",
+      "pats-rubber-legs"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 14. Non-residents can buy annual or daily licences.",
+      "Bull trout are ESA-listed: catch and release only, and they may not be targeted. Learn to identify them before fishing northern and central Idaho.",
+      "A separate Salmon & Steelhead permit is required to target steelhead or chinook.",
+      "Some waters are catch-and-release or artificial-lure-only. Rules vary water by water and change annually."
+    ],
+    "licence": {
+      "agency": "Idaho Fish and Game",
+      "licenceUrl": "https://idfg.idaho.gov/licenses",
+      "rulesUrl": "https://idfg.idaho.gov/rules/fish",
+      "residentAnnual": "$30.50",
+      "nonResidentAnnual": "$108",
+      "priceYear": "2026",
+      "priceNote": "Figures are the 2026 published rates for an adult annual fishing licence and exclude processing fees and the depredation/access fee. Prices change — check with the agency before you buy."
+    },
+    "localNote": "The Reel Deal Deck is made in Eagle, Idaho, so this is our home water."
+  },
+  {
+    "slug": "pennsylvania",
+    "name": "Pennsylvania",
+    "abbr": "PA",
+    "region": "Mid-Atlantic",
+    "answer": "Pennsylvania fly fishing means limestone spring creeks and freestone mountain streams, with wild brown and brook trout alongside a very large stocking programme. Penns Creek, Spring Creek and the Letort are the classic waters. You need both a fishing licence and a separate trout permit, and stocked waters close ahead of the spring opening day.",
+    "summary": "Limestone spring creeks and wild brook trout, plus one of the largest trout stocking programmes in the country. Technical water with a long angling history.",
+    "whatMakesItDifferent": "Pennsylvania's limestone spring creeks are the reason American technical dry-fly fishing exists as a discipline. Water filtering through limestone emerges at a near-constant temperature, rich in the minerals that grow weed, insects and heavy trout — and it stays fishable in January and in August when a freestone stream nearby will not. The Letort Spring Run in Carlisle is where Vince Marinaro and Charlie Fox worked out much of the modern terrestrial and technical dry-fly canon in the mid-twentieth century. Fish that live in slow, clear, weed-rich water get a very long look at a fly, which is why Pennsylvania anglers tend to fish finer tippet and smaller flies than the national average.",
+    "species": [
+      {
+        "name": "Brook trout",
+        "note": "The state fish and the only native trout. Wild populations in mountain freestone streams."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Wild and self-sustaining in the limestone creeks; the main quarry on Penns and Spring Creek."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Mostly stocked, though some streams hold holdover fish."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Penns Creek",
+        "note": "Best known for its Green Drake hatch in late May and early June, which draws anglers from across the country."
+      },
+      {
+        "name": "Spring Creek",
+        "note": "Near State College. All wild trout, catch-and-release, and fishable year-round."
+      },
+      {
+        "name": "Letort Spring Run",
+        "note": "Small, slow, weedy and very difficult. Historically important out of proportion to its size."
+      },
+      {
+        "name": "Yellow Breeches Creek",
+        "note": "Limestone water at Boiling Springs with a well-known year-round section."
+      },
+      {
+        "name": "Little Juniata River",
+        "note": "Limestone-influenced freestone; strong Sulphur and caddis hatches."
+      },
+      {
+        "name": "Upper Delaware River",
+        "note": "On the New York border. Big water, wild fish, and genuinely hard."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – mid-February",
+        "what": "Stocked trout waters are open. Midges and small nymphs on the limestone creeks."
+      },
+      {
+        "window": "Mid-February – early April",
+        "what": "Stocked trout waters close ahead of opening day. Wild trout and year-round sections remain open."
+      },
+      {
+        "window": "April – May",
+        "what": "Opening day, then Grannom caddis, Hendricksons and Sulphurs. The busiest stretch of the season."
+      },
+      {
+        "window": "Late May – June",
+        "what": "The Green Drake hatch on Penns Creek. Sulphurs continue; evenings are the thing."
+      },
+      {
+        "window": "July – August",
+        "what": "Tricos in the morning, terrestrials through the day. Limestone creeks hold up when freestone streams get too warm."
+      },
+      {
+        "window": "September – December",
+        "what": "Baetis, cooler water, and stocked waters reopen the day after Labor Day."
+      }
+    ],
+    "flies": [
+      "green-drake",
+      "march-brown",
+      "trico",
+      "blue-wing-olive",
+      "elk-hair-caddis",
+      "scud"
+    ],
+    "regulations": [
+      "You need a fishing licence AND a separate Trout Permit to fish for trout in stocked, regulated or designated trout waters.",
+      "Stocked trout waters are closed from 16 February until 8am on opening day (4 April in 2026), apart from designated year-round sections and Mentored Youth Day.",
+      "Stocked waters reopen the day after Labor Day and run to 31 December.",
+      "Class A wild trout streams, delayed-harvest and artificial-lures-only sections all carry their own rules. Check the water before you fish it."
+    ],
+    "licence": {
+      "agency": "Pennsylvania Fish and Boat Commission",
+      "licenceUrl": "https://www.pa.gov/agencies/fishandboat/fishing/regulations",
+      "rulesUrl": "https://www.pa.gov/agencies/fishandboat/fishing/regulations",
+      "residentAnnual": "$27.97",
+      "nonResidentAnnual": "$60.97",
+      "priceYear": "2026",
+      "priceNote": "Figures are the 2026 published rates for an adult annual fishing licence. A Trout Permit ($14.97 in 2026) is required in addition, for any trout water. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  }
+]

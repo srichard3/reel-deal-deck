@@ -76,6 +76,10 @@ else if (BASE) site.url = site.url.replace(/\/$/, '') + BASE;
    is advertised as 54 unique cards (52 standard + 2 jokers), which is the
    industry-standard figure printed on the tuck box; the bonus card ships on top
    of that and is shown on the site but never counted into the 54. */
+const states = existsSync(path.join(ROOT, 'data/states.json'))
+  ? JSON.parse(await read(path.join(ROOT, 'data/states.json')))
+  : [];
+
 const flies = existsSync(path.join(ROOT, 'data/flies.json'))
   ? JSON.parse(await read(path.join(ROOT, 'data/flies.json')))
   : [];
@@ -184,7 +188,7 @@ async function buildPages() {
       // JS page: `export const meta = {...}; export default (ctx) => htmlString`
       const mod = await import(pathToFileURL(full).href + `?t=${Date.now()}`);
       const meta = mod.meta;
-      const body = await mod.default({ site, flies, posts: allPosts, meta });
+      const body = await mod.default({ site, flies, posts: allPosts, states, meta });
       await emit(meta.path, meta, body);
       continue;
     }
@@ -242,6 +246,18 @@ async function buildPosts() {
   return posts;
 }
 
+/* ----------------------------------------------------------- state pages -- */
+
+async function buildStates() {
+  const tplPath = path.join(SRC, 'templates', 'state.mjs');
+  if (!existsSync(tplPath) || !states.length) return;
+  const tpl = await import(pathToFileURL(tplPath).href + `?t=${Date.now()}`);
+  for (const state of states) {
+    const { meta, body } = await tpl.default({ state, states, site, flies });
+    await emit(meta.path, meta, body);
+  }
+}
+
 /* ---------------------------------------------------------------- assets -- */
 
 async function copyAssets() {
@@ -289,13 +305,14 @@ await mkdir(DIST, { recursive: true });
 const posts = (await buildPosts()) || [];
 await buildPages();
 await buildFlies();
+await buildStates();
 await copyAssets();
 await buildSitemap();
 
 const post = path.join(ROOT, 'scripts', 'postbuild.mjs');
 if (existsSync(post)) {
   const mod = await import(pathToFileURL(post).href + `?t=${Date.now()}`);
-  await mod.default?.({ site, flies, posts, routes, DIST, ROOT });
+  await mod.default?.({ site, flies, posts, states, routes, DIST, ROOT });
 }
 
 console.log(`built ${routes.length} routes in ${Date.now() - t0}ms → dist/`);
