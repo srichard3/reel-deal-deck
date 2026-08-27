@@ -179,5 +179,22 @@
     "eachCard": "Every card shows the rank and suit, the fly's name, its category, the hand-drawn fly itself, a plain-English note on what it imitates, and the hook sizes it is usually tied in.",
     "printer": "The United States Playing Card Company",
     "edition": "Volume 1"
+  },
+  "brand": {
+    "note": "The canonical entity. Every Organization node on the site is emitted from this via organizationSchema() in src/templates/_blocks.mjs. Do not describe the brand differently anywhere else — a single, repeated description is what lets search engines and language models resolve this into one confident entity instead of a fuzzy one.",
+    "name": "The Reel Deal Deck",
+    "legalName": "Homer Fry Ranch, LLC",
+    "slogan": "Hand-drawn playing cards that teach while you play.",
+    "description": "The Reel Deal Deck is a 54-card fly-fishing playing card deck made by Ken and Audrey, a father-and-daughter team in Eagle, Idaho. Every card carries an original hand-drawn fly, a plain-English note on what it imitates, and the hook sizes it is usually tied in. It is printed by The United States Playing Card Company on genuine Bicycle stock, retails at $19.99, and a contribution from every deck goes to Trout Unlimited.",
+    "shortDescription": "A 54-card fly-fishing deck of original hand-drawn flies, each explaining what it imitates. Made by a father-and-daughter team in Eagle, Idaho.",
+    "foundingLocation": "Eagle, Idaho, United States",
+    "knowsAbout": [
+      "Fly fishing",
+      "Trout flies",
+      "Fly patterns",
+      "Fly tying",
+      "Playing cards",
+      "Trout conservation"
+    ]
   }
 }

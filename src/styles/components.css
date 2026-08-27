@@ -1703,3 +1703,69 @@ a.card-face.card-face:nth-child(even):active {
 @media (min-width: 48rem) {
   .aeo-answer { padding: var(--s-6); }
 }
+
+/* --- /about/ and /press/ ------------------------------------------------ */
+.about-layout { display: grid; gap: var(--s-7); align-items: start; }
+@media (min-width: 54rem) {
+  .about-layout { grid-template-columns: minmax(0, 1fr) 16rem; gap: var(--s-8); }
+}
+.about-card { margin: 0; }
+.about-card img { display: block; width: 100%; height: auto; border-radius: var(--r-card); box-shadow: var(--shadow-lift); }
+.about-card .figure-note { margin-block-start: var(--s-3); text-align: center; }
+
+.about-facts { margin: var(--s-5) 0 0; }
+.about-facts__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-1);
+  padding-block: var(--s-4);
+  border-bottom: 1px solid var(--c-border);
+}
+@media (min-width: 40rem) {
+  .about-facts__row { grid-template-columns: 10rem minmax(0, 1fr); gap: var(--s-4); }
+}
+.about-facts__row:last-child { border-bottom: 0; }
+.about-facts__key {
+  margin: 0;
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-index);
+  color: var(--c-text-faint);
+}
+.about-facts__val { margin: 0; color: var(--c-text); }
+
+.about-quote {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-5) var(--s-6);
+  border-inline-start: 3px solid var(--c-green);
+  background-color: var(--c-bg-sunk);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+}
+.about-quote p {
+  margin: 0 0 var(--s-4);
+  font-family: var(--f-display);
+  font-size: var(--t-md);
+  line-height: var(--lh-body);
+}
+.about-quote p:last-of-type { margin-bottom: 0; }
+.about-quote cite {
+  display: block;
+  margin-block-start: var(--s-4);
+  font-family: var(--f-body);
+  font-style: normal;
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+
+.press-asset { margin: 0; }
+.press-asset img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-sm);
+  background-color: var(--c-bg-sunk);
+  border: 1px solid var(--c-border);
+}
+.press-asset figcaption { display: grid; gap: var(--s-1); margin-block-start: var(--s-3); font-size: var(--t-sm); }

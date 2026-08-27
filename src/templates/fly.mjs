@@ -4,7 +4,7 @@
    footnote, not the point. */
 
 import { esc, flyCard, cardImage, cardLabel, TYPES, titleCase } from './_shared.mjs';
-import { campaignCta } from './_blocks.mjs';
+import { campaignCta, organizationSchema } from './_blocks.mjs';
 
 /* Build the answer-first block: 40-60 words, directly under the h1, before any
    other prose. This is the block an answer engine lifts, so it has to answer
@@ -119,7 +119,7 @@ export default function ({ fly, flies, site }) {
       mainEntityOfPage: url,
       about: { '@type': 'Thing', name: `${fly.name} fly pattern` },
       isPartOf: { '@type': 'CollectionPage', name: 'Fly Library', url: `${site.url.replace(/\/$/, '')}/flies/` },
-      publisher: { '@type': 'Organization', name: site.name, url: site.url },
+      publisher: organizationSchema(site),
     },
     {
       '@context': 'https://schema.org',

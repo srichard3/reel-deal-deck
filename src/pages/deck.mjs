@@ -9,7 +9,7 @@
  * TODO-CONFIRM before launch.
  */
 
-import { campaignCta, campaignLine } from '../templates/_blocks.mjs';
+import { campaignCta, campaignLine, organizationSchema } from '../templates/_blocks.mjs';
 const esc = (s) => String(s ?? '')
   .replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -147,7 +147,7 @@ export const meta = {
       name: 'The Reel Deal Deck',
       description:
         'A 54-card fly-fishing playing card deck. Every card is an original hand-drawn fly with a description of what it imitates, printed on genuine Bicycle / USPCC stock with the patented Air-Cushion finish.',
-      brand: { '@type': 'Brand', name: 'The Reel Deal Deck' },
+      brand: { '@type': 'Brand', name: 'The Reel Deal Deck', slogan: "Hand-drawn playing cards that teach while you play." },
       category: 'Playing Cards',
       material: 'FSC-certified paper, starch-based laminating glue, vegetable-based inks',
       size: 'Poker size, 2.5in x 3.5in',
@@ -163,7 +163,7 @@ export const meta = {
         availability: 'https://schema.org/PreOrder',
         itemCondition: 'https://schema.org/NewCondition',
         url: 'https://reeldealdeck.com/deck/',
-        seller: { '@type': 'Organization', name: 'The Reel Deal Deck' },
+        seller: null, // filled in the render, where `site` is in scope
       },
     },
     {
@@ -313,6 +313,18 @@ function flyCards(flies) {
 
 export default function deckPage({ site, flies }) {
   const p = site.product || {};
+
+  /* `meta` is a module-level constant, so `site` is not in scope up there.
+     build.mjs reads meta AFTER this function runs, so patching it here is the
+     established pattern (see pages/flies.mjs). */
+  const org = organizationSchema(site, { full: true });
+  for (const node of meta.jsonld) {
+    if (node['@type'] === 'Product') {
+      node.offers.seller = organizationSchema(site);
+      node.brand = { '@type': 'Brand', name: site.brand?.name || site.name, slogan: site.brand?.slogan };
+    }
+  }
+  if (!meta.jsonld.some((n) => n['@type'] === 'Organization')) meta.jsonld.push({ '@context': 'https://schema.org', ...org });
   const price = p.priceIntended ?? 19.99;
   const list = Array.isArray(flies) ? flies : [];
 

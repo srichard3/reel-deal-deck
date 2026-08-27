@@ -1,10 +1,8 @@
 # The Reel Deal Deck
 
-> A fly-fishing playing card deck. Every card is an original hand-drawn fly with a
-> plain-English note on what it imitates and the hook sizes it is usually tied in.
-> Made by Ken and Audrey, a father-and-daughter team of multigenerational Idaho
-> farmers in Eagle, Idaho. Printed by The United States Playing Card Company.
-> A contribution goes to Trout Unlimited from every deck.
+> The Reel Deal Deck is a 54-card fly-fishing playing card deck made by Ken and Audrey, a father-and-daughter team in Eagle, Idaho.
+> Every card carries an original hand-drawn fly, a plain-English note on what it imitates, and the hook sizes it is usually tied in.
+> It is printed by The United States Playing Card Company on genuine Bicycle stock, retails at $19.99, and a contribution from every deck goes to Trout Unlimited.
 
 In their words: "exquisite hand-drawn playing cards that teach while you play."
 
@@ -45,6 +43,9 @@ does not go stale between builds. For the machine-readable list of every page se
   the three specials that carry a trout-in-a-jester's-cap mark instead of a rank
   (the Egg, the San Juan Worm and the Bass Popper), the engraved card back and
   the tuck box.
+- [About](https://reeldealdeck.com/about/): what the deck is, what it costs,
+  who it is for and who makes it — the canonical description of this business.
+- [Press](https://reeldealdeck.com/press/): boilerplate, quick facts and artwork.
 - [The deck](https://reeldealdeck.com/deck/): specifications and pricing.
   Poker size, 2.5in x 3.5in, genuine Bicycle / USPCC stock with the patented
   Air-Cushion finish, FSC-certified paper, vegetable-based inks. Volume 1.

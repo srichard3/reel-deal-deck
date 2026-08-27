@@ -100,6 +100,57 @@ const deslug = (s) =>
  * article ever has to know the campaign end date, and none of them can drift
  * out of sync with another.
  */
+/* ---------------------------------------------------------------- entity --
+ * The single Organization node for the whole site.
+ *
+ * Every page emitted 'The Reel Deal Deck' with almost no facts attached — 107
+ * nodes, only 2 of which carried a description, and those two disagreed. That
+ * is the fuzzy-entity case: a model sees the name repeatedly and still cannot
+ * say confidently what it is. One shape, emitted everywhere, fixes it.
+ *
+ * `full` on the pages that are genuinely about the business (home, about,
+ * press, contact, deck, story); the compact form as `publisher`/`seller`
+ * elsewhere, so a fly page does not carry a founder list it has no use for.
+ */
+export function organizationSchema(site, { full = false } = {}) {
+  const b = (site && site.brand) || {};
+  const base = String(site?.url || '').replace(/\/$/, '');
+  const social = Object.entries(site?.social || {})
+    .filter(([k, v]) => v && k !== 'email' && /^https?:/i.test(v))
+    .map(([, v]) => v);
+
+  const node = {
+    '@type': 'Organization',
+    name: b.name || site?.name,
+    url: base || undefined,
+    description: b.shortDescription || b.description,
+  };
+  if (!full) return node;
+
+  return {
+    ...node,
+    '@id': `${base}/#organization`,
+    legalName: b.legalName || undefined,
+    slogan: b.slogan || undefined,
+    description: b.description,
+    logo: base ? `${base}/brand/joker-fish-512.png` : undefined,
+    image: base ? `${base}/og/default.png` : undefined,
+    email: site?.social?.email || undefined,
+    foundingLocation: b.foundingLocation || undefined,
+    knowsAbout: b.knowsAbout || undefined,
+    address: site?.location
+      ? {
+          '@type': 'PostalAddress',
+          addressLocality: site.location.city,
+          addressRegion: site.location.region,
+          addressCountry: site.location.country,
+        }
+      : undefined,
+    founder: (site?.founders || []).map((f) => ({ '@type': 'Person', name: f.name })),
+    sameAs: social.length ? social : undefined,
+  };
+}
+
 /* A ready-made call to action for the campaign, in whatever state it is in.
    Every campaign link on the site should come through here rather than
    hard-coding the Kickstarter URL, so that on 20 September the whole site

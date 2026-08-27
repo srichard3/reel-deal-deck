@@ -20,7 +20,7 @@
    Missing, malformed or over-budget front matter degrades; it never throws.
    ========================================================================== */
 
-import { makeBlocks, campaignState, esc, plain, clamp, wordCount } from './_blocks.mjs';
+import { makeBlocks, campaignState, esc, plain, clamp, wordCount, organizationSchema } from './_blocks.mjs';
 import { flyCard } from './_shared.mjs';
 
 /* The shell appends " — The Reel Deal Deck" (21 chars) and scripts/check.mjs
@@ -224,15 +224,13 @@ export default function ({ post, posts = [], site, flies = [] }) {
   /* -------------------------------------------------------------- JSON-LD */
 
   const publisher = {
-    '@type': 'Organization',
-    name: site?.name,
-    url: site?.url,
+    ...organizationSchema(site),
     logo: { '@type': 'ImageObject', url: `${base}/icon-512.png` },
   };
   /* TODO-CONFIRM: site.blog.authorNote — articles are attributed to the brand.
      A named author (Ken) is a real E-E-A-T signal for Google and for answer
      engines. Add a Person here the moment the founders agree to a byline. */
-  const author = { '@type': 'Organization', name: site?.name, url: site?.url };
+  const author = organizationSchema(site);
 
   const jsonld = [
     {

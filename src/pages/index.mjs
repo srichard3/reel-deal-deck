@@ -30,29 +30,7 @@ export const meta = {
       description:
         'A 54-card fly-fishing playing card deck with original hand-drawn flies, printed on genuine Bicycle stock.',
     },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: 'The Reel Deal Deck',
-      url: 'https://reeldealdeck.com/',
-      slogan: '54 flies. One deck worth owning.',
-      description:
-        'Hand-drawn fly-fishing playing cards made by Ken and Audrey, a father-daughter team of Idaho farmers, anglers and entrepreneurs.',
-      founder: [
-        { '@type': 'Person', name: 'Ken', jobTitle: 'Founder' },
-        { '@type': 'Person', name: 'Audrey', jobTitle: 'Co-founder' },
-      ],
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Eagle',
-        addressRegion: 'ID',
-        addressCountry: 'US',
-      },
-      sameAs: [
-        'https://instagram.com/reeldealdeck',
-        'https://tiktok.com/@reeldealdeck',
-      ],
-    },
+    { '@context': 'https://schema.org', '@type': 'Organization' }, // filled in the render
     {
       '@context': 'https://schema.org',
       '@type': 'ImageObject',
@@ -68,7 +46,7 @@ export const meta = {
 /* ----------------------------------------------------------------- utils -- */
 
 import { flyCard as sharedFlyCard } from '../templates/_shared.mjs';
-import { campaignCta, campaignLine } from '../templates/_blocks.mjs';
+import { campaignCta, campaignLine, organizationSchema } from '../templates/_blocks.mjs';
 
 const esc = (s) =>
   String(s ?? '')
@@ -107,6 +85,11 @@ function flyStrip(flies, picks) {
 /* ------------------------------------------------------------------ page -- */
 
 export default function homepage({ site, flies, posts }) {
+  /* `meta` is module-level, so `site` is not in scope there. build.mjs reads
+     meta after this runs, so the canonical entity is patched in here. */
+  const orgIdx = meta.jsonld.findIndex((n) => n['@type'] === 'Organization');
+  if (orgIdx > -1) meta.jsonld[orgIdx] = { '@context': 'https://schema.org', ...organizationSchema(site, { full: true }) };
+
   /* Four entry points into the guides, chosen as the widest doors: what to buy,
      what to tie on, how to rig it, and why it is not working. Falls back to the
      newest four if any slug is missing, so the section never renders empty. */
