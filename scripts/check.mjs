@@ -207,12 +207,23 @@ for (const file of htmlFiles) {
     add(name, 'error', `<title> is ${title.length} chars (max ${TITLE_MAX}) — “${title}”`);
 
   /* --- description -------------------------------------------------- */
+  const titleText = (html.match(/<title>([\s\S]*?)<\/title>/i) || [, ''])[1].trim();
+  if (titleText && /[…]/.test(titleText))
+    add(name, 'warning', 'title was truncated by the template — shorten it at the source');
+
   const desc = meta(html, 'description');
   if (!desc) add(name, 'error', 'no <meta name="description">');
   else if (desc.length > DESC_MAX)
     add(name, 'error', `meta description is ${desc.length} chars (max ${DESC_MAX})`);
   else if (desc.length < DESC_THIN)
     add(name, 'warning', `meta description is only ${desc.length} chars — thin, aim for ${DESC_THIN}–${DESC_MAX}`);
+
+  /* A description ending in an ellipsis was clamped by the template because the
+     source was over length. It renders inside the limit, so the length check
+     above passes and the truncation goes unnoticed — but the sentence has been
+     cut. Shorten it at the source instead and the ellipsis disappears. */
+  if (desc && /[…]$/.test(desc))
+    add(name, 'warning', 'meta description was truncated by the template — shorten it at the source so it ends on a full sentence');
 
   /* --- canonical + Open Graph --------------------------------------- */
   const canonicalTag = head.match(/<link\s[^>]*rel\s*=\s*["']canonical["'][^>]*>/i);
