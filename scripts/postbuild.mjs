@@ -89,6 +89,11 @@ export default async function postbuild({ site, flies = [], routes = [], DIST, R
   const dist = usable(DIST, path.join(SELF_ROOT, 'dist'));
   const root = usable(ROOT, SELF_ROOT);
   const base = String(site?.url || '').replace(/\/$/, '');
+  /* When the site is served from a subpath (GitHub Pages project site), the
+     path portion of site.url is that prefix. Root-relative links written here
+     run after emit(), so they miss build.mjs's rewrite and need it applied. */
+  let basePath = '';
+  try { basePath = new URL(base).pathname.replace(/\/$/, ''); } catch { basePath = ''; }
 
   const errors = [];
   const warnings = [];
@@ -139,8 +144,8 @@ export default async function postbuild({ site, flies = [], routes = [], DIST, R
     if (!/rel=["']alternate["'][^>]*application\/rss\+xml/i.test(html)) {
       html = html.replace(
         /<\/head>/i,
-        `<link rel="alternate" type="application/rss+xml" title="${xml(site?.name || 'Fly Library')} — Fly Library" href="/flies/rss.xml">\n` +
-        `<link rel="alternate" type="application/feed+json" title="${xml(site?.name || 'Fly Library')} — Fly Library" href="/flies/feed.json">\n` +
+        `<link rel="alternate" type="application/rss+xml" title="${xml(site?.name || 'Fly Library')} — Fly Library" href="${basePath}/flies/rss.xml">\n` +
+        `<link rel="alternate" type="application/feed+json" title="${xml(site?.name || 'Fly Library')} — Fly Library" href="${basePath}/flies/feed.json">\n` +
         '</head>'
       );
       dirty = true;

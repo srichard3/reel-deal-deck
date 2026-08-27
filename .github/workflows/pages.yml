@@ -1,0 +1,68 @@
+# ---------------------------------------------------------------------------
+# Deploy to GitHub Pages (project site at /<repo>/).
+#
+# The site is written with root-relative paths, so a project site needs a base
+# path. BASE_PATH prefixes every emitted href/src/srcset, and SITE_URL sets the
+# origin used for canonicals, og:image, JSON-LD and the sitemap. The quality
+# gate honours both, so a base-path build is checked exactly like a root build.
+#
+# NOTE: GitHub Pages cannot set response headers, so static/_headers and
+# static/_redirects have no effect here — no CSP, no HSTS, no cache control and
+# no redirects. That is the accepted trade of a free Pages host. See
+# docs/DEPLOY.md for the Netlify path, which does honour them.
+# ---------------------------------------------------------------------------
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; always let the newest win.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BASE_PATH: /reel-deal-deck
+      SITE_URL: https://srichard3.github.io/reel-deal-deck
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Zero dependencies: no install step, no lockfile.
+      - name: Build
+        run: npm run build
+
+      - name: Quality gate
+        run: node scripts/check.mjs
+
+      # Pages runs Jekyll unless told not to, which would drop _headers and
+      # any future underscore-prefixed file.
+      - name: Disable Jekyll
+        run: touch dist/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

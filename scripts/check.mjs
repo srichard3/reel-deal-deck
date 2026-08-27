@@ -102,8 +102,13 @@ try {
 } catch {
   console.error(C.yellow('check: could not read data/site.json — host checks relaxed.'));
 }
+/* SITE_URL overrides the canonical origin at build time — a GitHub Pages
+   deploy is served from the Pages origin, not from data/site.json's canonical
+   host. Every host check below derives from this, so it must follow the same
+   override the build used or the whole gate misfires. */
+const EFFECTIVE_SITE_URL = process.env.SITE_URL || site.url || '';
 const SITE_ORIGIN = (() => {
-  try { return new URL(site.url).origin; } catch { return null; }
+  try { return new URL(EFFECTIVE_SITE_URL).origin; } catch { return null; }
 })();
 const SITE_HOST = SITE_ORIGIN ? new URL(SITE_ORIGIN).host : null;
 
@@ -151,9 +156,16 @@ for (const r of REQUIRED) {
  * Resolve an internal href to a file in dist.
  * @returns {'ok'|'redirect'|'missing'}
  */
+/* When the site is built for a subpath (GitHub Pages project site) every
+   root-relative href carries that prefix, but dist/ is still laid out from the
+   root. Strip it before resolving, or every internal link reads as broken. */
+const CHECK_BASE = (process.env.BASE_PATH || '').replace(/\/+$/, '');
+
 function resolveInternal(href, fromRoute) {
   let target = href.split('#')[0].split('?')[0];
   if (!target) return 'ok'; // same-document
+  if (CHECK_BASE && target.startsWith(CHECK_BASE + '/')) target = target.slice(CHECK_BASE.length);
+  else if (CHECK_BASE && target === CHECK_BASE) target = '/';
   if (!target.startsWith('/')) {
     target = path.posix.resolve(path.posix.dirname(fromRoute.replace(/\/$/, '/index.html')), target);
   }
@@ -230,6 +242,7 @@ for (const file of htmlFiles) {
       ogPath = ogImage;
     }
     if (ogPath) {
+      if (CHECK_BASE && ogPath.startsWith(CHECK_BASE + '/')) ogPath = ogPath.slice(CHECK_BASE.length);
       const f = ogPath.replace(/^\//, '');
       if (!fileSet.has(f)) add(name, 'error', `og:image does not exist on disk: /${f}`);
     }
@@ -394,7 +407,12 @@ if (existsSync(sitemapPath)) {
     try { p = new URL(loc).pathname; } catch { add('sitemap.xml', 'error', `invalid URL: ${loc}`); continue; }
     if (SITE_ORIGIN && !loc.startsWith(SITE_ORIGIN))
       add('sitemap.xml', 'error', `URL is off-origin: ${loc}`);
-    const f = p.replace(/^\//, '') + (p.endsWith('/') ? 'index.html' : '');
+    /* dist/ is laid out from the root even when the site is served from a
+       subpath, so strip the base before the on-disk lookup. */
+    let sp = p;
+    if (CHECK_BASE && sp.startsWith(CHECK_BASE + '/')) sp = sp.slice(CHECK_BASE.length);
+    else if (CHECK_BASE && sp === CHECK_BASE) sp = '/';
+    const f = sp.replace(/^\//, '') + (sp.endsWith('/') ? 'index.html' : '');
     if (!fileSet.has(f)) add('sitemap.xml', 'error', `lists a page that was not built: ${p}`);
   }
   const noindexed = htmlFiles

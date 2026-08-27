@@ -16,7 +16,9 @@
   }
 
   var cards = {};
-  Array.prototype.forEach.call(document.querySelectorAll('.card-face[href^="/flies/"]'), function (el) {
+  /* `*=` not `^=`: on a GitHub Pages project site the href is
+     /<repo>/flies/<slug>/, so anchoring to the start would match nothing. */
+  Array.prototype.forEach.call(document.querySelectorAll('.card-face[href*="/flies/"]'), function (el) {
     var m = el.getAttribute('href').match(/\/flies\/([^/]+)\//);
     if (m) cards[m[1]] = el;
   });

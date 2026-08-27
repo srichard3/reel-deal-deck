@@ -25,12 +25,42 @@ const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
 
 const read = (p) => readFile(p, 'utf8');
+
+/* ------------------------------------------------------------ base path --
+ * GitHub Pages project sites serve from /<repo>/, not from the root, and this
+ * site is built with root-relative paths throughout. Set BASE_PATH=/repo-name
+ * and every emitted root-relative href/src/srcset/action is prefixed, and
+ * site.url gains the same suffix so canonicals, OG images, the sitemap and all
+ * JSON-LD stay absolute and correct.
+ *
+ * Unset (the normal case, and any root-served host) it is a no-op.
+ */
+const BASE = (process.env.BASE_PATH || '').replace(/\/+$/, '');
+
+/** Prefix root-relative URLs in emitted HTML. Leaves //host, http(s):, data:,
+ *  mailto:, tel: and #fragments alone. */
+function applyBase(html) {
+  if (!BASE) return html;
+  html = html.replace(/\b(href|src|action|content)="\/(?!\/)/g, `$1="${BASE}/`);
+  html = html.replace(/\bsrcset="([^"]+)"/g, (m, list) => {
+    const out = list
+      .split(',')
+      .map((part) => part.trim().replace(/^\/(?!\/)/, `${BASE}/`))
+      .join(', ');
+    return `srcset="${out}"`;
+  });
+  return html;
+}
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 /* ------------------------------------------------------------------ data -- */
 
 const site = JSON.parse(await read(path.join(ROOT, 'data/site.json')));
+/* SITE_URL wins outright (it already includes any base path); otherwise the
+   configured canonical host gains the base suffix. */
+if (process.env.SITE_URL) site.url = process.env.SITE_URL.replace(/\/$/, '');
+else if (BASE) site.url = site.url.replace(/\/$/, '') + BASE;
 const flies = existsSync(path.join(ROOT, 'data/flies.json'))
   ? JSON.parse(await read(path.join(ROOT, 'data/flies.json')))
   : [];
@@ -111,6 +141,7 @@ async function emit(route, meta, bodyHtml) {
     .replace('{{{ content }}}', bodyHtml);
   html = expandPartials(html);
   html = interpolate(html, ctx);
+  html = applyBase(html);
 
   const outDir = route === '/' ? DIST : path.join(DIST, route);
   await mkdir(outDir, { recursive: true });
