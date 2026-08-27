@@ -1901,21 +1901,80 @@ a.card-face.card-face:nth-child(even):active {
 
 /* ==========================================================================
    MATCH THE HATCH — the homepage game
-   A bug drifts, three real cards come up, you pick the one that matches.
-   Everything here is progressive: with JS off the scene is a still
-   illustration, the buttons never render, and the fallback copy in
-   .hatch__status stands on its own.
+   One card is shown large and you name what it imitates. The card's printed
+   line is the answer key, so .hatch__crop hides it during the question and
+   opens to reveal it afterwards.
+   Progressive: with JS off the scene and a card render as a still
+   illustration, no buttons appear, and the fallback copy in .hatch__status
+   stands on its own.
    ========================================================================== */
 
 .hatch { margin-block-start: var(--s-5); }
-.hatch__lede { max-width: 46ch; }
+.hatch__lede { max-width: 52ch; }
+
+.hatch__board {
+  display: grid;
+  gap: var(--s-5);
+  justify-content: center;
+  align-items: start;
+}
+
+@media (min-width: 46rem) {
+  .hatch__board {
+    grid-template-columns: minmax(0, 15rem) minmax(0, 28rem);
+    gap: var(--s-7);
+  }
+}
+
+/* --- the card ------------------------------------------------------------ */
+
+.hatch__card {
+  margin: 0;
+  justify-self: center;
+  width: 100%;
+  max-width: 15rem;
+}
+
+/* The printed line sits in the bottom ~18% of every card in the deck. Cropping
+   to 80% of the height hides it while the question stands; .is-revealed opens
+   the box to full height so the card explains itself. Animating padding-bottom
+   rather than aspect-ratio keeps the transition smooth everywhere. */
+.hatch__crop {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 111.9%;               /* 80% of 800/572 */
+  overflow: hidden;
+  border-radius: var(--r-card);
+  background-color: #fff;               /* matches the printed stock */
+  box-shadow: var(--shadow-2);
+  transition: padding-bottom 520ms var(--ease), box-shadow var(--dur) var(--ease);
+}
+.hatch.is-revealed .hatch__crop {
+  padding-bottom: 139.9%;               /* 800/572 — the whole card */
+  box-shadow: var(--shadow-lift);
+}
+.hatch__crop img {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hatch__card-name {
+  margin-block-start: var(--s-3);
+  text-align: center;
+  font-family: var(--f-display);
+  font-size: var(--t-md);
+  color: var(--c-text);
+}
 
 /* --- the scene ----------------------------------------------------------- */
 
 .hatch__scene {
   position: relative;
-  max-width: 34rem;
-  margin-inline: auto;
   border: 1px solid var(--c-border);
   border-radius: var(--r-sm);
   overflow: hidden;
@@ -1928,27 +1987,14 @@ a.card-face.card-face:nth-child(even):active {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 400 / 180;
+  aspect-ratio: 400 / 150;
 }
 
-.hatch__surface {
-  stroke: var(--c-border);
-  stroke-width: 1.5;
-  fill: none;
-}
-
-.hatch__seam {
-  stroke: var(--c-green);
-  stroke-width: 1;
-  fill: none;
-  opacity: .22;
-}
+.hatch__surface { stroke: var(--c-border); stroke-width: 1.5; fill: none; }
+.hatch__seam    { stroke: var(--c-green); stroke-width: 1; fill: none; opacity: .22; }
 
 /* --- the trout ----------------------------------------------------------- */
 
-.hatch__fish {
-  transition: transform 620ms cubic-bezier(.34, .1, .3, 1);
-}
 .hatch__fish-body { fill: var(--c-green); }
 .hatch__fish-tail,
 .hatch__fish-fin  { fill: var(--c-green); opacity: .72; }
@@ -1956,24 +2002,23 @@ a.card-face.card-face:nth-child(even):active {
 .hatch__fish-spot { fill: var(--c-bark); opacity: .5; }
 .hatch__fish-eye  { fill: var(--c-text); }
 
-/* A take: straight up through the surface, then back down. */
-.hatch.is-rise .hatch__fish { animation: hatch-rise 1500ms cubic-bezier(.3,.05,.3,1) both; }
-
-/* A refusal: up for a look, a small turn, and away — no splash. */
-.hatch.is-refusal .hatch__fish { animation: hatch-refuse 1500ms ease-in-out both; }
+/* A take: up through the surface, then back down. */
+.hatch.is-rise .hatch__fish { animation: hatch-rise 1600ms cubic-bezier(.3,.05,.3,1) 300ms both; }
+/* A refusal: up for a look, a turn, and away — it never breaks the surface. */
+.hatch.is-refusal .hatch__fish { animation: hatch-refuse 1600ms ease-in-out 300ms both; }
 
 @keyframes hatch-rise {
-  0%   { transform: translate(152px, 118px); }
-  38%  { transform: translate(152px, 74px); }
-  52%  { transform: translate(152px, 76px); }
-  100% { transform: translate(152px, 118px); }
+  0%   { transform: translate(152px, 100px); }
+  40%  { transform: translate(152px, 58px); }
+  54%  { transform: translate(152px, 60px); }
+  100% { transform: translate(152px, 100px); }
 }
 
 @keyframes hatch-refuse {
-  0%   { transform: translate(152px, 118px) rotate(0deg); }
-  40%  { transform: translate(152px, 96px) rotate(-6deg); }
-  62%  { transform: translate(160px, 100px) rotate(9deg); }
-  100% { transform: translate(152px, 118px) rotate(0deg); }
+  0%   { transform: translate(152px, 100px) rotate(0deg); }
+  40%  { transform: translate(152px, 80px) rotate(-6deg); }
+  62%  { transform: translate(160px, 84px) rotate(9deg); }
+  100% { transform: translate(152px, 100px) rotate(0deg); }
 }
 
 /* --- the rise ring ------------------------------------------------------- */
@@ -1986,56 +2031,40 @@ a.card-face.card-face:nth-child(even):active {
   transform-box: fill-box;
   transform-origin: center;
 }
-.hatch.is-rise .hatch__ring    { animation: hatch-ring 1100ms ease-out 520ms both; }
-.hatch.is-rise .hatch__ring--2 { animation: hatch-ring 1100ms ease-out 700ms both; }
+.hatch.is-rise .hatch__ring    { animation: hatch-ring 1100ms ease-out 900ms both; }
+.hatch.is-rise .hatch__ring--2 { animation: hatch-ring 1100ms ease-out 1080ms both; }
 
 @keyframes hatch-ring {
   0%   { opacity: .85; transform: scale(.2); }
   100% { opacity: 0;   transform: scale(2.6); }
 }
 
-/* --- the drifting bug ---------------------------------------------------- */
+/* --- the insect, revealed with the answer -------------------------------- */
 
 .hatch__bug {
   position: absolute;
-  top: 38%;
+  top: 26%;
   inset-inline-start: 0;
   width: 12%;
   color: var(--c-bark);
-  will-change: transform;
+  opacity: 0;
 }
 .hatch__bug svg { display: block; width: 100%; height: auto; aspect-ratio: 40 / 24; fill: currentColor; }
-.hatch__bug.is-drifting { animation: hatch-drift 9s linear infinite; }
+.hatch__bug.is-drifting { animation: hatch-drift 7s linear both; }
 
 @keyframes hatch-drift {
-  from { transform: translateX(-30%) rotate(-2deg); }
-  to   { transform: translateX(830%) rotate(2deg); }
+  from { opacity: 1; transform: translateX(-30%) rotate(-2deg); }
+  to   { opacity: 1; transform: translateX(830%) rotate(2deg); }
 }
 
-/* The bug goes under when the fish takes it. */
-.hatch.is-rise .hatch__bug { animation: hatch-eaten 500ms ease-in 560ms both; }
-@keyframes hatch-eaten { to { opacity: 0; transform: translateY(14px) scale(.6); } }
+/* Eaten: it goes under as the trout takes it. */
+.hatch.is-rise .hatch__bug { animation: hatch-eaten 520ms ease-in 880ms both; }
+@keyframes hatch-eaten { from { opacity: 1; } to { opacity: 0; transform: translateY(14px) scale(.6); } }
 
-.hatch__label {
-  position: absolute;
-  inset-block-end: var(--s-2);
-  inset-inline-start: var(--s-3);
-  margin: 0;
-  font-size: var(--t-xs);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: var(--c-text-faint);
-  opacity: 0;
-  transition: opacity var(--dur) var(--ease);
-}
-/* The answer is only named once the round is over. */
-.hatch.is-rise .hatch__label,
-.hatch.is-refusal .hatch__label { opacity: 1; }
-
-/* --- status + score ------------------------------------------------------ */
+/* --- status, reveal, score ----------------------------------------------- */
 
 .hatch__status {
-  margin-block: var(--s-4) var(--s-3);
+  margin-block: var(--s-4) var(--s-4);
   min-height: 1.6em;
   text-align: center;
   font-family: var(--f-display);
@@ -2044,6 +2073,31 @@ a.card-face.card-face:nth-child(even):active {
 }
 .hatch__status[data-tone="hit"]  { color: var(--c-green); }
 .hatch__status[data-tone="miss"] { color: var(--c-red); }
+
+/* The answer, then the deck's own printed words quoted back. */
+.hatch__reveal {
+  margin-block-start: var(--s-4);
+  min-height: 3.2em;
+  padding-inline-start: var(--s-4);
+  border-inline-start: 3px solid transparent;
+  transition: border-color var(--dur) var(--ease);
+}
+.hatch.is-revealed .hatch__reveal { border-inline-start-color: var(--c-green); }
+
+.hatch__reveal-fam {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: var(--t-md);
+  line-height: var(--lh-snug);
+  color: var(--c-text);
+}
+.hatch__reveal-quote {
+  margin: var(--s-2) 0 0;
+  font-size: var(--t-sm);
+  line-height: var(--lh-snug);
+  font-style: italic;
+  color: var(--c-text-faint);
+}
 
 .hatch__score {
   margin-block-start: var(--s-3);
@@ -2055,78 +2109,82 @@ a.card-face.card-face:nth-child(even):active {
   min-height: 1.2em;
 }
 
-/* --- the three cards ----------------------------------------------------- */
+/* --- the three answers --------------------------------------------------- */
 
 .hatch__choices {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--s-3);
-  max-width: 34rem;
-  margin-inline: auto;
 }
 
-.hatch__card {
+.hatch__opt {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--s-2);
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
+  padding: var(--s-3) var(--s-2);
   font: inherit;
   color: var(--c-text);
-  border-radius: var(--r-card);
-  transition: transform var(--dur) var(--ease);
+  cursor: pointer;
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease);
 }
-.hatch__card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: var(--r-card);
-  background-color: #fff;
+.hatch__opt:hover:not([aria-disabled="true"]) {
+  transform: translateY(-3px);
+  border-color: var(--c-green);
   box-shadow: var(--shadow-2);
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  transition: box-shadow var(--dur) var(--ease), outline-color var(--dur) var(--ease);
 }
-.hatch__card:hover:not(:disabled)         { transform: translateY(-4px); }
-.hatch__card:hover:not(:disabled) img     { box-shadow: var(--shadow-lift); }
-.hatch__card:focus-visible                { outline: none; }
-.hatch__card:focus-visible img            { outline-color: var(--c-focus); }
-.hatch__card:disabled                     { cursor: default; }
+.hatch__opt:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 2px; }
+.hatch__opt[aria-disabled="true"] { cursor: default; }
 
-.hatch__card.is-correct img { outline-color: var(--c-green); box-shadow: var(--shadow-lift); }
-.hatch__card.is-wrong   img { outline-color: var(--c-red); opacity: .55; }
-/* Cards that were neither picked nor right recede, so the eye goes to the pair
-   that matters — what you chose and what it should have been. */
-.hatch__card:disabled:not(.is-correct):not(.is-wrong) img { opacity: .35; }
+.hatch__opt-bug { display: block; width: 3rem; color: var(--c-bark); }
+.hatch__opt-bug svg { display: block; width: 100%; height: auto; aspect-ratio: 40 / 24; fill: currentColor; }
 
-.hatch__card-name {
+.hatch__opt-name {
   font-size: var(--t-xs);
-  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
   text-align: center;
   color: var(--c-text-muted);
 }
 
+.hatch__opt.is-correct {
+  border-color: var(--c-green);
+  background-color: color-mix(in oklab, var(--c-green) 12%, var(--c-surface));
+}
+.hatch__opt.is-wrong {
+  border-color: var(--c-red);
+  background-color: color-mix(in oklab, var(--c-red) 10%, var(--c-surface));
+}
+/* The option that was neither picked nor right recedes. */
+.hatch__opt[aria-disabled="true"]:not(.is-correct):not(.is-wrong) { opacity: .4; }
+
 .hatch__foot {
-  margin-block-start: var(--s-6);
+  margin-block-start: var(--s-7);
   text-align: center;
   font-size: var(--t-sm);
   color: var(--c-text-muted);
 }
 
+/* Off-screen: stop the drift rather than animate to nobody. */
+.hatch.is-paused .hatch__bug.is-drifting { animation-play-state: paused; }
+
 @media (prefers-reduced-motion: reduce) {
+  .hatch__crop,
+  .hatch__opt,
+  .hatch__reveal { transition: none; }
+  .hatch__opt:hover:not([aria-disabled="true"]) { transform: none; }
   .hatch__bug.is-drifting,
   .hatch.is-rise .hatch__fish,
   .hatch.is-refusal .hatch__fish,
   .hatch.is-rise .hatch__ring,
   .hatch.is-rise .hatch__ring--2,
   .hatch.is-rise .hatch__bug { animation: none; }
-  .hatch__fish { transition: none; }
-  .hatch.is-rise .hatch__fish { transform: translate(152px, 82px); }
-  .hatch__card { transition: none; }
-  .hatch__card:hover:not(:disabled) { transform: none; }
+  /* Still legible without motion: the insect simply sits on the water. */
+  .hatch.is-rise .hatch__bug,
+  .hatch.is-refusal .hatch__bug { opacity: 1; transform: translateX(300%); }
+  .hatch.is-rise .hatch__fish { transform: translate(152px, 64px); }
 }
-
-/* Off-screen: stop the drift rather than animate to nobody. */
-.hatch.is-paused .hatch__bug.is-drifting { animation-play-state: paused; }

@@ -1,16 +1,21 @@
 /* Match the Hatch — the homepage game.
  *
- * A bug drifts down the current. Three real cards from the deck slide up and
- * you pick the fly that matches it. Right, and the trout rises and eats.
- * Wrong, and it comes up, looks, and turns away — which is what a refusal
- * actually is.
+ * One card is shown large: "what is this fly imitating?" Three named insect
+ * families are offered. Get it right and the bug drifts in and the trout eats
+ * it; get it wrong and the trout comes up, looks, and turns away.
  *
- * The rounds are built from data/flies.json at build time and embedded as
- * JSON, so the cards in play are always real cards from the deck.
+ * The direction matters. The first version asked the player to pick a fly from
+ * three small card faces given an insect, which is unplayable: identifying a
+ * tied fly's insect family from artwork is expert knowledge, and three-up the
+ * cards were far too small to read anyway. Naming the three answers and showing
+ * one card large makes it a fair guess instead of an exam.
  *
- * Progressive enhancement: with JS off the scene is a still illustration and
- * the card buttons never appear. prefers-reduced-motion drops the drift and
- * the rise to near-instant state changes.
+ * The card's own printed line is the answer key, so it is cropped off while the
+ * question stands and revealed as the explanation afterwards — the deck
+ * teaching in its own words, which is the whole premise of the product.
+ *
+ * Progressive enhancement: with JS off the scene is a still illustration and no
+ * buttons appear. prefers-reduced-motion drops the drift and the rise.
  */
 (function () {
   'use strict';
@@ -21,18 +26,18 @@
 
   var DATA;
   try { DATA = JSON.parse(dataEl.textContent); } catch (e) { return; }
-  var TYPES = Object.keys(DATA.flies);
-  if (TYPES.length < 3) return;
+  var FAMS = DATA.fams ? Object.keys(DATA.fams) : [];
+  if (!DATA.flies || DATA.flies.length < 3 || FAMS.length < 3) return;
 
-  var scene = root.querySelector('[data-hatch-scene]');
-  var bug = root.querySelector('[data-hatch-bug]');
-  var fish = root.querySelector('[data-hatch-fish]');
-  var ring = root.querySelector('[data-hatch-ring]');
-  var label = root.querySelector('[data-hatch-label]');
-  var choices = root.querySelector('[data-hatch-choices]');
-  var status = root.querySelector('[data-hatch-status]');
-  var scoreEl = root.querySelector('[data-hatch-score]');
-  if (!bug || !fish || !choices || !status) return;
+  var cardImg  = root.querySelector('[data-hatch-img]');
+  var cardName = root.querySelector('[data-hatch-name]');
+  var revFam   = root.querySelector('[data-hatch-fam]');
+  var revQuote = root.querySelector('[data-hatch-quote]');
+  var bug      = root.querySelector('[data-hatch-bug]');
+  var choices  = root.querySelector('[data-hatch-choices]');
+  var status   = root.querySelector('[data-hatch-status]');
+  var scoreEl  = root.querySelector('[data-hatch-score]');
+  if (!cardImg || !cardName || !bug || !choices || !status) return;
 
   /* applyBase() in build.mjs rewrites src/href attributes but not JSON string
      values, so the card paths in the embedded data are still root-relative.
@@ -51,7 +56,7 @@
 
   root.classList.add('hatch--live');
 
-  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
   function shuffle(a) {
     for (var i = a.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
@@ -76,77 +81,89 @@
 
   function newRound() {
     locked = true;
-    root.classList.remove('is-rise', 'is-refusal');
-    if (ring) ring.style.setProperty('--ring', '0');
-
-    var type = pick(TYPES);
-    var correct = pick(DATA.flies[type]);
-    var others = TYPES.filter(function (t) { return t !== type; });
-    var wrong = shuffle(others).slice(0, 2).map(function (t) { return pick(DATA.flies[t]); });
-
-    round = { type: type, correct: correct.slug };
-
-    /* the drifting bug */
-    bug.innerHTML = DATA.bugs[type] || '';
+    var hadFocus = choices.contains(document.activeElement);
+    root.classList.remove('is-rise', 'is-refusal', 'is-revealed');
     bug.classList.remove('is-drifting');
-    void bug.offsetWidth;                 /* restart the drift animation */
-    bug.classList.add('is-drifting');
-    /* The answer is NOT written here. Hiding it with opacity would still leave
-       it in the accessibility tree, so a screen reader would read the answer
-       out before the player had chosen. It is set in answer() instead. */
-    if (label) label.textContent = '';
+    bug.innerHTML = '';
+    if (revFam) revFam.textContent = '';
+    if (revQuote) revQuote.textContent = '';
 
-    /* the three cards */
-    var cards = shuffle([correct].concat(wrong));
-    choices.innerHTML = cards.map(function (f) {
-      return '<button class="hatch__card" type="button" data-slug="' + f.slug + '">' +
-        '<img src="' + BASE + f.img + '-400.webp" alt="" width="400" height="559" loading="lazy" decoding="async">' +
-        '<span class="hatch__card-name">' + f.name + '</span>' +
+    var fly = pick(DATA.flies);
+    round = fly;
+
+    cardImg.src = BASE + fly.img + '-800.webp';
+    cardImg.alt = 'The ' + fly.name + ' card from the deck';
+    cardName.textContent = fly.name;
+
+    var others = FAMS.filter(function (f) { return f !== fly.fam; });
+    var opts = shuffle([fly.fam].concat(shuffle(others).slice(0, 2)));
+
+    choices.innerHTML = opts.map(function (f) {
+      return '<button class="hatch__opt" type="button" data-fam="' + f + '">' +
+        '<span class="hatch__opt-bug" aria-hidden="true">' + DATA.fams[f].bug + '</span>' +
+        '<span class="hatch__opt-name">' + DATA.fams[f].label + '</span>' +
         '</button>';
     }).join('');
 
-    setStatus('What is on the water? Pick the fly that matches.', '');
+    setStatus('What is this fly imitating?', '');
     locked = false;
+
+    /* Dealing a round replaces the buttons, so a keyboard player would lose
+       their place. Put them back on the first option — but only if they were
+       already in the choices, so we never steal focus from the rest of page. */
+    if (hadFocus && choices.firstChild) choices.firstChild.focus();
   }
 
   /* --------------------------------------------------------------- answer */
 
-  function answer(slug, btn) {
+  function answer(fam, btn) {
     if (locked || !round) return;
     locked = true;
 
-    var ok = slug === round.correct;
+    var ok = fam === round.fam;
+    var truth = DATA.fams[round.fam];
     played++;
 
+    /* aria-disabled rather than disabled: a disabled button is removed from
+       the tab order, which dropped a keyboard player's focus to <body> the
+       instant they answered. The `locked` guard already makes them inert. */
     Array.prototype.forEach.call(choices.children, function (el) {
-      el.disabled = true;
-      if (el.dataset.slug === round.correct) el.classList.add('is-correct');
+      el.setAttribute('aria-disabled', 'true');
+      if (el.dataset.fam === round.fam) el.classList.add('is-correct');
       else if (el === btn) el.classList.add('is-wrong');
     });
 
-    var bugName = DATA.names[round.type] || round.type;
-    if (label) label.textContent = bugName;
+    /* The real insect drifts in only now — showing it beside the question
+       would have been the answer. */
+    bug.innerHTML = truth.bug;
+    bug.classList.add('is-drifting');
+
+    /* Open the crop so the card's own printed line becomes readable. */
+    root.classList.add('is-revealed');
+    if (revFam) revFam.textContent = 'The ' + round.name + ' imitates ' + truth.article + '.';
+    if (revQuote) revQuote.textContent = '\u201c' + round.text + '\u201d';
 
     if (ok) {
       right++; streak++;
       if (streak > best) best = streak;
       root.classList.add('is-rise');
-      if (ring) ring.style.setProperty('--ring', '1');
-      setStatus(streak > 2 ? 'Eaten. You have got its number.' : 'Up it comes. Eaten.', 'hit');
+      setStatus(streak > 2 ? 'Eaten. You have got its number.' : 'Right — up it comes.', 'hit');
     } else {
       streak = 0;
       root.classList.add('is-refusal');
-      setStatus('A look, then a refusal. It was on ' + bugName + '.', 'miss');
+      /* Name what it is NOT. "That is a caddis fly" read as though caddis
+         were the answer. */
+      setStatus('Not quite — it is not a ' + DATA.fams[fam].label.toLowerCase() + '.', 'miss');
     }
 
     score();
     clearTimeout(timer);
-    timer = setTimeout(newRound, reduced ? 900 : 1900);
+    timer = setTimeout(newRound, reduced ? 1600 : 3400);
   }
 
   choices.addEventListener('click', function (e) {
-    var btn = e.target.closest ? e.target.closest('.hatch__card') : null;
-    if (btn && choices.contains(btn)) answer(btn.dataset.slug, btn);
+    var btn = e.target.closest ? e.target.closest('.hatch__opt') : null;
+    if (btn && choices.contains(btn)) answer(btn.dataset.fam, btn);
   });
 
   /* Deal the first round straight away. The observer only pauses the drift
@@ -161,5 +178,4 @@
       });
     }, { threshold: 0 }).observe(root);
   }
-
 })();
