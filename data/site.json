@@ -160,5 +160,24 @@
   },
   "motto": "The finest gift to fellow anglers is the fish you gently release.",
   "edition": "Volume 1",
-  "copyright": "© 2026 Homer Fry Ranch, LLC, Eagle, Idaho"
+  "copyright": "© 2026 Homer Fry Ranch, LLC, Eagle, Idaho",
+  "voice": {
+    "source": "Transcribed verbatim from the info card printed in the deck (Fly_deck_faces_v8 #56). Use these words; do not paraphrase them into marketing-speak.",
+    "intro": "We're Ken and Audrey, a father-daughter team of multigenerational Idaho farmers and entrepreneurs.",
+    "why": "And as passionate fly anglers, we are dedicated to catch-and-release fishing and protecting our headwaters and trout habitats. That's why we created The Reel Deal Deck — exquisite hand-drawn playing cards that teach while you play.",
+    "hope": "We hope this deck sparks joy, conversation, and a deeper love for the sport.",
+    "signoff": "Thank you for your support. Tight lines!",
+    "handle": "@reeldealdeck",
+    "shortLine": "Hand-drawn playing cards that teach while you play.",
+    "note": "TODO-CONFIRM: the card says 'multigenerational Idaho farmers'; site.json founders[0] said '5th-generation'. The card wording is used publicly. Confirm the exact generation if it is to be claimed."
+  },
+  "cardCraft": {
+    "suits": "A two-colour deck: green replaces red on hearts and diamonds, bark brown replaces black on spades and clubs — drawn from the tuck box and card back.",
+    "backDesign": "An engraved green border framing two rising trout and an angler on the river.",
+    "jokers": "Three specials carry a trout-in-a-jester's-cap mark instead of a rank: the Egg, the San Juan Worm and the Bass Popper.",
+    "infoCard": "A 56th card carries Ken and Audrey's note, the site address and the Trout Unlimited Business mark.",
+    "eachCard": "Every card shows the rank and suit, the fly's name, its category, the hand-drawn fly itself, a plain-English note on what it imitates, and the hook sizes it is usually tied in.",
+    "printer": "The United States Playing Card Company",
+    "edition": "Volume 1"
+  }
 }
