@@ -290,6 +290,71 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
   </div>
 </section>
 
+<section class="section section--sunk" id="rise" aria-labelledby="rise-h">
+  <div class="wrap wrap--narrow">
+    <div class="section-head">
+      <p class="section-num" aria-hidden="true">5&#9824;</p>
+      <h2 class="h2" id="rise-h">Can you time the take?</h2>
+      <p class="lede">
+        A trout eats a dry fly on the way up and closes its mouth on the way
+        <em>down</em>. Strike at the splash and you pull the fly out of an open mouth.
+        Wait for the turn.
+      </p>
+    </div>
+
+    <div class="rise" data-rise tabindex="0" role="group" aria-labelledby="rise-h"
+         aria-describedby="rise-status">
+      <svg class="rise__scene" viewBox="0 0 320 170" role="img"
+           aria-label="A trout rising to a dry fly on the water surface">
+        <!-- leader, running up and off to an implied rod -->
+        <path class="rise__leader" d="M186 44 C 236 22, 286 12, 318 6"/>
+
+        <!-- the fly, sitting in the film -->
+        <g class="rise__fly">
+          <circle cx="184" cy="46" r="3.4"/>
+          <path d="M184 43.2 l4-5M184 43.2 l-3.4-5.2M184 43.2 l0.6-6"/>
+        </g>
+
+        <!-- rise ring, drawn as the fish reaches the surface -->
+        <ellipse class="rise__ring" data-rise-ring cx="184" cy="49" rx="20" ry="5"/>
+
+        <!-- water -->
+        <path class="rise__water" d="M0 49 H320"/>
+        <path class="rise__water rise__water--soft" d="M0 57 H320"/>
+
+        <!-- the fish: nose up and to the right, rising to the fly -->
+        <g class="rise__fish" data-rise-fish>
+          <path class="rise__tail" d="M141 150 C 133 155, 126 163, 124 169 C 133 168, 141 163, 146 156 Z"/>
+          <path class="rise__fin"  d="M166 112 C 171 105, 177 100, 182 98 C 180 104, 176 110, 171 115 Z"/>
+          <path class="rise__body"
+                d="M197 103
+                   C 185 98, 167 105, 155 119
+                   C 147 129, 142 141, 141 151
+                   C 150 154, 166 147, 178 133
+                   C 188 121, 195 110, 197 103 Z"/>
+          <circle class="rise__eye" cx="187" cy="110" r="2.3"/>
+        </g>
+      </svg>
+
+      <div class="rise__ui">
+        <button class="btn btn--primary btn--sm rise__strike" type="button" data-rise-strike>
+          Set the hook
+        </button>
+        <p class="rise__status" id="rise-status" data-rise-status role="status" aria-live="polite">
+          Turn on JavaScript to play &mdash; or just read the guide.
+        </p>
+        <p class="rise__score" data-rise-score aria-live="polite"></p>
+      </div>
+    </div>
+
+    <p class="text-faint rise__foot">
+      The timing is real, not decorative. The full version &mdash; dry fly, nymph and
+      strip sets, and why a low sideways set beats an overhead one &mdash; is in
+      <a href="/blog/how-to-set-the-hook/">how to set the hook on a trout</a>.
+    </p>
+  </div>
+</section>
+
 <section class="section section--dark" aria-labelledby="diff-h">
   <div class="wrap">
     <div class="section-head">
@@ -415,5 +480,7 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
 .home-quote__signoff { color: var(--c-green); }
 .home-quote cite { display: block; font-style: normal; font-size: var(--t-sm); color: var(--c-text-faint); }
 </style>
-`;
+
+
+<script src="/js/rise.js" defer></script>`;
 }

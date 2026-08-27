@@ -1794,3 +1794,107 @@ a.card-face.card-face:nth-child(even):active {
 .brand:hover .brand__fish { color: var(--c-green-deep); }
 @media (min-width: 40rem) { .brand__fish { --fish-h: 1.85rem; } }
 .brand__fish--lg { --fish-h: 2.75rem; color: var(--c-green); }
+
+/* ==========================================================================
+   THE RISE — a one-button hook-set game on the homepage.
+   Motion responds to the player rather than performing at them, which is the
+   only kind of animation this site allows. With JS off the scene is a still
+   illustration and the controls stay hidden.
+   ========================================================================== */
+
+.rise {
+  position: relative;
+  margin-block-start: var(--s-6);
+  padding: var(--s-5);
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-1);
+}
+.rise:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 3px; }
+
+.rise__scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 320 / 170;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+  background-color: var(--c-bg-sunk);
+}
+
+/* --- water and terminal tackle --- */
+.rise__water {
+  fill: none;
+  stroke: var(--c-green);
+  stroke-width: 1.4;
+  opacity: 0.55;
+}
+.rise__water--soft { opacity: 0.2; stroke-dasharray: 3 7; }
+
+.rise__leader { fill: none; stroke: var(--c-text-faint); stroke-width: 1; opacity: 0.7; }
+.rise__fly { fill: var(--c-bark); stroke: var(--c-bark); stroke-width: 1.1; stroke-linecap: round; }
+
+.rise__ring {
+  fill: none;
+  stroke: var(--c-green);
+  stroke-width: 1.2;
+  opacity: calc(var(--ring, 0) * 0.7);
+  transform: scale(calc(0.4 + var(--ring, 0) * 0.9));
+  transform-origin: 184px 49px;
+  transition: opacity var(--dur-fast) linear;
+}
+
+/* --- the fish ---
+   --rise-p is 0 when deep and 1 at the fly; --rise-turn flips it over as it
+   takes. Both are written by rise.js. */
+.rise__fish {
+  --rise-p: 0;
+  --rise-turn: 0;
+  transform:
+    translateY(calc(var(--rise-p) * -56px))
+    rotate(calc(var(--rise-turn) * -26deg));
+  transform-origin: 170px 130px;
+  transition: transform 90ms linear;
+}
+.rise__body { fill: var(--c-green); }
+.rise__tail { fill: var(--c-green); opacity: 0.8; }
+.rise__fin  { fill: var(--c-green); opacity: 0.8; }
+.rise__eye  { fill: var(--c-surface); }
+
+.rise.is-hooked .rise__body,
+.rise.is-hooked .rise__fin,
+.rise.is-hooked .rise__tail { fill: var(--c-egg); }
+
+/* --- controls --- */
+.rise__ui {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3) var(--s-4);
+  margin-block-start: var(--s-4);
+}
+.rise__strike { display: none; }
+.rise--live .rise__strike { display: inline-flex; }
+
+.rise__status { margin: 0; font-size: var(--t-sm); color: var(--c-text-muted); }
+.rise__status[data-tone="hit"]   { color: var(--c-green); font-weight: 600; }
+.rise__status[data-tone="early"] { color: var(--c-bark); }
+.rise__status[data-tone="miss"]  { color: var(--c-text-faint); }
+
+.rise__score {
+  margin: 0;
+  margin-inline-start: auto;
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+
+.rise__foot { margin-block-start: var(--s-4); font-size: var(--t-sm); }
+
+/* Reduced motion: the rise is near-instant in JS, and the tween is removed
+   here so nothing slides. The game still works — it becomes a reaction cue. */
+@media (prefers-reduced-motion: reduce) {
+  .rise__fish, .rise__ring { transition: none; }
+}
