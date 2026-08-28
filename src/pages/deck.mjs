@@ -14,8 +14,6 @@ const esc = (s) => String(s ?? '')
   .replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-const FLY_TYPES = ['dry', 'nymph', 'streamer', 'wet', 'terrestrial', 'attractor'];
-
 /* --------------------------------------------------------------- tiers -- */
 /* Three rungs, anchored on site.product.priceIntended ($24.95): the deck, the
    deck signed, and a brick of twelve for the price of ten. The brick's discount
@@ -240,26 +238,6 @@ function money(n) {
   return Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`;
 }
 
-function flyCards(flies) {
-  const picks = flies.slice(0, 8);
-  return picks.map((f) => {
-    const slug = f.slug || '';
-    const name = f.name || f.title || slug || 'Fly';
-    const type = String(f.type || '').toLowerCase();
-    const pill = FLY_TYPES.includes(type) ? type : '';
-    const imitates = f.imitates || f.summary || f.description || '';
-    const index = f.rank && f.suit ? `${f.rank}${f.suit}` : String(name).slice(0, 1).toUpperCase();
-    return `
-        <a class="playing-card" href="/flies/${esc(slug)}/">
-          <span class="playing-card__index" aria-hidden="true">${esc(index)}</span>
-          <span class="playing-card__body">
-            <strong>${esc(name)}</strong>
-            ${pill ? `<span class="pill pill--${pill}">${esc(type)}</span>` : ''}
-            ${imitates ? `<span>${esc(String(imitates).slice(0, 90))}</span>` : ''}
-          </span>
-        </a>`;
-  }).join('\n');
-}
 
 /* ---------------------------------------------------------------- page -- */
 
@@ -547,20 +525,32 @@ ${TIERS.map((t) => `            <option value="${t.id}">${esc(t.name)} — ${mon
 </section>
 
 <!-- ================================================ WHAT'S ON THE CARDS == -->
+<!-- This used to open with a strip of eight sample cards. They were tiny, they
+     clipped their own text at wide widths, and they were a worse advert for the
+     library than a sentence and a button. The space now does a second job the
+     product page was not doing: asking what should be in the next deck. -->
 <section class="section section--sunk">
-  <div class="wrap">
+  <div class="wrap wrap--narrow">
     <p class="eyebrow">The cards</p>
     <h2 class="h2">Every fly in the deck, free to read right now</h2>
     <p class="lede">
       The whole deck is published as a reference library on this site &mdash; what each fly imitates,
       when to fish it, and why it is in the fifty-four. Read it before you decide the deck is worth $${esc(price)}.
     </p>
+    <p class="cx-note">
+      <a class="btn btn--ghost btn--lg" href="/flies/">Browse all ${esc(p.cardCount)} flies</a>
+    </p>
 
-    ${list.length
-      ? `<div class="cx-cardgrid">\n${flyCards(list)}\n    </div>\n    <p class="cx-note"><a class="btn btn--ghost" href="/flies/">Browse all ${esc(p.cardCount)} flies</a></p>`
-      : `<p class="cx-note">
-      <a class="btn btn--ghost btn--lg" href="/flies/">Browse the Fly-brary</a>
-    </p>`}
+    <div class="card deck-next">
+      <p class="eyebrow">Volume 2</p>
+      <h3 class="deck-next__title">Which one did we miss?</h3>
+      <p class="deck-next__text">
+        ${esc(p.cardCount)} slots, and the arguments about the last ten were the hardest part of
+        building this deck. If the pattern you would not fish without is not in there,
+        tell us &mdash; the next one is not written yet, and Ken and Audrey read every suggestion.
+      </p>
+      <p><a class="btn btn--primary" href="/suggest/">Suggest a fly</a></p>
+    </div>
   </div>
 </section>
 

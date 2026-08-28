@@ -771,23 +771,6 @@
   line-height: var(--lh-body);
 }
 
-/* Each of these holds a fly name, a category pill and up to 90 characters of
-   copy. A 9rem floor gave 146px columns on a wide screen — seven of them — and
-   the text needed 268px of height inside a card the aspect-ratio had fixed at
-   204px. It clipped, mid-word, on half the cards.
-
-   Two things were wrong. The floor was far too low for the content, and
-   overflow:hidden zeroes a grid item's automatic minimum size, so the ratio won
-   a fight it should have lost to the text. The floor is now sized to the copy,
-   and the ratio is a starting shape the card can grow past rather than a cage. */
-.cx-cardgrid {
-  display: grid;
-  gap: var(--s-4);
-  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
-  margin-top: var(--s-6);
-}
-
-.cx-cardgrid .playing-card { overflow: visible; }
 
 .cx-note {
   margin-top: var(--s-5);

@@ -2492,3 +2492,21 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   .hub__link { transition: none; }
   .hub__link:hover, .hub__link:focus-visible { transform: none; }
 }
+
+/* --- "which one did we miss?" on /deck/ ---------------------------------- */
+
+.deck-next { margin-block-start: var(--s-7); }
+
+.deck-next__title {
+  margin: var(--s-2) 0 var(--s-3);
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  line-height: var(--lh-snug);
+  color: var(--c-text);
+}
+
+.deck-next__text {
+  margin: 0 0 var(--s-4);
+  color: var(--c-text-muted);
+  line-height: var(--lh-body);
+}
