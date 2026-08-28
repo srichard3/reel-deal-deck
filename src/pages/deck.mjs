@@ -3,7 +3,7 @@
  *
  * Every purchase control on this page is a placeholder. Nothing ships, no
  * payment is taken, no order is created. The page's job is to make the deck
- * worth $19.99 in the reader's head and then capture the email.
+ * worth $24.95 in the reader's head and then capture the email.
  *
  * Pricing below is the proposal, not a decision. Search this file for
  * TODO-CONFIRM before launch.
@@ -17,60 +17,43 @@ const esc = (s) => String(s ?? '')
 const FLY_TYPES = ['dry', 'nymph', 'streamer', 'wet', 'terrestrial', 'attractor'];
 
 /* --------------------------------------------------------------- tiers -- */
-/* Anchored on site.product.priceIntended ($19.99). The Kickstarter jumped
-   straight from $12 to a $99 twelve-pack with nothing in between; that gap is
-   why the middle of the ladder converted at zero. Every rung below is a real
-   step in per-deck price, so trading up always looks like arithmetic rather
-   than a favour. */
+/* Three rungs, anchored on site.product.priceIntended ($24.95): the deck, the
+   deck signed, and a brick of twelve for the price of ten. The brick's discount
+   is the whole pitch, so it is stated as "twelve for the price of ten" rather
+   than as a percentage — arithmetic a reader can check beats a claim.
+   $249.50 = 10 x $24.95. Change SINGLE and this stays consistent. */
 
 export const TIERS = [
   {
     id: 'single',
     name: 'One Deck',
     qty: 1,
-    price: 19.99,
+    price: 24.95,
     kicker: 'The deck',
     body: 'Fifty-four flies in your jacket pocket. The one you keep.',
     points: ['54 original hand-drawn flies', 'What each one imitates, on the card', 'Genuine Bicycle / USPCC stock'],
   },
   {
-    id: 'pair',
-    name: 'Two Decks',
-    qty: 2,
-    price: 36,
-    kicker: 'You and your fishing buddy',
-    body: 'Keep one, hand one over on the drive to the put-in. Nobody who fishes owns just one thing they like.',
-    points: ['Two decks, one shipment', 'The gift you accidentally keep', 'Saves the second shipping cost'],
-  },
-  {
-    id: 'quad',
-    name: 'Four-Pack',
-    qty: 4,
-    price: 68,
-    kicker: 'The boat and the truck',
-    body: 'One for the boat bag, one for the truck, two for whoever asks where you got it. Covers a season of gifts in one go.',
-    points: ['Four decks, one shipment', 'Covers birthdays and Christmas at once', 'Drops the per-deck price again'],
+    id: 'signed',
+    name: 'Signed Deck',
+    qty: 1,
+    price: 39.95,
+    limited: true,
+    flag: 'Limited',
+    kicker: 'Signed by Ken and Audrey',
+    body: 'The same deck, signed by both of us before it goes in the envelope. For the person who is going to keep it on a shelf rather than in a vest.',
+    points: ['Signed by both founders', 'From the first print run', 'Limited by how many two people can sign'],
   },
   {
     id: 'brick',
     name: 'The Brick',
     qty: 12,
-    price: 180,
+    price: 249.50,
     featured: true,
-    flag: 'Best per-deck price',
+    flag: 'Twelve for the price of ten',
     kicker: 'Twelve decks',
-    body: 'A dozen decks the way playing cards actually ship. Guide tips, groomsmen, a club raffle, or the counter of a shop that only wants to try one case.',
-    points: ['12 decks in one carton', 'The tier that outsold every other on Kickstarter', 'If you want more than this, use the wholesale page'],
-  },
-  {
-    id: 'first-edition',
-    name: 'Signed First Edition',
-    qty: 1,
-    price: 49.99,
-    limited: true,
-    kicker: 'Numbered, from the first print run',
-    body: 'One deck from the first run, hand-numbered and signed by Ken and Audrey. For the person who is going to keep it on a shelf, not in a vest.',
-    points: ['Hand-numbered from the first print run', 'Signed by both founders', 'Strictly limited by the size of that run'],
+    body: 'A dozen decks the way playing cards actually ship, and two of them are free. Guide tips, groomsmen, a club raffle, or the counter of a shop that only wants to try one case.',
+    points: ['12 decks in one carton, priced as 10', 'The tier that outsold every other on Kickstarter', 'If you want more than this, use the wholesale page'],
   },
 ];
 
@@ -101,7 +84,7 @@ const FAQ = [
     ],
   },
   {
-    q: 'Why is it $19.99 when I can find fly-fishing cards for ten dollars?',
+    q: 'Why is it $24.95 when I can find fly-fishing cards for ten dollars?',
     a: [
       'Because you are buying different things. The cheaper sets use photography or licensed stock art on generic board. Every fly in this deck was drawn by hand, one at a time, and it is printed on real playing card stock.',
       'And because a deck priced at twelve dollars does not survive its own fees, shipping and manufacturing. We would rather charge a price that lets us print a second run than a price that quietly kills the project.',
@@ -135,7 +118,7 @@ export const meta = {
   path: '/deck/',
   title: '54 Hand-Drawn Fly Fishing Cards',
   description:
-    '54 original hand-drawn flies, each with what it imitates, on genuine Bicycle stock. $19.99. Not yet shipping — reserve a deck and be first in line.',
+    '54 original hand-drawn flies, each with what it imitates, on genuine Bicycle stock. $24.95. Not yet shipping — reserve a deck and be first in line.',
   priority: 1.0,
   changefreq: 'weekly',
   bodyClass: 'page-deck',
@@ -158,7 +141,7 @@ export const meta = {
       ],
       offers: {
         '@type': 'Offer',
-        price: '19.99',
+        price: '24.95',
         priceCurrency: 'USD',
         availability: 'https://schema.org/PreOrder',
         itemCondition: 'https://schema.org/NewCondition',
@@ -252,37 +235,6 @@ function tierCard(t) {
 
 /* The signed edition is not a rung on the quantity ladder — it is a different
    product. Given its own band so it does not orphan a fifth grid column. */
-function specialTier(t) {
-  return `
-      <article class="buy-tier buy-tier--wide" data-tier-root>
-        <div>
-          <p class="buy-tier__flag">Limited</p>
-          <h3 class="buy-tier__name">${esc(t.name)}</h3>
-          <p class="buy-tier__qty">${esc(t.kicker)}</p>
-          <p class="buy-tier__price" data-price="${t.price}">${money(t.price)}</p>
-          <p class="buy-tier__per">One deck, one of a limited run</p>
-        </div>
-        <div class="stack">
-          <p class="buy-tier__body">${esc(t.body)}</p>
-          <ul class="buy-tier__list">
-            ${t.points.map((p) => `<li>${esc(p)}</li>`).join('\n            ')}
-          </ul>
-          <div class="buy-tier__foot">
-            <div class="form-inline" hidden data-js-only>
-              <label class="visually-hidden" for="qty-${t.id}">How many signed first editions</label>
-              <input class="input" id="qty-${t.id}" name="qty-${t.id}" type="number"
-                     value="1" min="1" max="99" step="1" inputmode="numeric" data-qty>
-              <button type="button" class="btn btn--ghost btn--sm"
-                      data-add-to-cart="${t.id}"
-                      data-price="${t.price}"
-                      data-decks="${t.qty}"
-                      data-label="${esc(t.name)}">Save to my list</button>
-            </div>
-            <a class="btn btn--quiet btn--sm" href="#reserve">Join the list for this tier</a>
-          </div>
-        </div>
-      </article>`;
-}
 
 function money(n) {
   return Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`;
@@ -325,7 +277,7 @@ export default function deckPage({ site, flies }) {
     }
   }
   if (!meta.jsonld.some((n) => n['@type'] === 'Organization')) meta.jsonld.push({ '@context': 'https://schema.org', ...org });
-  const price = p.priceIntended ?? 19.99;
+  const price = p.priceIntended ?? 24.95;
   const list = Array.isArray(flies) ? flies : [];
 
   return `
@@ -374,28 +326,31 @@ export default function deckPage({ site, flies }) {
 <section class="section section--sunk" id="tiers">
   <div class="wrap">
     <p class="eyebrow">Choose your rung</p>
-    <h2 class="h2">One deck, or the dozen everyone actually buys</h2>
+    <h2 class="h2">Three ways to buy it</h2>
     <p class="lede">
-      On Kickstarter the twelve-deck brick converted at almost exactly the same rate as a single deck,
-      and there was nothing at all in between. There is now.
+      One deck, the same deck signed by Ken and Audrey, or a brick of twelve for the price of ten.
+      On Kickstarter the brick converted at almost exactly the same rate as a single deck, so it is
+      priced to stay the obvious choice.
     </p>
 
-    <!-- TODO-CONFIRM: every price in this ladder is a proposal, not a decision.
-         Ken and Audrey have set the single-deck retail price at $19.99. The
-         per-deck steps below ($19.99 / $18 / $17 / $15) still need sign-off
-         against real per-unit COGS, carton weight and fulfilment costs. The
-         $49.99 signed edition assumes both
-         founders are willing to hand-sign and number every deck in the first
-         run and that a rigid mailer is sourced — confirm both before this
-         tier is published. Adjust the data-price attributes here, the
-         Product JSON-LD offer at the top of this file, and the MSRP table in
-         src/pages/wholesale.html together, or they will drift apart. -->
+    <!-- Ken and Audrey have set the single-deck retail price at $24.95 and the
+         brick at twelve for the price of ten ($249.50). Those two are decided.
+
+         TODO-CONFIRM: the $39.95 signed tier assumes both founders are willing
+         to hand-sign every deck in the first run, and that a rigid mailer is
+         sourced so a signed deck does not arrive bent. Confirm both before this
+         tier is published.
+
+         TODO-CONFIRM: none of the three has been checked against real per-unit
+         COGS, carton weight and fulfilment. $24.95 is a price, not yet a margin.
+
+         Prices live in TIERS at the top of this file. The Product JSON-LD offer
+         here and the MSRP table in src/pages/wholesale.html are anchored on the
+         same number and must move with it. -->
 
     <div class="buy-tiers">
-${TIERS.filter((t) => !t.limited).map(tierCard).join('\n')}
+${TIERS.map(tierCard).join('\n')}
     </div>
-
-${TIERS.filter((t) => t.limited).map(specialTier).join('\n')}
 
     <p class="cx-note">
       Buying for a shop, a lodge or a guide service? Past twelve decks it stops being a gift and starts being
@@ -598,7 +553,7 @@ ${TIERS.map((t) => `            <option value="${t.id}">${esc(t.name)} — ${mon
     ${list.length
       ? `<div class="cx-cardgrid">\n${flyCards(list)}\n    </div>\n    <p class="cx-note"><a class="btn btn--ghost" href="/flies/">Browse all ${esc(p.cardCount)} flies</a></p>`
       : `<p class="cx-note">
-      <a class="btn btn--ghost btn--lg" href="/flies/">Browse the Fly Library</a>
+      <a class="btn btn--ghost btn--lg" href="/flies/">Browse the Fly-brary</a>
     </p>`}
   </div>
 </section>
@@ -650,7 +605,7 @@ ${f.a.map((para) => `        <p>${esc(para)}</p>`).join('\n')}
         <p class="cx-crosslink__body">Case pricing, minimums and lead times for the counter.</p>
       </a>
       <a class="cx-crosslink__item" href="/flies/">
-        <p class="cx-crosslink__name">The Fly Library</p>
+        <p class="cx-crosslink__name">The Fly-brary</p>
         <p class="cx-crosslink__body">All ${esc(p.cardCount)} flies, free, with what each one imitates.</p>
       </a>
     </div>

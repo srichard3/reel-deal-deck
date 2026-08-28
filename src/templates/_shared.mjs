@@ -1,4 +1,4 @@
-/* Shared helpers for the Fly Library templates.
+/* Shared helpers for the Fly-brary templates.
    Kept dependency-free and deliberately small — the homepage carries its own
    copy of the art so it can render before data/flies.json exists. */
 
@@ -123,7 +123,7 @@ export function cardImage(fly, {
       alt="${esc(fly.name)} — ${esc(cardLabel(fly))} from The Reel Deal Deck, showing the hand-drawn fly and its description">`;
 }
 
-/** A card face, linked to its Fly Library page. */
+/** A card face, linked to its Fly-brary page. */
 export function flyCard(fly, { link = true, eager = false } = {}) {
   const inner = `${cardImage(fly, { eager })}
       <span class="visually-hidden">${esc(fly.name)} — ${esc(fly.cardCategory || '')}</span>`;

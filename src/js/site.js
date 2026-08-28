@@ -242,7 +242,7 @@
       }
 
       /* Section ancestry: a fly page (/flies/adams/) should show that you are
-         inside the Fly Library. That is NOT aria-current="page" — this link
+         inside the Fly-brary. That is NOT aria-current="page" — this link
          does not point at the current page — so it is marked with a data
          attribute and styled with a quieter rule, leaving the ARIA honest. */
       if (path.length > 1 && here.indexOf(path) === 0) {

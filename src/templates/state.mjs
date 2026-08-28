@@ -178,7 +178,7 @@ export default function ({ state: st, states, site, flies }) {
 
     ${stateFlies.length ? `<section class="state-section" aria-labelledby="flies-h">
       <h2 class="h2" id="flies-h">Flies that matter in ${esc(st.name)}</h2>
-      <p class="lede">Each of these is a card in the deck, and each has a full page in the Fly Library.</p>
+      <p class="lede">Each of these is a card in the deck, and each has a full page in the Fly-brary.</p>
       <div class="card-grid fly-strip" style="--gap:var(--s-4)">
         ${stateFlies.map((f) => flyCard(f)).join('\n        ')}
       </div>
@@ -190,7 +190,7 @@ export default function ({ state: st, states, site, flies }) {
         <li><a href="/blog/do-i-need-a-fishing-license/">Do I need a fishing licence?</a> — how licensing works across states</li>
         <li><a href="/blog/how-to-read-water-fly-fishing/">How to read water</a> — where trout hold, anywhere</li>
         <li><a href="/blog/best-time-of-day-to-fly-fish/">Best time of day to fly fish</a> — the seasonal logic behind the table above</li>
-        <li><a href="/flies/">The Fly Library</a> — every fly in the deck, explained</li>
+        <li><a href="/flies/">The Fly-brary</a> — every fly in the deck, explained</li>
       </ul>
       ${others.length ? `<p class="cluster" style="margin-block-start:var(--s-5)">
         ${others.map((o) => `<a class="btn btn--quiet btn--sm" href="/fly-fishing-in-${esc(o.slug)}/">Fly fishing in ${esc(o.name)}</a>`).join('\n        ')}

@@ -38,7 +38,7 @@ https://www.reeldealdeck.com/*   https://reeldealdeck.com/:splat      301!
 # --- Reserved alias --------------------------------------------------------
 # Singular /fly/<slug>/ is the URL people guess and type, and the one a forum
 # post is most likely to get wrong. Reserve it now; it costs nothing and it
-# means no inbound link to the Fly Library can ever land on a 404.
+# means no inbound link to the Fly-brary can ever land on a 404.
 /fly/*                           /flies/:splat                        301
 /flys/*                          /flies/:splat                        301
 /fly-library/*                   /flies/:splat                        301
@@ -55,7 +55,7 @@ https://www.reeldealdeck.com/*   https://reeldealdeck.com/:splat      301!
 # is picked up by Netlify automatically and served with a real 404 status,
 # which is what search engines need to see. Do not add `/* /index.html 200`.
 
-# --- Fly Library slugs realigned to the printed v8 deck (Aug 2026) ---
+# --- Fly-brary slugs realigned to the printed v8 deck (Aug 2026) ---
 # The card artwork is authoritative; these were the pre-artwork guesses.
 /flies/black-flying-ant/   /flies/ant/   301
 /flies/blue-winged-olive/   /flies/blue-wing-olive/   301

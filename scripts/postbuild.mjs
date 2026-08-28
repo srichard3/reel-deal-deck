@@ -13,10 +13,10 @@
  *                               kept out of sitemap.xml by build.mjs, but the
  *                               page itself carries no directive. Without one,
  *                               an external link is enough to get it indexed.
- *   3. feed discovery         — <link rel="alternate"> for the Fly Library feed.
+ *   3. feed discovery         — <link rel="alternate"> for the Fly-brary feed.
  *   4. /search-index.json     — every route, compactly, so on-site search can be
  *                               added later without re-architecting anything.
- *   5. /flies/feed.json + rss.xml — the Fly Library is a publication. Make it
+ *   5. /flies/feed.json + rss.xml — the Fly-brary is a publication. Make it
  *                               syndicable so fly shops and forums can follow it.
  *   6. robots.txt sitemap URL — pinned to site.url rather than a hand-typed host.
  *   7. CSP script hashes      — the inline bootstrap in head.html is hashed and
@@ -144,8 +144,8 @@ export default async function postbuild({ site, flies = [], routes = [], DIST, R
     if (!/rel=["']alternate["'][^>]*application\/rss\+xml/i.test(html)) {
       html = html.replace(
         /<\/head>/i,
-        `<link rel="alternate" type="application/rss+xml" title="${xml(site?.name || 'Fly Library')} — Fly Library" href="${basePath}/flies/rss.xml">\n` +
-        `<link rel="alternate" type="application/feed+json" title="${xml(site?.name || 'Fly Library')} — Fly Library" href="${basePath}/flies/feed.json">\n` +
+        `<link rel="alternate" type="application/rss+xml" title="${xml(site?.name || 'Fly-brary')} — Fly-brary" href="${basePath}/flies/rss.xml">\n` +
+        `<link rel="alternate" type="application/feed+json" title="${xml(site?.name || 'Fly-brary')} — Fly-brary" href="${basePath}/flies/feed.json">\n` +
         '</head>'
       );
       dirty = true;
@@ -222,7 +222,7 @@ export default async function postbuild({ site, flies = [], routes = [], DIST, R
     ) + '\n'
   );
 
-  /* ---------------------------------------------- 4. Fly Library feeds -- */
+  /* ---------------------------------------------- 4. Fly-brary feeds -- */
 
   const flyPages = pages.filter((p) => typeOf(p.route) === 'fly' && !p.isNoindex);
   const built = new Date();
@@ -247,7 +247,7 @@ export default async function postbuild({ site, flies = [], routes = [], DIST, R
     JSON.stringify(
       {
         version: 'https://jsonfeed.org/version/1.1',
-        title: `${site?.name ?? 'Fly Library'} — Fly Library`,
+        title: `${site?.name ?? 'Fly-brary'} — Fly-brary`,
         home_page_url: `${base}/flies/`,
         feed_url: `${base}/flies/feed.json`,
         description:
@@ -282,7 +282,7 @@ export default async function postbuild({ site, flies = [], routes = [], DIST, R
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
       '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n' +
       '  <channel>\n' +
-      `    <title>${xml(site?.name ?? '')} — Fly Library</title>\n` +
+      `    <title>${xml(site?.name ?? '')} — Fly-brary</title>\n` +
       `    <link>${xml(base)}/flies/</link>\n` +
       `    <atom:link href="${xml(base)}/flies/rss.xml" rel="self" type="application/rss+xml"/>\n` +
       '    <description>A free reference page for every fly in The Reel Deal Deck: what it imitates, when to fish it, and how.</description>\n' +

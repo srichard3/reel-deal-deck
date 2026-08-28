@@ -14,7 +14,7 @@ import { esc, clamp, campaignState } from '../templates/_blocks.mjs';
 
 export const meta = {
   path: '/blog/',
-  title: 'Fly Fishing Guides',
+  title: 'The Virtual Guide: Fly Fishing Answers',
   description:
     'Straight answers to the questions anglers actually ask — gear, technique, knots, seasons and getting started. Free, no sign-up, written by people who fish.',
   priority: 0.9,
@@ -54,7 +54,7 @@ export default function ({ site, posts = [], flies = [] }) {
     {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      name: (site?.blog?.name) || 'Fly Fishing Guides',
+      name: (site?.blog?.name) || 'The Virtual Guide',
       description: meta.description,
       url: `${base}/blog/`,
       inLanguage: 'en-US',
@@ -64,7 +64,7 @@ export default function ({ site, posts = [], flies = [] }) {
     {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
-      name: 'Fly fishing guides',
+      name: 'The Virtual Guide',
       numberOfItems: list.length,
       itemListElement: list.map((p, i) => ({
         '@type': 'ListItem',
@@ -78,7 +78,7 @@ export default function ({ site, posts = [], flies = [] }) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: site?.url },
-        { '@type': 'ListItem', position: 2, name: 'Guides', item: `${base}/blog/` },
+        { '@type': 'ListItem', position: 2, name: 'Virtual Guide', item: `${base}/blog/` },
       ],
     },
   ];
@@ -92,15 +92,15 @@ export default function ({ site, posts = [], flies = [] }) {
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <ol>
       <li><a href="/">Home</a></li>
-      <li><span aria-current="page">Guides</span></li>
+      <li><span aria-current="page">Virtual Guide</span></li>
     </ol>
   </nav>
 
   <header class="page-head blog-head">
-    <p class="eyebrow">Free guides${count ? ` · ${count} article${count === 1 ? '' : 's'}` : ''}</p>
-    <h1 class="h1 page-head__title">Fly Fishing Guides</h1>
+    <p class="eyebrow">Free${count ? ` · ${count} answer${count === 1 ? '' : 's'}` : ''}</p>
+    <h1 class="h1 page-head__title">The Virtual Guide</h1>
     <p class="page-head__lede lede">
-      The <a href="/flies/">Fly Library</a> explains the patterns. These guides answer everything
+      The <a href="/flies/">Fly-brary</a> explains the patterns. The Virtual Guide answers everything
       else an angler actually asks — what rod to buy, how to cast it, which knot to tie, when to go.
       One question per article, answered in the first paragraph, because nobody wants to scroll
       past somebody's childhood to find out which tippet to use.
@@ -120,9 +120,9 @@ export default function ({ site, posts = [], flies = [] }) {
   ${
     count === 0
       ? `<div class="notice notice--info blog-empty">
-    <p><strong>The first guides are being written right now.</strong></p>
+    <p><strong>The first answers are being written right now.</strong></p>
     <p>Nothing is published here yet — we would rather ship six articles worth reading than sixty
-    worth skimming. In the meantime the <a href="/flies/">Fly Library</a> covers all 54 patterns
+    worth skimming. In the meantime the <a href="/flies/">Fly-brary</a> covers all 54 patterns
     in the deck, free and without a sign-up.</p>
   </div>`
       : groups
@@ -149,7 +149,7 @@ export default function ({ site, posts = [], flies = [] }) {
 <section class="section section--sunk">
   <div class="wrap wrap--narrow text-center stack" style="--gap:var(--s-4)">
     <p class="eyebrow">${esc(camp.eyebrow)}</p>
-    <h2 class="h2">${esc(camp.headline || 'The deck the guides keep pointing at')}</h2>
+    <h2 class="h2">${esc(camp.headline || 'The deck behind the Virtual Guide')}</h2>
     <p class="lede mx-auto">
       ${esc(site?.product?.cardCount || 54)} hand-drawn flies on ${esc(site?.product?.stock || 'genuine Bicycle stock')},
       made by a father and daughter in ${esc(site?.location?.city || 'Eagle')}, with a contribution
@@ -157,7 +157,7 @@ export default function ({ site, posts = [], flies = [] }) {
     </p>
     <p class="cluster" style="justify-content:center">
       <a class="btn btn--primary" href="/deck/">See the deck</a>
-      <a class="btn btn--ghost" href="/flies/">Browse the Fly Library</a>
+      <a class="btn btn--ghost" href="/flies/">Browse the Fly-brary</a>
     </p>
   </div>
 </section>

@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="The Fly Library — The Reel Deal Deck">
-  <title>The Fly Library — The Reel Deal Deck</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="The Fly-brary — The Reel Deal Deck">
+  <title>The Fly-brary — The Reel Deal Deck</title>
   <defs>
     <style>
       .paper { fill: #fbfaf7 }
@@ -31,7 +31,7 @@
 
   <text class="body kicker ink3" x="600" y="188" text-anchor="middle">Free Reference</text>
   <text class="display title ink" text-anchor="middle">
-      <tspan x="600" y="340">The Fly Library</tspan>
+      <tspan x="600" y="340">The Fly-brary</tspan>
   </text>
   <rect class="suit" x="540" y="384" width="120" height="5"/>
   <text class="body sub ink2" x="600" y="450" text-anchor="middle">A free reference to all 54 flies in the deck.</text>

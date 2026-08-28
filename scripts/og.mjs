@@ -6,7 +6,14 @@
  *
  * Writes into static/ (which build.mjs copies verbatim to the dist root):
  *
- *   static/og/<page>.svg   the real artwork — hand-authored 1200x630 templates
+ * ⚠ DO NOT RUN THIS CASUALLY. The PNGs committed under static/og/ are better
+ * than what this script emits: they use the real logo and real card artwork,
+ * while this generator falls back to a built-in bitmap font and a drawn R♦
+ * mark. Running it replaced every OG image with the inferior version and had
+ * to be reverted. Treat the committed files as the artwork and this script as
+ * a last-resort fallback for a page that has none.
+ *
+ *   static/og/<page>.svg   hand-authored 1200x630 templates
  *   static/og/<page>.png   a real, valid, self-contained PNG fallback
  *   static/apple-touch-icon.png
  *   static/icon-192.png  static/icon-512.png
@@ -330,7 +337,7 @@ const OG = [
     sub: 'A free reference to all 54 flies in the deck.',
     kicker: 'Free Reference',
     accent: 'river',
-    svgTitle: 'The Fly Library',
+    svgTitle: 'The Fly-brary',
   },
   {
     name: 'gifts',

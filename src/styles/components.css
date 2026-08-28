@@ -1464,7 +1464,7 @@ a.card-face.card-face:nth-child(even):active {
 
 /* --- section ancestry ----------------------------------------------------
    site.js marks the nav link whose section contains the current page (a fly
-   page is inside the Fly Library). Quieter than aria-current="page": the
+   page is inside the Fly-brary). Quieter than aria-current="page": the
    underline is there but half-drawn, so you can see where you are without
    being told you are somewhere you are not. */
 .site-nav__list a[data-section-current] { color: var(--c-text); }
@@ -1791,6 +1791,13 @@ a.card-face.card-face:nth-child(even):active {
   color: var(--c-green);
   transition: color var(--dur-fast) var(--ease);
 }
+/* The mark is drawn facing left, which points it off the page when it sits in
+   the top-left corner. Mirrored here so the trout looks into the site.
+   Deliberately NOT applied to /brand/joker-fish-*, which reproduces the mark
+   printed on the deck's three specials — the physical cards face the way they
+   face. /brand/logo-* is the mirrored copy for logo use. */
+.brand__fish { transform: scaleX(-1); }
+
 .brand:hover .brand__fish { color: var(--c-green-deep); }
 @media (min-width: 40rem) { .brand__fish { --fish-h: 1.85rem; } }
 .brand__fish--lg { --fish-h: 2.75rem; color: var(--c-green); }

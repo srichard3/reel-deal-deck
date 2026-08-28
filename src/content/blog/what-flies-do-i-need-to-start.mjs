@@ -187,7 +187,7 @@ export default function ({ b }) {
         After that, it is pattern recognition, and it is learnable. Knowing at a glance that a slim
         olive nymph, a fat brown nymph and a tiny black midge do different jobs is most of what
         experienced anglers are doing when they seem to pick a fly out of thin air. The
-        <a href="/flies/">Fly Library</a> lays out all 54 patterns that way: what each one imitates,
+        <a href="/flies/">Fly-brary</a> lays out all 54 patterns that way: what each one imitates,
         the sizes to carry, and when it earns its place.
       </p>
       <p>

@@ -161,7 +161,7 @@ export default function ({ post, posts = [], site, flies = [] }) {
   const missingRelated = (Array.isArray(post?.related) ? post.related : []).filter((s) => !bySlugPost.has(s));
   if (missingRelated.length) warn(slug, `related post slug(s) not found: ${missingRelated.join(', ')}`);
   if (relatedPosts.length < 3) {
-    warn(slug, `only ${relatedPosts.length} related post link(s) available — falling back to the Fly Library`);
+    warn(slug, `only ${relatedPosts.length} related post link(s) available — falling back to the Fly-brary`);
   }
 
   const flyBySlug = new Map(flies.map((f) => [f.slug, f]));
@@ -380,15 +380,15 @@ export default function ({ post, posts = [], site, flies = [] }) {
           : ''
       }
       <p class="post-related__more">
-        <a href="${esc(blogPath)}">All fly-fishing guides</a> ·
+        <a href="${esc(blogPath)}">The whole Virtual Guide</a> ·
         <a href="/blog/topics/">Browse by topic</a> ·
-        <a href="/flies/">The Fly Library</a>
+        <a href="/flies/">The Fly-brary</a>
       </p>
     </section>
 
     <section class="post-related post-related--flies" aria-labelledby="related-flies">
       <h2 class="post-h2" id="related-flies">Flies mentioned in this guide</h2>
-      <p class="post-related__note">Every pattern below has its own page in the free Fly Library — what it imitates, what sizes to carry, and when to fish it.</p>
+      <p class="post-related__note">Every pattern below has its own page in the free Fly-brary — what it imitates, what sizes to carry, and when to fish it.</p>
       <div class="card-grid post-flies" style="--gap:var(--s-4)">
         ${relatedFlies.slice(0, 4).map((f) => flyCard(f)).join('\n        ')}
       </div>

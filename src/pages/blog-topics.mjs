@@ -12,7 +12,7 @@
    So the topics live as anchored sections on /blog/ (#gear, #knots, …) —
    which are real, linkable, quotable addresses — and this page is the
    crawlable map of the taxonomy: what each topic covers, what it deliberately
-   does NOT cover, and where the boundary with the Fly Library sits. That last
+   does NOT cover, and where the boundary with the Fly-brary sits. That last
    part is content no other page on the site has, which is what keeps this from
    being a duplicate of /blog/.
 
@@ -30,7 +30,7 @@ export const meta = {
   path: '/blog/topics/',
   title: 'Guide Topics',
   description:
-    'What the fly fishing guides cover: getting started, gear, technique, knots, seasons and the practical stuff — and where the Fly Library takes over.',
+    'What the Virtual Guide covers: getting started, gear, technique, knots, seasons and the practical stuff — and where the Fly-brary takes over.',
   priority: 0.6,
   changefreq: 'monthly',
   bodyClass: 'page-blog-topics',
@@ -93,7 +93,7 @@ export default function ({ site, posts = [] }) {
       description: meta.description,
       url: `${base}/blog/topics/`,
       inLanguage: 'en-US',
-      isPartOf: { '@type': 'Blog', name: (site?.blog?.name) || 'Fly Fishing Guides', url: `${base}/blog/` },
+      isPartOf: { '@type': 'Blog', name: (site?.blog?.name) || 'The Virtual Guide', url: `${base}/blog/` },
     },
     {
       '@context': 'https://schema.org',
@@ -112,7 +112,7 @@ export default function ({ site, posts = [] }) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: site?.url },
-        { '@type': 'ListItem', position: 2, name: 'Guides', item: `${base}/blog/` },
+        { '@type': 'ListItem', position: 2, name: 'Virtual Guide', item: `${base}/blog/` },
         { '@type': 'ListItem', position: 3, name: 'Topics', item: `${base}/blog/topics/` },
       ],
     },
@@ -125,7 +125,7 @@ export default function ({ site, posts = [] }) {
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <ol>
       <li><a href="/">Home</a></li>
-      <li><a href="/blog/">Guides</a></li>
+      <li><a href="/blog/">Virtual Guide</a></li>
       <li><span aria-current="page">Topics</span></li>
     </ol>
   </nav>
@@ -135,7 +135,7 @@ export default function ({ site, posts = [] }) {
     <h1 class="h1 page-head__title">Guide topics</h1>
     <p class="page-head__lede lede">
       Six topics, one question per article. This page is the map: what each topic covers, what it
-      deliberately leaves alone, and where the <a href="/flies/">Fly Library</a> takes over.
+      deliberately leaves alone, and where the <a href="/flies/">Fly-brary</a> takes over.
     </p>
   </header>
 
@@ -176,7 +176,7 @@ export default function ({ site, posts = [] }) {
   <div class="notice notice--info blog-boundary">
     <p><strong>Fly patterns are not a blog topic.</strong></p>
     <p>Every question of the form <em>"what does the Adams imitate"</em> is answered in the
-    <a href="/flies/">Fly Library</a> — one page per pattern, 54 of them, free. The guides link
+    <a href="/flies/">Fly-brary</a> — one page per pattern, 54 of them, free. The guides link
     across to it rather than explaining a pattern twice.</p>
   </div>
 </div>
@@ -188,7 +188,7 @@ export default function ({ site, posts = [] }) {
     <p class="lede mx-auto">${esc(camp.sub || site?.positioning || '')}</p>
     <p class="cluster" style="justify-content:center">
       <a class="btn btn--primary" href="/deck/">See the deck</a>
-      <a class="btn btn--ghost" href="/blog/">All guides</a>
+      <a class="btn btn--ghost" href="/blog/">The whole Virtual Guide</a>
     </p>
   </div>
 </section>

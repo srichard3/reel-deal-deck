@@ -38,7 +38,8 @@ Both must report **0 errors**. A change can pass one and fail the other.
 - **`reeldealdeck.com` is not bought yet.** Nothing compounds until it is. The
   printed cards already display that address, so it is urgent for a non-SEO reason.
 - Kickstarter runs until **19 September 2026**
-- Retail **$19.99**; ladder in `src/pages/deck.mjs`
+- Retail **$24.95**; three tiers in `src/pages/deck.mjs` — one deck, one signed
+  ($39.95), and a brick of twelve for the price of ten ($249.50)
 - **29 open decisions** in `docs/PUNCH-LIST.md` — pricing sign-off, the Trout
   Unlimited figure, and wholesale terms are the blocking ones
 - Domain cutover = drop `NOINDEX`/`BASE_PATH`, set `SITE_URL`, add a `CNAME`
@@ -96,6 +97,12 @@ default export (see `flies.mjs`, `deck.mjs`, `about.mjs`).
 `href`/`src`/`action`/`content` attributes only, so root-relative paths inside a
 `<script type="application/json">` stay unprefixed. `feed.js` recovers the prefix
 from its own rewritten `src`. Any future embedded data must do the same.
+
+**Do not run `scripts/og.mjs`.** The OG images and app icons committed under
+`static/` are real artwork; that script is an old bitmap-font fallback and
+regenerating overwrote all of them with a far worse pixel-font version. It has
+a warning at the top now. The same run also proves the icons are an "R♦" mark,
+not the joker fish.
 
 **SVG needs explicit dimensions.** Never `width: auto` on a viewBox-only SVG —
 Safari will not infer it and collapses the element to nothing. Chrome hides this.

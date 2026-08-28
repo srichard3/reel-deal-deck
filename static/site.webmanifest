@@ -19,7 +19,7 @@
     { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180", "purpose": "any" }
   ],
   "shortcuts": [
-    { "name": "Fly Library", "short_name": "Flies", "url": "/flies/", "description": "Reference pages for all 54 flies in the deck." },
+    { "name": "Fly-brary", "short_name": "Flies", "url": "/flies/", "description": "Reference pages for all 54 flies in the deck." },
     { "name": "The Deck", "short_name": "Deck", "url": "/deck/", "description": "What is in the box and what it is printed on." }
   ]
 }

@@ -8,7 +8,7 @@
  * real printed artwork.
  *
  * Note on data: `flies` may legitimately be an empty array (data/flies.json is
- * the Fly Library's source of truth and is populated separately). Every read
+ * the Fly-brary's source of truth and is populated separately). Every read
  * below is defensive; when there is no data the fly strips simply do not
  * render, and nothing else on the page depends on them.
  */
@@ -102,7 +102,7 @@ export default function homepage({ site, flies, posts }) {
   const orgIdx = meta.jsonld.findIndex((n) => n['@type'] === 'Organization');
   if (orgIdx > -1) meta.jsonld[orgIdx] = { '@context': 'https://schema.org', ...organizationSchema(site, { full: true }) };
 
-  /* Four entry points into the guides, chosen as the widest doors: what to buy,
+  /* Four entry points into the Virtual Guide, chosen as the widest doors: what to buy,
      what to tie on, how to rig it, and why it is not working. Falls back to the
      newest four if any slug is missing, so the section never renders empty. */
   const p = Array.isArray(posts) ? posts : [];
@@ -257,7 +257,7 @@ ${flyStrip(f, ['adams', 'parachute-adams', 'woolly-bugger', 'grasshopper', 'copp
         <p class="section-num" aria-hidden="true">3&#9829;</p>
         <h2 class="h2" id="library-h">Learn the flies free, right now, without buying a thing</h2>
         <p class="lede">
-          The Fly Library is the whole deck written out as a reference: one page per pattern,
+          The Fly-brary is the whole deck written out as a reference: one page per pattern,
           what it imitates, when it works and how to fish it. It is genuinely free &mdash; no
           sign-up, no paywall, no e-book waiting at the end. We would rather you learned the
           flies than bought the cards.
@@ -267,7 +267,7 @@ ${flyStrip(f, ['adams', 'parachute-adams', 'woolly-bugger', 'grasshopper', 'copp
     </div>
 ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-midge', 'clouser-minnow', 'green-drake'])}
     <p class="text-muted" style="margin-block-start:var(--s-6)">
-      <a href="/flies/">Open the Fly Library</a> &mdash; dries, nymphs, streamers, wets,
+      <a href="/flies/">Open the Fly-brary</a> &mdash; dries, nymphs, streamers, wets,
       terrestrials and attractors, each one indexed like a card.
     </p>
   </div>
@@ -278,14 +278,14 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
     <div class="section-head section-head--split">
       <div>
         <p class="section-num" aria-hidden="true">4&#9827;</p>
-        <h2 class="h2" id="guides-h">And the questions a card is too small to answer</h2>
+        <h2 class="h2" id="guides-h">The Virtual Guide, for the questions a card is too small to answer</h2>
         <p class="lede">
           Straight answers to the things anglers actually ask &mdash; which rod, which tippet,
           how to rig it, why the fish keep refusing you. Written to be useful standing on the
           bank, not to sell you a rod.
         </p>
       </div>
-      <p><a class="btn btn--ghost" href="/blog/">All ${esc(posts.length)} guides</a></p>
+      <p><a class="btn btn--ghost" href="/blog/">All ${esc(posts.length)} answers</a></p>
     </div>
 
     <div class="card-grid" style="--min:15rem;--gap:var(--s-4)">
@@ -301,7 +301,7 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
     </div>
 
     <p class="text-muted" style="margin-block-start:var(--s-6)">
-      <a href="/blog/">Open the guides</a> &mdash; gear, technique, knots, seasons and
+      <a href="/blog/">Open the Virtual Guide</a> &mdash; gear, technique, knots, seasons and
       getting started, each one answering a single question.
     </p>
   </div>

@@ -171,7 +171,7 @@ function anatomy() {
         ${flyCard(fly, { eager: true })}
         <p class="figure-note" style="margin-block-start:var(--s-4)">
           The printed face, actual artwork. Every card in the deck links through to its
-          full page in the <a href="/flies/">Fly Library</a>.
+          full page in the <a href="/flies/">Fly-brary</a>.
         </p>
       </div>
 
@@ -232,7 +232,7 @@ function suitContents() {
       <h2 class="h2" id="four-h">The four suits</h2>
       <p class="lede">
         Thirteen cards each, ace through king. Every fly listed here has a free page in the
-        Fly Library &mdash; the deck&rsquo;s contents are readable in full before you own one.
+        Fly-brary &mdash; the deck&rsquo;s contents are readable in full before you own one.
       </p>
     </div>
 
@@ -564,7 +564,7 @@ ${printing(site)}
     </p>
     <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
       ${campaignCta(site)}
-      <a class="btn btn--ghost" href="/flies/">Browse the Fly Library</a>
+      <a class="btn btn--ghost" href="/flies/">Browse the Fly-brary</a>
       <a class="btn btn--quiet" href="/story/">Meet Ken and Audrey</a>
     </p>
   </div>

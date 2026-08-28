@@ -118,7 +118,7 @@ export default function ({ fly, flies, site }) {
       description: answer,
       mainEntityOfPage: url,
       about: { '@type': 'Thing', name: `${fly.name} fly pattern` },
-      isPartOf: { '@type': 'CollectionPage', name: 'Fly Library', url: `${site.url.replace(/\/$/, '')}/flies/` },
+      isPartOf: { '@type': 'CollectionPage', name: 'Fly-brary', url: `${site.url.replace(/\/$/, '')}/flies/` },
       publisher: organizationSchema(site),
     },
     {
@@ -126,7 +126,7 @@ export default function ({ fly, flies, site }) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
-        { '@type': 'ListItem', position: 2, name: 'Fly Library', item: `${site.url.replace(/\/$/, '')}/flies/` },
+        { '@type': 'ListItem', position: 2, name: 'Fly-brary', item: `${site.url.replace(/\/$/, '')}/flies/` },
         { '@type': 'ListItem', position: 3, name: fly.name, item: url },
       ],
     },
@@ -162,7 +162,7 @@ export default function ({ fly, flies, site }) {
   <div class="wrap">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span aria-hidden="true">›</span>
-      <a href="/flies/">Fly Library</a> <span aria-hidden="true">›</span>
+      <a href="/flies/">Fly-brary</a> <span aria-hidden="true">›</span>
       <span aria-current="page">${esc(fly.name)}</span>
     </nav>
 
@@ -243,7 +243,7 @@ export default function ({ fly, flies, site }) {
       </div>
     </section>
 
-    <nav class="fly-pager" aria-label="Fly Library">
+    <nav class="fly-pager" aria-label="Fly-brary">
       <a class="fly-pager__link" href="/flies/${esc(prev.slug)}/" rel="prev">
         <span class="fly-pager__dir">Previous</span>
         <span class="fly-pager__name">${esc(prev.name)}</span>

@@ -133,7 +133,7 @@ export function organizationSchema(site, { full = false } = {}) {
     legalName: b.legalName || undefined,
     slogan: b.slogan || undefined,
     description: b.description,
-    logo: base ? `${base}/brand/joker-fish-512.png` : undefined,
+    logo: base ? `${base}/brand/logo-512.png` : undefined,
     image: base ? `${base}/og/default.png` : undefined,
     email: site?.social?.email || undefined,
     foundingLocation: b.foundingLocation || undefined,
@@ -392,8 +392,8 @@ export function makeBlocks({ flies = [] } = {}) {
     /* --- the internal-link engine -------------------------------------- */
 
     /**
-     * Link into the Fly Library. The blog never re-explains a pattern — the
-     * Fly Library owns those queries — so a mention becomes a link.
+     * Link into the Fly-brary. The blog never re-explains a pattern — the
+     * Fly-brary owns those queries — so a mention becomes a link.
      * An unknown slug renders as plain text and does NOT break the build:
      * an article may legitimately be written before the fly is verified.
      */

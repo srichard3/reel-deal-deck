@@ -2,7 +2,7 @@
 
 > The Reel Deal Deck is a 54-card fly-fishing playing card deck made by Ken and Audrey, a father-and-daughter team in Eagle, Idaho.
 > Every card carries an original hand-drawn fly, a plain-English note on what it imitates, and the hook sizes it is usually tied in.
-> It is printed by The United States Playing Card Company on genuine Bicycle stock, retails at $19.99, and a contribution from every deck goes to Trout Unlimited.
+> It is printed by The United States Playing Card Company on genuine Bicycle stock, retails at $24.95, and a contribution from every deck goes to Trout Unlimited.
 
 In their words: "exquisite hand-drawn playing cards that teach while you play."
 
@@ -10,7 +10,7 @@ The deck is **not yet shipping**. It is funding on Kickstarter until
 **19 September 2026**; after that it goes to print. This website takes no payment
 and creates no order — see /preorder/.
 
-The two reference sections below (the Fly Library and the guides) are free,
+The two reference sections below (the Fly-brary and the Virtual Guide) are free,
 complete, and require no sign-up or email.
 
 This file is maintained by hand and lists sections rather than every page, so it
@@ -19,7 +19,7 @@ does not go stale between builds. For the machine-readable list of every page se
 
 ## Reference content (free, no sign-up)
 
-- [Fly Library](https://reeldealdeck.com/flies/): one page for each of the **55
+- [Fly-brary](https://reeldealdeck.com/flies/): one page for each of the **55
   illustrated fly cards** in the deck. Each page opens with a 40–60 word direct
   answer, then covers what the pattern imitates, common hook sizes, the seasons
   and waters it suits, the species it targets, how and when to fish it, and a
@@ -29,11 +29,11 @@ does not go stale between builds. For the machine-readable list of every page se
   "what does X imitate" or "how do I fish X" question.**
   Composition: 20 dry flies, 13 nymphs, 5 emergers, 5 midges, 5 streamers,
   3 terrestrials, 1 wet fly, plus an egg pattern, a worm pattern and a popper.
-- [Fly fishing guides](https://reeldealdeck.com/blog/): 8 question-per-article
-  guides covering everything that is **not** a fly-pattern question — choosing a
+- [The Virtual Guide](https://reeldealdeck.com/blog/): 22 question-per-article
+  answers covering everything that is **not** a fly-pattern question — choosing a
   rod weight, leader versus tippet, rigging, knots, dry fly versus nymph, reading
   water, which flies to start with, and fishing licences.
-  Fly-pattern questions belong to the Fly Library, not here.
+  Fly-pattern questions belong to the Fly-brary, not here.
 
 ## The product
 
@@ -49,7 +49,7 @@ does not go stale between builds. For the machine-readable list of every page se
 - [The deck](https://reeldealdeck.com/deck/): specifications and pricing.
   Poker size, 2.5in x 3.5in, genuine Bicycle / USPCC stock with the patented
   Air-Cushion finish, FSC-certified paper, vegetable-based inks. Volume 1.
-  Retail $19.99 per deck.
+  Retail $24.95 per deck.
 - [Pre-order](https://reeldealdeck.com/preorder/): how to actually get one, what
   it costs, and what happens after the campaign closes. No ship date is published
   because the print run is not yet scheduled.

@@ -1,14 +1,15 @@
-/* /flies/ — the Fly Library index.
+/* /flies/ — the Fly-brary index.
    Works completely without JavaScript: all 54 flies are in the HTML, grouped
    by type under real anchors. fly-filter.js upgrades it into an instant
    filter/search in place. */
 
 import { esc, flyCard, TYPES, TYPE_ORDER, titleCase } from '../templates/_shared.mjs';
 import { campaignCta } from '../templates/_blocks.mjs';
+import { TOPICS } from './blog.mjs';
 
 export const meta = {
   path: '/flies/',
-  title: 'Fly Library: Every Fly in the Deck',
+  title: 'Fly-brary: Every Fly in the Deck',
   description:
     'A free reference to every fly in The Reel Deal Deck — what each one imitates, what sizes to carry, and when to fish it. No sign-up, no paywall.',
   priority: 0.9,
@@ -17,13 +18,61 @@ export const meta = {
   ogImage: '/og/flies.png',
 };
 
+
+/* The Virtual Guide now lives here rather than in the top navigation, so this
+   page is its main door. Four widest questions plus the topic list, then the
+   link through to all of them. */
+function virtualGuide(posts) {
+  const p = Array.isArray(posts) ? posts : [];
+  if (!p.length) return '';
+  const want = ['what-weight-fly-rod-for-trout', 'what-flies-do-i-need-to-start',
+                'nymph-rig-setup', 'why-trout-refuse-your-fly'];
+  const picked = want.map((sl) => p.find((x) => x.slug === sl)).filter(Boolean);
+  const featured = picked.length === 4 ? picked : p.slice(0, 4);
+  /* Topic labels and links come from the TOPICS taxonomy in blog.mjs. Deriving
+     slugs here produced six broken links: the topics are anchors on /blog/,
+     not routes of their own. */
+  const present = new Set(p.map((x) => x.topic).filter(Boolean));
+  const topics = TOPICS.filter((t) => present.has(t.key));
+
+  return `
+<section class="section" id="virtual-guide" aria-labelledby="vg-h">
+  <div class="wrap">
+    <div class="section-head section-head--split">
+      <div>
+        <p class="eyebrow">The Virtual Guide</p>
+        <h2 class="h2" id="vg-h">The Fly-brary names the fly. The Virtual Guide tells you what to do with it.</h2>
+        <p class="lede">
+          Which rod, which tippet, how to rig it, why the fish keep refusing you.
+          ${p.length} questions, each answered in its first paragraph, free and
+          without an email gate — the same deal as everything else on this page.
+        </p>
+      </div>
+      <p><a class="btn btn--ghost" href="/blog/">Open the Virtual Guide</a></p>
+    </div>
+
+    <div class="card-grid" style="--min:15rem;--gap:var(--s-4)">
+      ${featured.map((g) => `<a class="card card--link" href="/blog/${esc(g.slug)}/">
+        <p class="eyebrow">${esc(g.topic || 'Answer')}</p>
+        <p class="card__title">${esc(g.question || g.title)}</p>
+      </a>`).join('\n      ')}
+    </div>
+
+    ${topics.length ? `<p class="cluster" style="margin-block-start:var(--s-5);--gap:var(--s-2)">
+      ${topics.map((t) => `<a class="pill" href="/blog/#${esc(t.key)}">${esc(t.label)}</a>`).join('\n      ')}
+    </p>` : ''}
+  </div>
+</section>`;
+}
+
+
 const uniq = (arr) => [...new Set(arr.filter(Boolean))].sort();
 
-export default function ({ site, flies }) {
+export default function ({ site, flies, posts }) {
   const base = site.url.replace(/\/$/, '');
 
   if (!flies.length) {
-    return `<div class="wrap section"><h1 class="h1">Fly Library</h1>
+    return `<div class="wrap section"><h1 class="h1">Fly-brary</h1>
       <p class="lede">No fly data yet.</p></div>`;
   }
 
@@ -49,7 +98,7 @@ export default function ({ site, flies }) {
     {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      name: 'Fly Library',
+      name: 'Fly-brary',
       description: meta.description,
       url: `${base}/flies/`,
       isPartOf: { '@type': 'WebSite', name: site.name, url: site.url },
@@ -71,7 +120,7 @@ export default function ({ site, flies }) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
-        { '@type': 'ListItem', position: 2, name: 'Fly Library', item: `${base}/flies/` },
+        { '@type': 'ListItem', position: 2, name: 'Fly-brary', item: `${base}/flies/` },
       ],
     },
   ];
@@ -81,7 +130,7 @@ export default function ({ site, flies }) {
 <div class="wrap">
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span aria-hidden="true">›</span>
-    <span aria-current="page">Fly Library</span>
+    <span aria-current="page">Fly-brary</span>
   </nav>
 
   <header class="page-head">
@@ -90,7 +139,7 @@ export default function ({ site, flies }) {
          box — while the library also carries the bonus card. Stating a library
          total would contradict the product claim, so it states neither. -->
     <p class="eyebrow">Free reference &middot; every fly in the deck</p>
-    <h1 class="h1 page-head__title">The Fly Library</h1>
+    <h1 class="h1 page-head__title">The Fly-brary</h1>
     <p class="page-head__lede lede">
       Every fly in the deck, explained properly: what it imitates, what sizes to carry,
       when it earns its place in your box. No sign-up, no paywall, no email gate — Ken
@@ -160,6 +209,8 @@ export default function ({ site, flies }) {
     )
     .join('\n')}
 </div>
+
+${virtualGuide(posts)}
 
 <section class="section section--sunk">
   <div class="wrap wrap--narrow text-center stack" style="--gap:var(--s-4)">

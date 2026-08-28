@@ -37,26 +37,24 @@ export default function ({ site }) {
   const base = site.url.replace(/\/$/, '');
   const ends = fmtDate(site.campaign?.endsAt);
 
-  /* Three rungs only. The full ladder lives on /deck/; this page answers
-     "how do I get one", not "which one".
+  /* This page answers "how do I get one", not "which one", so it lists the
+     tiers plainly rather than re-arguing the ladder on /deck/.
 
-     Prices are imported rather than restated: the same numbers written in two
-     files is exactly how this page ended up still quoting $24 after the ladder
-     moved to $19.99. One source of truth, and the drift cannot recur. */
+     Both the prices and the set of tiers come from TIERS. Naming the rungs here
+     is what let this page quietly drop to two when a tier was renamed, and an
+     earlier version of the same mistake left it quoting a price the ladder had
+     already moved off. One source of truth, and the drift cannot recur. */
   const NOTES = {
     single: 'The deck. Fifty-four flies in a jacket pocket.',
-    pair: 'Keep one, hand one over on the drive to the put-in.',
+    signed: 'The same deck, signed by Ken and Audrey before it is posted.',
     brick: 'A dozen, the way playing cards actually ship. Guide tips, groomsmen, a club raffle.',
   };
-  const rungs = ['single', 'pair', 'brick']
-    .map((id) => TIERS.find((t) => t.id === id))
-    .filter(Boolean)
-    .map((t) => ({
-      name: t.name,
-      qty: t.qty === 1 ? '1 deck' : `${t.qty} decks`,
-      price: t.price,
-      note: NOTES[t.id],
-    }));
+  const rungs = TIERS.map((t) => ({
+    name: t.name,
+    qty: t.qty === 1 ? '1 deck' : `${t.qty} decks`,
+    price: t.price,
+    note: NOTES[t.id] || t.kicker,
+  }));
 
   const jsonld = [
     {
@@ -253,7 +251,7 @@ export default function ({ site }) {
     </p>
     <p class="cluster" style="justify-content:center">
       <a class="btn btn--primary" href="/cards/">What's in the deck</a>
-      <a class="btn btn--ghost" href="/flies/">Browse the Fly Library</a>
+      <a class="btn btn--ghost" href="/flies/">Browse the Fly-brary</a>
     </p>
   </div>
 </section>`;

@@ -1,4 +1,4 @@
-/* Fly Library filter — progressive enhancement only.
+/* Fly-brary filter — progressive enhancement only.
    With JS off, every fly is already in the HTML grouped by type and the filter
    form stays hidden. This script reveals the form and filters in place. */
 (function () {

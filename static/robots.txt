@@ -4,7 +4,7 @@
 # Policy: crawl everything. This site is a 60-odd page reference library whose
 # entire acquisition strategy is organic search. There is nothing here worth
 # hiding from a crawler, and every Disallow is a chance to accidentally
-# de-index the Fly Library. The only rules below strip tracking parameters,
+# de-index the Fly-brary. The only rules below strip tracking parameters,
 # which create infinite duplicate URLs of pages we want indexed exactly once.
 #
 # Do NOT add Disallow lines for /flies/ or its facet URLs (/flies/?type=dry).
