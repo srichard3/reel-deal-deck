@@ -16,6 +16,17 @@ export const meta = {
   title: 'Press & Media',
   description:
     'Boilerplate, facts, founder details and artwork for The Reel Deal Deck — a 54-card fly-fishing deck made by a father-and-daughter team in Eagle, Idaho.',
+  /* Unlisted on purpose. A press kit is something you send a journalist the
+     link to, not something a customer should stumble into while browsing — and
+     right now it would mostly advertise that there is no coverage yet.
+     noindex:true does three things at once: it emits the robots meta, it keeps
+     the route out of sitemap.xml, and it exempts the page from the orphan gate
+     in scripts/check.mjs, which is the sanctioned way to have a deliberately
+     unreachable page rather than an accidental one.
+
+     This makes it UNLISTED, not private. The URL still resolves for anyone sent
+     it or guessing it; a static site has nowhere to put a password. */
+  noindex: true,
   priority: 0.6,
   changefreq: 'monthly',
   bodyClass: 'page-press',

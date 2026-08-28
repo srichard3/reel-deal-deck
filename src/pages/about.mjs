@@ -120,7 +120,6 @@ export default function about({ site, flies }) {
     <p class="cluster" style="margin-block-start:var(--s-6)">
       <a class="btn btn--ghost" href="/story/">The longer story</a>
       <a class="btn btn--ghost" href="/cards/">What is in the deck</a>
-      <a class="btn btn--ghost" href="/press/">Press &amp; media</a>
     </p>
   </div>
 </section>

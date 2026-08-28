@@ -84,7 +84,12 @@ prices is how `/preorder/` was left quoting $24 after everything else moved.
 
 **Every section must be reachable from the homepage.** `check.mjs` walks the link
 graph and fails on unreachable clusters. 22 guides were once orphaned — every page
-had inbound links, but the whole cluster was cut off from the site.
+had inbound links, but the whole cluster was cut off from the site. The one
+sanctioned exemption is `meta.noindex = true`, which marks a page deliberately
+unlisted: it emits the robots meta, drops the route from `sitemap.xml`, and
+exempts it from the orphan gate in one move. `/press/` uses it — a press kit is a
+link you send, not a browse destination. Unlisted is not private; a static site
+has nowhere to put a password.
 
 **The bonus card is never counted.** The deck is "54 unique cards" (52 + 2 jokers).
 A third special ships on top and is shown on the site but excluded from every count.

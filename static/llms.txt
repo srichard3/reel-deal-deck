@@ -45,7 +45,6 @@ does not go stale between builds. For the machine-readable list of every page se
   the tuck box.
 - [About](https://reeldealdeck.com/about/): what the deck is, what it costs,
   who it is for and who makes it — the canonical description of this business.
-- [Press](https://reeldealdeck.com/press/): boilerplate, quick facts and artwork.
 - [The deck](https://reeldealdeck.com/deck/): specifications and pricing.
   Poker size, 2.5in x 3.5in, genuine Bicycle / USPCC stock with the patented
   Air-Cushion finish, FSC-certified paper, vegetable-based inks. Volume 1.
