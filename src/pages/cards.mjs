@@ -541,7 +541,8 @@ export default function cardsPage({ site }) {
     <p class="lede page-head__lede">
       That is Ken and Audrey&rsquo;s description, printed on a card inside the deck. This page
       is the long version, for anyone who likes knowing how a thing was made: what is on a card,
-      why the suits came out green and brown, what is in each one, and who prints it.
+      why the suits came out green and brown, what is in each one, and who prints it. It says
+      Volume 1 on the box for a reason &mdash; <a href="/suggest/">tell us what goes in the next one</a>.
     </p>
   </div>
 </section>

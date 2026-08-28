@@ -104,6 +104,13 @@ regenerating overwrote all of them with a far worse pixel-font version. It has
 a warning at the top now. The same run also proves the icons are an "R♦" mark,
 not the joker fish.
 
+**`/suggest/` is the one form that actually delivers.** Everything else using
+`data-capture` writes to localStorage and says so, which is honest for a waiting
+list that has not opened. A suggestion nobody receives is not, so `suggest.js`
+composes a real email — mailto plus the message on the page with a copy button,
+because mailto silently fails for anyone without a mail client. The form is
+hidden on `.no-js`; the plain address underneath is the fallback.
+
 **The Instagram strip is a snapshot, not an embed.** `data/instagram.json` plus
 `static/instagram/` are committed, and `instagramStrip()` renders from them.
 There is no live feed to be had: widgets mean a third-party script, the Graph
@@ -141,6 +148,7 @@ Safari will not infer it and collapses the element to nothing. Chrome hides this
 | `src/templates/_shared.mjs` | card rendering, suit logic |
 | `src/js/feed.js` | the homepage game — card list built by `feedData()` in `index.mjs` |
 | `data/instagram.json` | the committed @reeldealdeck snapshot — refresh via `scripts/instagram.mjs` |
+| `src/js/suggest.js` | `/suggest/` — composes a real email; reads the address off the page |
 | `new assets/` | printer source artwork — gitignored, large |
 
 ## Docs

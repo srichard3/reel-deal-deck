@@ -2208,3 +2208,71 @@ a.card-face.card-face:nth-child(even):active {
   .ig__link:hover { transform: none; }
   .ig__pause { display: none; }
 }
+
+/* ==========================================================================
+   SUGGEST A FLY — /suggest/
+   The one form on this site that actually delivers: suggest.js composes an
+   email rather than writing to localStorage. The preview block below is what
+   makes that honest — a mailto: link is silently useless to anyone without a
+   mail client, so the message is always shown and always copyable.
+   ========================================================================== */
+
+.suggest__form { margin-block-start: var(--s-6); }
+
+/* The submit handler is the whole feature: it composes the email. Without it
+   the button would reload the page and silently empty the fields, so the form
+   is not offered at all and .suggest__manual carries the job. The class is
+   removed by the inline script in head.html, so there is no flash. */
+.no-js .suggest__form { display: none; }
+
+.suggest__manual {
+  margin-block-start: var(--s-7);
+  padding: var(--s-4) var(--s-5);
+  border-inline-start: 3px solid var(--c-border);
+  background-color: var(--c-bg-sunk);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-size: var(--t-sm);
+  color: var(--c-text-muted);
+}
+.suggest__manual p { margin: 0; }
+.suggest__manual-title {
+  margin-block-end: var(--s-2) !important;
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-index);
+  color: var(--c-text-faint);
+}
+
+/* Injected by suggest.js — never present without a composed message in it. */
+.suggest__out {
+  margin-block-start: var(--s-6);
+  padding: var(--s-5);
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-green);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-1);
+}
+
+.suggest__out-title {
+  margin: 0 0 var(--s-2);
+  font-family: var(--f-display);
+  font-size: var(--t-md);
+  color: var(--c-green);
+}
+
+.suggest__preview {
+  margin-block: var(--s-4);
+  padding: var(--s-4);
+  max-height: 22rem;
+  overflow: auto;
+  background-color: var(--c-bg-sunk);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: var(--t-sm);
+  line-height: var(--lh-body);
+  color: var(--c-text);
+  white-space: pre-wrap;
+  word-break: break-word;      /* a long river name must not widen the page */
+}
+.suggest__preview:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 2px; }

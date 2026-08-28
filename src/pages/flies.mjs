@@ -225,6 +225,10 @@ ${virtualGuide(posts)}
       ${campaignCta(site)}
       <a class="btn btn--ghost" href="/gifts/">Buying it as a gift</a>
     </p>
+    <p class="text-muted" style="margin-block-start:var(--s-5)">
+      Scrolled the whole list and yours is not in it?
+      <a href="/suggest/">Tell us what we missed</a> &mdash; Volume 2 is not written yet.
+    </p>
   </div>
 </section>
 

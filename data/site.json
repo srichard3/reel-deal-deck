@@ -129,6 +129,10 @@
         {
           "label": "Streamers",
           "href": "/flies/?type=streamer"
+        },
+        {
+          "label": "Suggest a fly",
+          "href": "/suggest/"
         }
       ]
     },
