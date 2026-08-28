@@ -2276,3 +2276,126 @@ a.card-face.card-face:nth-child(even):active {
   word-break: break-word;      /* a long river name must not widen the page */
 }
 .suggest__preview:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 2px; }
+
+/* ==========================================================================
+   THE TUCK BOX IN 3D — hero of the homepage
+   Six panels cut from the printer's dieline by scripts/box-panels.mjs, folded
+   with CSS transforms. No 3D library: a tuck box is a cuboid, a cuboid is six
+   rectangles, and three.js would be 150kB to draw a box.
+
+   Proportions are the real ones measured off the dieline:
+     W : H : D  =  1 : 1.393 : 0.26   (a poker tuck is 2.5 x 3.5 x 0.65in)
+   Everything derives from --bw, so the box is resized in one place.
+
+   Progressive: the resting three-quarter angle is CSS, so with JS off it is
+   still a 3D box, just not a draggable one. box.js adds pointer and keyboard
+   rotation and the idle drift.
+   ========================================================================== */
+
+.tuck {
+  --bw: min(19rem, 62vw);
+  --bh: calc(var(--bw) * 1.393);
+  --bd: calc(var(--bw) * 0.26);
+  --rx: -14deg;          /* resting three-quarter view; box.js takes over */
+  --ry: -26deg;
+  --spin: 0deg;
+  display: grid;
+  place-items: center;
+  padding-block: var(--s-5);
+}
+
+@media (min-width: 60rem) { .tuck { --bw: min(21rem, 30vw); } }
+
+.tuck__stage {
+  perspective: 1500px;
+  perspective-origin: 50% 45%;
+  width: var(--bw);
+  height: var(--bh);
+  /* Room for the box to swing without clipping, and for the shadow. */
+  overflow: visible;
+}
+
+.tuck__box {
+  position: relative;
+  width: var(--bw);
+  height: var(--bh);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx)) rotateY(calc(var(--ry) + var(--spin)));
+  transition: transform 480ms var(--ease);
+  touch-action: pan-y;          /* let the page still scroll vertically */
+}
+/* Only offer the grab cursor where box.js is there to honour it. Without JS
+   this is a handsome 3D box that does not turn, and it should not pretend. */
+html:not(.no-js) .tuck__box { cursor: grab; }
+.tuck.is-dragging .tuck__box { transition: none; cursor: grabbing; }
+.tuck__box:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 12px; }
+
+.tuck__face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: #4a762b;    /* the printed green, behind any panel gap */
+  backface-visibility: hidden;
+}
+
+.tuck__img { display: block; width: 100%; height: 100%; object-fit: fill; }
+
+/* Front and back are the full W x H panel. */
+.tuck__face--front { transform: translateZ(calc(var(--bd) / 2)); }
+.tuck__face--back  { transform: rotateY(180deg) translateZ(calc(var(--bd) / 2)); }
+
+/* The spines are D wide, so they are centred on the box's vertical axis before
+   being swung out to the sides. */
+.tuck__face--left,
+.tuck__face--right {
+  width: var(--bd);
+  left: calc(50% - var(--bd) / 2);
+}
+.tuck__face--right { transform: rotateY(90deg) translateZ(calc(var(--bw) / 2)); }
+.tuck__face--left  { transform: rotateY(-90deg) translateZ(calc(var(--bw) / 2)); }
+
+/* Top and bottom are D tall, centred on the horizontal axis. */
+.tuck__face--top,
+.tuck__face--bottom {
+  height: var(--bd);
+  top: calc(50% - var(--bd) / 2);
+}
+.tuck__face--top    { transform: rotateX(90deg) translateZ(calc(var(--bh) / 2)); }
+.tuck__face--bottom { transform: rotateX(-90deg) translateZ(calc(var(--bh) / 2)); }
+
+/* The base of a tuck box is a plain glue flap — no artwork to show. */
+.tuck__face--bottom { background-color: #3f6625; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tuck__box { transition: none; }
+}
+
+/* --- the ground, and the affordance -------------------------------------- */
+
+/* Not part of the 3D scene: a box floating on nothing reads as a sticker, and
+   a real shadow plane inside preserve-3d costs more than it is worth here. */
+.tuck__shadow {
+  width: calc(var(--bw) * 0.86);
+  height: calc(var(--bw) * 0.16);
+  margin-block-start: calc(var(--bw) * -0.04);
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+    color-mix(in oklab, var(--c-text) 26%, transparent), transparent 78%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.tuck__hint {
+  margin: var(--s-4) 0 0;
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+  transition: opacity var(--dur) var(--ease);
+}
+/* Once you have worked out that it turns, stop saying so. */
+.tuck.is-touched .tuck__hint { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tuck__hint { transition: none; }
+}

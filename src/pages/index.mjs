@@ -58,15 +58,37 @@ const esc = (s) =>
 /* ------------------------------------------------------------- sections --- */
 
 function heroPack() {
-  /* The printed tuck box. It already carries the logo, the engraved trout and
-     a fan of three real cards, so it does the job a CSS sketch used to. */
+  /* The real tuck box, in three dimensions, built from the printer's dieline —
+     the six panels are cut out by scripts/box-panels.mjs and the proportions
+     here are the ones measured off it (W : H : D = 1 : 1.393 : 0.26).
+     No 3D library: six images and CSS transforms. A tuck box is a cuboid, and
+     a cuboid is six rectangles, so three.js would be 150kB to draw a box.
+
+     With JS off it stays at the three-quarter angle set in CSS, which is the
+     view the flat image used to show anyway. box.js adds the dragging.
+
+     The front panel is the LCP image and keeps fetchpriority; the back is the
+     one face that cannot be seen at rest, so it loads lazily. */
+  const face = (name, w, h, alt, eager) =>
+    `<img class="tuck__img" src="/brand/box3d-${name}.webp" width="${w}" height="${h}"
+             alt="${alt}" decoding="async"${eager ? ' fetchpriority="high"' : ' loading="lazy"'}>`;
+
   return `<figure class="hero-pack">
-      <img class="hero-pack__img"
-        src="/brand/box-front-600.webp"
-        srcset="/brand/box-front-600.webp 600w, /brand/box-front-1200.webp 759w"
-        sizes="(min-width: 60rem) 24rem, 70vw"
-        width="600" height="874" fetchpriority="high" decoding="async"
-        alt="The Reel Deal Deck tuck box: an engraved green case with two trout, holding a fan of three fly cards">
+      <div class="tuck" data-tuck>
+        <div class="tuck__stage">
+          <div class="tuck__box" data-tuck-box
+               role="img"
+               aria-label="The Reel Deal Deck tuck box: an engraved green case with two rising trout, a fan of three fly cards on the front, and &lsquo;54 Unique Cards, Hand Illustrated in Exquisite Detail&rsquo; down the spine">
+            <div class="tuck__face tuck__face--front">${face('front', 600, 836, '', true)}</div>
+            <div class="tuck__face tuck__face--back">${face('back', 600, 836, '')}</div>
+            <div class="tuck__face tuck__face--left">${face('left', 156, 836, '')}</div>
+            <div class="tuck__face tuck__face--right">${face('right', 156, 836, '')}</div>
+            <div class="tuck__face tuck__face--top">${face('top', 600, 156, '')}</div>
+            <div class="tuck__face tuck__face--bottom"></div>
+          </div>
+        </div>
+        <div class="tuck__shadow" aria-hidden="true"></div>
+      </div>
     </figure>`;
 }
 
@@ -535,6 +557,7 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
 </style>
 
 <script type="application/json" id="feed-data">${feedData(f)}</script>
+<script src="/js/box.js" defer></script>
 <script src="/js/feed.js" defer></script>
 `;
 }

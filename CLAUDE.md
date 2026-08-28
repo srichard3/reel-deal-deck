@@ -109,6 +109,13 @@ regenerating overwrote all of them with a far worse pixel-font version. It has
 a warning at the top now. The same run also proves the icons are an "R♦" mark,
 not the joker fish.
 
+**The hero tuck box is CSS, not a 3D library.** A cuboid is six rectangles, so
+three.js would be 150kB to draw a box. `scripts/box-panels.mjs` cuts the six
+panels out of the printer's dieline (gitignored) by detecting its cyan fold
+lines, and `.tuck` in components.css folds them with transforms at the measured
+ratios W:H:D = 1 : 1.393 : 0.26. The resting angle is CSS, so it is still a 3D
+box with JS off; `src/js/box.js` only adds dragging, keyboard and the idle sway.
+
 **The card images are watermarked, and it is baked into the pixels.** A CSS
 overlay would be theatre — the file is one right-click away and the overlay one
 devtools deletion away. `scripts/watermark.mjs` rewrites `static/cards/` from
@@ -164,6 +171,8 @@ Safari will not infer it and collapses the element to nothing. Chrome hides this
 | `data/instagram.json` | the committed @reeldealdeck snapshot — refresh via `scripts/instagram.mjs` |
 | `src/js/suggest.js` | `/suggest/` — composes a real email; reads the address off the page |
 | `scripts/watermark.mjs` | burns the watermark into `static/cards/` from the gitignored masters |
+| `scripts/box-panels.mjs` | cuts the six 3D tuck-box panels out of the printer's dieline |
+| `src/js/box.js` | drag / keyboard rotation for the hero box; the box itself is CSS |
 | `new assets/` | printer source artwork — gitignored, large |
 
 ## Docs
