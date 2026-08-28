@@ -1,0 +1,170 @@
+{
+  "note": "A committed snapshot of the @reeldealdeck feed, not a live embed. Instagram offers no way to show a feed without either a third-party script (banned near this site) or a Graph API token, and its CDN URLs are signed and expire within days — so the thumbnails are downloaded into static/instagram/ and served from our own origin. Refresh with scripts/instagram.mjs.",
+  "captionNote": "`caption` is the first line of each post, kept here for whoever maintains this file. It is deliberately NOT rendered on the site: several captions carry countdowns that go stale ('43 days left'), and one states that Trout Unlimited was cofounded in the 1930s, which is wrong — TU was founded in 1959. Publishing a caption would put that on the site as our claim. The strip shows the picture and the date and links out, which is what an Instagram widget does anyway.",
+  "handle": "reeldealdeck",
+  "profileUrl": "https://www.instagram.com/reeldealdeck/",
+  "capturedAt": "2026-08-28",
+  "posts": [
+    {
+      "id": "DcOsQkghnvz",
+      "url": "https://www.instagram.com/reeldealdeck/reel/DcOsQkghnvz/",
+      "date": "2026-08-19",
+      "dateLabel": "19 August 2026",
+      "image": "/instagram/DcOsQkghnvz.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "conservation"
+      ],
+      "caption": "Anglers are conservation SUPERHEROES!"
+    },
+    {
+      "id": "DcBkm4Pyjuz",
+      "url": "https://www.instagram.com/reeldealdeck/reel/DcBkm4Pyjuz/",
+      "date": "2026-08-14",
+      "dateLabel": "14 August 2026",
+      "image": "/instagram/DcBkm4Pyjuz.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "makers"
+      ],
+      "caption": "Mini Vlog from DC! We had a great time visiting the National Archives…"
+    },
+    {
+      "id": "DbvjRzSySvX",
+      "url": "https://www.instagram.com/reeldealdeck/reel/DbvjRzSySvX/",
+      "date": "2026-08-07",
+      "dateLabel": "7 August 2026",
+      "image": "/instagram/DbvjRzSySvX.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "campaign"
+      ],
+      "caption": "43 days left to back our Kickstarter and get a playing card deck of your own."
+    },
+    {
+      "id": "DbqQhLwhXhu",
+      "url": "https://www.instagram.com/reeldealdeck/reel/DbqQhLwhXhu/",
+      "date": "2026-08-05",
+      "dateLabel": "5 August 2026",
+      "image": "/instagram/DbqQhLwhXhu.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "campaign"
+      ],
+      "caption": "We only have 44 DAYS LEFT of our Kickstarter…"
+    },
+    {
+      "id": "DblLnHEtjLy",
+      "url": "https://www.instagram.com/reeldealdeck/reel/DblLnHEtjLy/",
+      "date": "2026-08-03",
+      "dateLabel": "3 August 2026",
+      "image": "/instagram/DblLnHEtjLy.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "conservation",
+        "deck"
+      ],
+      "caption": "George Griffith was one of the cofounders of @troutunlimited in the 1930s??"
+    },
+    {
+      "id": "DbgH-IouPEs",
+      "url": "https://www.instagram.com/reeldealdeck/reel/DbgH-IouPEs/",
+      "date": "2026-08-01",
+      "dateLabel": "1 August 2026",
+      "image": "/instagram/DbgH-IouPEs.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "conservation",
+        "makers"
+      ],
+      "caption": "We flew from Eagle, ID to the TU mothership in DC…"
+    },
+    {
+      "id": "Dba5uo8Shj2",
+      "url": "https://www.instagram.com/reeldealdeck/reel/Dba5uo8Shj2/",
+      "date": "2026-07-30",
+      "dateLabel": "30 July 2026",
+      "image": "/instagram/Dba5uo8Shj2.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "deck"
+      ],
+      "caption": "A little bit of a different video for you guys today, ft. the Green Weenie Attractor Nymph."
+    },
+    {
+      "id": "DbTUKKYyW9G",
+      "url": "https://www.instagram.com/reeldealdeck/reel/DbTUKKYyW9G/",
+      "date": "2026-07-27",
+      "dateLabel": "27 July 2026",
+      "image": "/instagram/DbTUKKYyW9G.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "conservation",
+        "deck"
+      ],
+      "caption": "…and we're a proud Trout Unlimited business!!"
+    },
+    {
+      "id": "DbOR7yjNPct",
+      "url": "https://www.instagram.com/reeldealdeck/reel/DbOR7yjNPct/",
+      "date": "2026-07-25",
+      "dateLabel": "25 July 2026",
+      "image": "/instagram/DbOR7yjNPct.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "makers"
+      ],
+      "caption": "Nothing beats a perfect evening at TroutHunter Lodge in Island Park."
+    },
+    {
+      "id": "DbJRHG8udyo",
+      "url": "https://www.instagram.com/reeldealdeck/reel/DbJRHG8udyo/",
+      "date": "2026-07-23",
+      "dateLabel": "23 July 2026",
+      "image": "/instagram/DbJRHG8udyo.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "makers",
+        "conservation"
+      ],
+      "caption": "Building this business has been about SO much more than designing a deck of cards."
+    },
+    {
+      "id": "DbD4QXdynE1",
+      "url": "https://www.instagram.com/reeldealdeck/reel/DbD4QXdynE1/",
+      "date": "2026-07-21",
+      "dateLabel": "21 July 2026",
+      "image": "/instagram/DbD4QXdynE1.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "campaign"
+      ],
+      "caption": "Our Kickstarter has LAUNCHED!"
+    },
+    {
+      "id": "Da8I4tDgDbC",
+      "url": "https://www.instagram.com/reeldealdeck/reel/Da8I4tDgDbC/",
+      "date": "2026-07-18",
+      "dateLabel": "18 July 2026",
+      "image": "/instagram/Da8I4tDgDbC.webp",
+      "width": 360,
+      "height": 640,
+      "tags": [
+        "deck",
+        "makers"
+      ],
+      "caption": "When I googled “fly fishing flashcards” and saw that none existed, it dawned on me: why not make them myself?"
+    }
+  ]
+}

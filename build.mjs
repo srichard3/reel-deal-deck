@@ -84,11 +84,39 @@ const flies = existsSync(path.join(ROOT, 'data/flies.json'))
   ? JSON.parse(await read(path.join(ROOT, 'data/flies.json')))
   : [];
 
+/* The Instagram strip. Optional on purpose: the feed is a committed snapshot
+   rather than a live embed (no third-party script is allowed near this site),
+   so a missing or empty file simply renders no strip anywhere. See
+   scripts/instagram.mjs for how it is refreshed. */
+const instagram = existsSync(path.join(ROOT, 'data/instagram.json'))
+  ? JSON.parse(await read(path.join(ROOT, 'data/instagram.json')))
+  : { posts: [] };
+
 /* -------------------------------------------------------------- partials -- */
 
 const partials = {};
 for (const f of await readdir(path.join(SRC, '_partials'))) {
   if (f.endsWith('.html')) partials[path.basename(f, '.html')] = await read(path.join(SRC, '_partials', f));
+}
+
+/* The Instagram strip is a function, but story.html and conservation.html are
+   plain HTML with token substitution and cannot call one. Pre-render the
+   variants they need and register them as partials. Both collapse to an empty
+   string when the feed is short, so the include is always safe. */
+{
+  const { instagramStrip } = await import(
+    pathToFileURL(path.join(SRC, 'templates', '_blocks.mjs')).href
+  );
+  partials['instagram'] = instagramStrip(site, instagram, {
+    tag: 'makers',
+    title: 'Follow along while we build it',
+    blurb: 'Ken and Audrey put the whole thing on Instagram as it happens — prototypes, print proofs, and the odd fish. Tap any of these to open it.',
+  });
+  partials['instagram-conservation'] = instagramStrip(site, instagram, {
+    tag: 'conservation',
+    title: 'The conservation side, as it happens',
+    blurb: 'Trout Unlimited, the water, and why any of it matters to a deck of cards — posted as we go.',
+  });
 }
 
 /** Expand {{> name }} partial includes, recursively (max 6 deep). */
@@ -188,7 +216,7 @@ async function buildPages() {
       // JS page: `export const meta = {...}; export default (ctx) => htmlString`
       const mod = await import(pathToFileURL(full).href + `?t=${Date.now()}`);
       const meta = mod.meta;
-      const body = await mod.default({ site, flies, posts: allPosts, states, meta });
+      const body = await mod.default({ site, flies, posts: allPosts, states, instagram, meta });
       await emit(meta.path, meta, body);
       continue;
     }

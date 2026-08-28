@@ -46,7 +46,7 @@ export const meta = {
 /* ----------------------------------------------------------------- utils -- */
 
 import { flyCard as sharedFlyCard } from '../templates/_shared.mjs';
-import { campaignCta, campaignLine, organizationSchema } from '../templates/_blocks.mjs';
+import { campaignCta, campaignLine, organizationSchema, instagramStrip } from '../templates/_blocks.mjs';
 
 const esc = (s) =>
   String(s ?? '')
@@ -96,7 +96,7 @@ function feedData(list) {
 
 /* ------------------------------------------------------------------ page -- */
 
-export default function homepage({ site, flies, posts }) {
+export default function homepage({ site, flies, posts, instagram }) {
   /* `meta` is module-level, so `site` is not in scope there. build.mjs reads
      meta after this runs, so the canonical entity is patched in here. */
   const orgIdx = meta.jsonld.findIndex((n) => n['@type'] === 'Organization');
@@ -206,6 +206,11 @@ export default function homepage({ site, flies, posts }) {
     </div>
   </div>
 </section>
+
+${instagramStrip(site, instagram, {
+  title: 'Follow along while we make it',
+  blurb: 'Ken and Audrey post the whole thing on Instagram as it happens \u2014 prototypes, print proofs, trips, and the odd fish. Tap any of these to open it.',
+})}
 
 <section class="section" id="in-the-deck" aria-labelledby="deck-h">
   <div class="wrap">

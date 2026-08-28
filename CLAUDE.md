@@ -104,6 +104,13 @@ regenerating overwrote all of them with a far worse pixel-font version. It has
 a warning at the top now. The same run also proves the icons are an "R♦" mark,
 not the joker fish.
 
+**The Instagram strip is a snapshot, not an embed.** `data/instagram.json` plus
+`static/instagram/` are committed, and `instagramStrip()` renders from them.
+There is no live feed to be had: widgets mean a third-party script, the Graph
+API needs a token, Instagram serves a bare shell to server-side fetches, and its
+CDN URLs are signed and expire in days. Refresh with `scripts/instagram.mjs`.
+Captions are stored but never rendered — several go stale and one is wrong.
+
 **SVG needs explicit dimensions.** Never `width: auto` on a viewBox-only SVG —
 Safari will not infer it and collapses the element to nothing. Chrome hides this.
 
@@ -133,6 +140,7 @@ Safari will not infer it and collapses the element to nothing. Chrome hides this
 | `src/templates/_blocks.mjs` | campaign helpers, `organizationSchema`, block vocabulary |
 | `src/templates/_shared.mjs` | card rendering, suit logic |
 | `src/js/feed.js` | the homepage game — card list built by `feedData()` in `index.mjs` |
+| `data/instagram.json` | the committed @reeldealdeck snapshot — refresh via `scripts/instagram.mjs` |
 | `new assets/` | printer source artwork — gitignored, large |
 
 ## Docs

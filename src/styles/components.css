@@ -2089,3 +2089,122 @@ a.card-face.card-face:nth-child(even):active {
   .feed__card.is-wrong { outline: 2px solid var(--c-red); outline-offset: 3px; }
   .feed__card.is-taken .feed__card-img { animation: none; opacity: 0; }
 }
+
+/* ==========================================================================
+   INSTAGRAM STRIP — a revolving row of @reeldealdeck posts
+   Rendered by instagramStrip() in src/templates/_blocks.mjs from the committed
+   snapshot in data/instagram.json. No embed, no third-party script, no
+   external request: the thumbnails are served from our own origin.
+
+   The track holds the posts twice and translates by exactly -50%, so the loop
+   is seamless. Motion is CSS; instagram.js only adds the pause button that
+   WCAG 2.2.2 requires for content that moves for more than five seconds.
+   ========================================================================== */
+
+.ig-section { padding-block: var(--s-8); }
+
+.ig__head {
+  display: grid;
+  gap: var(--s-4);
+  align-items: end;
+  margin-block-end: var(--s-6);
+}
+@media (min-width: 46rem) {
+  .ig__head { grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-6); }
+}
+.ig__lede { max-width: 54ch; }
+
+.ig {
+  --ig-w: 8.5rem;
+  --ig-gap: var(--s-3);
+  position: relative;
+  overflow: hidden;
+  /* Fade both edges so items enter and leave rather than being sliced off. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+@media (min-width: 46rem) { .ig { --ig-w: 10.5rem; --ig-gap: var(--s-4); } }
+
+.ig__track {
+  display: flex;
+  gap: var(--ig-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: max-content;
+  animation: ig-roll calc(var(--ig-count, 12) * 4s) linear infinite;
+}
+
+/* -50% is exactly one full copy of the posts, which is why the seam is
+   invisible. It only holds because the track is rendered twice. */
+@keyframes ig-roll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - var(--ig-gap) / 2)); }
+}
+
+.ig:hover .ig__track,
+.ig:focus-within .ig__track,
+.ig.is-paused .ig__track { animation-play-state: paused; }
+
+.ig__item { flex: 0 0 var(--ig-w); margin: 0; }
+
+.ig__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--r-sm);
+  transition: transform var(--dur) var(--ease);
+}
+.ig__link:hover { transform: translateY(-3px); }
+.ig__link:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 3px; }
+
+.ig__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: var(--r-sm);
+  background-color: var(--c-bg-sunk);
+  box-shadow: var(--shadow-1);
+}
+
+.ig__meta {
+  display: block;
+  margin-block-start: var(--s-2);
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+
+.ig__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); margin: 0; }
+
+/* Injected by site.js, so it never appears without a working handler. */
+.ig__pause {
+  padding: var(--s-1) var(--s-3);
+  font: inherit;
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  cursor: pointer;
+  opacity: .85;
+}
+.ig__pause:hover { opacity: 1; color: var(--c-text); }
+.ig__pause:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* No motion at all: the strip becomes a row the reader scrolls themselves.
+     The scroll belongs on .ig, which is the element with a fixed width — and
+     the duplicated half is hidden, or it would read as the feed twice. */
+  .ig { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .ig__track { animation: none; }
+  .ig__item[aria-hidden="true"] { display: none; }
+  .ig__link { transition: none; }
+  .ig__link:hover { transform: none; }
+  .ig__pause { display: none; }
+}

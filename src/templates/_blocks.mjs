@@ -100,6 +100,73 @@ const deslug = (s) =>
  * article ever has to know the campaign end date, and none of them can drift
  * out of sync with another.
  */
+
+/* ------------------------------------------------------------- instagram --
+ * A revolving strip of @reeldealdeck posts.
+ *
+ * Not an embed. Instagram cannot be shown without a third-party widget script
+ * or a Graph API token, and its CDN URLs are signed and expire, so the feed is
+ * a committed snapshot in data/instagram.json with the thumbnails served from
+ * our own origin. That keeps the page at zero external requests and zero
+ * third-party tracking, which is the whole architecture of this site.
+ *
+ * The motion is CSS. The track is rendered twice and translated by exactly
+ * -50%, so the loop is seamless; the duplicate is aria-hidden so a screen
+ * reader is not read the same twelve posts again. WCAG 2.2.2 wants a pause
+ * control for anything that moves for more than five seconds, so instagram.js
+ * injects one — and prefers-reduced-motion stops it before it ever starts.
+ *
+ * Captions are deliberately not rendered. See data/instagram.json.
+ */
+export function instagramStrip(site, instagram, { tag = null, title = null, blurb = null } = {}) {
+  const feed = instagram || {};
+  let posts = Array.isArray(feed.posts) ? feed.posts : [];
+  if (tag) {
+    const filtered = posts.filter((p) => Array.isArray(p.tags) && p.tags.includes(tag));
+    /* Fall back to the whole feed rather than rendering a thin or empty strip. */
+    if (filtered.length >= 4) posts = filtered;
+  }
+  if (posts.length < 4) return '';           /* too few to revolve — show nothing */
+
+  const handle = feed.handle || 'reeldealdeck';
+  const profile = feed.profileUrl || `https://www.instagram.com/${handle}/`;
+  const hid = `ig-h-${tag || 'all'}`;
+
+  const item = (p, dup) => `
+        <li class="ig__item"${dup ? ' aria-hidden="true"' : ''}>
+          <a class="ig__link" href="${esc(p.url)}" target="_blank" rel="noopener"${dup ? ' tabindex="-1"' : ''}>
+            <img class="ig__img" src="${esc(p.image)}" width="${esc(p.width || 360)}" height="${esc(p.height || 640)}"
+                 loading="lazy" decoding="async" alt="">
+            <span class="ig__meta">
+              <span class="visually-hidden">Instagram reel from @${esc(handle)}, </span>${esc(p.dateLabel || p.date || '')}
+            </span>
+          </a>
+        </li>`;
+
+  const track = posts.map((p) => item(p, false)).join('') + posts.map((p) => item(p, true)).join('');
+
+  return `
+<section class="section ig-section" aria-labelledby="${hid}">
+  <div class="wrap">
+    <div class="ig__head">
+      <div>
+        <p class="eyebrow">@${esc(handle)}</p>
+        <h2 class="h2" id="${hid}">${esc(title || 'Follow along while we make it')}</h2>
+        <p class="lede ig__lede">${esc(blurb || 'Ken and Audrey post the whole thing as it happens — prototypes, printing, and the odd fish. Tap any of these to open it on Instagram.')}</p>
+      </div>
+      <p class="ig__actions" data-ig-actions>
+        <a class="btn btn--ghost" href="${esc(profile)}" target="_blank" rel="noopener">Follow @${esc(handle)}</a>
+      </p>
+    </div>
+
+    <div class="ig" data-ig style="--ig-count:${posts.length}">
+      <ul class="ig__track" data-ig-track>${track}
+      </ul>
+    </div>
+  </div>
+</section>`;
+}
+
 /* ---------------------------------------------------------------- entity --
  * The single Organization node for the whole site.
  *

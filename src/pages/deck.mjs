@@ -9,7 +9,7 @@
  * TODO-CONFIRM before launch.
  */
 
-import { campaignCta, campaignLine, organizationSchema } from '../templates/_blocks.mjs';
+import { campaignCta, campaignLine, organizationSchema, instagramStrip } from '../templates/_blocks.mjs';
 const esc = (s) => String(s ?? '')
   .replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -263,7 +263,7 @@ function flyCards(flies) {
 
 /* ---------------------------------------------------------------- page -- */
 
-export default function deckPage({ site, flies }) {
+export default function deckPage({ site, flies, instagram }) {
   const p = site.product || {};
 
   /* `meta` is a module-level constant, so `site` is not in scope up there.
@@ -376,6 +376,12 @@ ${TIERS.map(tierCard).join('\n')}
     </div>
   </div>
 </section>
+
+${instagramStrip(site, instagram, {
+  tag: 'deck',
+  title: 'The deck, out in the world',
+  blurb: 'Prototypes, print proofs and cards being dealt \u2014 posted as it happens on Instagram.',
+})}
 
 <!-- ========================================================== RESERVE == -->
 <section class="section wrap" id="reserve">

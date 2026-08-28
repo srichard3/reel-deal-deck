@@ -301,3 +301,67 @@
     })(bars[i]);
   }
 })();
+
+/* ---------------------------------------------------------------- instagram --
+ * Pause control for the revolving Instagram strip.
+ *
+ * The motion itself is pure CSS, so the strip works with JS off. What CSS
+ * cannot provide is the pause mechanism WCAG 2.2.2 requires for anything that
+ * moves for more than five seconds: :hover and :focus-within cover a mouse and
+ * a keyboard, but leave a touch user with no way to stop it. The button is
+ * injected rather than shipped in the markup so it can never appear without a
+ * handler behind it.
+ *
+ * prefers-reduced-motion already stops the animation in CSS, so no button is
+ * added there — there is nothing to pause.
+ */
+(function () {
+  'use strict';
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var strips = document.querySelectorAll('[data-ig]');
+
+  for (var i = 0; i < strips.length; i++) {
+    (function (strip) {
+      var track = strip.querySelector('[data-ig-track]');
+      if (!track) return;
+
+      /* In the header beside "Follow", not floating over the strip: a control
+         laid on top of the artwork covered a post's date, and a pause button
+         nobody can find does not satisfy 2.2.2 anyway. */
+      var slot = (strip.closest('.ig-section') || document)
+        .querySelector('[data-ig-actions]');
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'ig__pause';
+      btn.textContent = 'Pause';
+      btn.setAttribute('aria-pressed', 'false');
+      btn.setAttribute('aria-label', 'Pause the Instagram strip');
+
+      btn.addEventListener('click', function () {
+        var paused = strip.classList.toggle('is-paused');
+        btn.textContent = paused ? 'Play' : 'Pause';
+        btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+        btn.setAttribute('aria-label',
+          (paused ? 'Play' : 'Pause') + ' the Instagram strip');
+      });
+
+      if (slot) slot.appendChild(btn);
+      else strip.appendChild(btn);
+
+      /* Off-screen it animates to nobody, which is wasted battery on a phone.
+         The paused-by-button state must survive scrolling past, so this only
+         toggles a separate class. */
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          for (var j = 0; j < entries.length; j++) {
+            track.style.animationPlayState =
+              entries[j].isIntersecting ? '' : 'paused';
+          }
+        }, { threshold: 0 }).observe(strip);
+      }
+    })(strips[i]);
+  }
+})();
