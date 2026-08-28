@@ -104,6 +104,15 @@ regenerating overwrote all of them with a far worse pixel-font version. It has
 a warning at the top now. The same run also proves the icons are an "R♦" mark,
 not the joker fish.
 
+**The card images are watermarked, and it is baked into the pixels.** A CSS
+overlay would be theatre — the file is one right-click away and the overlay one
+devtools deletion away. `scripts/watermark.mjs` rewrites `static/cards/` from
+un-watermarked masters in `new assets/cards-clean/` (gitignored), which is what
+makes it idempotent: never run it against `static/cards/` itself or you stack a
+second mark. The `-400` variants are downscaled from the marked `-800`.
+Deliberately NOT marked: `static/og/*` and `static/brand/box-*`, which are share
+and packaging images where the wordmark already carries attribution.
+
 **`/suggest/` is the one form that actually delivers.** Everything else using
 `data-capture` writes to localStorage and says so, which is honest for a waiting
 list that has not opened. A suggestion nobody receives is not, so `suggest.js`
@@ -149,6 +158,7 @@ Safari will not infer it and collapses the element to nothing. Chrome hides this
 | `src/js/feed.js` | the homepage game — card list built by `feedData()` in `index.mjs` |
 | `data/instagram.json` | the committed @reeldealdeck snapshot — refresh via `scripts/instagram.mjs` |
 | `src/js/suggest.js` | `/suggest/` — composes a real email; reads the address off the page |
+| `scripts/watermark.mjs` | burns the watermark into `static/cards/` from the gitignored masters |
 | `new assets/` | printer source artwork — gitignored, large |
 
 ## Docs
