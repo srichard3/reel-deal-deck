@@ -52,7 +52,7 @@ export default function about({ site, flies }) {
     ['What it is', `A ${p.cardCount}-card fly-fishing playing card deck. Every card is an original hand-drawn fly with a plain-English note on what it imitates and the hook sizes it is usually tied in.`],
     ['What it costs', `$${p.priceIntended} for a single deck. Multi-deck prices are on the deck page.`],
     ['Who it is for', 'Anglers who want a reference they can actually carry, and the people buying a gift for one. It teaches a beginner and settles arguments for someone who has fished for thirty years.'],
-    ['Who makes it', `${site.founders.map((f) => f.name).join(' and ')} — a father-and-daughter team in ${site.location.city}, ${site.location.regionName}.`],
+    ['Who makes it', `${site.founders.map((f) => f.name).join(' and ')} — a father and his daughter, in ${site.location.city}, ${site.location.regionName}. They answer their own email.`],
     ['Who prints it', `${p.manufacturer}, on ${p.stock.replace(/^Genuine /, 'genuine ')}. ${p.origin}.`],
     ['Legal entity', site.legalName],
     ['Conservation', `A contribution from every deck goes to ${site.conservation.partner}.`],
@@ -94,6 +94,16 @@ export default function about({ site, flies }) {
       ${cardImage(hero, { sizes: '(min-width: 54rem) 16rem, 60vw' })}
       <figcaption class="figure-note">One of ${p.cardCount} &mdash; every card works like this</figcaption>
     </figure>` : ''}
+  </div>
+</section>
+
+<section class="section wrap wrap--narrow">
+  <div class="prose">
+    <h2 class="h2">How it started</h2>
+    <p>${esc(site.story?.hook || '')}</p>
+    <p>${esc(site.story?.looking || '')} ${esc(site.story?.twist || '')}</p>
+    <p>${esc(site.story?.belief || '')} ${esc(site.story?.spirit || '')}</p>
+    <p><a href="/story/">The longer version, with both of them in it &rarr;</a></p>
   </div>
 </section>
 

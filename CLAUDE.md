@@ -50,6 +50,15 @@ Both must report **0 errors**. A change can pass one and fail the other.
 **Never invent a fact.** No prices, statistics, dates, mortality figures or
 attributions that aren't verifiable. Anything unconfirmed ships as a
 `TODO-CONFIRM` HTML comment, never as plausible filler. `npm run check` lists them.
+This includes *charming* details: "he drew them at the kitchen table" was written,
+shipped and removed here because no source says where he drew them.
+
+**The voice is warm, and it is sourced.** The site sounds like a father and daughter
+because Ken and Audrey wrote it that way, on the printed info card (`site.voice`) and
+on the Kickstarter (`docs/VOICE-SOURCE.md`, transcribed). Reusable beats live in
+`site.story`. If you want to say something warm that is in neither place, you do not
+know it. Their line is "he couldn't even find a set" — never widen that into "nobody
+makes fly-fishing flashcards", which is false and one search disproves it.
 
 **The Fly Library owns fly patterns. The blog owns everything else.** Before
 writing any article, check its headings against existing ones — three planned
@@ -121,6 +130,7 @@ Safari will not infer it and collapses the element to nothing. Chrome hides this
 
 ## Docs
 
-`GROWTH-PLAN` strategy · `PUNCH-LIST` open decisions · `BLOG-CONTRACT` article rules ·
+`VOICE-SOURCE` Ken and Audrey's own words · `GROWTH-PLAN` strategy ·
+`PUNCH-LIST` open decisions · `BLOG-CONTRACT` article rules ·
 `CONTENT-PLAN` article backlog · `AEO` answer-engine system · `LAUNCH` founder playbook ·
 `DEPLOY` going live · `COMMERCE` checkout swap-in · `AUDIENCE` market research

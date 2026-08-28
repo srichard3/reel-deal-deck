@@ -9,12 +9,12 @@
     {
       "name": "Ken",
       "role": "Founder",
-      "bio": "Lifelong entrepreneur, 5th-generation Idaho farmer, and the avid amateur angler who went looking for fly-fishing flashcards, couldn't find a set he'd actually want to own, and drew his own."
+      "bio": "Lifelong entrepreneur of more than thirty years, fifth-generation Idaho farmer, and the avid amateur angler who went looking for fly-fishing flashcards, came up empty-handed, and drew his own."
     },
     {
       "name": "Audrey",
       "role": "Co-founder",
-      "bio": "Entrepreneurship graduate, Loyola Marymount University College of Business Administration. Handles design direction, brand, and community."
+      "bio": "Entrepreneurship graduate of Loyola Marymount University's College of Business Administration, December 2025. Handles design direction, brand and community — and is the reason the drawings became a deck instead of a folder on a laptop."
     }
   ],
   "location": {
@@ -46,14 +46,14 @@
     "endsAt": "2026-09-19T09:43:00-04:00",
     "live": {
       "eyebrow": "Live on Kickstarter",
-      "headline": "The Reel Deal Deck is funding now.",
-      "sub": "54 hand-drawn flies on genuine Bicycle stock, with a contribution to Trout Unlimited from every deck.",
+      "headline": "The Reel Deal Deck is funding right now.",
+      "sub": "54 hand-drawn flies on genuine Bicycle stock, made by a father and daughter in Eagle, Idaho, with a contribution to Trout Unlimited from every deck.",
       "cta": "Back the deck on Kickstarter"
     },
     "after": {
       "eyebrow": "Coming soon",
       "headline": "The Reel Deal Deck is in production.",
-      "sub": "54 hand-drawn flies on genuine Bicycle stock. Join the list and we will tell you the day it ships.",
+      "sub": "54 hand-drawn flies on genuine Bicycle stock. Leave your email and we will tell you the day it ships — that is the only reason we will write to you.",
       "cta": "Reserve a deck",
       "url": "/deck/#reserve"
     }
@@ -169,7 +169,7 @@
     "signoff": "Thank you for your support. Tight lines!",
     "handle": "@reeldealdeck",
     "shortLine": "Hand-drawn playing cards that teach while you play.",
-    "note": "TODO-CONFIRM: the card says 'multigenerational Idaho farmers'; site.json founders[0] said '5th-generation'. The card wording is used publicly. Confirm the exact generation if it is to be claimed."
+    "note": "The printed card says 'multigenerational Idaho farmers' of the pair. The Kickstarter, written by Ken and Audrey themselves, calls Ken a '5th generation Idaho farmer' — so the number is now on the public record for him and founders[0].bio uses it. Still TODO-CONFIRM: surnames, and whether Audrey counts as fifth or sixth generation."
   },
   "cardCraft": {
     "suits": "A two-colour deck: green replaces red on hearts and diamonds, bark brown replaces black on spades and clubs — drawn from the tuck box and card back.",
@@ -196,5 +196,21 @@
       "Playing cards",
       "Trout conservation"
     ]
+  },
+  "story": {
+    "note": "Ken and Audrey's own account, condensed from the Kickstarter campaign. Full transcript and the rules for writing in this voice: docs/VOICE-SOURCE.md. Do not add a beat that is not sourced there.",
+    "hook": "Fly fishing is full of beauty, tradition and endless learning. It is also full of hundreds of flies, each with its own name, purpose and history — which is exciting, and a little overwhelming.",
+    "looking": "Ken fishes with friends who can talk patterns all afternoon, and some of the finer details went over his head. He went looking for a set of fly-fishing flashcards he would actually want to own, and came up empty-handed.",
+    "twist": "So he drew his own, one fly at a time. Then came the twist that turned a study aid into something people would keep: why not make them playing cards too?",
+    "belief": "We think a product can do more than sell. It can teach, start a conversation, bring people together, and talk somebody into an afternoon outside.",
+    "spirit": "It is a small product with a big spirit behind it.",
+    "goal": [
+      "beautiful enough to gift",
+      "fun enough to actually use",
+      "informative enough to learn from",
+      "special enough to leave on a coffee table, in a cabin or in a gear bag"
+    ],
+    "forWhom": "For anglers of every level, for the friend hunting a gift that feels personal, and for anyone who likes the art and the culture as much as the fishing.",
+    "thanks": "We are so glad you are here."
   }
 }

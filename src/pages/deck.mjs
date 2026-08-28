@@ -427,8 +427,8 @@ ${TIERS.filter((t) => t.limited).map(specialTier).join('\n')}
   <p class="eyebrow">Reserve</p>
   <h2 class="h2">Get in line for the first print run</h2>
   <p class="lede">
-    There is no checkout on this site yet, on purpose. Leave an email and you will hear from us
-    before decks go on sale &mdash; not after they sell out.
+    There is no checkout on this site yet, on purpose. Leave an email and you will hear from
+    Ken and Audrey before decks go on sale &mdash; not after they have sold out.
   </p>
   <p class="buy-hero__note">${campaignLine(site)}</p>
 
@@ -533,7 +533,8 @@ ${TIERS.map((t) => `            <option value="${t.id}">${esc(t.name)} — ${mon
   <div class="prose">
     <p class="lede">
       You can buy fly-fishing cards for ten dollars. We know, because we looked, and that is
-      roughly what this deck was first priced at. It was the wrong number, and here is the honest reason.
+      roughly what this deck was first priced at. It was the wrong number, and we would rather
+      explain why than quietly hope you do not notice.
     </p>
   </div>
 

@@ -2,7 +2,7 @@
 {
   "path": "/story/",
   "title": "Ken and Audrey",
-  "description": "A father-daughter team of multigenerational Idaho farmers, anglers and entrepreneurs, and the hand-drawn fly-fishing deck they made in Eagle, Idaho.",
+  "description": "Ken went looking for fly-fishing flashcards, came up empty-handed, and drew his own. The father-and-daughter team behind The Reel Deal Deck, in Eagle, Idaho.",
   "priority": 0.7,
   "changefreq": "yearly",
   "bodyClass": "page-story",
@@ -96,15 +96,16 @@
      only, so the JSON-LD Person entries and the copy below use first names.
      Full names would materially help the Person schema and press coverage. -->
 
-<!-- TODO-CONFIRM: data/site.json -> voice.note. The printed info card says
-     "multigenerational Idaho farmers"; founders[0].bio says "5th-generation".
-     The card wording is what is already in customers' hands, so this page uses
-     it verbatim and does not name a number. Confirm the generation before any
-     page claims one. -->
+<!-- Ken's generation is sourced: the Kickstarter, in Ken and Audrey's own
+     words, calls him a "5th generation Idaho farmer". See docs/VOICE-SOURCE.md.
+     TODO-CONFIRM: whether Audrey counts as the fifth generation or the sixth.
+     Until that is answered this page numbers Ken only. -->
 
-<!-- TODO-CONFIRM: there is no photography of Ken or Audrey anywhere in this
-     repo and none has been supplied. This page is illustrated with the printed
-     artwork only. Do not fill the gap with stock photography. -->
+<!-- TODO-CONFIRM: photography of Ken and Audrey. The Kickstarter campaign
+     carries photographs of them both, so it exists — it has simply never been
+     supplied to this repo, and it is theirs to hand over rather than ours to
+     lift. Ask for the originals. Until then this page uses the printed artwork
+     only; do not fill the gap with stock photography. -->
 
 <!-- TODO-CONFIRM: the year Ken started drawing, the year the deck was finished,
      and how long it took. None of those dates are in data/site.json, so none
@@ -121,9 +122,8 @@
     <p class="eyebrow" style="margin-block-start:var(--s-5)">{{ site.location.city }}, {{ site.location.regionName }}</p>
     <h1 class="h1 page-head__title">&ldquo;{{ site.voice.intro }}&rdquo;</h1>
     <p class="lede page-head__lede">
-      That sentence is not a tagline we wrote for this website. It is printed on a card
-      inside the deck, and it is how Ken and Audrey introduce themselves to everyone who
-      opens one.
+      That is not a tagline anybody wrote for this website. It is printed on a card inside
+      the deck, and it is how Ken and Audrey say hello to every single person who opens one.
     </p>
   </div>
 </section>
@@ -132,8 +132,8 @@
   <div class="wrap wrap--narrow">
     <div class="prose">
       <p>
-        The whole note is short enough to quote in full, so here it is, exactly as it is
-        printed. We would rather hand you their words than our summary of them.
+        The note is short enough to read in full, so here it is, exactly as it is printed.
+        Their words are better than ours.
       </p>
     </div>
 
@@ -146,58 +146,87 @@
     </blockquote>
 
     <p class="figure-note" style="margin-block-start:var(--s-6)">
-      <a href="/cards/#info-card">See the card itself</a> &mdash; it also carries the
-      {{ site.conservation.partner }} Business member mark and {{ site.voice.handle }}.
+      <a href="/cards/#info-card">Have a look at the card itself</a> &mdash; it also carries
+      the {{ site.conservation.partner }} Business member mark and {{ site.voice.handle }}.
     </p>
 
     <hr class="rule" style="margin-block:var(--s-8)">
 
     <div class="prose">
-      <h2>Hand-drawn playing cards that teach while you play</h2>
+      <h2>It started with Ken trying to keep up</h2>
       <p>
-        That is their line, not ours, and it is the clearest description of this product
-        anyone has written. A deck of cards gets dealt, argued over and left on a kitchen
-        table. Fifty-four flies on fifty-four cards get looked at hundreds of times without
-        anybody deciding to study anything. That is the entire idea.
+        {{ site.story.hook }}
       </p>
       <p>
-        Ken went looking for a set of fly-fishing flashcards he would actually want to own.
-        He found several. He didn&rsquo;t want any of them &mdash; so he drew his own, one
-        pattern at a time, until there were enough for a deck. Every illustration on every
-        card is original and drawn by hand.
+        {{ site.story.looking }}
       </p>
       <p>
-        Turning drawings into a deck meant one decision the whole product rests on: print it
-        on real playing card stock. Not board with rounded corners &mdash;
+        So he started drawing &mdash; one fly at a time, until there were enough of them to be
+        a deck. Every illustration on every card is original and drawn by hand. Then came the
+        twist that turned a study aid into something people would actually keep: why not make
+        them playing cards too?
+      </p>
+      <p>
+        That is the part that makes it work. A deck of cards gets dealt, argued over and left
+        out on the table. Fifty-four flies get looked at hundreds of times without anybody ever
+        deciding to sit down and study.
+      </p>
+      <p>
+        Turning drawings into a real deck came down to one decision the whole product rests
+        on: print it on proper playing card stock. Not board with rounded corners &mdash;
         {{ site.product.stock }}, at {{ site.product.dimensions }}, from
-        {{ site.product.manufacturer }}. It costs more per deck. It is also the difference
-        between a reference card and a deck of cards, and a deck of cards gets played with.
+        {{ site.product.manufacturer }}. It costs more per deck, and it is the difference
+        between a reference card and a deck of cards. A deck of cards gets played with.
       </p>
 
-      <h2>Two people, related to each other</h2>
+      <h2>Then Audrey got involved</h2>
       <p>
-        Audrey is Ken&rsquo;s daughter and an entrepreneurship graduate of Loyola Marymount
+        Audrey is Ken&rsquo;s daughter, and an entrepreneurship graduate of Loyola Marymount
         University&rsquo;s College of Business Administration. She handles design direction,
-        brand and community &mdash; the polite way of saying she is the reason the drawings
-        became a product rather than a folder on a laptop.
+        brand and community &mdash; which is the tidy way of saying she is the reason the
+        drawings became a deck instead of a folder on a laptop.
       </p>
       <p>
-        They are farmers and anglers before they are a company. The deck is made in
-        {{ site.location.city }}, {{ site.location.regionName }}, and answered by the two of
-        them personally.
+        They are farmers and anglers long before they are a company. The deck is made in
+        {{ site.location.city }}, {{ site.location.regionName }}, and every email that
+        arrives is answered by one of the two of them.
+      </p>
+      <p>
+        {{ site.story.belief }} {{ site.story.spirit }}
       </p>
 
-      <h2>What we are not going to tell you</h2>
+      <h2>What we were trying to make</h2>
       <p>
-        We are not going to tell you nobody else makes fly-fishing cards. Several companies
-        do, some of them good, and one search would embarrass us. What we claim is narrower
-        and checkable: the art is ours and hand-drawn, the stock is genuine Bicycle from
-        {{ site.product.manufacturer }}, and a set amount from every deck goes to
-        <a href="{{ site.conservation.partnerUrl }}" rel="noopener">{{ site.conservation.partner }}</a>.
+        The whole time, the test was whether the deck came out:
+      </p>
+      <!-- Mirrors site.story.goal verbatim. This page is plain HTML, and token
+           interpolation cannot loop an array, so the list is written out here.
+           Keep the two in step, or move this page to .mjs if it must diverge. -->
+      <ul class="story-goal">
+        <li>beautiful enough to gift</li>
+        <li>fun enough to actually use</li>
+        <li>informative enough to learn from</li>
+        <li>special enough to leave on a coffee table, in a cabin or in a gear bag</li>
+      </ul>
+      <p>
+        {{ site.story.forWhom }}
+      </p>
+
+      <h2>A couple of things we won&rsquo;t claim</h2>
+      <p>
+        We would love to tell you nobody else makes fly-fishing cards. We can&rsquo;t &mdash;
+        several companies do, some of them good, and one search would catch us out. What we
+        will happily stand behind is narrower and checkable: the art is Ken&rsquo;s and drawn
+        by hand, the stock is genuine Bicycle from {{ site.product.manufacturer }}, and a set
+        amount from every deck goes to
+        <a href="{{ site.conservation.partnerUrl }}" rel="noopener">{{ site.conservation.partner }}</a>,
+        who we are already a business member of.
       </p>
       <p>
-        We are also not going to invent a founding legend. There is no scene on a riverbank
-        in this story that we can show you a photograph of, so we have not written one.
+        We are not going to invent a founding legend either. There is no golden evening on a
+        riverbank in this story, mostly because there is no photograph of one. There is a man
+        who wanted to keep up with his friends, and his daughter who thought he was onto
+        something.
       </p>
 
       <blockquote>
@@ -205,14 +234,14 @@
         <cite>Printed in the deck</cite>
       </blockquote>
 
-      <h2>Where it stands</h2>
+      <h2>Where things stand today</h2>
       <p>
-        Pre-launch. Nothing ships from this site. The <a href="/flies/">Fly Library</a> is
-        free and live now &mdash; it is the deck&rsquo;s contents as a reference you can read
-        today, whether or not you ever buy anything, and
-        <a href="/cards/">what&rsquo;s in the deck</a> explains the object itself.
-        If you want to know when the deck is real,
-        <a href="#story-list">put your email on the list</a>.
+        Pre-launch, and nothing ships from this site yet. The
+        <a href="/flies/">Fly Library</a> is free and live right now though &mdash; it is the
+        whole contents of the deck, written out as a reference you can read today whether or
+        not you ever buy a thing. <a href="/cards/">What&rsquo;s in the deck</a> explains the
+        object itself. And if you would like to hear from us the day it is real,
+        <a href="#story-list">leave your email</a>. {{ site.story.thanks }}
       </p>
     </div>
 
@@ -224,9 +253,9 @@
         <h2 class="person__name">Ken</h2>
         <p class="person__role">Founder &middot; illustration</p>
         <p class="person__text">
-          Lifelong entrepreneur, Idaho farmer, avid amateur angler. Went looking for
-          fly-fishing flashcards, couldn&rsquo;t find a set he&rsquo;d want to own, and drew
-          his own.
+          Lifelong entrepreneur, fifth-generation Idaho farmer, avid amateur angler. Went
+          looking for fly-fishing flashcards, came up empty-handed, and drew a whole deck of
+          his own instead.
         </p>
       </div>
       <div class="person">
@@ -234,8 +263,9 @@
         <h2 class="person__name">Audrey</h2>
         <p class="person__role">Co-founder &middot; design &amp; brand</p>
         <p class="person__text">
-          Entrepreneurship graduate, Loyola Marymount University College of Business
-          Administration. Design direction, brand and community.
+          Entrepreneurship graduate of Loyola Marymount University&rsquo;s College of Business
+          Administration. Design direction, brand and community &mdash; and the one who said
+          this should be a real thing.
         </p>
       </div>
     </div>
@@ -245,9 +275,10 @@
 <section class="section section--dark" id="story-list">
   <div class="wrap wrap--narrow">
     <p class="section-num" aria-hidden="true">A&#9830;</p>
-    <h2 class="h2" style="margin-block-start:var(--s-4)">Nothing ships yet. The list is the whole ask.</h2>
+    <h2 class="h2" style="margin-block-start:var(--s-4)">Nothing ships yet &mdash; but we&rsquo;d love to tell you when it does</h2>
     <p class="lede" style="margin-block-start:var(--s-4)">
-      We&rsquo;ll email you when the deck is real. That is the entire purpose of this list.
+      One email, from Ken and Audrey, on the day the deck is real. That is the whole purpose
+      of this list.
     </p>
     <form class="capture__form" data-capture="email" action="#" method="post" style="margin-block-start:var(--s-6)">
       <div class="form-inline">
@@ -260,7 +291,7 @@
         <button class="btn btn--primary" type="submit">Join the list</button>
       </div>
       <p class="help" id="story-email-help">
-        A waiting list, not an order. No card details, no charge, unsubscribe in one click.
+        A waiting list, not an order. No card details, no charge, and one click to leave.
       </p>
     </form>
     <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
@@ -285,6 +316,22 @@
   max-inline-size: var(--measure);
 }
 .story-note__signoff { color: var(--c-green); }
+.story-goal { margin: var(--s-4) 0 var(--s-5); padding-inline-start: 0; list-style: none; }
+.story-goal li {
+  position: relative;
+  padding-inline-start: var(--s-5);
+  margin-block-end: var(--s-2);
+  font-family: var(--f-display);
+  font-size: var(--t-md);
+  color: var(--c-text);
+}
+.story-goal li::before {
+  content: "\2666";
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--c-green);
+  font-size: var(--t-sm);
+}
 .story-note cite {
   display: block;
   font-style: normal;

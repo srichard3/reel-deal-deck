@@ -80,7 +80,8 @@ export default function press({ site }) {
     <h1 class="h1 page-head__title">Everything you need to write about us</h1>
     <p class="page-head__lede lede">
       Boilerplate, facts and artwork, all on one page. Anything you cannot find here,
-      email <a href="mailto:${esc(site.social.email)}">${esc(site.social.email)}</a> and we will send it the same day.
+      email <a href="mailto:${esc(site.social.email)}">${esc(site.social.email)}</a> and we will send it
+      the same day &mdash; there are two of us, so it will be Ken or Audrey who replies.
     </p>
   </header>
 </div>

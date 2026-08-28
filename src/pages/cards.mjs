@@ -539,9 +539,9 @@ export default function cardsPage({ site }) {
     <p class="eyebrow" style="margin-block-start:var(--s-5)">${esc(site?.cardCraft?.edition || site?.edition || 'Volume 1')} &middot; every card explained</p>
     <h1 class="h1 page-head__title">${esc(v.shortLine || 'Hand-drawn playing cards that teach while you play.')}</h1>
     <p class="lede page-head__lede">
-      That is Ken and Audrey&rsquo;s description, printed on a card inside the deck.
-      This page is the long version: what is on a card, why the suits are green and brown,
-      what is in each one, and who prints it.
+      That is Ken and Audrey&rsquo;s description, printed on a card inside the deck. This page
+      is the long version, for anyone who likes knowing how a thing was made: what is on a card,
+      why the suits came out green and brown, what is in each one, and who prints it.
     </p>
   </div>
 </section>

@@ -134,15 +134,16 @@ export default function homepage({ site, flies, posts }) {
       <h1 class="h1 hero__title">${esc(shortLine)}</h1>
       <p class="lede hero__lede">
         Their words, printed on a card inside the deck. ${esc(count)} flies, every one drawn
-        by hand, on genuine Bicycle stock &mdash; so it survives the shuffle as well as the
-        streamside.
+        by hand, on genuine Bicycle stock &mdash; so it holds up to the shuffle as well as
+        the streamside.
       </p>
       <div class="cluster hero__actions" style="--gap:var(--s-3)">
         ${campaignCta(site, { variant: 'primary' })}
         <a class="btn btn--ghost btn--lg" href="/cards/">See what&rsquo;s in it</a>
       </div>
       <p class="hero__note">
-        Nothing ships from this site. Joining the list costs nothing and holds your place.
+        Made by a father and daughter in ${esc(city)}, ${esc(regionName)}. Nothing ships from
+        this site yet &mdash; joining the list is free and holds your place.
       </p>
     </div>
     ${heroPack()}
@@ -161,7 +162,7 @@ export default function homepage({ site, flies, posts }) {
     </div>
     <div class="stat">
       <span class="stat__num">${esc(partner)}</span>
-      <span class="stat__label">A cut of every deck</span>
+      <span class="stat__label">Gets a cut of every deck</span>
     </div>
     <div class="stat">
       <span class="stat__num">${esc(regionName)}</span>
@@ -181,21 +182,24 @@ export default function homepage({ site, flies, posts }) {
              width="400" height="559" loading="lazy" decoding="async"
              alt="The info card printed inside The Reel Deal Deck, carrying Ken and Audrey's note and the Trout Unlimited Business member mark">
         <figcaption class="figure-note" style="margin-block-start:var(--s-4)">
-          Card 56. It is in every deck.
+          Card 56 &mdash; it is in every deck.
         </figcaption>
       </figure>
 
       <div>
         <p class="section-num" aria-hidden="true">A&#9829;</p>
-        <h2 class="h2" id="makers-h" style="margin-block-start:var(--s-4)">Who made this</h2>
+        <h2 class="h2" id="makers-h" style="margin-block-start:var(--s-4)">Hello from Ken and Audrey</h2>
         <blockquote class="home-quote">
           <p>${esc(v.intro || '')}</p>
           <p>${esc(v.why || '')}</p>
           <p class="home-quote__signoff">${esc(v.signoff || '')}</p>
           <cite>Ken and Audrey &mdash; printed on the info card</cite>
         </blockquote>
+        <p class="home-origin">
+          ${esc(site?.story?.looking || '')} ${esc(site?.story?.twist || '')}
+        </p>
         <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
-          <a class="btn btn--ghost" href="/story/">Meet Ken and Audrey</a>
+          <a class="btn btn--ghost" href="/story/">Read the whole story</a>
           <a class="btn btn--quiet" href="/conservation/">Why catch-and-release</a>
         </p>
       </div>
@@ -208,7 +212,7 @@ export default function homepage({ site, flies, posts }) {
     <div class="section-head section-head--split">
       <div>
         <p class="section-num" aria-hidden="true">2&#9829;</p>
-        <h2 class="h2" id="deck-h">What is actually in the deck</h2>
+        <h2 class="h2" id="deck-h">What you actually get</h2>
         <p class="lede">
           ${esc(craft.eachCard || 'Every card shows the rank and suit, the fly&rsquo;s name, its category, the hand-drawn fly itself, a plain-English note on what it imitates, and the hook sizes it is usually tied in.')}
         </p>
@@ -251,11 +255,12 @@ ${flyStrip(f, ['adams', 'parachute-adams', 'woolly-bugger', 'grasshopper', 'copp
     <div class="section-head section-head--split">
       <div>
         <p class="section-num" aria-hidden="true">3&#9829;</p>
-        <h2 class="h2" id="library-h">Learn the flies. Free, and without the deck.</h2>
+        <h2 class="h2" id="library-h">Learn the flies free, right now, without buying a thing</h2>
         <p class="lede">
-          The Fly Library is the whole deck as a reference you can read right now:
-          one page per pattern, what it imitates, when it works, and how to fish it.
-          No sign-up, no paywall, no e-book funnel.
+          The Fly Library is the whole deck written out as a reference: one page per pattern,
+          what it imitates, when it works and how to fish it. It is genuinely free &mdash; no
+          sign-up, no paywall, no e-book waiting at the end. We would rather you learned the
+          flies than bought the cards.
         </p>
       </div>
       <p><a class="btn btn--ghost" href="/flies/">All ${esc(count)} flies</a></p>
@@ -273,11 +278,11 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
     <div class="section-head section-head--split">
       <div>
         <p class="section-num" aria-hidden="true">4&#9827;</p>
-        <h2 class="h2" id="guides-h">And the questions the cards do not answer.</h2>
+        <h2 class="h2" id="guides-h">And the questions a card is too small to answer</h2>
         <p class="lede">
-          Straight answers to what anglers actually ask &mdash; which rod, which tippet,
-          how to rig it, why the fish keep refusing. Written to be useful on the bank,
-          not to sell you a rod.
+          Straight answers to the things anglers actually ask &mdash; which rod, which tippet,
+          how to rig it, why the fish keep refusing you. Written to be useful standing on the
+          bank, not to sell you a rod.
         </p>
       </div>
       <p><a class="btn btn--ghost" href="/blog/">All ${esc(posts.length)} guides</a></p>
@@ -383,9 +388,9 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
     </div>
 
     <p class="feed__foot">
-      Every one of these is a real card. The name, what it imitates and how to
-      fish it are printed on the face — there are ${esc(count)} of them.
-      <a href="/flies/">See the whole library →</a>
+      Every one of these is a real card, and Ken drew all of them. The name, what it
+      imitates and how to fish it are printed right on the face — there are ${esc(count)}
+      to get through. <a href="/flies/">See the whole library →</a>
     </p>
   </div>
 </section>
@@ -394,9 +399,9 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
   <div class="wrap">
     <div class="section-head">
       <p class="section-num" aria-hidden="true">4&#9829;</p>
-      <h2 class="h2" id="diff-h">Fly cards exist. This is what we did differently.</h2>
+      <h2 class="h2" id="diff-h">Other fly cards exist. Here is where we went our own way.</h2>
       <p class="lede">
-        Three decisions, and all three cost more than the alternative.
+        Three decisions, and every one of them cost us more than the easy option would have.
       </p>
     </div>
 
@@ -405,9 +410,10 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
         <span class="point__index" aria-hidden="true">1&#9830;</span>
         <h3 class="point__title">The art is drawn, not photographed</h3>
         <p class="point__text">
-          Every fly on every card was drawn by hand, specifically for this deck. Line art
-          shows a pattern's structure &mdash; the proportions, the hackle, the profile you are
-          actually trying to tie or match &mdash; in a way a photograph of one particular fly can't.
+          Every fly on every card was drawn by hand, specifically for this deck. Line art shows
+          a pattern's structure &mdash; the proportions, the hackle, the profile you are actually
+          trying to tie or match &mdash; in a way a photograph of one particular fly never quite
+          manages.
         </p>
       </div>
       <div class="point">
@@ -417,15 +423,16 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
           Printed by ${esc(site?.product?.manufacturer ?? 'The United States Playing Card Company')}
           on real Bicycle stock with the Air-Cushion finish, so the deck actually deals and
           shuffles. ${esc(site?.product?.material ?? 'FSC-certified paper, starch-based glue, vegetable-based inks')}.
-          It is a playing card deck first and a reference second.
+          It is a proper deck of cards first and a reference second, which is the whole trick.
         </p>
       </div>
       <div class="point">
         <span class="point__index" aria-hidden="true">3&#9830;</span>
         <h3 class="point__title">A contribution to the water</h3>
         <p class="point__text">
-          A set amount from every deck goes to <a href="${esc(partnerUrl)}" rel="noopener">${esc(partner)}</a>,
-          which does the cold-water habitat work the fish we draw depend on.
+          We are a ${esc(partner)} business member, and a set amount from every deck goes to
+          <a href="${esc(partnerUrl)}" rel="noopener">${esc(partner)}</a> &mdash; who do the
+          cold-water habitat work the fish we draw depend on.
           <a href="/conservation/">See exactly how that works</a>.
         </p>
       </div>
@@ -437,22 +444,22 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
   <div class="wrap">
     <div class="section-head">
       <p class="section-num" aria-hidden="true">5&#9829;</p>
-      <h2 class="h2" id="who-h">Three ways in</h2>
+      <h2 class="h2" id="who-h">Which one are you?</h2>
     </div>
     <div class="card-grid" style="--min:min(16rem, 100%)">
       <a class="door" href="/deck/">
         <span class="point__index" aria-hidden="true">J&#9824;</span>
         <span class="door__title">You fish</span>
         <span class="door__text">
-          What's in the deck, how it's printed, what it costs, and when it ships.
+          What is in the deck, how it is printed, what it costs and when it ships.
         </span>
         <span class="door__go">See the deck &rarr;</span>
       </a>
       <a class="door" href="/gifts/">
         <span class="point__index" aria-hidden="true">Q&#9829;</span>
-        <span class="door__title">You're buying for someone who fishes</span>
+        <span class="door__title">You&rsquo;re buying for someone who fishes</span>
         <span class="door__text">
-          A gift that doesn't require you to guess a rod weight, a line taper, or a hook size.
+          A gift that does not ask you to guess a rod weight, a line taper or a hook size.
         </span>
         <span class="door__go">Gift guide &rarr;</span>
       </a>
@@ -460,7 +467,8 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
         <span class="point__index" aria-hidden="true">K&#9827;</span>
         <span class="door__title">You run a shop, boat, or lodge</span>
         <span class="door__text">
-          Case pricing for fly shops, guides and outfitters. Bulk is where this deck belongs.
+          Case pricing for fly shops, guides and outfitters. Honestly, this is where the deck
+          belongs.
         </span>
         <span class="door__go">Wholesale &rarr;</span>
       </a>
@@ -475,7 +483,8 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
         <p class="section-num" aria-hidden="true">6&#9829;</p>
         <h2 class="h2" id="capture-h" style="margin-block-start:var(--s-4)">Be first in line</h2>
         <p class="lede" style="margin-block-start:var(--s-4)">
-          One email when the deck is real, one when it ships, and nothing else.
+          One email when the deck is real, one when it ships, and nothing else. We are far too
+          busy drawing flies to pester you.
         </p>
       </div>
 
@@ -490,8 +499,8 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
           <button class="btn btn--primary" type="submit">Join the list</button>
         </div>
         <p class="help" id="home-email-help">
-          Nothing ships yet &mdash; this is a waiting list, not an order. No card details, no charge,
-          unsubscribe in one click.
+          Nothing ships yet &mdash; this is a waiting list, not an order. No card details, no
+          charge, and one click to leave.
         </p>
       </form>
 
@@ -513,6 +522,10 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
 .home-quote { margin: var(--s-5) 0 0; border-inline-start: 2px solid var(--c-green); padding-inline-start: var(--s-5); }
 .home-quote p { margin: 0 0 var(--s-4); font-family: var(--f-display); font-size: var(--t-lg); line-height: var(--lh-snug); color: var(--c-text); max-inline-size: var(--measure); }
 .home-quote__signoff { color: var(--c-green); }
+
+/* The origin beat, sitting under their printed note as the plain-prose answer
+   to "who are these people and why did they do this". */
+.home-origin { margin: var(--s-5) 0 0; color: var(--c-text-muted); max-inline-size: var(--measure); }
 .home-quote cite { display: block; font-style: normal; font-size: var(--t-sm); color: var(--c-text-faint); }
 </style>
 

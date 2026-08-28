@@ -172,7 +172,7 @@ export function campaignLine(site, now = new Date()) {
   const c = campaignState(site, now);
   const ext = c.external ? ' target="_blank" rel="noopener"' : '';
   return c.live
-    ? `The deck is funding on ${esc(c.platform || 'Kickstarter')} right now &mdash; <a href="${esc(c.url)}"${ext} data-campaign-cta="live">${esc(c.cta)}</a>.`
+    ? `Ken and Audrey are funding the deck on ${esc(c.platform || 'Kickstarter')} right now &mdash; <a href="${esc(c.url)}"${ext} data-campaign-cta="live">${esc(c.cta)}</a>.`
     : `<a href="${esc(c.url)}" data-campaign-cta="after">${esc(c.cta)}</a> and we will email you the day it ships.`;
 }
 

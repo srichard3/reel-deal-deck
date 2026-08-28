@@ -102,7 +102,8 @@ export default function ({ site, posts = [], flies = [] }) {
     <p class="page-head__lede lede">
       The <a href="/flies/">Fly Library</a> explains the patterns. These guides answer everything
       else an angler actually asks — what rod to buy, how to cast it, which knot to tie, when to go.
-      One question per article, answered in the first paragraph.
+      One question per article, answered in the first paragraph, because nobody wants to scroll
+      past somebody's childhood to find out which tippet to use.
     </p>
   </header>
 
@@ -151,7 +152,8 @@ export default function ({ site, posts = [], flies = [] }) {
     <h2 class="h2">${esc(camp.headline || 'The deck the guides keep pointing at')}</h2>
     <p class="lede mx-auto">
       ${esc(site?.product?.cardCount || 54)} hand-drawn flies on ${esc(site?.product?.stock || 'genuine Bicycle stock')},
-      with a contribution to ${esc(site?.conservation?.partner || 'Trout Unlimited')} from every deck.
+      made by a father and daughter in ${esc(site?.location?.city || 'Eagle')}, with a contribution
+      to ${esc(site?.conservation?.partner || 'Trout Unlimited')} from every deck.
     </p>
     <p class="cluster" style="justify-content:center">
       <a class="btn btn--primary" href="/deck/">See the deck</a>

@@ -260,7 +260,7 @@ export default function ({ fly, flies, site }) {
     <div class="wrap wrap--narrow text-center stack" style="--gap:var(--s-4)">
       <p class="eyebrow">The physical version</p>
       <h2 class="h2">${esc(fly.name)} is ${esc(cardLabel(fly))} in the deck.</h2>
-      <p class="lede">All ${site.product.cardCount} flies, hand-drawn, on ${esc(site.product.stock)}. A reference you can actually deal out.</p>
+      <p class="lede">All ${site.product.cardCount} flies, drawn by hand, on ${esc(site.product.stock)}. A reference you can actually deal out &mdash; which was rather the point.</p>
       <p class="cluster" style="justify-content:center">
         ${campaignCta(site)}
         <a class="btn btn--ghost" href="/deck/">See the deck</a>

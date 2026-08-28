@@ -93,8 +93,9 @@ export default function ({ site, flies }) {
     <h1 class="h1 page-head__title">The Fly Library</h1>
     <p class="page-head__lede lede">
       Every fly in the deck, explained properly: what it imitates, what sizes to carry,
-      when it earns its place in your box. No sign-up, no paywall, no email gate —
-      if it helps you catch a fish, that is the point.
+      when it earns its place in your box. No sign-up, no paywall, no email gate — Ken
+      built this deck because he wanted to learn the flies himself, so it would be a bit
+      rich to charge you for the same thing. If it helps you catch a fish, that is the point.
     </p>
   </header>
 </div>
@@ -166,7 +167,8 @@ export default function ({ site, flies }) {
     <h2 class="h2">The library is free. The deck is the version you can deal out.</h2>
     <p class="lede">
       Every fly above is a card in ${esc(site.name)} — ${site.product.cardCount} originals,
-      hand-drawn, printed on ${esc(site.product.stock)}.
+      drawn by hand in ${esc(site.location.city)}, ${esc(site.location.regionName)}, and
+      printed on ${esc(site.product.stock)}.
     </p>
     <p class="cluster" style="justify-content:center">
       ${campaignCta(site)}
