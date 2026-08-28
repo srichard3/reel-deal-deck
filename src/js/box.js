@@ -46,6 +46,10 @@
 
   /* ------------------------------------------------------------ pointer -- */
 
+  /* Backstop for the same thing: any dragstart that still reaches the box is
+     the browser trying to drag a panel image out of the page. */
+  box.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
   box.addEventListener('pointerdown', function (e) {
     dragging = true; id = e.pointerId;
     lastX = e.clientX; lastY = e.clientY;

@@ -2327,6 +2327,13 @@ a.card-face.card-face:nth-child(even):active {
 /* Only offer the grab cursor where box.js is there to honour it. Without JS
    this is a handsome 3D box that does not turn, and it should not pretend. */
 html:not(.no-js) .tuck__box { cursor: grab; }
+
+/* Dragging across a box made of six <img> elements otherwise selects the text
+   around it and, in Chrome, starts a native image drag. */
+.tuck__box {
+  -webkit-user-select: none;
+          user-select: none;
+}
 .tuck.is-dragging .tuck__box { transition: none; cursor: grabbing; }
 .tuck__box:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 12px; }
 
@@ -2338,7 +2345,14 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   backface-visibility: hidden;
 }
 
-.tuck__img { display: block; width: 100%; height: 100%; object-fit: fill; }
+.tuck__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  -webkit-user-drag: none;      /* Chrome/WebKit: no native image drag */
+  pointer-events: none;         /* every pointer event belongs to the box */
+}
 
 /* Front and back are the full W x H panel. */
 .tuck__face--front { transform: translateZ(calc(var(--bd) / 2)); }

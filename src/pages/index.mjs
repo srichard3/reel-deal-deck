@@ -69,9 +69,13 @@ function heroPack() {
 
      The front panel is the LCP image and keeps fetchpriority; the back is the
      one face that cannot be seen at rest, so it loads lazily. */
+  /* draggable="false" is not decoration. Chrome starts a native image drag on
+     mousedown over an <img>, which swallows the gesture and hands the reader a
+     dragged picture instead of a turning box. Safari is lazier about firing
+     dragstart, so it only showed up in Chrome. */
   const face = (name, w, h, alt, eager) =>
     `<img class="tuck__img" src="/brand/box3d-${name}.webp" width="${w}" height="${h}"
-             alt="${alt}" decoding="async"${eager ? ' fetchpriority="high"' : ' loading="lazy"'}>`;
+             alt="${alt}" draggable="false" decoding="async"${eager ? ' fetchpriority="high"' : ' loading="lazy"'}>`;
 
   return `<figure class="hero-pack">
       <div class="tuck" data-tuck>
