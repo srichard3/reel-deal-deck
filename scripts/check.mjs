@@ -404,6 +404,19 @@ for (const file of htmlFiles) {
     add(name, 'error', `unexpanded template token: ${m[0]}`, lineAt(html, m.index));
   }
 
+  /* --- double-escaped entities ----------------------------------------- */
+  /* `&amp;ndash;` renders as the literal text "&ndash;". It happens when an
+     entity is written into a string that is then passed through esc(), which
+     turns its ampersand into &amp; — the order is wrong, and the page prints
+     the markup instead of the character. This shipped on all 55 rows of
+     /cards/ before anyone noticed it by eye, so it is a build error now. */
+  for (const m of html.matchAll(/&amp;(?:[a-zA-Z][a-zA-Z0-9]{1,9}|#\d{1,7}|#[xX][0-9a-fA-F]{1,6});/g)) {
+    add(name, 'error',
+      `double-escaped entity: ${m[0]} renders as text. Use the character itself, ` +
+      `not the entity, in anything that goes through esc().`,
+      lineAt(html, m.index));
+  }
+
   /* --- lang ------------------------------------------------------------ */
   if (!/<html\b[^>]*\slang\s*=/i.test(html)) add(name, 'error', '<html> has no lang attribute');
 }

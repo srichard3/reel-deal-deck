@@ -61,6 +61,16 @@ function categoryMix(cards) {
   return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 }
 
+/** "14-20" -> "#14–#20".
+ *
+ * A literal en dash, never `&ndash;`. These strings are passed through esc(),
+ * which turns the entity's ampersand into `&amp;` and prints the entity on the
+ * page as text — which is exactly what it did, on all 55 cards, in three
+ * places, because the same expression was written out three times. */
+function hookRange(sizes) {
+  return `#${String(sizes ?? '').replace('-', '–#')}`;
+}
+
 /** Hook sizes across a set of cards, as a single honest range. */
 function hookSpan(cards) {
   const nums = cards.flatMap((c) => String(c.sizes).match(/\d+/g) || []).map(Number);
@@ -150,7 +160,7 @@ function anatomy() {
       'The fly itself, drawn by hand for this deck. Not a photograph and not licensed art.'],
     ['What it imitates', esc(c.cardText),
       'The plain-English note printed on the card. One or two lines, no jargon.'],
-    ['Hook sizes', `#${esc(String(c.sizes).replace('-', '&ndash;#'))}`,
+    ['Hook sizes', esc(hookRange(c.sizes)),
       'The range the pattern is usually tied in.'],
   ];
 
@@ -260,7 +270,7 @@ function suitContents() {
             <span class="cards-list__index" aria-hidden="true">${esc(c.rank)}${SUIT_GLYPH[s]}</span>
             <span class="visually-hidden">${esc(c.rank)} of ${esc(s)}:</span>
             <span class="cards-list__name">${esc(c.name)}</span>
-            <span class="cards-list__cat">${esc(c.category)} &middot; #${esc(String(c.sizes).replace('-', '&ndash;#'))}</span>
+            <span class="cards-list__cat">${esc(c.category)} &middot; ${esc(hookRange(c.sizes))}</span>
           </a>
         </li>`).join('\n        ')}
       </ul>
@@ -299,7 +309,7 @@ function specials(site) {
           ${flyCard(toFly(c))}
           <figcaption class="cards-joker__cap">
             <a href="/flies/${esc(c.slug)}/">${esc(c.name)}</a>
-            <span class="cards-joker__cat">${esc(c.category)} &middot; #${esc(String(c.sizes).replace('-', '&ndash;#'))}</span>
+            <span class="cards-joker__cat">${esc(c.category)} &middot; ${esc(hookRange(c.sizes))}</span>
           </figcaption>
         </figure>`).join('\n        ')}
       </div>
