@@ -82,60 +82,15 @@ function flyStrip(flies, picks) {
       </div>`;
 }
 
-/* ---------------------------------------------------------- match the hatch --
-   Rounds for the homepage game. Each insect family maps to the real cards in
-   the deck that imitate it, so the game can never offer a fly that is not
-   printed. Slugs are validated against data/flies.json — an unknown one is
-   dropped rather than shipped as a broken image. */
-const HATCH_FLIES = {
-  mayfly: ['adams', 'parachute-adams', 'blue-wing-olive', 'pale-morning-dun',
-           'green-drake', 'march-brown', 'trico', 'pink-albert', 'rusty-spinner'],
-  caddis: ['elk-hair-caddis', 'caddis-pupa'],
-  midge: ['zebra-midge', 'griffiths-gnat', 'disco-midge', 'snow-cone-midge',
-          'wd-40', 'serendipity'],
-  terrestrial: ['grasshopper', 'ant', 'beetle', 'chubby-chernobyl', 'madam-x'],
-  stonefly: ['salmonfly', 'yellow-sally', 'pats-rubber-legs'],
-};
-
-/* "Terrestrial" rather than "Hopper": the group also holds the ant and the
-   beetle, and a label that excluded them would make a correct answer read
-   as wrong. */
-const HATCH_FAMS = {
-  mayfly:      { label: 'Mayfly',      article: 'mayflies' },
-  caddis:      { label: 'Caddis',      article: 'caddisflies' },
-  midge:       { label: 'Midge',       article: 'midges' },
-  terrestrial: { label: 'Terrestrial', article: 'terrestrials — land insects that fall in' },
-  stonefly:    { label: 'Stonefly',    article: 'stoneflies' },
-};
-
-/* Silhouettes, not illustrations — the shape has to read at a glance, because
-   reading the shape at a glance is the actual skill. */
-const HATCH_BUGS = {
-  mayfly: `<svg viewBox="0 0 40 24"><path d="M18 13 C16 6 19 3 21 2 C22 6 22 10 21 13 Z"/><path d="M21 13 C22 8 25 5 27 4 C27 8 25 11 24 13 Z" opacity=".65"/><ellipse cx="20" cy="15" rx="9" ry="2"/><circle cx="11" cy="14.6" r="2.1"/><path d="M29 15 L38 12 M29 15 L38 17" fill="none" stroke="currentColor" stroke-width="1"/></svg>`,
-  caddis: `<svg viewBox="0 0 40 24"><path d="M10 17 L27 6 L32 17 Z"/><ellipse cx="19" cy="17" rx="9" ry="1.8"/><circle cx="10" cy="16" r="2"/><path d="M9 14 L2 10 M9 15 L2 14" fill="none" stroke="currentColor" stroke-width="1"/></svg>`,
-  midge: `<svg viewBox="0 0 40 24"><path d="M19 13 C21 9 25 7 28 6 C27 10 24 13 21 14 Z" opacity=".6"/><path d="M19 14 C22 14 26 15 28 17 C24 18 21 17 19 15 Z" opacity=".45"/><ellipse cx="20" cy="14" rx="6" ry="1.2"/><circle cx="14" cy="13.8" r="1.5"/></svg>`,
-  terrestrial: `<svg viewBox="0 0 40 24"><ellipse cx="21" cy="13" rx="10" ry="3.2"/><path d="M22 11 L32 10 L24 15 Z" opacity=".6"/><path d="M20 15 L23 22 L31 19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="12.5" r="3"/><path d="M9 10 L3 5" fill="none" stroke="currentColor" stroke-width="1"/></svg>`,
-  stonefly: `<svg viewBox="0 0 40 24"><ellipse cx="21" cy="15" rx="11" ry="2.2"/><path d="M12 13 L31 10 L30 14 L13 16 Z" opacity=".6"/><circle cx="9" cy="14" r="2.3"/><path d="M32 15 L38 13 M32 15 L38 18" fill="none" stroke="currentColor" stroke-width="1"/></svg>`,
-};
-
-/** Build the game's round data, dropping anything the deck does not contain. */
-function hatchData(flies) {
-  const byId = new Map(flies.map((x) => [x.slug, x]));
-  const out = [];
-  const fams = {};
-  for (const [fam, slugs] of Object.entries(HATCH_FLIES)) {
-    const kept = slugs.filter((sl) => byId.has(sl) && byId.get(sl).cardText);
-    if (!kept.length) continue;
-    fams[fam] = { ...HATCH_FAMS[fam], bug: HATCH_BUGS[fam] };
-    for (const sl of kept) {
-      const f = byId.get(sl);
-      /* The size range in brackets is printed on the card and reads as noise
-         out of context, so it is trimmed from the revealed line. */
-      out.push({ slug: sl, name: f.name, img: `/cards/${sl}`, fam,
-                 text: String(f.cardText).replace(/\s*\[[^\]]*\]\s*$/, '').trim() });
-    }
-  }
-  const json = JSON.stringify({ flies: out, fams });
+/* ------------------------------------------------------------ feed the trout --
+   The homepage game is pure artwork matching, so it needs nothing from a fly
+   beyond its name and its picture — every card in the deck is playable. Anything
+   without a rendered card image is dropped rather than shipped broken. */
+function feedData(list) {
+  const cards = list
+    .filter((f) => f.slug && f.name && f.image)
+    .map((f) => ({ slug: f.slug, name: f.name, img: f.image }));
+  const json = JSON.stringify({ cards });
   return json.replace(/</g, '\\u003c');   /* never let a "</script>" through */
 }
 
@@ -348,94 +303,88 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
 </section>
 
 <!-- ============================================================= the game ==
-     "Match the hatch" — the deck's own premise as a ten-second toy. One card
-     is shown large and you name what it imitates. The card's printed line is
-     the answer key, so it is cropped off during the question and revealed
-     afterwards as the explanation.
+     "Feed the trout" — a matching toy, not a quiz. The trout wants one fly;
+     three drift past; tap the one whose artwork matches and it rises to that
+     card and takes it. Nothing here needs any fly-fishing knowledge, and there
+     is no timer and no fail state — a wrong tap costs a beat and nothing else.
 
-     No-JS: the scene and a card render as a still illustration and the buttons
-     never appear (they are injected). Nothing on this page depends on it. -->
+     No-JS: the water and the trout render as a still illustration and no cards
+     appear (they are injected). Nothing on this page depends on it. -->
 <section class="section section--sunk" id="game" aria-labelledby="game-h">
   <div class="wrap">
     <p class="eyebrow">Try it</p>
-    <h2 class="h2" id="game-h">Match the hatch</h2>
-    <p class="lede hatch__lede">
-      Half of fly fishing is working out what the trout are eating and tying on
-      something that looks like it. Here is a card from the deck — name what it
-      is imitating, and the card will tell you whether you were right.
+    <h2 class="h2" id="game-h">Feed the trout</h2>
+    <p class="lede feed__lede">
+      This trout has its eye on one fly. Three are drifting overhead. Tap the one
+      that matches and watch it come up.
     </p>
 
-    <div class="hatch" data-hatch>
-      <div class="hatch__board">
+    <div class="feed" data-feed>
 
-        <!-- the card in question -->
-        <figure class="hatch__card">
-          <div class="hatch__crop">
-            <img data-hatch-img src="/cards/adams-800.webp" width="572" height="800"
-                 alt="The Adams card from the deck" decoding="async">
-          </div>
-          <figcaption class="hatch__card-name" data-hatch-name>Adams</figcaption>
-        </figure>
-
-        <div class="hatch__play">
-          <!-- the water -->
-          <div class="hatch__scene">
-            <svg class="hatch__water" viewBox="0 0 400 150" role="img"
-                 aria-label="A trout holding under the surface of a stream.">
-              <defs>
-                <linearGradient id="hatch-deep" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="var(--c-green)" stop-opacity=".26"/>
-                  <stop offset="100%" stop-color="var(--c-green)" stop-opacity=".05"/>
-                </linearGradient>
-              </defs>
-              <rect x="0" y="70" width="400" height="80" fill="url(#hatch-deep)"/>
-              <path class="hatch__surface" d="M0 70 H400"/>
-              <path class="hatch__seam" d="M0 92 C90 88 150 96 250 91 S360 88 400 93"/>
-              <path class="hatch__seam" d="M0 116 C80 112 170 120 260 114 S370 112 400 117"/>
-
-              <ellipse class="hatch__ring" cx="200" cy="70" rx="16" ry="4.5"/>
-              <ellipse class="hatch__ring hatch__ring--2" cx="200" cy="70" rx="16" ry="4.5"/>
-
-              <g class="hatch__fish" data-hatch-fish transform="translate(152 100)">
-                <path class="hatch__fish-tail" d="M62 17 L82 4 L78 17 L82 30 Z"/>
-                <path class="hatch__fish-fin"  d="M40 5 L52 -3 L56 7 Z"/>
-                <path class="hatch__fish-fin"  d="M32 24 L38 33 L46 25 Z"/>
-                <path class="hatch__fish-body"
-                      d="M4 17 C16 4 48 1 66 9 C70 12 70 22 66 25 C48 33 16 30 4 17 Z"/>
-                <path class="hatch__fish-line" d="M12 17 C30 14 50 15 64 17"/>
-                <circle class="hatch__fish-spot" cx="30" cy="11" r="1.8"/>
-                <circle class="hatch__fish-spot" cx="42" cy="14" r="1.6"/>
-                <circle class="hatch__fish-spot" cx="36" cy="21" r="1.5"/>
-                <circle class="hatch__fish-spot" cx="50" cy="20" r="1.4"/>
-                <circle class="hatch__fish-eye" cx="12" cy="15" r="2.4"/>
-              </g>
-            </svg>
-            <!-- the real insect, shown only once the round is over -->
-            <div class="hatch__bug" data-hatch-bug aria-hidden="true"></div>
-          </div>
-
-          <p class="hatch__status" data-hatch-status role="status">
-            Turn on JavaScript to play — or just
-            <a href="/flies/">browse all 54 flies</a> instead.
-          </p>
-
-          <div class="hatch__choices" data-hatch-choices></div>
-
-          <!-- The explanation. The family is stated plainly because two of the
-               twenty-five printed lines never name it ("White bead imitates gas
-               bubble"), and then the card is quoted in its own words. -->
-          <div class="hatch__reveal" data-hatch-reveal aria-live="polite">
-            <p class="hatch__reveal-fam" data-hatch-fam></p>
-            <p class="hatch__reveal-quote" data-hatch-quote></p>
-          </div>
-          <p class="hatch__score" data-hatch-score aria-live="polite"></p>
+      <!-- what the trout is looking for -->
+      <figure class="feed__want">
+        <figcaption class="feed__want-label">The trout wants</figcaption>
+        <div class="feed__want-card">
+          <img class="feed__want-img" data-feed-want src="/cards/adams-400.webp"
+               width="572" height="800" alt="" decoding="async">
         </div>
+      </figure>
+
+      <!-- the drifting flies (injected) -->
+      <div class="feed__row" data-feed-row></div>
+
+      <!-- the water -->
+      <div class="feed__scene" data-feed-scene>
+        <svg class="feed__water" data-feed-water viewBox="0 0 400 120" role="img"
+             aria-label="A trout holding under the surface of a stream.">
+          <defs>
+            <linearGradient id="feed-deep" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="var(--c-green)" stop-opacity=".26"/>
+              <stop offset="100%" stop-color="var(--c-green)" stop-opacity=".05"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="34" width="400" height="86" fill="url(#feed-deep)"/>
+          <path class="feed__surface" d="M0 34 H400"/>
+          <path class="feed__seam" d="M0 62 C90 58 150 66 250 61 S360 58 400 63"/>
+          <path class="feed__seam" d="M0 95 C80 91 170 99 260 93 S370 91 400 96"/>
+
+          <!-- the splash, aimed at whichever card was taken -->
+          <g class="feed__rings">
+            <ellipse class="feed__ring" cx="0" cy="34" rx="15" ry="4"/>
+            <ellipse class="feed__ring feed__ring--2" cx="0" cy="34" rx="15" ry="4"/>
+          </g>
+
+          <!-- Scaled here rather than in the path data: the trout has to fill the
+               stream, but every rise coordinate is easier to reason about in the
+               original units. -->
+          <g class="feed__fish" data-feed-fish>
+            <g class="feed__fish-scale">
+            <path class="feed__fish-tail" d="M62 17 L82 4 L78 17 L82 30 Z"/>
+            <path class="feed__fish-fin"  d="M40 5 L52 -3 L56 7 Z"/>
+            <path class="feed__fish-fin"  d="M32 24 L38 33 L46 25 Z"/>
+            <path class="feed__fish-body"
+                  d="M4 17 C16 4 48 1 66 9 C70 12 70 22 66 25 C48 33 16 30 4 17 Z"/>
+            <path class="feed__fish-line" d="M12 17 C30 14 50 15 64 17"/>
+            <circle class="feed__fish-spot" cx="30" cy="11" r="1.8"/>
+            <circle class="feed__fish-spot" cx="42" cy="14" r="1.6"/>
+            <circle class="feed__fish-spot" cx="36" cy="21" r="1.5"/>
+            <circle class="feed__fish-spot" cx="50" cy="20" r="1.4"/>
+            <circle class="feed__fish-eye" cx="12" cy="15" r="2.4"/>
+            </g>
+          </g>
+        </svg>
       </div>
+
+      <p class="feed__status" data-feed-status role="status">
+        Turn on JavaScript to play — or just
+        <a href="/flies/">browse all 54 flies</a> instead.
+      </p>
+      <p class="feed__score" data-feed-score aria-live="polite"></p>
     </div>
 
-    <p class="hatch__foot">
-      Every card in the deck works like this one — the name, what it imitates
-      and how to fish it, printed on the face. There are ${count} of them.
+    <p class="feed__foot">
+      Every one of these is a real card. The name, what it imitates and how to
+      fish it are printed on the face — there are ${esc(count)} of them.
       <a href="/flies/">See the whole library →</a>
     </p>
   </div>
@@ -567,7 +516,7 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
 .home-quote cite { display: block; font-style: normal; font-size: var(--t-sm); color: var(--c-text-faint); }
 </style>
 
-<script type="application/json" id="hatch-data">${hatchData(f)}</script>
-<script src="/js/hatch.js" defer></script>
+<script type="application/json" id="feed-data">${feedData(f)}</script>
+<script src="/js/feed.js" defer></script>
 `;
 }

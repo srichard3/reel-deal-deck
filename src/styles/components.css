@@ -1796,395 +1796,289 @@ a.card-face.card-face:nth-child(even):active {
 .brand__fish--lg { --fish-h: 2.75rem; color: var(--c-green); }
 
 /* ==========================================================================
-   THE RISE — a one-button hook-set game on the homepage.
-   Motion responds to the player rather than performing at them, which is the
-   only kind of animation this site allows. With JS off the scene is a still
-   illustration and the controls stay hidden.
+   FEED THE TROUT — the homepage game
+   A matching toy: the trout wants one fly, three drift overhead, and tapping
+   the match brings it up to that exact card. Nothing here is a quiz, so no
+   rule depends on knowing anything — only on the artwork.
+
+   Geometry is shared with feed.js and must stay in step: the water viewBox is
+   400x150, the surface sits at y=26, and the trout idles at (--fx0, --fy0).
+   feed.js sets --fx1 to the x of the card that was tapped, which is what aims
+   both the rise and the splash.
+
+   Progressive: with JS off the water and the trout render as a still
+   illustration, no cards appear, and .feed__status stands on its own.
    ========================================================================== */
 
-.rise {
+.feed {
+  /* The water and the flies must share a width, or the stream sprawls across
+     the whole column on a desktop while the three cards stay a narrow island. */
+  max-width: 42rem;
+  margin-inline: auto;
+  margin-block-start: var(--s-5);
+  --fx0: 145px;   /* where the trout holds */
+  --fy0: 64px;
+  --fx1: 145px;
+  --rx: 150px;    /* where the splash breaks — the nose, not the group origin */   /* where it rises to — overwritten per tap */
+}
+
+.feed__lede { max-width: 54ch; }
+
+/* --------------------------------------------------- what the trout wants */
+
+.feed__want {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-2);
+  margin: 0 0 var(--s-5);
+}
+
+.feed__want-label {
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-index);
+  color: var(--c-text-faint);
+}
+
+/* A bubble rather than a caption, so it reads as the fish's idea and not as a
+   question being asked of the player. */
+.feed__want-card {
   position: relative;
-  margin-block-start: var(--s-6);
-  padding: var(--s-5);
+  width: 5.5rem;
+  padding: var(--s-2);
   background-color: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: var(--r-sm);
   box-shadow: var(--shadow-1);
 }
-.rise:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 3px; }
 
-.rise__scene {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 320 / 170;
-  overflow: hidden;
-  border-radius: var(--r-sm);
-  background-color: var(--c-bg-sunk);
-}
-
-/* --- water and terminal tackle --- */
-.rise__water {
-  fill: none;
-  stroke: var(--c-green);
-  stroke-width: 1.4;
-  opacity: 0.55;
-}
-.rise__water--soft { opacity: 0.2; stroke-dasharray: 3 7; }
-
-.rise__leader { fill: none; stroke: var(--c-text-faint); stroke-width: 1; opacity: 0.7; }
-.rise__fly { fill: var(--c-bark); stroke: var(--c-bark); stroke-width: 1.1; stroke-linecap: round; }
-
-.rise__ring {
-  fill: none;
-  stroke: var(--c-green);
-  stroke-width: 1.2;
-  opacity: calc(var(--ring, 0) * 0.7);
-  transform: scale(calc(0.4 + var(--ring, 0) * 0.9));
-  transform-origin: 184px 49px;
-  transition: opacity var(--dur-fast) linear;
-}
-
-/* --- the fish ---
-   --rise-p is 0 when deep and 1 at the fly; --rise-turn flips it over as it
-   takes. Both are written by rise.js. */
-.rise__fish {
-  --rise-p: 0;
-  --rise-turn: 0;
-  transform:
-    translateY(calc(var(--rise-p) * -56px))
-    rotate(calc(var(--rise-turn) * -26deg));
-  transform-origin: 170px 130px;
-  transition: transform 90ms linear;
-}
-.rise__body { fill: var(--c-green); }
-.rise__tail { fill: var(--c-green); opacity: 0.8; }
-.rise__fin  { fill: var(--c-green); opacity: 0.8; }
-.rise__eye  { fill: var(--c-surface); }
-
-.rise.is-hooked .rise__body,
-.rise.is-hooked .rise__fin,
-.rise.is-hooked .rise__tail { fill: var(--c-egg); }
-
-/* --- controls --- */
-.rise__ui {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--s-3) var(--s-4);
-  margin-block-start: var(--s-4);
-}
-.rise__strike { display: none; }
-.rise--live .rise__strike { display: inline-flex; }
-
-.rise__status { margin: 0; font-size: var(--t-sm); color: var(--c-text-muted); }
-.rise__status[data-tone="hit"]   { color: var(--c-green); font-weight: 600; }
-.rise__status[data-tone="early"] { color: var(--c-bark); }
-.rise__status[data-tone="miss"]  { color: var(--c-text-faint); }
-
-.rise__score {
-  margin: 0;
-  margin-inline-start: auto;
-  font-size: var(--t-xs);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: var(--c-text-faint);
-}
-
-.rise__foot { margin-block-start: var(--s-4); font-size: var(--t-sm); }
-
-/* Reduced motion: the rise is near-instant in JS, and the tween is removed
-   here so nothing slides. The game still works — it becomes a reaction cue. */
-@media (prefers-reduced-motion: reduce) {
-  .rise__fish, .rise__ring { transition: none; }
-}
-
-/* ==========================================================================
-   MATCH THE HATCH — the homepage game
-   One card is shown large and you name what it imitates. The card's printed
-   line is the answer key, so .hatch__crop hides it during the question and
-   opens to reveal it afterwards.
-   Progressive: with JS off the scene and a card render as a still
-   illustration, no buttons appear, and the fallback copy in .hatch__status
-   stands on its own.
-   ========================================================================== */
-
-.hatch { margin-block-start: var(--s-5); }
-.hatch__lede { max-width: 52ch; }
-
-.hatch__board {
-  display: grid;
-  gap: var(--s-5);
-  justify-content: center;
-  align-items: start;
-}
-
-@media (min-width: 46rem) {
-  .hatch__board {
-    grid-template-columns: minmax(0, 15rem) minmax(0, 28rem);
-    gap: var(--s-7);
-  }
-}
-
-/* --- the card ------------------------------------------------------------ */
-
-.hatch__card {
-  margin: 0;
-  justify-self: center;
-  width: 100%;
-  max-width: 15rem;
-}
-
-/* The printed line sits in the bottom ~18% of every card in the deck. Cropping
-   to 80% of the height hides it while the question stands; .is-revealed opens
-   the box to full height so the card explains itself. Animating padding-bottom
-   rather than aspect-ratio keeps the transition smooth everywhere. */
-.hatch__crop {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 111.9%;               /* 80% of 800/572 */
-  overflow: hidden;
-  border-radius: var(--r-card);
-  background-color: #fff;               /* matches the printed stock */
-  box-shadow: var(--shadow-2);
-  transition: padding-bottom 520ms var(--ease), box-shadow var(--dur) var(--ease);
-}
-.hatch.is-revealed .hatch__crop {
-  padding-bottom: 139.9%;               /* 800/572 — the whole card */
-  box-shadow: var(--shadow-lift);
-}
-.hatch__crop img {
+.feed__want-card::after {
+  content: "";
   position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: 0;
+  inset-inline-start: 50%;
+  bottom: -7px;
+  width: 12px;
+  height: 12px;
+  margin-inline-start: -6px;
+  background-color: var(--c-surface);
+  border-inline-end: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  transform: rotate(45deg);
+}
+
+.feed__want-img {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 3px;
+  background-color: #fff;          /* matches the printed stock */
 }
 
-.hatch__card-name {
-  margin-block-start: var(--s-3);
-  text-align: center;
-  font-family: var(--f-display);
-  font-size: var(--t-md);
-  color: var(--c-text);
-}
+/* -------------------------------------------------------- the three flies */
 
-/* --- the scene ----------------------------------------------------------- */
-
-.hatch__scene {
-  position: relative;
-  border: 1px solid var(--c-border);
-  border-radius: var(--r-sm);
-  overflow: hidden;
-  background-color: var(--c-bg);
-}
-
-/* Explicit ratio, not `height: auto` on a viewBox-only SVG — Safari will not
-   infer the intrinsic size and collapses the element to nothing. */
-.hatch__water {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 400 / 150;
-}
-
-.hatch__surface { stroke: var(--c-border); stroke-width: 1.5; fill: none; }
-.hatch__seam    { stroke: var(--c-green); stroke-width: 1; fill: none; opacity: .22; }
-
-/* --- the trout ----------------------------------------------------------- */
-
-.hatch__fish-body { fill: var(--c-green); }
-.hatch__fish-tail,
-.hatch__fish-fin  { fill: var(--c-green); opacity: .72; }
-.hatch__fish-line { stroke: var(--c-egg); stroke-width: 1.4; fill: none; opacity: .55; }
-.hatch__fish-spot { fill: var(--c-bark); opacity: .5; }
-.hatch__fish-eye  { fill: var(--c-text); }
-
-/* A take: up through the surface, then back down. */
-.hatch.is-rise .hatch__fish { animation: hatch-rise 1600ms cubic-bezier(.3,.05,.3,1) 300ms both; }
-/* A refusal: up for a look, a turn, and away — it never breaks the surface. */
-.hatch.is-refusal .hatch__fish { animation: hatch-refuse 1600ms ease-in-out 300ms both; }
-
-@keyframes hatch-rise {
-  0%   { transform: translate(152px, 100px); }
-  40%  { transform: translate(152px, 58px); }
-  54%  { transform: translate(152px, 60px); }
-  100% { transform: translate(152px, 100px); }
-}
-
-@keyframes hatch-refuse {
-  0%   { transform: translate(152px, 100px) rotate(0deg); }
-  40%  { transform: translate(152px, 80px) rotate(-6deg); }
-  62%  { transform: translate(160px, 84px) rotate(9deg); }
-  100% { transform: translate(152px, 100px) rotate(0deg); }
-}
-
-/* --- the rise ring ------------------------------------------------------- */
-
-.hatch__ring {
-  fill: none;
-  stroke: var(--c-egg);
-  stroke-width: 1.6;
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-.hatch.is-rise .hatch__ring    { animation: hatch-ring 1100ms ease-out 900ms both; }
-.hatch.is-rise .hatch__ring--2 { animation: hatch-ring 1100ms ease-out 1080ms both; }
-
-@keyframes hatch-ring {
-  0%   { opacity: .85; transform: scale(.2); }
-  100% { opacity: 0;   transform: scale(2.6); }
-}
-
-/* --- the insect, revealed with the answer -------------------------------- */
-
-.hatch__bug {
-  position: absolute;
-  top: 26%;
-  inset-inline-start: 0;
-  width: 12%;
-  color: var(--c-bark);
-  opacity: 0;
-}
-.hatch__bug svg { display: block; width: 100%; height: auto; aspect-ratio: 40 / 24; fill: currentColor; }
-.hatch__bug.is-drifting { animation: hatch-drift 7s linear both; }
-
-@keyframes hatch-drift {
-  from { opacity: 1; transform: translateX(-30%) rotate(-2deg); }
-  to   { opacity: 1; transform: translateX(830%) rotate(2deg); }
-}
-
-/* Eaten: it goes under as the trout takes it. */
-.hatch.is-rise .hatch__bug { animation: hatch-eaten 520ms ease-in 880ms both; }
-@keyframes hatch-eaten { from { opacity: 1; } to { opacity: 0; transform: translateY(14px) scale(.6); } }
-
-/* --- status, reveal, score ----------------------------------------------- */
-
-.hatch__status {
-  margin-block: var(--s-4) var(--s-4);
-  min-height: 1.6em;
-  text-align: center;
-  font-family: var(--f-display);
-  font-size: var(--t-md);
-  color: var(--c-text-muted);
-}
-.hatch__status[data-tone="hit"]  { color: var(--c-green); }
-.hatch__status[data-tone="miss"] { color: var(--c-red); }
-
-/* The answer, then the deck's own printed words quoted back. */
-.hatch__reveal {
-  margin-block-start: var(--s-4);
-  min-height: 3.2em;
-  padding-inline-start: var(--s-4);
-  border-inline-start: 3px solid transparent;
-  transition: border-color var(--dur) var(--ease);
-}
-.hatch.is-revealed .hatch__reveal { border-inline-start-color: var(--c-green); }
-
-.hatch__reveal-fam {
-  margin: 0;
-  font-family: var(--f-display);
-  font-size: var(--t-md);
-  line-height: var(--lh-snug);
-  color: var(--c-text);
-}
-.hatch__reveal-quote {
-  margin: var(--s-2) 0 0;
-  font-size: var(--t-sm);
-  line-height: var(--lh-snug);
-  font-style: italic;
-  color: var(--c-text-faint);
-}
-
-.hatch__score {
-  margin-block-start: var(--s-3);
-  text-align: center;
-  font-size: var(--t-xs);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: var(--c-text-faint);
-  min-height: 1.2em;
-}
-
-/* --- the three answers --------------------------------------------------- */
-
-.hatch__choices {
+.feed__row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--s-3);
 }
 
-.hatch__opt {
+@media (min-width: 30rem) { .feed__row { gap: var(--s-5); } }
+
+.feed__card {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--s-2);
-  padding: var(--s-3) var(--s-2);
-  font: inherit;
-  color: var(--c-text);
-  cursor: pointer;
-  background-color: var(--c-surface);
-  border: 1px solid var(--c-border);
+  padding: var(--s-2);
+  background: none;
+  border: 0;
   border-radius: var(--r-sm);
-  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease),
-              box-shadow var(--dur) var(--ease);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease);
 }
-.hatch__opt:hover:not([aria-disabled="true"]) {
-  transform: translateY(-3px);
-  border-color: var(--c-green);
+
+.feed__card:hover:not([aria-disabled="true"]) { transform: translateY(-3px); }
+.feed__card:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 3px; }
+.feed__card[aria-disabled="true"] { cursor: default; }
+
+/* The bob lives on the image, not the button: the button owns the hover and
+   shake transforms, and two animations cannot share one property. */
+.feed__card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-card);
+  background-color: #fff;
   box-shadow: var(--shadow-2);
-}
-.hatch__opt:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 2px; }
-.hatch__opt[aria-disabled="true"] { cursor: default; }
-
-.hatch__opt-bug { display: block; width: 3rem; color: var(--c-bark); }
-.hatch__opt-bug svg { display: block; width: 100%; height: auto; aspect-ratio: 40 / 24; fill: currentColor; }
-
-.hatch__opt-name {
-  font-size: var(--t-xs);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--c-text-muted);
+  animation: feed-bob 3.6s ease-in-out infinite;
+  animation-delay: var(--bob, 0s);
+  transition: box-shadow var(--dur) var(--ease);
 }
 
-.hatch__opt.is-correct {
-  border-color: var(--c-green);
-  background-color: color-mix(in oklab, var(--c-green) 12%, var(--c-surface));
-}
-.hatch__opt.is-wrong {
-  border-color: var(--c-red);
-  background-color: color-mix(in oklab, var(--c-red) 10%, var(--c-surface));
-}
-/* The option that was neither picked nor right recedes. */
-.hatch__opt[aria-disabled="true"]:not(.is-correct):not(.is-wrong) { opacity: .4; }
+.feed__card:hover .feed__card-img { box-shadow: var(--shadow-lift); }
 
-.hatch__foot {
-  margin-block-start: var(--s-7);
-  text-align: center;
+@keyframes feed-bob {
+  0%, 100% { transform: translateY(0) rotate(-0.7deg); }
+  50%      { transform: translateY(-6px) rotate(0.7deg); }
+}
+
+.feed__card-name {
+  font-family: var(--f-display);
   font-size: var(--t-sm);
+  line-height: var(--lh-snug);
+  text-align: center;
   color: var(--c-text-muted);
 }
 
-/* Off-screen: stop the drift rather than animate to nobody. */
-.hatch.is-paused .hatch__bug.is-drifting { animation-play-state: paused; }
+.feed__card.is-wrong { animation: feed-shake 420ms var(--ease) both; }
+
+@keyframes feed-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  45% { transform: translateX(5px); }
+  70% { transform: translateX(-3px); }
+}
+
+/* Taken: the fly goes under, timed to land as the trout reaches the surface. */
+.feed__card.is-taken .feed__card-img { animation: feed-taken 620ms ease-in 640ms both; }
+
+@keyframes feed-taken {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(26px) scale(.82); }
+}
+
+.feed__card.is-fading { opacity: .35; transition: opacity var(--dur) var(--ease); }
+
+/* ---------------------------------------------------------------- the water */
+
+.feed__scene { position: relative; margin-block-start: var(--s-2); }
+
+.feed__water {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 400 / 120;
+}
+
+.feed__surface { stroke: var(--c-border); stroke-width: 1.5; fill: none; }
+.feed__seam    { stroke: var(--c-green); stroke-width: 1; fill: none; opacity: .22; }
+
+/* Scaled here rather than in the path data, and mirrored when the trout turns
+   to take a fly on its right — facing left it needs 111 units of room to the
+   right of its nose, which runs out well before the third card. */
+.feed__fish-scale {
+  transform: scale(1.35);
+  transform-box: view-box;
+  transform-origin: 0 0;
+}
+.feed.is-flip .feed__fish-scale { transform: scale(-1.35, 1.35); }
+
+.feed__fish-body { fill: var(--c-green); }
+.feed__fish-tail,
+.feed__fish-fin  { fill: var(--c-green); opacity: .72; }
+.feed__fish-line { stroke: var(--c-egg); stroke-width: 1.4; fill: none; opacity: .55; }
+.feed__fish-spot { fill: var(--c-bark); opacity: .5; }
+.feed__fish-eye  { fill: var(--c-text); }
+
+.feed__fish {
+  transform: translate(var(--fx0), var(--fy0));
+  animation: feed-idle 5.2s ease-in-out infinite;
+}
+
+@keyframes feed-idle {
+  0%, 100% { transform: translate(var(--fx0), var(--fy0)); }
+  50%      { transform: translate(calc(var(--fx0) - 6px), calc(var(--fy0) - 5px)); }
+}
+
+/* The rise. It tops out at y=6, putting the nose at 29 — a clear 5 units
+   through the surface at y=34 — while keeping the dorsal fin, whose scaled path
+   reaches y=-4, inside the top of the frame. */
+.feed.is-take .feed__fish { animation: feed-take 1500ms cubic-bezier(.3,.05,.3,1) 120ms both; }
+
+@keyframes feed-take {
+  0%   { transform: translate(var(--fx0), var(--fy0)); }
+  42%  { transform: translate(var(--fx1), 6px); }
+  56%  { transform: translate(var(--fx1), 12px); }
+  100% { transform: translate(var(--fx0), var(--fy0)); }
+}
+
+/* A miss costs a beat, not a life: the trout turns off it and settles again. */
+.feed.is-refuse .feed__fish { animation: feed-refuse 700ms ease-in-out both; }
+
+@keyframes feed-refuse {
+  0%, 100% { transform: translate(var(--fx0), var(--fy0)); }
+  30% { transform: translate(calc(var(--fx0) + 14px), calc(var(--fy0) + 10px)); }
+  65% { transform: translate(calc(var(--fx0) + 5px), calc(var(--fy0) + 3px)); }
+}
+
+/* The splash rides the same --fx1, so it always breaks where the fish does. */
+.feed__rings { transform: translate(var(--rx), 0px); }
+
+.feed__ring {
+  fill: none;
+  stroke: var(--c-green);
+  stroke-width: 1.2;
+  opacity: 0;
+  /* Without fill-box the scale would run from the SVG origin, not the ring. */
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.feed.is-take .feed__ring    { animation: feed-ring 1000ms ease-out 760ms both; }
+.feed.is-take .feed__ring--2 { animation: feed-ring 1000ms ease-out 920ms both; }
+
+@keyframes feed-ring {
+  0%   { opacity: .55; transform: scale(.35); }
+  100% { opacity: 0;   transform: scale(1.9); }
+}
+
+/* -------------------------------------------------------------- the words */
+
+.feed__status {
+  min-height: 1.6em;
+  margin: var(--s-4) 0 0;
+  text-align: center;
+  font-family: var(--f-display);
+  font-size: var(--t-md);
+  color: var(--c-text-muted);
+}
+.feed__status[data-tone="hit"]  { color: var(--c-green); }
+.feed__status[data-tone="miss"] { color: var(--c-bark); }
+
+.feed__score {
+  min-height: 1.4em;
+  margin: var(--s-2) 0 0;
+  text-align: center;
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  color: var(--c-text-faint);
+}
+
+.feed__foot { margin-block-start: var(--s-5); font-size: var(--t-sm); }
+
+/* Off-screen: stop the idle and the bob rather than animate to nobody. */
+.feed.is-paused .feed__fish,
+.feed.is-paused .feed__card-img { animation-play-state: paused; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hatch__crop,
-  .hatch__opt,
-  .hatch__reveal { transition: none; }
-  .hatch__opt:hover:not([aria-disabled="true"]) { transform: none; }
-  .hatch__bug.is-drifting,
-  .hatch.is-rise .hatch__fish,
-  .hatch.is-refusal .hatch__fish,
-  .hatch.is-rise .hatch__ring,
-  .hatch.is-rise .hatch__ring--2,
-  .hatch.is-rise .hatch__bug { animation: none; }
-  /* Still legible without motion: the insect simply sits on the water. */
-  .hatch.is-rise .hatch__bug,
-  .hatch.is-refusal .hatch__bug { opacity: 1; transform: translateX(300%); }
-  .hatch.is-rise .hatch__fish { transform: translate(152px, 64px); }
+  .feed__card,
+  .feed__card-img,
+  .feed__card.is-fading { transition: none; }
+  .feed__card:hover:not([aria-disabled="true"]) { transform: none; }
+  .feed__card-img,
+  .feed__fish,
+  .feed__card.is-wrong,
+  .feed.is-refuse .feed__fish,
+  .feed.is-take .feed__ring,
+  .feed.is-take .feed__ring--2 { animation: none; }
+
+  /* The result still has to be visible without the motion that carried it. */
+  .feed.is-take .feed__fish { animation: none; transform: translate(var(--fx1), 12px); }
+  .feed.is-take .feed__ring { opacity: .5; }
+  .feed__card.is-wrong { outline: 2px solid var(--c-red); outline-offset: 3px; }
+  .feed__card.is-taken .feed__card-img { animation: none; opacity: 0; }
 }
