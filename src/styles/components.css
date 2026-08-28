@@ -2413,3 +2413,82 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 @media (prefers-reduced-motion: reduce) {
   .tuck__hint { transition: none; }
 }
+
+/* ==========================================================================
+   THE HUB DOORS — top of /flies/
+   The Fly-brary holds two different things: the flies themselves, further down
+   the same page, and the Virtual Guide, which is at /blog/. A reader arriving
+   for one should not have to scroll to discover the other exists.
+   ========================================================================== */
+
+.hub {
+  display: grid;
+  gap: var(--s-4);
+  margin: var(--s-6) 0 var(--s-7);
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 46rem) {
+  .hub { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5); }
+}
+
+.hub__door { margin: 0; }
+
+.hub__link {
+  display: grid;
+  gap: var(--s-2);
+  height: 100%;
+  padding: var(--s-5);
+  text-decoration: none;
+  color: inherit;
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-1);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+
+.hub__link:hover,
+.hub__link:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+  border-color: color-mix(in oklab, var(--c-green) 45%, transparent);
+}
+.hub__link:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 3px; }
+
+.hub__index {
+  font-family: var(--f-display);
+  font-size: var(--t-sm);
+  letter-spacing: var(--ls-index);
+  color: var(--c-green);
+}
+
+.hub__title {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  line-height: var(--lh-snug);
+  color: var(--c-text);
+}
+
+.hub__text {
+  font-size: var(--t-sm);
+  line-height: var(--lh-body);
+  color: var(--c-text-muted);
+}
+
+/* Pushed to the bottom so both doors line their prompts up, however much text
+   sits above them. */
+.hub__go {
+  align-self: end;
+  margin-block-start: var(--s-3);
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  color: var(--c-green);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub__link { transition: none; }
+  .hub__link:hover, .hub__link:focus-visible { transform: none; }
+}

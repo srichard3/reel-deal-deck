@@ -11,7 +11,7 @@ export const meta = {
   path: '/flies/',
   title: 'Fly-brary: Every Fly in the Deck',
   description:
-    'A free reference to every fly in The Reel Deal Deck — what each one imitates, what sizes to carry, and when to fish it. No sign-up, no paywall.',
+    'A free fly fishing reference: every fly in The Reel Deal Deck, what each imitates and when to fish it, plus straight answers on gear and technique.',
   priority: 0.9,
   changefreq: 'monthly',
   bodyClass: 'page-flies',
@@ -41,11 +41,10 @@ function virtualGuide(posts) {
     <div class="section-head section-head--split">
       <div>
         <p class="eyebrow">The Virtual Guide</p>
-        <h2 class="h2" id="vg-h">The Fly-brary names the fly. The Virtual Guide tells you what to do with it.</h2>
+        <h2 class="h2" id="vg-h">The questions that come up most</h2>
         <p class="lede">
-          Which rod, which tippet, how to rig it, why the fish keep refusing you.
-          ${p.length} questions, each answered in its first paragraph, free and
-          without an email gate — the same deal as everything else on this page.
+          ${p.length} of them, each answered in its first paragraph. These four are
+          the ones people arrive asking; the rest are one click further in.
         </p>
       </div>
       <p><a class="btn btn--ghost" href="/blog/">Open the Virtual Guide</a></p>
@@ -138,18 +137,48 @@ export default function ({ site, flies, posts }) {
          (52 standard + 2 jokers) — the industry-standard figure on the tuck
          box — while the library also carries the bonus card. Stating a library
          total would contradict the product claim, so it states neither. -->
-    <p class="eyebrow">Free reference &middot; every fly in the deck</p>
+    <p class="eyebrow">Free reference &middot; no sign-up, no paywall</p>
     <h1 class="h1 page-head__title">The Fly-brary</h1>
     <p class="page-head__lede lede">
-      Every fly in the deck, explained properly: what it imitates, what sizes to carry,
-      when it earns its place in your box. No sign-up, no paywall, no email gate — Ken
-      built this deck because he wanted to learn the flies himself, so it would be a bit
-      rich to charge you for the same thing. If it helps you catch a fish, that is the point.
+      Everything we know about fly fishing, in one place and free. Ken built this deck
+      because he wanted to learn the flies himself, so it would be a bit rich to charge
+      you for the same thing. Two ways in.
     </p>
   </header>
 </div>
 
-<div class="wrap library">
+<!-- The fork. This page is a hub, and the two things a reader wants from it —
+     a fly, or an answer about fishing one — live in different places: the fly
+     list is below, the Virtual Guide is at /blog/. Saying so at the top beats
+     making them scroll to find out. -->
+<div class="wrap">
+  <ul class="hub" aria-label="Choose where to start">
+    <li class="hub__door">
+      <a class="hub__link" href="#the-flies">
+        <span class="hub__index" aria-hidden="true">A&#9830;</span>
+        <span class="hub__title">The flies</span>
+        <span class="hub__text">
+          Every pattern in the deck, one page each: what it imitates, what sizes to
+          carry, and when it earns its place in your box. Search and filter them below.
+        </span>
+        <span class="hub__go" aria-hidden="true">Start here &rarr;</span>
+      </a>
+    </li>
+    <li class="hub__door">
+      <a class="hub__link" href="/blog/">
+        <span class="hub__index" aria-hidden="true">K&#9827;</span>
+        <span class="hub__title">The Virtual Guide</span>
+        <span class="hub__text">
+          Everything that is not a fly: which rod, which tippet, how to rig it, where
+          to stand, and why the fish keep refusing you. One question per answer.
+        </span>
+        <span class="hub__go" aria-hidden="true">Open the guide &rarr;</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="wrap library" id="the-flies">
   <form class="library-filters" data-fly-filter hidden>
     <div class="library-filters__row">
       <div class="field library-filters__search">
