@@ -83,6 +83,31 @@ W, H = 600, 836
 D = round(W * 200 / 769)
 SIZES = {'front': (W, H), 'back': (W, H), 'left': (D, H), 'right': (D, H), 'top': (W, D)}
 
+# Ghostscript renders the PANTONE 364 C separation at #4A7637 no matter which
+# colour flags it is given — blue 55 where the ink is 43, which reads grey
+# beside the site's green. The panels are the ink over white, so every pixel of
+# the printed field lies on the line between them: recover how much ink is on
+# each pixel, then lay the same amount of the RIGHT green down instead.
+#
+# Only pixels that actually sit on that line are touched, within a tight
+# tolerance, which leaves the three full-colour card faces on the box front
+# alone — a brown hackle is nowhere near the white-to-green line.
+GS_INK    = (0x4A, 0x76, 0x37)   # what ghostscript gives us
+TRUE_INK  = (0x4A, 0x76, 0x2B)   # --c-green, and PANTONE 364 C to within 2/255
+TOLERANCE = 8
+
+def fix_ink(arr):
+    a = arr.astype(float)
+    # coverage from the channel with the most range between white and ink
+    t = (255.0 - a[:, :, 2]) / (255.0 - GS_INK[2])
+    t = np.clip(t, 0.0, 1.0)
+    pred = np.stack([255.0 + t * (GS_INK[i] - 255.0) for i in range(3)], axis=2)
+    on_line = np.max(np.abs(a - pred), axis=2) <= TOLERANCE
+    fixed = np.stack([255.0 + t * (TRUE_INK[i] - 255.0) for i in range(3)], axis=2)
+    out = np.where(on_line[:, :, None], fixed, a)
+    return np.clip(out, 0, 255).astype('uint8'), int(on_line.sum()), on_line.size
+
+
 def strip_cyan(arr):
     """Paint out the cyan score lines by pulling each bad pixel down from the
     nearest clean one above it, then up from below for anything still unfilled.
@@ -104,7 +129,9 @@ def strip_cyan(arr):
 
 for name, (x0, y0, x1, y1) in PANELS.items():
     c = im.crop((x0 + I, y0 + I, x1 - I, y1 - I))
-    c = Image.fromarray(strip_cyan(np.asarray(c)).astype('uint8'))
+    arr, n_fixed, n_total = fix_ink(strip_cyan(np.asarray(c)))
+    c = Image.fromarray(arr)
+    print('    %-6s ink pixels recoloured: %5.1f%%' % (name, n_fixed / n_total * 100))
     if name == 'top':
         c = c.rotate(180)               # printed inverted; it folds over
     c = c.resize(SIZES[name], getattr(Image, 'Resampling', Image).LANCZOS)
