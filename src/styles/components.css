@@ -87,14 +87,16 @@
   transform: none;
 }
 
+/* The printed green in both themes, so the button matches the deck it is
+   selling rather than the theme it happens to be rendered in. */
 .btn--primary {
-  --btn-bg: var(--c-accent);
-  --btn-fg: var(--c-accent-text);
-  --btn-bd: var(--c-accent);
+  --btn-bg: var(--c-brand-fill);
+  --btn-fg: var(--c-brand-fill-text);
+  --btn-bd: var(--c-brand-fill);
   box-shadow: var(--shadow-1);
 }
-.btn--primary:hover { --btn-bg: color-mix(in oklab, var(--c-accent) 84%, var(--c-ink)); --btn-bd: var(--btn-bg); }
-.btn--primary:active { --btn-bg: color-mix(in oklab, var(--c-accent) 72%, var(--c-ink)); box-shadow: none; }
+.btn--primary:hover { --btn-bg: color-mix(in oklab, var(--c-brand-fill) 84%, var(--c-ink)); --btn-bd: var(--btn-bg); }
+.btn--primary:active { --btn-bg: color-mix(in oklab, var(--c-brand-fill) 72%, var(--c-ink)); box-shadow: none; }
 
 .btn--ghost {
   --btn-bg: transparent;

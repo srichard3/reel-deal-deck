@@ -136,6 +136,14 @@ for name, (x0, y0, x1, y1) in PANELS.items():
         c = c.rotate(180)               # printed inverted; it folds over
     c = c.resize(SIZES[name], getattr(Image, 'Resampling', Image).LANCZOS)
     p = '%s/box3d-%s.webp' % (out, name)
+    # Lossy, deliberately. webp's colour transform lands the flat ink on
+    # #4A772A rather than #4A762B at every quality up to 100 — only lossless
+    # holds it exactly, and that doubles these files (the front panel, which is
+    # the LCP image, goes 139kB -> 326kB). The residual error is deltaE 1.06,
+    # about the just-noticeable threshold for two patches touching each other —
+    # and the box and the button never touch. The two errors that were actually
+    # visible were deltaE 6.1 (ghostscript rendering the spot wrong) and 27.6
+    # (the dark-mode button lightening); both are fixed.
     c.save(p, 'WEBP', quality=88, method=6)
     print('  box3d-%-6s %4dx%-4d' % (name, c.size[0], c.size[1]))
 

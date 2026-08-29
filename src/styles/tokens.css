@@ -47,6 +47,17 @@
   --c-text-faint:   var(--c-ink-3);
   --c-accent:       var(--c-green);
   --c-accent-text:  #FFFFFF;
+
+  /* The printed ink, and it does NOT change with the theme. --c-green lightens
+     to #8FBF66 in dark mode so links and small text stay legible on near-black,
+     which is right for text and wrong for a filled surface: it made the
+     Kickstarter button a different green from the box sitting beside it.
+     Anything painting a solid brand field uses this instead, so the button and
+     the tuck box are the same colour in both themes.
+     #4A762B is sampled from the original card scans, and is PANTONE 364 C to
+     within 2/255 of the Lab in the printer's own file. */
+  --c-brand-fill:      #4A762B;
+  --c-brand-fill-text: #FFFFFF;
   --c-focus:        var(--c-egg);
 
   /* --- Type ------------------------------------------------------------ */
