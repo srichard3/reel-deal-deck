@@ -366,8 +366,8 @@ ${instagramStrip(site, instagram, {
   <p class="eyebrow">Reserve</p>
   <h2 class="h2">Get in line for the first print run</h2>
   <p class="lede">
-    There is no checkout on this site yet, on purpose. Leave an email and you will hear from
-    Ken and Audrey before decks go on sale &mdash; not after they have sold out.
+    There is no checkout here yet, and that is on purpose. Leave an email and you will hear
+    from us before the decks go on sale &mdash; not after they have gone.
   </p>
   <p class="buy-hero__note">${campaignLine(site)}</p>
 

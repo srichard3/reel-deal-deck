@@ -152,7 +152,7 @@ export function instagramStrip(site, instagram, { tag = null, title = null, blur
       <div>
         <p class="eyebrow">@${esc(handle)}</p>
         <h2 class="h2" id="${hid}">${esc(title || 'Follow along while we make it')}</h2>
-        <p class="lede ig__lede">${esc(blurb || 'Ken and Audrey post the whole thing as it happens — prototypes, printing, and the odd fish. Tap any of these to open it on Instagram.')}</p>
+        <p class="lede ig__lede">${esc(blurb || 'We put the whole thing on Instagram as it happens — prototypes, printing, and the odd fish. Tap any of these to open it.')}</p>
       </div>
       <p class="ig__actions" data-ig-actions>
         <a class="btn btn--ghost" href="${esc(profile)}" target="_blank" rel="noopener">Follow @${esc(handle)}</a>
@@ -239,7 +239,7 @@ export function campaignLine(site, now = new Date()) {
   const c = campaignState(site, now);
   const ext = c.external ? ' target="_blank" rel="noopener"' : '';
   return c.live
-    ? `Ken and Audrey are funding the deck on ${esc(c.platform || 'Kickstarter')} right now &mdash; <a href="${esc(c.url)}"${ext} data-campaign-cta="live">${esc(c.cta)}</a>.`
+    ? `We are funding the deck on ${esc(c.platform || 'Kickstarter')} right now &mdash; <a href="${esc(c.url)}"${ext} data-campaign-cta="live">${esc(c.cta)}</a>.`
     : `<a href="${esc(c.url)}" data-campaign-cta="after">${esc(c.cta)}</a> and we will email you the day it ships.`;
 }
 

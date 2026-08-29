@@ -75,6 +75,14 @@ directly under the `<h1>`, before any other prose. That is the block an AI lifts
 `campaignLine()` / `campaignState()` in `src/templates/_blocks.mjs`. They flip to
 pre-order copy automatically after 19 Sept — 60 CTAs depend on this.
 
+**Write as Ken and Audrey, not about them.** `site.voice.register` in
+`data/site.json` is the rule. On a page they are speaking on it is "we made",
+never "Ken and Audrey decided" — the site read like a case study about a father
+and daughter rather than a thing they made. Third person stays correct in
+schema, alt text, citations, spec rows, press boilerplate and product facts
+("signed by Ken and Audrey"). `voice.intro/why/hope/signoff` are printed-card
+text and are quoted verbatim, never paraphrased.
+
 **One canonical entity.** `site.brand` in `data/site.json` is the only place the
 business is described. Emit via `organizationSchema()`. Do not write a new
 description anywhere.

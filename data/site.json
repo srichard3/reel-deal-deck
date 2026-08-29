@@ -169,7 +169,8 @@
     "signoff": "Thank you for your support. Tight lines!",
     "handle": "@reeldealdeck",
     "shortLine": "Hand-drawn playing cards that teach while you play.",
-    "note": "The printed card says 'multigenerational Idaho farmers' of the pair. The Kickstarter, written by Ken and Audrey themselves, calls Ken a '5th generation Idaho farmer' — so the number is now on the public record for him and founders[0].bio uses it. Still TODO-CONFIRM: surnames, and whether Audrey counts as fifth or sixth generation."
+    "note": "The printed card says 'multigenerational Idaho farmers' of the pair. The Kickstarter, written by Ken and Audrey themselves, calls Ken a '5th generation Idaho farmer' — so the number is now on the public record for him and founders[0].bio uses it. Still TODO-CONFIRM: surnames, and whether Audrey counts as fifth or sixth generation.",
+    "register": "How the site itself should sound, as distinct from voice.intro/why/hope/signoff, which are printed-card text and must be quoted verbatim. Write as Ken and Audrey, not about them: 'we made', 'we would rather', never 'Ken and Audrey decided' on a page they are speaking on. Warm, plain and a little wry — a father and daughter showing you a thing they made, not a brand announcing a product. Specific over grand, and never a claim we cannot back. No exclamation marks and no emoji: that is their Instagram voice, and it does not survive the move to a page someone is reading to decide whether to spend $24.95. Third person is still right in schema, alt text, press boilerplate and product facts ('signed by Ken and Audrey')."
   },
   "cardCraft": {
     "suits": "A two-colour deck: green replaces red on hearts and diamonds, bark brown replaces black on spades and clubs — drawn from the tuck box and card back.",

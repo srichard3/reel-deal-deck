@@ -159,17 +159,17 @@ export default function homepage({ site, flies, posts, instagram }) {
       <p class="eyebrow">Ken &amp; Audrey &middot; ${esc(city)}, ${esc(regionName)}</p>
       <h1 class="h1 hero__title">${esc(shortLine)}</h1>
       <p class="lede hero__lede">
-        Their words, printed on a card inside the deck. ${esc(count)} flies, every one drawn
-        by hand, on genuine Bicycle stock &mdash; so it holds up to the shuffle as well as
-        the streamside.
+        That is our line, and it is printed on a card tucked inside the deck. ${esc(count)} flies,
+        every one drawn by hand, on genuine Bicycle stock &mdash; so it deals like a proper deck of
+        cards and still earns its place in a vest pocket.
       </p>
       <div class="cluster hero__actions" style="--gap:var(--s-3)">
         ${campaignCta(site, { variant: 'primary' })}
         <a class="btn btn--ghost btn--lg" href="/cards/">See what&rsquo;s in it</a>
       </div>
       <p class="hero__note">
-        Made by a father and daughter in ${esc(city)}, ${esc(regionName)}. Nothing ships from
-        this site yet &mdash; joining the list is free and holds your place.
+        Just the two of us, in ${esc(city)}, ${esc(regionName)}. Nothing ships from here yet &mdash;
+        the list is free, and it holds your place.
       </p>
     </div>
     ${heroPack()}
@@ -235,7 +235,7 @@ export default function homepage({ site, flies, posts, instagram }) {
 
 ${instagramStrip(site, instagram, {
   title: 'Follow along while we make it',
-  blurb: 'Ken and Audrey post the whole thing on Instagram as it happens \u2014 prototypes, print proofs, trips, and the odd fish. Tap any of these to open it.',
+  blurb: 'We put the whole thing on Instagram as it happens \u2014 prototypes, print proofs, trips, and the odd fish that had nothing to do with work. Tap any of these to open it.',
 })}
 
 <section class="section" id="in-the-deck" aria-labelledby="deck-h">
@@ -432,7 +432,8 @@ ${flyStrip(f, ['royal-coachman', 'chubby-chernobyl', 'elk-hair-caddis', 'zebra-m
       <p class="section-num" aria-hidden="true">4&#9829;</p>
       <h2 class="h2" id="diff-h">Other fly cards exist. Here is where we went our own way.</h2>
       <p class="lede">
-        Three decisions, and every one of them cost us more than the easy option would have.
+        Three decisions we made the harder way, because the easy way would have bothered us
+        every time we looked at the box.
       </p>
     </div>
 
