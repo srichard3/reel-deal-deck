@@ -135,8 +135,14 @@ box with JS off; `src/js/box.js` only adds dragging, keyboard and the idle sway.
 scans carried ~2px of paper outside the printed outline; rounding the corners
 then clipped a curve that was not the card's, showing a white wedge at every
 corner. `scripts/watermark.mjs` trims to the keyline, and `--r-card-art`
-(4.05% / 2.89%, measured off the artwork) is the radius for anything showing a
-real card face. `--r-card` is 12px and belongs to panels — do not conflate them.
+(4.37% / 3.12% = 25px) is the radius for anything showing a real card face.
+It was found by outcome, not geometry: sweep the radius and count how much of
+the corner arc shows white instead of keyline. Fitting a circle to the corner
+gave 27px and looked worse. `--r-card` is 12px and belongs to panels.
+
+**Images are fingerprinted too**, not just CSS and JS — a recropped card a
+browser already holds stays wrong, and files cache independently, so a partial
+refresh fixes some cards and not others.
 
 **The card images are watermarked, and it is baked into the pixels.** A CSS
 overlay would be theatre — the file is one right-click away and the overlay one

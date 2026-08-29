@@ -133,19 +133,36 @@ export default async function postbuild({ site, flies = [], routes = [], DIST, R
   const fingerprints = new Map();
   for (const f of files) {
     const rel = path.relative(dist, f).split(path.sep).join('/');
-    if (!/^(styles|js)\//.test(rel)) continue;
+    if (!/^(styles|js|cards|brand|instagram)\//.test(rel)) continue;
     const buf = await readFile(f);
     fingerprints.set('/' + rel, createHash('sha256').update(buf).digest('hex').slice(0, 8));
   }
 
-  const stamp = (html) => html.replace(
-    /(<(?:link|script)\b[^>]*?\s(?:href|src)=")([^"?#]+\.(?:css|js))(")/g,
-    (m, pre, url, post) => {
-      const key = basePath && url.startsWith(basePath + '/') ? url.slice(basePath.length) : url;
-      const v = fingerprints.get(key);
-      return v ? `${pre}${url}?v=${v}${post}` : m;
-    },
-  );
+  const version = (url) => {
+    const key = basePath && url.startsWith(basePath + '/') ? url.slice(basePath.length) : url;
+    const v = fingerprints.get(key);
+    return v ? `${url}?v=${v}` : url;
+  };
+
+  /* Artwork gets fingerprinted for the same reason the CSS does. A recropped
+     card that a browser already holds is a card that stays wrong, and because
+     each file caches independently a partial refresh leaves some cards fixed
+     and some not — which is exactly how it was reported. */
+  const stamp = (html) => html
+    .replace(
+      /(<(?:link|script|img|source)\b[^>]*?\s(?:href|src)=")([^"?#]+\.(?:css|js|webp|png|jpg|svg))(")/g,
+      (m, pre, url, post) => `${pre}${version(url)}${post}`,
+    )
+    /* srcset is a comma-separated list of "url descriptor" pairs. */
+    .replace(/(\ssrcset=")([^"]+)(")/g, (m, pre, list, post) => {
+      const out = list.split(',').map((part) => {
+        const seg = part.trim().split(/\s+/);
+        if (!seg[0] || /[?#]/.test(seg[0])) return part.trim();
+        seg[0] = version(seg[0]);
+        return seg.join(' ');
+      }).join(', ');
+      return `${pre}${out}${post}`;
+    });
 
   /* ------------------------------------------------- 1. read + rewrite -- */
 

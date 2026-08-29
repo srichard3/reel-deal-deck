@@ -84,11 +84,21 @@
 
   /* --- Geometry -------------------------------------------------------- */
   --r-card: 12px;   /* playing-card corner radius, used on card-like things */
-  /* The corner actually printed on the cards, measured off the artwork: 23px
-     on a 568x796 face. As a percentage it holds at any rendered size, so the
-     CSS curve and the printed curve stay on top of each other. Only for
-     elements showing a real card face. */
-  --r-card-art: 4.05% / 2.89%;
+  /* The corner actually printed on the cards. Fitted, not eyeballed: the first
+     attempt took the first dark pixel in the top row and got 23px, but the
+     keyline has thickness and anti-aliasing, so that lands inside the true
+     curve and left a white sliver at every corner. Fitting a circle to the
+     profile said 27px and was no better — it overshot and clipped the keyline
+     off instead.
+
+     So it was measured by outcome rather than by geometry: sweep the radius,
+     and for each one walk the corner arc counting how much of it shows white
+     instead of the printed keyline. That bottoms out hard at 25px — 5.7% of the
+     arc, against 17.5% at 23px and 20.7% at 27px.
+
+     A percentage so it holds at any rendered size. Only for elements showing a
+     real card face — --r-card above is 12px and belongs to panels. */
+  --r-card-art: 4.37% / 3.12%;
   --r-sm:   4px;
   --r-pill: 999px;
   --card-ratio: 0.714;          /* 2.5in x 3.5in — the real poker card ratio */
