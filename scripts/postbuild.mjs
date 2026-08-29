@@ -118,6 +118,35 @@ export default async function postbuild({ site, flies = [], routes = [], DIST, R
 
   const indexedRoutes = new Set(routes.map((r) => r.route));
 
+  /* ------------------------------------------------ asset fingerprints -- */
+  /* Stylesheets and scripts are referenced by a bare, stable path, so a browser
+     that already has one keeps serving it until its cache expires. GitHub Pages
+     sends max-age=600, and Safari holds subresources harder than that — which
+     meant a shipped CSS fix could sit invisible behind a stale file, and did:
+     the green-on-green Kickstarter button stayed broken in Safari after the
+     cascade fix had already deployed.
+
+     Appending a content hash makes the URL change whenever the file does, so a
+     deploy invalidates itself and an unchanged file stays cached. Query-string
+     busting keeps the filenames stable, which matters because the paths appear
+     in the partials and in scripts/check.mjs's link graph. */
+  const fingerprints = new Map();
+  for (const f of files) {
+    const rel = path.relative(dist, f).split(path.sep).join('/');
+    if (!/^(styles|js)\//.test(rel)) continue;
+    const buf = await readFile(f);
+    fingerprints.set('/' + rel, createHash('sha256').update(buf).digest('hex').slice(0, 8));
+  }
+
+  const stamp = (html) => html.replace(
+    /(<(?:link|script)\b[^>]*?\s(?:href|src)=")([^"?#]+\.(?:css|js))(")/g,
+    (m, pre, url, post) => {
+      const key = basePath && url.startsWith(basePath + '/') ? url.slice(basePath.length) : url;
+      const v = fingerprints.get(key);
+      return v ? `${pre}${url}?v=${v}${post}` : m;
+    },
+  );
+
   /* ------------------------------------------------- 1. read + rewrite -- */
 
   const pages = [];
@@ -126,6 +155,9 @@ export default async function postbuild({ site, flies = [], routes = [], DIST, R
     const route = toRoute(file);
     let html = await readFile(file, 'utf8');
     let dirty = false;
+
+    const stamped = stamp(html);
+    if (stamped !== html) { html = stamped; dirty = true; }
 
     // A route that build.mjs kept out of sitemap.xml was marked noindex.
     // Give it an actual directive — robots.txt Disallow does not prevent

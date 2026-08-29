@@ -109,6 +109,13 @@ regenerating overwrote all of them with a far worse pixel-font version. It has
 a warning at the top now. The same run also proves the icons are an "R♦" mark,
 not the joker fish.
 
+**CSS and JS URLs are content-fingerprinted.** `scripts/postbuild.mjs` appends
+`?v=<hash>` to every stylesheet and script reference. Without it a shipped CSS
+fix sits invisible behind a cached file — GitHub Pages sends `max-age=600` and
+Safari holds subresources harder than that, which is how a fixed button stayed
+broken after deploy. Hashes are stable across rebuilds, so unchanged files stay
+cached. Never tell someone to hard-refresh instead.
+
 **The hero tuck box is CSS, not a 3D library.** A cuboid is six rectangles, so
 three.js would be 150kB to draw a box. `scripts/box-panels.mjs` cuts the six
 panels out of the printer's dieline (gitignored) by detecting its cyan fold
