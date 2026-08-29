@@ -239,7 +239,7 @@
   display: block;
   position: relative;
   margin: 0;
-  border-radius: var(--r-card);
+  border-radius: var(--r-card-art);
   overflow: hidden;
   background-color: #fff;              /* matches the printed stock exactly */
   box-shadow: var(--shadow-2);
@@ -271,7 +271,7 @@ a.card-face:focus-visible {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--r-card);
+  border-radius: var(--r-card-art);
   box-shadow: var(--shadow-lift);
 }
 .fly-head__card .figure-note { margin-top: var(--s-3); text-align: center; }

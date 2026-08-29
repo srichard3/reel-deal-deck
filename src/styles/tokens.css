@@ -84,6 +84,11 @@
 
   /* --- Geometry -------------------------------------------------------- */
   --r-card: 12px;   /* playing-card corner radius, used on card-like things */
+  /* The corner actually printed on the cards, measured off the artwork: 23px
+     on a 568x796 face. As a percentage it holds at any rendered size, so the
+     CSS curve and the printed curve stay on top of each other. Only for
+     elements showing a real card face. */
+  --r-card-art: 4.05% / 2.89%;
   --r-sm:   4px;
   --r-pill: 999px;
   --card-ratio: 0.714;          /* 2.5in x 3.5in — the real poker card ratio */

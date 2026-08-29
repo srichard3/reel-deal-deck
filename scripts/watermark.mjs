@@ -57,7 +57,7 @@ if (!existsSync(CLEAN)) {
 
 const py = `
 import os, sys, glob
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFont
 
 CLEAN = sys.argv[1]
 OUT   = sys.argv[2]
@@ -123,6 +123,24 @@ def watermark(im):
     base = im.convert('RGBA')
     return Image.alpha_composite(base, layer).convert('RGB')
 
+def trim(im):
+    """Crop the white margin outside the printed keyline.
+
+    The scans carry about 2px of paper either side of the card's own outline,
+    which is small until you round the corners: CSS then clips a curve that is
+    not the card's curve, and every card shows a white wedge at each corner.
+    Cropping to the keyline makes the card's border the image's border, which
+    is the only way the two curves can agree.
+
+    Resized back to the master's dimensions afterwards so every hard-coded
+    width/height in the templates stays true. It is a 0.7% upscale."""
+    bg = Image.new('RGB', im.size, (255, 255, 255))
+    mask = ImageChops.difference(im, bg).convert('L').point(lambda v: 255 if v > 18 else 0)
+    box = mask.getbbox()
+    if not box:
+        return im
+    return im.crop(box).resize(im.size, getattr(Image, 'Resampling', Image).LANCZOS)
+
 masters = sorted(glob.glob(os.path.join(CLEAN, '*-800.webp')))
 if not masters:
     print('No *-800.webp masters found. Nothing to do.'); sys.exit(1)
@@ -131,7 +149,7 @@ n = 0
 for src in masters:
     name = os.path.basename(src)
     slug = name[:-len('-800.webp')]
-    im = Image.open(src).convert('RGB')
+    im = trim(Image.open(src).convert('RGB'))
     if CHECK:
         print('  would mark %-28s %sx%s' % (slug, im.size[0], im.size[1])); n += 1; continue
 

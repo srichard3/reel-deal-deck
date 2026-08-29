@@ -1883,7 +1883,7 @@ a.card-face.card-face:nth-child(even):active {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 3px;
+  border-radius: var(--r-card-art);
   background-color: #fff;          /* matches the printed stock */
 }
 
@@ -1922,7 +1922,7 @@ a.card-face.card-face:nth-child(even):active {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--r-card);
+  border-radius: var(--r-card-art);
   background-color: #fff;
   box-shadow: var(--shadow-2);
   animation: feed-bob 3.6s ease-in-out infinite;

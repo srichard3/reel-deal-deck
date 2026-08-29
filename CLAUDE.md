@@ -131,6 +131,13 @@ lines, and `.tuck` in components.css folds them with transforms at the measured
 ratios W:H:D = 1 : 1.393 : 0.26. The resting angle is CSS, so it is still a 3D
 box with JS off; `src/js/box.js` only adds dragging, keyboard and the idle sway.
 
+**Card art is cropped to its own keyline, and `--r-card-art` matches it.** The
+scans carried ~2px of paper outside the printed outline; rounding the corners
+then clipped a curve that was not the card's, showing a white wedge at every
+corner. `scripts/watermark.mjs` trims to the keyline, and `--r-card-art`
+(4.05% / 2.89%, measured off the artwork) is the radius for anything showing a
+real card face. `--r-card` is 12px and belongs to panels — do not conflate them.
+
 **The card images are watermarked, and it is baked into the pixels.** A CSS
 overlay would be theatre — the file is one right-click away and the overlay one
 devtools deletion away. `scripts/watermark.mjs` rewrites `static/cards/` from
