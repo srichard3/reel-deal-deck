@@ -973,11 +973,16 @@ select.input {
   color: var(--c-text-muted);
 }
 
-/* Six cards, always a tidy row: 2 up, 3 up, then the full hand of six. */
-.fly-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* auto-FILL, not auto-fit. They are identical until a row has fewer cards than
+   it has room for, and then auto-fit collapses the empty tracks and stretches
+   what is left — which is how the Wet flies group, holding exactly one card,
+   rendered it a metre wide next to neighbours a third of that. auto-fill keeps
+   the empty tracks, so a lone card is the same size as every other card.
 
-@media (min-width: 34rem) { .fly-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (min-width: 64rem) { .fly-strip { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+   min(…, 100%) so a 17rem floor cannot force a 320px viewport to scroll. */
+.fly-strip {
+  grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr));
+}
 
 /* ------------------------------------------------------- proof strip ---- */
 
@@ -1433,10 +1438,10 @@ a.card-face.card-face:nth-child(even):active {
    inside it. Clip only the axis that actually needs clipping. */
 .hero { overflow-x: clip; overflow-y: visible; }
 
-/* Every auto-fit track on the site must guard with min(…, 100%) or it forces
-   the document wider than a 320px viewport. .proof__grid and .fly-strip use
-   fixed counts, so they are already safe; this is the belt for the rest. */
-.card-grid { grid-template-columns: repeat(auto-fit, minmax(min(var(--min, 17rem), 100%), 1fr)); }
+/* The .card-grid rule that used to sit here was byte-identical to the one in
+   section 2, so it guarded nothing — but it came AFTER .fly-strip at equal
+   specificity, so it quietly won and .fly-strip's own columns never applied.
+   Section 2 already carries the min(…, 100%) guard. */
 
 /* Long unbroken strings — a URL in a notice, an email in the footer — are the
    other classic source of horizontal overflow. */
