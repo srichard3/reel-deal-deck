@@ -176,6 +176,15 @@ export default function ({ site, flies, posts }) {
       </a>
     </li>
   </ul>
+
+  <!-- Deliberately not a third door. The two above are a fork — flies, or the
+       guide — and a third card would turn a choice into a menu. This is the
+       aside it actually is, but up here where someone who already knows their
+       fly is missing does not have to scroll 55 cards to say so. -->
+  <p class="hub__aside">
+    Know one we missed? <a href="/suggest/">Tell us what belongs in Volume 2</a> &mdash;
+    the next deck is not written yet.
+  </p>
 </div>
 
 <div class="wrap library" id="the-flies">
