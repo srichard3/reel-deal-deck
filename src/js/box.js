@@ -41,6 +41,7 @@
     if (touched) return;
     touched = true;
     root.classList.add('is-touched');
+    root.classList.remove('is-animating');
     if (idle) { cancelAnimationFrame(idle); idle = 0; }
   }
 
@@ -96,10 +97,13 @@
     apply();
   });
 
-  /* --------------------------------------------------------------- idle -- */
-  /* A box that never moves does not look like it can be moved. It drifts until
-     the first interaction and then stays where it is put. Off entirely under
-     prefers-reduced-motion, and paused off-screen. */
+  /* ------------------------------------------------------- intro + idle -- */
+  /* One full turn on arrival, showing all four sides, then a slow sway left to
+     right for as long as nobody touches it. The spin is what tells you the box
+     is an object rather than a picture; the sway keeps saying it afterwards.
+
+     Both are off under prefers-reduced-motion, and both stop for good on the
+     first interaction. The sway pauses off-screen — it is pure battery there. */
 
   if (!reduced) {
     var visible = true;
@@ -109,19 +113,47 @@
       }, { threshold: 0 }).observe(root);
     }
 
-    var t0 = null;
-    var base = ry;
-    var loop = function (t) {
+    var base = ry;                 /* the resting angle the sway oscillates about */
+    var SPIN_MS = 2200;
+    var SWAY_MS = 2600;
+    var SWAY_DEG = 13;
+
+    /* Ease out from a fast start: the box is already moving when you notice it,
+       and it arrives rather than stops. */
+    var easeOut = function (p) { return 1 - Math.pow(1 - p, 3); };
+
+    var start = null;
+    var spun = false;
+
+    var frame = function (t) {
       if (touched) return;
-      if (t0 === null) t0 = t;
-      if (visible) {
-        /* A slow sway, not a spin: enough to read as interactive. */
-        ry = base + Math.sin((t - t0) / 2600) * 13;
+      if (start === null) start = t;
+      var elapsed = t - start;
+
+      /* Hold the spin until the box has actually been seen. Deep-linking to
+         #game, or loading with the tab in the background, would otherwise spend
+         the one arrival moment the box gets on an empty screen. */
+      if (!spun && !visible) { start = null; idle = requestAnimationFrame(frame); return; }
+
+      if (!spun) {
+        var p = Math.min(elapsed / SPIN_MS, 1);
+        /* A full 360 back to where it started, so the spin cannot leave the
+           box facing away from the reader if it is interrupted. */
+        ry = base - 360 * (1 - easeOut(p));
+        apply();
+        if (p >= 1) { spun = true; start = t; ry = base; }
+      } else if (visible) {
+        ry = base + Math.sin((t - start) / SWAY_MS) * SWAY_DEG;
         apply();
       }
-      idle = requestAnimationFrame(loop);
+
+      idle = requestAnimationFrame(frame);
     };
-    idle = requestAnimationFrame(loop);
+
+    /* The 480ms transition in CSS is there to smooth a keyboard step. Against a
+       per-frame animation it only adds lag, so it is off while this runs. */
+    root.classList.add('is-animating');
+    idle = requestAnimationFrame(frame);
   }
 
   /* A hint, injected so it never appears without the behaviour it describes. */

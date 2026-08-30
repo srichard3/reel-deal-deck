@@ -2342,6 +2342,9 @@ html:not(.no-js) .tuck__box { cursor: grab; }
           user-select: none;
 }
 .tuck.is-dragging .tuck__box { transition: none; cursor: grabbing; }
+/* The intro spin and the sway are driven frame by frame; a transition on top of
+   that is just lag. box.js removes this the moment a reader takes over. */
+.tuck.is-animating .tuck__box { transition: none; }
 .tuck__box:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 12px; }
 
 .tuck__face {
