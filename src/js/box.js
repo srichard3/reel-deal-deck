@@ -28,6 +28,16 @@
   var dragging = false, touched = false, id = null;
   var lastX = 0, lastY = 0, idle = 0;
 
+  /* Throw physics. vx is degrees of yaw per millisecond — the same unit the
+     drag produces, so the box leaves your finger at exactly the speed it was
+     moving under it. Horizontal only: the vertical tilt is clamped to a narrow
+     band and a thrown tilt would just slam into the stop. */
+  var vx = 0, lastMoveT = 0, flingId = 0;
+  var FRICTION = 0.9965;   /* per ms — about 1.2s from a firm flick to rest */
+  var MIN_V = 0.0015;      /* below this it is not moving, it is drifting */
+  var MAX_V = 2.0;         /* cap a violent flick at ~2000 deg/s */
+  var STALE_MS = 90;       /* pause before releasing = a place, not a throw */
+
   /* Tipping further than this shows the box from underneath, where there is
      nothing printed but a glue flap. */
   var RX_MIN = -46, RX_MAX = 34;
@@ -51,9 +61,17 @@
      the browser trying to drag a panel image out of the page. */
   box.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
+  function stopFling() {
+    if (flingId) { cancelAnimationFrame(flingId); flingId = 0; }
+    root.classList.remove('is-animating');
+    vx = 0;
+  }
+
   box.addEventListener('pointerdown', function (e) {
+    stopFling();                     /* catching a spinning box stops it */
     dragging = true; id = e.pointerId;
     lastX = e.clientX; lastY = e.clientY;
+    lastMoveT = e.timeStamp || performance.now();
     stopIdle();
     root.classList.add('is-dragging');
     if (box.setPointerCapture) { try { box.setPointerCapture(id); } catch (err) {} }
@@ -62,10 +80,19 @@
   box.addEventListener('pointermove', function (e) {
     if (!dragging || e.pointerId !== id) return;
     e.preventDefault();
-    ry += (e.clientX - lastX) * 0.55;
+    var now = e.timeStamp || performance.now();
+    var dt = Math.max(now - lastMoveT, 1);
+    var dRy = (e.clientX - lastX) * 0.55;
+
+    ry += dRy;
     rx -= (e.clientY - lastY) * 0.35;
     rx = Math.max(RX_MIN, Math.min(RX_MAX, rx));
-    lastX = e.clientX; lastY = e.clientY;
+
+    /* Weighted toward the newest sample but not equal to it: one 1ms frame
+       with a few pixels in it would otherwise read as an enormous throw. */
+    vx = vx * 0.6 + (dRy / dt) * 0.4;
+
+    lastX = e.clientX; lastY = e.clientY; lastMoveT = now;
     apply();
   });
 
@@ -73,6 +100,27 @@
     if (!dragging || (e && e.pointerId !== id)) return;
     dragging = false;
     root.classList.remove('is-dragging');
+
+    /* Letting go after holding still is placing the box, not throwing it. */
+    var now = (e && e.timeStamp) || performance.now();
+    if (now - lastMoveT > STALE_MS) vx = 0;
+    vx = Math.max(-MAX_V, Math.min(MAX_V, vx));
+    if (reduced || Math.abs(vx) < MIN_V) { vx = 0; return; }
+
+    root.classList.add('is-animating');   /* frame-driven: no CSS transition */
+    var prev = null;
+    var glide = function (t) {
+      if (prev === null) prev = t;
+      /* Clamp dt so a dropped frame cannot teleport the box. */
+      var dt = Math.min(t - prev, 50);
+      prev = t;
+      ry += vx * dt;
+      vx *= Math.pow(FRICTION, dt);
+      apply();
+      if (Math.abs(vx) > MIN_V) flingId = requestAnimationFrame(glide);
+      else stopFling();
+    };
+    flingId = requestAnimationFrame(glide);
   }
   box.addEventListener('pointerup', release);
   box.addEventListener('pointercancel', release);
@@ -93,6 +141,7 @@
     }
     if (!handled) return;
     e.preventDefault();
+    stopFling();
     stopIdle();
     apply();
   });
