@@ -28,6 +28,8 @@
   var elMeta = root.querySelector('[data-flash-meta]');
   var elText = root.querySelector('[data-flash-text]');
   var elLink = root.querySelector('[data-flash-link]');
+  var artFront = root.querySelector('[data-flash-art-front]');
+  var artBack = root.querySelector('[data-flash-art-back]');
   if (!card || !elName || !elImit) return;
 
   /* applyBase() rewrites src/href attributes but not JSON string values, so the
@@ -64,6 +66,13 @@
     if (c.cat) bits.push(c.cat);
     if (c.sizes) bits.push(c.sizes);
     elMeta.textContent = bits.join(' · ');
+
+    /* Both sides show the same file. The prompt side is cropped in CSS so the
+       printed line — which says what the fly imitates — is off the bottom;
+       flipping shows the whole card. Decorative on both: the name, the answer
+       and the sizes are all real text beside it. */
+    if (artFront) { artFront.src = BASE + c.img + '-400.webp'; artFront.alt = ''; }
+    if (artBack) { artBack.src = BASE + c.img + '-400.webp'; artBack.alt = 'The ' + c.name + ' card'; }
 
     elText.textContent = c.text || '';
     elLink.setAttribute('href', BASE + '/flies/' + c.slug + '/');

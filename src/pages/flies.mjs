@@ -200,6 +200,17 @@ export default function ({ site, flies, posts }) {
         <span class="hub__go" aria-hidden="true">Open the guide &rarr;</span>
       </a>
     </li>
+    <li class="hub__door">
+      <a class="hub__link" href="#flashcards">
+        <span class="hub__index" aria-hidden="true">Q&#9829;</span>
+        <span class="hub__title">Flashcards</span>
+        <span class="hub__text">
+          The fly on the front, what it imitates on the back. The thing Ken went
+          looking for and could not find, which is why the deck exists at all.
+        </span>
+        <span class="hub__go" aria-hidden="true">Test yourself &rarr;</span>
+      </a>
+    </li>
   </ul>
 
   <!-- Deliberately not a third door. The two above are a fork — flies, or the
@@ -212,42 +223,6 @@ export default function ({ site, flies, posts }) {
   </p>
 </div>
 
-<!-- =========================================================== FLASHCARDS ==
-     The deck's own premise, free: a name on the front, what it imitates on the
-     back. No JS means no flip, so the card renders with both sides shown and
-     the controls never appear. -->
-<section class="section flash-section" id="flashcards" aria-labelledby="flash-h">
-  <div class="wrap wrap--narrow">
-    <p class="eyebrow">Flashcards</p>
-    <h2 class="h2" id="flash-h">Learn them the way the deck teaches them</h2>
-    <p class="lede flash__lede">
-      Ken went looking for fly-fishing flashcards and could not find a set, which is
-      how the deck happened. Here is that, free: the name on the front, what it
-      imitates on the back. The whole deck, in whatever order you like.
-
-      <!-- No count. The library carries the bonus card as well as the 54, and
-           stating a total here would contradict the figure on the tuck box —
-           the same reason the page head above states neither. -->
-    </p>
-
-    <div class="flash" data-flash>
-      <div class="flash__card" data-flash-card>
-        <div class="flash__side flash__side--front">
-          <p class="flash__index" data-flash-idx aria-hidden="true"></p>
-          <p class="flash__name" data-flash-name></p>
-          <p class="flash__cat" data-flash-cat></p>
-          <p class="flash__prompt">What does it imitate?</p>
-        </div>
-        <div class="flash__side flash__side--back">
-          <p class="flash__imitates" data-flash-imitates></p>
-          <p class="flash__meta" data-flash-meta></p>
-          <p class="flash__text" data-flash-text></p>
-          <p class="flash__more"><a href="/flies/" data-flash-link>Read the full page &rarr;</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <div class="wrap library" id="the-flies">
   <form class="library-filters" data-fly-filter hidden>
@@ -311,6 +286,50 @@ export default function ({ site, flies, posts }) {
 </div>
 
 ${virtualGuide(posts)}
+
+
+<!-- =========================================================== FLASHCARDS ==
+     The prompt shows the card with its bottom third cropped off, because that
+     is where the printed line saying what the fly imitates lives — the same
+     crop the homepage game uses, for the same reason. Flipping restores the
+     full card. No JS means no flip, so both sides render and the controls
+     never appear. -->
+<section class="section section--sunk flash-section" id="flashcards" aria-labelledby="flash-h">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow">Flashcards</p>
+    <h2 class="h2" id="flash-h">Learn them the way the deck teaches them</h2>
+    <p class="lede flash__lede">
+      Ken went looking for fly-fishing flashcards and could not find a set, which is
+      how the deck happened. Here is that, free: the fly on the front, what it
+      imitates on the back. The whole deck, in whatever order you like.
+    </p>
+
+    <div class="flash" data-flash>
+      <div class="flash__card" data-flash-card>
+        <div class="flash__side flash__side--front">
+          <figure class="flash__art flash__art--crop">
+            <img data-flash-art-front src="/cards/adams-400.webp" width="400" height="559"
+                 alt="" decoding="async" loading="lazy">
+          </figure>
+          <p class="flash__index" data-flash-idx aria-hidden="true"></p>
+          <p class="flash__name" data-flash-name></p>
+          <p class="flash__cat" data-flash-cat></p>
+          <p class="flash__prompt">What does it imitate?</p>
+        </div>
+        <div class="flash__side flash__side--back">
+          <figure class="flash__art">
+            <img data-flash-art-back src="/cards/adams-400.webp" width="400" height="559"
+                 alt="" decoding="async" loading="lazy">
+          </figure>
+          <p class="flash__imitates" data-flash-imitates></p>
+          <p class="flash__meta" data-flash-meta></p>
+          <p class="flash__text" data-flash-text></p>
+          <p class="flash__more"><a href="/flies/" data-flash-link>Read the full page &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section section--sunk">
   <div class="wrap wrap--narrow text-center stack" style="--gap:var(--s-4)">

@@ -2438,9 +2438,12 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   padding: 0;
   list-style: none;
 }
+/* Explicit counts, not auto-fit. With exactly three doors auto-fit would let
+   the third stretch to a double-width card whenever only two tracks fit. */
 @media (min-width: 46rem) {
-  .hub { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5); }
+  .hub { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); }
 }
+@media (min-width: 64rem) { .hub { gap: var(--s-5); } }
 
 .hub__door { margin: 0; }
 
@@ -2569,6 +2572,36 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 .flash--live.is-shown .flash__side--back { display: grid; gap: var(--s-3); }
 
 .flash__card:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 3px; }
+
+.flash__art {
+  margin: 0 auto var(--s-3);
+  width: min(11rem, 60%);
+}
+
+.flash__art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-card-art);
+  background-color: #fff;
+  box-shadow: var(--shadow-2);
+}
+
+/* The prompt side hides the bottom of the card, where the printed line says
+   what the fly imitates. 80% of the height is the same crop the homepage game
+   uses; the name and the illustration stay, the answer does not. */
+.flash__art--crop {
+  /* 80% of the card's 400x559, so the box is shorter than the image inside it
+     and overflow does the cropping. No explicit height: that would beat the
+     aspect-ratio and collapse the figure. */
+  aspect-ratio: 400 / 447;
+  overflow: hidden;
+  border-radius: var(--r-card-art);
+}
+.flash__art--crop img {
+  border-radius: var(--r-card-art) var(--r-card-art) 0 0;
+  box-shadow: none;
+}
 
 .flash__index {
   margin: 0;
