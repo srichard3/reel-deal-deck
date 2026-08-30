@@ -19,6 +19,31 @@ export const meta = {
 };
 
 
+
+/* Flashcards. The deck exists because Ken went looking for fly-fishing
+   flashcards and could not find a set, so the free version of it belongs here.
+   Name on the front, what it imitates on the back — that is the association the
+   printed deck is teaching, and the one a reader wants to practise. */
+function flashData(list) {
+  const SUIT = { hearts: '\u2665', diamonds: '\u2666', spades: '\u2660', clubs: '\u2663' };
+  const cards = list
+    .filter((f) => f.slug && f.name && f.imitates)
+    .map((f) => ({
+      slug: f.slug,
+      name: f.name,
+      cat: f.cardCategory || '',
+      /* rank+suit is the mnemonic the physical deck gives you, so it is on the
+         prompt side too. Jokers have no rank; they get an empty index. */
+      idx: f.card && f.card.rank && SUIT[f.card.suit] ? f.card.rank + SUIT[f.card.suit] : '',
+      suit: (f.card && f.card.suit) || '',
+      imitates: f.imitates,
+      sizes: f.sizes || '',
+      text: String(f.cardText || '').replace(/\s*\[[^\]]*\]\s*$/, '').trim(),
+      img: f.image,
+    }));
+  return JSON.stringify({ cards }).replace(/</g, '\\u003c');
+}
+
 /* The Virtual Guide now lives here rather than in the top navigation, so this
    page is its main door. Four widest questions plus the topic list, then the
    link through to all of them. */
@@ -180,12 +205,49 @@ export default function ({ site, flies, posts }) {
   <!-- Deliberately not a third door. The two above are a fork — flies, or the
        guide — and a third card would turn a choice into a menu. This is the
        aside it actually is, but up here where someone who already knows their
-       fly is missing does not have to scroll 55 cards to say so. -->
+       fly is missing does not have to scroll the whole list to say so. -->
   <p class="hub__aside">
     Know one we missed? <a href="/suggest/">Tell us what belongs in Volume 2</a> &mdash;
     the next deck is not written yet.
   </p>
 </div>
+
+<!-- =========================================================== FLASHCARDS ==
+     The deck's own premise, free: a name on the front, what it imitates on the
+     back. No JS means no flip, so the card renders with both sides shown and
+     the controls never appear. -->
+<section class="section flash-section" id="flashcards" aria-labelledby="flash-h">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow">Flashcards</p>
+    <h2 class="h2" id="flash-h">Learn them the way the deck teaches them</h2>
+    <p class="lede flash__lede">
+      Ken went looking for fly-fishing flashcards and could not find a set, which is
+      how the deck happened. Here is that, free: the name on the front, what it
+      imitates on the back. The whole deck, in whatever order you like.
+
+      <!-- No count. The library carries the bonus card as well as the 54, and
+           stating a total here would contradict the figure on the tuck box —
+           the same reason the page head above states neither. -->
+    </p>
+
+    <div class="flash" data-flash>
+      <div class="flash__card" data-flash-card>
+        <div class="flash__side flash__side--front">
+          <p class="flash__index" data-flash-idx aria-hidden="true"></p>
+          <p class="flash__name" data-flash-name></p>
+          <p class="flash__cat" data-flash-cat></p>
+          <p class="flash__prompt">What does it imitate?</p>
+        </div>
+        <div class="flash__side flash__side--back">
+          <p class="flash__imitates" data-flash-imitates></p>
+          <p class="flash__meta" data-flash-meta></p>
+          <p class="flash__text" data-flash-text></p>
+          <p class="flash__more"><a href="/flies/" data-flash-link>Read the full page &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <div class="wrap library" id="the-flies">
   <form class="library-filters" data-fly-filter hidden>
@@ -269,6 +331,9 @@ ${virtualGuide(posts)}
     </p>
   </div>
 </section>
+
+<script type="application/json" id="flash-data">${flashData(flies)}</script>
+<script src="/js/flash.js" defer></script>
 
 <script type="application/json" id="fly-index">${JSON.stringify(index).replace(/</g, '\\u003c')}</script>
 <script src="/js/fly-filter.js" defer></script>`;

@@ -2528,3 +2528,135 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   font-size: var(--t-sm);
   color: var(--c-text-muted);
 }
+
+/* ==========================================================================
+   FLY-BRARY FLASHCARDS
+   Name on the front, what it imitates on the back. Not a 3D flip: the two
+   sides hold different amounts of text, and a fixed-height face that fits the
+   longest card text is mostly empty for the shortest. They cross-fade in place
+   instead, and the card grows to whatever is on it.
+
+   Progressive: without flash.js the controls are never injected and both sides
+   render stacked, so the information is all still there.
+   ========================================================================== */
+
+.flash-section { padding-block: var(--s-7); }
+.flash__lede { max-width: 54ch; }
+
+.flash {
+  margin-block-start: var(--s-6);
+}
+
+.flash__card {
+  position: relative;
+  display: grid;
+  min-height: 15rem;
+  padding: var(--s-6) var(--s-5);
+  text-align: center;
+  align-content: center;
+  gap: var(--s-2);
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-1);
+}
+
+/* Only once flash.js is here: before that both sides show, which is the
+   no-JS fallback rather than a broken flip. */
+.flash--live .flash__card { cursor: pointer; }
+.flash--live .flash__side--back { display: none; }
+.flash--live.is-shown .flash__side--front { display: none; }
+.flash--live.is-shown .flash__side--back { display: grid; gap: var(--s-3); }
+
+.flash__card:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 3px; }
+
+.flash__index {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: var(--t-md);
+  letter-spacing: var(--ls-index);
+  color: var(--c-green);
+}
+/* Hearts and diamonds are green on this deck and spades and clubs are brown —
+   the same rule the real cards follow. */
+.flash__index[data-suit="spades"],
+.flash__index[data-suit="clubs"] { color: var(--c-bark); }
+
+.flash__name {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: var(--t-xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+  text-wrap: balance;
+}
+
+.flash__cat {
+  margin: 0;
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  color: var(--c-text-faint);
+}
+
+.flash__prompt {
+  margin: var(--s-4) 0 0;
+  font-size: var(--t-sm);
+  color: var(--c-text-muted);
+}
+/* The prompt is a nudge for a mouse user and noise for a screen reader, which
+   has already been told the card is a button that expands. */
+.flash--live .flash__prompt { opacity: .75; }
+
+.flash__imitates {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  line-height: var(--lh-snug);
+  color: var(--c-green);
+  text-wrap: balance;
+}
+
+.flash__meta {
+  margin: 0;
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  color: var(--c-text-faint);
+}
+
+.flash__text {
+  margin: 0 auto;
+  max-width: 44ch;
+  font-size: var(--t-sm);
+  line-height: var(--lh-body);
+  color: var(--c-text-muted);
+}
+
+.flash__more { margin: 0; font-size: var(--t-sm); }
+
+.flash__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-3);
+  margin-block-start: var(--s-4);
+}
+
+.flash__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-4);
+  margin-block-start: var(--s-4);
+}
+
+.flash__count {
+  margin: 0;
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
