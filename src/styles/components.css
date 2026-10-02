@@ -2749,6 +2749,14 @@ html:not(.no-js) .tuck__box { cursor: grab; }
    foot. clip-path clips hit-testing as well as paint, which is what makes this
    exact rather than approximate.
 
+   THE CLIP LIVES ON A PSEUDO-ELEMENT, and that is not a style choice.
+   clip-path clips an element's DESCENDANTS as well as itself, so putting it on
+   .fan__link clipped the picture inside it and the whole fan rendered as
+   slivers. .fan__link::after is a child of nothing: it carries the wedge and
+   the pointer events, the link itself is pointer-events:none at full card
+   width, and the art inside is untouched. Hitting a pseudo-element still
+   triggers :hover and still activates the link it belongs to.
+
    It has to be exact. A rectangular strip wide enough to cover the top would
    overlap its neighbour at the bottom — and the moment a card is hovered its
    z-index jumps to 60, so that overlap would start winning hits that belong to
@@ -2843,16 +2851,27 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 .fan__link {
   position: relative;
   display: block;
-  inline-size: var(--fan-sliver);
+  inline-size: 100%;
   block-size: 100%;
-  pointer-events: auto;
-  /* Clips the hit area, not just the paint — this is the whole mechanism. */
-  clip-path: polygon(0 0, 100% 0, var(--fan-sliver-foot) 100%, 0 100%);
+  /* The box hits nothing; its ::after does. */
+  pointer-events: none;
   outline-offset: 3px;
 }
 
+/* The wedge: the hit area, and the only one. Clipped here rather than on the
+   link because clip-path clips descendants — see the note above. */
+.fan__link::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: var(--fan-sliver);
+  clip-path: polygon(0 0, 100% 0, var(--fan-sliver-foot) 100%, 0 100%);
+  pointer-events: auto;
+}
+
 /* Nothing covers the last card, so all of it is visible and all of it hits. */
-.fan__card:last-child .fan__link {
+.fan__card:last-child .fan__link::after {
   inline-size: var(--fan-cw);
   clip-path: none;
 }

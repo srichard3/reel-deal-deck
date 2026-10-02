@@ -109,7 +109,7 @@ function retailCards(site) {
       <article class="buy-tier${t.featured ? ' buy-tier--featured' : ''}">
         ${t.flag ? `<p class="buy-tier__flag">${esc(t.flag)}</p>` : ''}
         <p class="buy-tier__qty">${esc(t.qty)}</p>
-        <h3 class="buy-tier__name">${esc(t.name)}</h3>
+        <h2 class="buy-tier__name">${esc(t.name)}</h2>
         <p class="buy-tier__price" data-price="${t.price}">${money(t.price)}</p>
         <p class="buy-tier__per">${esc(t.per)}</p>
         <p class="buy-tier__body">${esc(t.body)}</p>
@@ -128,7 +128,6 @@ export default function deckPage({ site }) {
   const per = r.perDeck ?? 19.95;
   const ship = r.shipping ?? 6.95;
   const from = r.freeShippingFromDecks ?? 2;
-  const wholesale = (pr.wholesale || {}).tiers || [];
   const shop = orderState(site);
 
   /* `meta` is a module-level constant, so `site` is not in scope up there.
@@ -207,7 +206,7 @@ export default function deckPage({ site }) {
 
       <div class="cluster">
         ${orderCta(site)}
-        <a class="btn btn--ghost btn--lg" href="#order">See the prices</a>
+        <a class="btn btn--ghost btn--lg" href="/wholesale/">Wholesale</a>
       </div>
     </div>
   </div>
@@ -220,14 +219,9 @@ export default function deckPage({ site }) {
 <section class="section section--sunk" id="order">
   <div class="wrap">
     <p class="eyebrow">Price</p>
-    <h2 class="h2">${money(per)} a deck. Only the postage changes.</h2>
-    <p class="lede">
-      The second deck costs us what the first one did, so there is no quantity discount to invent.
-      What does change is the postage: one deck carries it, ${esc(inWords(from))} or more and we cover it.
-    </p>
 
     <!-- Confirmed by Ken and Audrey: ${money(per)} retail, ${money(ship)} shipping on a single deck,
-         free from ${esc(from)} up, and the wholesale per-deck figures below.
+         free from ${esc(from)} up. The wholesale figures live on /wholesale/.
 
          TODO-CONFIRM: none of these has been checked against real per-unit
          COGS, carton weight and fulfilment. They are prices, not yet margins.
@@ -238,38 +232,6 @@ export default function deckPage({ site }) {
 
     <div class="buy-tiers">
 ${retailCards(site)}
-    </div>
-  </div>
-</section>
-
-<!-- ========================================================= WHOLESALE == -->
-<!-- This used to be a sentence at the bottom of the price panel, which is
-     where the reader most likely to spend $1,291.68 was least likely to look.
-     It is a band of its own now, with both figures and the unit sizes on it,
-     because "how many is a brick" is the first question a buyer has. -->
-<section class="section section--dark" id="wholesale" aria-labelledby="ws-h">
-  <div class="wrap">
-    <div class="section-head section-head--split">
-      <div>
-        <p class="eyebrow">Trade</p>
-        <h2 class="h2" id="ws-h">Buying for a shop, a lodge or a boat?</h2>
-        <p class="lede">
-          Wholesale is sold by the whole unit, at or above keystone against the ${money(per)} shelf price.
-        </p>
-      </div>
-      <p><a class="btn btn--primary btn--lg" href="/wholesale/">Wholesale pricing &amp; terms</a></p>
-    </div>
-
-    <div class="ws-units">
-${(site.pricing.units || []).filter((u) => u.decks > 1).map((u) => {
-  const tier = wholesale.find((t) => t.id === u.id);
-  return `      <div class="ws-unit">
-        <p class="ws-unit__name">${esc(u.name)}</p>
-        <p class="ws-unit__count">${esc(u.decks)} decks${u.bricks ? ` &middot; ${esc(u.bricks)} bricks` : ''}</p>
-        ${tier ? `<p class="ws-unit__price">${money(tier.perDeck)} <span>a deck</span></p>
-        <p class="ws-unit__total">${money(tier.perDeck * u.decks)} the ${esc(u.name.toLowerCase())}</p>` : ''}
-      </div>`;
-}).join('\n')}
     </div>
   </div>
 </section>

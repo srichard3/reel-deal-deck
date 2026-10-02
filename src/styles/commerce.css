@@ -821,6 +821,15 @@
   background: color-mix(in srgb, currentColor 6%, transparent);
 }
 
+/* The same cards on a light panel, where currentColor is body text and a
+   hairline of it reads as a heavy outline rather than a card edge. */
+.ws-units--light .ws-unit {
+  border-color: var(--c-border);
+  background: var(--c-surface);
+  box-shadow: var(--shadow-1);
+}
+.ws-units--light .ws-unit__price { color: var(--c-green-deep, var(--c-green)); }
+
 .ws-unit__name {
   margin: 0;
   font-family: var(--f-display);

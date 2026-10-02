@@ -91,282 +91,108 @@
     <div class="cluster">
       <a class="btn btn--primary btn--lg" href="/wholesale/apply/">Open a wholesale account</a>
       <a class="btn btn--ghost btn--lg" href="#wholesale-enquiry">Ask a question first</a>
-      <a class="btn btn--ghost btn--lg" href="/deck/">See the product page</a>
     </div>
   </div>
 </section>
 
-<!-- ================================================= WHY IT SELLS == -->
-<section class="section section--sunk">
+<!-- ========================================== PRICING AND INFORMATION == -->
+<!-- One section, not five. This page used to run the sales pitch, the buyer
+     types, a margin table, a terms list and an "open an account" band as
+     separate stops; a trade buyer wants the number and the unit, and the rest
+     was retail copy wearing a tie.
+
+     Every figure is a token from site.pricing in data/site.json, which /deck/
+     reads too. Never type a price into this file — they drifted apart once. -->
+<section class="section section--sunk" id="pricing">
   <div class="wrap">
-    <p class="eyebrow">At the counter</p>
-    <h2 class="h2">Why it moves off a shelf</h2>
+    <p class="eyebrow">Trade pricing</p>
+    <h2 class="h2">Sold by the unit, never the loose deck</h2>
     <p class="lede">
-      Every shop already knows what a slow-turning SKU feels like. This is the other kind.
+      Suggested retail is ${{ site.pricing.retail.perDeck }} a deck, so a brick lands you on keystone
+      and a master case lands you above it.
     </p>
 
-    <div class="buy-why">
-      <div class="buy-why__item">
-        <h3 class="buy-why__head">It sits in the impulse band</h3>
-        <p class="buy-why__body">
-          At a ${{ site.pricing.retail.perDeck }} shelf price it is an add-on, not a decision. Customers who came in for leader
-          material do not go home to think about it. That is the single most important thing about
-          the price, and it is why we did not put it at $39.
-        </p>
+    <div class="ws-units ws-units--light">
+      <div class="ws-unit">
+        <p class="ws-unit__name">Brick</p>
+        <p class="ws-unit__count">12 decks</p>
+        <p class="ws-unit__price">${{ site.pricing.wholesale.tiers.0.perDeck }} <span>a deck</span></p>
+        <p class="ws-unit__total">$119.64 the brick &middot; 50% margin</p>
       </div>
-      <div class="buy-why__item">
-        <h3 class="buy-why__head">It is gift-ready with no work from you</h3>
-        <p class="buy-why__body">
-          Flat, light, sized like a deck of cards, no sizing, no returns for fit, no batteries and no
-          expiry. November through December it solves the same problem for every non-angler who walks
-          into your shop looking lost.
-        </p>
-      </div>
-      <div class="buy-why__item">
-        <h3 class="buy-why__head">It is a conversation piece</h3>
-        <p class="buy-why__body">
-          Original hand-drawn flies with what each one imitates. Customers open the box on the counter
-          and start arguing about patterns. That conversation is what actually sells the second deck,
-          and it costs your staff nothing to start.
-        </p>
-      </div>
-      <div class="buy-why__item">
-        <h3 class="buy-why__head">It does not go stale</h3>
-        <p class="buy-why__body">
-          No seasons, no model years, no hatch chart to date it. A deck that does not sell in March
-          is worth exactly the same in October, which makes carrying two cases a much easier decision
-          than carrying two of anything else.
-        </p>
-      </div>
-      <div class="buy-why__item">
-        <h3 class="buy-why__head">It shelves anywhere</h3>
-        <p class="buy-why__body">
-          Counter tray, register spinner, gift wall, or a stack next to the fly bins. A brick of twelve
-          takes roughly the footprint of one fly box, which is the cheapest inventory real estate in the shop.
-        </p>
-      </div>
-      <div class="buy-why__item">
-        <h3 class="buy-why__head">It teaches, which sells flies</h3>
-        <p class="buy-why__body">
-          Someone who understands what a Pheasant Tail imitates buys more of them. A deck that makes
-          beginners literate about patterns is not competing with your fly bins, it is feeding them.
-        </p>
+      <div class="ws-unit">
+        <p class="ws-unit__name">Master case</p>
+        <p class="ws-unit__count">144 decks &middot; 12 bricks</p>
+        <p class="ws-unit__price">${{ site.pricing.wholesale.tiers.1.perDeck }} <span>a deck</span></p>
+        <p class="ws-unit__total">$1,291.68 the case &middot; 55% margin</p>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ================================================= WHO BUYS IT == -->
-<section class="section wrap">
-  <p class="eyebrow">Accounts</p>
-  <h2 class="h2">Who we are opening accounts for</h2>
+    <!-- The two unit totals and the margins are arithmetic on the per-deck
+         figures above, not claims: 12 x 9.97 = 119.64 and 9.98/19.95 = 50.0%;
+         144 x 8.97 = 1291.68 and 10.98/19.95 = 55.0%. Recompute both if a
+         price moves.
 
-  <ul class="ws-audience">
-    <li class="ws-audience__item">
-      <h3 class="ws-audience__name">Fly shops</h3>
-      <p class="ws-audience__body">
-        Counter and gift-wall placement. Start with two cases, reorder in twelves. The customer who
-        buys one in June is the customer who buys four in December.
-      </p>
-    </li>
-    <li class="ws-audience__item">
-      <h3 class="ws-audience__name">Guide services</h3>
-      <p class="ws-audience__body">
-        End-of-day gift, client thank-you, or a branded add-on to a full-day trip. Cheaper than a hat
-        and considerably more likely to be kept.
-      </p>
-    </li>
-    <li class="ws-audience__item">
-      <h3 class="ws-audience__name">Lodges and outfitters</h3>
-      <p class="ws-audience__body">
-        In the room, in the welcome pack, or in the pro shop. Guests who are new to the water use it
-        the first evening, which is the point.
-      </p>
-    </li>
-    <li class="ws-audience__item">
-      <h3 class="ws-audience__name">Trout Unlimited chapters</h3>
-      <p class="ws-audience__body">
-        Banquet tables, raffles and membership drives. A portion of every deck goes to Trout Unlimited,
-        so it is on-mission as well as on-budget.
-      </p>
-      <!-- TODO-CONFIRM: whether chapters get a different rate than trade
-           accounts, and whether the TU contribution is per-deck or an
-           annual figure. data/site.json still has the commitment as a TODO. -->
-    </li>
-    <li class="ws-audience__item">
-      <h3 class="ws-audience__name">Corporate and brand gifting</h3>
-      <p class="ws-audience__body">
-        Outdoor brands, dealer incentives, conference gifts and client thank-yous. Larger quantities
-        than the table below &mdash; tell us the number and the date and we will quote it.
-      </p>
-      <!-- TODO-CONFIRM: is custom printing (a co-branded tuck box or an
-           added shop card) possible with USPCC at these volumes, and at what
-           minimum? Do not offer customisation on this page until confirmed. -->
-    </li>
-    <li class="ws-audience__item">
-      <h3 class="ws-audience__name">Museums, clubs and events</h3>
-      <p class="ws-audience__body">
-        Casting clubs, fishing museums, expo booths and festival merch tables. Small orders welcome
-        &mdash; the minimum is deliberately low.
-      </p>
-    </li>
-  </ul>
-</section>
+         TODO-CONFIRM: neither per-deck figure has been checked against real
+         USPCC per-unit COGS, master carton weight or freight, so the
+         contribution margin on the 144-deck tier is still unproven on our side.
+         TODO-CONFIRM: whether a MAP policy applies. It should, or accounts get
+         undercut by our own direct site and stop reordering. -->
 
-<!-- ================================================= PRICING TABLE == -->
-<section class="section section--sunk">
-  <div class="wrap">
-    <p class="eyebrow">Pricing</p>
-    <h2 class="h2">Case pricing and margin</h2>
-    <p class="lede">
-      Two units and two prices. Suggested retail is ${{ site.pricing.retail.perDeck }} a deck, so a brick lands you on
-      keystone and a master case lands you above it. There is no sliding scale in between, because a
-      sliding scale is a negotiation and we would rather publish the number.
-    </p>
-
-    <!-- The per-deck figures and the unit sizes are Ken and Audrey's, and they
-         are read from site.pricing.wholesale in data/site.json so this page
-         and /deck/ cannot drift apart. The margin column is arithmetic on
-         those two numbers, not a claim: 9.98/19.95 = 50.0%, 10.98/19.95 = 55.0%.
-
-         TODO-CONFIRM: neither figure has been checked against real USPCC
-         per-unit COGS, master carton weight or freight, so the contribution
-         margin on the 144-deck tier is still unproven on our side.
-         TODO-CONFIRM: whether a MAP policy applies. It should, or accounts
-         get undercut by our own direct site and stop reordering. -->
-
-    <div class="ws-tablewrap">
-      <table class="ws-table">
-        <caption>
-          Trade pricing, per deck, sold by the whole unit. Freight and lead time are below.
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Unit</th>
-            <th scope="col">Decks</th>
-            <th scope="col">Your cost / deck</th>
-            <th scope="col">Unit cost</th>
-            <th scope="col">Suggested retail</th>
-            <th scope="col">Your margin</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Brick</th>
-            <td>12</td>
-            <td data-price="9.97">$9.97</td>
-            <td data-price="119.64">$119.64</td>
-            <td data-price="19.95">$19.95</td>
-            <td>50%</td>
-          </tr>
-          <tr>
-            <th scope="row">Master case</th>
-            <td>144 (12 bricks)</td>
-            <td data-price="8.97">$8.97</td>
-            <td data-price="1291.68">$1,291.68</td>
-            <td data-price="19.95">$19.95</td>
-            <td>55%</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="buy-specs" style="margin-block-start:var(--s-7)">
+      <div class="buy-specs__row">
+        <p class="buy-specs__key">Minimum order</p>
+        <p class="buy-specs__val">One brick, 12 decks. Deliberately low &mdash; a first order should be a trial, not a bet.</p>
+      </div>
+      <div class="buy-specs__row">
+        <p class="buy-specs__key">Reorder minimum</p>
+        <p class="buy-specs__val">One brick, 12 decks.</p>
+      </div>
+      <div class="buy-specs__row">
+        <p class="buy-specs__key">Suggested retail</p>
+        <p class="buy-specs__val">
+          ${{ site.pricing.retail.perDeck }}, and that is exactly what we charge on our own site, so no
+          account is undercut by us.
+        </p>
+      </div>
+      <div class="buy-specs__row">
+        <p class="buy-specs__key">The deck</p>
+        <p class="buy-specs__val">
+          {{ site.product.cardCount }} cards, {{ site.product.dimensions }}, on
+          {{ site.product.stock }}. {{ site.product.origin }}.
+        </p>
+      </div>
+      <div class="buy-specs__row">
+        <p class="buy-specs__key">Lead time</p>
+        <p class="buy-specs__val">
+          Not yet published. We would rather quote you a real one in a reply than invent a number on
+          a page. Ask below and you will get the current answer.
+        </p>
+        <!-- TODO-CONFIRM: a real lead time (stock on hand, or print run
+             turnaround plus transit). Never publish an estimate before that. -->
+      </div>
+      <div class="buy-specs__row">
+        <p class="buy-specs__key">Freight &amp; terms</p>
+        <p class="buy-specs__val">
+          To be confirmed with the first accounts. Decks are light and flat, so parcel shipping is
+          realistic well past the master case. No exclusivity is offered or implied at this stage.
+        </p>
+        <!-- TODO-CONFIRM: freight included above a threshold or charged at
+             cost, and prepay vs Net 30 on a first order. -->
+      </div>
     </div>
 
     <p class="cx-note">
-      Want fewer than twelve? That is a retail question, not a wholesale one &mdash; decks are
-      ${{ site.pricing.retail.perDeck }} each on <a href="/deck/#order">the product page</a>, shipping free from two up,
-      and it needs no account.
-    </p>
-  </div>
-</section>
-
-<!-- ================================================= TERMS == -->
-<section class="section wrap">
-  <p class="eyebrow">Terms</p>
-  <h2 class="h2">Case pack, minimums and lead time</h2>
-
-  <div class="ws-terms">
-    <div>
-      <p class="ws-term__key">Case pack</p>
-      <p class="ws-term__val">
-        A brick is 12 decks &mdash; the standard unit playing cards ship in.
-        A master case is 12 bricks, so 144 decks.
-      </p>
-      <!-- TODO-CONFIRM: master carton gross and dimensional weight, for freight. -->
-    </div>
-    <div>
-      <p class="ws-term__key">Minimum opening order</p>
-      <p class="ws-term__val">
-        One brick, 12 decks. Deliberately low &mdash; a first order should be a trial, not a bet.
-      </p>
-    </div>
-    <div>
-      <p class="ws-term__key">Reorder minimum</p>
-      <p class="ws-term__val">One brick, 12 decks.</p>
-    </div>
-    <div>
-      <p class="ws-term__key">Lead time</p>
-      <p class="ws-term__val">
-        Not yet published. We would rather quote you a real one in a reply than invent a number on a
-        page. Ask in the enquiry below and you will get the current answer.
-      </p>
-      <!-- TODO-CONFIRM: a real lead time (stock on hand, or print run
-           turnaround plus transit). Never publish an estimate before that. -->
-    </div>
-    <div>
-      <p class="ws-term__key">Payment terms</p>
-      <p class="ws-term__val">
-        To be confirmed with the first accounts. We are not asking for a deposit, a card, or any
-        payment detail through this page &mdash; retail checkout is separate and hosted.
-      </p>
-      <!-- TODO-CONFIRM: prepay vs Net 30, and whether a first order is
-           prepay-only. Do not publish terms until decided. -->
-    </div>
-    <div>
-      <p class="ws-term__key">Freight</p>
-      <p class="ws-term__val">
-        To be confirmed. Decks are light and flat, so parcel shipping is realistic well past the
-        master carton.
-      </p>
-      <!-- TODO-CONFIRM: freight policy — included above a threshold, or
-           charged at cost? Needs the carton weight above. -->
-    </div>
-    <div>
-      <p class="ws-term__key">Territory</p>
-      <p class="ws-term__val">
-        No exclusivity is offered or implied at this stage.
-      </p>
-    </div>
-    <div>
-      <p class="ws-term__key">Resale price</p>
-      <p class="ws-term__val">
-        We suggest ${{ site.pricing.retail.perDeck }}, and that is exactly what we charge on our own site, so no account is
-        undercut by us.
-      </p>
-      <!-- TODO-CONFIRM: whether a formal MAP policy is adopted, and its
-           wording. Strongly recommended before the first account signs. -->
-    </div>
-  </div>
-</section>
-
-<!-- ================================================= OPEN AN ACCOUNT == -->
-<!-- The account itself is set up by the Netlify function behind
-     /wholesale/apply/ — it creates the Shopify customer, stores the resale
-     permit against it and hands back a cart with their details already in it.
-     The enquiry form below is the other door, for people who want to ask
-     something before they hand over a permit. -->
-<section class="section" id="open-account">
-  <div class="wrap wrap--narrow text-center stack" style="--gap:var(--s-4)">
-    <p class="eyebrow">Accounts</p>
-    <h2 class="h2">Open an account in about two minutes</h2>
-    <p class="lede mx-auto">
-      Your business details and a photo of your resale permit. You are set up straight away, and you
-      land on an order page with your account and shipping address already filled in.
-    </p>
-    <p class="cluster" style="justify-content:center">
       <a class="btn btn--primary btn--lg" href="/wholesale/apply/">Open a wholesale account</a>
     </p>
+
+    <p class="cx-note">
+      Want fewer than twelve? That is a retail question, not a wholesale one &mdash; decks are
+      ${{ site.pricing.retail.perDeck }} each on <a href="/deck/">the product page</a>, shipping free from
+      two up, and it needs no account.
+    </p>
   </div>
 </section>
+
 
 <!-- ================================================= ENQUIRY FORM == -->
 <section class="section section--sunk" id="wholesale-enquiry">
