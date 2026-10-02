@@ -39,10 +39,14 @@ on the open tuck box. The page quotes that card's words in full directly underne
 so the photograph is the proof that they are really printed on it.
 
 ### 2 — The drawings · `/story/`, after the origin story
-**Either orientation.** Ken drawing, or the original artwork for one fly beside the
-finished printed card. **This is the most valuable photograph on the site.** Every
-competitor can claim hand-drawn art. One photograph of the actual pencil work ends
-the argument, and nothing else on the site does that job.
+**Either orientation.** The original artwork for one fly beside the finished
+printed card. **This is the most valuable photograph on the site.** Every
+competitor can claim hand-drawn art. One photograph of the actual pencil work
+ends the argument, and nothing else on the site does that job.
+
+> The cards are hand-drawn but **not by Ken** — a designer drew them. So this
+> slot is the artwork itself, never a photograph of Ken at a drawing board.
+> See `story.artNote` in `data/site.json`.
 
 ### 3 — Packed here · `/story/`, after "Made in the USA"
 **Landscape.** The real shipping operation: stacked decks, padded envelopes, a

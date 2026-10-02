@@ -58,7 +58,18 @@ Both must report **0 errors**. A change can pass one and fail the other.
 attributions that aren't verifiable. Anything unconfirmed ships as a
 `TODO-CONFIRM` HTML comment, never as plausible filler. `npm run check` lists them.
 This includes *charming* details: "he drew them at the kitchen table" was written,
-shipped and removed here because no source says where he drew them.
+shipped and removed here because nothing sourced it.
+
+**The art is hand-drawn and original, and Ken did not draw it.** A designer did.
+The site attributed the artwork to him in six places — `site.founders[0].bio`,
+`site.story.twist`, `/story/` three times and `humans.txt` — and every one was
+wrong. "Hand-drawn", "original", "not photographed" and "drawn one at a time"
+are all still true and all still load-bearing; what was false was whose hand.
+Ken's part is that he went looking for a set, could not buy one, and had it
+made. `/story/` deliberately stops there and does not discuss who drew them.
+Do not re-introduce the attribution from older copy or from
+`docs/VOICE-SOURCE.md`, both of which predate the correction.
+See `story.artNote` in `data/site.json`.
 
 **The voice is warm, and it is sourced.** The site sounds like a father and daughter
 because Ken and Audrey wrote it that way, on the printed info card (`site.voice`) and

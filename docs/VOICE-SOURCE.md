@@ -1,5 +1,11 @@
 # Voice source — Ken and Audrey's own words
 
+> **Before you source anything from this file:** the cards are hand-drawn and
+> original, but **Ken did not draw them** — a designer did. Older copy on this
+> site attributed the artwork to him in six places and all six were corrected.
+> If anything below reads as though he drew them, it does not override that.
+> See `story.artNote` in `data/site.json`.
+
 Everything in this file was written by Ken and Audrey, not by anyone working on this
 site. It exists so that warm copy can be **sourced rather than invented**, which is the
 site's first invariant.

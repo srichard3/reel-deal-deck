@@ -155,22 +155,27 @@ quarterly and retires old versions; the pinned default will age out.
 
 ## 4. Two things to decide, not to discover
 
-### Auto-approval
+### Auto-approval — decided, and on
 
-Everyone who submits is approved immediately and tagged `wholesale`, because
-that is what was asked for. **The resale permit is collected and stored but
-nobody checks it.** A resale certificate is a sales-tax document: auto-approval
-means anyone who uploads any file — a blank page, a photo of a wall — gets trade
-pricing, and potentially a tax-exempt sale, before a human has looked.
+Everyone who submits is approved immediately and tagged `wholesale`. **The
+resale permit is collected and stored but nobody checks it**, so anyone who
+uploads any file gets trade pricing. That trade-off was weighed and accepted:
+speed over screening, while volume is low.
 
-At your volume, approving by hand would take a minute per application and give
-you a say in who stocks the deck.
+Two things follow from it, worth knowing rather than discovering:
 
-**Set `REVIEW_ONLY=1`** and applications are tagged `wholesale-pending` instead.
-The discount segment does not match that tag, so they queue for review and
-nothing else changes — no code, no redeploy. Retag to `wholesale` in Shopify to
-approve. The applicant is told their application is in rather than being sent to
-a cart.
+- A resale certificate is a sales-tax document. Accepting one nobody has looked
+  at is the seller's risk, not the buyer's — worth a word with whoever does the
+  books, not a reason to change the setting.
+- A brick saves someone about $120 against retail, which is enough incentive for
+  a determined non-shop to try it. Spotting that is a matter of glancing at new
+  customers in Shopify now and then, not of changing this.
+
+**If that ever stops being the right trade, it is one variable.** Set
+`REVIEW_ONLY=1` and applications are tagged `wholesale-pending` instead. The
+discount segment does not match that tag, so they queue for review and nothing
+else changes — no code, no redeploy. Retag to `wholesale` in Shopify to approve.
+The applicant is told their application is in rather than being sent to a cart.
 
 ### Abuse
 

@@ -33,7 +33,7 @@ Change it once there and every page follows.
 
 | # | Decision | Who | Source file |
 |---|---|---|---|
-| 0 | **Five photographs.** The shot list, sizes and destinations are in `docs/PHOTO-PLAN.md`. Slot 2, Ken drawing, is the single most valuable image the site could have. | Ken & Audrey | `new assets/photos/` |
+| 0 | **Five photographs.** The shot list, sizes and destinations are in `docs/PHOTO-PLAN.md`. Slot 2, the original artwork beside the printed card, is the single most valuable image the site could have. | Ken & Audrey | `new assets/photos/` |
 | 1 | **The Shopify storefront URL.** Everything else about ordering is done; this one field turns ~60 buttons into real checkout. | Ken & Audrey | `data/site.json` → `shop.url`. See `docs/COMMERCE.md` |
 | 1b | **Pricing against real cost.** $19.95 retail, $6.95 shipping, $9.97/deck by the brick and $8.97/deck by the master case are decided, but none is checked against landed cost, carton weight or fulfilment. | Ken & Audrey | `data/site.json` → `pricing` (the only place) |
 | 2 | **The Trout Unlimited contribution.** Currently "a portion of proceeds", which converts badly. A hard number — "$1 from every deck" — converts. | Ken & Audrey | `data/site.json` → `conservation.commitment` |
@@ -50,7 +50,7 @@ Change it once there and every page follows.
 |---|---|---|---|
 | 4 | **Surnames for Ken and Audrey**, if they want them public. | Ken & Audrey | `src/pages/story.html` |
 | 5 | **"Multigenerational" vs "5th-generation" Idaho farmers.** The printed info card says multigenerational; `site.json` previously said 5th-generation. The card wording is what ships. | Ken | `data/site.json` → `voice.note` |
-| 6 | **Dates** — the year Ken started drawing, the year the deck was finished. | Ken | `src/pages/story.html` |
+| 6 | **Dates** — the year work on the deck started, the year it was finished. | Ken | `src/pages/story.html` |
 | 7 | **Contact addresses.** One address currently covers general, wholesale and press. | Audrey | `src/pages/contact.html` |
 | 8 | **A named byline for the guides.** They are attributed to the brand. Ken's name on them is a real expertise signal for both Google and AI answer engines — but a fabricated byline is worse than none. | Ken | `data/site.json` → `blog.authorNote` |
 | 9 | **Photography of Ken and Audrey.** None exists in the repo. The story and contact pages are written around its absence. | Audrey | `src/pages/story.html`, `contact.html` |

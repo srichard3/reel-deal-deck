@@ -352,8 +352,7 @@ ${virtualGuide(posts)}
     <h2 class="h2">The library is free. The deck is the version you can deal out.</h2>
     <p class="lede">
       Every fly above is a card in ${esc(site.name)} — ${site.product.cardCount} originals,
-      drawn by hand in ${esc(site.location.city)}, ${esc(site.location.regionName)}, and
-      printed on ${esc(site.product.stock)}.
+      drawn by hand and printed on ${esc(site.product.stock)}.
     </p>
     <p class="cluster" style="justify-content:center">
       ${orderCta(site)}
