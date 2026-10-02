@@ -850,3 +850,67 @@
   font-size: var(--t-sm);
   opacity: .75;
 }
+
+
+/* ==========================================================================
+   WHOLESALE APPLICATION — /wholesale/apply/
+   The form is hidden in the markup and revealed by wholesale.js, so a reader
+   without JavaScript is shown the email route instead of a file input that
+   cannot submit anywhere useful. See the note in src/js/wholesale.js.
+   ========================================================================== */
+
+.ws-apply { margin-block-start: var(--s-6); }
+
+.ws-apply__prices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+  margin-block: var(--s-5);
+  padding-block: var(--s-4);
+  border-block: var(--cx-hairline) solid var(--c-border);
+  font-size: var(--t-sm);
+  color: var(--c-text-muted);
+}
+.ws-apply__prices strong { color: var(--c-text); font-size: var(--t-base); }
+
+.label__opt { font-weight: 400; color: var(--c-text-faint); }
+
+/* A file input cannot be restyled across browsers without replacing it, and a
+   replaced one loses the filename readout and the keyboard behaviour. This
+   just makes the native control sit on the same baseline as the text inputs. */
+.ws-apply__file {
+  padding: var(--s-3);
+  line-height: var(--lh-snug);
+}
+.ws-apply__file::file-selector-button {
+  margin-inline-end: var(--s-3);
+  padding: var(--s-2) var(--s-4);
+  border: var(--cx-hairline) solid var(--c-border);
+  border-radius: var(--r-sm);
+  background: var(--c-bg-sunk);
+  color: var(--c-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.ws-apply__status {
+  margin-block: var(--s-5) 0;
+  min-block-size: 1.5em;
+  font-size: var(--t-sm);
+  color: var(--c-text-muted);
+}
+.ws-apply__status.is-ok { color: var(--c-green); }
+.ws-apply__status.is-error { color: var(--c-danger); }
+
+/* Off-screen rather than display:none: a bot reading the DOM still finds it,
+   which is the entire point, while nobody sees or tabs into it. */
+.ws-apply__trap {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.ws-apply__back { margin-block-start: var(--s-7); font-size: var(--t-sm); }

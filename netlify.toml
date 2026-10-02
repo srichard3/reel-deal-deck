@@ -17,6 +17,18 @@
   # There are no dependencies to install; npm ci would fail without a lockfile.
   ignore   = "false"
 
+# The one piece of server-side code in the project: netlify/functions holds the
+# wholesale signup endpoint, which needs the Shopify Admin token and therefore
+# cannot run in a browser. Functions v2, Node 20, zero dependencies — see the
+# header of netlify/functions/wholesale-apply.mjs.
+#
+# NOTE: this is the reason the site has to deploy to Netlify. GitHub Pages
+# serves static bytes only; on Pages, /api/wholesale-apply is a 404 and the
+# application form has nowhere to post. See docs/WHOLESALE-ACCOUNTS.md.
+[functions]
+  directory    = "netlify/functions"
+  node_bundler = "esbuild"
+
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS    = "--no-audit --no-fund"

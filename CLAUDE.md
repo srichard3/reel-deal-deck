@@ -12,9 +12,11 @@ sequenced path forward.
 ## Commands
 
 ```bash
-npm run build     # src/ + data/ -> dist/
-npm run check     # quality gate — MUST be 0 errors
-npm run dev       # build + serve on :4173
+npm run build          # src/ + data/ -> dist/
+npm run check          # quality gate — MUST be 0 errors
+npm run dev            # build + serve on :4173
+npm run test:wholesale # the /api/wholesale-apply guard rails; no store needed
+netlify dev            # the only way to run the function locally
 ```
 
 **Before every commit, verify BOTH build modes:**
@@ -234,6 +236,26 @@ second mark. The `-400` variants are downscaled from the marked `-800`.
 Deliberately NOT marked: `static/og/*` and `static/brand/box-*`, which are share
 and packaging images where the wordmark already carries attribution.
 
+**There is exactly one piece of server-side code, and it is the only reason the
+site must deploy to Netlify.** `netlify/functions/wholesale-apply.mjs` backs
+`/wholesale/apply/`: it creates the Shopify customer tagged `wholesale`, uploads
+the resale permit into Shopify Files against that customer, and returns a
+Storefront cart carrying their email and address. It exists because the Admin
+API token can never reach a browser and a static host has nowhere to put an
+uploaded file. **On GitHub Pages `/api/wholesale-apply` is a 404.** Zero
+dependencies there too — Functions v2 hands you a standard `Request`, so
+`request.formData()` parses the multipart upload and `fetch` is built in. Its
+validation is the security boundary and has the project's only test suite:
+`npm run test:wholesale`, which needs no store and no network.
+
+**Wholesale prices are not gated by this site, and could not be.** They come
+from a Shopify automatic discount scoped to the `wholesale` customer segment
+that the function tags people into. That is what makes the order link safe to
+share — a secret URL is not a gate. Applications are auto-approved because that
+was asked for; `REVIEW_ONLY=1` queues them as `wholesale-pending` instead, which
+the discount does not match, with no code change. Runbook, including every
+environment variable and the Shopify setup: `docs/WHOLESALE-ACCOUNTS.md`.
+
 **`/suggest/` is the one form that actually delivers.** Everything else using
 `data-capture` writes to localStorage and says so, which is honest for a waiting
 list that has not opened. A suggestion nobody receives is not, so `suggest.js`
@@ -284,6 +306,8 @@ Safari will not infer it and collapses the element to nothing. Chrome hides this
 | `scripts/watermark.mjs` | burns the watermark into `static/cards/` from the gitignored masters |
 | `scripts/box-panels.mjs` | cuts the six 3D tuck-box panels out of the printer's dieline |
 | `src/js/box.js` | drag / keyboard rotation for the hero box; the box itself is CSS |
+| `netlify/functions/` | the only server-side code: the wholesale signup endpoint |
+| `docs/WHOLESALE-ACCOUNTS.md` | switching wholesale accounts on, end to end |
 | `new assets/` | printer source artwork — gitignored, large |
 
 ## Docs

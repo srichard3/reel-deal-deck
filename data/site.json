@@ -85,6 +85,10 @@
         {
           "label": "Fly Shops & Guides",
           "href": "/wholesale/"
+        },
+        {
+          "label": "Open a wholesale account",
+          "href": "/wholesale/apply/"
         }
       ]
     },
@@ -200,7 +204,9 @@
     "eyebrow": "Ordering now",
     "headline": "The Reel Deal Deck is ready to order.",
     "sub": "54 hand-drawn flies on genuine Bicycle stock, $19.95 a deck, with a contribution to Trout Unlimited from every one of them. Shipping is on us from two decks up.",
-    "cta": "Order a deck"
+    "cta": "Order a deck",
+    "accountUrl": "",
+    "accountUrlNote": "TODO-CONFIRM: the Shopify customer account login URL, usually https://<store>/account/login or the new customer-accounts URL. Empty hides the 'Wholesale login' links rather than shipping a dead one."
   },
   "pricing": {
     "note": "The one source of pricing truth. src/pages/deck.mjs and src/pages/wholesale.html both read it; the Product JSON-LD offer is built from it. Three units, and they nest: a brick is twelve decks, a master case is twelve bricks.",
@@ -248,7 +254,14 @@
           "decks": 144,
           "perDeck": 8.97
         }
-      ]
+      ],
+      "account": {
+        "note": "The wholesale account flow. /wholesale/apply/ posts to the Netlify function in netlify/functions/, which creates the Shopify customer tagged `wholesale`, stores the resale permit on the customer record, and returns a pre-filled cart. Wholesale PRICES are not gated by this site — they come from a Shopify automatic discount targeted at the `wholesale` customer segment, which is what makes the order link safe to share. Setup runbook: docs/WHOLESALE-ACCOUNTS.md.",
+        "applyPath": "/wholesale/apply/",
+        "customerTag": "wholesale",
+        "autoApprove": true,
+        "autoApproveNote": "Approved on signup, as asked. The resale permit is collected and stored but not checked by anyone before pricing is granted. Set REVIEW_ONLY=1 in the Netlify environment to queue applications as `wholesale-pending` instead — the discount does not match that tag, so nothing else needs changing."
+      }
     }
   }
 }

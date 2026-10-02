@@ -37,6 +37,11 @@
   --c-river:        #35561E;
   --c-riffle:       #6E9A4E;
 
+  /* The deck's own red, for the one thing on this site that has to read as
+     wrong: a form error. --c-worm is already redefined per theme, so this
+     single alias resolves correctly in both without a second declaration. */
+  --c-danger:       var(--c-worm);
+
   /* --- Semantic -------------------------------------------------------- */
   --c-bg:           var(--c-paper);
   --c-bg-sunk:      var(--c-paper-2);
