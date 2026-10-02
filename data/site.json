@@ -180,10 +180,10 @@
     ]
   },
   "story": {
-    "note": "Ken and Audrey's own account, condensed from the Kickstarter campaign. Full transcript and the rules for writing in this voice: docs/VOICE-SOURCE.md. Do not add a beat that is not sourced there.",
-    "hook": "Fly fishing is full of beauty, tradition and endless learning. It is also full of hundreds of flies, each with its own name, purpose and history — which is exciting, and a little overwhelming.",
-    "looking": "Ken fishes with friends who can talk patterns all afternoon, and some of the finer details went over his head. He went looking for a set of fly-fishing flashcards he would actually want to own, and came up empty-handed.",
-    "twist": "So he set about making one, one fly at a time. Then came the twist that turned a study aid into something people would keep: why not make them playing cards too?",
+    "note": "Ken and Audrey's own account, condensed from their Kickstarter campaign page. Full transcript and the rules for writing in this voice: docs/VOICE-SOURCE.md. Do not add a beat that is not sourced there. NOTE the campaign says they work 'with experienced graphic designers in Adobe Illustrator' — see story.artNote.",
+    "hook": "Fly fishing is full of beauty, tradition and endless learning. It is also full of hundreds of flies, each with its own name, purpose and history — exciting, and a little overwhelming even for experienced anglers.",
+    "looking": "Ken fishes with friends who can talk patterns, techniques and history all afternoon, and some of the finer details went over his head. He went looking for a set of fly-fishing flashcards to fix that, and could not even find one.",
+    "twist": "So he thought: why not make his own? And then came the twist — why not make them double as playing cards?",
     "belief": "We think a product can do more than sell. It can teach, start a conversation, bring people together, and talk somebody into an afternoon outside.",
     "spirit": "It is a small product with a big spirit behind it.",
     "goal": [
@@ -194,7 +194,9 @@
     ],
     "forWhom": "For anglers of every level, for the friend hunting a gift that feels personal, and for anyone who likes the art and the culture as much as the fishing.",
     "thanks": "We are so glad you are here.",
-    "artNote": "The cards are original and drawn by hand, and they were NOT drawn by Ken — a designer drew them. The site said otherwise in six places and every one has been corrected. 'Hand-drawn', 'original', 'not photographed' and 'drawn one at a time' all remain true and are load-bearing claims; what was false was attributing them to Ken. His part is that he went looking for a set, could not buy one, and had it made. /story/ deliberately does not go further than that."
+    "artNote": "The cards are original and drawn by hand, and they were NOT drawn by Ken — a designer drew them. The site said otherwise in six places and every one has been corrected. 'Hand-drawn', 'original', 'not photographed' and 'drawn one at a time' all remain true and are load-bearing claims; what was false was attributing them to Ken. His part is that he went looking for a set, could not buy one, and had it made. /story/ deliberately does not go further than that.",
+    "question": "Why is there no easy, enjoyable way to learn the names and varieties of flies?",
+    "proof": "The cards have already made Ken a more knowledgeable angler, which was the only proof the idea worked for a long time."
   },
   "shop": {
     "note": "Where every \"buy\" link on the site points, resolved once by orderState() in src/templates/_blocks.mjs. Checkout is hosted on Shopify, so `url` is the only place the storefront is named. Leave it empty and every CTA falls back to `fallback` — the on-site pricing panel — so the site is never broken while the store is being set up. Never paste a store URL into a page.",

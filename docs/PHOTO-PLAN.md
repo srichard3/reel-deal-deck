@@ -33,6 +33,11 @@ pick from twelve than to re-stage a shot three weeks later.
 
 ## The five slots
 
+> **Slots 4 and 5 may already exist.** Your Kickstarter page carries photographs
+> of the two of you. Send me the originals rather than having me pull them off the
+> page — the versions on Kickstarter are compressed for the web and will look soft
+> at the size this page uses them.
+
 ### 1 — The note · `/story/`, above the printed quote
 **Landscape.** The printed info card from inside the deck, held in a hand or lying
 on the open tuck box. The page quotes that card's words in full directly underneath,
@@ -51,7 +56,7 @@ ends the argument, and nothing else on the site does that job.
 ### 3 — Packed here · `/story/`, after "Made in the USA"
 **Landscape.** The real shipping operation: stacked decks, padded envelopes, a
 brick or two, the table it actually happens on. The page says "packed and posted by
-the two of us, from here" one line above. Slightly messy is better than styled —
+the two of us from Eagle, Idaho" one line above. Slightly messy is better than styled —
 the point is that it is true, not that it is tidy.
 
 ### 4 and 5 — Ken, and Audrey · `/story/`, in the two founder cards
@@ -63,6 +68,11 @@ father-and-daughter story with no faces in it is working with one hand tied.
 ---
 
 ## Worth shooting while you are at it
+
+The Kickstarter page already has product photography and a video. If there are
+unused frames from that shoot they are worth looking through first — the
+originals will be higher resolution than anything on the campaign page.
+
 
 Not slots yet, but each would earn a place quickly:
 

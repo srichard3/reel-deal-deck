@@ -2925,3 +2925,17 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   .fan__card:hover .fan__art { --lift: 0px; --pop: 1; }
   .fan__card:hover .fan__name { opacity: 0; }
 }
+
+
+/* The founding question on /story/ — the one line the whole page turns on, so
+   it is set apart rather than buried in a paragraph of its own size. */
+.story-question {
+  margin-block: var(--s-6);
+  padding-inline-start: var(--s-5);
+  border-inline-start: 2px solid var(--c-green);
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  line-height: var(--lh-snug);
+  color: var(--c-text);
+  max-inline-size: var(--measure);
+}

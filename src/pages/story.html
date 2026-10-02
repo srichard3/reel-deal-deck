@@ -150,65 +150,24 @@
     <hr class="rule" style="margin-block:var(--s-8)">
 
     <div class="prose">
-      <h2>It started with Ken trying to keep up</h2>
+      <h2>It began with a question</h2>
+      <p>{{ site.story.hook }}</p>
+      <p class="story-question">{{ site.story.question }}</p>
+      <p>{{ site.story.looking }}</p>
+      <p>{{ site.story.twist }}</p>
       <p>
-        {{ site.story.hook }}
-      </p>
-      <p>
-        {{ site.story.looking }}
-      </p>
-      <p>
-        So he set about making one, one fly at a time, until there were enough to be a deck. Then came
-        the twist that turned a study aid into something people keep: why not make them playing
-        cards too? A deck gets dealt, argued over and left out on the table. Fifty-four flies
-        get looked at hundreds of times without anybody sitting down to study.
-      </p>
-      <p>
-        Which is why they are printed on {{ site.product.stock }}, not board with rounded
-        corners. A deck of cards gets played with.
+        That became the prototype &mdash; and what started as a learning tool turned into something
+        more fun and more giftable: a deck of playing cards carrying hand-drawn fly illustrations
+        and a short note on each one, including what it imitates. {{ site.story.proof }}
       </p>
 
-      <!-- PHOTO SLOT 2 — "the drawings" — see docs/PHOTO-PLAN.md.
-           The original artwork for one fly beside the finished printed card.
-           This is the single most valuable photograph on the site. The cards are
-           hand-drawn but NOT by Ken, so this slot is the artwork, never him at
-           a drawing board — see story.artNote in data/site.json. -->
+      <!-- PHOTO SLOT 2 — "the artwork" — see docs/PHOTO-PLAN.md.
+           The original illustration for one fly beside the finished printed card.
+           The cards are hand-drawn but NOT by Ken, so this slot is the artwork,
+           never him at a drawing board — see story.artNote in data/site.json. -->
 
-      <h2 id="made-in-the-usa">Made in the USA, and we mean all of it</h2>
-      <p>
-        The whole thing, not the label. Drawn in {{ site.location.city }},
-        {{ site.location.regionName }}. Printed by {{ site.product.manufacturer }}, in the
-        United States. Packed and posted by the two of us, from here.
-      </p>
-      <p>
-        We say &ldquo;{{ site.product.origin }}&rdquo; rather than &ldquo;designed&rdquo; here on
-        purpose. Those are different claims, and the gap between them is usually the whole story.
-      </p>
-
-      <!-- PHOTO SLOT 3 — "packed here" — see docs/PHOTO-PLAN.md.
-           The kitchen-table shipping operation: stacked decks, padded envelopes,
-           a stack of bricks. Proof of the sentence above, not a stock photo. -->
-      <!-- Every sentence above is from site.product: the manufacturer, the stock,
-           the origin, and our own address. Nothing else belongs here.
-
-           TODO-CONFIRM, and worth confirming because it is the strongest version
-           of this section: whether offshore printing was actually quoted and
-           declined, and by how much. If Ken says yes, that paragraph is better
-           than any of the three above. Do NOT write it until he does — a
-           cheaper-offshore-quote story is exactly the kind of plausible detail
-           this site has had to delete before.
-           TODO-CONFIRM: whether "Made in the USA" is printed on the tuck box
-           itself. site.product.boxClaim does not include it. -->
-
-      <h2>Then Audrey got involved</h2>
-      <p>
-        Ken&rsquo;s daughter, and the reason the drawings became a deck instead of a folder on
-        a laptop. She handles design, brand and community. We are farmers and anglers long
-        before we are a company, and every email that arrives is answered by one of us.
-      </p>
-      <p>
-        {{ site.story.belief }} {{ site.story.spirit }}
-      </p>
+      <h2>A small product with a big spirit</h2>
+      <p>{{ site.story.belief }} {{ site.story.spirit }}</p>
 
       <h2>What we were trying to make</h2>
       <p>
@@ -227,17 +186,24 @@
         {{ site.story.forWhom }}
       </p>
 
-      <h2>A couple of things we won&rsquo;t claim</h2>
+      <h2 id="made-in-the-usa">Made in the USA</h2>
       <p>
-        We would love to say nobody else makes fly-fishing cards. We can&rsquo;t &mdash; several
-        companies do, and one search would catch us out. What we will stand behind is narrower
-        and checkable: the art is original and drawn by hand for this deck, the stock is genuine Bicycle
-        from {{ site.product.manufacturer }}, and a set amount from every deck goes to
-        <a href="{{ site.conservation.partnerUrl }}" rel="noopener">{{ site.conservation.partner }}</a>.
+        Printed by {{ site.product.manufacturer }}, in the United States, on
+        {{ site.product.stock }} &mdash; a real deck of cards rather than board with rounded
+        corners, because a deck of cards gets played with. Packed and posted by the two of us from
+        {{ site.location.city }}, {{ site.location.regionName }}.
       </p>
+
+      <!-- PHOTO SLOT 3 — "packed here" — see docs/PHOTO-PLAN.md.
+           The real shipping operation: stacked decks, padded envelopes, the
+           table it actually happens on. Proof of the sentence above. -->
+
+      <h2>Conservation</h2>
       <p>
-        No founding legend either. No golden evening on a riverbank. A man who wanted to keep up
-        with his friends, and his daughter who thought he was onto something.
+        We are an official {{ site.conservation.partner }} Business member and have already made a
+        financial contribution to their work &mdash; protecting and restoring the rivers, streams
+        and watersheds that wild trout depend on. Supporting it is part of the point of the deck,
+        not a badge added at the end. <a href="/conservation/">How that works</a>.
       </p>
 
       <blockquote>
@@ -253,8 +219,6 @@
       </p>
     </div>
 
-    <hr class="rule" style="margin-block:var(--s-8)">
-
     <!-- PHOTO SLOT 4 and 5 — the portraits — see docs/PHOTO-PLAN.md.
          One of Ken and one of Audrey, to sit above their names in the two
          .person cards below. They are the only photographs on this page the
@@ -262,25 +226,31 @@
          K♠ / Q♥ index marks instead, which is a deliberate stand-in and not
          a gap to fill with stock photography. -->
 
+    <h2 class="h2">Who we are</h2>
+    <p class="lede" style="margin-block:var(--s-4) var(--s-6)">
+      A father and daughter, building this together.
+    </p>
+
     <div class="card-grid" style="--min:min(16rem, 100%)">
       <div class="person">
         <span class="point__index" aria-hidden="true">K&#9824;</span>
         <h2 class="person__name">Ken</h2>
-        <p class="person__role">Founder &middot; illustration</p>
+        <p class="person__role">Founder &middot; the original idea</p>
         <p class="person__text">
-          Lifelong entrepreneur, fifth-generation Idaho farmer, avid amateur angler. Went
-          looking for fly-fishing flashcards, came up empty-handed, and made the deck he
-          could not buy.
+          A lifelong entrepreneur of more than thirty years and a fifth-generation Idaho farmer.
+          The avid amateur fly fisherman who wanted a better way to learn, could not buy one,
+          and thought other anglers would want it too.
         </p>
       </div>
       <div class="person">
         <span class="point__index" aria-hidden="true">Q&#9829;</span>
         <h2 class="person__name">Audrey</h2>
-        <p class="person__role">Co-founder &middot; design &amp; brand</p>
+        <p class="person__role">Co-founder &middot; brand &amp; community</p>
         <p class="person__text">
-          Entrepreneurship graduate of Loyola Marymount University&rsquo;s College of Business
-          Administration. Design direction, brand and community &mdash; and the one who said
-          this should be a real thing.
+          Graduated from Loyola Marymount University in December 2025, Entrepreneurship, College
+          of Business Administration. Brings the creative and marketing side &mdash; her own
+          social content has run past 100,000 views &mdash; and is the reason this became a deck
+          rather than a folder on a laptop.
         </p>
       </div>
     </div>
