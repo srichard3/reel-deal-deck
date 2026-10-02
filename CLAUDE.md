@@ -135,16 +135,29 @@ and the browser does the trigonometry. Hover and `:focus-within` get identical
 rules, so it is fully keyboard-operable, and the neighbours lean away via `+`
 and `:has()` rather than script.
 
-**Nothing in the fan may transform the hover target.** `.fan__card` and
-`.fan__link` hold the layout and never move; every visual transform happens on
-`.fan__art` inside them. The first version scaled the card itself, sharing the
-layout rotation's `transform-origin` 3.6 card-heights below it — a `scale(1.5)`
-about a pivot that far away threw the card ~1.8 card-heights out from under the
-pointer, which un-hovered it, which shrank it back under the pointer, several
-times a second. `.fan__art` scales about its own bottom edge instead, and
-because it is a *descendant* of the link, growing past the link's own box keeps
-`:hover` on the card. Verify a change by parking the pointer and sampling which
-card matches `:hover` over ~2s; it must never change.
+**The hit area is the sliver, not the card, and three `pointer-events` rules
+make it so.** `.fan__card` is `none` (layout and z-order only), `.fan__art` is
+`none` (the picture never captures anything), and `.fan__link` is `auto` — a
+narrow full-height strip that is the only hittable thing in the fan.
+
+That last rule is load-bearing. When the art was the target, a hovered card
+scaling to 1.6 blanketed **138px of the row** — about seven neighbours stopped
+responding to their own slivers until the pointer cleared it, so pointing at a
+card did nothing and then one five along fired.
+
+**The strip is a wedge, and it has to be exact.** Cards rotate about a pivot 3.6
+card-heights below them, so neighbours separate more at the top of a card than
+at its foot: `0.1317` card widths against `0.0951`, which is the `72.2%` in the
+`clip-path`. `clip-path` clips hit-testing as well as paint. A rectangle wide
+enough for the top would overlap its neighbour at the foot — and a hovered card
+jumps to `z-index: 60`, so that overlap would steal hits. A rectangle narrow
+enough never to overlap would leave the top of every card inert.
+**Recompute both numbers if `--fan-step` or `--fan-pivot` changes.**
+
+Verify any change by probing `elementFromPoint` across the row at several
+heights, once at rest and once with a card forced into its popped state: the two
+hit maps must be identical, and sweeping the real pointer must step one card at
+a time without going backwards.
 
 Three numbers are load-bearing and move together: `--fan-step`, `.fan`'s
 `inline-size` and its `block-size`. The height has to clear both the drop of the
