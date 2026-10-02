@@ -92,12 +92,13 @@ export const meta = {
  *
  * Every figure is derived from site.pricing. None is typed.
  *
- * The flag row is emitted on BOTH cards, empty on the first. Without it the
+ * BOTH cards carry a flag, and they have to. Without one on the first card, the
  * featured card's flag pushed its own name, price, shipping band and list a
- * line lower than the other card's, and the two read as misaligned. The empty
- * one is aria-hidden so a screen reader is not handed a blank paragraph; the
- * subgrid in commerce.css then keeps every row level even when a line wraps on
- * one card and not the other.
+ * line lower and the pair read as crooked. An empty reserved row would fix the
+ * geometry, but "Standard" against "Save $6.95" also names the choice, so the
+ * row earns its place instead of being invisible scaffolding. The subgrid in
+ * commerce.css then keeps every row level even when a line wraps on one card
+ * and not the other.
  */
 function retailCards(site) {
   const r = (site.pricing || {}).retail || {};
@@ -120,6 +121,7 @@ function retailCards(site) {
   const cards = [
     {
       name: 'One deck',
+      flag: 'Standard',
       lede: 'Fifty-four flies in a jacket pocket.',
       shipLead: `+ ${money(ship)}`,
       shipRest: 'shipping',
@@ -140,7 +142,7 @@ function retailCards(site) {
 
   return cards.map((t) => `
       <article class="buy-tier${t.featured ? ' buy-tier--featured' : ''}">
-        <p class="buy-tier__flag"${t.flag ? '' : ' aria-hidden="true"'}>${t.flag ? esc(t.flag) : ''}</p>
+        <p class="buy-tier__flag">${esc(t.flag)}</p>
         <h2 class="buy-tier__name">${esc(t.name)}</h2>
         <p class="buy-tier__lede">${esc(t.lede)}</p>
 

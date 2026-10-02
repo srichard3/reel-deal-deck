@@ -261,14 +261,18 @@
     var(--c-surface);
 }
 
+/* Both cards carry one, so the accent is reserved for the card that has
+   something to shout about; the other names the tier and stays quiet. */
 .buy-tier__flag {
   align-self: flex-start;
   font-size: var(--t-xs);
   letter-spacing: var(--ls-index);
   text-transform: uppercase;
-  color: var(--c-accent);
+  color: var(--c-text-muted);
   font-weight: 700;
 }
+
+.buy-tier--featured .buy-tier__flag { color: var(--c-accent); }
 
 .buy-tier__name {
   font-family: var(--f-display);
