@@ -28,6 +28,8 @@ function money(n) {
 
 /* The free-shipping threshold reads as a numeral in a table and as a word in a
    sentence, and it is the same figure from site.pricing in both places. */
+const lowerFirst = (str) => String(str).charAt(0).toLowerCase() + String(str).slice(1);
+
 const WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
 const inWords = (n) => WORDS[n] || String(n);
 
@@ -89,12 +91,31 @@ export const meta = {
  * right and the headline number was wrong.
  *
  * Every figure is derived from site.pricing. None is typed.
+ *
+ * The flag row is emitted on BOTH cards, empty on the first. Without it the
+ * featured card's flag pushed its own name, price, shipping band and list a
+ * line lower than the other card's, and the two read as misaligned. The empty
+ * one is aria-hidden so a screen reader is not handed a blank paragraph; the
+ * subgrid in commerce.css then keeps every row level even when a line wraps on
+ * one card and not the other.
  */
 function retailCards(site) {
   const r = (site.pricing || {}).retail || {};
   const per = r.perDeck ?? 19.95;
   const ship = r.shipping ?? 6.95;
   const from = r.freeShippingFromDecks ?? 2;
+
+  /* The same three points on both cards, because it is the same deck — these
+     are the three things the whole site leads with. The second card adds the
+     one thing that genuinely differs. Listing different features on each would
+     imply you get a different product. */
+  const POINTS = [
+    `${site.product?.cardCount ?? 54} original hand-drawn flies, one per card`,
+    'What each one imitates, printed on the card',
+    /* Only the leading letter: toLowerCase() on the whole string turned
+       "Made in the USA" into "made in the usa" and ate the acronym. */
+    `Genuine Bicycle stock, ${lowerFirst(site.product?.origin ?? 'Made in the USA')}`,
+  ];
 
   const cards = [
     {
@@ -103,7 +124,7 @@ function retailCards(site) {
       shipLead: `+ ${money(ship)}`,
       shipRest: 'shipping',
       delivered: `${money(per + ship)} delivered`,
-      points: ['54 hand-drawn flies, one per card', 'What each one imitates, on the card'],
+      points: POINTS,
     },
     {
       name: `${inWords(from).replace(/^t/, 'T')} or more`,
@@ -113,13 +134,13 @@ function retailCards(site) {
       shipLead: 'Free',
       shipRest: 'shipping',
       delivered: `${money(per * from)} delivered, for ${inWords(from)}`,
-      points: ['The same deck, at the same price', `Nothing to pay on postage from ${inWords(from)} up`, 'Past twelve it becomes wholesale'],
+      points: [...POINTS, 'Free shipping'],
     },
   ];
 
   return cards.map((t) => `
       <article class="buy-tier${t.featured ? ' buy-tier--featured' : ''}">
-        ${t.flag ? `<p class="buy-tier__flag">${esc(t.flag)}</p>` : ''}
+        <p class="buy-tier__flag"${t.flag ? '' : ' aria-hidden="true"'}>${t.flag ? esc(t.flag) : ''}</p>
         <h2 class="buy-tier__name">${esc(t.name)}</h2>
         <p class="buy-tier__lede">${esc(t.lede)}</p>
 

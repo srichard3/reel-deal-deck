@@ -190,7 +190,14 @@
   margin-top: var(--s-6);
 }
 @media (min-width: 46rem) {
-  .buy-tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .buy-tiers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* flag, name, lede, price, shipping, delivered, points, button. The cards
+       opt into these rows with subgrid below, so the price on one card sits on
+       exactly the same line as the price on the other even when a lede wraps
+       to two lines on one and one line on the other. */
+    grid-template-rows: repeat(8, auto);
+  }
 }
 
 .buy-tier {
@@ -198,6 +205,7 @@
   flex-direction: column;
   gap: 0;
   padding: var(--s-6);
+  /* see the subgrid rule after this block */
   background: var(--c-surface);
   border: var(--cx-hairline) solid var(--c-border);
   border-radius: var(--r-card);
@@ -225,6 +233,20 @@
 .buy-tier--wide .buy-tier__list {
   grid-template-columns: repeat(auto-fit, minmax(min(var(--cx-col-min), 100%), 1fr));
   display: grid;
+}
+
+/* Row-align the two cards against each other. Both have the same eight
+   children in the same order, so subgrid makes every row share a baseline.
+   A browser without subgrid ignores this and keeps the flex column, which is
+   what the cards did before — a graceful loss, not a broken layout. */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 46rem) {
+    .buy-tier {
+      display: grid;
+      grid-row: span 8;
+      grid-template-rows: subgrid;
+    }
+  }
 }
 
 .buy-tier--featured {
