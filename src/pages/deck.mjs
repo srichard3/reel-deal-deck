@@ -79,14 +79,16 @@ export const meta = {
 
 /* The two retail cards.
  *
- * There is no quantity discount to dramatise — the deck is one price — so the
- * comparison that earns its place is the DELIVERED per-deck cost, which really
- * does fall: $26.90 for one, $19.95 each from two up. That is the whole offer,
- * it is arithmetic on two numbers in site.pricing, and it is checkable.
+ * The big figure is the DECK, on both cards, and it is the same number on both
+ * because it is the same deck at the same price. What differs is the shipping,
+ * so that is the highlighted band rather than a grey line: "+ $6.95 shipping"
+ * against "Free shipping". The delivered total sits underneath as the sum.
  *
- * The earlier version printed "$19.95" twice at the same size, which told the
- * reader the two options were identical and buried the difference in grey text
- * underneath. Every figure below is derived; none is typed.
+ * An earlier version made the big figure the delivered total, which put $26.90
+ * in the largest type on the page next to a $19.95 product. The comparison was
+ * right and the headline number was wrong.
+ *
+ * Every figure is derived from site.pricing. None is typed.
  */
 function retailCards(site) {
   const r = (site.pricing || {}).retail || {};
@@ -98,23 +100,20 @@ function retailCards(site) {
     {
       name: 'One deck',
       lede: 'Fifty-four flies in a jacket pocket.',
-      amount: per + ship,
-      amountNote: 'delivered',
-      breakdown: `${money(per)} for the deck, ${money(ship)} to post it`,
-      perDeck: `${money(per + ship)} a deck`,
+      shipLead: `+ ${money(ship)}`,
+      shipRest: 'shipping',
+      delivered: `${money(per + ship)} delivered`,
       points: ['54 hand-drawn flies, one per card', 'What each one imitates, on the card'],
     },
     {
       name: `${inWords(from).replace(/^t/, 'T')} or more`,
       lede: 'One for the vest, one for whoever keeps borrowing it.',
       featured: true,
-      flag: 'We pay the postage',
-      amount: per * from,
-      amountNote: `delivered, for ${inWords(from)}`,
-      breakdown: `${money(per)} a deck, nothing to post`,
-      perDeck: `${money(per)} a deck`,
-      save: `${money(ship)} less per deck than ordering one`,
-      points: ['The same deck, at the same price', `Free postage from ${inWords(from)} decks up`, 'Past twelve it becomes wholesale'],
+      flag: `Save ${money(ship)}`,
+      shipLead: 'Free',
+      shipRest: 'shipping',
+      delivered: `${money(per * from)} delivered, for ${inWords(from)}`,
+      points: ['The same deck, at the same price', `Nothing to pay on postage from ${inWords(from)} up`, 'Past twelve it becomes wholesale'],
     },
   ];
 
@@ -125,15 +124,15 @@ function retailCards(site) {
         <p class="buy-tier__lede">${esc(t.lede)}</p>
 
         <p class="buy-tier__amount">
-          <span class="buy-tier__figure" data-price="${t.amount}">${money(t.amount)}</span>
-          <span class="buy-tier__unit">${esc(t.amountNote)}</span>
+          <span class="buy-tier__figure" data-price="${per}">${money(per)}</span>
+          <span class="buy-tier__unit">a deck</span>
         </p>
-        <p class="buy-tier__breakdown">${esc(t.breakdown)}</p>
 
-        <p class="buy-tier__rate">
-          <span class="buy-tier__rate-figure">${esc(t.perDeck)}</span>
-          ${t.save ? `<span class="buy-tier__save">${esc(t.save)}</span>` : ''}
+        <p class="buy-tier__ship">
+          <span class="buy-tier__ship-lead">${esc(t.shipLead)}</span>
+          <span class="buy-tier__ship-rest">${esc(t.shipRest)}</span>
         </p>
+        <p class="buy-tier__breakdown">${esc(t.delivered)}</p>
 
         <ul class="buy-tier__list">
           ${t.points.map((p) => `<li>${esc(p)}</li>`).join('\n          ')}

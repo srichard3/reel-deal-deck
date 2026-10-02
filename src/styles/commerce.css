@@ -292,14 +292,15 @@
 }
 
 .buy-tier__breakdown {
-  margin: var(--s-2) 0 0;
+  margin: var(--s-3) 0 0;
   font-size: var(--t-sm);
   color: var(--c-text-muted);
 }
 
-/* The per-deck rate: the one figure that genuinely differs between the two
-   cards, so it gets a band of its own rather than another grey line. */
-.buy-tier__rate {
+/* The shipping: the one thing that genuinely differs between the two cards, so
+   it gets a band of its own rather than another grey line. The deck price above
+   is deliberately the same number on both — it is the same deck. */
+.buy-tier__ship {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -311,15 +312,28 @@
   border: var(--cx-hairline) solid var(--c-border);
 }
 
-.buy-tier--featured .buy-tier__rate {
+.buy-tier--featured .buy-tier__ship {
   background: color-mix(in srgb, var(--c-accent) 10%, transparent);
   border-color: color-mix(in srgb, var(--c-accent) 35%, transparent);
 }
 
-.buy-tier__rate-figure {
-  font-weight: 700;
+.buy-tier__ship-lead {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  line-height: 1;
   color: var(--c-text);
   font-variant-numeric: tabular-nums;
+}
+
+.buy-tier--featured .buy-tier__ship-lead {
+  color: color-mix(in srgb, var(--c-accent) 65%, var(--c-text));
+}
+
+.buy-tier__ship-rest {
+  font-size: var(--t-sm);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
 }
 
 .buy-tier__save {
