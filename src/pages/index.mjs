@@ -62,21 +62,24 @@ const esc = (s) =>
 /* ------------------------------------------------------------- sections --- */
 
 /* ------------------------------------------------------------- the fan ----
- * Half the deck — every other card — spread the way a deck is spread on a table.
+ * All 54 printed faces, spread the way a deck is spread on a table.
  *
  * The layout is one rotation per card about a pivot well below the fan, which
  * is how a real fan works and means the browser does the trigonometry: every
  * card sits at the same place in the DOM and differs only by `--i`. No JS, no
- * canvas, no library. At rest about 25px of each card shows, which is roughly
- * what a fanned deck in a pair of hands looks like — the interaction is what
- * makes a card readable, not the resting state.
+ * canvas, no library. At rest about 18px of each card shows, which is what a
+ * fanned deck in a pair of hands looks like — the interaction is what makes a
+ * card readable, not the resting state. That 18px is also the ceiling: the
+ * exposed strip is (fan width - card width) / 53, and the fan width is capped
+ * by the viewport, so 54 cards cannot show more of themselves than this at any
+ * card size. See the target-size note in components.css.
  *
  * Hovering or tabbing to a card lifts it out of the fan and scales it up, and
  * its neighbours lean away to make room. That second part is the thing that
  * makes it feel like cards rather than a CSS trick, and it is done with sibling
  * selectors in components.css rather than script.
  *
- * Every card is a link to that fly's page, so this is also 27 internal links
+ * Every card is a link to that fly's page, so this is also 54 internal links
  * from the homepage into the Fly-brary — the strip it replaced had six.
  *
  * Weight. The card faces are the one real cost of this section, so each <img>
@@ -84,8 +87,7 @@ const esc = (s) =>
  * renders: 104px under 46rem (the coarse-pointer size), 13vw up to 64rem, then
  * the 150px cap. A phone at 2x therefore takes the 240s and a desktop retina
  * screen takes the 400s, which is the split worth having. Everything is
- * loading="lazy" and the section is well below the fold. Halving the count
- * halved this too.
+ * loading="lazy" and the section is well below the fold.
  *
  * Deck order, not file order: spades, hearts, diamonds, clubs, then the two
  * jokers, so it reads as a deck someone opened rather than a shuffled pile.
@@ -102,11 +104,7 @@ function cardFan(flies) {
       return (FAN_SUITS.indexOf(ca.suit) - FAN_SUITS.indexOf(cb.suit))
           || (FAN_RANKS.indexOf(ca.rank) - FAN_RANKS.indexOf(cb.rank));
     });
-  /* Every other card. 54 in one arc left about 13px of each one showing, which
-     is too fine a target to point at; at every second card that doubles. Taking
-     the stride rather than the first half keeps all four suits and both jokers
-     in the spread instead of showing all the spades and none of the clubs. */
-  const list = all.filter((_, i) => i % 2 === 0);
+  const list = all;
   if (list.length < 8) return '';          /* not a fan — show nothing */
 
   const mid = (list.length - 1) / 2;
@@ -151,11 +149,7 @@ export default function homepage({ site, flies, instagram }) {
   if (orgIdx > -1) meta.jsonld[orgIdx] = { '@context': 'https://schema.org', ...organizationSchema(site, { full: true }) };
 
   const f = Array.isArray(flies) ? flies : [];
-  /* The fan shows every other card, so the copy counts what it renders rather
-     than asserting a number that a data change would quietly falsify. */
-  const fanCount = Math.ceil(f.filter((x) => !x.bonus && x.slug && x.name && x.image).length / 2);
   const v = site?.voice ?? {};
-  const craft = site?.cardCraft ?? {};
   const count = site?.product?.cardCount ?? 54;
   const partner = site?.conservation?.partner ?? 'Trout Unlimited';
   const city = site?.location?.city ?? 'Eagle';
@@ -218,12 +212,8 @@ export default function homepage({ site, flies, instagram }) {
     <div class="section-head section-head--split">
       <div>
         <p class="section-num" aria-hidden="true">2&#9829;</p>
-        <h2 class="h2" id="deck-h">Half the deck, spread out</h2>
-        <p class="lede">
-          Every other card, ${esc(fanCount)} of the ${esc(count)}. Point at one to bring it up; open it
-          to read what the fly imitates, when it works and how to fish it. The other half is in
-          the Fly-brary.
-        </p>
+        <h2 class="h2" id="deck-h">Pick one up</h2>
+        <p class="lede">All ${esc(count)}, drawn one at a time.</p>
       </div>
       <p><a class="btn btn--ghost" href="/flies/">Open the Fly-brary</a></p>
     </div>
@@ -233,7 +223,7 @@ ${cardFan(f)}
 
   <div class="wrap">
     <p class="fan-foot text-muted">
-      ${esc(craft.eachCard || 'Every card shows the rank and suit, the fly&rsquo;s name, its category, the hand-drawn fly itself, a plain-English note on what it imitates, and the hook sizes it is usually tied in.')}
+      Each one names the fly, what it imitates and the hook sizes it is tied in.
       <a href="/cards/">Anatomy of a card</a>.
     </p>
   </div>

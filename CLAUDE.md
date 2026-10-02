@@ -116,7 +116,7 @@ in `components.css` are the old homepage game, now unreferenced — kept because
 it works, not because anything loads it.
 
 **The card fan is CSS, and the arc is one rotation per card.** `cardFan()` in
-`index.mjs` emits every *other* card — 27 of the 54 — carrying nothing but `--i`;
+`index.mjs` emits all 54 faces carrying nothing but `--i`;
 `.fan` in `components.css` rotates each about a pivot 3.6 card-heights below it,
 and the browser does the trigonometry. Hover and `:focus-within` get identical
 rules, so it is fully keyboard-operable, and the neighbours lean away via `+`
@@ -137,15 +137,29 @@ Three numbers are load-bearing and move together: `--fan-step`, `.fan`'s
 `inline-size` and its `block-size`. The height has to clear both the drop of the
 end cards (`pivot x (1 - cos(half-angle))` card-heights) and the name label
 hanging below them — `.fan-stage` is a scroll container and clips anything past
-it. **Measure the end cards, not the middle one.** `--fan-step` is also a target
-size: it sets how wide a strip of each card is pointable (25px at 3deg, and it
-was 22px at the 54-card spacing, under the 24px WCAG 2.5.8 minimum).
+it. **Measure the end cards, not the middle one.** The exposed, pointable strip of each card is
+`(fan width - card width) / 53` and the fan width is capped by the viewport, so
+at 54 cards it is ~18px at any card size — under the 24px WCAG 2.5.8 minimum, a
+known exception carried by the full list at `/flies/`. Showing half the deck got
+it to 25px if that trade is ever wanted.
 
-**The fan is the homepage's whole image budget.** 27 faces, so each `<img>`
+**The stage does not clip on desktop.** A lifted card rises out over whatever is
+above it, which is the point. `.fan-stage` is only a scroll container below
+48rem, where the fan is wider than the screen and there is no hover anyway — and
+that is why its padding still has to hold the labels. It carries `z-index: 3`;
+the sticky header is 100 and deliberately stays above it.
+
+**Only `transform` transitions, and only for 120ms.** Transitioning the
+box-shadow on 54 transformed elements repaints rather than composites, and a
+sweep across the fan left a wake of still-animating cards that read as lag. The
+neighbour lean is one card either side for the same reason: each `:has()` rule
+is sibling-invalidation work on every hover change, times 54.
+
+**The fan is the homepage's whole image budget.** 54 faces, so each `<img>`
 offers a 240 and a 400 with `sizes` stops that match what the CSS really
-renders. A phone at 2x takes the 240s (~420kB), a desktop retina screen takes
-the 400s (~800kB), everything is `loading="lazy"`, and the section is well below
-the fold. Halving the card count halved this too. `scripts/card-thumbs.mjs` makes the 240s by downscaling the ALREADY
+renders. A phone at 2x takes the 240s (~845kB), a desktop retina screen takes
+the 400s (~1.6MB), everything is `loading="lazy"`, and the section is well below
+the fold. `scripts/card-thumbs.mjs` makes the 240s by downscaling the ALREADY
 WATERMARKED `-400`s, which is safe to re-run — unlike `scripts/watermark.mjs`,
 it cannot stack a second mark.
 
