@@ -2,7 +2,7 @@
 {
   "path": "/gifts/",
   "title": "Fly Fishing Gifts They Don't Own",
-  "description": "A fly fishing gift that does not end up in a drawer: 54 hand-drawn flies on genuine Bicycle stock. Pre-launch — join the list to hear when decks go on sale.",
+  "description": "A fly fishing gift that does not end up in a drawer: 54 hand-drawn flies on genuine Bicycle stock, made in the USA. $19.95, and shipping is free on two or more.",
   "priority": 0.9,
   "changefreq": "monthly",
   "bodyClass": "page-gifts",
@@ -25,7 +25,7 @@
           "name": "Will they already have one?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Almost certainly not. There are fly-fishing card sets on the market, but they are photo-printed reference cards sold mostly through shops, and very few anglers own one. This deck has not been printed yet, so nobody has it. If you get in early you are giving something that did not exist last year, which is the opposite problem from buying another net or another pair of nippers."
+            "text": "Almost certainly not. There are fly-fishing card sets on the market, but they are photo-printed reference cards sold mostly through shops, and very few anglers own one. This deck is new, made by a father and daughter in Idaho rather than by a catalogue, which is the opposite problem from buying another net or another pair of nippers."
           }
         },
         {
@@ -41,7 +41,7 @@
           "name": "Is this a real gift or a gag gift?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A real one. It is a full 54-card poker deck printed on genuine Bicycle / USPCC stock with the Air-Cushion finish, on FSC-certified paper with vegetable-based inks, and every fly on it was drawn by hand. It is priced at 19 dollars 99 because it is made like an object somebody keeps, not like a novelty tin from a checkout counter."
+            "text": "A real one. It is a full 54-card poker deck printed on genuine Bicycle / USPCC stock with the Air-Cushion finish, on FSC-certified paper with vegetable-based inks, and every fly on it was drawn by hand. It is priced at 19 dollars 95 because it is made like an object somebody keeps, not like a novelty tin from a checkout counter."
           }
         },
         {
@@ -49,7 +49,7 @@
           "name": "Will it arrive in time for Christmas or a birthday?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Not right now, and we will not pretend otherwise. The deck is not in production yet, there is no checkout on this site, and no order can be placed. If you need a gift this week, this is not it. Join the list and we will email you when decks go on sale with enough notice to plan around a date."
+            "text": "Usually, yes. Decks are printed and ordering is open, and a single deck posts for 6 dollars 95 while two or more ship free. If your date is inside a week, write to us before you order and we will tell you honestly whether it will land in time rather than let you find out from a tracking number."
           }
         },
         {
@@ -82,18 +82,17 @@
 
     <p class="buy-avail">
       <span class="buy-avail__dot" aria-hidden="true"></span>
-      Not yet shipping &mdash; you cannot buy this today
+      ${{ site.pricing.retail.perDeck }} a deck &middot; {{ site.product.origin }} &middot; free shipping on two or more
     </p>
 
     <p class="buy-hero__note">
-      We would rather tell you that at the top of the page than three clicks in. The deck is not in
-      production yet and this site takes no orders and no payment. If you have a date coming up,
-      join the list below and we will email you when decks go on sale &mdash; with enough notice to plan around it.
+      No size to get wrong, no rod weight to match, nothing to check against what they already own.
+      One deck is ${{ site.pricing.retail.perDeck }} plus ${{ site.pricing.retail.shipping }} postage; from two up we pay the
+      postage, which is worth knowing if you fancy keeping one yourself.
     </p>
 
     <div class="cluster">
-      <a class="btn btn--primary btn--lg" href="#gift-list">Tell me when I can buy it</a>
-      <a class="btn btn--ghost btn--lg" href="/preorder/">How to pre-order</a>
+      <a class="btn btn--primary btn--lg" href="{{ meta.orderUrl }}" rel="{{ meta.orderRel }}" target="{{ meta.orderTarget }}">{{ meta.orderCta }}</a>
       <a class="btn btn--ghost btn--lg" href="/deck/">See the deck itself</a>
     </div>
   </div>
@@ -227,17 +226,19 @@
         or a chapter meeting in your life, the maths stops being close.
       </p>
       <p>
-        A single deck is $24.95. A brick of twelve &mdash; the way playing cards actually ship &mdash;
-        is $249.50, which is twelve decks for the price of ten, or $20.79 each. That last one covers a
-        groomsman party, a raffle table or a season of gifts in a single shipment.
+        Every deck is ${{ site.pricing.retail.perDeck }}, however many you buy &mdash; we could not invent an honest
+        quantity discount, because the second deck costs us exactly what the first one did. What does
+        change is the postage: one deck carries ${{ site.pricing.retail.shipping }} and two or more carry none. If you need a
+        dozen for a groomsman party, a raffle table or a chapter meeting, a brick is twelve decks in one
+        box and the wholesale page prices it by the deck.
       </p>
     </div>
-    <!-- These figures mirror TIERS in src/pages/deck.mjs. $24.95 and the
-         twelve-for-ten brick are decided; if either moves, change this
-         paragraph, the Product JSON-LD in deck.mjs, and the wholesale MSRP
-         table together. -->
+    <!-- Every figure here is a token read from site.pricing in data/site.json.
+         Do not type a price into this file: /deck/ and /wholesale/ quote the
+         same block, and the three drifted apart the last time they were typed. -->
     <p class="cx-note">
-      <a class="btn btn--ghost" href="/deck/#tiers">See all the tiers and prices</a>
+      <a class="btn btn--ghost" href="/deck/#order">See the prices</a>
+      <a class="btn btn--quiet" href="/wholesale/">Wholesale, by the brick</a>
     </p>
   </div>
 </section>
@@ -288,7 +289,7 @@
           on it was drawn by hand.
         </p>
         <p class="gift-objection__a">
-          It is priced at $24.95 because it is made like something a person keeps, not like a novelty tin
+          It is priced at ${{ site.pricing.retail.perDeck }} because it is made like something a person keeps, not like a novelty tin
           from a checkout counter. If it were a gag gift we would have printed it on the cheap board
           and charged nine dollars.
         </p>
@@ -299,13 +300,12 @@
       <h3 class="gift-objection__q">Will it arrive in time for Christmas or a birthday?</h3>
       <div>
         <p class="gift-objection__a">
-          Not right now, and we are not going to pretend otherwise. The deck is not in production yet,
-          there is no checkout on this site, and no order can be placed here today.
+          Usually, yes. The decks are printed and ordering is open. One posts for
+          ${{ site.pricing.retail.shipping }}; two or more ship free.
         </p>
         <p class="gift-objection__a">
-          If you need a gift this week, this is not it, and we would rather you knew that than found
-          out after a confirmation email. Join the list and we will email you when decks go on sale,
-          with enough notice to plan around a date.
+          If your date is inside a week, write to us before you order. We would rather tell you
+          honestly that it is tight than let you find that out from a tracking number.
         </p>
       </div>
     </div>
@@ -329,11 +329,14 @@
 <!-- ======================================================= GIFT LIST == -->
 <section class="section section--sunk" id="gift-list">
   <div class="wrap wrap--narrow">
-    <p class="eyebrow">Get told first</p>
+    <p class="eyebrow">Ordering</p>
     <h2 class="h2">Tell us when you need it by</h2>
     <p class="lede">
-      Leave an email and roughly when the gift is for. When decks go on sale we email the people with
-      the nearest dates first, so nobody finds out a week too late.
+      Decks are shipping, so for most dates you can simply order one. If your date is tight, or you need
+      more than a few, send this and we will tell you straight away whether it will land in time.
+    </p>
+    <p class="cluster" style="margin-block-end:var(--s-6)">
+      <a class="btn btn--primary btn--lg" href="{{ meta.orderUrl }}" rel="{{ meta.orderRel }}" target="{{ meta.orderTarget }}">{{ meta.orderCta }}</a>
     </p>
 
     <div class="buy-reserve">
@@ -351,7 +354,7 @@
           <label class="label" for="gift-email">Email address</label>
           <input class="input" id="gift-email" name="email" type="email"
                  autocomplete="email" required placeholder="you@example.com">
-          <p class="help">One email when decks go on sale. Nothing else.</p>
+          <p class="help">We only write back about your date. Nothing else.</p>
         </div>
 
         <div class="form-row">
@@ -376,12 +379,13 @@
           </div>
         </div>
 
-        <button class="btn btn--primary btn--lg btn--block" type="submit">Add me to the list</button>
+        <button class="btn btn--primary btn--lg btn--block" type="submit">Ask us about my date</button>
 
         <p class="cx-stub">
-          <strong>Placeholder form.</strong> This site has no payment processor and no mailing list
-          connected yet. Submitting saves your details to this browser&rsquo;s local storage only
-          &mdash; nothing is transmitted, no order is created, and no card details are ever requested.
+          <strong>Placeholder form.</strong> Orders go through our shop; this form does not.
+          Submitting saves your details to this browser&rsquo;s local storage only &mdash; nothing is
+          transmitted, so for a real answer email
+          <a href="mailto:reeldealdeck@gmail.com?subject=Gift%20date">reeldealdeck@gmail.com</a>.
         </p>
       </form>
     </div>
@@ -394,7 +398,7 @@
   <div class="cx-crosslink">
     <a class="cx-crosslink__item" href="/deck/">
       <p class="cx-crosslink__name">The deck itself</p>
-      <p class="cx-crosslink__body">Specification, pricing, and why it costs $24.95 rather than nine.</p>
+      <p class="cx-crosslink__body">Specification, pricing, and why it costs ${{ site.pricing.retail.perDeck }} rather than nine.</p>
     </a>
     <a class="cx-crosslink__item" href="/flies/">
       <p class="cx-crosslink__name">The Fly-brary</p>

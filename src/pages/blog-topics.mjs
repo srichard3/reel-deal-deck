@@ -23,7 +23,7 @@
    Renders correctly with zero posts.
    ========================================================================== */
 
-import { esc, campaignState } from '../templates/_blocks.mjs';
+import { esc, orderState } from '../templates/_blocks.mjs';
 import { TOPICS } from './blog.mjs';
 
 export const meta = {
@@ -71,13 +71,14 @@ const topicKey = (p) => (TOPICS.some((t) => t.key === p?.topic) ? p.topic : 'bas
 export default function ({ site, posts = [] }) {
   const base = String(site?.url || '').replace(/\/$/, '');
   const list = Array.isArray(posts) ? posts.filter(Boolean) : [];
-  const camp = campaignState(site);
+  const camp = orderState(site);
 
-  meta.campaignKey = camp.key;
-  meta.campaignEyebrow = camp.eyebrow;
-  meta.campaignCta = camp.cta;
-  meta.campaignUrl = camp.url;
-  meta.campaignRel = camp.external ? 'noopener' : '';
+  meta.orderKey = camp.key;
+  meta.orderEyebrow = camp.eyebrow;
+  meta.orderCta = camp.cta;
+  meta.orderUrl = camp.url;
+  meta.orderRel = camp.external ? 'noopener' : '';
+  meta.orderTarget = camp.external ? '_blank' : '';
 
   const counted = TOPICS.map((t) => ({
     ...t,

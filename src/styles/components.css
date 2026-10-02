@@ -1484,7 +1484,7 @@ a.card-face.card-face:nth-child(even):active {
 
 
 /* ==========================================================================
-   CAMPAIGN BAR — sitewide
+   ORDER BAR — sitewide
    Moved here from blog.css: the bar now renders from the shell on every
    route, so its styles must load on every route. blog.css is only linked
    from blog pages.
@@ -1567,7 +1567,7 @@ a.card-face.card-face:nth-child(even):active {
 /* ==========================================================================
    SHARED ANSWER + TABLE COMPONENTS
    Promoted from blog.css. `.aeo-answer` now renders on every fly page and on
-   /preorder/, and `.post-table` is used outside articles, so both must load
+   the product page, and `.post-table` is used outside articles, so both must load
    sitewide. Class names are unchanged deliberately — renaming them would
    break every existing article.
    ========================================================================== */
@@ -1703,7 +1703,7 @@ a.card-face.card-face:nth-child(even):active {
 .post-table tbody tr:last-child td { border-block-end: 0; }
 
 /* .aeo-answer responsive refinements — moved with the component so it behaves
-   identically on fly pages, /preorder/ and articles. */
+   identically on fly pages, the product page and articles. */
 @media (max-width: 34rem) {
   .aeo-answer { margin-block-start: var(--s-4); padding: var(--s-4); }
 }
@@ -2426,9 +2426,10 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 
 /* ==========================================================================
    THE HUB DOORS — top of /flies/
-   The Fly-brary holds two different things: the flies themselves, further down
-   the same page, and the Virtual Guide, which is at /blog/. A reader arriving
-   for one should not have to scroll to discover the other exists.
+   The Fly-brary is where everything that is not the product or the people
+   lives: what is in the deck (/cards/), the flies themselves further down this
+   page, the Virtual Guide (/blog/), and the flashcards at the foot of it. A
+   reader arriving for one should not have to scroll to discover the rest.
    ========================================================================== */
 
 .hub {
@@ -2438,12 +2439,16 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   padding: 0;
   list-style: none;
 }
-/* Explicit counts, not auto-fit. With exactly three doors auto-fit would let
-   the third stretch to a double-width card whenever only two tracks fit. */
+/* Explicit counts, never auto-fit. With four doors auto-fit would leave a lone
+   door on the last row stretched to double width whenever the track count did
+   not divide evenly — the same bug that made a single fly card a metre wide.
+   Two up at tablet, four across once there is room for them. */
 @media (min-width: 46rem) {
-  .hub { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); }
+  .hub { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); }
 }
-@media (min-width: 64rem) { .hub { gap: var(--s-5); } }
+@media (min-width: 64rem) {
+  .hub { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-5); }
+}
 
 .hub__door { margin: 0; }
 

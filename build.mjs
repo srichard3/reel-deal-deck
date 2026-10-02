@@ -141,14 +141,14 @@ function interpolate(html, ctx) {
 
 const shell = await read(path.join(SRC, '_partials', 'shell.html'));
 
-/* The campaign bar lives in the shell, so every route carries it. Partials
-   cannot branch, so the single live/after decision is made here — once, at
-   build time — and the resolved values ride on ctx.meta for the partial to
-   print. Pages that set their own campaign* meta keys keep them. */
-const { campaignState } = await import(
+/* The order bar lives in the shell, so every route carries it. Partials cannot
+   branch, so the one decision — hosted store or the on-site pricing panel — is
+   made here, once, at build time, and the resolved values ride on ctx.meta for
+   the partial to print. Pages that set their own order* meta keys keep them. */
+const { orderState } = await import(
   pathToFileURL(path.join(SRC, 'templates', '_blocks.mjs')).href
 );
-const CAMPAIGN = campaignState(site);
+const ORDER_STATE = orderState(site);
 
 const routes = [];
 
@@ -175,11 +175,14 @@ async function emit(route, meta, bodyHtml) {
       description: meta.description,
       ogImage: site.url.replace(/\/$/, '') + (meta.ogImage || site.defaultOgImage),
       bodyClass: meta.bodyClass || '',
-      campaignKey: meta.campaignKey ?? CAMPAIGN.key,
-      campaignEyebrow: meta.campaignEyebrow ?? CAMPAIGN.eyebrow,
-      campaignCta: meta.campaignCta ?? CAMPAIGN.cta,
-      campaignUrl: meta.campaignUrl ?? CAMPAIGN.url,
-      campaignRel: meta.campaignRel ?? (CAMPAIGN.external ? 'noopener' : ''),
+      orderKey: meta.orderKey ?? ORDER_STATE.key,
+      orderEyebrow: meta.orderEyebrow ?? ORDER_STATE.eyebrow,
+      orderCta: meta.orderCta ?? ORDER_STATE.cta,
+      orderUrl: meta.orderUrl ?? ORDER_STATE.url,
+      orderRel: meta.orderRel ?? (ORDER_STATE.external ? 'noopener' : ''),
+      /* So a partial, which cannot branch, can still open a hosted store in a
+         new tab the way orderCta() does. Empty means same tab. */
+      orderTarget: meta.orderTarget ?? (ORDER_STATE.external ? '_blank' : ''),
       /* Always emitted, so the value is the only thing that varies. */
       robots: NOINDEX
         ? 'noindex, nofollow'

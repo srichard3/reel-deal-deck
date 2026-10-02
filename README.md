@@ -19,7 +19,7 @@ npm run check     # link/meta/a11y sanity checks over dist/
 | **Organic traffic** | The **Fly Library** — one page per fly, 54 pages of genuinely useful free reference content targeting long-tail angler search ("what does a Pheasant Tail imitate"). Nobody searches the brand name; they search the flies. |
 | **Angler conversion** | Fly Library → deck page. The content *is* the product demo. |
 | **Gift conversion** | `/gifts/` speaks to the non-angler buying for an angler. Different copy, different objections. |
-| **B2B** | `/wholesale/` — fly shops, guides, lodges. The Kickstarter's $99 brick tier out-converted the single deck; bulk is the real market. |
+| **B2B** | `/wholesale/` — fly shops, guides, lodges. Sold by the 12-deck brick and the 144-deck master case; bulk is the real market. |
 | **List building** | Email capture on every page. There is no product to sell yet. |
 
 ### Positioning

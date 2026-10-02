@@ -37,11 +37,15 @@ Both must report **0 errors**. A change can pass one and fail the other.
 - **Live at** https://srichard3.github.io/reel-deal-deck/ — deliberately `noindex`
 - **`reeldealdeck.com` is not bought yet.** Nothing compounds until it is. The
   printed cards already display that address, so it is urgent for a non-SEO reason.
-- Kickstarter runs until **19 September 2026**
-- Retail **$24.95**; three tiers in `src/pages/deck.mjs` — one deck, one signed
-  ($39.95), and a brick of twelve for the price of ten ($249.50)
-- **29 open decisions** in `docs/PUNCH-LIST.md` — pricing sign-off, the Trout
-  Unlimited figure, and wholesale terms are the blocking ones
+- **Ordering is live. There is no Kickstarter and no pre-order** — both were
+  removed site-wide. Checkout will be Shopify; `site.shop.url` is still empty, so
+  every order CTA falls back to `/deck/#order`.
+- Retail **$19.95** a deck, **$6.95** shipping on one, **free from two up**.
+  Wholesale **$9.97**/deck by the 12-deck brick, **$8.97**/deck by the 144-deck
+  master case. All of it in `site.pricing` — see below.
+- Nav is three items, in this order: **The Deck · Our Story · Fly-brary**
+- Open decisions in `docs/PUNCH-LIST.md` — the Shopify URL, the Trout Unlimited
+  figure, lead time and freight are the blocking ones
 - Domain cutover = drop `NOINDEX`/`BASE_PATH`, set `SITE_URL`, add a `CNAME`
 
 ---
@@ -71,9 +75,25 @@ question that isn't rendered. No fabricated ratings or reviews, ever.
 **Answer-first.** Every fly page and guide opens with a 40–60 word answer
 directly under the `<h1>`, before any other prose. That is the block an AI lifts.
 
-**Never hard-code the Kickstarter URL.** Route through `campaignCta()` /
-`campaignLine()` / `campaignState()` in `src/templates/_blocks.mjs`. They flip to
-pre-order copy automatically after 19 Sept — 60 CTAs depend on this.
+**Never hard-code a store URL, and never type a price into a page.** Two rules,
+one reason: both used to live in sixty places.
+
+*Where "buy" points* is `site.shop`, read through `orderCta()` / `orderLine()` /
+`orderState()` in `src/templates/_blocks.mjs`. Roughly sixty CTAs go through
+them, plus the sitewide order bar (`src/_partials/order-bar.html`, resolved once
+in `build.mjs` onto `meta.order*`). While `shop.url` is empty every one of them
+falls back to `shop.fallback` — `/deck/#order` — so the site is never broken
+while the store is being set up, and `orderState().ready` is `false` so a page
+can say so. Filling in that one field repoints the whole site. **Do not rename
+`#order` on `/deck/`** without changing `shop.fallback` with it.
+
+*What it costs* is `site.pricing`: `retail.perDeck`, `retail.shipping`,
+`retail.freeShippingFromDecks`, the three `units`, and `wholesale.tiers`.
+`/deck/` computes from it, and `/wholesale/` and `/gifts/` read it as
+`{{ site.pricing.… }}` tokens. `$24.95` was once typed into eight files and they
+disagreed by the end. There is **no quantity discount** — the deck is one price
+and only the postage changes, so do not reintroduce a tier ladder that implies
+one.
 
 **Write as Ken and Audrey, not about them.** `site.voice.register` in
 `data/site.json` is the rule. On a page they are speaking on it is "we made",
@@ -87,8 +107,20 @@ text and are quoted verbatim, never paraphrased.
 business is described. Emit via `organizationSchema()`. Do not write a new
 description anywhere.
 
-**Pricing lives in `deck.mjs`'s `TIERS`.** `preorder.mjs` imports it. Duplicating
-prices is how `/preorder/` was left quoting $24 after everything else moved.
+**The homepage is four sections and stays four sections.** Hero (the 3D box and
+the order button), the four proof stats, the Instagram strip, and one strip of
+real cards. It was ten; a page that explains the makers, the library, the guide,
+a game, three differentiators and an audience chooser explains none of them, and
+every one of those has a page of its own. `src/js/feed.js` and the `.feed` block
+in `components.css` are the homepage game, now unreferenced — kept because it
+works, not because anything loads it.
+
+**The Fly-brary is the hub for everything that is not the product or the people.**
+Four doors at the top of `/flies/`: what's in the deck (`/cards/`), the flies,
+the Virtual Guide (`/blog/`), and the flashcards at the foot of the page.
+`/cards/` is deliberately *not* in the top nav and its breadcrumb runs
+Home › Fly-brary › What's in the deck. The `.hub` grid uses **explicit** column
+counts (2 then 4), never `auto-fit`, which stretches a lone door on the last row.
 
 **Every section must be reachable from the homepage.** `check.mjs` walks the link
 graph and fails on unreachable clusters. 22 guides were once orphaned — every page
@@ -189,13 +221,13 @@ Safari will not infer it and collapses the element to nothing. Chrome hides this
 
 | Path | What |
 |---|---|
-| `data/site.json` | brand, product, campaign, voice — the source of truth |
+| `data/site.json` | brand, product, **shop**, **pricing**, voice — the source of truth |
 | `data/flies.json` | 55 cards, transcribed from the printed artwork |
 | `data/cards.json` | the deck's rank/suit/category mapping |
 | `data/states.json` | the state tier (2 so far) |
-| `src/templates/_blocks.mjs` | campaign helpers, `organizationSchema`, block vocabulary |
+| `src/templates/_blocks.mjs` | order helpers, `organizationSchema`, block vocabulary |
 | `src/templates/_shared.mjs` | card rendering, suit logic |
-| `src/js/feed.js` | the homepage game — card list built by `feedData()` in `index.mjs` |
+| `src/js/feed.js` | the homepage game — **no longer loaded anywhere**; needs a `feedData()` JSON block to work again |
 | `data/instagram.json` | the committed @reeldealdeck snapshot — refresh via `scripts/instagram.mjs` |
 | `src/js/suggest.js` | `/suggest/` — composes a real email; reads the address off the page |
 | `scripts/watermark.mjs` | burns the watermark into `static/cards/` from the gitignored masters |

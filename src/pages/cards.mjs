@@ -14,7 +14,7 @@
  * directly here. It is read-only — this page never writes to it.
  */
 import { readFileSync } from 'node:fs';
-import { campaignCta } from '../templates/_blocks.mjs';
+import { orderCta } from '../templates/_blocks.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { esc, cardImage, flyCard } from '../templates/_shared.mjs';
@@ -118,7 +118,8 @@ export const meta = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://reeldealdeck.com/' },
-        { '@type': 'ListItem', position: 2, name: "What's in the deck", item: 'https://reeldealdeck.com/cards/' },
+        { '@type': 'ListItem', position: 2, name: 'Fly-brary', item: 'https://reeldealdeck.com/flies/' },
+        { '@type': 'ListItem', position: 3, name: "What's in the deck", item: 'https://reeldealdeck.com/cards/' },
       ],
     },
     {
@@ -543,6 +544,7 @@ export default function cardsPage({ site }) {
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <ol>
         <li><a href="/">Home</a></li>
+        <li><a href="/flies/">Fly-brary</a></li>
         <li><span aria-current="page">What&rsquo;s in the deck</span></li>
       </ol>
     </nav>
@@ -574,8 +576,8 @@ ${printing(site)}
       you can actually deal.
     </p>
     <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
-      ${campaignCta(site)}
-      <a class="btn btn--ghost" href="/flies/">Browse the Fly-brary</a>
+      ${orderCta(site)}
+      <a class="btn btn--ghost" href="/flies/">Back to the Fly-brary</a>
       <a class="btn btn--quiet" href="/story/">Meet Ken and Audrey</a>
     </p>
   </div>

@@ -8,7 +8,7 @@
  * fresh, on purpose. */
 
 import { esc, cardImage } from '../templates/_shared.mjs';
-import { campaignCta, campaignLine, organizationSchema } from '../templates/_blocks.mjs';
+import { orderCta, orderLine, organizationSchema } from '../templates/_blocks.mjs';
 
 export const meta = {
   path: '/about/',
@@ -50,7 +50,7 @@ export default function about({ site, flies }) {
 
   const facts = [
     ['What it is', `A ${p.cardCount}-card fly-fishing playing card deck. Every card is an original hand-drawn fly with a plain-English note on what it imitates and the hook sizes it is usually tied in.`],
-    ['What it costs', `$${p.priceIntended} for a single deck. Multi-deck prices are on the deck page.`],
+    ['What it costs', `$${site.pricing.retail.perDeck.toFixed(2)} a deck. Shipping is $${site.pricing.retail.shipping.toFixed(2)} on one and free on ${site.pricing.retail.freeShippingFromDecks} or more. Trade prices are on the wholesale page.`],
     ['Who it is for', 'Anglers who want a reference they can actually carry, and the people buying a gift for one. It teaches a beginner and settles arguments for someone who has fished for thirty years.'],
     ['Who makes it', `${site.founders.map((f) => f.name).join(' and ')} — a father and his daughter, in ${site.location.city}, ${site.location.regionName}. They answer their own email.`],
     ['Who prints it', `${p.manufacturer}, on ${p.stock.replace(/^Genuine /, 'genuine ')}. ${p.origin}.`],
@@ -126,9 +126,9 @@ export default function about({ site, flies }) {
 
 <section class="section wrap wrap--narrow text-center stack" style="--gap:var(--s-4)">
   <h2 class="h2">${esc(p.availabilityNote)}</h2>
-  <p class="lede">${campaignLine(site)}</p>
+  <p class="lede">${orderLine(site)}</p>
   <p class="cluster" style="justify-content:center">
-    ${campaignCta(site)}
+    ${orderCta(site)}
     <a class="btn btn--ghost" href="/deck/">See the deck</a>
   </p>
 </section>`;

@@ -1,0 +1,43 @@
+<!-- ===========================================================================
+     Sitewide order bar.
+
+     Partials in this build system are plain HTML with {{ token }} substitution
+     and cannot branch, so this file holds NO logic at all. The destination is
+     resolved once, at build time, by orderState() in src/templates/_blocks.mjs
+     from site.shop; the page template puts the already-resolved values on
+     `meta` and this partial just prints them.
+
+     NOTE: never write this partial's own include token inside this comment.
+     expandPartials() in build.mjs is recursive and does not skip comments, so
+     a mention of it here expands into six nested copies of the bar.
+
+     Contract for any page that includes this partial — set on meta:
+       meta.orderKey      "shop" | "onsite"  (dismissal key; if the store URL
+                                              appears, a reader who hid the old
+                                              bar is shown the new one)
+       meta.orderEyebrow  short state label
+       meta.orderCta      the one link's text
+       meta.orderUrl      the one link's href
+       meta.orderRel      "noopener" for an off-site store URL, else ""
+       meta.orderTarget   "_blank" for an off-site store URL, else ""
+
+     Constraints, enforced in blog.css: <= 3rem tall, one line, one link.
+     It must never push the answer block below the fold — an intrusive top
+     interstitial is a page-experience problem and, worse, it displaces the
+     exact block answer engines quote.
+
+     Dismissal is progressive enhancement (src/js/site.js). With JS off the bar
+     simply stays visible, which is the correct default.
+     ======================================================================= -->
+<div class="aeo-bar" data-order-bar data-order-key="{{ meta.orderKey }}">
+  <div class="wrap aeo-bar__inner">
+    <p class="aeo-bar__text">
+      <span class="aeo-bar__eyebrow">{{ meta.orderEyebrow }}</span>
+      <a class="aeo-bar__link" href="{{ meta.orderUrl }}" rel="{{ meta.orderRel }}" target="{{ meta.orderTarget }}">{{ meta.orderCta }}</a>
+    </p>
+    <button class="aeo-bar__close" type="button" data-order-dismiss hidden
+            aria-label="Dismiss this announcement">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>

@@ -90,17 +90,6 @@ const deslug = (s) =>
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ');
 
-/* ------------------------------------------------------------- campaign -- */
-
-/**
- * Resolve `site.campaign` against build time. One place, one decision.
- *
- * Returns the flat, already-chosen values the campaign bar and the in-content
- * CTAs render — never the raw live/after branches — so no template, partial or
- * article ever has to know the campaign end date, and none of them can drift
- * out of sync with another.
- */
-
 /* ------------------------------------------------------------- instagram --
  * A revolving strip of @reeldealdeck posts.
  *
@@ -218,50 +207,60 @@ export function organizationSchema(site, { full = false } = {}) {
   };
 }
 
-/* A ready-made call to action for the campaign, in whatever state it is in.
-   Every campaign link on the site should come through here rather than
-   hard-coding the Kickstarter URL, so that on 20 September the whole site
-   stops pointing at a finished campaign without anyone editing a page. */
-export function campaignCta(site, { variant = 'primary', label = null, now = new Date() } = {}) {
-  const c = campaignState(site, now);
-  const cls = variant === 'ghost' ? 'btn btn--ghost' : 'btn btn--primary';
-  const ext = c.external
-    ? ' target="_blank" rel="noopener"'
-    : '';
-  const hint = c.external
-    ? '<span class="visually-hidden"> (opens Kickstarter in a new tab)</span>'
-    : '';
-  return `<a class="${cls}" href="${esc(c.url)}"${ext} data-campaign-cta="${esc(c.key)}">${esc(label || c.cta)}${hint}</a>`;
-}
-
-/* A one-line inline sentence for use inside prose, again state-aware. */
-export function campaignLine(site, now = new Date()) {
-  const c = campaignState(site, now);
-  const ext = c.external ? ' target="_blank" rel="noopener"' : '';
-  return c.live
-    ? `We are funding the deck on ${esc(c.platform || 'Kickstarter')} right now &mdash; <a href="${esc(c.url)}"${ext} data-campaign-cta="live">${esc(c.cta)}</a>.`
-    : `<a href="${esc(c.url)}" data-campaign-cta="after">${esc(c.cta)}</a> and we will email you the day it ships.`;
-}
-
-export function campaignState(site, now = new Date()) {
-  const c = (site && site.campaign) || {};
-  const endsAt = c.endsAt ? new Date(c.endsAt) : null;
-  const ended = endsAt instanceof Date && !Number.isNaN(endsAt.valueOf()) ? now >= endsAt : false;
-  const live = c.active !== false && !ended;
-  const copy = (live ? c.live : c.after) || {};
+/* ----------------------------------------------------------------- order --
+ * Where "buy this" points, resolved once.
+ *
+ * Checkout is Shopify-hosted, so the destination is a single URL that lives in
+ * `site.shop` and nowhere else. Sixty-odd CTAs across the site read it through
+ * these three helpers, which is what lets the storefront move without editing
+ * a page — and what stopped the old Kickstarter URL from being pasted into
+ * sixty templates in the first place.
+ *
+ * Until `shop.url` is filled in, every CTA falls back to `shop.fallback`
+ * (/deck/#order), the on-site pricing panel. That is the honest state: the
+ * prices are real and published, and the button goes somewhere useful rather
+ * than nowhere. `ready` is false in that state so a page can say so.
+ */
+export function orderState(site) {
+  const s = (site && site.shop) || {};
+  const fallback = s.fallback || '/deck/#order';
+  const ready = Boolean(s.url);
+  const url = ready ? s.url : fallback;
 
   return {
-    live,
-    key: live ? 'live' : 'after',
-    platform: c.platform || '',
-    eyebrow: copy.eyebrow || (live ? 'Live now' : 'Coming soon'),
-    headline: copy.headline || '',
-    sub: copy.sub || '',
-    cta: copy.cta || (live ? 'Back the deck' : 'Reserve a deck'),
-    // `after` carries its own on-site URL; `live` uses the campaign URL.
-    url: copy.url || (live ? c.url : '/deck/#reserve') || '/deck/#reserve',
-    external: /^https?:\/\//i.test(copy.url || (live ? c.url : '') || ''),
+    key: ready ? 'shop' : 'onsite',
+    ready,
+    provider: s.provider || '',
+    eyebrow: s.eyebrow || 'Order',
+    headline: s.headline || '',
+    sub: s.sub || '',
+    cta: s.cta || 'Order a deck',
+    url,
+    external: /^https?:\/\//i.test(url),
   };
+}
+
+/* The one button. Every "buy" link on the site comes through here. */
+export function orderCta(site, { variant = 'primary', label = null } = {}) {
+  const c = orderState(site);
+  const cls = variant === 'ghost' ? 'btn btn--ghost' : 'btn btn--primary';
+  const ext = c.external ? ' target="_blank" rel="noopener"' : '';
+  const hint = c.external
+    ? `<span class="visually-hidden"> (opens our ${esc(c.provider || 'shop')} store in a new tab)</span>`
+    : '';
+  return `<a class="${cls}" href="${esc(c.url)}"${ext} data-order-cta="${esc(c.key)}">${esc(label || c.cta)}${hint}</a>`;
+}
+
+/* A one-line inline sentence for use inside prose. */
+export function orderLine(site) {
+  const c = orderState(site);
+  const p = (site && site.pricing && site.pricing.retail) || {};
+  const ext = c.external ? ' target="_blank" rel="noopener"' : '';
+  const free = p.freeShippingFromDecks || 2;
+  const price = p.perDeck != null ? `$${p.perDeck.toFixed(2)}` : '';
+  return `<a href="${esc(c.url)}"${ext} data-order-cta="${esc(c.key)}">${esc(c.cta)}</a>${
+    price ? ` &mdash; ${price} a deck, and shipping is on us from ${free} up.` : '.'
+  }`;
 }
 
 /* --------------------------------------------------------------- blocks -- */

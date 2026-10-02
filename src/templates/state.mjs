@@ -10,7 +10,7 @@
  * figure that goes stale is dated and linked to the issuing agency. */
 
 import { esc, flyCard } from './_shared.mjs';
-import { campaignCta, organizationSchema } from './_blocks.mjs';
+import { orderCta, organizationSchema } from './_blocks.mjs';
 
 export default function ({ state: st, states, site, flies }) {
   const base = site.url.replace(/\/$/, '');
@@ -204,7 +204,7 @@ export default function ({ state: st, states, site, flies }) {
       <h2 class="h2">${site.product.cardCount} flies, drawn by hand, in your jacket pocket.</h2>
       <p class="lede">${esc(site.brand.shortDescription)}</p>
       <p class="cluster" style="justify-content:center">
-        ${campaignCta(site)}
+        ${orderCta(site)}
         <a class="btn btn--ghost" href="/deck/">See the deck</a>
       </p>
     </div>

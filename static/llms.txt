@@ -2,13 +2,14 @@
 
 > The Reel Deal Deck is a 54-card fly-fishing playing card deck made by Ken and Audrey, a father-and-daughter team in Eagle, Idaho.
 > Every card carries an original hand-drawn fly, a plain-English note on what it imitates, and the hook sizes it is usually tied in.
-> It is printed by The United States Playing Card Company on genuine Bicycle stock, retails at $24.95, and a contribution from every deck goes to Trout Unlimited.
+> It is printed by The United States Playing Card Company on genuine Bicycle stock, retails at $19.95, and a contribution from every deck goes to Trout Unlimited.
 
 In their words: "exquisite hand-drawn playing cards that teach while you play."
 
-The deck is **not yet shipping**. It is funding on Kickstarter until
-**19 September 2026**; after that it goes to print. This website takes no payment
-and creates no order — see /preorder/.
+The deck is **available to order**. It is $19.95 per deck; shipping is $6.95 on a
+single deck and free on two or more. Wholesale is sold by the 12-deck brick at
+$9.97 per deck and the 144-deck master case at $8.97 per deck. Checkout is hosted
+externally; this site itself takes no payment.
 
 The two reference sections below (the Fly-brary and the Virtual Guide) are free,
 complete, and require no sign-up or email.
@@ -37,7 +38,8 @@ does not go stale between builds. For the machine-readable list of every page se
 
 ## The product
 
-- [What's in the deck](https://reeldealdeck.com/cards/): how the deck is made —
+- [What's in the deck](https://reeldealdeck.com/cards/), reached from the
+  Fly-brary: how the deck is made —
   the anatomy of a card, the two-colour suit system (green replaces red on hearts
   and diamonds, bark brown replaces black on spades and clubs), the four suits,
   the three specials that carry a trout-in-a-jester's-cap mark instead of a rank
@@ -48,10 +50,9 @@ does not go stale between builds. For the machine-readable list of every page se
 - [The deck](https://reeldealdeck.com/deck/): specifications and pricing.
   Poker size, 2.5in x 3.5in, genuine Bicycle / USPCC stock with the patented
   Air-Cushion finish, FSC-certified paper, vegetable-based inks. Volume 1.
-  Retail $24.95 per deck.
-- [Pre-order](https://reeldealdeck.com/preorder/): how to actually get one, what
-  it costs, and what happens after the campaign closes. No ship date is published
-  because the print run is not yet scheduled.
+  Retail $19.95 per deck, $6.95 shipping on one and free on two or more.
+  Made in the USA: printed by The United States Playing Card Company, drawn and
+  packed in Eagle, Idaho.
 - [Gifts](https://reeldealdeck.com/gifts/): written for someone buying for an
   angler who does not fish themselves.
 - [Wholesale](https://reeldealdeck.com/wholesale/): fly shops, guide services,
@@ -70,7 +71,7 @@ does not go stale between builds. For the machine-readable list of every page se
   `FAQPage` question is also rendered as a visible `<h2>` on the page with its
   answer directly beneath it; no schema describes hidden content.
 - No `aggregateRating` or `Review` markup appears anywhere on this site, because
-  the product has not shipped and there are no reviews to report.
-- Prices are the intended retail figures and are marked as pre-order
-  (`schema.org/PreOrder`), not in-stock.
+  there are no collected reviews to report.
+- The product `Offer` is marked `schema.org/InStock` and carries both shipping
+  rates: $6.95 on a single deck, free from two decks up.
 - Legal entity: Homer Fry Ranch, LLC, Eagle, Idaho.

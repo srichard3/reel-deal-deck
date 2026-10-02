@@ -10,7 +10,7 @@
    parallel). The page renders honestly in that case rather than crashing.
    ========================================================================== */
 
-import { esc, clamp, campaignState } from '../templates/_blocks.mjs';
+import { esc, clamp, orderState } from '../templates/_blocks.mjs';
 
 export const meta = {
   path: '/blog/',
@@ -39,14 +39,15 @@ const topicKey = (p) => (TOPICS.some((t) => t.key === p?.topic) ? p.topic : 'bas
 export default function ({ site, posts = [], flies = [] }) {
   const base = String(site?.url || '').replace(/\/$/, '');
   const list = Array.isArray(posts) ? posts.filter(Boolean) : [];
-  const camp = campaignState(site);
+  const camp = orderState(site);
 
   /* Resolved values for  — the partial cannot branch. */
-  meta.campaignKey = camp.key;
-  meta.campaignEyebrow = camp.eyebrow;
-  meta.campaignCta = camp.cta;
-  meta.campaignUrl = camp.url;
-  meta.campaignRel = camp.external ? 'noopener' : '';
+  meta.orderKey = camp.key;
+  meta.orderEyebrow = camp.eyebrow;
+  meta.orderCta = camp.cta;
+  meta.orderUrl = camp.url;
+  meta.orderRel = camp.external ? 'noopener' : '';
+  meta.orderTarget = camp.external ? '_blank' : '';
 
   const groups = TOPICS.map((t) => ({ ...t, items: list.filter((p) => topicKey(p) === t.key) }));
 

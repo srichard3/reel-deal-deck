@@ -6,7 +6,7 @@
 
    The body order below is the entire strategy and is not negotiable:
 
-       campaign bar -> breadcrumbs -> h1 -> byline -> ANSWER -> takeaways
+       order bar -> breadcrumbs -> h1 -> byline -> ANSWER -> takeaways
        -> article -> in-content CTA -> FAQ -> sources -> related -> closing CTA
 
    Nothing may come between the h1 and the answer. A reader who asked a
@@ -20,7 +20,7 @@
    Missing, malformed or over-budget front matter degrades; it never throws.
    ========================================================================== */
 
-import { makeBlocks, campaignState, esc, plain, clamp, wordCount, organizationSchema } from './_blocks.mjs';
+import { makeBlocks, orderState, esc, plain, clamp, wordCount, organizationSchema } from './_blocks.mjs';
 import { flyCard } from './_shared.mjs';
 
 /* The shell appends " — The Reel Deal Deck" (21 chars) and scripts/check.mjs
@@ -183,9 +183,9 @@ export default function ({ post, posts = [], site, flies = [] }) {
     .filter((s) => !flyBySlug.has(s));
   if (missingFlies.length) warn(slug, `relatedFlies slug(s) not in data/flies.json: ${missingFlies.join(', ')}`);
 
-  /* ---------------------------------------------------------- campaign -- */
+  /* ------------------------------------------------------------- order -- */
 
-  const camp = campaignState(site);
+  const camp = orderState(site);
 
   /* ------------------------------------------------ in-content CTA slot -- */
   /* The pitch goes after the article has actually been useful — three sections
@@ -312,12 +312,13 @@ export default function ({ post, posts = [], site, flies = [] }) {
     bodyClass: 'page-post',
     ogImage: post?.ogImage || '/og/default.png',
     jsonld,
-    /* Resolved campaign values for  — see the partial. */
-    campaignKey: camp.key,
-    campaignEyebrow: camp.eyebrow,
-    campaignCta: camp.cta,
-    campaignUrl: camp.url,
-    campaignRel: camp.external ? 'noopener' : '',
+    /* Resolved order-bar values — see the partial. */
+    orderKey: camp.key,
+    orderEyebrow: camp.eyebrow,
+    orderCta: camp.cta,
+    orderUrl: camp.url,
+    orderRel: camp.external ? 'noopener' : '',
+    orderTarget: camp.external ? '_blank' : '',
   };
 
   /* ----------------------------------------------------------------- body */
@@ -403,8 +404,8 @@ export default function ({ post, posts = [], site, flies = [] }) {
 }
 
 /* ----------------------------------------------------------------- CTAs -- */
-/* Both CTAs read only the resolved campaign state. No template and no article
-   ever hard-codes the platform name, the copy or the URL. */
+/* Both CTAs read only the resolved order state. No template and no article
+   ever hard-codes the store, the copy or the URL. */
 
 function inContentCta({ camp, site }) {
   return `

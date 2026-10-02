@@ -9,7 +9,7 @@
  * docs/GROWTH-PLAN.md — a wire release needs somewhere to point. */
 
 import { esc } from '../templates/_shared.mjs';
-import { campaignCta, campaignLine, organizationSchema } from '../templates/_blocks.mjs';
+import { orderCta, orderLine, organizationSchema } from '../templates/_blocks.mjs';
 
 export const meta = {
   path: '/press/',
@@ -60,7 +60,7 @@ export default function press({ site }) {
 
   const quick = [
     ['Product', `${p.name} — a ${p.cardCount}-card fly-fishing playing card deck`],
-    ['Price', `$${p.priceIntended} per deck`],
+    ['Price', `$${site.pricing.retail.perDeck.toFixed(2)} per deck. $${site.pricing.retail.shipping.toFixed(2)} shipping on one; free on ${site.pricing.retail.freeShippingFromDecks} or more.`],
     ['Format', `${p.dimensions}. ${p.boxClaim}. ${site.edition}.`],
     ['Printer', `${p.manufacturer}. ${p.origin}.`],
     ['Materials', p.material],
@@ -164,15 +164,15 @@ export default function press({ site }) {
     </p>
     <!-- TODO-CONFIRM: no press coverage exists yet, so there is no coverage list
          on this page. Add one once there is something real to link to — do not
-         pad it with the Kickstarter page or the founders' own posts. -->
+         pad it with our own shop page or the founders' own posts. -->
   </div>
 </section>
 
 <section class="section wrap wrap--narrow text-center stack" style="--gap:var(--s-4)">
   <h2 class="h2">Writing about us right now?</h2>
-  <p class="lede">${campaignLine(site)}</p>
+  <p class="lede">${orderLine(site)}</p>
   <p class="cluster" style="justify-content:center">
-    ${campaignCta(site)}
+    ${orderCta(site)}
     <a class="btn btn--ghost" href="mailto:${esc(site.social.email)}">Email us</a>
   </p>
 </section>`;

@@ -254,16 +254,16 @@
 
 
 /* ==========================================================================
-   Campaign bar dismissal. The bar renders from the shell on every route, so
-   this lives in the sitewide bundle. Dismissal is keyed to the campaign
-   STATE, so when the Kickstarter ends and the bar switches to pre-order
-   copy, a reader who hid the old one sees the new one.
+   Order bar dismissal. The bar renders from the shell on every route, so this
+   lives in the sitewide bundle. Dismissal is keyed to the bar's STATE, so when
+   the hosted store URL appears and the copy changes, a reader who hid the old
+   bar is shown the new one.
    Progressive enhancement: with JS off the bar simply stays visible.
    ========================================================================== */
 (function () {
   'use strict';
 
-  var PREFIX = 'rdd-campaign-dismissed:';
+  var PREFIX = 'rdd-notice-dismissed:';
 
   function get(key) {
     try { return localStorage.getItem(PREFIX + key); } catch (e) { return null; }
@@ -272,12 +272,12 @@
     try { localStorage.setItem(PREFIX + key, '1'); } catch (e) { /* private mode */ }
   }
 
-  var bars = document.querySelectorAll('[data-campaign-bar]');
+  var bars = document.querySelectorAll('[data-order-bar]');
 
   for (var i = 0; i < bars.length; i++) {
     (function (bar) {
-      var key = bar.getAttribute('data-campaign-key') || 'default';
-      var btn = bar.querySelector('[data-campaign-dismiss]');
+      var key = bar.getAttribute('data-order-key') || 'default';
+      var btn = bar.querySelector('[data-order-dismiss]');
 
       /* Defaults to visible: only an explicit stored dismissal hides it. */
       if (get(key)) {

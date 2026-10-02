@@ -29,34 +29,15 @@
     "stock": "Genuine Bicycle / USPCC card stock with the patented Air-Cushion finish",
     "material": "FSC-certified paper, starch-based laminating glue, vegetable-based inks",
     "dimensions": "Poker size, 2.5in x 3.5in",
-    "priceIntended": 24.95,
     "priceCurrency": "USD",
-    "status": "preorder",
-    "availabilityNote": "Not yet shipping. Join the list to be first in line.",
+    "status": "available",
+    "availabilityNote": "Ordering is open. $19.95 a deck, and shipping is free on two or more.",
     "manufacturer": "The United States Playing Card Company",
     "origin": "Made in the USA",
     "boxClaim": "54 Unique Cards — Hand Illustrated in Exquisite Detail",
-    "cardCountNote": "54 unique cards = 52 standard + 2 jokers (Egg, San Juan Worm). This is the industry-standard count and the figure printed on the tuck box. A further bonus card ships in the deck and is deliberately not mentioned in any public copy — see data/flies.json, the entry flagged bonus:true."
-  },
-  "campaign": {
-    "note": "The CTA component reads `endsAt` against build time and swaps to `after` automatically. When the campaign closes, nothing needs editing — but set active:false if it is cancelled or paused early.",
-    "active": true,
-    "platform": "Kickstarter",
-    "url": "https://www.kickstarter.com/projects/reeldealdeck/the-reel-deal-decktm-fly-fishing-custom-playing-cards",
-    "endsAt": "2026-09-19T09:43:00-04:00",
-    "live": {
-      "eyebrow": "Live on Kickstarter",
-      "headline": "The Reel Deal Deck is funding right now.",
-      "sub": "54 hand-drawn flies on genuine Bicycle stock, made by a father and daughter in Eagle, Idaho, with a contribution to Trout Unlimited from every deck.",
-      "cta": "Back the deck on Kickstarter"
-    },
-    "after": {
-      "eyebrow": "Coming soon",
-      "headline": "The Reel Deal Deck is in production.",
-      "sub": "54 hand-drawn flies on genuine Bicycle stock. Leave your email and we will tell you the day it ships — that is the only reason we will write to you.",
-      "cta": "Reserve a deck",
-      "url": "/deck/#reserve"
-    }
+    "cardCountNote": "54 unique cards = 52 standard + 2 jokers (Egg, San Juan Worm). This is the industry-standard count and the figure printed on the tuck box. A further bonus card ships in the deck and is deliberately not mentioned in any public copy — see data/flies.json, the entry flagged bonus:true.",
+    "price": 19.95,
+    "originNote": "Printed by The United States Playing Card Company. Drawn, packed and shipped by Ken and Audrey in Eagle, Idaho. This is the one claim on the site that is true end to end, and /story/ is where it is made."
   },
   "blog": {
     "path": "/blog/",
@@ -81,16 +62,12 @@
       "href": "/deck/"
     },
     {
-      "label": "The Cards",
-      "href": "/cards/"
+      "label": "Our Story",
+      "href": "/story/"
     },
     {
       "label": "Fly-brary",
       "href": "/flies/"
-    },
-    {
-      "label": "Our Story",
-      "href": "/story/"
     }
   ],
   "footerNav": [
@@ -155,8 +132,8 @@
     }
   ],
   "placeholders": {
-    "note": "All purchase actions are intentionally stubbed. See docs/COMMERCE.md for the swap-in plan.",
-    "checkoutProvider": "TODO: Shopify Buy Button | Stripe Payment Link | Lemon Squeezy"
+    "note": "Checkout is Shopify-hosted and lives at site.shop.url. Everything else that collects an address or an email on this site is still a local-storage stub and says so on the page. See docs/COMMERCE.md.",
+    "checkoutProvider": "Shopify"
   },
   "motto": "The finest gift to fellow anglers is the fish you gently release.",
   "edition": "Volume 1",
@@ -170,7 +147,7 @@
     "handle": "@reeldealdeck",
     "shortLine": "Hand-drawn playing cards that teach while you play.",
     "note": "The printed card says 'multigenerational Idaho farmers' of the pair. The Kickstarter, written by Ken and Audrey themselves, calls Ken a '5th generation Idaho farmer' — so the number is now on the public record for him and founders[0].bio uses it. Still TODO-CONFIRM: surnames, and whether Audrey counts as fifth or sixth generation.",
-    "register": "How the site itself should sound, as distinct from voice.intro/why/hope/signoff, which are printed-card text and must be quoted verbatim. Write as Ken and Audrey, not about them: 'we made', 'we would rather', never 'Ken and Audrey decided' on a page they are speaking on. Warm, plain and a little wry — a father and daughter showing you a thing they made, not a brand announcing a product. Specific over grand, and never a claim we cannot back. No exclamation marks and no emoji: that is their Instagram voice, and it does not survive the move to a page someone is reading to decide whether to spend $24.95. Third person is still right in schema, alt text, press boilerplate and product facts ('signed by Ken and Audrey')."
+    "register": "How the site itself should sound, as distinct from voice.intro/why/hope/signoff, which are printed-card text and must be quoted verbatim. Write as Ken and Audrey, not about them: 'we made', 'we would rather', never 'Ken and Audrey decided' on a page they are speaking on. Warm, plain and a little wry — a father and daughter showing you a thing they made, not a brand announcing a product. Specific over grand, and never a claim we cannot back. No exclamation marks and no emoji: that is their Instagram voice, and it does not survive the move to a page someone is reading to decide whether to spend $19.95. Third person is still right in schema, alt text, press boilerplate and product facts ('signed by Ken and Audrey')."
   },
   "cardCraft": {
     "suits": "A two-colour deck: green replaces red on hearts and diamonds, bark brown replaces black on spades and clubs — drawn from the tuck box and card back.",
@@ -186,7 +163,7 @@
     "name": "The Reel Deal Deck",
     "legalName": "Homer Fry Ranch, LLC",
     "slogan": "Hand-drawn playing cards that teach while you play.",
-    "description": "The Reel Deal Deck is a 54-card fly-fishing playing card deck made by Ken and Audrey, a father-and-daughter team in Eagle, Idaho. Every card carries an original hand-drawn fly, a plain-English note on what it imitates, and the hook sizes it is usually tied in. It is printed by The United States Playing Card Company on genuine Bicycle stock, retails at $24.95, and a contribution from every deck goes to Trout Unlimited.",
+    "description": "The Reel Deal Deck is a 54-card fly-fishing playing card deck made by Ken and Audrey, a father-and-daughter team in Eagle, Idaho. Every card carries an original hand-drawn fly, a plain-English note on what it imitates, and the hook sizes it is usually tied in. It is printed by The United States Playing Card Company on genuine Bicycle stock, retails at $19.95, and a contribution from every deck goes to Trout Unlimited.",
     "shortDescription": "A 54-card fly-fishing deck of original hand-drawn flies, each explaining what it imitates. Made by a father-and-daughter team in Eagle, Idaho.",
     "foundingLocation": "Eagle, Idaho, United States",
     "knowsAbout": [
@@ -213,5 +190,65 @@
     ],
     "forWhom": "For anglers of every level, for the friend hunting a gift that feels personal, and for anyone who likes the art and the culture as much as the fishing.",
     "thanks": "We are so glad you are here."
+  },
+  "shop": {
+    "note": "Where every \"buy\" link on the site points, resolved once by orderState() in src/templates/_blocks.mjs. Checkout is hosted on Shopify, so `url` is the only place the storefront is named. Leave it empty and every CTA falls back to `fallback` — the on-site pricing panel — so the site is never broken while the store is being set up. Never paste a store URL into a page.",
+    "provider": "Shopify",
+    "url": "",
+    "urlNote": "TODO-CONFIRM: the Shopify storefront URL. Setting it here repoints every order CTA on the site in one move.",
+    "fallback": "/deck/#order",
+    "eyebrow": "Ordering now",
+    "headline": "The Reel Deal Deck is ready to order.",
+    "sub": "54 hand-drawn flies on genuine Bicycle stock, $19.95 a deck, with a contribution to Trout Unlimited from every one of them. Shipping is on us from two decks up.",
+    "cta": "Order a deck"
+  },
+  "pricing": {
+    "note": "The one source of pricing truth. src/pages/deck.mjs and src/pages/wholesale.html both read it; the Product JSON-LD offer is built from it. Three units, and they nest: a brick is twelve decks, a master case is twelve bricks.",
+    "currency": "USD",
+    "units": [
+      {
+        "id": "deck",
+        "name": "Deck",
+        "decks": 1,
+        "what": "One deck."
+      },
+      {
+        "id": "brick",
+        "name": "Brick",
+        "decks": 12,
+        "what": "One box of twelve decks."
+      },
+      {
+        "id": "case",
+        "name": "Master case",
+        "decks": 144,
+        "bricks": 12,
+        "what": "One carton of twelve bricks."
+      }
+    ],
+    "retail": {
+      "perDeck": 19.95,
+      "shipping": 6.95,
+      "freeShippingFromDecks": 2,
+      "note": "One deck is $19.95 plus $6.95 shipping. Two or more decks are $19.95 each and shipping is free. There is no quantity discount at retail — the saving is the shipping."
+    },
+    "wholesale": {
+      "note": "Wholesale is per-deck pricing, and it is sold in whole units only: a brick or a master case, never a loose deck.",
+      "minimumUnit": "brick",
+      "tiers": [
+        {
+          "id": "brick",
+          "unit": "Brick",
+          "decks": 12,
+          "perDeck": 9.97
+        },
+        {
+          "id": "case",
+          "unit": "Master case",
+          "decks": 144,
+          "perDeck": 8.97
+        }
+      ]
+    }
   }
 }

@@ -8,9 +8,8 @@
     <nav class="site-nav" aria-label="Primary">
       <ul class="site-nav__list">
         <li><a href="/deck/">The Deck</a></li>
-        <li><a href="/cards/">The Cards</a></li>
-        <li><a href="/flies/">Fly-brary</a></li>
         <li><a href="/story/">Our Story</a></li>
+        <li><a href="/flies/">Fly-brary</a></li>
       </ul>
     </nav>
 
@@ -19,7 +18,7 @@
               aria-label="Switch colour theme" title="Switch colour theme">
         <span aria-hidden="true" data-theme-icon>&#9789;</span>
       </button>
-      <a class="btn btn--primary btn--sm" href="/preorder/">Pre-order</a>
+      <a class="btn btn--primary btn--sm" href="{{ meta.orderUrl }}" rel="{{ meta.orderRel }}" target="{{ meta.orderTarget }}">Order</a>
       <button class="nav-toggle" type="button" data-nav-toggle
               aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
         <span class="nav-toggle__bar" aria-hidden="true"></span>
@@ -28,20 +27,20 @@
     </div>
   </div>
 
-  <!-- The Virtual Guide is deliberately absent from both lists: it lives on
-       the Fly-brary page. Gifts sits below the fold of this drawer rather than
-       in the top bar, and is also linked from the homepage and the footer. -->
+  <!-- Three items in the top bar, in this order: The Deck, Our Story, Fly-brary.
+       The Virtual Guide, the flashcards and What's in the deck are deliberately
+       absent from both lists — they all live inside the Fly-brary, which is the
+       hub for everything that is not the product or the people. Gifts and
+       Wholesale sit below the fold of this drawer and in the footer. -->
   <div class="mobile-nav" id="mobile-nav" hidden>
     <ul>
       <li><a href="/deck/">The Deck</a></li>
-      <li><a href="/cards/">The Cards</a></li>
-      <li><a href="/flies/">Fly-brary</a></li>
       <li><a href="/story/">Our Story</a></li>
+      <li><a href="/flies/">Fly-brary</a></li>
       <li><a href="/conservation/">Conservation</a></li>
       <li><a href="/gifts/">Gifts</a></li>
       <li><a href="/wholesale/">Wholesale</a></li>
-      <li><a href="/preorder/">Pre-order</a></li>
     </ul>
-    <a class="btn btn--primary btn--block" href="/deck/#reserve">Reserve a deck</a>
+    <a class="btn btn--primary btn--block" href="{{ meta.orderUrl }}" rel="{{ meta.orderRel }}" target="{{ meta.orderTarget }}">{{ meta.orderCta }}</a>
   </div>
 </header>

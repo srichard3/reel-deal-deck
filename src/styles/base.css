@@ -259,8 +259,8 @@ table { border-collapse: collapse; width: 100%; }
 /* :not(.btn) matters. A button inside prose is a button, not a link in a
    sentence, and this rule outranks .btn's own colour — (0,1,1) against (0,1,0).
    It was repainting every .btn in an article the accent colour, which on
-   .btn--primary means accent text on an accent background: the Kickstarter
-   button in blog posts was green on green, with a prose underline to match. */
+   .btn--primary means accent text on an accent background: the order button in
+   blog posts was green on green, with a prose underline to match. */
 .prose a:not(.btn) {
   color: var(--c-accent);
   text-decoration: underline;

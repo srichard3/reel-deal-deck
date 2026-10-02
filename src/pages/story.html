@@ -16,7 +16,7 @@
           "legalName": "Homer Fry Ranch, LLC",
           "url": "https://reeldealdeck.com",
           "slogan": "Hand-drawn playing cards that teach while you play.",
-          "description": "The Reel Deal Deck is a 54-card fly-fishing playing card deck made by Ken and Audrey, a father-and-daughter team in Eagle, Idaho. Every card carries an original hand-drawn fly, a plain-English note on what it imitates, and the hook sizes it is usually tied in. It is printed by The United States Playing Card Company on genuine Bicycle stock, retails at $24.95, and a contribution from every deck goes to Trout Unlimited.",
+          "description": "The Reel Deal Deck is a 54-card fly-fishing playing card deck made by Ken and Audrey, a father-and-daughter team in Eagle, Idaho. Every card carries an original hand-drawn fly, a plain-English note on what it imitates, and the hook sizes it is usually tied in. It is printed by The United States Playing Card Company on genuine Bicycle stock, retails at $19.95, and a contribution from every deck goes to Trout Unlimited.",
           "logo": "https://reeldealdeck.com/brand/logo-512.png",
           "image": "https://reeldealdeck.com/og/default.png",
           "email": "reeldealdeck@gmail.com",
@@ -96,12 +96,13 @@
      only, so the JSON-LD Person entries and the copy below use first names.
      Full names would materially help the Person schema and press coverage. -->
 
-<!-- Ken's generation is sourced: the Kickstarter, in Ken and Audrey's own
+<!-- Ken's generation is sourced: their own campaign write-up, transcribed in
+         docs/VOICE-SOURCE.md, in Ken and Audrey's own
      words, calls him a "5th generation Idaho farmer". See docs/VOICE-SOURCE.md.
      TODO-CONFIRM: whether Audrey counts as the fifth generation or the sixth.
      Until that is answered this page numbers Ken only. -->
 
-<!-- TODO-CONFIRM: photography of Ken and Audrey. The Kickstarter campaign
+<!-- TODO-CONFIRM: photography of Ken and Audrey. Their own campaign write-up
      carries photographs of them both, so it exists — it has simply never been
      supplied to this repo, and it is theirs to hand over rather than ours to
      lift. Ask for the originals. Until then this page uses the printed artwork
@@ -179,6 +180,34 @@
         between a reference card and a deck of cards. A deck of cards gets played with.
       </p>
 
+      <h2 id="made-in-the-usa">Made in the USA, and we mean all of it</h2>
+      <p>
+        {{ site.product.origin }} &mdash; and we mean the whole thing, not the label. The flies were
+        drawn in {{ site.location.city }}, {{ site.location.regionName }}. The cards are printed by
+        {{ site.product.manufacturer }}, in the United States, on {{ site.product.stock }}. The boxes
+        are packed and posted by the two of us, from here.
+      </p>
+      <p>
+        It is the same choice as the card stock, arrived at the same way. We wanted the deck to feel
+        like a deck, which meant {{ site.product.manufacturer }}, which is an American printer &mdash;
+        so the stock decision and the origin decision turned out to be one decision rather than two.
+      </p>
+      <p>
+        We say &ldquo;{{ site.product.origin }}&rdquo; rather than &ldquo;designed&rdquo; here on
+        purpose. Those are different claims, and the gap between them is usually the whole story.
+      </p>
+      <!-- Every sentence above is from site.product: the manufacturer, the stock,
+           the origin, and our own address. Nothing else belongs here.
+
+           TODO-CONFIRM, and worth confirming because it is the strongest version
+           of this section: whether offshore printing was actually quoted and
+           declined, and by how much. If Ken says yes, that paragraph is better
+           than any of the three above. Do NOT write it until he does — a
+           cheaper-offshore-quote story is exactly the kind of plausible detail
+           this site has had to delete before.
+           TODO-CONFIRM: whether "Made in the USA" is printed on the tuck box
+           itself. site.product.boxClaim does not include it. -->
+
       <h2>Then Audrey got involved</h2>
       <p>
         Audrey is Ken&rsquo;s daughter, and an entrepreneurship graduate of Loyola Marymount
@@ -236,12 +265,11 @@
 
       <h2>Where things stand today</h2>
       <p>
-        Pre-launch, and nothing ships from this site yet. The
-        <a href="/flies/">Fly-brary</a> is free and live right now though &mdash; it is the
-        whole contents of the deck, written out as a reference you can read today whether or
-        not you ever buy a thing. <a href="/cards/">What&rsquo;s in the deck</a> explains the
-        object itself. And if you would like to hear from us the day it is real,
-        <a href="#story-list">leave your email</a>. {{ site.story.thanks }}
+        The deck is printed and ordering is open &mdash; ${{ site.pricing.retail.perDeck }} a deck, and we cover the
+        postage from two up. The <a href="/flies/">Fly-brary</a> is free either way: it is the whole
+        contents of the deck, written out as a reference you can read today whether or not you ever buy
+        a thing, and <a href="/flies/#whats-in-the-deck">what&rsquo;s in the deck</a> explains the object
+        itself. {{ site.story.thanks }}
       </p>
     </div>
 
@@ -274,28 +302,18 @@
 
 {{> instagram }}
 
-<section class="section section--dark" id="story-list">
+<section class="section section--dark" id="order-the-deck">
   <div class="wrap wrap--narrow">
     <p class="section-num" aria-hidden="true">A&#9830;</p>
-    <h2 class="h2" style="margin-block-start:var(--s-4)">Nothing ships yet &mdash; but we&rsquo;d love to tell you when it does</h2>
+    <h2 class="h2" style="margin-block-start:var(--s-4)">That is the story. Here is the deck.</h2>
     <p class="lede" style="margin-block-start:var(--s-4)">
-      One email, from Ken and Audrey, on the day the deck is real. That is the whole purpose
-      of this list.
+      Fifty-four flies drawn by hand, printed in the United States, ${{ site.pricing.retail.perDeck }} a deck. Shipping is
+      on us from two up, and a contribution from every deck goes to {{ site.conservation.partner }}.
     </p>
-    <form class="capture__form" data-capture="email" action="#" method="post" style="margin-block-start:var(--s-6)">
-      <div class="form-inline">
-        <div class="field">
-          <label class="label" for="story-email">Email address</label>
-          <input class="input" id="story-email" name="email" type="email"
-                 autocomplete="email" required placeholder="you@example.com"
-                 aria-describedby="story-email-help">
-        </div>
-        <button class="btn btn--primary" type="submit">Join the list</button>
-      </div>
-      <p class="help" id="story-email-help">
-        A waiting list, not an order. No card details, no charge, and one click to leave.
-      </p>
-    </form>
+    <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
+      <a class="btn btn--primary btn--lg" href="{{ meta.orderUrl }}" rel="{{ meta.orderRel }}" target="{{ meta.orderTarget }}">{{ meta.orderCta }}</a>
+      <a class="btn btn--ghost btn--lg" href="/deck/">See the deck</a>
+    </p>
     <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
       <a class="btn btn--ghost" href="/cards/">What&rsquo;s in the deck</a>
       <a class="btn btn--quiet" href="/conservation/">Conservation</a>

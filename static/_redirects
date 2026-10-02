@@ -44,11 +44,17 @@ https://www.reeldealdeck.com/*   https://reeldealdeck.com/:splat      301!
 /fly-library/*                   /flies/:splat                        301
 /patterns/*                      /flies/:splat                        301
 
+# --- Retired routes --------------------------------------------------------
+# /preorder/ was a real, linked URL. It is gone: ordering is live and the
+# product page carries the prices, so send anyone holding that link there.
+/preorder                        /deck/                               301
+/preorder/*                      /deck/                               301
+
 # --- Legacy / off-platform entry points ------------------------------------
 # Add here as they appear. Examples of the shape they should take:
-#   /kickstarter    https://www.kickstarter.com/…       302
-#   /ig             https://instagram.com/reeldealdeck  302
-# TODO-CONFIRM: the Kickstarter campaign URL, before adding a /kickstarter alias.
+#   /shop           https://…myshopify.com/…             302
+#   /ig             https://instagram.com/reeldealdeck   302
+# TODO-CONFIRM: the Shopify storefront URL, before adding a /shop alias.
 
 # --- Fallback --------------------------------------------------------------
 # Not a wildcard SPA rewrite. dist/404.html (written by scripts/postbuild.mjs)

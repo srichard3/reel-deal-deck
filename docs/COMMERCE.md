@@ -5,11 +5,20 @@
 connect the email captures, what to know about tax and shipping, and what to check before
 the first real order.
 
-**Current state:** there is no checkout, no cart, no payment processor and no back end.
-Everything commerce-shaped on this site is a deliberate placeholder in
-`src/js/commerce.js`. Forms save to the visitor's own browser (`localStorage`) and send
-nothing anywhere. Nothing on the site says an order was placed or a payment was taken, and
-nothing should be changed in a way that makes it say so before real checkout is live.
+**Current state (October 2026):** the site now presents itself as **open for orders** and the
+provider is decided — **Shopify**. What is missing is the storefront itself.
+
+Every order CTA on the site, and the sitewide order bar, resolve through `orderState()` in
+`src/templates/_blocks.mjs`, which reads **`site.shop`** in `data/site.json`. While
+`shop.url` is empty they all fall back to `shop.fallback` — `/deck/#order`, the on-site
+pricing panel. **Setting `shop.url` to the Shopify storefront or cart URL is the entire
+integration for the buy path.** One field, every button.
+
+What remains a placeholder is the *forms*: `/gifts/` and `/wholesale/` still use
+`src/js/commerce.js`, which saves to the visitor's own browser (`localStorage`) and sends
+nothing anywhere. Each of those forms says so on the page, and must keep saying so until it
+is wired to something real. The tier cart and the reservation form that used to live on
+`/deck/` are gone — there is no wish list any more.
 
 ---
 
@@ -55,22 +64,35 @@ not sell physical goods. Do not spend a meeting on it.
 
 **Set up in Shopify, exactly these products:**
 
-| Shopify product / variant | Decks | Price | SKU suggestion |
-|---|---|---|---|
-| The Reel Deal Deck — 1 deck | 1 | $24 | RDD-01 |
-| The Reel Deal Deck — 2 decks | 2 | $44 | RDD-02 |
-| The Reel Deal Deck — 4-pack | 4 | $84 | RDD-04 |
-| The Reel Deal Deck — Brick | 12 | $216 | RDD-12 |
-| Signed First Edition | 1 | $60 | RDD-SIGNED |
+**One product, one price, a quantity selector, and a shipping rule.** That is the whole
+retail catalogue now — there is no tier ladder and no signed edition.
 
-TODO-CONFIRM: all five prices are proposals from `src/pages/deck.mjs` and need founder
-sign-off against real landed cost. Whatever you settle on, change it in **three** places or
-they will drift: the `TIERS` array in `src/pages/deck.mjs`, the `offers` block in that same
-file's `meta.jsonld`, and the trade table in `src/pages/wholesale.html`.
+| Shopify product | Price | SKU suggestion |
+|---|---|---|
+| The Reel Deal Deck | $19.95 | RDD-01 |
 
-Do **one** variant per tier as a separate product rather than a quantity selector. It keeps
-the analytics readable — you want to know that the brick outsells the single deck, which is
-the whole commercial thesis of this business.
+Then **two shipping rates** on the US zone, which is where the entire offer lives:
+
+| Condition | Rate |
+|---|---|
+| 1 deck | $6.95 |
+| 2 or more decks | Free |
+
+Shopify expresses that as a weight- or item-count-based rate with a free-shipping threshold
+at 2 items. Get the threshold on **item count, not order value** — $19.95 × 2 is the
+intended trigger and a discount code would otherwise drop an order under a value threshold.
+
+Wholesale is **not** a public Shopify product. A brick is 12 decks at $9.97 each ($119.64)
+and a master case is 144 decks at $8.97 each ($1,291.68); both go out as draft orders or
+invoices against an enquiry from `/wholesale/`, which is how the page already describes it.
+
+Every one of those figures is read from **`site.pricing`** in `data/site.json` — the retail
+block, the three units and the wholesale tiers. `/deck/` computes from it, `/wholesale/` and
+`/gifts/` read it as tokens, and the Product JSON-LD offer is built from it. **Change it
+there and nowhere else.** `$24.95` was once typed into eight files and they disagreed.
+
+TODO-CONFIRM: $19.95, $6.95 and the two trade figures are Ken and Audrey's, but none has
+been checked against real landed cost, carton weight or fulfilment.
 
 ---
 
@@ -110,42 +132,42 @@ them is the entire integration.
 
 ### The swap, in three steps
 
-**Step 1 — real checkout.** Add Shopify's Buy Button script and give each tier a real
-button. The cleanest minimal change: keep the existing markup, add the Shopify variant id
-to each button, and replace `onInterest` so a click goes to a real cart.
+**Step 1 — the buy path. One field.** Create the product and the two shipping rates above,
+then put the storefront or cart URL in `data/site.json`:
 
-```html
-<!-- src/pages/deck.mjs, inside tierCard() — add one attribute -->
-data-shopify-variant="0000000000000"
+```json
+"shop": {
+  "url": "https://reeldealdeck.myshopify.com/products/the-reel-deal-deck",
+  ...
+}
 ```
 
-```js
-// A new file, src/js/checkout.js, loaded AFTER commerce.js.
-// Do not edit commerce.js itself; just override the seam.
-window.RDD.commerce.onInterest = function (list, item) {
-  var qs = list.map(function (l) {
-    return VARIANTS[l.tier] + ':' + l.qty;   // VARIANTS maps tier id -> variant id
-  }).join(',');
-  window.location.href = 'https://YOURSHOP.myshopify.com/cart/' + qs;
-};
+Rebuild. Every order button on the site, the header button, the mobile drawer button and
+the sitewide order bar now point at it, open in a new tab with `rel="noopener"`, and carry
+`data-order-cta="shop"` instead of `"onsite"`. Nothing else is edited. Confirm with:
+
+```bash
+node build.mjs && grep -c 'data-order-cta="shop"' dist/deck/index.html
 ```
 
-**Step 2 — retire the placeholder language.** Once real checkout is live, these strings are
-wrong and must go. They are all in `src/js/commerce.js` and the pages:
+A Buy Button embed is an option instead, but it is a third-party script on a site that
+currently has zero of them, and it buys very little over a link to a hosted cart. Prefer the
+link; reach for the embed only if cart-on-page measurably converts better.
 
-- `successCopy()` in `commerce.js` — every branch says "no payment has been taken".
-- Every `<p class="cx-stub">` block (one per form, three pages).
-- The `.buy-avail` "Not yet shipping" pill on `/deck/`, `/gifts/` and `/wholesale/`.
-- "Save to my list" button labels and the `.buy-interest` panel heading on `/deck/`.
-- The availability line in `data/site.json` (`product.availabilityNote`, `product.status`).
-- `"availability": "https://schema.org/PreOrder"` in the Product JSON-LD in
-  `src/pages/deck.mjs` → `https://schema.org/InStock`. **Do not change this one until stock
-  is physically in hand.** Google penalises structured data that contradicts the page.
+**Step 2 — the remaining placeholder language.** The buy path no longer claims anything
+false, but the two surviving forms still do, correctly, and their copy must change only when
+they are wired to something real:
 
-**Step 3 — delete the stub.** When both hooks are overridden and the copy is updated, the
-localStorage writes are dead weight. Remove `writeJSON(CAPTURE_KEY, …)` and the
-`INTEREST_KEY` block. Keep the validation and the inline status rendering; both are still
-useful.
+- `successCopy()` in `src/js/commerce.js` — every branch says "no payment has been taken".
+- Every `<p class="cx-stub">` block — one on `/gifts/`, one on `/wholesale/`.
+- `/contact/` and `/story/` also carry `data-capture` forms but do **not** load
+  `commerce.js`, so those submit nowhere at all. Fix or remove them.
+- `/suggest/` is the exception and needs nothing: it composes a real email.
+
+**Step 3 — delete the stub.** When the forms are wired up, the localStorage writes are dead
+weight. Remove `writeJSON(CAPTURE_KEY, …)`. The `INTEREST_KEY` wish-list block is **already**
+dead — nothing on the site emits `[data-add-to-cart]` any more — and can go now. Keep the
+validation and the inline status rendering; both are still useful.
 
 ---
 
@@ -213,10 +235,11 @@ question.
   you **collect and keep a resale certificate from every shop** before you invoice them. Add
   that to the account-opening flow. Auditors ask for these; "the shop told me they were a
   shop" is not a defence.
-- **Marketplace facilitator rules** meant Kickstarter may have handled tax on the campaign.
-  Selling direct, it is yours. Do not assume the campaign's treatment carries over.
+- **Marketplace facilitator rules** mean a platform sometimes collects tax on a seller's
+  behalf. Selling direct through your own Shopify store, it is yours. Do not assume any
+  earlier treatment carries over.
 
-TODO-CONFIRM: whether the Kickstarter campaign already created a registration or filing
+TODO-CONFIRM: whether any earlier sales already created a registration or filing
 obligation in Idaho, and how the entity is structured.
 
 ---
@@ -268,7 +291,9 @@ Nothing on this list is optional before the first real order.
 - [ ] `onCapture` and `onInterest` overridden in `src/js/checkout.js`; the stub no longer stores anything.
 - [ ] Every `.cx-stub` paragraph removed (3 pages).
 - [ ] Every `.buy-avail` "not yet shipping" pill removed or rewritten (3 pages).
-- [ ] `product.status` and `product.availabilityNote` in `data/site.json` updated.
+- [ ] `shop.url` in `data/site.json` set to the live storefront, and
+      `grep -c 'data-order-cta="shop"' dist/deck/index.html` is non-zero.
+- [ ] `product.status` and `product.availabilityNote` in `data/site.json` still true.
 - [ ] Product JSON-LD `availability` changed `PreOrder` → `InStock`, **after** stock lands.
 - [ ] `console.info('[RDD stub] …')` lines gone from `src/js/commerce.js`.
 - [ ] Every `TODO-CONFIRM` comment in `src/pages/` resolved or deliberately left. Find them:

@@ -4,7 +4,7 @@
    filter/search in place. */
 
 import { esc, flyCard, TYPES, TYPE_ORDER, titleCase } from '../templates/_shared.mjs';
-import { campaignCta } from '../templates/_blocks.mjs';
+import { orderCta } from '../templates/_blocks.mjs';
 import { TOPICS } from './blog.mjs';
 
 export const meta = {
@@ -167,17 +167,32 @@ export default function ({ site, flies, posts }) {
     <p class="page-head__lede lede">
       Everything we know about fly fishing, in one place and free. Ken built this deck
       because he wanted to learn the flies himself, so it would be a bit rich to charge
-      you for the same thing. Two ways in.
+      you for the same thing. Four ways in.
     </p>
   </header>
 </div>
 
-<!-- The fork. This page is a hub, and the two things a reader wants from it —
-     a fly, or an answer about fishing one — live in different places: the fly
-     list is below, the Virtual Guide is at /blog/. Saying so at the top beats
-     making them scroll to find out. -->
+<!-- The fork. This page is the hub for everything that is not the product or
+     the people, and those things live in four different places: what is in the
+     deck at /cards/, the fly list further down this page, the Virtual Guide at
+     /blog/, and the flashcards at the foot of this one. Saying so at the top
+     beats making a reader scroll to find out.
+
+     The door order is deliberate: the object, then the patterns, then the
+     wider questions, then the drill. It reads as a narrowing of scope. -->
 <div class="wrap">
   <ul class="hub" aria-label="Choose where to start">
+    <li class="hub__door" id="whats-in-the-deck">
+      <a class="hub__link" href="/cards/">
+        <span class="hub__index" aria-hidden="true">2&#9830;</span>
+        <span class="hub__title">What&rsquo;s in the deck</span>
+        <span class="hub__text">
+          The object itself, card by card: the suits, the three with no rank, the engraved
+          back, the tuck box and the note we printed inside it.
+        </span>
+        <span class="hub__go" aria-hidden="true">See the cards &rarr;</span>
+      </a>
+    </li>
     <li class="hub__door">
       <a class="hub__link" href="#the-flies">
         <span class="hub__index" aria-hidden="true">A&#9830;</span>
@@ -341,7 +356,7 @@ ${virtualGuide(posts)}
       printed on ${esc(site.product.stock)}.
     </p>
     <p class="cluster" style="justify-content:center">
-      ${campaignCta(site)}
+      ${orderCta(site)}
       <a class="btn btn--ghost" href="/gifts/">Buying it as a gift</a>
     </p>
     <p class="text-muted" style="margin-block-start:var(--s-5)">
