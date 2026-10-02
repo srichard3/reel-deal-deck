@@ -1000,3 +1000,55 @@
 }
 
 .ws-apply__back { margin-block-start: var(--s-7); font-size: var(--t-sm); }
+
+
+/* ==========================================================================
+   WHOLESALE HERO — /wholesale/
+   Three facts a trade buyer scans for, in a row, between the paragraph and the
+   buttons. The band they replace was a single amber status pill wedged against
+   the lede with nothing above or below it.
+   ========================================================================== */
+
+.ws-hero > * + * { margin-block-start: var(--s-5); }
+.ws-hero .lede { max-inline-size: var(--measure); }
+
+.ws-hero__facts {
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: 1fr;
+  margin-block: var(--s-7);
+  padding-block: var(--s-6);
+  border-block: var(--cx-hairline) solid var(--c-border);
+}
+@media (min-width: 40rem) {
+  .ws-hero__facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); }
+}
+
+.ws-hero__fact { margin: 0; }
+
+.ws-hero__fact dt {
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-index);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.ws-hero__fact dd {
+  margin: var(--s-2) 0 0;
+  font-size: var(--t-sm);
+  color: var(--c-text-muted);
+  line-height: var(--lh-snug);
+}
+
+.ws-hero__fact dd strong {
+  display: block;
+  font-family: var(--f-display);
+  font-size: var(--t-xl);
+  line-height: 1;
+  font-weight: 400;
+  color: var(--c-text);
+  font-variant-numeric: tabular-nums;
+  margin-block-end: var(--s-1);
+}
+
+.ws-hero__actions { margin-block-start: var(--s-6); }

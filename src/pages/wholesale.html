@@ -65,23 +65,43 @@
   <a href="/">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Wholesale</span>
 </nav>
 
+<!-- The hero used to open "a twenty dollar impulse buy that sells itself at the
+     register", which talks down about the product to the one reader deciding
+     whether to stock it, and claimed a customer "buys three of in December" —
+     a behaviour nobody has observed, on a deck that has not had a December yet.
+
+     A buyer scans for the margin and the unit. So the headline carries the
+     margin, the three facts they look for sit in a row where the eye can take
+     them in at once, and the paragraph stays short enough to actually read. -->
 <section class="section wrap">
-  <div class="wrap--narrow">
+  <div class="wrap--narrow ws-hero">
     <p class="eyebrow">Wholesale</p>
-    <h1 class="h1">A twenty dollar impulse buy that sells itself at the register</h1>
+    <h1 class="h1">Fifty-four hand-drawn flies, at keystone or better</h1>
     <p class="lede">
-      Fly shops, guide services, lodges, Trout Unlimited chapters and outdoor brands. Fifty-four
-      hand-drawn flies on genuine Bicycle stock &mdash; the thing a customer picks up while you are
-      ringing up their tippet, and then buys three of in December. You will be dealing with Ken and
-      Audrey directly, which means answers in one reply rather than a ticket number.
+      Trade pricing for fly shops, guide services, lodges and {{ site.conservation.partner }}
+      chapters. Sold by the brick of twelve or the 144-deck master case &mdash; and you deal with
+      Ken and Audrey directly, so a question gets an answer rather than a ticket number.
     </p>
 
-    <p class="buy-avail">
-      <span class="buy-avail__dot" aria-hidden="true"></span>
-      Open for trade &mdash; ${{ site.pricing.wholesale.tiers.0.perDeck }} a deck by the brick
-    </p>
+    <!-- 50% is arithmetic on the two figures, not a claim: at $9.97 landed
+         against a $19.95 shelf price, 9.98/19.95 = 50.0%. The master case runs
+         to 55%. Both are stated again in the pricing section below. -->
+    <dl class="ws-hero__facts">
+      <div class="ws-hero__fact">
+        <dt>Your cost</dt>
+        <dd><strong>${{ site.pricing.wholesale.tiers.0.perDeck }}</strong> a deck, by the brick</dd>
+      </div>
+      <div class="ws-hero__fact">
+        <dt>Your margin</dt>
+        <dd><strong>50%</strong> at the ${{ site.pricing.retail.perDeck }} shelf price</dd>
+      </div>
+      <div class="ws-hero__fact">
+        <dt>Minimum</dt>
+        <dd><strong>12 decks</strong> one brick, and the same to reorder</dd>
+      </div>
+    </dl>
 
-    <div class="cluster">
+    <div class="cluster ws-hero__actions">
       <a class="btn btn--primary btn--lg" href="/wholesale/apply/">Open a wholesale account</a>
       <a class="btn btn--ghost btn--lg" href="#wholesale-enquiry">Ask a question first</a>
     </div>
