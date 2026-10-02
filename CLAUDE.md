@@ -116,21 +116,36 @@ in `components.css` are the old homepage game, now unreferenced — kept because
 it works, not because anything loads it.
 
 **The card fan is CSS, and the arc is one rotation per card.** `cardFan()` in
-`index.mjs` emits all 54 faces carrying nothing but `--i`; `.fan` in
-`components.css` rotates each about a pivot 3.6 card-heights below it, and the
-browser does the trigonometry. Hover and `:focus-within` get identical rules, so
-it is fully keyboard-operable, and the neighbours lean away via `+` and `:has()`
-rather than script. Two numbers are load-bearing and must move together:
-`--fan-step` and `.fan`'s `block-size`, which has to clear both the drop of the
+`index.mjs` emits every *other* card — 27 of the 54 — carrying nothing but `--i`;
+`.fan` in `components.css` rotates each about a pivot 3.6 card-heights below it,
+and the browser does the trigonometry. Hover and `:focus-within` get identical
+rules, so it is fully keyboard-operable, and the neighbours lean away via `+`
+and `:has()` rather than script.
+
+**Nothing in the fan may transform the hover target.** `.fan__card` and
+`.fan__link` hold the layout and never move; every visual transform happens on
+`.fan__art` inside them. The first version scaled the card itself, sharing the
+layout rotation's `transform-origin` 3.6 card-heights below it — a `scale(1.5)`
+about a pivot that far away threw the card ~1.8 card-heights out from under the
+pointer, which un-hovered it, which shrank it back under the pointer, several
+times a second. `.fan__art` scales about its own bottom edge instead, and
+because it is a *descendant* of the link, growing past the link's own box keeps
+`:hover` on the card. Verify a change by parking the pointer and sampling which
+card matches `:hover` over ~2s; it must never change.
+
+Three numbers are load-bearing and move together: `--fan-step`, `.fan`'s
+`inline-size` and its `block-size`. The height has to clear both the drop of the
 end cards (`pivot x (1 - cos(half-angle))` card-heights) and the name label
 hanging below them — `.fan-stage` is a scroll container and clips anything past
-it. Measure the end cards, not the middle one, after any change.
+it. **Measure the end cards, not the middle one.** `--fan-step` is also a target
+size: it sets how wide a strip of each card is pointable (25px at 3deg, and it
+was 22px at the 54-card spacing, under the 24px WCAG 2.5.8 minimum).
 
-**The fan is the homepage's whole image budget.** 54 faces, so each `<img>`
+**The fan is the homepage's whole image budget.** 27 faces, so each `<img>`
 offers a 240 and a 400 with `sizes` stops that match what the CSS really
-renders. A phone at 2x takes the 240s (~845kB), a desktop retina screen takes
-the 400s (~1.6MB), everything is `loading="lazy"`, and the section is well below
-the fold. `scripts/card-thumbs.mjs` makes the 240s by downscaling the ALREADY
+renders. A phone at 2x takes the 240s (~420kB), a desktop retina screen takes
+the 400s (~800kB), everything is `loading="lazy"`, and the section is well below
+the fold. Halving the card count halved this too. `scripts/card-thumbs.mjs` makes the 240s by downscaling the ALREADY
 WATERMARKED `-400`s, which is safe to re-run — unlike `scripts/watermark.mjs`,
 it cannot stack a second mark.
 
