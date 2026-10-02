@@ -50,7 +50,7 @@ export const meta = {
 /* ----------------------------------------------------------------- utils -- */
 
 import { flyCard as sharedFlyCard } from '../templates/_shared.mjs';
-import { orderCta, organizationSchema, instagramStrip } from '../templates/_blocks.mjs';
+import { orderCta, organizationSchema, instagramStrip, tuckBox } from '../templates/_blocks.mjs';
 
 const esc = (s) =>
   String(s ?? '')
@@ -61,56 +61,74 @@ const esc = (s) =>
 
 /* ------------------------------------------------------------- sections --- */
 
-function heroPack() {
-  /* The real tuck box, in three dimensions, built from the printer's dieline —
-     the six panels are cut out by scripts/box-panels.mjs and the proportions
-     here are the ones measured off it (W : H : D = 1 : 1.393 : 0.26).
-     No 3D library: six images and CSS transforms. A tuck box is a cuboid, and
-     a cuboid is six rectangles, so three.js would be 150kB to draw a box.
+/* ------------------------------------------------------------- the fan ----
+ * All 54 printed faces, spread the way a deck is spread on a table.
+ *
+ * The layout is one rotation per card about a pivot well below the fan, which
+ * is how a real fan works and means the browser does the trigonometry: every
+ * card sits at the same place in the DOM and differs only by `--i`. No JS, no
+ * canvas, no library. At rest about 14px of each card shows, which sounds like
+ * nothing and is in fact roughly what a fanned deck in a pair of hands looks
+ * like — the interaction is what makes a card readable, not the resting state.
+ *
+ * Hovering or tabbing to a card lifts it out of the fan and scales it up, and
+ * its neighbours lean away to make room. That second part is the thing that
+ * makes it feel like cards rather than a CSS trick, and it is done with sibling
+ * selectors in components.css rather than script.
+ *
+ * Every card is a link to that fly's page, so this is also 54 internal links
+ * from the homepage into the Fly-brary — the strip it replaced had six.
+ *
+ * Weight. 54 card faces is the one real cost of this section, so each <img>
+ * offers a 240 and a 400 and the `sizes` stops match what the CSS actually
+ * renders: 104px under 46rem (the coarse-pointer size), 13vw up to 64rem, then
+ * the 150px cap. A phone at 2x therefore takes the 240s and a desktop retina
+ * screen takes the 400s, which is the split worth having. Everything is
+ * loading="lazy" and the section is well below the fold.
+ *
+ * Deck order, not file order: spades, hearts, diamonds, clubs, then the two
+ * jokers, so it reads as a deck someone opened rather than a shuffled pile.
+ * The bonus card is excluded here as it is excluded from every count.
+ */
+const FAN_SUITS = ['spades', 'hearts', 'diamonds', 'clubs', 'joker'];
+const FAN_RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'JOKER'];
 
-     With JS off it stays at the three-quarter angle set in CSS, which is the
-     view the flat image used to show anyway. box.js adds the dragging.
+function cardFan(flies) {
+  const list = (Array.isArray(flies) ? flies : [])
+    .filter((f) => !f.bonus && f.slug && f.name && f.image)
+    .sort((a, b) => {
+      const ca = a.card || {}, cb = b.card || {};
+      return (FAN_SUITS.indexOf(ca.suit) - FAN_SUITS.indexOf(cb.suit))
+          || (FAN_RANKS.indexOf(ca.rank) - FAN_RANKS.indexOf(cb.rank));
+    });
+  if (list.length < 8) return '';          /* not a fan — show nothing */
 
-     The front panel is the LCP image and keeps fetchpriority; the back is the
-     one face that cannot be seen at rest, so it loads lazily. */
-  /* draggable="false" is not decoration. Chrome starts a native image drag on
-     mousedown over an <img>, which swallows the gesture and hands the reader a
-     dragged picture instead of a turning box. Safari is lazier about firing
-     dragstart, so it only showed up in Chrome. */
-  const face = (name, w, h, alt, eager) =>
-    `<img class="tuck__img" src="/brand/box3d-${name}.webp" width="${w}" height="${h}"
-             alt="${alt}" draggable="false" decoding="async"${eager ? ' fetchpriority="high"' : ' loading="lazy"'}>`;
+  const mid = (list.length - 1) / 2;
 
-  return `<figure class="hero-pack">
-      <div class="tuck" data-tuck>
-        <div class="tuck__stage">
-          <div class="tuck__box" data-tuck-box
-               role="img"
-               aria-label="The Reel Deal Deck tuck box: an engraved green case with two rising trout, a fan of three fly cards on the front, and &lsquo;54 Unique Cards, Hand Illustrated in Exquisite Detail&rsquo; down the spine">
-            <div class="tuck__face tuck__face--front">${face('front', 600, 836, '', true)}</div>
-            <div class="tuck__face tuck__face--back">${face('back', 600, 836, '')}</div>
-            <div class="tuck__face tuck__face--left">${face('left', 156, 836, '')}</div>
-            <div class="tuck__face tuck__face--right">${face('right', 156, 836, '')}</div>
-            <div class="tuck__face tuck__face--top">${face('top', 600, 156, '')}</div>
-            <div class="tuck__face tuck__face--bottom"></div>
-          </div>
-        </div>
-        <div class="tuck__shadow" aria-hidden="true"></div>
-      </div>
-    </figure>`;
-}
+  const card = (f, i) => {
+    const c = f.card || {};
+    const label = c.rank === 'JOKER' ? 'Joker' : `${c.rank || ''}${SUIT_GLYPH[c.suit] || ''}`;
+    return `      <li class="fan__card" style="--i:${i}">
+        <a class="fan__link" href="/flies/${esc(f.slug)}/">
+          <img class="fan__img" src="${esc(f.image)}-240.webp"
+               srcset="${esc(f.image)}-240.webp 240w, ${esc(f.image)}-400.webp 400w"
+               sizes="(max-width: 46rem) 104px, (max-width: 64rem) 13vw, 150px"
+               width="400" height="559"
+               loading="lazy" decoding="async" draggable="false" alt="">
+          <span class="fan__name">${esc(f.name)}${label ? ` <span class="fan__idx">${label}</span>` : ''}</span>
+        </a>
+      </li>`;
+  };
 
-/** A strip of real printed faces, chosen for variety across suits and types. */
-function flyStrip(flies, picks) {
-  if (!Array.isArray(flies) || !flies.length) return '';
-  const items = picks.map((sl) => flies.find((f) => f.slug === sl)).filter(Boolean);
-  const list = items.length === picks.length ? items : flies.slice(0, picks.length);
-  if (!list.length) return '';
   return `
-      <div class="card-grid fly-strip" style="--gap:var(--s-4)">
-        ${list.map((f) => sharedFlyCard(f)).join('\n        ')}
-      </div>`;
+    <div class="fan-stage">
+      <ul class="fan" style="--fan-n:${list.length};--fan-mid:${mid}">
+${list.map(card).join('\n')}
+      </ul>
+    </div>`;
 }
+
+const SUIT_GLYPH = { hearts: '♥', diamonds: '♦', spades: '♠', clubs: '♣', joker: '' };
 
 /* ------------------------------------------------------------------ page -- */
 
@@ -152,7 +170,7 @@ export default function homepage({ site, flies, instagram }) {
         Still just the two of us, in ${esc(city)}, ${esc(regionName)}.
       </p>
     </div>
-    ${heroPack()}
+    ${tuckBox({ eager: true })}
   </div>
 </section>
 
@@ -177,36 +195,38 @@ export default function homepage({ site, flies, instagram }) {
   </div>
 </section>
 
-${instagramStrip(site, instagram, {
-  title: 'Follow along while we make it',
-  blurb: 'We put the whole thing on Instagram as it happens \u2014 prototypes, print proofs, trips, and the odd fish that had nothing to do with work. Tap any of these to open it.',
-})}
 
 <!-- ======================================================== THE CARDS == -->
-<!-- The one section on this page that is not the box, the facts or Instagram:
-     six real printed faces. Picked across suits and categories so the strip
-     shows the range rather than six nymphs. -->
+<!-- All 54, fanned. See cardFan() above and the .fan block in components.css. -->
 <section class="section" id="in-the-deck" aria-labelledby="deck-h">
   <div class="wrap">
     <div class="section-head section-head--split">
       <div>
         <p class="section-num" aria-hidden="true">2&#9829;</p>
-        <h2 class="h2" id="deck-h">Six of the fifty-four</h2>
+        <h2 class="h2" id="deck-h">The whole deck, spread out</h2>
         <p class="lede">
-          ${esc(craft.eachCard || 'Every card shows the rank and suit, the fly&rsquo;s name, its category, the hand-drawn fly itself, a plain-English note on what it imitates, and the hook sizes it is usually tied in.')}
+          All ${esc(count)} of them. Point at one to bring it up; open it to read what the fly
+          imitates, when it works and how to fish it.
         </p>
       </div>
-      <p><a class="btn btn--ghost" href="/cards/">Anatomy of a card</a></p>
+      <p><a class="btn btn--ghost" href="/flies/">Open the Fly-brary</a></p>
     </div>
-${flyStrip(f, ['adams', 'parachute-adams', 'woolly-bugger', 'grasshopper', 'copper-john', 'san-juan-worm'])}
+  </div>
 
-    <p class="text-muted" style="margin-block-start:var(--s-6)">
-      Every one of these is a real printed face, and all ${esc(count)} are written out free in
-      <a href="/flies/">the Fly-brary</a> &mdash; what each fly imitates, when it works, and how to
-      fish it.
+${cardFan(f)}
+
+  <div class="wrap">
+    <p class="fan-foot text-muted">
+      ${esc(craft.eachCard || 'Every card shows the rank and suit, the fly&rsquo;s name, its category, the hand-drawn fly itself, a plain-English note on what it imitates, and the hook sizes it is usually tied in.')}
+      <a href="/cards/">Anatomy of a card</a>.
     </p>
   </div>
 </section>
+
+${instagramStrip(site, instagram, {
+  title: 'Follow along while we make it',
+  blurb: 'We put the whole thing on Instagram as it happens \u2014 prototypes, print proofs, trips, and the odd fish that had nothing to do with work. Tap any of these to open it.',
+})}
 
 <script src="/js/box.js" defer></script>
 `;

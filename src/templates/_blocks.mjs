@@ -207,6 +207,50 @@ export function organizationSchema(site, { full = false } = {}) {
   };
 }
 
+/* ------------------------------------------------------------- tuck box --
+ * The real tuck box, in three dimensions, built from the printer's dieline.
+ *
+ * The six panels are cut out by scripts/box-panels.mjs and the proportions are
+ * the ones measured off that dieline (W : H : D = 1 : 1.393 : 0.26). No 3D
+ * library: six images and CSS transforms. A tuck box is a cuboid, and a cuboid
+ * is six rectangles, so three.js would be 150kB to draw a box.
+ *
+ * With JS off it stays at the three-quarter angle set in CSS, which is the view
+ * the flat product photo used to show anyway. src/js/box.js adds the dragging,
+ * the fling and the idle sway — any page using this must load it.
+ *
+ * `eager` marks the front panel as the LCP image. Pass it on the one page where
+ * the box is genuinely the largest thing above the fold; everywhere else the
+ * panels load lazily.
+ */
+export function tuckBox({ eager = false } = {}) {
+  /* draggable="false" is not decoration. Chrome starts a native image drag on
+     mousedown over an <img>, which swallows the gesture and hands the reader a
+     dragged picture instead of a turning box. Safari is lazier about firing
+     dragstart, so it only showed up in Chrome. */
+  const face = (name, w, h, lead) =>
+    `<img class="tuck__img" src="/brand/box3d-${name}.webp" width="${w}" height="${h}"
+             alt="" draggable="false" decoding="async"${lead ? ' fetchpriority="high"' : ' loading="lazy"'}>`;
+
+  return `<figure class="hero-pack">
+      <div class="tuck" data-tuck>
+        <div class="tuck__stage">
+          <div class="tuck__box" data-tuck-box
+               role="img"
+               aria-label="The Reel Deal Deck tuck box: an engraved green case with two rising trout, a fan of three fly cards on the front, and &lsquo;54 Unique Cards, Hand Illustrated in Exquisite Detail&rsquo; down the spine">
+            <div class="tuck__face tuck__face--front">${face('front', 600, 836, eager)}</div>
+            <div class="tuck__face tuck__face--back">${face('back', 600, 836)}</div>
+            <div class="tuck__face tuck__face--left">${face('left', 156, 836)}</div>
+            <div class="tuck__face tuck__face--right">${face('right', 156, 836)}</div>
+            <div class="tuck__face tuck__face--top">${face('top', 600, 156)}</div>
+            <div class="tuck__face tuck__face--bottom"></div>
+          </div>
+        </div>
+        <div class="tuck__shadow" aria-hidden="true"></div>
+      </div>
+    </figure>`;
+}
+
 /* ----------------------------------------------------------------- order --
  * Where "buy this" points, resolved once.
  *

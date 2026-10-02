@@ -33,6 +33,7 @@ Change it once there and every page follows.
 
 | # | Decision | Who | Source file |
 |---|---|---|---|
+| 0 | **Five photographs.** The shot list, sizes and destinations are in `docs/PHOTO-PLAN.md`. Slot 2, Ken drawing, is the single most valuable image the site could have. | Ken & Audrey | `new assets/photos/` |
 | 1 | **The Shopify storefront URL.** Everything else about ordering is done; this one field turns ~60 buttons into real checkout. | Ken & Audrey | `data/site.json` → `shop.url`. See `docs/COMMERCE.md` |
 | 1b | **Pricing against real cost.** $19.95 retail, $6.95 shipping, $9.97/deck by the brick and $8.97/deck by the master case are decided, but none is checked against landed cost, carton weight or fulfilment. | Ken & Audrey | `data/site.json` → `pricing` (the only place) |
 | 2 | **The Trout Unlimited contribution.** Currently "a portion of proceeds", which converts badly. A hard number — "$1 from every deck" — converts. | Ken & Audrey | `data/site.json` → `conservation.commitment` |

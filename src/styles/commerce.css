@@ -178,12 +178,19 @@
    3. TIER LADDER
    ========================================================================== */
 
+/* Two cards, and explicitly two columns rather than auto-fit — with an even
+   count auto-fit is harmless, but this grid has had three and four cards in it
+   before and will again, and auto-fit stretches whatever is left on the last
+   row to double width. Explicit counts never do that. */
 .buy-tiers {
   display: grid;
   gap: var(--s-4);
-  grid-template-columns: repeat(auto-fit, minmax(min(var(--cx-col-min), 100%), 1fr));
+  grid-template-columns: 1fr;
   align-items: stretch;
   margin-top: var(--s-6);
+}
+@media (min-width: 46rem) {
+  .buy-tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 .buy-tier {
@@ -780,38 +787,66 @@
   max-width: var(--measure);
 }
 
-/* --- Product hero: the real box and card back --------------------------- */
-.buy-deckart__pack {
-  position: relative;
-  /* The card back is absolutely positioned and rotated 7deg; clip horizontally
-     so the rotated corner can never widen the document. */
-  overflow-x: clip;
-  margin: 0;
+/* The flat product photo and the tucked-in card back that used to sit here
+   are gone: /deck/ now shows the same interactive tuck box as the homepage
+   (tuckBox() in _blocks.mjs, .tuck in components.css). .buy-deckart__caption
+   above is still used, as the box's "drag to turn it over" hint. */
+
+}
+
+
+/* ==========================================================================
+   WHOLESALE BAND — /deck/#wholesale
+   Two units, their deck counts and their per-deck price, on the dark band.
+   It was a sentence at the foot of the price panel, which is the one place a
+   buyer spending $1,291.68 would not look.
+   ========================================================================== */
+
+.ws-units {
   display: grid;
-  place-items: center;
-  padding-block: var(--s-5);
+  gap: var(--s-4);
+  grid-template-columns: 1fr;
+  margin-block-start: var(--s-6);
 }
-.buy-deckart__box {
-  display: block;
-  width: 100%;
-  max-width: 21rem;
-  height: auto;
-  border-radius: var(--r-sm);
-  box-shadow: var(--shadow-lift);
+@media (min-width: 40rem) {
+  .ws-units { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5); }
 }
-/* The back tucked behind the box, angled like a card slid out of the case. */
-.buy-deckart__card-back {
-  position: absolute;
-  inset-inline-end: 0;
-  inset-block-end: var(--s-6);
-  width: 34%;
-  max-width: 9rem;
-  height: auto;
+
+.ws-unit {
+  padding: var(--s-5);
+  border: var(--cx-hairline) solid currentColor;
   border-radius: var(--r-card);
-  box-shadow: var(--shadow-2);
-  transform: rotate(7deg);
-  z-index: -1;
+  /* On .section--dark the text colour is already the inverted one, so a
+     currentColor border and a transparent fill need no second set of tokens. */
+  background: color-mix(in srgb, currentColor 6%, transparent);
 }
-@media (max-width: 34rem) {
-  .buy-deckart__card-back { display: none; }
+
+.ws-unit__name {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  line-height: var(--lh-snug);
+}
+.ws-unit__count {
+  margin: var(--s-1) 0 0;
+  font-size: var(--t-sm);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  opacity: .75;
+}
+.ws-unit__price {
+  margin: var(--s-4) 0 0;
+  font-family: var(--f-display);
+  font-size: var(--t-2xl);
+  line-height: 1;
+}
+.ws-unit__price span {
+  font-family: var(--f-body);
+  font-size: var(--t-sm);
+  opacity: .75;
+}
+.ws-unit__total {
+  margin: var(--s-2) 0 0;
+  font-size: var(--t-sm);
+  opacity: .75;
 }

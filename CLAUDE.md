@@ -108,12 +108,31 @@ business is described. Emit via `organizationSchema()`. Do not write a new
 description anywhere.
 
 **The homepage is four sections and stays four sections.** Hero (the 3D box and
-the order button), the four proof stats, the Instagram strip, and one strip of
-real cards. It was ten; a page that explains the makers, the library, the guide,
-a game, three differentiators and an audience chooser explains none of them, and
+the order button), the four proof stats, the card fan, and the Instagram strip
+last. It was ten; a page that explains the makers, the library, the guide, a
+game, three differentiators and an audience chooser explains none of them, and
 every one of those has a page of its own. `src/js/feed.js` and the `.feed` block
-in `components.css` are the homepage game, now unreferenced — kept because it
-works, not because anything loads it.
+in `components.css` are the old homepage game, now unreferenced — kept because
+it works, not because anything loads it.
+
+**The card fan is CSS, and the arc is one rotation per card.** `cardFan()` in
+`index.mjs` emits all 54 faces carrying nothing but `--i`; `.fan` in
+`components.css` rotates each about a pivot 3.6 card-heights below it, and the
+browser does the trigonometry. Hover and `:focus-within` get identical rules, so
+it is fully keyboard-operable, and the neighbours lean away via `+` and `:has()`
+rather than script. Two numbers are load-bearing and must move together:
+`--fan-step` and `.fan`'s `block-size`, which has to clear both the drop of the
+end cards (`pivot x (1 - cos(half-angle))` card-heights) and the name label
+hanging below them — `.fan-stage` is a scroll container and clips anything past
+it. Measure the end cards, not the middle one, after any change.
+
+**The fan is the homepage's whole image budget.** 54 faces, so each `<img>`
+offers a 240 and a 400 with `sizes` stops that match what the CSS really
+renders. A phone at 2x takes the 240s (~845kB), a desktop retina screen takes
+the 400s (~1.6MB), everything is `loading="lazy"`, and the section is well below
+the fold. `scripts/card-thumbs.mjs` makes the 240s by downscaling the ALREADY
+WATERMARKED `-400`s, which is safe to re-run — unlike `scripts/watermark.mjs`,
+it cannot stack a second mark.
 
 **The Fly-brary is the hub for everything that is not the product or the people.**
 Four doors at the top of `/flies/`: what's in the deck (`/cards/`), the flies,
@@ -156,9 +175,10 @@ Safari holds subresources harder than that, which is how a fixed button stayed
 broken after deploy. Hashes are stable across rebuilds, so unchanged files stay
 cached. Never tell someone to hard-refresh instead.
 
-**The hero tuck box is CSS, not a 3D library.** A cuboid is six rectangles, so
-three.js would be 150kB to draw a box. `scripts/box-panels.mjs` cuts the six
-panels out of the printer's dieline (gitignored) by detecting its cyan fold
+**The hero tuck box is CSS, not a 3D library.** It is `tuckBox()` in
+`_blocks.mjs` and renders on both `/` and `/deck/`; any page using it must load
+`src/js/box.js`, and only one page should pass `eager`. A cuboid is six rectangles, so
+three.js would be 150kB to draw a box. `scripts/box-panels.mjs` cuts the six panels out of the printer's dieline (gitignored) by detecting its cyan fold
 lines, and `.tuck` in components.css folds them with transforms at the measured
 ratios W:H:D = 1 : 1.393 : 0.26. The resting angle is CSS, so it is still a 3D
 box with JS off; `src/js/box.js` only adds dragging, keyboard and the idle sway.
@@ -227,7 +247,9 @@ Safari will not infer it and collapses the element to nothing. Chrome hides this
 | `data/states.json` | the state tier (2 so far) |
 | `src/templates/_blocks.mjs` | order helpers, `organizationSchema`, block vocabulary |
 | `src/templates/_shared.mjs` | card rendering, suit logic |
-| `src/js/feed.js` | the homepage game — **no longer loaded anywhere**; needs a `feedData()` JSON block to work again |
+| `src/js/feed.js` | the old homepage game — **no longer loaded anywhere**; needs a `feedData()` JSON block to work again |
+| `scripts/card-thumbs.mjs` | the `-240` card variants for the homepage fan; safe to re-run |
+| `docs/PHOTO-PLAN.md` | the five photographs the site is waiting on, and where each goes |
 | `data/instagram.json` | the committed @reeldealdeck snapshot — refresh via `scripts/instagram.mjs` |
 | `src/js/suggest.js` | `/suggest/` — composes a real email; reads the address off the page |
 | `scripts/watermark.mjs` | burns the watermark into `static/cards/` from the gitignored masters |

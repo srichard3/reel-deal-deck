@@ -102,11 +102,11 @@
      TODO-CONFIRM: whether Audrey counts as the fifth generation or the sixth.
      Until that is answered this page numbers Ken only. -->
 
-<!-- TODO-CONFIRM: photography of Ken and Audrey. Their own campaign write-up
-     carries photographs of them both, so it exists — it has simply never been
-     supplied to this repo, and it is theirs to hand over rather than ours to
-     lift. Ask for the originals. Until then this page uses the printed artwork
-     only; do not fill the gap with stock photography. -->
+<!-- PHOTOGRAPHY: five numbered slots are marked in the body below, and
+     docs/PHOTO-PLAN.md says what each one is, what size to supply, and where
+     the file goes. Nothing on this page is a placeholder box — a slot is a
+     comment until a real photograph exists for it.
+     Do not fill any of them with stock photography. -->
 
 <!-- TODO-CONFIRM: the year Ken started drawing, the year the deck was finished,
      and how long it took. None of those dates are in data/site.json, so none
@@ -123,20 +123,16 @@
     <p class="eyebrow" style="margin-block-start:var(--s-5)">{{ site.location.city }}, {{ site.location.regionName }}</p>
     <h1 class="h1 page-head__title">&ldquo;{{ site.voice.intro }}&rdquo;</h1>
     <p class="lede page-head__lede">
-      That is not a tagline anybody wrote for this website. It is printed on a card inside
-      the deck, and it is how Ken and Audrey say hello to every single person who opens one.
+      Not a tagline anybody wrote for a website. It is printed on a card inside the deck.
     </p>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap wrap--narrow">
-    <div class="prose">
-      <p>
-        The note is short enough to read in full, so here it is, exactly as it is printed.
-        Their words are better than ours.
-      </p>
-    </div>
+    <!-- PHOTO SLOT 1 — "the note" — see docs/PHOTO-PLAN.md.
+         The printed info card held in a hand, or lying on the open tuck box.
+         Drop in here as a <figure class="story-photo">. -->
 
     <blockquote class="story-note">
       <p>{{ site.voice.intro }}</p>
@@ -162,40 +158,34 @@
         {{ site.story.looking }}
       </p>
       <p>
-        So he started drawing &mdash; one fly at a time, until there were enough of them to be
-        a deck. Every illustration on every card is original and drawn by hand. Then came the
-        twist that turned a study aid into something people would actually keep: why not make
-        them playing cards too?
+        So he drew his own, one fly at a time, until there were enough to be a deck. Then came
+        the twist that turned a study aid into something people keep: why not make them playing
+        cards too? A deck gets dealt, argued over and left out on the table. Fifty-four flies
+        get looked at hundreds of times without anybody sitting down to study.
       </p>
       <p>
-        That is the part that makes it work. A deck of cards gets dealt, argued over and left
-        out on the table. Fifty-four flies get looked at hundreds of times without anybody ever
-        deciding to sit down and study.
+        Which is why they are printed on {{ site.product.stock }}, not board with rounded
+        corners. A deck of cards gets played with.
       </p>
-      <p>
-        Turning drawings into a real deck came down to one decision the whole product rests
-        on: print it on proper playing card stock. Not board with rounded corners &mdash;
-        {{ site.product.stock }}, at {{ site.product.dimensions }}, from
-        {{ site.product.manufacturer }}. It costs more per deck, and it is the difference
-        between a reference card and a deck of cards. A deck of cards gets played with.
-      </p>
+
+      <!-- PHOTO SLOT 2 — "the drawings" — see docs/PHOTO-PLAN.md.
+           Ken drawing, or the original artwork beside the finished card.
+           This is the single most valuable photograph on the site. -->
 
       <h2 id="made-in-the-usa">Made in the USA, and we mean all of it</h2>
       <p>
-        {{ site.product.origin }} &mdash; and we mean the whole thing, not the label. The flies were
-        drawn in {{ site.location.city }}, {{ site.location.regionName }}. The cards are printed by
-        {{ site.product.manufacturer }}, in the United States, on {{ site.product.stock }}. The boxes
-        are packed and posted by the two of us, from here.
-      </p>
-      <p>
-        It is the same choice as the card stock, arrived at the same way. We wanted the deck to feel
-        like a deck, which meant {{ site.product.manufacturer }}, which is an American printer &mdash;
-        so the stock decision and the origin decision turned out to be one decision rather than two.
+        The whole thing, not the label. Drawn in {{ site.location.city }},
+        {{ site.location.regionName }}. Printed by {{ site.product.manufacturer }}, in the
+        United States. Packed and posted by the two of us, from here.
       </p>
       <p>
         We say &ldquo;{{ site.product.origin }}&rdquo; rather than &ldquo;designed&rdquo; here on
         purpose. Those are different claims, and the gap between them is usually the whole story.
       </p>
+
+      <!-- PHOTO SLOT 3 — "packed here" — see docs/PHOTO-PLAN.md.
+           The kitchen-table shipping operation: stacked decks, padded envelopes,
+           a stack of bricks. Proof of the sentence above, not a stock photo. -->
       <!-- Every sentence above is from site.product: the manufacturer, the stock,
            the origin, and our own address. Nothing else belongs here.
 
@@ -210,15 +200,9 @@
 
       <h2>Then Audrey got involved</h2>
       <p>
-        Audrey is Ken&rsquo;s daughter, and an entrepreneurship graduate of Loyola Marymount
-        University&rsquo;s College of Business Administration. She handles design direction,
-        brand and community &mdash; which is the tidy way of saying she is the reason the
-        drawings became a deck instead of a folder on a laptop.
-      </p>
-      <p>
-        They are farmers and anglers long before they are a company. The deck is made in
-        {{ site.location.city }}, {{ site.location.regionName }}, and every email that
-        arrives is answered by one of the two of them.
+        Ken&rsquo;s daughter, and the reason the drawings became a deck instead of a folder on
+        a laptop. She handles design, brand and community. We are farmers and anglers long
+        before we are a company, and every email that arrives is answered by one of us.
       </p>
       <p>
         {{ site.story.belief }} {{ site.story.spirit }}
@@ -226,7 +210,7 @@
 
       <h2>What we were trying to make</h2>
       <p>
-        The whole time, the test was whether the deck came out:
+        The test was whether the deck came out:
       </p>
       <!-- Mirrors site.story.goal verbatim. This page is plain HTML, and token
            interpolation cannot loop an array, so the list is written out here.
@@ -243,19 +227,15 @@
 
       <h2>A couple of things we won&rsquo;t claim</h2>
       <p>
-        We would love to tell you nobody else makes fly-fishing cards. We can&rsquo;t &mdash;
-        several companies do, some of them good, and one search would catch us out. What we
-        will happily stand behind is narrower and checkable: the art is Ken&rsquo;s and drawn
-        by hand, the stock is genuine Bicycle from {{ site.product.manufacturer }}, and a set
-        amount from every deck goes to
-        <a href="{{ site.conservation.partnerUrl }}" rel="noopener">{{ site.conservation.partner }}</a>,
-        who we are already a business member of.
+        We would love to say nobody else makes fly-fishing cards. We can&rsquo;t &mdash; several
+        companies do, and one search would catch us out. What we will stand behind is narrower
+        and checkable: the art is Ken&rsquo;s and drawn by hand, the stock is genuine Bicycle
+        from {{ site.product.manufacturer }}, and a set amount from every deck goes to
+        <a href="{{ site.conservation.partnerUrl }}" rel="noopener">{{ site.conservation.partner }}</a>.
       </p>
       <p>
-        We are not going to invent a founding legend either. There is no golden evening on a
-        riverbank in this story, mostly because there is no photograph of one. There is a man
-        who wanted to keep up with his friends, and his daughter who thought he was onto
-        something.
+        No founding legend either. No golden evening on a riverbank. A man who wanted to keep up
+        with his friends, and his daughter who thought he was onto something.
       </p>
 
       <blockquote>
@@ -265,15 +245,20 @@
 
       <h2>Where things stand today</h2>
       <p>
-        The deck is printed and ordering is open &mdash; ${{ site.pricing.retail.perDeck }} a deck, and we cover the
-        postage from two up. The <a href="/flies/">Fly-brary</a> is free either way: it is the whole
-        contents of the deck, written out as a reference you can read today whether or not you ever buy
-        a thing, and <a href="/flies/#whats-in-the-deck">what&rsquo;s in the deck</a> explains the object
-        itself. {{ site.story.thanks }}
+        The deck is printed and ordering is open. The <a href="/flies/">Fly-brary</a> is free
+        either way &mdash; the whole contents of the deck, written out, whether or not you ever
+        buy a thing. {{ site.story.thanks }}
       </p>
     </div>
 
     <hr class="rule" style="margin-block:var(--s-8)">
+
+    <!-- PHOTO SLOT 4 and 5 — the portraits — see docs/PHOTO-PLAN.md.
+         One of Ken and one of Audrey, to sit above their names in the two
+         .person cards below. They are the only photographs on this page the
+         reader will actually look for. Until they exist the cards carry the
+         K♠ / Q♥ index marks instead, which is a deliberate stand-in and not
+         a gap to fill with stock photography. -->
 
     <div class="card-grid" style="--min:min(16rem, 100%)">
       <div class="person">

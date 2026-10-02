@@ -2698,3 +2698,192 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   text-transform: uppercase;
   color: var(--c-text-faint);
 }
+
+
+/* ==========================================================================
+   THE FAN — all 54 printed faces, homepage
+   =========================================================================
+
+   Geometry. Every card sits in the same place (top of the stage, centred) and
+   is rotated about a pivot --fan-pivot card-heights below its own top edge.
+   That one transform produces the whole arc: the browser does the trigonometry
+   and the markup carries nothing but an index. Changing the spread is one
+   number, --fan-step, and the stage height formula below has to move with it.
+
+   The stage height has to clear the drop of the end cards. Rotating a point at
+   radius R by θ lowers it by R(1 − cos θ), so with --fan-pivot: 3.6 and a
+   half-angle of 26.5 × 1.25deg ≈ 33deg that is 3.6 × 0.161 ≈ 0.58 card-heights
+   below the middle card. 1.62 is that plus the card plus room for the lift.
+
+   Interaction. :hover and :focus-visible get the same treatment, so the fan is
+   fully usable from the keyboard — every card is a real link and tab order is
+   deck order. The neighbour lean is sibling selectors, not script: ~ for the
+   cards after the hovered one, :has(~ …) for the ones before it. A browser
+   without :has() simply does not lean, which is a smaller fan, not a broken one.
+
+   Touch. There is no hover on a phone, and a tap goes straight to the card's
+   page, which is the right behaviour. The stage scrolls horizontally there
+   because a 54-card fan narrower than a phone would be unreadable confetti.
+   ========================================================================== */
+
+.fan-stage {
+  /* Full-bleed within the section; the fan is centred inside it. */
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  margin-block-start: var(--s-5);
+  /* Room for a lifted card at the top edge without clipping it. A scroll
+     container clips both axes, so this padding is the only headroom there is. */
+  padding-block-start: calc(var(--s-6) + 2.5rem);
+  padding-block-end: var(--s-5);
+}
+
+.fan {
+  --fan-cw: clamp(76px, 13vw, 150px);            /* card width at rest */
+  --fan-ch: calc(var(--fan-cw) * 1.3975);        /* the 400 x 559 card ratio */
+  --fan-pivot: 3.6;                              /* pivot, in card-heights */
+  --fan-step: 1.25deg;                           /* angle between neighbours */
+  --fan-lift: 1.6rem;                            /* how far a card pops out */
+
+  position: relative;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  /* sin(33deg) = 0.545, so half the span is 3.6 x 1.3975 x 0.545 = 2.74 card
+     widths each side, plus the card itself. */
+  inline-size: calc(var(--fan-cw) * 6.5);
+  /* 1.0 for the card, 0.58 for how far the end cards drop (see above), and the
+     rest is the band the name label drops into. The end cards are the ones that
+     set this: their label hangs 0.58 card-heights lower than the middle one's,
+     and the stage is a scroll container, so anything past this is clipped. */
+  block-size: calc(var(--fan-ch) * 1.95);
+}
+
+.fan__card {
+  --nudge: 0deg;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 50%;
+  inline-size: var(--fan-cw);
+  margin-inline-start: calc(var(--fan-cw) / -2);
+  transform-origin: 50% calc(var(--fan-pivot) * 100%);
+  transform: rotate(calc((var(--i) - var(--fan-mid)) * var(--fan-step) + var(--nudge)));
+  transition: transform .28s cubic-bezier(.22, 1, .36, 1);
+  z-index: calc(var(--i) + 1);
+}
+
+.fan__link {
+  display: block;
+  border-radius: var(--r-card-art);
+  /* The card art is cropped to its own keyline, so this radius is the card's
+     own. See --r-card-art in tokens.css — it was measured, not guessed. */
+  box-shadow: 0 1px 2px rgb(0 0 0 / .18), 0 6px 14px rgb(0 0 0 / .16);
+  transition: box-shadow .28s cubic-bezier(.22, 1, .36, 1);
+  outline-offset: 3px;
+}
+
+.fan__img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  border-radius: inherit;
+  /* Chrome starts a native image drag on mousedown over an <img>, which eats
+     the pointer and hands the reader a dragged picture. Same fix as .tuck. */
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* --- the lift ----------------------------------------------------------- */
+
+.fan__card:hover,
+.fan__card:focus-within {
+  z-index: 60;
+  /* translateY runs along the card's own rotated axis, so it lifts out of the
+     fan radially rather than straight up the page. That is what makes it read
+     as a card being drawn rather than a tile being raised. */
+  transform:
+    rotate(calc((var(--i) - var(--fan-mid)) * var(--fan-step)))
+    translateY(calc(var(--fan-lift) * -1))
+    scale(1.5);
+}
+
+.fan__card:hover .fan__link,
+.fan__card:focus-within .fan__link {
+  box-shadow: 0 2px 6px rgb(0 0 0 / .2), 0 18px 36px rgb(0 0 0 / .28);
+}
+
+/* --- the neighbours lean away ------------------------------------------- */
+/* Two cards either side, falling off. Written long-hand because a loop is not
+   a thing CSS has; four selectors is the whole effect. */
+
+.fan__card:hover + .fan__card,
+.fan__card:focus-within + .fan__card { --nudge: 3.6deg; }
+
+.fan__card:hover + .fan__card + .fan__card,
+.fan__card:focus-within + .fan__card + .fan__card { --nudge: 1.7deg; }
+
+.fan__card:has(+ .fan__card:hover),
+.fan__card:has(+ .fan__card:focus-within) { --nudge: -3.6deg; }
+
+.fan__card:has(+ .fan__card + .fan__card:hover),
+.fan__card:has(+ .fan__card + .fan__card:focus-within) { --nudge: -1.7deg; }
+
+/* --- the name ------------------------------------------------------------ */
+/* Counter-rotated so it reads level while its card is tilted up to 33deg, and
+   opacity rather than display/visibility so it stays in the accessibility tree
+   and gives every link a real accessible name at all times. */
+
+.fan__name {
+  position: absolute;
+  inset-block-start: calc(100% + 0.5rem);
+  inset-inline-start: 50%;
+  inline-size: max-content;
+  max-inline-size: 11rem;
+  padding: .3em .6em;
+  border-radius: var(--r-sm);
+  background: var(--c-text);
+  color: var(--c-bg);
+  font-size: var(--t-xs);
+  line-height: var(--lh-snug);
+  text-align: center;
+  white-space: normal;
+  opacity: 0;
+  transform:
+    translateX(-50%)
+    rotate(calc((var(--fan-mid) - var(--i)) * var(--fan-step)));
+  transition: opacity .18s ease;
+  pointer-events: none;
+}
+
+.fan__card:hover .fan__name,
+.fan__card:focus-within .fan__name { opacity: 1; }
+
+.fan__idx {
+  display: block;
+  opacity: .7;
+  font-variant-numeric: tabular-nums;
+}
+
+.fan-foot {
+  margin-block-start: var(--s-5);
+  max-inline-size: var(--measure);
+}
+
+/* --- motion and coarse pointers ----------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .fan__card,
+  .fan__link,
+  .fan__name { transition: none; }
+}
+
+/* A fan sized to a phone would be 54 slivers of about 5px. It keeps its real
+   size and the stage scrolls instead, which also makes the cards big enough to
+   tap. The lift is pointless without a hover, so only :focus-within keeps it. */
+@media (pointer: coarse) {
+  .fan { --fan-cw: 104px; }
+  .fan__card:hover { transform: rotate(calc((var(--i) - var(--fan-mid)) * var(--fan-step))); z-index: calc(var(--i) + 1); }
+  .fan__card:hover .fan__name { opacity: 0; }
+}
