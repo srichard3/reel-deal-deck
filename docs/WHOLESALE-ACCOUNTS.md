@@ -33,6 +33,27 @@ listed price. **A secret URL is not a gate** and is not used as one here.
 
 ---
 
+## 0. The switch
+
+`data/site.json` → `pricing.wholesale.account.live` is **false**, and while it is,
+`/wholesale/apply/` shows an email address instead of a form. The form, the file
+input and the script are not emitted at all — not hidden, not disabled, absent.
+
+That is deliberate. The site is on GitHub Pages today, where
+`/api/wholesale-apply` is a 404; a form posting into that would tell applicants
+their connection had failed, which is a lie about their wifi.
+
+**Set it to `true` on the day both of these are true, not one of them:**
+
+1. the site is deploying to Netlify, and
+2. the Shopify environment variables in section 3 are set.
+
+Nothing else needs changing. If it does get flipped early, `src/js/wholesale.js`
+catches the 404 and says signup is not switched on rather than blaming the
+reader's connection — but that is a safety net, not the plan.
+
+---
+
 ## 1. Netlify, not GitHub Pages
 
 The site currently deploys to GitHub Pages, which serves static bytes and

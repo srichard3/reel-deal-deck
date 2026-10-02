@@ -236,8 +236,16 @@ second mark. The `-400` variants are downscaled from the marked `-800`.
 Deliberately NOT marked: `static/og/*` and `static/brand/box-*`, which are share
 and packaging images where the wordmark already carries attribution.
 
+**Hosting is GitHub Pages until the site is finished — decided, not pending.**
+Netlify bills in credits (300/month free) and a *production deploy costs 15 of
+them*, so twenty pushes to `main` would exhaust a month and pause the site. The
+front-end work happens on Pages; the move to Netlify happens once, at the end,
+on the Personal plan. That is why `_headers`, `_redirects` and the wholesale
+function are all written but inert today. Do not re-open this without the
+credit arithmetic: ~2.5MB and ~80 requests per homepage visit is ~0.066 credits.
+
 **There is exactly one piece of server-side code, and it is the only reason the
-site must deploy to Netlify.** `netlify/functions/wholesale-apply.mjs` backs
+site must eventually deploy to Netlify.** `netlify/functions/wholesale-apply.mjs` backs
 `/wholesale/apply/`: it creates the Shopify customer tagged `wholesale`, uploads
 the resale permit into Shopify Files against that customer, and returns a
 Storefront cart carrying their email and address. It exists because the Admin
@@ -253,8 +261,12 @@ from a Shopify automatic discount scoped to the `wholesale` customer segment
 that the function tags people into. That is what makes the order link safe to
 share — a secret URL is not a gate. Applications are auto-approved because that
 was asked for; `REVIEW_ONLY=1` queues them as `wholesale-pending` instead, which
-the discount does not match, with no code change. Runbook, including every
-environment variable and the Shopify setup: `docs/WHOLESALE-ACCOUNTS.md`.
+the discount does not match, with no code change. `pricing.wholesale.account.live` is the master switch and is **false**: the
+form, the file input and the script are not emitted at all while the site is on
+Pages, and `/wholesale/apply/` offers an email address instead. Flip it only
+when the site is on Netlify *and* the Shopify variables are set. Runbook,
+including every environment variable and the Shopify setup:
+`docs/WHOLESALE-ACCOUNTS.md`.
 
 **`/suggest/` is the one form that actually delivers.** Everything else using
 `data-capture` writes to localStorage and says so, which is honest for a waiting

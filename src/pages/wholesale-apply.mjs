@@ -6,6 +6,13 @@
  * upload and the pre-filled cart all need either a secret token or a place to
  * put a file, and a static page has neither.
  *
+ * `pricing.wholesale.account.live` in data/site.json is the master switch. It
+ * is false while the site is hosted on GitHub Pages, where /api/wholesale-apply
+ * does not exist: the page then offers the email route and the form is not
+ * emitted at all — not hidden, not disabled, absent. A file input and a form
+ * posting into a 404 are not markup that should ship. Flip it the day the site
+ * moves to Netlify with the Shopify environment variables set.
+ *
  * Progressive enhancement, like the rest of the site, but with a real limit:
  * a file upload needs a multipart POST, and without JavaScript the browser
  * would navigate away to the function's JSON response. So the form posts
@@ -61,6 +68,7 @@ export default function wholesaleApply({ site }) {
   const base = site.url.replace(/\/$/, '');
   const email = site?.social?.email || 'reeldealdeck@gmail.com';
   const tiers = site?.pricing?.wholesale?.tiers || [];
+  const live = site?.pricing?.wholesale?.account?.live === true;
   const money = (n) => '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   meta.jsonld[0] = {
@@ -99,6 +107,17 @@ export default function wholesaleApply({ site }) {
     ${tiers.map((t) => `<span><strong>${money(t.perDeck)}</strong> a deck &middot; ${esc(t.unit.toLowerCase())} of ${esc(t.decks)}</span>`).join('\n    ')}
   </p>` : ''}
 
+  ${!live ? `<div class="notice notice--info">
+    <p><strong>Accounts are not open online just yet.</strong> The signup is built and waiting on
+    our shop system going live, and we would rather say so than hand you a form that quietly
+    fails.</p>
+    <p style="margin-block-end:0">
+      Email <a href="mailto:${esc(email)}?subject=Wholesale%20account">${esc(email)}</a> with your
+      business name, address, phone and a photo of your resale permit, and we will set the account
+      up by hand and reply with your pricing. It is the two of us reading it, so it will not sit in
+      a queue.
+    </p>
+  </div>` : `
   <noscript>
     <p class="notice notice--info">
       This form needs JavaScript to attach your permit. Email
@@ -156,13 +175,13 @@ ${field({ id: 'notes', label: 'Anything we should know', as: 'textarea', full: t
       set up and run the account, and nothing else &mdash; no marketing list, no third parties.
       Questions first? <a href="mailto:${esc(email)}">${esc(email)}</a>.
     </p>
-  </form>
+  </form>`}
 
   <p class="ws-apply__back">
     <a href="/wholesale/">Back to the wholesale terms</a>
   </p>
 </section>
 
-<script src="/js/wholesale.js" defer></script>
+${live ? '<script src="/js/wholesale.js" defer></script>' : ''}
 `;
 }

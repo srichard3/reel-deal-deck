@@ -62,7 +62,19 @@
 
     fetch(form.action, { method: 'POST', body: new FormData(form) })
       .then(function (res) {
-        return res.json().then(function (body) { return { res: res, body: body }; });
+        /* Belt and braces for the one way this can go wrong silently: the page
+           is live but the function is not deployed, so /api/wholesale-apply is
+           a 404 HTML page and res.json() throws. Without this the reader is
+           told their connection failed, which is a lie about their wifi. */
+        return res.text().then(function (text) {
+          try {
+            return { res: res, body: JSON.parse(text) };
+          } catch (e) {
+            return { res: res, body: { error: res.status === 404
+              ? 'Online signup is not switched on yet. Please email us and we will set the account up by hand.'
+              : 'That did not go through. Please email us and we will set the account up by hand.' } };
+          }
+        });
       })
       .then(function (r) {
         if (!r.res.ok) {

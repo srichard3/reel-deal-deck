@@ -257,6 +257,8 @@
       ],
       "account": {
         "note": "The wholesale account flow. /wholesale/apply/ posts to the Netlify function in netlify/functions/, which creates the Shopify customer tagged `wholesale`, stores the resale permit on the customer record, and returns a pre-filled cart. Wholesale PRICES are not gated by this site — they come from a Shopify automatic discount targeted at the `wholesale` customer segment, which is what makes the order link safe to share. Setup runbook: docs/WHOLESALE-ACCOUNTS.md.",
+        "live": false,
+        "liveNote": "The master switch for the application form. FALSE while the site is on GitHub Pages, where /api/wholesale-apply is a 404 and the form has nowhere to post: the page then shows the email route instead of a form that would fail and blame the applicant's connection. Set true the day the site moves to Netlify AND the Shopify environment variables are set — not before, and not one without the other. Nothing else needs changing.",
         "applyPath": "/wholesale/apply/",
         "customerTag": "wholesale",
         "autoApprove": true,
