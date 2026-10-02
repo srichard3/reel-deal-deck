@@ -196,8 +196,8 @@
 .buy-tier {
   display: flex;
   flex-direction: column;
-  gap: var(--s-3);
-  padding: var(--s-5);
+  gap: 0;
+  padding: var(--s-6);
   background: var(--c-surface);
   border: var(--cx-hairline) solid var(--c-border);
   border-radius: var(--r-card);
@@ -230,6 +230,13 @@
 .buy-tier--featured {
   border-color: var(--c-accent);
   box-shadow: var(--shadow-2);
+  /* A tint rather than a fill, so the card lifts off the panel without
+     becoming a second surface colour to maintain in two themes. */
+  background:
+    linear-gradient(to bottom,
+      color-mix(in srgb, var(--c-accent) 7%, transparent),
+      transparent 40%),
+    var(--c-surface);
 }
 
 .buy-tier__flag {
@@ -248,29 +255,85 @@
   margin: 0;
 }
 
-.buy-tier__qty {
-  font-size: var(--t-xs);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: var(--c-text-faint);
-}
-
-.buy-tier__price {
-  font-family: var(--f-display);
-  font-size: var(--t-xl);
-  line-height: var(--lh-tight);
-  color: var(--c-text);
-}
-
-.buy-tier__per {
+.buy-tier__lede {
+  margin: 0;
   font-size: var(--t-sm);
   color: var(--c-text-muted);
+  line-height: var(--lh-body);
+}
+
+/* The delivered total, which is the number a reader is actually deciding on.
+   Baseline-aligned with its unit so "$26.90 delivered" reads as one phrase
+   rather than a figure with a caption under it. */
+.buy-tier__amount {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2);
+  margin: var(--s-4) 0 0;
+}
+
+.buy-tier__figure {
+  font-family: var(--f-display);
+  font-size: clamp(2.1rem, 1.5rem + 2.4vw, 2.9rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--c-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.buy-tier__unit {
+  font-size: var(--t-sm);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  /* --c-text-faint measured 4.46:1 against the card here, just under AA, and
+     this is small uppercase text so none of the large-text exemptions apply. */
+  color: var(--c-text-muted);
+}
+
+.buy-tier__breakdown {
+  margin: var(--s-2) 0 0;
+  font-size: var(--t-sm);
+  color: var(--c-text-muted);
+}
+
+/* The per-deck rate: the one figure that genuinely differs between the two
+   cards, so it gets a band of its own rather than another grey line. */
+.buy-tier__rate {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-1) var(--s-3);
+  margin: var(--s-5) 0 0;
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-sm);
+  background: var(--c-bg-sunk);
+  border: var(--cx-hairline) solid var(--c-border);
+}
+
+.buy-tier--featured .buy-tier__rate {
+  background: color-mix(in srgb, var(--c-accent) 10%, transparent);
+  border-color: color-mix(in srgb, var(--c-accent) 35%, transparent);
+}
+
+.buy-tier__rate-figure {
+  font-weight: 700;
+  color: var(--c-text);
+  font-variant-numeric: tabular-nums;
 }
 
 .buy-tier__save {
   font-size: var(--t-sm);
   font-weight: 600;
-  color: var(--c-riffle);
+  /* The accent alone measured 4.28:1 on the tinted band in light mode — green
+     on a green wash. Pulling it toward the text colour darkens it in light and
+     lightens it in dark, so one declaration clears AA in both. */
+  color: color-mix(in srgb, var(--c-accent) 65%, var(--c-text));
+}
+
+.buy-tier__per {
+  font-size: var(--t-sm);
+  color: var(--c-text-muted);
 }
 
 .buy-tier__body {
@@ -283,7 +346,7 @@
 .buy-tier__list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: var(--s-5) 0 0;
   display: grid;
   gap: var(--s-2);
   font-size: var(--t-sm);
@@ -304,7 +367,7 @@
 
 .buy-tier__foot {
   margin-top: auto;
-  padding-top: var(--s-3);
+  padding-top: var(--s-6);
   display: grid;
   gap: var(--s-3);
   justify-items: start;

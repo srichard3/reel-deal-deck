@@ -172,7 +172,6 @@ export default function homepage({ site, flies, instagram }) {
       </p>
       <div class="cluster hero__actions" style="--gap:var(--s-3)">
         ${orderCta(site, { variant: 'primary' })}
-        <a class="btn btn--ghost btn--lg" href="/deck/">See the deck</a>
       </div>
       <p class="hero__note">
         ${money(per)} a deck, printed in the USA, and from two up we cover the shipping.

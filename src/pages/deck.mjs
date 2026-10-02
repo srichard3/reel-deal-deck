@@ -77,9 +77,17 @@ export const meta = {
 
 /* ------------------------------------------------------------ partials -- */
 
-/* The two retail cards. There is no quantity ladder any more — the deck is one
-   price and the only thing that changes is who pays the postage — so these are
-   deliberately not called tiers and carry no fake discount arithmetic. */
+/* The two retail cards.
+ *
+ * There is no quantity discount to dramatise — the deck is one price — so the
+ * comparison that earns its place is the DELIVERED per-deck cost, which really
+ * does fall: $26.90 for one, $19.95 each from two up. That is the whole offer,
+ * it is arithmetic on two numbers in site.pricing, and it is checkable.
+ *
+ * The earlier version printed "$19.95" twice at the same size, which told the
+ * reader the two options were identical and buried the difference in grey text
+ * underneath. Every figure below is derived; none is typed.
+ */
 function retailCards(site) {
   const r = (site.pricing || {}).retail || {};
   const per = r.perDeck ?? 19.95;
@@ -88,32 +96,50 @@ function retailCards(site) {
 
   const cards = [
     {
-      qty: '1 deck',
       name: 'One deck',
-      price: per,
-      per: `${money(per)} + ${money(ship)} postage — ${money(per + ship)} delivered`,
-      body: 'Fifty-four flies in a jacket pocket.',
+      lede: 'Fifty-four flies in a jacket pocket.',
+      amount: per + ship,
+      amountNote: 'delivered',
+      breakdown: `${money(per)} for the deck, ${money(ship)} to post it`,
+      perDeck: `${money(per + ship)} a deck`,
+      points: ['54 hand-drawn flies, one per card', 'What each one imitates, on the card'],
     },
     {
-      qty: `${from}+ decks`,
-      name: 'Two or more',
-      price: per,
+      name: `${inWords(from).replace(/^t/, 'T')} or more`,
+      lede: 'One for the vest, one for whoever keeps borrowing it.',
       featured: true,
-      flag: 'Postage on us',
-      per: `${money(per)} a deck, nothing to post`,
-      body: 'One for the vest, one for whoever keeps borrowing it.',
+      flag: 'We pay the postage',
+      amount: per * from,
+      amountNote: `delivered, for ${inWords(from)}`,
+      breakdown: `${money(per)} a deck, nothing to post`,
+      perDeck: `${money(per)} a deck`,
+      save: `${money(ship)} less per deck than ordering one`,
+      points: ['The same deck, at the same price', `Free postage from ${inWords(from)} decks up`, 'Past twelve it becomes wholesale'],
     },
   ];
 
   return cards.map((t) => `
       <article class="buy-tier${t.featured ? ' buy-tier--featured' : ''}">
         ${t.flag ? `<p class="buy-tier__flag">${esc(t.flag)}</p>` : ''}
-        <p class="buy-tier__qty">${esc(t.qty)}</p>
         <h2 class="buy-tier__name">${esc(t.name)}</h2>
-        <p class="buy-tier__price" data-price="${t.price}">${money(t.price)}</p>
-        <p class="buy-tier__per">${esc(t.per)}</p>
-        <p class="buy-tier__body">${esc(t.body)}</p>
-        <div class="buy-tier__foot stack">
+        <p class="buy-tier__lede">${esc(t.lede)}</p>
+
+        <p class="buy-tier__amount">
+          <span class="buy-tier__figure" data-price="${t.amount}">${money(t.amount)}</span>
+          <span class="buy-tier__unit">${esc(t.amountNote)}</span>
+        </p>
+        <p class="buy-tier__breakdown">${esc(t.breakdown)}</p>
+
+        <p class="buy-tier__rate">
+          <span class="buy-tier__rate-figure">${esc(t.perDeck)}</span>
+          ${t.save ? `<span class="buy-tier__save">${esc(t.save)}</span>` : ''}
+        </p>
+
+        <ul class="buy-tier__list">
+          ${t.points.map((p) => `<li>${esc(p)}</li>`).join('\n          ')}
+        </ul>
+
+        <div class="buy-tier__foot">
           ${orderCta(site, { variant: t.featured ? 'primary' : 'ghost' })}
         </div>
       </article>`).join('\n');
@@ -179,7 +205,9 @@ export default function deckPage({ site }) {
   <div class="buy-hero">
     <div class="buy-hero__art">
       ${tuckBox({ eager: true })}
-      <p class="buy-deckart__caption">Drag to turn it over</p>
+      <!-- No caption here: box.js injects a "Drag to turn it" hint itself, so
+           the prompt only ever appears when the dragging actually works. A
+           static one beside it rendered the instruction twice. -->
     </div>
 
     <div class="buy-hero__copy">
