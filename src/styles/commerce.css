@@ -389,6 +389,11 @@
   margin: var(--s-5) 0 0;
   display: grid;
   gap: var(--s-2);
+  /* Pack the rows at the top. The subgrid row is as tall as the longest list,
+     so without this the shorter card's three items share out the extra height
+     and sit further apart than the other card's four — which reads as a
+     different kind of list rather than the same list, one item shorter. */
+  align-content: start;
   font-size: var(--t-sm);
   color: var(--c-text-muted);
 }
