@@ -33,7 +33,7 @@ export const meta = {
 export default function suggest({ site, flies }) {
   const base = site.url.replace(/\/$/, '');
   const list = (Array.isArray(flies) ? flies : []).filter((f) => f && f.name);
-  const email = site?.social?.email || 'reeldealdeck@gmail.com';
+  const email = site?.social?.email || 'support@reeldealdeck.com';
   const edition = site?.cardCraft?.edition || 'Volume 1';
   const count = site?.product?.cardCount ?? 54;
 

@@ -133,10 +133,10 @@ export default function ({ b }) {
         an ${b.flyLink('egg-pattern')} fall inside that definition. The argument is settled by the
         wording in your state's regulation booklet, not by consensus.
       </p>
-      <!-- TODO-CONFIRM: the legal definition of "fly" under fly-fishing-only regulations differs
-           between states, and some do not define it at all. Do not generalise. If this article is
-           ever expanded with specific state definitions, quote each one from the agency’s published
-           rules with a direct link. -->
+      <!-- EDITORIAL RULE, settled: no generalised definition of "fly" on this page. It differs
+           between states and some do not define it at all, which is why the paragraph above sends
+           the reader to their own regulation booklet. If state definitions are ever added, quote
+           each one from the agency’s published rules with a direct link. -->
     `)}
 
     ${b.section('Are there places where the rules are different again?', `

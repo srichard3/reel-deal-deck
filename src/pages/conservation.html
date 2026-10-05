@@ -37,20 +37,15 @@
 }
 -->
 
-<!-- TODO-CONFIRM (commercially important, not cosmetic):
-     data/site.json -> conservation.commitment is still a placeholder. State the
-     contribution as a HARD PER-DECK NUMBER ("$1 from every deck") rather than
-     "a portion of proceeds". A specific figure is verifiable, is what a donor-
-     minded buyer is actually asking, and converts; a vague one reads as a
-     marketing hedge and converts materially worse. Until that number is fixed,
-     every mention on this page says "a set amount" and is flagged below.
+<!-- The contribution is deliberately stated without a figure: "a cut of every
+     deck". That is Ken and Audrey's decision and their wording, held in
+     data/site.json -> conservation.commitment. Do not invent a dollar amount, a
+     percentage, or language implying the amount is fixed or audited. If a number
+     is ever set, it goes in site.json first and every page reads it from there.
 
-     Also confirm before publishing:
-       - the exact Trout Unlimited Business membership tier and the year joined
-       - whether TU has approved any use of its name/marks in marketing copy
-       - whether the contribution is per deck sold or an annual minimum
-     Do NOT describe this as a partnership, sponsorship, endorsement or
-     co-branding unless TU has agreed to those words in writing. -->
+     Standing constraint, unchanged: do NOT describe this as a partnership,
+     sponsorship, endorsement or co-branding. It is a Trout Unlimited Business
+     membership, which anyone can buy, and TU has not vouched for this product. -->
 
 <section class="page-head">
   <div class="wrap wrap--narrow">
@@ -99,10 +94,9 @@
       <p>Two things, both small and both specific:</p>
       <ul>
         <li>
-          <strong>A per-deck contribution.</strong> A set amount from every deck sold goes to
+          <strong>A per-deck contribution.</strong> A cut of every deck sold goes to
           <a href="{{ site.conservation.partnerUrl }}" rel="noopener">{{ site.conservation.partner }}</a>.
-          It is a fixed figure per deck, not a share of profit, so it does not quietly become
-          zero in a bad quarter.
+          It comes off the decks we sell, not out of whatever is left at the end of the year.
         </li>
         <li>
           <strong>A {{ site.conservation.partner }} Business membership.</strong> We joined as
@@ -111,15 +105,6 @@
           an endorsement, and {{ site.conservation.partner }} has not vouched for this product.
         </li>
       </ul>
-
-      <!-- TODO-CONFIRM: replace the notice below with the real number, e.g.
-           "$1 from every deck goes to Trout Unlimited." -->
-      <p class="notice notice--info">
-        <strong>TODO-CONFIRM &mdash; the number.</strong> This page should name the exact
-        per-deck figure. Until Ken and Audrey fix it, the copy reads &ldquo;a set amount&rdquo;,
-        which is honest but weaker than it needs to be. A stated dollar figure is checkable,
-        which is the entire reason it works.
-      </p>
 
       <h2>Why {{ site.conservation.partner }}</h2>
       <p>
@@ -141,10 +126,6 @@
         <li>
           We do not say we are a {{ site.conservation.partner }} partner. We are a business
           member, which is a different and smaller thing.
-        </li>
-        <li>
-          We do not say &ldquo;a portion of proceeds&rdquo; and leave it there. That phrase can
-          mean a cent, and shoppers have learned to read it that way for good reason.
         </li>
         <li>
           We do not claim the deck itself is carbon-neutral, plastic-free or climate-positive.

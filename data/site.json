@@ -7,14 +7,14 @@
   "positioning": "The first fly-fishing deck an angler would be proud to own. Original hand-drawn art, printed on genuine Bicycle stock, with a portion of every deck going to Trout Unlimited.",
   "founders": [
     {
-      "name": "Ken",
+      "name": "Ken Fry",
       "role": "Founder",
       "bio": "Lifelong entrepreneur of more than thirty years, fifth-generation Idaho farmer, and the avid amateur angler who went looking for fly-fishing flashcards, came up empty-handed, and set about making the set he could not buy."
     },
     {
-      "name": "Audrey",
+      "name": "Audrey Fry",
       "role": "Co-founder",
-      "bio": "Entrepreneurship graduate of Loyola Marymount University's College of Business Administration, December 2025. Handles design direction, brand and community — and is the reason the drawings became a deck instead of a folder on a laptop."
+      "bio": "Sixth-generation Idaho farmer and an entrepreneurship graduate of Loyola Marymount University's College of Business Administration, December 2025. Handles design direction, brand and community — and is the reason the drawings became a deck instead of a folder on a laptop."
     }
   ],
   "location": {
@@ -26,8 +26,10 @@
   "product": {
     "name": "The Reel Deal Deck",
     "cardCount": 54,
-    "stock": "Genuine Bicycle / USPCC card stock with the patented Air-Cushion finish",
+    "stock": "Genuine Bicycle Rider Back stock with the patented Air-Cushion finish",
     "material": "FSC-certified paper, starch-based laminating glue, vegetable-based inks",
+    "recyclable": "Yes \u2014 the same material specification as any Bicycle deck",
+    "recyclableNote": "Confirmed by Ken and Audrey. This is a statement that the deck shares USPCC's Bicycle specification, not a certification claim. Do not add an FSC chain-of-custody number or a recycling mark on top of it.",
     "dimensions": "Poker size, 2.5in x 3.5in",
     "priceCurrency": "USD",
     "status": "available",
@@ -48,13 +50,14 @@
   "conservation": {
     "partner": "Trout Unlimited",
     "partnerUrl": "https://www.tu.org/",
-    "commitment": "TODO-CONFIRM: state a hard number here (e.g. \"$1 from every deck\"). A specific figure converts; \"a portion of proceeds\" does not."
+    "commitment": "A cut of every deck sold goes to Trout Unlimited.",
+    "commitmentNote": "Ken and Audrey's wording, deliberately without a figure. Do not invent a per-deck dollar amount or a percentage anywhere on the site \u2014 if one is ever decided, it goes here first and every page reads it from here."
   },
   "social": {
     "instagram": "https://instagram.com/reeldealdeck",
     "tiktok": "https://tiktok.com/@reeldealdeck",
     "youtube": "",
-    "email": "reeldealdeck@gmail.com"
+    "email": "support@reeldealdeck.com"
   },
   "nav": [
     {
@@ -150,7 +153,7 @@
     "signoff": "Thank you for your support. Tight lines!",
     "handle": "@reeldealdeck",
     "shortLine": "Hand-drawn playing cards that teach while you play.",
-    "note": "The printed card says 'multigenerational Idaho farmers' of the pair. The Kickstarter, written by Ken and Audrey themselves, calls Ken a '5th generation Idaho farmer' — so the number is now on the public record for him and founders[0].bio uses it. Still TODO-CONFIRM: surnames, and whether Audrey counts as fifth or sixth generation.",
+    "note": "The printed card says 'multigenerational Idaho farmers' of the pair. All three facts behind that are now confirmed by Ken and Audrey: the surname is Fry (it is also in brand.legalName, Homer Fry Ranch, LLC), Ken is the fifth generation and Audrey the sixth. Use the full names in schema, press boilerplate and bylines; first names alone are correct in the site's own voice.",
     "register": "How the site itself should sound, as distinct from voice.intro/why/hope/signoff, which are printed-card text and must be quoted verbatim. Write as Ken and Audrey, not about them: 'we made', 'we would rather', never 'Ken and Audrey decided' on a page they are speaking on. Warm, plain and a little wry — a father and daughter showing you a thing they made, not a brand announcing a product. Specific over grand, and never a claim we cannot back. No exclamation marks and no emoji: that is their Instagram voice, and it does not survive the move to a page someone is reading to decide whether to spend $19.95. Third person is still right in schema, alt text, press boilerplate and product facts ('signed by Ken and Audrey')."
   },
   "cardCraft": {

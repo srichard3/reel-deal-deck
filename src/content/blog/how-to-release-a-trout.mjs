@@ -179,9 +179,9 @@ export default function ({ b }) {
         <a href="/blog/do-i-need-a-fishing-license/">do I need a fishing licence</a> for how to
         find the right rules.
       </p>
-      <!-- TODO-CONFIRM: no mortality percentages are stated anywhere on this page,
-           deliberately. Published figures vary by species, temperature, hook type
-           and handling. If a figure is ever added, cite the specific study. -->
+      <!-- EDITORIAL RULE, settled: no mortality percentages on this page. Published figures vary
+           by species, temperature, hook type and handling, so a single number would mislead. If one
+           is ever added, cite the specific study inline. -->
     `)}
   `;
 }

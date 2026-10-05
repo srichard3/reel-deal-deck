@@ -421,6 +421,7 @@ function printing(site) {
     ['Stock', p.stock || ''],
     ['Size', p.dimensions || ''],
     ['Materials', p.material || ''],
+    ['Recyclable', p.recyclable || ''],
     ['Origin', p.origin || ''],
     ['Edition', craft.edition || site?.edition || ''],
   ].filter(([, v]) => v);
@@ -449,9 +450,10 @@ function printing(site) {
       plus the two jokers. There is a bonus card in there as well. We will let you find it.
     </p>
 
-    <!-- TODO-CONFIRM: no finish/coating name beyond USPCC's Air-Cushion is in
-         data/site.json, and no card-stock weight, tuck-box finish, cellophane
-         wrap or seal detail is recorded anywhere. Do not add them from memory. -->
+    <!-- The specification is Bicycle Rider Back stock with USPCC's Air-Cushion
+         finish, confirmed and held in site.product.stock. Card-stock weight,
+         tuck-box finish, cellophane wrap and seal detail are still not recorded
+         anywhere, so they do not appear. Do not add them from memory. -->
   </div>
 </section>`;
 }

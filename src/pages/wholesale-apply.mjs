@@ -66,7 +66,7 @@ const field = ({ id, label, type = 'text', required = false, autocomplete, help,
 
 export default function wholesaleApply({ site }) {
   const base = site.url.replace(/\/$/, '');
-  const email = site?.social?.email || 'reeldealdeck@gmail.com';
+  const email = site?.social?.email || 'support@reeldealdeck.com';
   const tiers = site?.pricing?.wholesale?.tiers || [];
   const live = site?.pricing?.wholesale?.account?.live === true;
   const money = (n) => '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });

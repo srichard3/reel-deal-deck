@@ -60,6 +60,30 @@ attributions that aren't verifiable. Anything unconfirmed ships as a
 This includes *charming* details: "he drew them at the kitchen table" was written,
 shipped and removed here because nothing sourced it.
 
+**`npm run check` is at 0 warnings, and every TODO-CONFIRM has been answered.**
+The remaining launch work is in `docs/PUNCH-LIST.md` and none of it is a question
+about a fact. Several of those answers were *to stay silent*, and a later
+contributor "helpfully" filling one in would be a regression:
+
+| Settled fact | Value |
+|---|---|
+| Surname | **Fry.** Ken Fry, Audrey Fry — matches `brand.legalName`, Homer Fry Ranch, LLC. Full names in schema and the founder cards; first names in the running copy. |
+| Generations | Ken is the **fifth**, Audrey the **sixth**. |
+| Stock | **Bicycle Rider Back** with USPCC's Air-Cushion finish. |
+| Recyclable | Yes — the same material specification as any Bicycle deck. **Not** an FSC or certification claim. |
+| Ranks and suits | Standard throughout, two jokers. "Deal a hand of poker with it" is literally true. |
+| Prices | $19.95 / $6.95 / $9.97 / $8.97 are confirmed against real cost. |
+| The one inbox | **support@reeldealdeck.com.** No wholesale@, no press@, no gmail. Subject prefixes sort the mail. |
+
+| Deliberately unstated — do not fill in | |
+|---|---|
+| Trout Unlimited | "A cut of every deck." **No dollar figure and no percentage.** |
+| International shipping | Not offered, not mentioned. |
+| MAP policy | None. No resale price condition on `/wholesale/`. |
+| Dates | The years the deck was started and finished are not published. |
+| Knot strength, release mortality, the legal definition of "fly" | No figures and no generalisations. The three blog files carry an `EDITORIAL RULE` comment saying so. |
+| Stock weight, tuck-box finish, wrap, seal | Not recorded anywhere, so not published. |
+
 **The art is hand-drawn and original, and Ken did not draw it.** A designer did.
 The site attributed the artwork to him in six places — `site.founders[0].bio`,
 `site.story.twist`, `/story/` three times and `humans.txt` — and every one was

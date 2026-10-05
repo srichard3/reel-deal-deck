@@ -1,31 +1,13 @@
 # Punch list — the decisions still needed before launch
 
-Every item below is a `TODO-CONFIRM` sitting in the site's source. They are
-placeholders and open questions, deliberately visible in the code and invisible
-to visitors, so nothing was ever invented to fill a gap.
-
-## How to work through one
+`npm run check` reports **0 errors and 0 warnings**. Every open question that
+was sitting in the source as a `TODO-CONFIRM` has been answered by Ken and
+Audrey and removed. What is left below is work that needs a thing to exist —
+a store, a photograph, a decision about a byline — not a question about a fact.
 
 ```bash
-npm run check          # lists every TODO with its file and line
+npm run build && npm run check   # must stay at 0 errors, 0 warnings
 ```
-
-Each warning looks like:
-
-```
-wholesale/index.html
-  ! :293 TODO in shipped HTML — TODO-CONFIRM: EVERY NUMBER IN THIS TABLE IS A PLACEHOLDER
-```
-
-That line number is in the **built** file (`dist/…`), not the source. To fix one:
-
-1. Find the matching source file — the table below maps each item to it.
-2. Replace the placeholder value with the real one.
-3. **Delete the `TODO-CONFIRM` comment.**
-4. `npm run build && npm run check` — the warning count drops by one.
-
-Where a value appears on several pages, it usually lives in `data/site.json`.
-Change it once there and every page follows.
 
 ---
 
@@ -35,12 +17,7 @@ Change it once there and every page follows.
 |---|---|---|---|
 | 0 | **Five photographs.** The shot list, sizes and destinations are in `docs/PHOTO-PLAN.md`. Slot 2, the original artwork beside the printed card, is the single most valuable image the site could have. | Ken & Audrey | `new assets/photos/` |
 | 1 | **The Shopify storefront URL.** Everything else about ordering is done; this one field turns ~60 buttons into real checkout. | Ken & Audrey | `data/site.json` → `shop.url`. See `docs/COMMERCE.md` |
-| 1b | **Pricing against real cost.** $19.95 retail, $6.95 shipping, $9.97/deck by the brick and $8.97/deck by the master case are decided, but none is checked against landed cost, carton weight or fulfilment. | Ken & Audrey | `data/site.json` → `pricing` (the only place) |
-| 2 | **The Trout Unlimited contribution.** Currently "a portion of proceeds", which converts badly. A hard number — "$1 from every deck" — converts. | Ken & Audrey | `data/site.json` → `conservation.commitment` |
-| 3 | **Wholesale terms.** Margin table, case counts, minimums, lead time, payment terms, freight policy, MAP policy. **Every number is a placeholder.** A shop will treat these as real. | Ken | `src/pages/wholesale.html` |
-
-> **Item 3 is the one I would not leave public.** The other placeholders read as
-> "coming soon". A wholesale margin table reads as an offer.
+| 2 | **The domain.** `reeldealdeck.com` is printed on the cards and is not registered to us yet. | Ken | — |
 
 ---
 
@@ -48,31 +25,29 @@ Change it once there and every page follows.
 
 | # | Decision | Who | Source file |
 |---|---|---|---|
-| 4 | **Surnames for Ken and Audrey**, if they want them public. | Ken & Audrey | `src/pages/story.html` |
-| 5 | **"Multigenerational" vs "5th-generation" Idaho farmers.** The printed info card says multigenerational; `site.json` previously said 5th-generation. The card wording is what ships. | Ken | `data/site.json` → `voice.note` |
-| 6 | **Dates** — the year work on the deck started, the year it was finished. | Ken | `src/pages/story.html` |
-| 7 | **Contact addresses.** One address currently covers general, wholesale and press. | Audrey | `src/pages/contact.html` |
-| 8 | **A named byline for the guides.** They are attributed to the brand. Ken's name on them is a real expertise signal for both Google and AI answer engines — but a fabricated byline is worse than none. | Ken | `data/site.json` → `blog.authorNote` |
-| 9 | **Photography of Ken and Audrey.** None exists in the repo. The story and contact pages are written around its absence. | Audrey | `src/pages/story.html`, `contact.html` |
+| 3 | **The Shopify customer account login URL**, for the wholesale login links. Empty hides them rather than shipping a dead link, so this is not urgent — but the wholesale flow is only half-visible without it. | Ken & Audrey | `data/site.json` → `shop.accountUrl` |
+| 4 | **A named byline for the guides.** They are attributed to the brand. Ken's name on them is a real expertise signal for both Google and AI answer engines — but a fabricated byline is worse than none. | Ken | `data/site.json` → `blog.authorNote` |
+| 5 | **Photography of Ken and Audrey.** None exists in the repo. The story and contact pages are written around its absence, and the press page offers card art only. | Audrey | `docs/PHOTO-PLAN.md` |
+| 6 | **Credit for the designer** who drew the cards. Raised more than once and still the founders' call. The site never claims Ken drew them. | Ken & Audrey | `data/site.json` → `story.artNote` |
 
 ---
 
-## Product detail — confirm with the printer
+## Deliberately without a number
 
-| # | Decision | Source file |
-|---|---|---|
-| 10 | **Recyclability claim.** The brief describes the deck as recyclable; that has not been confirmed with USPCC and is a regulated claim in some markets. | `src/pages/deck.mjs` |
-| 11 | **Does every card carry a standard rank and suit index?** The three specials carry the jester-fish mark instead. | `src/pages/deck.mjs` |
-| 12 | **Finish, stock weight, tuck-box finish, wrap and seal.** Nothing beyond USPCC's Air-Cushion is recorded. Do not add from memory. | `src/pages/cards.mjs` |
+These are not blanks waiting to be filled. They are decisions to stay silent,
+and each one is recorded at its source so a later contributor does not "fix" it
+by inventing a figure.
 
----
-
-## Content accuracy — needs an angler's judgement
-
-| # | Decision | Source file |
-|---|---|---|
-| 13 | **Knot-strength percentages.** Published figures for the clinch, improved clinch and Davy contradict each other between sources, so no figure is stated. Either cite one source explicitly or leave it. | `src/content/blog/best-fly-fishing-knots.mjs` |
-| 14 | **The legal definition of "fly"** under fly-fishing-only regulations differs by state. The article says so rather than generalising. | `src/content/blog/do-i-need-a-fishing-license.mjs` |
+| Subject | The decision |
+|---|---|
+| **Trout Unlimited contribution** | "A cut of every deck" — no dollar amount, no percentage. `data/site.json` → `conservation.commitment` |
+| **International shipping** | Not offered and not mentioned. Domestic rates only. |
+| **MAP policy** | None. No resale price condition appears on `/wholesale/`. |
+| **Dates** | The years the deck was started and finished are not published. |
+| **Knot-strength percentages** | Published figures contradict each other between test methods, so none is stated. |
+| **The legal definition of "fly"** | Varies by state; the guide says so and sends the reader to their own regulation booklet. |
+| **Release mortality rates** | Vary by species, temperature, hook and handling; no single figure would be honest. |
+| **Stock weight, tuck-box finish, wrap and seal** | Not recorded anywhere, so not published. |
 
 ---
 
@@ -80,13 +55,11 @@ Change it once there and every page follows.
 
 | Decision | Outcome |
 |---|---|
-| **Card count** | **54 unique cards** — 52 standard plus the Egg and San Juan Worm jokers. This is the industry-standard figure and what is printed on the tuck box. A bonus card ships on top of that; it is shown on the site but never counted into the 54. See `data/site.json` → `product.cardCountNote`. |
-
----
-
-## A note on the ones that are not really "problems"
-
-Items 13 and 14 are not unfinished work — they are places where the honest answer
-is "this varies" or "the sources disagree", and the copy says so. Resolving them
-means deciding whether to cite a specific source, not filling in a blank. Leaving
-them as they are is a legitimate choice.
+| **Card count** | **54 unique cards** — 52 standard plus the Egg and San Juan Worm jokers, the figure printed on the tuck box. A bonus card ships on top and is never counted into the 54. `data/site.json` → `product.cardCountNote` |
+| **Pricing against cost** | $19.95 retail, $6.95 shipping, $9.97/deck by the brick and $8.97/deck by the master case are confirmed against real cost. `data/site.json` → `pricing` is the only place any of them lives. |
+| **Surnames** | Fry. Ken Fry and Audrey Fry, consistent with `brand.legalName`, Homer Fry Ranch, LLC. Full names carry the schema and the two founder cards; the running copy stays on first names. |
+| **Generations** | Ken is the fifth generation, Audrey the sixth. |
+| **Recyclability** | Confirmed: the same material specification as any Bicycle deck. Published as a spec row. No FSC chain-of-custody number and no certification mark on top of it. |
+| **Ranks and suits** | Standard throughout, with two jokers — so "you can deal a hand of poker with it" is literally true. |
+| **Stock and finish** | Bicycle Rider Back stock with USPCC's Air-Cushion finish. `data/site.json` → `product.stock` |
+| **Contact address** | One inbox, `support@reeldealdeck.com`, for general, wholesale and press. Subject-line prefixes sort the mail. Every other address has been removed from the site. |

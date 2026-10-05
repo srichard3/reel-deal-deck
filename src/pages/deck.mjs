@@ -271,11 +271,11 @@ export default function deckPage({ site }) {
     <p class="eyebrow">Price</p>
 
     <!-- Confirmed by Ken and Audrey: ${money(per)} retail, ${money(ship)} shipping on a single deck,
-         free from ${esc(from)} up. The wholesale figures live on /wholesale/.
+         free from ${esc(from)} up, and checked against real per-unit cost on
+         their side. The wholesale figures live on /wholesale/.
 
-         TODO-CONFIRM: none of these has been checked against real per-unit
-         COGS, carton weight and fulfilment. They are prices, not yet margins.
-         TODO-CONFIRM: international shipping rates are still not set.
+         Domestic only by design. International rates are not set and are not
+         mentioned anywhere on the site.
 
          Every figure on this page is read from site.pricing in data/site.json.
          /wholesale/ reads the same block. Never type a price into a page. -->
@@ -294,7 +294,7 @@ ${retailCards(site)}
   <div class="buy-specs">
     <div class="buy-specs__row">
       <p class="buy-specs__key">Cards</p>
-      <p class="buy-specs__val">${esc(p.cardCount)} cards, every one an original hand-drawn fly with what it imitates</p>
+      <p class="buy-specs__val">${esc(p.cardCount)} cards, every one an original hand-drawn fly with what it imitates. Standard ranks and suits throughout, two jokers &mdash; you can deal a hand of poker with it.</p>
     </div>
     <div class="buy-specs__row">
       <p class="buy-specs__key">Size</p>
@@ -308,10 +308,14 @@ ${retailCards(site)}
       <p class="buy-specs__key">Materials</p>
       <p class="buy-specs__val">${esc(p.material)}</p>
     </div>
-    <!-- TODO-CONFIRM: the brief describes the deck as recyclable, but
-         data/site.json only lists the materials. Do not publish a formal
-         recyclability claim (or any FSC chain-of-custody number) until
-         USPCC confirms it in writing. -->
+    <div class="buy-specs__row">
+      <p class="buy-specs__key">Recyclable</p>
+      <p class="buy-specs__val">${esc(p.recyclable)}</p>
+    </div>
+    <!-- Recyclability confirmed by Ken and Audrey: the deck carries the same
+         material specification as any Bicycle deck from USPCC. Do not add an
+         FSC chain-of-custody number or any certification mark on top of this;
+         that is a separate claim and it is not ours to make. -->
     <div class="buy-specs__row">
       <p class="buy-specs__key">Origin</p>
       <p class="buy-specs__val">
@@ -329,10 +333,9 @@ ${retailCards(site)}
       <p class="buy-specs__val">${money(per)} a deck. ${money(ship)} postage on one; free on ${esc(inWords(from))} or more.</p>
     </div>
   </div>
-  <!-- TODO-CONFIRM: does every card carry a standard rank and suit index
-       alongside the fly, and are the two extra cards jokers or reference
-       cards? "You can deal a hand of poker with it" depends on the first
-       being yes. -->
+  <!-- Confirmed: every card carries a standard rank and suit index alongside
+       the fly, and the two extra cards are the jokers. "You can deal a hand of
+       poker with it" is therefore literally true. -->
 </section>
 
 <!-- ===================================================== CONSERVATION == -->

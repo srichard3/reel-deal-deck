@@ -162,9 +162,9 @@ export default function press({ site }) {
       <a href="/about/">the about page</a>. The longer version is on
       <a href="/story/">our story</a>.
     </p>
-    <!-- TODO-CONFIRM: no press coverage exists yet, so there is no coverage list
-         on this page. Add one once there is something real to link to — do not
-         pad it with our own shop page or the founders' own posts. -->
+    <!-- There is no coverage list on this page by design: there is nothing real
+         to link to yet. Add one when there is, and do not pad it with our own
+         shop page or the founders' own posts. -->
   </div>
 </section>
 

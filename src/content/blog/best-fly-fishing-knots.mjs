@@ -110,9 +110,10 @@ export default function ({ b }) {
         ${b.flyLink('copper-john')} every ten minutes in a hatch. Both are strong enough to fish
         confidently.
       </p>
-      <!-- TODO-CONFIRM: published knot-strength percentages for the clinch, improved clinch and
-           davy family disagree substantially between test sources and testing methods. Do not state
-           a figure here unless it can be attributed to a specific, named, reproducible test. -->
+      <!-- EDITORIAL RULE, settled: no knot-strength percentages on this page. Published figures
+           for the clinch, improved clinch and davy family disagree substantially between sources and
+           testing methods. A figure goes in only if it can be attributed to a specific, named,
+           reproducible test — otherwise the comparison above stands on handling, not numbers. -->
     `)}
 
     ${b.section('How do I tie a double surgeon’s knot for tippet?', `
