@@ -182,7 +182,7 @@ function anatomy() {
         ${flyCard(fly, { eager: true })}
         <p class="figure-note" style="margin-block-start:var(--s-4)">
           The printed face, actual artwork. Every card in the deck links through to its
-          full page in the <a href="/flies/">Fly-brary</a>.
+          full page in our <a href="/flies/">Fly-brary</a>.
         </p>
       </div>
 
@@ -578,7 +578,7 @@ ${printing(site)}
     </p>
     <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
       ${orderCta(site)}
-      <a class="btn btn--ghost" href="/flies/">Back to the Fly-brary</a>
+      <a class="btn btn--ghost" href="/flies/">Back to Our Fly-brary</a>
       <a class="btn btn--quiet" href="/story/">Meet Ken and Audrey</a>
     </p>
   </div>

@@ -500,6 +500,25 @@ API needs a token, Instagram serves a bare shell to server-side fetches, and its
 CDN URLs are signed and expire in days. Refresh with `scripts/instagram.mjs`.
 Captions are stored but never rendered — several go stale and one is wrong.
 
+**The fish mark is one partial, drawn in three places.** The header, the footer
+and Ken's founder card on `/story/` all include `{{> joker-fish }}`; it emits
+`.fish-mark` and takes its size and colour from whatever contains it. It used to
+be three copies of the same 4KB path, which is how two of them ended up styled
+by a class the third did not have.
+
+It is inline SVG rather than a CSS `mask-image` or a `background` for a specific
+reason: `applyBase()` in `build.mjs` rewrites `href`/`src`/`action`/`content`
+**attributes only**, so a `url(/brand/…)` inside a stylesheet 404s on the GitHub
+Pages build, where everything lives under `/reel-deal-deck/`. No stylesheet in
+this project references a site-absolute path, and none should start.
+
+**Never put example markup in a partial's comment.** A `<img src="…">` written
+as an illustration inside `_partials/joker-fish.html` was fingerprinted by
+postbuild and then failed the alt-text gate on all 97 pages, because both tools
+read shipped HTML and neither cares that it is inside a comment. Partial
+comments also ship on every page that includes them, so keep them to a line and
+put the reasoning here.
+
 **SVG needs explicit dimensions.** Never `width: auto` on a viewBox-only SVG —
 Safari will not infer it and collapses the element to nothing. Chrome hides this.
 

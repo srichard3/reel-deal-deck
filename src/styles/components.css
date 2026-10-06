@@ -1020,6 +1020,11 @@ select.input {
   align-content: start;
 }
 
+/* The shared fish mark takes its size from whoever draws it. The header sets
+   its own; this is the founder card on /story/, where it stands in for the
+   rank-and-suit index the other card carries. */
+.point__index--mark .fish-mark { --fish-h: 1.45rem; transform: none; }
+
 .point__index {
   display: inline-flex;
   align-items: center;
@@ -1810,7 +1815,10 @@ a.card-face.card-face:nth-child(even):active {
    an intrinsic width from viewBox alone, so `width: auto` collapsed the mark
    to zero width there while Chrome and Firefox rendered it fine. The element
    also carries width/height attributes for the same reason. */
-.brand__fish {
+/* One mark, three places: the header, the footer and the founder card on
+   /story/. They all draw {{> joker-fish }}, which emits .fish-mark and takes
+   its size and colour from whatever contains it. */
+.fish-mark {
   --fish-ratio: 0.708;              /* 81.9 / 115.7, the viewBox aspect */
   --fish-h: 1.6rem;
 
@@ -1826,11 +1834,11 @@ a.card-face.card-face:nth-child(even):active {
    Deliberately NOT applied to /brand/joker-fish-*, which reproduces the mark
    printed on the deck's three specials — the physical cards face the way they
    face. /brand/logo-* is the mirrored copy for logo use. */
-.brand__fish { transform: scaleX(-1); }
+.fish-mark { transform: scaleX(-1); }
 
-.brand:hover .brand__fish { color: var(--c-green-deep); }
-@media (min-width: 40rem) { .brand__fish { --fish-h: 1.85rem; } }
-.brand__fish--lg { --fish-h: 2.75rem; color: var(--c-green); }
+.brand:hover .fish-mark { color: var(--c-green-deep); }
+@media (min-width: 40rem) { .brand .fish-mark { --fish-h: 1.85rem; } }
+.site-footer .fish-mark { --fish-h: 2.75rem; }
 
 /* ==========================================================================
    FEED THE TROUT — the homepage game

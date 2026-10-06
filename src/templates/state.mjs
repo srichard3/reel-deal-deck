@@ -178,7 +178,7 @@ export default function ({ state: st, states, site, flies }) {
 
     ${stateFlies.length ? `<section class="state-section" aria-labelledby="flies-h">
       <h2 class="h2" id="flies-h">Flies that matter in ${esc(st.name)}</h2>
-      <p class="lede">Each of these is a card in the deck, and each has a full page in the Fly-brary.</p>
+      <p class="lede">Each of these is a card in the deck, and each has a full page in Our Fly-brary.</p>
       <div class="card-grid fly-strip" style="--gap:var(--s-4)">
         ${stateFlies.map((f) => flyCard(f)).join('\n        ')}
       </div>

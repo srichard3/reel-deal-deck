@@ -223,22 +223,22 @@
       <p>
         The pattern is consistent enough that we designed the pricing around it: someone buys a deck
         as a gift, keeps it, then buys two more. If there is a fishing group, a boat, a wedding party
-        or a chapter meeting in your life, the maths stops being close.
+        or a chapter meeting in your life, the math stops being close.
       </p>
       <p>
         Every deck is ${{ site.pricing.retail.perDeck }}, however many you buy &mdash; we could not invent an honest
         quantity discount, because the second deck costs us exactly what the first one did. What does
-        change is the postage: one deck carries ${{ site.pricing.retail.shipping }} and two or more carry none. If you need a
-        dozen for a groomsman party, a raffle table or a chapter meeting, a brick is twelve decks in one
-        box and the wholesale page prices it by the deck.
+        change is the postage: one deck carries ${{ site.pricing.retail.shipping }} and two or more carry none.
       </p>
     </div>
     <!-- Every figure here is a token read from site.pricing in data/site.json.
          Do not type a price into this file: /deck/ and /wholesale/ quote the
          same block, and the three drifted apart the last time they were typed. -->
+    <!-- No wholesale route from here any more. /wholesale/ is a login gate that
+         shows no pricing, so sending a gift buyer there was sending them to a
+         door they have no key to. -->
     <p class="cx-note">
       <a class="btn btn--ghost" href="/deck/#order">See the prices</a>
-      <a class="btn btn--quiet" href="/wholesale/">Wholesale, by the brick</a>
     </p>
   </div>
 </section>
@@ -275,7 +275,7 @@
           Fifty-four classic flies with what each one imitates is useful to a beginner and interesting
           to somebody who has fished for thirty years. There is no size to get wrong and nothing to
           check for compatibility. If you want to sound like you knew what you were doing, read a few
-          entries in the <a href="/flies/">Fly-brary</a> first &mdash; it is free and it takes five minutes.
+          entries in our <a href="/flies/">Fly-brary</a> first &mdash; it is free and it takes five minutes.
         </p>
       </div>
     </div>

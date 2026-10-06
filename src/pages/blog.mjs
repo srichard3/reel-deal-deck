@@ -101,7 +101,7 @@ export default function ({ site, posts = [], flies = [] }) {
     <p class="eyebrow">Free${count ? ` · ${count} answer${count === 1 ? '' : 's'}` : ''}</p>
     <h1 class="h1 page-head__title">The Virtual Guide</h1>
     <p class="page-head__lede lede">
-      The <a href="/flies/">Fly-brary</a> explains the patterns. The Virtual Guide answers everything
+      Our <a href="/flies/">Fly-brary</a> explains the patterns. The Virtual Guide answers everything
       else an angler actually asks — what rod to buy, how to cast it, which knot to tie, when to go.
       One question per article, answered in the first paragraph, because nobody wants to scroll
       past somebody's childhood to find out which tippet to use.
@@ -123,7 +123,7 @@ export default function ({ site, posts = [], flies = [] }) {
       ? `<div class="notice notice--info blog-empty">
     <p><strong>The first answers are being written right now.</strong></p>
     <p>Nothing is published here yet — we would rather ship six articles worth reading than sixty
-    worth skimming. In the meantime the <a href="/flies/">Fly-brary</a> covers all 54 patterns
+    worth skimming. In the meantime our <a href="/flies/">Fly-brary</a> covers all 54 patterns
     in the deck, free and without a sign-up.</p>
   </div>`
       : groups
@@ -158,7 +158,7 @@ export default function ({ site, posts = [], flies = [] }) {
     </p>
     <p class="cluster" style="justify-content:center">
       <a class="btn btn--primary" href="/deck/">See the deck</a>
-      <a class="btn btn--ghost" href="/flies/">Browse the Fly-brary</a>
+      <a class="btn btn--ghost" href="/flies/">Browse Our Fly-brary</a>
     </p>
   </div>
 </section>

@@ -233,7 +233,7 @@ export default function homepage({ site, flies, instagram }) {
         <h2 class="h2" id="deck-h">Pick one up</h2>
         <p class="lede">The whole deck, from the Adams to the San Juan Worm.</p>
       </div>
-      <p><a class="btn btn--ghost" href="/flies/">Open the Fly-brary</a></p>
+      <p><a class="btn btn--ghost" href="/flies/">Open Our Fly-brary</a></p>
     </div>
   </div>
 

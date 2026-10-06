@@ -94,7 +94,7 @@ export default function suggest({ site, flies }) {
         </datalist>
         <p class="help" id="sg-fly-help">
           Start typing and the box will tell you if it is already in the deck &mdash;
-          or <a href="/flies/">browse the Fly-brary</a> first.
+          or <a href="/flies/">browse Our Fly-brary</a> first.
         </p>
       </div>
 

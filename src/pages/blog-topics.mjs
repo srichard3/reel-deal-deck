@@ -30,7 +30,7 @@ export const meta = {
   path: '/blog/topics/',
   title: 'Guide Topics',
   description:
-    'What the Virtual Guide covers: getting started, gear, technique, knots, seasons and the practical stuff — and where the Fly-brary takes over.',
+    'What the Virtual Guide covers: getting started, gear, technique, knots, seasons and the practical stuff — and where Our Fly-brary takes over.',
   priority: 0.6,
   changefreq: 'monthly',
   bodyClass: 'page-blog-topics',
@@ -136,7 +136,7 @@ export default function ({ site, posts = [] }) {
     <h1 class="h1 page-head__title">Guide topics</h1>
     <p class="page-head__lede lede">
       Six topics, one question per article. This page is the map: what each topic covers, what it
-      deliberately leaves alone, and where the <a href="/flies/">Fly-brary</a> takes over.
+      deliberately leaves alone, and where our <a href="/flies/">Fly-brary</a> takes over.
     </p>
   </header>
 
