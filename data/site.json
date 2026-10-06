@@ -269,7 +269,7 @@
         "applyPath": "/wholesale/apply/",
         "customerTag": "wholesale",
         "autoApprove": true,
-        "autoApproveNote": "Approved on signup, as asked. The resale permit is collected and stored but not checked by anyone before pricing is granted. Set REVIEW_ONLY=1 in the Netlify environment to queue applications as `wholesale-pending` instead — the discount does not match that tag, so nothing else needs changing."
+        "autoApproveNote": "Approved on signup, confirmed again 2026-10-06: do NOT set REVIEW_ONLY in production. Verified end to end — the function tags `wholesale`, and the customer appears in the Shopify segment the trade discount reads from about twelve seconds later. The resale permit is collected and stored but not checked by anyone before pricing is granted. Set REVIEW_ONLY=1 in the Netlify environment to queue applications as `wholesale-pending` instead — the discount does not match that tag, so nothing else needs changing."
       }
     }
   }

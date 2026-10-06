@@ -149,7 +149,19 @@
           window.location.assign(r.body.redirect);
           return;
         }
-        say('You are set up. We will email your account details shortly.', 'ok');
+        /* Auto-approval: the account exists and is tagged already, so tell them
+           what to DO rather than promising an email. Nothing here sends one —
+           that is a Shopify Flow, and a message that promises mail the site
+           does not send is how "did that work?" emails start.
+
+           "within a minute" is not padding: the customer segment the trade
+           discount reads from indexes a few seconds behind the tag (about
+           twelve, measured), so somebody who clicks straight through can
+           briefly see retail prices. */
+        say('You are set up. Sign in at the shop with this email — we send a code, '
+          + 'there is no password — and your trade pricing will be showing within a minute.', 'ok');
+        form.querySelector('.ws-form__grid').hidden = true;
+        submit.hidden = true;
       })
       .catch(function () {
         say('We could not reach the server. Check your connection and try again.', 'error');
