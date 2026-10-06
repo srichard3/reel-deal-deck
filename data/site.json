@@ -246,13 +246,13 @@
       "note": "One deck is $19.95 plus $6.95 shipping. Two or more decks are $19.95 each and shipping is free. There is no quantity discount at retail — the saving is the shipping."
     },
     "wholesale": {
-      "note": "Wholesale is per-deck pricing, and it is sold in whole units only: a brick or a master case, never a loose deck.",
-      "minimumUnit": "brick",
+      "note": "Wholesale is per-deck pricing, sold in whole units only. The ORDERABLE UNIT is two bricks (24 decks) or one master case (144 decks) — never a single brick and never a loose deck. That constraint is enforced by the Shopify catalogue rather than by a quantity rule: the sellable variants ARE those units, so quantity 2 means 48 decks. Do not add a 12-deck variant.",
+      "minimumUnit": "two bricks",
       "tiers": [
         {
-          "id": "brick",
-          "unit": "Brick",
-          "decks": 12,
+          "id": "bricks2",
+          "unit": "Two bricks",
+          "decks": 24,
           "perDeck": 9.97
         },
         {
