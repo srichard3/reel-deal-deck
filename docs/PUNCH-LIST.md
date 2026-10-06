@@ -62,4 +62,4 @@ by inventing a figure.
 | **Recyclability** | Confirmed: the same material specification as any Bicycle deck. Published as a spec row. No FSC chain-of-custody number and no certification mark on top of it. |
 | **Ranks and suits** | Standard throughout, with two jokers — so "you can deal a hand of poker with it" is literally true. |
 | **Stock and finish** | Bicycle Rider Back stock with USPCC's Air-Cushion finish. `data/site.json` → `product.stock` |
-| **Contact address** | One inbox, `support@reeldealdeck.com`, for general, wholesale and press. Subject-line prefixes sort the mail. Every other address has been removed from the site. |
+| **Contact address** | One inbox, `reeldealdeck@gmail.com`, for general, wholesale and press. Subject-line prefixes sort the mail. Every other address has been removed from the site. |

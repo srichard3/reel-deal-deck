@@ -44,7 +44,10 @@ Both must report **0 errors**. A change can pass one and fail the other.
   So the blocker is not buying a domain, it is deciding what sits at the apex —
   see `docs/DEPLOY.md`. The plan of record: this site at the apex and `www`,
   Shopify moved to `shop.reeldealdeck.com`, DNS left at GoDaddy so the
-  `secureserver.net` MX records keep `support@reeldealdeck.com` alive.
+  `secureserver.net` MX records are not disturbed. Note those MX records no
+  longer carry the support address: there is no mailbox on the domain, and
+  `reeldealdeck@gmail.com` is the inbox. Keep the MX records anyway — they cost
+  nothing and leave the door open to domain email later.
 - **Ordering is live. There is no Kickstarter and no pre-order** — both were
   removed site-wide. Checkout will be Shopify; `site.shop.url` is still empty, so
   every order CTA falls back to `/deck/#order`.
@@ -79,7 +82,7 @@ contributor "helpfully" filling one in would be a regression:
 | Recyclable | Yes — the same material specification as any Bicycle deck. **Not** an FSC or certification claim. |
 | Ranks and suits | Standard throughout, two jokers. "Deal a hand of poker with it" is literally true. |
 | Prices | $19.95 / $6.95 / $9.97 / $8.97 are confirmed against real cost. |
-| The one inbox | **support@reeldealdeck.com.** No wholesale@, no press@, no gmail. Subject prefixes sort the mail. |
+| The one inbox | **reeldealdeck@gmail.com.** No wholesale@, no press@, no support@ — `support@reeldealdeck.com` was never actually created, which is why this is a Gmail address. Subject prefixes sort the mail. |
 
 | Deliberately unstated — do not fill in | |
 |---|---|
