@@ -16,6 +16,36 @@
 
   var status = form.querySelector('[data-ws-status]');
 
+  /* Show only the state list that belongs to the chosen country. The server
+     re-checks the pair, so this is a courtesy — but without it the list offers
+     Ontario to somebody who picked the United States, and the only feedback
+     would arrive after they had filled in the whole form. */
+  var countrySel = form.querySelector('[name="country"]');
+  var regionSel = form.querySelector('[name="region"]');
+  if (countrySel && regionSel && regionSel.tagName === 'SELECT') {
+    var syncRegions = function () {
+      var want = countrySel.value;
+      var groups = regionSel.querySelectorAll('optgroup');
+      var chosenStillValid = false;
+      for (var i = 0; i < groups.length; i++) {
+        var mine = groups[i].getAttribute('data-country') === want;
+        /* disabled, not hidden: Safari ignores display:none on an optgroup,
+           and a disabled group cannot be chosen by keyboard either. */
+        groups[i].disabled = !mine;
+        groups[i].style.display = mine ? '' : 'none';
+        if (mine && regionSel.value) {
+          var opts = groups[i].querySelectorAll('option');
+          for (var j = 0; j < opts.length; j++) {
+            if (opts[j].value === regionSel.value) chosenStillValid = true;
+          }
+        }
+      }
+      if (!chosenStillValid) regionSel.selectedIndex = -1;
+    };
+    countrySel.addEventListener('change', syncRegions);
+    syncRegions();
+  }
+
   var submit = form.querySelector('[data-ws-submit]');
   var file = form.querySelector('#ws-permit');
 

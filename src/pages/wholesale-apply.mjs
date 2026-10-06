@@ -22,6 +22,7 @@
 
 import { esc } from '../templates/_shared.mjs';
 import { organizationSchema, wholesaleState } from '../templates/_blocks.mjs';
+import { US_STATES, CA_PROVINCES } from '../../data/regions.mjs';
 
 export const meta = {
   path: '/wholesale/apply/',
@@ -40,7 +41,11 @@ export const meta = {
   jsonld: [{ '@context': 'https://schema.org', '@type': 'WebPage' }],
 };
 
-const field = ({ id, label, type = 'text', required = false, autocomplete, help, placeholder, full = false, as = 'input', options }) => {
+/* One source of truth for the options AND for the server's re-check: see
+   data/regions.mjs. A <select> cannot be mistyped, which removes the whole
+   "Province is invalid" failure — that reached the applicant as "something
+   went wrong setting up the account", for a typo. */
+const field = ({ id, label, type = 'text', required = false, autocomplete, help, placeholder, full = false, as = 'input', options, optgroups, inputmode }) => {
   const attrs = [
     `class="input"`,
     `id="ws-${id}"`,
@@ -49,10 +54,13 @@ const field = ({ id, label, type = 'text', required = false, autocomplete, help,
     required ? 'required' : '',
     placeholder ? `placeholder="${esc(placeholder)}"` : '',
     help ? `aria-describedby="ws-${id}-help"` : '',
+    inputmode ? `inputmode="${inputmode}"` : '',
   ].filter(Boolean).join(' ');
 
+  const opt = (o) => `          <option value="${esc(o[0])}">${esc(o[1])}</option>`;
+  const group = (g) => `          <optgroup label="${esc(g.label)}" data-country="${esc(g.country)}">\n${g.options.map((o) => '  ' + opt(o)).join('\n')}\n          </optgroup>`;
   const control = as === 'select'
-    ? `<select ${attrs}>\n${options.map((o) => `          <option value="${esc(o[0])}">${esc(o[1])}</option>`).join('\n')}\n        </select>`
+    ? `<select ${attrs}>\n${(optgroups || []).map(group).join('\n')}${options ? options.map(opt).join('\n') : ''}\n        </select>`
     : as === 'textarea'
       ? `<textarea ${attrs} rows="3"></textarea>`
       : `<input ${attrs} type="${type}">`;
@@ -143,8 +151,11 @@ ${field({ id: 'email', label: 'Email', type: 'email', required: true, autocomple
 ${field({ id: 'address1', label: 'Street address', required: true, autocomplete: 'address-line1', full: true })}
 ${field({ id: 'address2', label: 'Suite, unit or floor', autocomplete: 'address-line2', full: true })}
 ${field({ id: 'city', label: 'City', required: true, autocomplete: 'address-level2' })}
-${field({ id: 'region', label: 'State', required: true, autocomplete: 'address-level1', placeholder: 'ID' })}
-${field({ id: 'postal', label: 'ZIP', required: true, autocomplete: 'postal-code' })}
+${field({ id: 'region', label: 'State or province', required: true, autocomplete: 'address-level1', as: 'select', optgroups: [
+  { label: 'United States', country: 'US', options: US_STATES },
+  { label: 'Canada', country: 'CA', options: CA_PROVINCES },
+] })}
+${field({ id: 'postal', label: 'ZIP or postal code', required: true, autocomplete: 'postal-code' })}
 ${field({ id: 'country', label: 'Country', as: 'select', required: true, autocomplete: 'country', options: [['US', 'United States'], ['CA', 'Canada']] })}
 
       <!-- No password field, and that is not an omission. Shopify signs these

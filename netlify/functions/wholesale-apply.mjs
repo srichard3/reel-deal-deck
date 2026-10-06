@@ -51,6 +51,8 @@
  * ---------------------------------------------------------------------------
  */
 
+import { isValidRegion, isValidPostal, POSTAL } from '../../data/regions.mjs';
+
 export const config = { path: '/api/wholesale-apply' };
 
 /* Shopify versions its API quarterly and supports each release for about a
@@ -219,6 +221,30 @@ export default async (request) => {
 
   if (!/^[^@\s]+@[^@\s.]+\.[^@\s]+$/.test(data.email)) {
     return json(400, { error: 'That email address does not look right.', fields: ['email'] });
+  }
+
+  /* Shopify validates the province and NOTHING else on an address: tested
+     2026-10-06, it saved "abc" and "1" as zips and "banana" as a phone without
+     complaint, then rejected province "XX" with an error that reached the
+     applicant as "something went wrong". So the province check exists to turn
+     that into a sentence they can act on, and the other two exist because
+     Shopify will not do them at all — and an unreachable phone or an
+     undeliverable zip is found out at the packing bench, not here. */
+  const country = (data.country || 'US').toUpperCase();
+  if (!isValidRegion(country, data.region)) {
+    return json(400, { error: 'Please choose your state or province from the list.', fields: ['region'] });
+  }
+  if (!isValidPostal(country, data.postal)) {
+    return json(400, {
+      error: `That ${country === 'CA' ? 'postal code' : 'ZIP'} does not look right. ${POSTAL[country]?.hint || ''}`.trim(),
+      fields: ['postal'],
+    });
+  }
+  /* Ten digits is the floor for a North American number. Deliberately counts
+     digits rather than matching a format: people write (208) 555-0101 and
+     208.555.0101 and +1 208 555 0101, and all three are the same phone. */
+  if ((data.phone.match(/\d/g) || []).length < 10) {
+    return json(400, { error: 'That phone number does not look right. Please include the area code.', fields: ['phone'] });
   }
 
   const permit = form.get('permit');

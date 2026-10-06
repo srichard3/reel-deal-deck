@@ -36,6 +36,15 @@ const cases = [
   ['missing last name', () => fn(post(body({ lastName: null }))), 400],
   ['missing address', () => fn(post(body({ address1: null }))), 400],
   ['malformed email', () => fn(post(body({ email: 'not-an-email' }))), 400],
+  /* Shopify validates the province and nothing else: it saved "abc" as a zip
+     and "banana" as a phone without complaint, and rejected province "XX" with
+     an error the applicant read as "something went wrong". */
+  ['a state that does not exist', () => fn(post(body({ region: 'XX' }))), 400],
+  ['a province in the wrong country', () => fn(post(body({ region: 'ON', country: 'US' }))), 400],
+  ['a zip that is not a zip', () => fn(post(body({ postal: 'abc' }))), 400],
+  ['a zip that is too short', () => fn(post(body({ postal: '1' }))), 400],
+  ['a Canadian postal code in a US address', () => fn(post(body({ postal: 'K1A 0B1' }))), 400],
+  ['a phone with no area code', () => fn(post(body({ phone: '555-0101' }))), 400],
   ['no permit attached', () => fn(post(body({}, null))), 400],
   ['permit over 10MB', () => fn(post(body({}, pdf(11 * 1024 * 1024)))), 400],
   ['permit of a disallowed type', () => fn(post(body({}, pdf(1024, 'application/zip')))), 400],
