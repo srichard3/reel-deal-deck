@@ -21,7 +21,7 @@
  */
 
 import { esc } from '../templates/_shared.mjs';
-import { organizationSchema } from '../templates/_blocks.mjs';
+import { organizationSchema, wholesaleState } from '../templates/_blocks.mjs';
 
 export const meta = {
   path: '/wholesale/apply/',
@@ -68,7 +68,11 @@ export default function wholesaleApply({ site }) {
   const base = site.url.replace(/\/$/, '');
   const email = site?.social?.email || 'support@reeldealdeck.com';
   const tiers = site?.pricing?.wholesale?.tiers || [];
-  const live = site?.pricing?.wholesale?.account?.live === true;
+  const ws = wholesaleState(site);
+  const live = ws.live;
+  const login = ws.loginUrl;
+  const loginLabel = ws.loginLabel;
+  const loginRel = ws.loginRel ? ` rel="${ws.loginRel}"` : '';
   const money = (n) => '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   meta.jsonld[0] = {
@@ -99,13 +103,14 @@ export default function wholesaleApply({ site }) {
   <p class="eyebrow">Trade</p>
   <h1 class="h1">Open a wholesale account</h1>
   <p class="lede">
-    Your details and a copy of your resale permit. You will be set up straight away and land on an
-    order page with your account and shipping address already filled in.
+    Your business details, a copy of your resale certificate, and a password. You are set up
+    straight away, and you land logged in with your pricing showing and your shipping address
+    already filled in.
   </p>
 
-  ${tiers.length ? `<p class="ws-apply__prices">
-    ${tiers.map((t) => `<span><strong>${money(t.perDeck)}</strong> a deck &middot; ${esc(t.unit.toLowerCase())} of ${esc(t.decks)}</span>`).join('\n    ')}
-  </p>` : ''}
+  <!-- No prices here. This page sits in FRONT of the gate, so anything printed
+       on it is published to everyone, which is the thing /wholesale/ was
+       changed to stop. Pricing appears once they are logged in and tagged. -->
 
   ${!live ? `<div class="notice notice--info">
     <p><strong>Accounts are not open online just yet.</strong> The signup is built and waiting on
@@ -133,7 +138,7 @@ export default function wholesaleApply({ site }) {
 ${field({ id: 'business', label: 'Shop or business name', required: true, autocomplete: 'organization', full: true })}
 ${field({ id: 'contact', label: 'Your name', required: true, autocomplete: 'name' })}
 ${field({ id: 'role', label: 'Your role', autocomplete: 'organization-title', placeholder: 'Owner, buyer, manager' })}
-${field({ id: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email', help: 'This becomes your account login.' })}
+${field({ id: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email', help: 'This is your username.' })}
 ${field({ id: 'phone', label: 'Phone', type: 'tel', required: true, autocomplete: 'tel' })}
 ${field({ id: 'address1', label: 'Street address', required: true, autocomplete: 'address-line1', full: true })}
 ${field({ id: 'address2', label: 'Suite, unit or floor', autocomplete: 'address-line2', full: true })}
@@ -141,11 +146,19 @@ ${field({ id: 'city', label: 'City', required: true, autocomplete: 'address-leve
 ${field({ id: 'region', label: 'State', required: true, autocomplete: 'address-level1', placeholder: 'ID' })}
 ${field({ id: 'postal', label: 'ZIP', required: true, autocomplete: 'postal-code' })}
 ${field({ id: 'country', label: 'Country', as: 'select', required: true, autocomplete: 'country', options: [['US', 'United States'], ['CA', 'Canada']] })}
-${field({ id: 'taxId', label: 'Resale or seller\u2019s permit number', full: true, help: 'Whatever your state calls it. It goes on the account so we do not have to ask again.' })}
+${field({ id: 'taxId', label: 'Resale certificate number', full: true, help: 'Whatever your state calls it. It goes on the account so we do not have to ask again.' })}
 ${field({ id: 'website', label: 'Website or Instagram', full: true, placeholder: 'So we can see what kind of shop you run' })}
 
+      <!-- The password is the account. It is sent once, straight to Shopify,
+           and is never stored, logged or echoed by anything we run — see the
+           note in netlify/functions/wholesale-apply.mjs. autocomplete
+           new-password is what tells a password manager to offer to generate
+           and save one. -->
+${field({ id: 'password', label: 'Choose a password', type: 'password', required: true, autocomplete: 'new-password', help: 'At least 8 characters. Your email above is the username.' })}
+${field({ id: 'password2', label: 'Confirm password', type: 'password', required: true, autocomplete: 'new-password' })}
+
       <div class="field ws-form__full">
-        <label class="label" for="ws-permit">Resale permit</label>
+        <label class="label" for="ws-permit">Resale certificate</label>
         <input class="input ws-apply__file" id="ws-permit" name="permit" type="file"
                accept="application/pdf,image/jpeg,image/png,image/heic,image/heif,image/webp"
                required aria-describedby="ws-permit-help">
@@ -178,7 +191,8 @@ ${field({ id: 'notes', label: 'Anything we should know', as: 'textarea', full: t
   </form>`}
 
   <p class="ws-apply__back">
-    <a href="/wholesale/">Back to the wholesale terms</a>
+    <a href="/wholesale/">Back</a> &middot; already have an account?
+    <a href="${esc(login)}"${loginRel}>${esc(loginLabel)}</a>
   </p>
 </section>
 

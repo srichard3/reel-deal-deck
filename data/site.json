@@ -213,7 +213,7 @@
     "sub": "54 hand-drawn flies on genuine Bicycle stock, $19.95 a deck, with a contribution to Trout Unlimited from every one of them. Shipping is on us from two decks up.",
     "cta": "Order now",
     "accountUrl": "",
-    "accountUrlNote": "TODO-CONFIRM: the Shopify customer account login URL, usually https://<store>/account/login or the new customer-accounts URL. Empty hides the 'Wholesale login' links rather than shipping a dead one."
+    "accountUrlNote": "TODO-CONFIRM: the Shopify customer login URL, usually https://<store>/account/login. Shopify must be on CLASSIC customer accounts, not the new passwordless ones — the signup sets a password and the new accounts have none. While this is empty the gate at /wholesale/ offers an email address instead of a dead login link; wholesaleState() in src/templates/_blocks.mjs makes that choice once."
   },
   "pricing": {
     "note": "The one source of pricing truth. src/pages/deck.mjs and src/pages/wholesale.html both read it; the Product JSON-LD offer is built from it. Three units, and they nest: a brick is twelve decks, a master case is twelve bricks.",

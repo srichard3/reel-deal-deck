@@ -266,23 +266,37 @@ export function tuckBox({ eager = false } = {}) {
  * than nowhere. `ready` is false in that state so a page can say so.
  */
 /* Where "wholesale" points, resolved once, for the same reason as orderState():
- * the header, the drawer and the footer must never disagree, and the
- * destination changes as the store is set up.
+ * the header, the drawer, the footer and the gate page must never disagree, and
+ * the destinations change as the store is set up. Nothing here can branch at
+ * render time — .html pages and partials only substitute tokens — so the
+ * decision is made once, at build time, and ridden in on ctx.meta.
  *
- *   1. shop.accountUrl  — the real Shopify customer login, once it exists
- *   2. the apply path   — but only while applications are actually live
- *   3. /wholesale/      — the prices and the terms, which is always true
+ *   url    the gate, /wholesale/. Every "Wholesale" button on the site points
+ *          here and nowhere else: it is the page that offers log in or sign up,
+ *          and it deliberately carries no pricing.
+ *   login  the Shopify customer login, once shop.accountUrl exists. Until then
+ *          there is no login to send anyone to, so it falls back to an email —
+ *          a dead /account/login is worse than an honest address.
+ *   apply  the signup form, which the gate links to.
  *
- * Step 2 matters: with `account.live` false the apply page renders an email
- * address and nothing else, and sending every visitor from the top of every
- * page to that would be worse than sending them to the prices.
+ * The gate is NOT the security boundary and must not be mistaken for one. A
+ * static site cannot hide a page. Wholesale pricing is gated by a Shopify
+ * automatic discount scoped to the `wholesale` customer segment; this just
+ * stops the numbers being published to everybody.
  */
 export function wholesaleState(site) {
   const account = site?.pricing?.wholesale?.account || {};
   const login = site?.shop?.accountUrl || '';
-  if (login) return { url: login, key: 'login', external: /^https?:\/\//i.test(login) };
-  if (account.live && account.applyPath) return { url: account.applyPath, key: 'apply', external: false };
-  return { url: '/wholesale/', key: 'info', external: false };
+  const email = site?.social?.email || '';
+  return {
+    url: '/wholesale/',
+    applyUrl: account.applyPath || '/wholesale/apply/',
+    live: account.live === true,
+    loginUrl: login || (email ? `mailto:${email}?subject=Wholesale%20login` : '/wholesale/apply/'),
+    loginLabel: login ? 'Log in' : 'Email us for access',
+    loginRel: /^https?:\/\//i.test(login) ? 'noopener' : '',
+    loginReady: Boolean(login),
+  };
 }
 
 export function orderState(site) {

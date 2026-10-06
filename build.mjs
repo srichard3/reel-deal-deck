@@ -185,6 +185,10 @@ async function emit(route, meta, bodyHtml) {
          new tab the way orderCta() does. Empty means same tab. */
       orderTarget: meta.orderTarget ?? (ORDER_STATE.external ? '_blank' : ''),
       wholesaleUrl: meta.wholesaleUrl ?? WHOLESALE_STATE.url,
+      wholesaleLoginUrl: meta.wholesaleLoginUrl ?? WHOLESALE_STATE.loginUrl,
+      wholesaleLoginLabel: meta.wholesaleLoginLabel ?? WHOLESALE_STATE.loginLabel,
+      wholesaleLoginRel: meta.wholesaleLoginRel ?? WHOLESALE_STATE.loginRel,
+      wholesaleApplyUrl: meta.wholesaleApplyUrl ?? WHOLESALE_STATE.applyUrl,
       /* Always emitted, so the value is the only thing that varies. */
       robots: NOINDEX
         ? 'noindex, nofollow'

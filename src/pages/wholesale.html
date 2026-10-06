@@ -2,7 +2,7 @@
 {
   "path": "/wholesale/",
   "title": "Wholesale for Fly Shops & Guides",
-  "description": "Wholesale for The Reel Deal Deck: $9.97 a deck by the 12-deck brick, $8.97 by the 144-deck master case, against $19.95 retail. For fly shops, guides and lodges.",
+  "description": "Trade accounts for fly shops, guides and lodges. Log in to see wholesale pricing and order The Reel Deal Deck, or open an account in a couple of minutes.",
   "priority": 0.9,
   "changefreq": "monthly",
   "bodyClass": "page-wholesale",
@@ -78,236 +78,95 @@
      A buyer scans for the margin and the unit. So the headline carries the
      margin, the three facts they look for sit in a row where the eye can take
      them in at once, and the paragraph stays short enough to actually read. -->
-<section class="section wrap">
-  <div class="wrap--narrow ws-hero">
-    <p class="eyebrow">Wholesale</p>
-    <h1 class="h1">Fifty-four hand-drawn flies, at keystone or better</h1>
-    <p class="lede">
-      Trade pricing for fly shops, guide services, lodges and {{ site.conservation.partner }}
-      chapters. Sold by the brick of twelve or the 144-deck master case &mdash; and you deal with
-      Ken and Audrey directly, so a question gets an answer rather than a ticket number.
+<!-- THIS PAGE IS THE GATE, AND IT CARRIES NO TRADE INFORMATION.
+     No per-deck price, no margin, no unit counts, no terms. That is the point:
+     a shop owner should see pricing only once there is an account behind it.
+
+     Be clear about what this does and does not do. A static site CANNOT gate
+     anything — every page in dist/ is a public file, and a login rendered in
+     HTML is theatre. The real gate is Shopify: wholesale pricing is an
+     automatic discount scoped to the `wholesale` customer segment, so it only
+     resolves for a logged-in, tagged customer, wherever they look. What this
+     page does is stop publishing the numbers to everyone, which is the part
+     that was actually leaking — including out of the meta description above,
+     straight into search results.
+
+     So: do not reintroduce prices, margins, minimums or terms here, and do not
+     "helpfully" render them behind a JS check. If it is in the HTML, it is
+     public. -->
+
+<section class="page-head">
+  <div class="wrap wrap--narrow">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><span aria-current="page">Wholesale</span></li>
+      </ol>
+    </nav>
+    <p class="eyebrow" style="margin-block-start:var(--s-5)">Trade</p>
+    <h1 class="h1 page-head__title">Wholesale accounts</h1>
+    <p class="lede page-head__lede">
+      For fly shops, guides, lodges and outfitters. Pricing, unit sizes and ordering sit
+      behind your account &mdash; log in, or open one in a couple of minutes.
     </p>
-
-    <!-- 50% is arithmetic on the two figures, not a claim: at $9.97 landed
-         against a $19.95 shelf price, 9.98/19.95 = 50.0%. The master case runs
-         to 55%. Both are stated again in the pricing section below. -->
-    <dl class="ws-hero__facts">
-      <div class="ws-hero__fact">
-        <dt>Your cost</dt>
-        <dd><strong>${{ site.pricing.wholesale.tiers.0.perDeck }}</strong> a deck, by the brick</dd>
-      </div>
-      <div class="ws-hero__fact">
-        <dt>Your margin</dt>
-        <dd><strong>50%</strong> at the ${{ site.pricing.retail.perDeck }} shelf price</dd>
-      </div>
-      <div class="ws-hero__fact">
-        <dt>Minimum</dt>
-        <dd><strong>12 decks</strong> one brick, and the same to reorder</dd>
-      </div>
-    </dl>
-
-    <div class="cluster ws-hero__actions">
-      <a class="btn btn--primary btn--lg" href="/wholesale/apply/">Open a wholesale account</a>
-      <a class="btn btn--ghost btn--lg" href="#wholesale-inquiry">Ask a question first</a>
-    </div>
   </div>
 </section>
 
-<!-- ========================================== PRICING AND INFORMATION == -->
-<!-- One section, not five. This page used to run the sales pitch, the buyer
-     types, a margin table, a terms list and an "open an account" band as
-     separate stops; a trade buyer wants the number and the unit, and the rest
-     was retail copy wearing a tie.
-
-     Every figure is a token from site.pricing in data/site.json, which /deck/
-     reads too. Never type a price into this file — they drifted apart once. -->
-<section class="section section--sunk" id="pricing">
-  <div class="wrap">
-    <p class="eyebrow">Trade pricing</p>
-    <h2 class="h2">Sold by the unit, never the loose deck</h2>
-    <p class="lede">
-      Suggested retail is ${{ site.pricing.retail.perDeck }} a deck, so a brick lands you on keystone
-      and a master case lands you above it.
-    </p>
-
-    <div class="ws-units ws-units--light">
-      <div class="ws-unit">
-        <p class="ws-unit__name">Brick</p>
-        <p class="ws-unit__count">12 decks</p>
-        <p class="ws-unit__price">${{ site.pricing.wholesale.tiers.0.perDeck }} <span>a deck</span></p>
-        <p class="ws-unit__total">$119.64 the brick &middot; 50% margin</p>
+<section class="section">
+  <div class="wrap wrap--narrow">
+    <div class="ws-gate">
+      <div class="ws-gate__card">
+        <h2 class="h3">Already have an account</h2>
+        <p>Log in and your pricing is on every product page.</p>
+        <!-- Resolved in build.mjs by wholesaleState(): the real Shopify login
+             once shop.accountUrl exists, and an email address until then. This
+             file cannot branch, so it does not try. -->
+        <p class="ws-gate__action">
+          <a class="btn btn--primary btn--lg" href="{{ meta.wholesaleLoginUrl }}" rel="{{ meta.wholesaleLoginRel }}">{{ meta.wholesaleLoginLabel }}</a>
+        </p>
       </div>
-      <div class="ws-unit">
-        <p class="ws-unit__name">Master case</p>
-        <p class="ws-unit__count">144 decks &middot; 12 bricks</p>
-        <p class="ws-unit__price">${{ site.pricing.wholesale.tiers.1.perDeck }} <span>a deck</span></p>
-        <p class="ws-unit__total">$1,291.68 the case &middot; 55% margin</p>
-      </div>
-    </div>
 
-    <!-- The two unit totals and the margins are arithmetic on the per-deck
-         figures above, not claims: 12 x 9.97 = 119.64 and 9.98/19.95 = 50.0%;
-         144 x 8.97 = 1291.68 and 10.98/19.95 = 55.0%. Recompute both if a
-         price moves.
-
-         Both per-deck figures are confirmed by Ken and Audrey against their own
-         cost. There is no MAP policy, by their decision — do not add one, or
-         any language implying a resale price condition, to this page. -->
-
-    <div class="buy-specs" style="margin-block-start:var(--s-7)">
-      <div class="buy-specs__row">
-        <p class="buy-specs__key">Minimum order</p>
-        <p class="buy-specs__val">One brick, 12 decks. Deliberately low &mdash; a first order should be a trial, not a bet.</p>
-      </div>
-      <div class="buy-specs__row">
-        <p class="buy-specs__key">The deck</p>
-        <p class="buy-specs__val">
-          {{ site.product.cardCount }} cards, {{ site.product.dimensions }}, on
-          {{ site.product.stock }}. {{ site.product.origin }}.
+      <div class="ws-gate__card">
+        <h2 class="h3">New here</h2>
+        <p>
+          Your business details and a copy of your resale certificate. You choose a password,
+          and your email is your username.
+        </p>
+        <p class="ws-gate__action">
+          <a class="btn btn--ghost btn--lg" href="{{ meta.wholesaleApplyUrl }}">Create an account</a>
         </p>
       </div>
     </div>
 
-    <p class="cx-note">
-      <a class="btn btn--primary btn--lg" href="/wholesale/apply/">Open a wholesale account</a>
-    </p>
-
-    <p class="cx-note">
-      Want fewer than twelve? That is a retail question, not a wholesale one &mdash; decks are
-      ${{ site.pricing.retail.perDeck }} each on <a href="/deck/">the product page</a>, shipping free from
-      two up, and it needs no account.
+    <p class="help ws-gate__foot">
+      Questions before you sign up? Write to
+      <a href="mailto:{{ site.social.email }}?subject=Wholesale%20inquiry">{{ site.social.email }}</a>
+      &mdash; it is the two of us reading it.
     </p>
   </div>
 </section>
 
-
-<!-- ================================================= INQUIRY FORM == -->
-<section class="section section--sunk" id="wholesale-inquiry">
-  <div class="wrap">
-    <p class="eyebrow">Inquiry</p>
-    <h2 class="h2">Tell us about your shop</h2>
-    <p class="lede">
-      A real person reads these &mdash; there are two of us. The more specific you are about quantity
-      and timing, the faster we can give you a real answer on freight and timing.
-    </p>
-
-    <div class="ws-form">
-      <noscript>
-        <p class="notice notice--info">
-          This form needs JavaScript to save your details. Email
-          <a href="mailto:support@reeldealdeck.com?subject=Wholesale%20inquiry">support@reeldealdeck.com</a>
-          with your shop name, location and rough quantity instead, and we will reply personally.
-        </p>
-      </noscript>
-
-      <form class="cx-form" data-capture="wholesale"
-            action="mailto:support@reeldealdeck.com" method="post" enctype="text/plain">
-        <div class="ws-form__grid">
-          <div class="field">
-            <label class="label" for="ws-business">Shop or business name</label>
-            <input class="input" id="ws-business" name="business" type="text"
-                   autocomplete="organization" required>
-          </div>
-
-          <div class="field">
-            <label class="label" for="ws-contact">Your name</label>
-            <input class="input" id="ws-contact" name="contact" type="text"
-                   autocomplete="name" required>
-          </div>
-
-          <div class="field">
-            <label class="label" for="ws-role">Your role</label>
-            <select class="input" id="ws-role" name="role" required>
-              <option value="">Choose one</option>
-              <option value="owner">Owner</option>
-              <option value="buyer">Buyer or merchandiser</option>
-              <option value="manager">Shop manager</option>
-              <option value="guide">Guide or head guide</option>
-              <option value="lodge">Lodge or outfitter</option>
-              <option value="chapter">TU chapter or club officer</option>
-              <option value="corporate">Corporate or brand gifting</option>
-              <option value="other">Something else</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label class="label" for="ws-email">Email address</label>
-            <input class="input" id="ws-email" name="email" type="email"
-                   autocomplete="email" required placeholder="you@yourshop.com">
-          </div>
-
-          <div class="field">
-            <label class="label" for="ws-phone">Phone (optional)</label>
-            <input class="input" id="ws-phone" name="phone" type="tel" autocomplete="tel">
-          </div>
-
-          <div class="field">
-            <label class="label" for="ws-location">Location</label>
-            <input class="input" id="ws-location" name="location" type="text"
-                   required placeholder="City, state or country">
-            <p class="help">City and state is plenty. It tells us where to ship first.</p>
-          </div>
-
-          <div class="field">
-            <label class="label" for="ws-quantity">Estimated first order (decks)</label>
-            <input class="input" id="ws-quantity" name="quantity" type="number"
-                   min="12" max="100000" step="12" inputmode="numeric"
-                   required placeholder="24">
-            <p class="help">A rough number is fine. Cases are twelve decks.</p>
-          </div>
-
-          <div class="field">
-            <label class="label" for="ws-heard">How did you hear about us?</label>
-            <select class="input" id="ws-heard" name="heard" required>
-              <option value="">Choose one</option>
-              <option value="search">Search engine</option>
-              <option value="instagram">Instagram</option>
-              <option value="tiktok">TikTok</option>
-              <option value="word-of-mouth">Another shop or a customer</option>
-              <option value="trade-show">Trade show or expo</option>
-              <option value="tu">Trout Unlimited</option>
-              <option value="other">Somewhere else</option>
-            </select>
-          </div>
-
-          <div class="field ws-form__full">
-            <label class="label" for="ws-notes">Anything else? (optional)</label>
-            <textarea class="input" id="ws-notes" name="notes" rows="4"
-                      placeholder="Timing, an event you are buying for, questions about the case pack"></textarea>
-          </div>
-        </div>
-
-        <button class="btn btn--primary btn--lg" type="submit">Send wholesale inquiry</button>
-
-        <p class="cx-stub">
-          <strong>Placeholder form.</strong> This website has no back end and no payment processor.
-          Submitting saves your inquiry to this browser&rsquo;s local storage only &mdash; nothing is
-          transmitted, no account is opened, no order is created, and no payment detail is ever
-          requested. Until this is wired up, email
-          <a href="mailto:support@reeldealdeck.com">support@reeldealdeck.com</a> and it reaches us directly.
-        </p>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================= CROSSLINKS == -->
-<section class="section wrap">
-  <h2 class="h2">Before you decide</h2>
-  <div class="cx-crosslink">
-    <a class="cx-crosslink__item" href="/deck/">
-      <p class="cx-crosslink__name">The product page</p>
-      <p class="cx-crosslink__body">Full specification, stock, materials and the retail price.</p>
-    </a>
-    <a class="cx-crosslink__item" href="/flies/">
-      <p class="cx-crosslink__name">Our Fly-brary</p>
-      <p class="cx-crosslink__body">All 54 flies published free. This is what is printed on the cards.</p>
-    </a>
-    <a class="cx-crosslink__item" href="/conservation/">
-      <p class="cx-crosslink__name">Conservation</p>
-      <p class="cx-crosslink__body">Where the Trout Unlimited contribution goes, and why it is in the price.</p>
-    </a>
-  </div>
-</section>
-
-<script src="/js/commerce.js" defer></script>
+<style>
+.ws-gate {
+  display: grid;
+  gap: var(--s-5);
+  margin-block-start: var(--s-6);
+}
+@media (min-width: 46rem) {
+  .ws-gate { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.ws-gate__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-6);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-card);
+  background-color: var(--c-surface);
+}
+.ws-gate__card p { margin: 0; color: var(--c-text-muted); }
+/* Pushes the button to the foot of both cards so they line up however much
+   copy each one carries. */
+.ws-gate__action { margin-block-start: auto !important; padding-block-start: var(--s-3); }
+.ws-gate__foot { margin-block-start: var(--s-6); }
+</style>

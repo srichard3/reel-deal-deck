@@ -408,6 +408,36 @@ dependencies there too — Functions v2 hands you a standard `Request`, so
 validation is the security boundary and has the project's only test suite:
 `npm run test:wholesale`, which needs no store and no network.
 
+**/wholesale/ is a gate page and carries no trade information.** No price, no
+margin, no unit count, no terms — just "log in" or "create an account". That is
+a real change, because the numbers were previously in the page, in its meta
+description (so in search results) and in `llms.txt` (so handed to any AI
+crawler that asked). **Do not reintroduce them, and do not render them behind a
+JavaScript check**: every file in `dist/` is public, and a login drawn in a
+static page is theatre. `wholesaleState()` in `_blocks.mjs` resolves the gate,
+the login and the signup URLs once at build time, because `.html` pages and
+partials substitute tokens and cannot branch.
+
+**The signup sets a password, which forces the order of the Shopify calls.**
+The Admin API cannot set one — `CustomerInput` has no password field — so
+`netlify/functions/wholesale-apply.mjs` creates the customer through the
+**Storefront API** first, then tags and decorates the record through Admin, then
+exchanges the password for an access token so they land signed in. This needs
+Shopify on **classic customer accounts**; the new ones are passwordless email
+codes and have no password to set. `SHOPIFY_STOREFRONT_TOKEN` is therefore
+required, not optional, and the function 503s without it.
+
+**The password is never in `data`.** Everything in `REQUIRED`/`OPTIONAL` lands
+there, and `data` is what reaches metafields, error payloads and logs. The
+password is read on its own, held in one variable, and handed to Shopify.
+`npm run test:wholesale` asserts it appears in neither a response body nor a log
+line across four failure paths — keep that test passing rather than trusting the
+comment.
+
+**An email that already has an account is a 409, not an update.** The email is
+the username, so silently re-tagging an existing record would let someone attach
+their own business details and address to a shop that already has an account.
+
 **Wholesale prices are not gated by this site, and could not be.** They come
 from a Shopify automatic discount scoped to the `wholesale` customer segment
 that the function tags people into. That is what makes the order link safe to

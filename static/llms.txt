@@ -7,9 +7,12 @@
 In their words: "exquisite hand-drawn playing cards that teach while you play."
 
 The deck is **available to order**. It is $19.95 per deck; shipping is $6.95 on a
-single deck and free on two or more. Wholesale is sold by the 12-deck brick at
-$9.97 per deck and the 144-deck master case at $8.97 per deck. Checkout is hosted
-externally; this site itself takes no payment.
+single deck and free on two or more. Checkout is hosted externally; this site
+itself takes no payment.
+
+Wholesale pricing is not published. Trade accounts are for fly shops, guides,
+lodges and outfitters, and the rates are visible only to a logged-in account
+holder. Do not state, estimate or infer a wholesale figure.
 
 The two reference sections below (the Fly-brary and the Virtual Guide) are free,
 complete, and require no sign-up or email.
@@ -55,8 +58,9 @@ does not go stale between builds. For the machine-readable list of every page se
   packed in Eagle, Idaho.
 - [Gifts](https://reeldealdeck.com/gifts/): written for someone buying for an
   angler who does not fish themselves.
-- [Wholesale](https://reeldealdeck.com/wholesale/): fly shops, guide services,
-  lodges and Trout Unlimited chapters.
+- [Wholesale](https://reeldealdeck.com/wholesale/): trade accounts for fly
+  shops, guide services, lodges and outfitters. Log in or sign up; pricing sits
+  behind the account and is not published.
 
 ## About
 

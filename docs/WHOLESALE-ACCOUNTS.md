@@ -10,22 +10,41 @@ pricing real, and the two things this design deliberately does not do.
 ## The shape of it
 
 ```
+/wholesale/                           THE GATE. Log in, or create an account.
+        │                             Carries no price, margin, unit or term.
+        ├─ "Log in"  ──────────────▶  Shopify customer login (shop.accountUrl)
+        │
+        └─ "Create an account"
+                 ▼
 /wholesale/apply/                     a static page, like every other page
-        │  multipart POST
+        │  multipart POST (incl. the password they choose)
         ▼
 /api/wholesale-apply                  netlify/functions/wholesale-apply.mjs
         │                             (the only server-side code in the repo)
-        ├─ uploads the resale permit  →  Shopify Files
-        ├─ creates/updates the customer, tagged `wholesale`,
-        │  with the permit attached as a metafield
+        ├─ uploads the resale certificate  →  Shopify Files
+        ├─ creates the customer WITH THEIR PASSWORD  →  Storefront API
+        │     (the Admin API cannot set one — CustomerInput has no
+        │      password field — so this call has to come first)
+        ├─ tags it `wholesale` and attaches the certificate  →  Admin API
+        ├─ exchanges the password for a customer access token, so they
+        │  land signed in rather than being asked to log in they just made
         └─ builds a Storefront cart carrying their email + shipping address
         │
         ▼
-Shopify cart, pre-filled              they adjust quantity and check out
+Shopify, signed in                    pricing resolves, they check out
 ```
 
+**Shopify must be on CLASSIC customer accounts.** The newer "customer accounts"
+are passwordless — a one-time code by email — and have no password to set or
+check, so `customerCreate(password:)` and `customerAccessTokenCreate` do not
+exist for them and this flow cannot work. Settings → Customer accounts →
+**Classic**. This is the one setting that silently breaks everything else here.
+
 **Prices are not gated by this website, and could not be.** Anything a browser
-can work out, a visitor can work out. Wholesale pricing comes from a Shopify
+can work out, a visitor can work out. `/wholesale/` is a gate in the sense that
+it no longer *publishes* the numbers — which is a real improvement, because they
+were in the page, in its meta description and in `llms.txt` — but it is not a
+security boundary, and a login rendered into a static page never could be. Wholesale pricing comes from a Shopify
 **automatic discount targeted at the `wholesale` customer segment** — the tag
 this function applies. That is what makes the order link safe to share: without
 a tagged, logged-in account the discount does not apply and the visitor pays the
@@ -138,7 +157,7 @@ Netlify → Site configuration → Environment variables:
 |---|---|---|
 | `SHOPIFY_STORE_DOMAIN` | `reeldealdeck.myshopify.com` | yes |
 | `SHOPIFY_ADMIN_TOKEN` | `shpat_…` | yes |
-| `SHOPIFY_STOREFRONT_TOKEN` | `…` | for the pre-filled cart |
+| `SHOPIFY_STOREFRONT_TOKEN` | `…` | **yes** — it is the only API that can set a password, so without it no account can be created at all |
 | `SHOPIFY_WHOLESALE_VARIANT_ID` | `gid://shopify/ProductVariant/123…` | for the pre-filled cart |
 | `WHOLESALE_PORTAL_URL` | the wholesale collection URL | fallback landing page |
 | `SHOPIFY_API_VERSION` | `2025-10` | no — see below |
