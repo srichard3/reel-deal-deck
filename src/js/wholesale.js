@@ -61,9 +61,31 @@
     status.className = 'ws-apply__status' + (kind ? ' is-' + kind : '');
   }
 
-  function focusField(name) {
-    var el = form.querySelector('[name="' + name + '"]');
-    if (el && el.focus) el.focus();
+  /* Focusing the bad field is not enough on a form this long: the reader is
+     often looking at the message by the button, several fields away, and
+     nothing on screen says WHICH one. Mark it, and clear the mark the moment
+     they start fixing it rather than leaving the field red while they type. */
+  function clearInvalid() {
+    var marked = form.querySelectorAll('[aria-invalid="true"]');
+    for (var i = 0; i < marked.length; i++) marked[i].removeAttribute('aria-invalid');
+  }
+
+  function markFields(names) {
+    clearInvalid();
+    if (!names || !names.length) return;
+    for (var i = 0; i < names.length; i++) {
+      var el = form.querySelector('[name="' + names[i] + '"]');
+      if (!el) continue;
+      el.setAttribute('aria-invalid', 'true');
+      if (!el.dataset.wsBound) {
+        el.dataset.wsBound = '1';
+        el.addEventListener('input', function () { this.removeAttribute('aria-invalid'); });
+        el.addEventListener('change', function () { this.removeAttribute('aria-invalid'); });
+      }
+    }
+    var first = form.querySelector('[name="' + names[0] + '"]');
+    if (first && first.focus) first.focus();
+    if (first && first.scrollIntoView) first.scrollIntoView({ block: 'center', behavior: 'smooth' });
   }
 
   if (file) {
@@ -86,6 +108,7 @@
        it is localised. */
     if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
 
+    clearInvalid();
     submit.disabled = true;
     var label = submit.textContent;
     submit.textContent = BUSY;
@@ -110,7 +133,7 @@
       .then(function (r) {
         if (!r.res.ok) {
           say(r.body.error || 'That did not go through. Please try again.', 'error');
-          if (r.body.fields && r.body.fields.length) focusField(r.body.fields[0]);
+          markFields(r.body.fields);
           return;
         }
         if (r.body.pending) {

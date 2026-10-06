@@ -532,7 +532,9 @@
   margin-top: var(--s-3);
 }
 
-.cx-form .input[aria-invalid="true"] { border-color: var(--c-accent); }
+/* Was --c-accent, which is the brand green: this override made every invalid
+   field in a cx-form green again, undoing the rule in components.css. */
+.cx-form .input[aria-invalid="true"] { border-color: var(--c-danger); }
 
 /* ==========================================================================
    6. SPECS + "WHY IT COSTS WHAT IT COSTS"

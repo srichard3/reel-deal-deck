@@ -446,11 +446,15 @@ select.input {
   border-color: var(--c-focus);
 }
 
+/* --c-danger, NOT --c-red. In this palette --c-red is aliased to the brand
+   green, because it names the SUIT colour hearts and diamonds are printed in,
+   not an error state. A field marked with it drew a green border identical to
+   focus, so a rejected field looked exactly like the one you were typing in. */
 .input[aria-invalid="true"],
 .input.is-invalid,
 .input:not(:placeholder-shown):invalid {
-  border-color: var(--c-red);
-  box-shadow: inset 0 0 0 1px var(--c-red);
+  border-color: var(--c-danger);
+  box-shadow: inset 0 0 0 1px var(--c-danger);
 }
 
 .input[disabled] {
