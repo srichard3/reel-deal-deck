@@ -1,9 +1,14 @@
 #!/usr/bin/env node
-/** Minimal static server for dist/. Zero dependencies. */
+/** Minimal static server for dist/. Zero dependencies.
+ *
+ *  The file-serving half is exported so scripts/dev-functions.mjs can reuse it
+ *  verbatim instead of keeping a second copy of the MIME table and the
+ *  directory-index rules. Running this file directly still starts the server,
+ *  so `npm run dev` is unchanged; importing it starts nothing. */
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
 const PORT = Number(process.env.PORT || 4173);
@@ -16,7 +21,7 @@ const TYPES = {
   '.ico': 'image/x-icon', '.webmanifest': 'application/manifest+json',
 };
 
-createServer(async (req, res) => {
+export async function serveStatic(req, res) {
   try {
     const url = decodeURIComponent(req.url.split('?')[0]);
     let file = path.join(DIST, url);
@@ -34,4 +39,8 @@ createServer(async (req, res) => {
     res.writeHead(404, { 'content-type': 'text/html; charset=utf-8' });
     res.end(notFound ?? '<h1>404</h1>');
   }
-}).listen(PORT, () => console.log(`serving dist/ → http://localhost:${PORT}`));
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  createServer(serveStatic).listen(PORT, () => console.log(`serving dist/ → http://localhost:${PORT}`));
+}
