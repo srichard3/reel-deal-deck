@@ -158,8 +158,8 @@ export default function press({ site }) {
       ${esc(site.voice.intro)} ${esc(site.voice.why)}
     </p>
     <p class="text-faint">
-      Their full note is printed on a card inside every deck and reproduced on
-      <a href="/about/">the about page</a>. The longer version is on
+      The full note is on a card inside every deck, and on
+      <a href="/about/">the about page</a>. The longer version is
       <a href="/story/">our story</a>.
     </p>
     <!-- There is no coverage list on this page by design: there is nothing real

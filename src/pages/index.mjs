@@ -177,17 +177,24 @@ export default function homepage({ site, flies, instagram }) {
     <div>
       <p class="eyebrow">Ken &amp; Audrey &middot; ${esc(city)}, ${esc(regionName)}</p>
       <h1 class="h1 hero__title">${esc(shortLine)}</h1>
+      <!-- Sell the idea, not the provenance. This used to open "That is our
+           line, and it is printed on a card tucked inside the deck" — a
+           footnote to the headline the reader had just read, with the actual
+           reason to want one buried at the end. The hook is that you learn the
+           patterns by playing cards with them; everything else supports it. -->
       <p class="lede hero__lede">
-        That is our line, and it is printed on a card tucked inside the deck. ${esc(count)} flies,
-        every one drawn by hand, on genuine Bicycle stock &mdash; so it deals like a proper deck of
-        cards and still earns its place in a vest pocket.
+        ${esc(count)} flies, drawn by hand, one to a card. Each says what it imitates and the
+        hook sizes it is tied in, so the patterns stick without it ever feeling like homework.
+        Real Bicycle stock. Fits a vest pocket.
       </p>
       <div class="cluster hero__actions" style="--gap:var(--s-3)">
         ${orderCta(site, { variant: 'primary' })}
       </div>
+      <!-- "Still just the two of us" was an apology. Two people in Idaho making
+           this by hand is the selling point, so it is stated, not conceded. -->
       <p class="hero__note">
-        ${money(per)} a deck, printed in the USA, and from two up we cover the shipping.
-        Still just the two of us, in ${esc(city)}, ${esc(regionName)}.
+        ${money(per)} a deck, free shipping on two or more. Made in the USA by a father and
+        daughter in ${esc(city)}, ${esc(regionName)}.
       </p>
     </div>
     ${tuckBox({ eager: true })}
@@ -224,7 +231,7 @@ export default function homepage({ site, flies, instagram }) {
       <div>
         <p class="section-num" aria-hidden="true">2&#9829;</p>
         <h2 class="h2" id="deck-h">Pick one up</h2>
-        <p class="lede">All ${esc(count)}, drawn one at a time.</p>
+        <p class="lede">The whole deck, from the Adams to the San Juan Worm.</p>
       </div>
       <p><a class="btn btn--ghost" href="/flies/">Open the Fly-brary</a></p>
     </div>
@@ -234,15 +241,14 @@ ${cardFan(f)}
 
   <div class="wrap">
     <p class="fan-foot text-muted">
-      Each one names the fly, what it imitates and the hook sizes it is tied in.
-      <a href="/cards/">Anatomy of a card</a>.
+      <a href="/cards/">What is on a card</a>, and why the suits came out green and brown.
     </p>
   </div>
 </section>
 
 ${instagramStrip(site, instagram, {
   title: 'Follow along while we make it',
-  blurb: 'We put the whole thing on Instagram as it happens \u2014 prototypes, print proofs, trips, and the odd fish that had nothing to do with work. Tap any of these to open it.',
+  blurb: 'Prototypes, print proofs, trips, and the odd fish that had nothing to do with work.',
 })}
 
 <script src="/js/box.js" defer></script>

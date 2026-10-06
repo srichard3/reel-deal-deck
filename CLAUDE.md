@@ -102,6 +102,24 @@ on the Kickstarter (`docs/VOICE-SOURCE.md`, transcribed). Reusable beats live in
 know it. Their line is "he couldn't even find a set" — never widen that into "nobody
 makes fly-fishing flashcards", which is false and one search disproves it.
 
+**Do not let a sentence annotate itself.** The site had a tic: it kept
+explaining where its own words came from instead of saying the thing. "That is
+our line, and it is printed on a card tucked inside the deck." "Not a tagline
+anybody wrote for a website." "That is our own description of it." Every one was
+a footnote to a headline the reader had just read, and in the hero it pushed the
+actual reason to want a deck to the end of the paragraph. All of them are gone.
+
+The rule: **say it, do not source it.** An attribution line is fine when it is
+short and factual — "Printed on a card inside every deck." — but never defend
+the copy against a charge nobody made, and never open a lede by referring back
+to the heading above it. The same goes for conceding: "Still just the two of us"
+was an apology for the best fact about the product.
+
+Lead copy sells a benefit, in the reader's terms, with the concrete nouns kept.
+`/gifts/` is the benchmark on this site — "You are not going to out-guess an
+angler on gear. They have opinions about tippet." — and `/` now matches it.
+The product facts are all still there; they are just no longer the opening move.
+
 **The Fly Library owns fly patterns. The blog owns everything else.** Before
 writing any article, check its headings against existing ones — three planned
 articles were cancelled for overlap. Two pages competing for one query lose both.
