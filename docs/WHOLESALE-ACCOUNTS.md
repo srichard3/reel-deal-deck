@@ -140,11 +140,15 @@ business details show up on the customer record instead of being invisible:
 |---|---|
 | `business_name` | Single line text |
 | `resale_permit` | File |
-| `tax_id` | Single line text |
-| `role` | Single line text |
 | `website` | Single line text |
 | `notes` | Multi-line text |
 | `applied_at` | Date and time |
+
+The applicant's name, phone and address are not metafields — they are Shopify's
+own customer fields, so they appear on the record and in the address book
+without any setup here. First and last name are collected separately rather
+than split from one "your name" box: splitting on the first space gets
+"Mary Ellen Van Dyke" wrong, and this name ends up on shipping labels.
 
 ### e. The app and its tokens
 

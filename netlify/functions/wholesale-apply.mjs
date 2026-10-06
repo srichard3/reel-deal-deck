@@ -74,8 +74,8 @@ const PERMIT_TYPES = {
    `data`, which is what gets written to metafields and put in error payloads.
    Nothing secret belongs in here — and since the accounts are passwordless,
    nothing secret is collected at all. */
-const REQUIRED = ['business', 'contact', 'email', 'phone', 'address1', 'city', 'region', 'postal'];
-const OPTIONAL = ['address2', 'country', 'website', 'taxId', 'role', 'notes'];
+const REQUIRED = ['business', 'firstName', 'lastName', 'email', 'phone', 'address1', 'city', 'region', 'postal'];
+const OPTIONAL = ['address2', 'country', 'website', 'notes'];
 
 const json = (status, body) =>
   new Response(JSON.stringify(body), {
@@ -244,7 +244,6 @@ export default async (request) => {
        constraint, so the record is created complete: tags, address and
        metafields in the same mutation that creates it. There is no moment at
        which an untagged wholesale customer exists. */
-    const [firstName, ...rest] = data.contact.split(/\s+/);
     const addresses = [{
       address1: data.address1,
       address2: data.address2 || null,
@@ -254,16 +253,14 @@ export default async (request) => {
       countryCode: (data.country || 'US').toUpperCase().slice(0, 2),
       company: data.business,
       phone: data.phone,
-      firstName: firstName || data.business,
-      lastName: rest.join(' ') || null,
+      firstName: data.firstName,
+      lastName: data.lastName,
     }];
 
     const metafields = [
       { namespace: 'wholesale', key: 'business_name', type: 'single_line_text_field', value: data.business },
       { namespace: 'wholesale', key: 'applied_at', type: 'date_time', value: new Date().toISOString() },
     ];
-    if (data.taxId) metafields.push({ namespace: 'wholesale', key: 'tax_id', type: 'single_line_text_field', value: data.taxId });
-    if (data.role) metafields.push({ namespace: 'wholesale', key: 'role', type: 'single_line_text_field', value: data.role });
     if (data.website) metafields.push({ namespace: 'wholesale', key: 'website', type: 'single_line_text_field', value: data.website });
     if (data.notes) metafields.push({ namespace: 'wholesale', key: 'notes', type: 'multi_line_text_field', value: data.notes.slice(0, 2000) });
     if (permitId) metafields.push({ namespace: 'wholesale', key: 'resale_permit', type: 'file_reference', value: permitId });
@@ -274,8 +271,8 @@ export default async (request) => {
       }`, {
       input: {
         email: data.email,
-        firstName: firstName || data.business,
-        lastName: rest.join(' ') || null,
+        firstName: data.firstName,
+        lastName: data.lastName,
         phone: data.phone || null,
         tags: [tag],
         addresses,
@@ -313,8 +310,8 @@ export default async (request) => {
                   country: (data.country || 'US').toUpperCase().slice(0, 2),
                   company: data.business,
                   phone: data.phone,
-                  firstName: firstName || data.business,
-                  lastName: rest.join(' ') || null,
+                  firstName: data.firstName,
+                  lastName: data.lastName,
                 },
               }],
             },

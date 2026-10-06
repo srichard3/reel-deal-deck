@@ -14,9 +14,9 @@ const mod = await import('../netlify/functions/wholesale-apply.mjs');
 const fn = mod.default;
 
 const good = {
-  business: 'Henry’s Fork Anglers', contact: 'Sam Rivers', email: 'sam@example.com',
-  phone: '208-555-0101', address1: '12 Main St', city: 'Eagle', region: 'ID',
-  postal: '83616', country: 'US',
+  business: 'Henry’s Fork Anglers', firstName: 'Sam', lastName: 'Rivers',
+  email: 'sam@example.com', phone: '208-555-0101', address1: '12 Main St',
+  city: 'Eagle', region: 'ID', postal: '83616', country: 'US',
 };
 const pdf = (bytes = 1024, type = 'application/pdf') =>
   new File([new Uint8Array(bytes)], 'permit.pdf', { type });
@@ -33,6 +33,7 @@ const cases = [
   ['GET is rejected', () => fn(new Request('https://x/api/wholesale-apply')), 405],
   ['honeypot filled is a silent no-op', () => fn(post(body({ company_website_url: 'http://spam' }))), 200],
   ['missing business name', () => fn(post(body({ business: null }))), 400],
+  ['missing last name', () => fn(post(body({ lastName: null }))), 400],
   ['missing address', () => fn(post(body({ address1: null }))), 400],
   ['malformed email', () => fn(post(body({ email: 'not-an-email' }))), 400],
   ['no permit attached', () => fn(post(body({}, null))), 400],
@@ -73,7 +74,8 @@ for (const [name, run, want] of cases) {
 
   const r = await fn(post(body({
     password: POISON, password2: POISON, tags: POISON, id: POISON,
-    customerTag: POISON, metafields: POISON,
+    customerTag: POISON, metafields: POISON, role: POISON, taxId: POISON,
+    contact: POISON,
   })));
   const text = await r.text();
 

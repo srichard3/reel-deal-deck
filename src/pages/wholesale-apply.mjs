@@ -136,18 +136,16 @@ export default function wholesaleApply({ site }) {
         action="/api/wholesale-apply" method="post" enctype="multipart/form-data" hidden data-js-only>
     <div class="ws-form__grid">
 ${field({ id: 'business', label: 'Shop or business name', required: true, autocomplete: 'organization', full: true })}
-${field({ id: 'contact', label: 'Your name', required: true, autocomplete: 'name' })}
-${field({ id: 'role', label: 'Your role', autocomplete: 'organization-title', placeholder: 'Owner, buyer, manager' })}
-${field({ id: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email', help: 'This is how you sign in — we email you a code.' })}
+${field({ id: 'firstName', label: 'First name', required: true, autocomplete: 'given-name' })}
+${field({ id: 'lastName', label: 'Last name', required: true, autocomplete: 'family-name' })}
 ${field({ id: 'phone', label: 'Phone', type: 'tel', required: true, autocomplete: 'tel' })}
+${field({ id: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email', help: 'This is how you sign in — we email you a code.' })}
 ${field({ id: 'address1', label: 'Street address', required: true, autocomplete: 'address-line1', full: true })}
 ${field({ id: 'address2', label: 'Suite, unit or floor', autocomplete: 'address-line2', full: true })}
 ${field({ id: 'city', label: 'City', required: true, autocomplete: 'address-level2' })}
 ${field({ id: 'region', label: 'State', required: true, autocomplete: 'address-level1', placeholder: 'ID' })}
 ${field({ id: 'postal', label: 'ZIP', required: true, autocomplete: 'postal-code' })}
 ${field({ id: 'country', label: 'Country', as: 'select', required: true, autocomplete: 'country', options: [['US', 'United States'], ['CA', 'Canada']] })}
-${field({ id: 'taxId', label: 'Resale certificate number', full: true, help: 'Whatever your state calls it. It goes on the account so we do not have to ask again.' })}
-${field({ id: 'website', label: 'Website or Instagram', full: true, placeholder: 'So we can see what kind of shop you run' })}
 
       <!-- No password field, and that is not an omission. Shopify signs these
            accounts in with a code emailed at the time, so there is no
@@ -165,6 +163,7 @@ ${field({ id: 'website', label: 'Website or Instagram', full: true, placeholder:
       </div>
 
 ${field({ id: 'notes', label: 'Anything we should know', as: 'textarea', full: true, placeholder: 'Timing, an event you are buying for, questions about the case pack' })}
+${field({ id: 'website', label: 'Website or Instagram', full: true, placeholder: 'So we can see what kind of shop you run' })}
 
       <!-- Bots fill every field they can see in the markup; people never see
            this one. The function answers 200 and does nothing when it is set,
