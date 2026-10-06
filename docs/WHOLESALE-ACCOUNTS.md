@@ -164,6 +164,54 @@ in a browser; the function uses it server-side anyway.
 
 ---
 
+## 2b. The catalogue, as built
+
+Created 2026-10-06 against the live store. The bundles ARE the products: there is
+no 12-deck variant and no minimum-quantity rule, because "two bricks" is one
+sellable item and quantity 2 of it means 48 decks. Do not replace this with a
+quantity rule — a rule can be evaded by editing the cart; a SKU cannot.
+
+| Product | SKU | Price | Decks | Variant id |
+|---|---|---|---|---|
+| The Reel Deal Deck | `RDD-DECK` | $19.95 | 1 | `gid://shopify/ProductVariant/67619247980634` |
+| Wholesale — Two Bricks | `RDD-WS-BRICK2` | $478.56 | 24 | `gid://shopify/ProductVariant/67619234840666` |
+| Wholesale — Master Case | `RDD-WS-CASE` | $2,583.36 | 144 | `gid://shopify/ProductVariant/67619234873434` |
+
+**The wholesale list prices are deliberately 2x the trade price**, so a single
+50% discount produces $239.28 and $1,291.68, and so a visitor who finds the page
+without an account pays full retail rather than trade. One discount rather than
+two per-tier percentages, because **two automatic product discounts do not
+stack** — a cart holding both tiers would silently overcharge.
+
+`SHOPIFY_WHOLESALE_VARIANT_ID` should be the Two Bricks variant: it is the
+smallest wholesale order, so it is the right thing to pre-fill a cart with.
+
+### The discounts
+
+| Discount | What | State |
+|---|---|---|
+| Free shipping on two or more decks | retail, min qty 2, all customers | **ACTIVE** |
+| Wholesale trade pricing (50%) | the two wholesale products | **scheduled 2030** |
+| Wholesale free shipping | no minimum | **scheduled 2030** |
+
+**The two wholesale discounts are parked in 2030 on purpose.** Shopify's API has
+no `customerSelection` on automatic discounts — eligibility is admin-UI only — so
+a discount created live would have given *every visitor* 50% off until someone
+noticed. Before activating either one: Discounts -> the discount -> Eligibility
+-> Specific customer segments -> **Wholesale accounts**, and only then set the
+start date to today.
+
+**A wholesale order does not satisfy the retail shipping rule.** One "Two Bricks"
+is quantity 1, not 24, so the min-quantity-2 rule never fires for it. That is why
+wholesale has its own shipping discount rather than relying on the retail one.
+
+**The segment matches the whole tag, not a substring.** Tested with two real
+customers on 2026-10-06: `wholesale` is in "Wholesale accounts" and
+`wholesale-pending` is not, so REVIEW_ONLY genuinely withholds trade pricing
+until a human approves. Re-test if the segment query is ever edited.
+
+---
+
 ## 3. The environment variables
 
 Netlify → Site configuration → Environment variables:
