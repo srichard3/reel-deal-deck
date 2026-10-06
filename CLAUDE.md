@@ -355,6 +355,30 @@ gave 27px and looked worse. `--r-card` is 12px and belongs to panels.
 browser already holds stays wrong, and files cache independently, so a partial
 refresh fixes some cards and not others.
 
+**The founders' photographs are real, theirs, and stripped of metadata.**
+`scripts/photos.mjs` builds `static/photos/` from the gitignored
+`logos-and-photos-new/`. Two things it does are not optional: it **strips EXIF**,
+because phone photographs carry GPS and Ken and Audrey run this from home, and it
+**applies the orientation tag to the pixels first** — two of these are stored
+landscape with a rotation tag, so stripping without transposing ships them on
+their side. The script asserts no metadata survives. WebP quality is 76, chosen
+by sweeping the brick-wall frame (the worst case): 82 cost 420kB for PSNR 36.0,
+76 costs 339kB for 33.8, and 62 still cost 278kB, so the detail is real rather
+than encoder waste. **No stock photography, ever.**
+
+**There is still no photograph of Audrey alone, so neither founder card has a
+face.** One card with a portrait and one with the K♠/Q♥ mark reads as an
+oversight; two marks read as a choice. Do not fill one and leave the other.
+
+**The Trout Unlimited mark is the Business member mark, and where it sits is
+part of the claim.** It is the mark issued to business members and already
+printed on the info card in every deck, and it is the only TU artwork on the
+site. On `/conservation/` it sits directly above the sentence saying the
+membership is *not* a partnership, sponsorship or endorsement — showing someone
+else's mark raises the bar on that disclaimer rather than lowering it. Do not
+move it into the header, the footer, a hero or a product badge, and never set it
+beside our own wordmark as though the two were partners.
+
 **The card images are watermarked, and it is baked into the pixels.** A CSS
 overlay would be theatre — the file is one right-click away and the overlay one
 devtools deletion away. `scripts/watermark.mjs` rewrites `static/cards/` from
@@ -453,6 +477,7 @@ Safari will not infer it and collapses the element to nothing. Chrome hides this
 | `data/instagram.json` | the committed @reeldealdeck snapshot — refresh via `scripts/instagram.mjs` |
 | `src/js/suggest.js` | `/suggest/` — composes a real email; reads the address off the page |
 | `scripts/watermark.mjs` | burns the watermark into `static/cards/` from the gitignored masters |
+| `scripts/photos.mjs` | the founders' photographs and the TU mark, from the gitignored originals; strips EXIF |
 | `scripts/box-panels.mjs` | cuts the six 3D tuck-box panels out of the printer's dieline |
 | `src/js/box.js` | drag / keyboard rotation for the hero box; the box itself is CSS |
 | `netlify/functions/` | the only server-side code: the wholesale signup endpoint |

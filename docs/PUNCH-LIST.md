@@ -15,7 +15,7 @@ npm run build && npm run check   # must stay at 0 errors, 0 warnings
 
 | # | Decision | Who | Source file |
 |---|---|---|---|
-| 0 | **Five photographs.** The shot list, sizes and destinations are in `docs/PHOTO-PLAN.md`. Slot 2, the original artwork beside the printed card, is the single most valuable image the site could have. | Ken & Audrey | `new assets/photos/` |
+| 0 | **The remaining photographs.** Four have arrived and are on `/story/` and `/conservation/`. Still open: the printed info card, **the original artwork beside the finished card** (the most valuable image the site could have), the packing table, and **one portrait of Audrey alone** — without it neither founder card can carry a face. `docs/PHOTO-PLAN.md` has the shot list. | Ken & Audrey | `logos-and-photos-new/` |
 | 1 | **The Shopify storefront URL.** Everything else about ordering is done; this one field turns ~60 buttons into real checkout. | Ken & Audrey | `data/site.json` → `shop.url`. See `docs/COMMERCE.md` |
 | 2 | **The domain.** `reeldealdeck.com` is printed on the cards and is not registered to us yet. | Ken | — |
 
@@ -27,7 +27,7 @@ npm run build && npm run check   # must stay at 0 errors, 0 warnings
 |---|---|---|---|
 | 3 | **The Shopify customer account login URL**, for the wholesale login links. Empty hides them rather than shipping a dead link, so this is not urgent — but the wholesale flow is only half-visible without it. | Ken & Audrey | `data/site.json` → `shop.accountUrl` |
 | 4 | **A named byline for the guides.** They are attributed to the brand. Ken's name on them is a real expertise signal for both Google and AI answer engines — but a fabricated byline is worse than none. | Ken | `data/site.json` → `blog.authorNote` |
-| 5 | **Photography of Ken and Audrey.** None exists in the repo. The story and contact pages are written around its absence, and the press page offers card art only. | Audrey | `docs/PHOTO-PLAN.md` |
+| 5 | **A portrait of Audrey.** There are now several photographs of Ken and one of them both, but none of Audrey on her own, so the founder cards still carry the K♠/Q♥ marks. The press page still offers card art only. | Audrey | `docs/PHOTO-PLAN.md` |
 | 6 | **Credit for the designer** who drew the cards. Raised more than once and still the founders' call. The site never claims Ken drew them. | Ken & Audrey | `data/site.json` → `story.artNote` |
 
 ---

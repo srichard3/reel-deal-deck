@@ -134,9 +134,20 @@
 
 <section class="section">
   <div class="wrap wrap--narrow">
-    <!-- PHOTO SLOT 1 — "the note" — see docs/PHOTO-PLAN.md.
-         The printed info card held in a hand, or lying on the open tuck box.
-         Drop in here as a <figure class="story-photo">. -->
+    <figure class="photo" style="margin-block-start:0">
+      <img src="/photos/ken-and-audrey-deck-900.webp"
+           srcset="/photos/ken-and-audrey-deck-600.webp 600w,
+                   /photos/ken-and-audrey-deck-900.webp 900w,
+                   /photos/ken-and-audrey-deck-1400.webp 1400w"
+           sizes="(max-width: 48rem) 100vw, 760px"
+           width="900" height="675" fetchpriority="high" decoding="async"
+           alt="Ken and Audrey standing against a brick wall, each holding a fanned handful of cards from the deck.">
+      <figcaption>Ken and Audrey, with the deck they could not buy.</figcaption>
+    </figure>
+
+    <!-- PHOTO SLOT 1 — "the note" — still open. See docs/PHOTO-PLAN.md: the
+         printed info card held in a hand, or lying on the open tuck box. The
+         photograph above is the lead for the page, not that shot. -->
 
     <blockquote class="story-note">
       <p>{{ site.voice.intro }}</p>
@@ -198,17 +209,42 @@
         {{ site.location.city }}, {{ site.location.regionName }}.
       </p>
 
-      <!-- PHOTO SLOT 3 — "packed here" — see docs/PHOTO-PLAN.md.
-           The real shipping operation: stacked decks, padded envelopes, the
-           table it actually happens on. Proof of the sentence above. -->
+      <figure class="photo photo--tall">
+        <img src="/photos/ken-and-audrey-eagle-600.webp"
+             srcset="/photos/ken-and-audrey-eagle-600.webp 600w,
+                     /photos/ken-and-audrey-eagle-900.webp 900w"
+             sizes="(max-width: 34rem) 100vw, 416px"
+             width="600" height="800" loading="lazy" decoding="async"
+             alt="Ken and Audrey either side of a signpost reading &ldquo;Eagle, Idaho USA&rdquo;, with arms pointing to towns around the world.">
+        <figcaption>Eagle, Idaho &mdash; where the decks are packed and posted.</figcaption>
+      </figure>
+
+      <!-- PHOTO SLOT 3 — "packed here" — still open. See docs/PHOTO-PLAN.md:
+           stacked decks, padded envelopes, the table it actually happens on.
+           The signpost above says where; that shot would show the work. -->
 
       <h2>Conservation</h2>
-      <p>
-        We are an official {{ site.conservation.partner }} Business member and have already made a
-        financial contribution to their work &mdash; protecting and restoring the rivers, streams
-        and watersheds that wild trout depend on. Supporting it is part of the point of the deck,
-        not a badge added at the end. <a href="/conservation/">How that works</a>.
-      </p>
+      <div class="tu-row">
+        <img class="tu-mark" src="/brand/trout-unlimited-160.webp"
+             srcset="/brand/trout-unlimited-160.webp 160w, /brand/trout-unlimited-320.webp 320w"
+             sizes="72px" width="160" height="236" loading="lazy" decoding="async"
+             alt="{{ site.conservation.partner }} Business member mark">
+        <p>
+          We are an official {{ site.conservation.partner }} Business member and have already made a
+          financial contribution to their work &mdash; protecting and restoring the rivers, streams
+          and watersheds that wild trout depend on. Supporting it is part of the point of the deck,
+          not a badge added at the end. <a href="/conservation/">How that works</a>.
+        </p>
+      </div>
+
+      <figure class="photo">
+        <img src="/photos/ken-on-the-river-900.webp"
+             srcset="/photos/ken-on-the-river-900.webp 900w, /photos/ken-on-the-river-1400.webp 1400w"
+             sizes="(max-width: 48rem) 100vw, 760px"
+             width="900" height="675" loading="lazy" decoding="async"
+             alt="Ken standing in a river playing a fish, rod bent, with dry Idaho hills behind him.">
+        <figcaption>The reason any of this matters: water with fish in it.</figcaption>
+      </figure>
 
       <blockquote>
         {{ site.motto }}

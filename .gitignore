@@ -8,5 +8,10 @@ node_modules/
 # from it into static/cards and static/brand). Keep the originals out of git.
 new assets/
 
+# The founders' own photographs and the Trout Unlimited mark, at full phone
+# resolution. scripts/photos.mjs generates static/photos and the brand mark
+# from these; same reason as above.
+logos-and-photos-new/
+
 # Claude Code preview config
 .claude/

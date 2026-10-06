@@ -43,9 +43,18 @@
      percentage, or language implying the amount is fixed or audited. If a number
      is ever set, it goes in site.json first and every page reads it from there.
 
-     Standing constraint, unchanged: do NOT describe this as a partnership,
-     sponsorship, endorsement or co-branding. It is a Trout Unlimited Business
-     membership, which anyone can buy, and TU has not vouched for this product. -->
+     Standing constraint, and it matters MORE now than it did: do NOT describe
+     this as a partnership, sponsorship, endorsement or co-branding. It is a
+     Trout Unlimited Business membership, which any business can buy, and TU has
+     not vouched for this product.
+
+     The page now shows TU's mark. That is the Business member mark — the one
+     issued to business members, already printed on the info card in every deck
+     — and it is deliberately the only TU artwork used anywhere on the site. It
+     sits directly above the sentence saying what the membership is not, which
+     is the arrangement that keeps showing it honest. Do not lift the mark into
+     the header, the footer, a hero or a product badge, and do not put it beside
+     our own wordmark as though the two were partners. -->
 
 <section class="page-head">
   <div class="wrap wrap--narrow">
@@ -58,111 +67,60 @@
     <p class="eyebrow" style="margin-block-start:var(--s-5)">Cold water &middot; {{ site.conservation.partner }}</p>
     <h1 class="h1 page-head__title">&ldquo;Dedicated to catch-and-release fishing.&rdquo;</h1>
     <p class="lede page-head__lede">
-      That is Ken and Audrey&rsquo;s wording, printed inside the deck. This page is what
-      stands behind it, including the parts we are careful not to overstate.
+      That is Ken and Audrey&rsquo;s wording, printed inside the deck. Here is what stands
+      behind it.
     </p>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap wrap--narrow">
-    <blockquote class="cons-note">
-      <p>{{ site.voice.why }}</p>
-      <cite>Ken and Audrey &middot; <a href="/cards/#info-card">printed on the info card in every deck</a></cite>
-    </blockquote>
 
-    <div class="prose" style="margin-block-start:var(--s-8)">
-      <h2>Why a deck of cards has a conservation page at all</h2>
-      <p>
-        We draw trout flies for a living, which is a strange thing to do if the trout are
-        gone. Every fly in this deck imitates something that hatches in cold, clean,
-        connected water &mdash; or it imitates nothing at all. The habitat is the product,
-        one step removed.
-      </p>
-      <p>
-        So this was settled before the first card was finished, not bolted on afterwards.
-        We are grateful to be able to give something back from the very beginning, while
-        the whole thing is still two people and a stack of drawings.
-      </p>
-      <p>
-        {{ site.motto }} That line is printed in the deck too, and it is the plainest
-        argument for catch-and-release we know how to make: the fish you let go is the one
-        somebody else gets to find.
-      </p>
-
-      <h2>What we actually do</h2>
-      <p>Two things, both small and both specific:</p>
-      <ul>
-        <li>
-          <strong>A per-deck contribution.</strong> A cut of every deck sold goes to
-          <a href="{{ site.conservation.partnerUrl }}" rel="noopener">{{ site.conservation.partner }}</a>.
+    <div class="tu-row">
+      <img class="tu-mark tu-mark--lg" src="/brand/trout-unlimited-320.webp"
+           srcset="/brand/trout-unlimited-160.webp 160w, /brand/trout-unlimited-320.webp 320w"
+           sizes="104px" width="320" height="473" decoding="async"
+           alt="{{ site.conservation.partner }} Business member mark">
+      <div class="prose" style="margin:0">
+        <h2 style="margin-block-start:0">We are a {{ site.conservation.partner }} business member</h2>
+        <p>
+          We joined as a business member, and the mark is printed on the info card inside
+          every deck. It is a membership, which any business can buy &mdash; not a
+          partnership, a sponsorship or an endorsement, and
+          {{ site.conservation.partner }} has not vouched for this product.
+        </p>
+        <p>
+          <strong>A cut of every deck sold goes to {{ site.conservation.partner }}.</strong>
           It comes off the decks we sell, not out of whatever is left at the end of the year.
-        </li>
-        <li>
-          <strong>A {{ site.conservation.partner }} Business membership.</strong> We joined as
-          a business member, and the mark is printed on the info card inside the deck. That is
-          a membership, which anyone can buy &mdash; it is not a partnership, a sponsorship or
-          an endorsement, and {{ site.conservation.partner }} has not vouched for this product.
-        </li>
-      </ul>
-
-      <h2>Why {{ site.conservation.partner }}</h2>
-      <p>
-        {{ site.conservation.partner }} works on cold-water habitat: reconnecting streams that
-        culverts and old dams cut in half, restoring the shade and gravel that spawning
-        depends on, and arguing for water policy in rooms where anglers usually aren&rsquo;t.
-        It is unglamorous, long-horizon work on the exact resource this deck depends on.
-      </p>
-      <p>
-        You can read their work, or join directly, at
-        <a href="{{ site.conservation.partnerUrl }}" rel="noopener">tu.org</a>. If you would
-        rather send them a membership than buy a deck of cards, that is a straightforwardly
-        better use of the money and we will not be offended.
-      </p>
-
-      <h2>What we are careful not to claim</h2>
-      <ul class="list-index">
-        <li>We do not say {{ site.conservation.partner }} endorses The Reel Deal Deck. It does not.</li>
-        <li>
-          We do not say we are a {{ site.conservation.partner }} partner. We are a business
-          member, which is a different and smaller thing.
-        </li>
-        <li>
-          We do not claim the deck itself is carbon-neutral, plastic-free or climate-positive.
-          It is paper, ink and glue, and the sheet below says which.
-        </li>
-      </ul>
-
-      <h2>The materials</h2>
-      <p>
-        The deck is printed by {{ site.product.manufacturer }} on
-        {{ site.product.stock }} &mdash; {{ site.product.material }} &mdash; at
-        {{ site.product.dimensions }}. It is a real playing card deck, which means it lasts
-        long enough to be worth printing at all. The most sustainable deck of cards is the one
-        nobody throws away. <a href="/cards/#printing">The full specification is here</a>.
-      </p>
+        </p>
+      </div>
     </div>
 
-    <hr class="rule" style="margin-block:var(--s-8)">
+    <figure class="photo photo--tall">
+      <img src="/photos/ken-with-trout-600.webp"
+           srcset="/photos/ken-with-trout-600.webp 600w, /photos/ken-with-trout-900.webp 900w"
+           sizes="(max-width: 34rem) 100vw, 416px"
+           width="600" height="800" loading="lazy" decoding="async"
+           alt="Ken standing in a river, holding a brown trout just under the surface before letting it go.">
+      <figcaption>{{ site.motto }}</figcaption>
+    </figure>
 
-    <div class="card-grid" style="--min:min(14rem, 100%)">
-      <div class="stat">
-        <span class="stat__num">Per deck</span>
-        <span class="stat__label">Fixed contribution, not a share of profit</span>
-      </div>
-      <div class="stat">
-        <span class="stat__num">Business member</span>
-        <span class="stat__label">{{ site.conservation.partner }} &mdash; not a partnership</span>
-      </div>
-      <div class="stat">
-        <span class="stat__num">FSC</span>
-        <span class="stat__label">Certified paper, vegetable-based inks</span>
-      </div>
+    <div class="prose">
+      <h2>What {{ site.conservation.partner }} is</h2>
+      <p>
+        {{ site.conservation.partner }} is a national cold-water conservation non-profit. It
+        works on trout habitat: reconnecting streams that culverts and old dams cut in half,
+        restoring the shade and gravel that spawning depends on, and arguing for water policy
+        in rooms where anglers usually aren&rsquo;t. It is unglamorous, long-horizon work on
+        the exact resource this deck depends on.
+      </p>
+      <p>
+        Every fly in the deck imitates something that hatches in cold, clean, connected
+        water. The habitat is the product, one step removed.
+      </p>
     </div>
   </div>
 </section>
-
-{{> instagram-conservation }}
 
 <section class="section section--dark">
   <div class="wrap wrap--narrow">
@@ -180,24 +138,4 @@
   </div>
 </section>
 
-<style>
-.cons-note {
-  margin: 0;
-  border-inline-start: 2px solid var(--c-green);
-  padding-inline-start: var(--s-6);
-}
-.cons-note p {
-  margin: 0 0 var(--s-4);
-  font-family: var(--f-display);
-  font-size: var(--t-lg);
-  line-height: var(--lh-snug);
-  color: var(--c-text);
-  max-inline-size: var(--measure);
-}
-.cons-note cite {
-  display: block;
-  font-style: normal;
-  font-size: var(--t-sm);
-  color: var(--c-text-faint);
-}
-</style>
+

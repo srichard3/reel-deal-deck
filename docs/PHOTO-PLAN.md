@@ -31,19 +31,33 @@ pick from twelve than to re-stage a shot three weeks later.
 
 ---
 
-## The five slots
+## What is already in
 
-> **Slots 4 and 5 may already exist.** Your Kickstarter page carries photographs
-> of the two of you. Send me the originals rather than having me pull them off the
-> page — the versions on Kickstarter are compressed for the web and will look soft
-> at the size this page uses them.
+Four photographs arrived in `logos-and-photos-new/` and are on the site now.
+`scripts/photos.mjs` turns the originals into `static/photos/`; it strips EXIF
+(phone photos carry GPS) and bakes in the rotation tag before doing so.
 
-### 1 — The note · `/story/`, above the printed quote
+| Photograph | Where it is |
+|---|---|
+| The two of you against the brick wall, holding fanned cards | `/story/`, the lead image |
+| The "Eagle, Idaho USA" signpost | `/story/`, under **Made in the USA** |
+| Ken playing a fish, rod bent | `/story/`, under **Conservation** |
+| Ken holding a brown trout in the water | `/conservation/` |
+
+**No photograph of Audrey on her own**, so neither founder card carries a
+portrait — one face and not the other would be worse than the K♠/Q♥ marks they
+carry now. One of her is the single most useful thing you could send next.
+
+---
+
+## The slots still open
+
+### 1 — The note · `/story/`, above the printed quote  *(still open)*
 **Landscape.** The printed info card from inside the deck, held in a hand or lying
 on the open tuck box. The page quotes that card's words in full directly underneath,
 so the photograph is the proof that they are really printed on it.
 
-### 2 — The drawings · `/story/`, after the origin story
+### 2 — The drawings · `/story/`, after the origin story  *(still open — the big one)*
 **Either orientation.** The original artwork for one fly beside the finished
 printed card. **This is the most valuable photograph on the site.** Every
 competitor can claim hand-drawn art. One photograph of the actual pencil work
@@ -53,17 +67,19 @@ ends the argument, and nothing else on the site does that job.
 > slot is the artwork itself, never a photograph of Ken at a drawing board.
 > See `story.artNote` in `data/site.json`.
 
-### 3 — Packed here · `/story/`, after "Made in the USA"
+### 3 — Packed here · `/story/`, after "Made in the USA"  *(still open)*
 **Landscape.** The real shipping operation: stacked decks, padded envelopes, a
-brick or two, the table it actually happens on. The page says "packed and posted by
+brick or two, the table it actually happens on. The signpost photograph now says
+*where*; this one would show the work. The page says "packed and posted by
 the two of us from Eagle, Idaho" one line above. Slightly messy is better than styled —
 the point is that it is true, not that it is tidy.
 
-### 4 and 5 — Ken, and Audrey · `/story/`, in the two founder cards
+### 4 and 5 — Ken, and Audrey · `/story/`, in the two founder cards  *(Audrey still open)*
 **Portrait, square-croppable.** One each, head and shoulders, outdoors if that is
-easy. They do not need to match. Right now those cards carry the K♠ and Q♥ index
-marks instead, which is a deliberate stand-in rather than an oversight — but a
-father-and-daughter story with no faces in it is working with one hand tied.
+easy. They do not need to match. There are now several good ones of Ken, and none
+of Audrey alone, so the cards still carry the K♠ and Q♥ marks — putting a
+photograph on one card and not the other reads as an oversight in a way the two
+marks do not. **One portrait of Audrey unlocks both cards.**
 
 ---
 

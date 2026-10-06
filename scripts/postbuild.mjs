@@ -133,7 +133,7 @@ export default async function postbuild({ site, flies = [], routes = [], DIST, R
   const fingerprints = new Map();
   for (const f of files) {
     const rel = path.relative(dist, f).split(path.sep).join('/');
-    if (!/^(styles|js|cards|brand|instagram)\//.test(rel)) continue;
+    if (!/^(styles|js|cards|brand|instagram|photos)\//.test(rel)) continue;
     const buf = await readFile(f);
     fingerprints.set('/' + rel, createHash('sha256').update(buf).digest('hex').slice(0, 8));
   }

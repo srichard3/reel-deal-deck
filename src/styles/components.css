@@ -1110,6 +1110,58 @@ select.input {
 
 /* --------------------------------------------------------- story bits --- */
 
+/* ==========================================================================
+   PHOTOGRAPHS OF THE MAKERS, AND THE TROUT UNLIMITED MARK
+   The site was written around having no photographs of Ken and Audrey, so
+   these are the first. They are real, they are theirs, and no stock
+   photography joins them.
+   ========================================================================== */
+
+.photo {
+  margin: var(--s-7) 0;
+}
+.photo img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  border-radius: var(--r-card);
+  /* The photos are bright daylight shots on a near-black page; without this
+     they read as holes punched in the page rather than prints laid on it. */
+  border: 1px solid var(--c-border);
+}
+.photo figcaption {
+  margin-block-start: var(--s-3);
+  font-size: var(--t-sm);
+  color: var(--c-text-faint);
+}
+/* A portrait at full column width is overbearing in a 760px measure, so the
+   tall ones sit at a size you would actually print them. */
+.photo--tall img { max-inline-size: 26rem; }
+.photo--tall figcaption { max-inline-size: 26rem; }
+
+/* The Trout Unlimited Business mark. Shown at a size that reads as a
+   membership badge rather than a co-brand, because that is what it is. */
+.tu-mark {
+  display: block;
+  inline-size: auto;
+  block-size: 4.5rem;
+  flex: 0 0 auto;
+}
+.tu-mark--lg { block-size: 6.5rem; }
+
+/* The mark beside a line of text, which is how it appears on /story/ and
+   /deck/: badge left, sentence right, aligned at the top. */
+.tu-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-5);
+  margin-block: var(--s-6);
+}
+.tu-row > :last-child { margin-block: 0; }
+@media (max-width: 34rem) {
+  .tu-row { flex-direction: column; gap: var(--s-4); }
+}
+
 .figure-note {
   font-size: var(--t-sm);
   color: var(--c-text-faint);
