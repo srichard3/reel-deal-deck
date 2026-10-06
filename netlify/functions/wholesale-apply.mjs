@@ -107,6 +107,58 @@ async function shopify(endpoint, token, headerName, query, variables) {
 
 /* userErrors are Shopify's "your request was valid JSON but wrong" channel and
    do not raise an HTTP error, so every mutation has to be checked by hand. */
+/* ------------------------------------------------------- admin token -- */
+/* Shopify stopped issuing permanent `shpat_` tokens: legacy custom apps could
+   not be created from 1 January 2026, and apps made in the Dev Dashboard hand
+   you a client id and secret instead. Those are exchanged here for a token
+   that lives 24 hours, using the client credentials grant — which works only
+   because the app and the store belong to the same organisation, which is the
+   normal case for a shop running its own signup form.
+
+   SHOPIFY_ADMIN_TOKEN still wins if it is set, so a store that already has a
+   legacy app keeps working untouched. Nothing else in this file knows which
+   kind it got.
+
+   Cached at module scope deliberately: a warm serverless invocation reuses it,
+   so a busy minute costs one exchange rather than one per applicant. Refreshed
+   a minute early so a token cannot expire mid-request. */
+let cachedToken = null;
+const TOKEN_MARGIN_MS = 60 * 1000;
+
+async function adminAccessToken(store) {
+  const staticToken = process.env.SHOPIFY_ADMIN_TOKEN;
+  if (staticToken) return staticToken;
+
+  const clientId = process.env.SHOPIFY_CLIENT_ID;
+  const clientSecret = process.env.SHOPIFY_CLIENT_SECRET;
+  if (!clientId || !clientSecret) return null;
+
+  if (cachedToken && cachedToken.expiresAt - TOKEN_MARGIN_MS > Date.now()) return cachedToken.value;
+
+  const res = await fetch(`https://${store}/admin/oauth/access_token`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      grant_type: 'client_credentials',
+      client_id: clientId,
+      client_secret: clientSecret,
+    }),
+  });
+  const text = await res.text();
+  /* `shop_not_permitted` here means the app and the store are in different
+     organisations — the one failure this grant has that reads like a bug. */
+  if (!res.ok) throw new Error(`admin token exchange failed (${res.status}): ${text.slice(0, 200)}`);
+  let body;
+  try { body = JSON.parse(text); } catch { throw new Error('admin token exchange returned non-JSON'); }
+  if (!body.access_token) throw new Error('admin token exchange returned no access_token');
+
+  cachedToken = {
+    value: body.access_token,
+    expiresAt: Date.now() + (Number(body.expires_in) || 86399) * 1000,
+  };
+  return cachedToken.value;
+}
+
 function assertNoUserErrors(label, payload) {
   const errs = payload?.userErrors || payload?.customerUserErrors || [];
   if (errs.length) throw new Error(`${label}: ${errs.map((e) => e.message).join('; ')}`);
@@ -116,19 +168,22 @@ export default async (request) => {
   if (request.method !== 'POST') return json(405, { error: 'Use POST.' });
 
   const store = process.env.SHOPIFY_STORE_DOMAIN;
-  const adminToken = process.env.SHOPIFY_ADMIN_TOKEN;
   const storefrontToken = process.env.SHOPIFY_STOREFRONT_TOKEN;
   const variantId = process.env.SHOPIFY_WHOLESALE_VARIANT_ID;
 
-  /* The Admin pair is the whole requirement: it creates the account, and the
-     account is the thing that earns trade pricing. The Storefront token is
-     optional again now that no password needs setting — without it the signup
-     still succeeds and the applicant lands on WHOLESALE_PORTAL_URL instead of
-     a cart with their address already in it. */
-  if (!store || !adminToken) {
+  /* Admin access is the whole requirement: it creates the account, and the
+     account is what earns trade pricing. Either form will do — a Dev Dashboard
+     client id and secret, or a legacy SHOPIFY_ADMIN_TOKEN. The Storefront
+     token stays optional: without it the signup still succeeds and the
+     applicant lands on WHOLESALE_PORTAL_URL instead of a pre-filled cart. */
+  const hasAdminCreds = Boolean(
+    process.env.SHOPIFY_ADMIN_TOKEN ||
+    (process.env.SHOPIFY_CLIENT_ID && process.env.SHOPIFY_CLIENT_SECRET),
+  );
+  if (!store || !hasAdminCreds) {
     /* Misconfiguration is ours, not the applicant's — say so plainly rather
        than pretending the application failed. */
-    console.error('wholesale-apply: SHOPIFY_STORE_DOMAIN or SHOPIFY_ADMIN_TOKEN is not set');
+    console.error('wholesale-apply: need SHOPIFY_STORE_DOMAIN and either SHOPIFY_ADMIN_TOKEN or SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET');
     return json(503, { error: 'Wholesale signup is not switched on yet. Please email us instead.' });
   }
 
@@ -176,6 +231,10 @@ export default async (request) => {
   const tag = process.env.REVIEW_ONLY === '1' ? 'wholesale-pending' : 'wholesale';
 
   try {
+    /* Resolved here rather than at module load so a failed exchange is a 502
+       with the real reason in the log, not a dead function. */
+    const adminToken = await adminAccessToken(store);
+
     /* ----------------------------------------------------- already here? -- */
     /* Checked BEFORE the permit is uploaded. The other order works, but it
        stages a file into Shopify Files and then abandons it when the email

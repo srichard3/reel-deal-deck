@@ -506,6 +506,14 @@ because only the Storefront API can set a password. Do not reintroduce one, and
 do not switch the store to classic accounts to enable it.
 `SHOPIFY_STOREFRONT_TOKEN` is **optional**: it only pre-fills the cart.
 
+**Shopify stopped issuing permanent `shpat_` tokens.** Legacy custom apps could
+not be created from 1 January 2026, so an app made in the Dev Dashboard hands
+you a client id and secret. `adminAccessToken()` exchanges those for a 24-hour
+token via the client credentials grant and caches it at module scope, refreshed
+a minute early. `SHOPIFY_ADMIN_TOKEN` still takes precedence so a store with a
+legacy app is untouched. `application_cannot_be_found` from that exchange means
+**the app is not installed on the store** — the client id alone is not enough.
+
 **`REQUIRED`/`OPTIONAL` is the entire input surface.** Everything in them lands
 in `data`, and `data` is what reaches metafields and error payloads. Anything
 else in the POST is dropped — which matters most for `tags`, since the tag IS

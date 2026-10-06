@@ -171,12 +171,32 @@ Netlify → Site configuration → Environment variables:
 | Variable | Example | Required |
 |---|---|---|
 | `SHOPIFY_STORE_DOMAIN` | `reeldealdeck.myshopify.com` | yes |
-| `SHOPIFY_ADMIN_TOKEN` | `shpat_…` | yes |
+| `SHOPIFY_CLIENT_ID` | `938cc9…` | yes† |
+| `SHOPIFY_CLIENT_SECRET` | `shpss_…` | yes† |
+| `SHOPIFY_ADMIN_TOKEN` | `shpat_…` | only for a legacy app |
 | `SHOPIFY_STOREFRONT_TOKEN` | `…` | no — it only pre-fills the cart. Without it signup still succeeds and the applicant lands on `WHOLESALE_PORTAL_URL` |
 | `SHOPIFY_WHOLESALE_VARIANT_ID` | `gid://shopify/ProductVariant/123…` | for the pre-filled cart |
 | `WHOLESALE_PORTAL_URL` | the wholesale collection URL | fallback landing page |
 | `SHOPIFY_API_VERSION` | `2026-10` | no — see below |
 | `REVIEW_ONLY` | `1` | no — see below |
+
+† **Shopify no longer issues permanent `shpat_` tokens.** Legacy custom apps
+could not be created from **1 January 2026**; apps are made in the **Dev
+Dashboard** and give you a client id and secret instead. The function exchanges
+those for a 24-hour token (client credentials grant) and caches it, refreshing a
+minute before expiry.
+
+That grant only works when **the app and the store are in the same
+organisation**, which is the normal case here. Two failure modes worth knowing,
+because neither error says what it means:
+
+- `application_cannot_be_found` — the app is **not installed on the store**.
+  Install it from the Dev Dashboard; the client id alone is not enough.
+- `shop_not_permitted` — the app and the store are in different organisations.
+  That needs the authorization code grant instead, which is a bigger change.
+
+A store that still has a working legacy app can set `SHOPIFY_ADMIN_TOKEN` and
+skip all of this; it takes precedence and nothing else changes.
 
 Without the first two, the form says wholesale signup is not switched on yet and
 points people at email. Without the Storefront pair, accounts are still created

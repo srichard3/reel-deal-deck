@@ -119,6 +119,52 @@ const ok = res.status === 503;
 if (!ok) fail++;
 console.log(`${ok ? '  ok  ' : ' FAIL '} ${res.status}  (want 503)  unconfigured says signup is off`);
 
+/* Dev Dashboard apps have no permanent token: a client id and secret are
+   exchanged for a 24-hour one. That path must satisfy the guard on its own,
+   and the SECRET must never surface — it is the only long-lived credential
+   left in the system now that the static token is optional. */
+{
+  const SECRET = 'shpss_zQ7-unmistakable-secret';
+  delete process.env.SHOPIFY_ADMIN_TOKEN;
+  process.env.SHOPIFY_CLIENT_ID = 'test-client-id';
+  process.env.SHOPIFY_CLIENT_SECRET = SECRET;
+
+  const seen = [];
+  const origError = console.error;
+  console.error = (...a) => seen.push(a.map(String).join(' '));
+  const origFetch = globalThis.fetch;
+  let exchanged = null;
+  globalThis.fetch = async (url, init) => {
+    if (String(url).endsWith('/admin/oauth/access_token')) {
+      exchanged = String(init?.body || '');
+      /* Fail the exchange, so the error path is the one under test. */
+      return new Response('{"error":"invalid_client"}', { status: 401 });
+    }
+    throw new Error('blocked in test');
+  };
+
+  const r = await fn(post(body()));
+  const text = await r.text();
+  globalThis.fetch = origFetch;
+  console.error = origError;
+
+  const notOff = r.status !== 503;
+  if (!notOff) fail++;
+  console.log(`${notOff ? '  ok  ' : ' FAIL '} ${r.status}  (not 503)  client id + secret satisfy the guard on their own`);
+
+  const tried = exchanged !== null && exchanged.includes('grant_type=client_credentials');
+  if (!tried) fail++;
+  console.log(`${tried ? '  ok  ' : ' FAIL '} it exchanges the client credentials for a token`);
+
+  const leaked = text.includes(SECRET) || seen.some((l) => l.includes(SECRET));
+  if (leaked) fail++;
+  console.log(`${leaked ? ' FAIL ' : '  ok  '} the client secret reaches neither a response nor a log`);
+
+  delete process.env.SHOPIFY_CLIENT_ID;
+  delete process.env.SHOPIFY_CLIENT_SECRET;
+  process.env.SHOPIFY_ADMIN_TOKEN = 'shpat_test';
+}
+
 /* The storefront token, by contrast, is OPTIONAL: it only pre-fills the cart.
    Without it the signup must still go through — the account is what earns the
    pricing, and a worse landing page is not a failed application. */
