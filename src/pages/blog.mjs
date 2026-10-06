@@ -31,7 +31,7 @@ export const TOPICS = [
   { key: 'technique', label: 'Technique',       blurb: 'Casting, mending, drifts, hook sets. The things that turn drifts into fish.' },
   { key: 'knots',     label: 'Knots',           blurb: 'The short list of knots worth learning, tied step by step.' },
   { key: 'seasons',   label: 'Seasons & timing',blurb: 'When to go, what the water is doing, and what to expect when you get there.' },
-  { key: 'practical', label: 'Practical',       blurb: 'Licences, etiquette, catch-and-release handling, and the rest of the real world.' },
+  { key: 'practical', label: 'Practical',       blurb: 'Licenses, etiquette, catch-and-release handling, and the rest of the real world.' },
 ];
 
 const topicKey = (p) => (TOPICS.some((t) => t.key === p?.topic) ? p.topic : 'basics');

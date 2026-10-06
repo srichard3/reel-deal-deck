@@ -23,7 +23,7 @@ https://www.reeldealdeck.com/*   https://reeldealdeck.com/:splat      301!
 # Every route this site emits is a directory with an index.html, so the
 # canonical form always ends in "/". Netlify's Pretty URLs already 301s
 # /deck -> /deck/ for any directory, including all 54 fly pages; these rules
-# pin the nav routes explicitly so the behaviour does not depend on a toggle
+# pin the nav routes explicitly so the behavior does not depend on a toggle
 # in a dashboard someone might switch off.
 /index.html                      /                                    301!
 /deck/index.html                 /deck/                               301!

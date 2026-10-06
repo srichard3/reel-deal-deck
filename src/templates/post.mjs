@@ -34,7 +34,7 @@ const TOPICS = {
   technique: { label: 'Technique',       blurb: 'Casting, mending, presentation, hook sets.' },
   knots:     { label: 'Knots',           blurb: 'The handful of knots that actually matter.' },
   seasons:   { label: 'Seasons & timing',blurb: 'When to go, and what to expect when you do.' },
-  practical: { label: 'Practical',       blurb: 'Licences, costs, etiquette, catch and release.' },
+  practical: { label: 'Practical',       blurb: 'Licenses, costs, etiquette, catch and release.' },
 };
 const topicOf = (p) => (TOPICS[p?.topic] ? p.topic : 'basics');
 
@@ -383,7 +383,7 @@ export default function ({ post, posts = [], site, flies = [] }) {
       <p class="post-related__more">
         <a href="${esc(blogPath)}">The whole Virtual Guide</a> ·
         <a href="/blog/topics/">Browse by topic</a> ·
-        <a href="/flies/">The Fly-brary</a>
+        <a href="/flies/">Our Fly-brary</a>
       </p>
     </section>
 

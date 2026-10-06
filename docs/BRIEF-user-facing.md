@@ -16,7 +16,7 @@ Read this before touching anything. It is the contract.
 | **The Kickstarter is invisible.** | The campaign bar renders on 10 blog routes and **nowhere else** — not the homepage, not `/deck/`, not any of the 55 fly pages. 63 of 73 routes never mention a live campaign. |
 | **Fly pages have no answer-first block.** | `grep aeo-answer dist/flies/adams/` → 0. The blog has the AEO treatment; the 55 pages most likely to be surfaced by an AI do not. |
 | **The family is missing.** | Ken and Audrey appear on `/story/` and nowhere else. The deck itself carries their voice on a printed card; the site does not use it. |
-| **The card craft is undocumented.** | Nothing explains the two-colour suits, the engraved back, the trout-in-a-jester's-cap jokers, USPCC, or "Volume 1". This is the most interesting thing about the product. |
+| **The card craft is undocumented.** | Nothing explains the two-color suits, the engraved back, the trout-in-a-jester's-cap jokers, USPCC, or "Volume 1". This is the most interesting thing about the product. |
 
 ---
 
@@ -49,7 +49,7 @@ in the deck. It is the family talking, and it is better than anything we would w
 
 **Cool is:** the artwork doing the talking; confident restraint; motion that responds to
 the user rather than performing at them; details that reward a second look (the corner
-index, the suit colours, the joker fish); fast.
+index, the suit colors, the joker fish); fast.
 
 **Cool is not:** parallax, scroll-jacking, animated counters, hero carousels, gradient
 blobs, glassmorphism, an autoplaying video, or a cookie-cutter DTC landing page.

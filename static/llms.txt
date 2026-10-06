@@ -33,14 +33,14 @@ does not go stale between builds. For the machine-readable list of every page se
 - [The Virtual Guide](https://reeldealdeck.com/blog/): 22 question-per-article
   answers covering everything that is **not** a fly-pattern question — choosing a
   rod weight, leader versus tippet, rigging, knots, dry fly versus nymph, reading
-  water, which flies to start with, and fishing licences.
+  water, which flies to start with, and fishing licenses.
   Fly-pattern questions belong to the Fly-brary, not here.
 
 ## The product
 
 - [What's in the deck](https://reeldealdeck.com/cards/), reached from the
   Fly-brary: how the deck is made —
-  the anatomy of a card, the two-colour suit system (green replaces red on hearts
+  the anatomy of a card, the two-color suit system (green replaces red on hearts
   and diamonds, bark brown replaces black on spades and clubs), the four suits,
   the three specials that carry a trout-in-a-jester's-cap mark instead of a rank
   (the Egg, the San Juan Worm and the Bass Popper), the engraved card back and

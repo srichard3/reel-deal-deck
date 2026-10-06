@@ -94,7 +94,7 @@ schema is built from it. The same applies to `data-aeo-answer`, `data-aeo-takeaw
 - **No `aggregateRating`, no `Review`.** There are no reviews. Inventing them is fraud, and it is
   the single most reliably penalised schema abuse there is.
 - **No `Person` author yet.** `data/site.json` carries a `TODO-CONFIRM` on this. Articles are
-  attributed to the organisation. A named author with real fishing credentials is a genuine
+  attributed to the organization. A named author with real fishing credentials is a genuine
   E-E-A-T signal for Google and for answer engines, and is the highest-value open item on this
   system — but a fabricated one is worse than none.
 - **No `speakable` on prose.** Only `.post-head__title` and `.aeo-answer__text` — the two blocks
@@ -294,7 +294,7 @@ Allow: /
 It lists **sections, not individual articles**, on purpose — it is a static file and an
 article-level list would go stale the day the next guide ships. It also states the things we most
 need a machine not to get wrong: the deck is pre-launch and not shipping, the price is not final,
-and licence rules are state-specific.
+and license rules are state-specific.
 
 ---
 

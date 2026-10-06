@@ -47,7 +47,7 @@ export default function ({ b }) {
   return `
     ${b.takeaways([
       'A fly outfit has four junctions. Learn one knot for each and you never need a fifth.',
-      'Two of the four — leader to tippet, and tippet to fly — get tied on the water, constantly. Those are the ones to practise at home.',
+      'Two of the four — leader to tippet, and tippet to fly — get tied on the water, constantly. Those are the ones to practice at home.',
       'Wet every knot before you seat it. Dry friction is heat, and heat is where knot strength goes.',
       'Knot strength league tables disagree with each other. Reliability under your own fingers beats a percentage in a test rig.',
     ])}
@@ -160,7 +160,7 @@ export default function ({ b }) {
         uselessly, so it is worth doing properly.
       </p>
       ${b.steps([
-        { name: 'Pass the backing around the arbor', text: 'Take the backing around the reel’s centre spindle and bring the tag end back out.' },
+        { name: 'Pass the backing around the arbor', text: 'Take the backing around the reel’s center spindle and bring the tag end back out.' },
         { name: 'Overhand around the standing line', text: 'Tie a simple overhand knot with the tag end around the standing line.' },
         { name: 'Overhand in the tag itself', text: 'Tie a second overhand knot in the tag end alone, an inch or so beyond the first. This acts as a stopper.' },
         { name: 'Pull tight', text: 'Pull the standing line so the first knot slides down and jams against the stopper, cinching the whole thing onto the arbor.' },
@@ -175,7 +175,7 @@ export default function ({ b }) {
         managed to attach yet.
       </p>
       <p>
-        Practise with heavy line, not tippet. A length of 20lb monofilament and a big hook makes the
+        Practice with heavy line, not tippet. A length of 20lb monofilament and a big hook makes the
         mechanics obvious in a way that 6X does not, and the muscle memory transfers straight down to
         the fine stuff. Ten minutes an evening for a week is genuinely enough.
       </p>

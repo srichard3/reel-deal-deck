@@ -4,7 +4,7 @@
    Loaded per-page by /blog/, /blog/topics/ and every article (a <link> at the
    top of the page body), so the 60-odd non-blog pages never pay for it.
 
-   Consumes tokens.css only. No hard-coded colours, type sizes or spacing.
+   Consumes tokens.css only. No hard-coded colors, type sizes or spacing.
    Prefixes: .aeo-  (answer-engine furniture: bar, answer, takeaways, CTA)
              .post- (article page)
              .blog- (index + topic map)
@@ -237,11 +237,7 @@
 
 .blog-topicnav { padding-block-end: var(--s-6); border-bottom: 1px solid var(--c-border); }
 .blog-topicnav__list { --gap: var(--s-2); }
-.blog-topicnav__pill { --pill-tint: var(--c-river); }
-:root[data-theme="dark"] .blog-topicnav__pill { --pill-tint: var(--c-riffle); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .blog-topicnav__pill { --pill-tint: var(--c-riffle); }
-}
+.blog-topicnav__pill { --pill-tint: var(--c-riffle); }
 
 .blog-index { padding-block: var(--s-7); }
 .blog-empty { max-width: var(--measure); }

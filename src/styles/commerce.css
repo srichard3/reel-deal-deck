@@ -5,7 +5,7 @@
    .card .card-grid .pill .stat .field .input .notice …) live in
    components.css and are consumed, never redefined here.
 
-   Every colour, type size and space value below resolves to a token from
+   Every color, type size and space value below resolves to a token from
    tokens.css. The handful of local custom properties declared in the next
    block are layout-only constants (grid column floors, art sizing) that have
    no token equivalent; they are centralised here rather than sprinkled
@@ -253,7 +253,7 @@
   border-color: var(--c-accent);
   box-shadow: var(--shadow-2);
   /* A tint rather than a fill, so the card lifts off the panel without
-     becoming a second surface colour to maintain in two themes. */
+     becoming a second surface color to maintain in two themes. */
   background:
     linear-gradient(to bottom,
       color-mix(in srgb, var(--c-accent) 7%, transparent),
@@ -324,7 +324,7 @@
 }
 
 /* The shipping: the one thing that genuinely differs between the two cards, so
-   it gets a band of its own rather than another grey line. The deck price above
+   it gets a band of its own rather than another gray line. The deck price above
    is deliberately the same number on both — it is the same deck. */
 .buy-tier__ship {
   display: flex;
@@ -366,7 +366,7 @@
   font-size: var(--t-sm);
   font-weight: 600;
   /* The accent alone measured 4.28:1 on the tinted band in light mode — green
-     on a green wash. Pulling it toward the text colour darkens it in light and
+     on a green wash. Pulling it toward the text color darkens it in light and
      lightens it in dark, so one declaration clears AA in both. */
   color: color-mix(in srgb, var(--c-accent) 65%, var(--c-text));
 }
@@ -924,7 +924,7 @@
   padding: var(--s-5);
   border: var(--cx-hairline) solid currentColor;
   border-radius: var(--r-card);
-  /* On .section--dark the text colour is already the inverted one, so a
+  /* On .section--dark the text color is already the inverted one, so a
      currentColor border and a transparent fill need no second set of tokens. */
   background: color-mix(in srgb, currentColor 6%, transparent);
 }
@@ -993,7 +993,7 @@
 .label__opt { font-weight: 400; color: var(--c-text-faint); }
 
 /* A file input cannot be restyled across browsers without replacing it, and a
-   replaced one loses the filename readout and the keyboard behaviour. This
+   replaced one loses the filename readout and the keyboard behavior. This
    just makes the native control sit on the same baseline as the text inputs. */
 .ws-apply__file {
   padding: var(--s-3);

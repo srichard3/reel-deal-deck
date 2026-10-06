@@ -99,7 +99,7 @@ export default function ({ fly, flies, site }) {
 
 ## Rules
 
-1. **tokens.css is the design contract.** No hard-coded colours, type sizes, or spacing anywhere else.
+1. **tokens.css is the design contract.** No hard-coded colors, type sizes, or spacing anywhere else.
 2. **No frameworks, no CDNs, no webfonts, no build dependencies.** Everything is self-hosted and offline-capable.
 3. **JS is progressive enhancement only.** Every page must be fully readable and navigable with JS disabled.
 4. **Accessibility is not optional**: one `<h1>` per page, sane heading order, visible focus rings,

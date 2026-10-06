@@ -99,7 +99,7 @@
   }
 
   /* ----------------------------------------------------------- controls -- */
-  /* Injected, so they can never appear without the behaviour behind them. */
+  /* Injected, so they can never appear without the behavior behind them. */
 
   var bar = document.createElement('div');
   bar.className = 'flash__bar';

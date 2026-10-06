@@ -118,7 +118,7 @@ export default function ({ b }) {
       )}
       <p>
         You will set on a great many rocks. That is the correct cost of doing business. Set
-        <em>downstream and low</em>, in the direction the line is already travelling, which
+        <em>downstream and low</em>, in the direction the line is already traveling, which
         drives the hook into the corner of the jaw rather than pulling it back out of the mouth.
       </p>
     `)}
@@ -146,7 +146,7 @@ export default function ({ b }) {
         </li>
       </ul>
       ${b.warn(
-        'This is the hardest habit to build, because trout anglers spend years training themselves to lift. Practise it deliberately or you will lift under pressure every time.'
+        'This is the hardest habit to build, because trout anglers spend years training themselves to lift. Practice it deliberately or you will lift under pressure every time.'
       )}
     `)}
 

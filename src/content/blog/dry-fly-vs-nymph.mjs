@@ -135,7 +135,7 @@ export default function ({ b }) {
         their depth. This is most of winter and much of early spring on most trout rivers.
       </p>
       <p>
-        High or coloured water, for the same reason plus visibility: a fly on the surface of a
+        High or colored water, for the same reason plus visibility: a fly on the surface of a
         turbid river is invisible to a fish holding two feet down. Bright water, dead-drifted deep,
         is the answer.
       </p>
@@ -157,7 +157,7 @@ export default function ({ b }) {
         [
           ['Dry fly', 'An adult insect on the surface', 'Dead drift, drag-free', 'Fish are rising or insects are up'],
           ['Nymph', 'An immature insect underwater', 'Dead drift, near the bottom', 'Nothing is showing — the default'],
-          ['Streamer', 'A baitfish, leech or crayfish', 'Active retrieve or swing', 'High or coloured water; low light; hunting a big fish'],
+          ['Streamer', 'A baitfish, leech or crayfish', 'Active retrieve or swing', 'High or colored water; low light; hunting a big fish'],
         ]
       )}
       <p>

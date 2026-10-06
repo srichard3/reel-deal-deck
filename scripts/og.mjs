@@ -28,7 +28,7 @@
  * four CRC32-checked chunks) and compose them from primitives: rectangles, a
  * diamond suit glyph, and an anti-aliased bitmap typeface defined below.
  *
- * The result is a genuine, correct, on-brand image — not a placeholder colour
+ * The result is a genuine, correct, on-brand image — not a placeholder color
  * block — but its lettering is geometric rather than the site's serif. When you
  * are ready to ship the nicer artwork, export the matching SVG to PNG once and
  * drop it over the generated file. See docs/DEPLOY.md → "Upgrading the OG images".
@@ -89,7 +89,7 @@ function chunk(type, data) {
   return Buffer.concat([len, body, crc]);
 }
 
-/** Encode an RGB canvas as a valid 8-bit truecolour PNG. */
+/** Encode an RGB canvas as a valid 8-bit truecolor PNG. */
 function encodePng(cv) {
   const { w, h, px } = cv;
   const stride = w * 3;
@@ -103,7 +103,7 @@ function encodePng(cv) {
   ihdr.writeUInt32BE(w, 0);
   ihdr.writeUInt32BE(h, 4);
   ihdr[8] = 8;  // bit depth
-  ihdr[9] = 2;  // colour type 2 = truecolour RGB
+  ihdr[9] = 2;  // color type 2 = truecolor RGB
   ihdr[10] = 0; // deflate
   ihdr[11] = 0; // adaptive filtering
   ihdr[12] = 0; // no interlace
@@ -299,7 +299,7 @@ function drawText(cv, text, x, y, scale, color, { tracking = null, alpha = 1 } =
   return width;
 }
 
-function drawTextCentred(cv, text, cx, y, scale, color, opts = {}) {
+function drawTextCentered(cv, text, cx, y, scale, color, opts = {}) {
   const tr = opts.tracking == null ? Math.max(1, Math.round(scale * 1.5)) : opts.tracking;
   const w = measure(text, scale, tr);
   return drawText(cv, text, cx - w / 2, y, scale, color, { ...opts, tracking: tr });
@@ -388,14 +388,14 @@ function renderOgPng(spec) {
   const BAND = { kicker: 150, titleTop: 214, titleBottom: 448, rule: 466, sub: 500, footer: 552 };
 
   // Card-corner indices, mirrored the way a face card is bounded. They sit
-  // in the outer margins, clear of every centred text band.
+  // in the outer margins, clear of every centered text band.
   brandMark(cv, 86, 80, 9, C.ink, accent);
   brandMark(cv, W - 86 - GW * 9, 80, 9, C.ink, accent);
 
   // Kicker
   let kickScale = 4;
   while (kickScale > 2 && measure(spec.kicker, kickScale, 10) > W - 480) kickScale--;
-  drawTextCentred(cv, spec.kicker, W / 2, BAND.kicker, kickScale, C.ink3, { tracking: 10 });
+  drawTextCentered(cv, spec.kicker, W / 2, BAND.kicker, kickScale, C.ink3, { tracking: 10 });
 
   // Title — one shared scale so multi-line titles stay optically even, fitted
   // to both the safe measure and the available height.
@@ -412,7 +412,7 @@ function renderOgPng(spec) {
   const blockH = lineH * n - Math.round(scale * 2.6);
   let ty = Math.round(BAND.titleTop + (maxH - blockH) / 2);
   for (const line of spec.lines) {
-    drawTextCentred(cv, line, W / 2, ty, scale, C.ink);
+    drawTextCentered(cv, line, W / 2, ty, scale, C.ink);
     ty += lineH;
   }
 
@@ -420,7 +420,7 @@ function renderOgPng(spec) {
   fillRect(cv, W / 2 - 60, BAND.rule, 120, 5, accent);
   let subScale = 5;
   while (subScale > 2 && measure(spec.sub, subScale, 5) > W - 200) subScale--;
-  drawTextCentred(cv, spec.sub, W / 2, BAND.sub, subScale, C.ink2, { tracking: 5 });
+  drawTextCentered(cv, spec.sub, W / 2, BAND.sub, subScale, C.ink2, { tracking: 5 });
 
   // Footer line
   drawText(cv, 'REELDEALDECK.COM', 96, BAND.footer, 3, C.ink3, { tracking: 7 });

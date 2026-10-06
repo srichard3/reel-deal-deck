@@ -2,7 +2,7 @@
    THE REEL DEAL DECK — components
    --------------------------------------------------------------------------
    Buttons, objects, meta, forms, site chrome, and the homepage compositions.
-   Consumes tokens.css only. No hard-coded colours, type sizes or spacing.
+   Consumes tokens.css only. No hard-coded colors, type sizes or spacing.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -318,16 +318,11 @@ a.pill:hover { background-color: color-mix(in oklab, var(--pill-tint) 22%, var(-
 .pill--terrestrial { --pill-tint: var(--c-red-deep); }
 .pill--attractor   { --pill-tint: var(--c-ink-2); }
 
-/* --c-river / --c-red-deep / --c-ink-2 keep their light values in dark mode,
-   so lift those two tints for legible contrast on a dark surface. */
-:root[data-theme="dark"] .pill--nymph,
-:root[data-theme="dark"] .pill--terrestrial,
-:root[data-theme="dark"] .pill--attractor { --pill-tint: color-mix(in oklab, var(--pill-tint) 45%, var(--c-text)); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .pill--nymph,
-  :root:not([data-theme="light"]) .pill--terrestrial,
-  :root:not([data-theme="light"]) .pill--attractor { --pill-tint: color-mix(in oklab, var(--pill-tint) 45%, var(--c-text)); }
-}
+/* --c-river and --c-bark-deep are still the printed inks, which are too dark to
+   read on a dark surface, so these three tints are lifted toward the text. */
+.pill--nymph,
+.pill--terrestrial,
+.pill--attractor { --pill-tint: color-mix(in oklab, var(--pill-tint) 45%, var(--c-text)); }
 
 .stat {
   display: flex;
@@ -395,11 +390,7 @@ a.pill:hover { background-color: color-mix(in oklab, var(--pill-tint) 22%, var(-
 .notice > * + * { margin-block-start: var(--s-2); }
 .notice strong { color: var(--c-text); }
 
-.notice--info { --notice-tint: var(--c-river); }
-:root[data-theme="dark"] .notice--info { --notice-tint: var(--c-riffle); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .notice--info { --notice-tint: var(--c-riffle); }
-}
+.notice--info { --notice-tint: var(--c-riffle); }
 
 /* ============================================================= 4. FORMS == */
 
@@ -644,25 +635,6 @@ select.input {
 }
 
 .site-header__actions .btn { display: none; }
-
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--s-7);
-  height: var(--s-7);
-  border: 1px solid transparent;
-  border-radius: var(--r-sm);
-  color: var(--c-text-muted);
-  font-size: var(--t-md);
-  line-height: 1;
-  transition: color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
-}
-.theme-toggle:hover {
-  color: var(--c-text);
-  background-color: color-mix(in oklab, var(--c-text) 6%, transparent);
-}
-.theme-toggle:active { background-color: color-mix(in oklab, var(--c-text) 12%, transparent); }
 
 .nav-toggle {
   display: inline-flex;
@@ -978,7 +950,7 @@ select.input {
 /* auto-FILL, not auto-fit. They are identical until a row has fewer cards than
    it has room for, and then auto-fit collapses the empty tracks and stretches
    what is left — which is how the Wet flies group, holding exactly one card,
-   rendered it a metre wide next to neighbours a third of that. auto-fill keeps
+   rendered it a meter wide next to neighbors a third of that. auto-fill keeps
    the empty tracks, so a lone card is the same size as every other card.
 
    min(…, 100%) so a 17rem floor cannot force a 320px viewport to scroll. */
@@ -1232,9 +1204,9 @@ select.input {
    ========================================================================== */
 
 /* -------------------------------------------------------- warm hairlines --
-   Panels sat on a warm paper ground inside cold grey keylines. Pulling ~12%
+   Panels sat on a warm paper ground inside cold gray keylines. Pulling ~12%
    of the bark brown into every panel border warms the whole page without
-   touching a single background colour, and it works in both themes because
+   touching a single background color, and it works in both themes because
    --c-bark is remapped for night fishing. */
 
 .card,
@@ -1268,7 +1240,6 @@ select.input {
 
 a.pill { min-height: var(--rdd-tap); }
 
-.theme-toggle,
 .nav-toggle { min-width: var(--rdd-tap); min-height: var(--rdd-tap); }
 
 /* ==========================================================================
@@ -1283,7 +1254,7 @@ a.pill { min-height: var(--rdd-tap); }
        reads as a hand rather than as a carousel
      · it rises slowly and sets down fast — one duration for both is what makes
        an interaction feel like a button instead of an object
-     · it lifts above its neighbours while it is up
+     · it lifts above its neighbors while it is up
 
    NOTE ON SPECIFICITY: .card-face is declared in flies.css, which loads AFTER
    this file (see src/_partials/head.html). flies.css belongs to another agent,
@@ -1307,7 +1278,7 @@ a.card-face.card-face:focus-visible {
   transition-duration: var(--rdd-lift-in);
 }
 
-/* a hand, not a rank: neighbours lean away from each other */
+/* a hand, not a rank: neighbors lean away from each other */
 a.card-face.card-face:nth-child(even):hover,
 a.card-face.card-face:nth-child(even):focus-visible { transform: translateY(calc(var(--s-2) * -1)) rotate(0.7deg) scale(1.014); }
 
@@ -2376,7 +2347,7 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 .tuck__face--front { transform: translateZ(calc(var(--bd) / 2)); }
 .tuck__face--back  { transform: rotateY(180deg) translateZ(calc(var(--bd) / 2)); }
 
-/* The spines are D wide, so they are centred on the box's vertical axis before
+/* The spines are D wide, so they are centered on the box's vertical axis before
    being swung out to the sides. */
 .tuck__face--left,
 .tuck__face--right {
@@ -2386,7 +2357,7 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 .tuck__face--right { transform: rotateY(90deg) translateZ(calc(var(--bw) / 2)); }
 .tuck__face--left  { transform: rotateY(-90deg) translateZ(calc(var(--bw) / 2)); }
 
-/* Top and bottom are D tall, centred on the horizontal axis. */
+/* Top and bottom are D tall, centered on the horizontal axis. */
 .tuck__face--top,
 .tuck__face--bottom {
   height: var(--bd);
@@ -2450,7 +2421,7 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 }
 /* Explicit counts, never auto-fit. With four doors auto-fit would leave a lone
    door on the last row stretched to double width whenever the track count did
-   not divide evenly — the same bug that made a single fly card a metre wide.
+   not divide evenly — the same bug that made a single fly card a meter wide.
    Two up at tablet, four across once there is room for them. */
 @media (min-width: 46rem) {
   .hub { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); }
@@ -2713,7 +2684,7 @@ html:not(.no-js) .tuck__box { cursor: grab; }
    THE FAN — all 54 printed faces, homepage
    =========================================================================
 
-   Geometry. Every card sits in the same place (top of the stage, centred) and
+   Geometry. Every card sits in the same place (top of the stage, centered) and
    is rotated about a pivot --fan-pivot card-heights below its own top edge.
    That one transform produces the whole arc: the browser does the trigonometry
    and the markup carries nothing but an index.
@@ -2728,7 +2699,7 @@ html:not(.no-js) .tuck__box { cursor: grab; }
    =========================================================================
    THE HIT AREA IS THE SLIVER, NOT THE CARD. This is the whole design.
 
-   Each card overlaps its neighbours almost entirely; what you can actually SEE
+   Each card overlaps its neighbors almost entirely; what you can actually SEE
    of card N is a ~18px strip down its left edge, because card N+1 sits on top
    of the rest of it. So that strip, and only that strip, is what responds.
 
@@ -2741,12 +2712,12 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 
    The art rule is the one that fixes the bug this replaced. The art was the
    hit target, and a hovered card scales to 1.6, so a popped card blanketed
-   138px of the row — about seven of its neighbours stopped responding to their
+   138px of the row — about seven of its neighbors stopped responding to their
    own slivers until you moved clear of it. Pointing at a card did nothing,
    then a card five along would fire. That reads as broken hitboxes, and it was.
 
    The strip is a WEDGE, because the visible sliver is one. Cards rotate about a
-   pivot 3.6 card-heights below them, so neighbours separate more at the top of
+   pivot 3.6 card-heights below them, so neighbors separate more at the top of
    the card than at the bottom: a point d above the pivot moves d·sin(step)
    sideways, and d is 3.6 card-heights at the card's top but only 2.6 at its
    foot. With --fan-step 1.5deg that is
@@ -2767,7 +2738,7 @@ html:not(.no-js) .tuck__box { cursor: grab; }
    triggers :hover and still activates the link it belongs to.
 
    It has to be exact. A rectangular strip wide enough to cover the top would
-   overlap its neighbour at the bottom — and the moment a card is hovered its
+   overlap its neighbor at the bottom — and the moment a card is hovered its
    z-index jumps to 60, so that overlap would start winning hits that belong to
    the next card. A rectangle narrow enough never to overlap would leave the top
    of every card inert. The wedge is the only shape that is neither.
@@ -2783,7 +2754,7 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 
    Interaction. :hover and :focus-within get the same rules, so the fan is fully
    usable from the keyboard — every card is a real link and tab order is deck
-   order. There is deliberately no neighbour-lean effect: it was four :has()
+   order. There is deliberately no neighbor-lean effect: it was four :has()
    rules doing sibling invalidation on every hover change across 54 elements,
    and it added motion to something that needed to feel precise.
 
@@ -2795,7 +2766,7 @@ html:not(.no-js) .tuck__box { cursor: grab; }
    whatever is above it, like a card pulled out of a real fan. It only becomes a
    scroll container below 48rem, where the fan is wider than the screen and
    there is no hover to clip anyway. .fan-stage carries z-index 3 so the
-   floating card clears its neighbouring sections; the sticky header is 100 and
+   floating card clears its neighboring sections; the sticky header is 100 and
    deliberately stays above it.
    ========================================================================== */
 
@@ -2823,10 +2794,10 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   --fan-cw: clamp(76px, 13vw, 150px);            /* card width at rest */
   --fan-ch: calc(var(--fan-cw) * 1.3975);        /* the 400 x 559 card ratio */
   --fan-pivot: 3.6;                              /* pivot, in card-heights */
-  --fan-step: 1.5deg;                            /* angle between neighbours */
+  --fan-step: 1.5deg;                            /* angle between neighbors */
   --fan-lift: 1.1rem;                            /* how far a card pops out */
   --fan-pop: 1.6;                                /* how big a lifted card gets */
-  /* The hit strip: the gap between neighbours at the TOP of the card, where it
+  /* The hit strip: the gap between neighbors at the TOP of the card, where it
      is widest. The wedge below tapers it to the gap at the foot. Derived, not
      guessed — see the note above. */
   --fan-sliver: calc(var(--fan-cw) * 0.1317);
@@ -2896,7 +2867,7 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   inset-inline-start: 0;
   inline-size: var(--fan-cw);
   pointer-events: none;
-  /* Bottom centre: a card grows up out of the fan and its base stays put. */
+  /* Bottom center: a card grows up out of the fan and its base stays put. */
   transform-origin: 50% 100%;
   transform: translateY(var(--lift)) scale(var(--pop));
   border-radius: var(--r-card-art);
@@ -2928,7 +2899,7 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 }
 
 /* --- the name ------------------------------------------------------------ */
-/* Centred on the CARD, not on the hit strip the strip is only a fraction of a
+/* Centered on the CARD, not on the hit strip the strip is only a fraction of a
    card wide. Counter-rotated so it reads level while its card is tilted up to
    39.8deg, and opacity rather than display/visibility so it stays in the
    accessibility tree and gives every link a real accessible name at all times. */

@@ -91,12 +91,13 @@ Run `npm run check` and resolve everything it lists. Then:
 - [ ] **Ken has read all 54 fly pages.** Credibility with expert anglers is the whole asset.
 - [ ] **Real photography** replacing the CSS card renderings, on `/deck/` at minimum.
 - [ ] **Checkout provider connected** — see [COMMERCE.md](COMMERCE.md). Until then, every purchase
-      control on the site is a clearly-labelled placeholder that stores interest locally and sends
+      control on the site is a clearly-labeled placeholder that stores interest locally and sends
       nothing. Verify this is still true before launch: nothing may imply an order was taken.
 - [ ] **Email capture wired** to a real provider, and confirm you can export the list.
 - [ ] **Search Console and Bing verified, sitemap submitted** — see [LAUNCH.md](LAUNCH.md).
 - [ ] **Test on a real phone**, not just a desktop browser window. Most of your traffic will be mobile.
-- [ ] **Check both light and dark mode.** The site ships both and people use both.
+- [ ] **Check the site renders dark with the OS set to light.** There is one theme
+      and no toggle, so this is the case that proves it.
 
 ---
 

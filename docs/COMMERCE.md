@@ -65,7 +65,7 @@ not sell physical goods. Do not spend a meeting on it.
 **Set up in Shopify, exactly these products:**
 
 **One product, one price, a quantity selector, and a shipping rule.** That is the whole
-retail catalogue now — there is no tier ladder and no signed edition.
+retail catalog now — there is no tier ladder and no signed edition.
 
 | Shopify product | Price | SKU suggestion |
 |---|---|---|
@@ -84,7 +84,7 @@ intended trigger and a discount code would otherwise drop an order under a value
 
 Wholesale is **not** a public Shopify product. A brick is 12 decks at $9.97 each ($119.64)
 and a master case is 144 decks at $8.97 each ($1,291.68); both go out as draft orders or
-invoices against an enquiry from `/wholesale/`, which is how the page already describes it.
+invoices against an inquiry from `/wholesale/`, which is how the page already describes it.
 
 Every one of those figures is read from **`site.pricing`** in `data/site.json` — the retail
 block, the three units and the wholesale tiers. `/deck/` computes from it, `/wholesale/` and
@@ -123,7 +123,7 @@ them is the entire integration.
 |---|---|---|
 | `form[data-capture="reserve"]` | `/deck/#reserve` | Saves to `localStorage["rdd-captures"]` |
 | `form[data-capture="gift"]` | `/gifts/#gift-list` | Same |
-| `form[data-capture="wholesale"]` | `/wholesale/#wholesale-enquiry` | Same |
+| `form[data-capture="wholesale"]` | `/wholesale/#wholesale-inquiry` | Same |
 | `[data-add-to-cart="<tier-id>"]` | tier cards on `/deck/` | Saves to `localStorage["rdd-interest"]` |
 | `[data-price]`, `[data-decks]`, `[data-label]` | on those buttons | Tier metadata |
 | `[data-qty]` inside `[data-tier-root]` | tier cards | Quantity |
@@ -181,7 +181,7 @@ help. Klaviyo is the right answer once there is Shopify order data to segment on
 than about 2,000 subscribers — it is materially better at "who bought a brick, who bought
 one deck" and materially more expensive.
 
-Do **not** send the wholesale enquiries into the same list as the consumer emails. A shop
+Do **not** send the wholesale inquiries into the same list as the consumer emails. A shop
 buyer who receives a Father's Day promo unsubscribes and you lose an account.
 
 | Form | Destination | Why |
@@ -234,7 +234,7 @@ question.
 - **Wholesale is different.** Trade sales are sales for resale and are exempt — but only if
   you **collect and keep a resale certificate from every shop** before you invoice them. Add
   that to the account-opening flow. Auditors ask for these; "the shop told me they were a
-  shop" is not a defence.
+  shop" is not a defense.
 - **Marketplace facilitator rules** mean a platform sometimes collects tax on a seller's
   behalf. Selling direct through your own Shopify store, it is yours. Do not assume any
   earlier treatment carries over.

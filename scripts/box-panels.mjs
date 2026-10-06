@@ -94,13 +94,13 @@ SIZES = {'front': (W, H), 'back': (W, H), 'left': (D, H), 'right': (D, H),
          'top': (W, D), 'bottom': (W, D)}
 
 # Ghostscript renders the PANTONE 364 C separation at #4A7637 no matter which
-# colour flags it is given — blue 55 where the ink is 43, which reads grey
+# color flags it is given — blue 55 where the ink is 43, which reads gray
 # beside the site's green. The panels are the ink over white, so every pixel of
 # the printed field lies on the line between them: recover how much ink is on
 # each pixel, then lay the same amount of the RIGHT green down instead.
 #
 # Only pixels that actually sit on that line are touched, within a tight
-# tolerance, which leaves the three full-colour card faces on the box front
+# tolerance, which leaves the three full-color card faces on the box front
 # alone — a brown hackle is nowhere near the white-to-green line.
 GS_INK    = (0x4A, 0x76, 0x37)   # what ghostscript gives us
 TRUE_INK  = (0x4A, 0x76, 0x2B)   # --c-green, and PANTONE 364 C to within 2/255
@@ -141,12 +141,12 @@ for name, (x0, y0, x1, y1) in PANELS.items():
     c = im.crop((x0 + I, y0 + I, x1 - I, y1 - I))
     arr, n_fixed, n_total = fix_ink(strip_cyan(np.asarray(c)))
     c = Image.fromarray(arr)
-    print('    %-6s ink pixels recoloured: %5.1f%%' % (name, n_fixed / n_total * 100))
+    print('    %-6s ink pixels recolored: %5.1f%%' % (name, n_fixed / n_total * 100))
     if name in ('top', 'bottom'):
         c = c.rotate(180)               # printed inverted; each folds over
     c = c.resize(SIZES[name], getattr(Image, 'Resampling', Image).LANCZOS)
     p = '%s/box3d-%s.webp' % (out, name)
-    # Lossy, deliberately. webp's colour transform lands the flat ink on
+    # Lossy, deliberately. webp's color transform lands the flat ink on
     # #4A772A rather than #4A762B at every quality up to 100 — only lossless
     # holds it exactly, and that doubles these files (the front panel, which is
     # the LCP image, goes 139kB -> 326kB). The residual error is deltaE 1.06,

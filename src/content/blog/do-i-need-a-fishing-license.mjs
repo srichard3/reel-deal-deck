@@ -17,7 +17,7 @@ export const meta = {
     },
     {
       q: 'Does a license from one state work in another?',
-      a: 'Not usually. Licenses are state-specific. Some neighbouring states have reciprocal agreements on shared boundary waters, and those agreements are narrow and specific. Read the boundary-water rules for both states before fishing one.',
+      a: 'Not usually. Licenses are state-specific. Some neighboring states have reciprocal agreements on shared boundary waters, and those agreements are narrow and specific. Read the boundary-water rules for both states before fishing one.',
     },
     {
       q: 'Do children need a fishing license?',
@@ -163,11 +163,11 @@ export default function ({ b }) {
         What is worth knowing in advance is the <em>structure</em>, because it is broadly consistent:
         an annual resident license is the cheapest per day if you fish more than a handful of times;
         non-resident annuals cost substantially more; and short-term non-resident options exist
-        specifically for visitors. If you are travelling to fish for three days, the three-day license
+        specifically for visitors. If you are traveling to fish for three days, the three-day license
         is almost always the right purchase.
       </p>
       ${b.note(
-        'License revenue is not a general tax. Under the federal Sport Fish Restoration programme, state license sales are the basis on which states draw matching federal funds for fisheries work and access. Buying the license is part of how the water gets looked after.'
+        'License revenue is not a general tax. Under the federal Sport Fish Restoration program, state license sales are the basis on which states draw matching federal funds for fisheries work and access. Buying the license is part of how the water gets looked after.'
       )}
     `)}
 

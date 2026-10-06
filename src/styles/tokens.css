@@ -2,17 +2,34 @@
    THE REEL DEAL DECK — Design Tokens
    --------------------------------------------------------------------------
    This file is the design contract. Every other stylesheet consumes these
-   variables and MUST NOT hard-code colours, type sizes, or spacing.
+   variables and MUST NOT hard-code colors, type sizes, or spacing.
 
    Art direction: the site should feel like the card, not like a lodge.
    Precise, engraved, high-contrast, generous whitespace. No wood grain,
    no plaid, no drop-shadowed "rustic" chrome, no stock photography.
+
+   ONE THEME. The site is dark, always: no light mode, no toggle, and no
+   prefers-color-scheme branch anywhere in this codebase.
+
+   Note what that did NOT change. --c-paper and --c-ink keep the printed light
+   and dark values, because they are used as literal anchors rather than as
+   "background" and "foreground": .section--dark sets its text to --c-paper to
+   get light type on a deep band, and .btn--primary:hover mixes toward --c-ink
+   to DARKEN the green. Flipping those two would have turned the river band's
+   type near-black on near-black and made the order button lighten on hover,
+   which is a bug this project has already fixed once. Only the SEMANTIC tokens
+   below carry the night values — exactly the set the old dark block overrode.
+
+   Anything added here must be legible on #0F1310, because there is no second
+   theme to fall back on.
    ========================================================================== */
 
 :root {
+  color-scheme: dark;   /* so form controls and scrollbars follow */
+
   /* --- Ink & paper ------------------------------------------------------
      Sampled from the printed v8 card faces and the USPCC tuck box, not
-     invented. This is a two-colour deck: green stands in for red, bark
+     invented. This is a two-color deck: green stands in for red, bark
      brown for black. The site follows the physical product.              */
   --c-paper:        #FAF9F5;  /* page ground, a shade off the card stock */
   --c-paper-2:      #F1EFE8;  /* recessed surface  */
@@ -21,44 +38,52 @@
   --c-ink-2:        #4E4739;  /* secondary text    */
   --c-ink-3:        #837C6D;  /* tertiary / meta   */
 
-  /* --- The deck's own colours ------------------------------------------ */
-  --c-green:        #4A762B;  /* THE brand colour: logo, card back, hearts + diamonds */
-  --c-green-deep:   #35561E;
-  --c-green-soft:   #6E9A4E;
-  --c-bark:         #6F5F46;  /* spades + clubs, rank numerals, card body copy */
+  /* --- The deck's own colors ------------------------------------------ */
+  /* Lifted off the printed inks so links and small type stay legible on
+     near-black. The printed values survive as --c-brand-fill below, which is
+     what paints a solid brand field. */
+  --c-green:        #8FBF66;  /* THE brand color: logo, card back, hearts + diamonds */
+  --c-green-deep:   #6E9A4E;
+  --c-green-soft:   #A9D188;
+  --c-bark:         #B49C77;  /* spades + clubs, rank numerals, card body copy */
   --c-bark-deep:    #4E4231;
-  --c-egg:          #F4BC4B;  /* the Egg joker — warm highlight, badges */
-  --c-worm:         #B73537;  /* the San Juan Worm — used sparingly */
+  --c-egg:          #F0C25F;  /* the Egg joker — warm highlight, badges */
+  --c-worm:         #D4595C;  /* the San Juan Worm — used sparingly */
 
   /* Legacy aliases kept so existing rules keep resolving. --c-red is no
      longer the accent: the deck prints green where a normal deck prints red. */
   --c-red:          var(--c-green);
   --c-red-deep:     var(--c-green-deep);
   --c-river:        #35561E;
-  --c-riffle:       #6E9A4E;
+  --c-riffle:       #8FBF66;
 
   /* The deck's own red, for the one thing on this site that has to read as
-     wrong: a form error. --c-worm is already redefined per theme, so this
-     single alias resolves correctly in both without a second declaration. */
+     wrong: a form error. --c-worm, never --c-red, which is green here. */
   --c-danger:       var(--c-worm);
 
   /* --- Semantic -------------------------------------------------------- */
-  --c-bg:           var(--c-paper);
-  --c-bg-sunk:      var(--c-paper-2);
-  --c-surface:      #FFFFFF;   /* pure white: card art sits on it seamlessly */
-  --c-border:       var(--c-paper-3);
-  --c-text:         var(--c-ink);
-  --c-text-muted:   var(--c-ink-2);
-  --c-text-faint:   var(--c-ink-3);
+  --c-bg:           #0F1310;
+  --c-bg-sunk:      #0A0D0B;
+  --c-surface:      #161B17;
+  --c-border:       #2A322B;
+  --c-text:         #ECE9E0;
+  --c-text-muted:   #ABAE9F;
+  /* #7C8377, the old dark-mode value, is 4.79:1 on the page but only 4.46:1 on
+     --c-surface, where most of the faint type actually sits (card meta, table
+     captions, "Short answer" labels). That was survivable while light mode was
+     a keystroke away. It is not now, so this is lifted to the smallest value
+     that clears 4.5:1 on all three grounds: 5.17 on --c-bg, 5.39 on --c-bg-sunk
+     and 4.82 on --c-surface. Re-measure against --c-surface, not the page. */
+  --c-text-faint:   #828977;
   --c-accent:       var(--c-green);
-  --c-accent-text:  #FFFFFF;
+  --c-accent-text:  #0F1310;
 
-  /* The printed ink, and it does NOT change with the theme. --c-green lightens
-     to #8FBF66 in dark mode so links and small text stay legible on near-black,
+  /* The printed ink. --c-green above is lifted to #8FBF66 so links and small
+     text stay legible on near-black,
      which is right for text and wrong for a filled surface: it made the
      order button a different green from the box sitting beside it.
      Anything painting a solid brand field uses this instead, so the button and
-     the tuck box are the same colour in both themes.
+     the tuck box are the same green.
      #4A762B is sampled from the original card scans, and is PANTONE 364 C to
      within 2/255 of the Lab in the printer's own file. */
   --c-brand-fill:      #4A762B;
@@ -123,64 +148,15 @@
   --wrap-narrow: 760px;
 
   /* --- Depth (restrained: this is print, not glassmorphism) ------------- */
-  --shadow-1: 0 1px 2px rgb(22 25 28 / 0.06), 0 1px 1px rgb(22 25 28 / 0.04);
-  --shadow-2: 0 4px 12px rgb(22 25 28 / 0.08), 0 1px 3px rgb(22 25 28 / 0.06);
-  --shadow-lift: 0 12px 32px rgb(22 25 28 / 0.14), 0 2px 6px rgb(22 25 28 / 0.08);
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.45);
+  --shadow-2: 0 4px 12px rgb(0 0 0 / 0.5);
+  --shadow-lift: 0 12px 32px rgb(0 0 0 / 0.6);
 
   /* --- Motion ---------------------------------------------------------- */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --dur-fast: 120ms;
   --dur:      220ms;
   --dur-slow: 420ms;
-}
-
-/* --- Night fishing ------------------------------------------------------ */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-  --c-bg:         #0F1310;
-    --c-bg-sunk:    #0A0D0B;
-    --c-surface:    #161B17;
-    --c-border:     #2A322B;
-    --c-text:       #ECE9E0;
-    --c-text-muted: #ABAE9F;
-    --c-text-faint: #7C8377;
-    --c-green:      #8FBF66;
-    --c-green-deep: #6E9A4E;
-    --c-green-soft: #A9D188;
-    --c-bark:       #B49C77;
-    --c-egg:        #F0C25F;
-    --c-worm:       #D4595C;
-    --c-red:        var(--c-green);
-    --c-riffle:     #8FBF66;
-    --c-accent:     var(--c-green);
-    --c-accent-text:#0F1310;
-    --shadow-1: 0 1px 2px rgb(0 0 0 / 0.45);
-    --shadow-2: 0 4px 12px rgb(0 0 0 / 0.5);
-    --shadow-lift: 0 12px 32px rgb(0 0 0 / 0.6);
-  }
-}
-
-:root[data-theme="dark"] {
-  --c-bg:         #0F1310;
-  --c-bg-sunk:    #0A0D0B;
-  --c-surface:    #161B17;
-  --c-border:     #2A322B;
-  --c-text:       #ECE9E0;
-  --c-text-muted: #ABAE9F;
-  --c-text-faint: #7C8377;
-  --c-green:      #8FBF66;
-  --c-green-deep: #6E9A4E;
-  --c-green-soft: #A9D188;
-  --c-bark:       #B49C77;
-  --c-egg:        #F0C25F;
-  --c-worm:       #D4595C;
-  --c-red:        var(--c-green);
-  --c-riffle:     #8FBF66;
-  --c-accent:     var(--c-green);
-  --c-accent-text:#0F1310;
-  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.45);
-  --shadow-2: 0 4px 12px rgb(0 0 0 / 0.5);
-  --shadow-lift: 0 12px 32px rgb(0 0 0 / 0.6);
 }
 
 @media (prefers-reduced-motion: reduce) {

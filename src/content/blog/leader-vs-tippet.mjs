@@ -47,7 +47,7 @@ export default function ({ b }) {
   return `
     ${b.section('What is a leader, and why is it tapered?', `
       <p>
-        A leader is a length of clear monofilament or fluorocarbon that connects the thick, coloured
+        A leader is a length of clear monofilament or fluorocarbon that connects the thick, colored
         fly line to the fly. It does two jobs. It hides the fly line, which is opaque and roughly the
         diameter of a shoelace, from the fish. And it transmits the energy of the cast forward so the
         fly lands last, straight, and gently.
@@ -90,7 +90,7 @@ export default function ({ b }) {
           ['Job', 'Transfers casting energy; turns the fly over', 'Presents the fly invisibly; absorbs wear'],
           ['Attaches to', 'Fly line, via a loop-to-loop or nail knot', 'The end of the leader, via a surgeon’s or blood knot'],
           ['Replaced', 'Every few trips, or when the taper is cut into', 'Constantly — after every few fly changes'],
-          ['Labelled', 'By length and end size: "9ft 5X"', 'By size only: "5X"'],
+          ['Labeled', 'By length and end size: "9ft 5X"', 'By size only: "5X"'],
         ]
       )}
     `)}

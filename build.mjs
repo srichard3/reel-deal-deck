@@ -145,10 +145,11 @@ const shell = await read(path.join(SRC, '_partials', 'shell.html'));
    branch, so the one decision — hosted store or the on-site pricing panel — is
    made here, once, at build time, and the resolved values ride on ctx.meta for
    the partial to print. Pages that set their own order* meta keys keep them. */
-const { orderState } = await import(
+const { orderState, wholesaleState } = await import(
   pathToFileURL(path.join(SRC, 'templates', '_blocks.mjs')).href
 );
 const ORDER_STATE = orderState(site);
+const WHOLESALE_STATE = wholesaleState(site);
 
 const routes = [];
 
@@ -183,6 +184,7 @@ async function emit(route, meta, bodyHtml) {
       /* So a partial, which cannot branch, can still open a hosted store in a
          new tab the way orderCta() does. Empty means same tab. */
       orderTarget: meta.orderTarget ?? (ORDER_STATE.external ? '_blank' : ''),
+      wholesaleUrl: meta.wholesaleUrl ?? WHOLESALE_STATE.url,
       /* Always emitted, so the value is the only thing that varies. */
       robots: NOINDEX
         ? 'noindex, nofollow'

@@ -167,7 +167,7 @@ export default function ({ b }) {
           ['Water deeper than about 4ft', 'Indicator nymph rig', 'The dropper cannot reach without becoming uncastable'],
           ['Fish rising steadily to a hatch', 'A single dry', 'The nymph adds nothing and the rig lands heavier'],
           ['Very flat, clear, spooky water', 'A single dry, long leader', 'Two flies and a foam body land loudly'],
-          ['Fast, deep pocket water', 'Tight-line / Euro nymphing', 'You need the fly down within a metre of the cast'],
+          ['Fast, deep pocket water', 'Tight-line / Euro nymphing', 'You need the fly down within a meter of the cast'],
         ],
         'When to rig something else'
       )}

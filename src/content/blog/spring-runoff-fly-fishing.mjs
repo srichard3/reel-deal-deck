@@ -54,7 +54,7 @@ export default function ({ b }) {
 
     ${b.section('What is spring runoff, and why does it change everything?', `
       <p>
-        Snowmelt. As mountain snowpack releases, rivers rise, cool and colour up, often for
+        Snowmelt. As mountain snowpack releases, rivers rise, cool and color up, often for
         several weeks. In the Mountain West it typically runs somewhere between April and June,
         varying with elevation, snowpack and how fast the weather warms.
       </p>
@@ -119,7 +119,7 @@ export default function ({ b }) {
 
     ${b.section('What should you fish?', `
       <p>
-        Big, and findable. A trout in coloured water is hunting by silhouette and vibration, not
+        Big, and findable. A trout in colored water is hunting by silhouette and vibration, not
         by inspecting a size 20 midge.
       </p>
       <ul>
@@ -173,7 +173,7 @@ export default function ({ b }) {
         days can be exceptional.
       </p>
       <p>
-        Watch your local gauge and, more usefully, watch the colour. Clarity returns before
+        Watch your local gauge and, more usefully, watch the color. Clarity returns before
         flow does, and fishable clarity in still-high water is a genuinely good combination.
       </p>
     `)}

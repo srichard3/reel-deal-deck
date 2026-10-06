@@ -117,7 +117,7 @@ export default function ({ b }) {
       </p>
       <ul>
         <li>
-          <strong>Wet hands, always.</strong> The slime coat is a trout's defence against
+          <strong>Wet hands, always.</strong> The slime coat is a trout's defense against
           infection, and dry hands strip it. Dry cloth and dry gloves are worse.
         </li>
         <li>
@@ -176,7 +176,7 @@ export default function ({ b }) {
         sometimes water by water.
         <strong>Check your state wildlife agency for the water you are fishing</strong> — there
         is no national answer, and this site will not give you one. See
-        <a href="/blog/do-i-need-a-fishing-license/">do I need a fishing licence</a> for how to
+        <a href="/blog/do-i-need-a-fishing-license/">do I need a fishing license</a> for how to
         find the right rules.
       </p>
       <!-- EDITORIAL RULE, settled: no mortality percentages on this page. Published figures vary

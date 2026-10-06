@@ -102,12 +102,12 @@ descriptions. That is the opposite of the requirement, and it is a day's work to
 ### Tier 3 — The location play *(the biggest genuine opportunity)*
 
 This is where fly fishing fits the playbook **better** than reunions do. Fly fishing
-is intensely regional: seasons, hatches, species, licence rules and signature rivers
+is intensely regional: seasons, hatches, species, license rules and signature rivers
 all vary by state. `/fly-fishing-in-[state]/` is a real, defensible 50-page tier.
 
 **But Phase 4's warning applies with full force.** If the only difference between
 pages is a find-and-replace on the state name, it reads as thin and gets suppressed.
-Each page must carry: signature species, the state's actual licence page, a genuine
+Each page must carry: signature species, the state's actual license page, a genuine
 hatch calendar, named notable waters, and season/temperature specifics — cross-linked
 into the existing fly pages and guides.
 
@@ -158,7 +158,7 @@ verifiable state. Tiers must run in order; packages inside a tier can run in par
 |---|---|---|---|
 | **A** | Domain cutover + indexability | `build.mjs` env, `static/CNAME`, `robots.txt`, workflow | live domain resolves, zero `noindex`, sitemap submitted |
 | **B** | Entity consistency + `/about/` + `/press/` | `site.json` brand block, `about.mjs`, `press.mjs`, `llms.txt` | exactly **one** Organization description sitewide |
-| **C** | State pages — research | `data/states.json` | 50 states, each with cited licence URL, species, hatch window |
+| **C** | State pages — research | `data/states.json` | 50 states, each with cited license URL, species, hatch window |
 | **D** | State pages — template + build | `templates/state.mjs`, `pages/states.mjs`, `styles/state.css` | 50 routes, 0 check errors, each links ≥4 flies + ≥2 guides |
 | **E** | Tools | `pages/tools/*.mjs`, `js/tools.js` | works with JS off or degrades honestly; no invented data |
 | **F** | Comparison page | `pages/compare.mjs` | no competitor named unfairly; every claim checkable |

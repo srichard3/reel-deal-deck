@@ -75,7 +75,7 @@ const esc = (s) =>
  * card size. See the target-size note in components.css.
  *
  * Hovering or tabbing to a card lifts it out of the fan and scales it up, and
- * its neighbours lean away to make room. That second part is the thing that
+ * its neighbors lean away to make room. That second part is the thing that
  * makes it feel like cards rather than a CSS trick, and it is done with sibling
  * selectors in components.css rather than script.
  *

@@ -56,7 +56,7 @@ export default function ({ b }) {
       ${b.table(
         ['Season', 'Best hours', 'Why', 'What is usually happening'],
         [
-          ['<strong>Spring</strong>', '10am – 4pm', 'Water is cold; it needs the day to warm', 'Blue Wing Olives on grey afternoons'],
+          ['<strong>Spring</strong>', '10am – 4pm', 'Water is cold; it needs the day to warm', 'Blue Wing Olives on gray afternoons'],
           ['<strong>Summer</strong>', 'Dawn – 9am, 7pm – dark', 'Midday water is too warm and too bright', 'Terrestrials early, spinner falls at dusk'],
           ['<strong>Autumn</strong>', '10am – 4pm', 'Cooling water; the warm hours concentrate activity', 'Baetis, and aggressive pre-spawn browns'],
           ['<strong>Winter</strong>', '11am – 3pm', 'The only window water reaches a fishable temperature', 'Midges, fished slow and deep'],
@@ -75,7 +75,7 @@ export default function ({ b }) {
         about timing follows from that one fact.
       </p>
       ${b.table(
-        ['Water temp', 'Trout behaviour', 'How to fish it'],
+        ['Water temp', 'Trout behavior', 'How to fish it'],
         [
           ['Below 40°F', 'Barely feeding, holding deep and slow', 'Small nymphs and midges, dead slow, right on the bottom'],
           ['40–50°F', 'Feeding, but unwilling to move far', 'Get the fly to them; expect subtle takes'],
@@ -107,7 +107,7 @@ export default function ({ b }) {
         </li>
       </ul>
       <p>
-        An overcast day extends the good hours in both directions. A flat grey drizzle in
+        An overcast day extends the good hours in both directions. A flat gray drizzle in
         spring or autumn is close to ideal, which is also why
         ${b.flyLink('blue-wing-olive')} hatches have their reputation — they come off heaviest
         in exactly the weather most people stay home for.

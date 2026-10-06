@@ -156,7 +156,7 @@ it works, not because anything loads it.
 `index.mjs` emits all 54 faces carrying nothing but `--i`;
 `.fan` in `components.css` rotates each about a pivot 3.6 card-heights below it,
 and the browser does the trigonometry. Hover and `:focus-within` get identical
-rules, so it is fully keyboard-operable, and the neighbours lean away via `+`
+rules, so it is fully keyboard-operable, and the neighbors lean away via `+`
 and `:has()` rather than script.
 
 **The hit area is the sliver, not the card, and three `pointer-events` rules
@@ -165,15 +165,15 @@ make it so.** `.fan__card` is `none` (layout and z-order only), `.fan__art` is
 narrow full-height strip that is the only hittable thing in the fan.
 
 That last rule is load-bearing. When the art was the target, a hovered card
-scaling to 1.6 blanketed **138px of the row** — about seven neighbours stopped
+scaling to 1.6 blanketed **138px of the row** — about seven neighbors stopped
 responding to their own slivers until the pointer cleared it, so pointing at a
 card did nothing and then one five along fired.
 
 **The strip is a wedge, and it has to be exact.** Cards rotate about a pivot 3.6
-card-heights below them, so neighbours separate more at the top of a card than
+card-heights below them, so neighbors separate more at the top of a card than
 at its foot: `0.1317` card widths against `0.0951`, which is the `72.2%` in the
 `clip-path`. `clip-path` clips hit-testing as well as paint. A rectangle wide
-enough for the top would overlap its neighbour at the foot — and a hovered card
+enough for the top would overlap its neighbor at the foot — and a hovered card
 jumps to `z-index: 60`, so that overlap would steal hits. A rectangle narrow
 enough never to overlap would leave the top of every card inert.
 **Recompute both numbers if `--fan-step` or `--fan-pivot` changes.**
@@ -202,7 +202,7 @@ the sticky header is 100 and deliberately stays above it.
 **Only `transform` transitions, and only for 120ms.** Transitioning the
 box-shadow on 54 transformed elements repaints rather than composites, and a
 sweep across the fan left a wake of still-animating cards that read as lag. The
-neighbour lean is one card either side for the same reason: each `:has()` rule
+neighbor lean is one card either side for the same reason: each `:has()` rule
 is sibling-invalidation work on every hover change, times 54.
 
 **The fan is the homepage's whole image budget.** 54 faces, so each `<img>`
@@ -369,7 +369,16 @@ Safari will not infer it and collapses the element to nothing. Chrome hides this
 - No horizontal overflow at **320 / 375 / 768 / 1280**. Measure
   `scrollWidth > clientWidth`; do not eyeball it. This has regressed twice.
 - Guard every `minmax()` with `min(…, 100%)`.
-- Light **and** dark both ship. Test both.
+- **One theme: the site is dark, always.** No light mode, no toggle, no
+  `prefers-color-scheme` branch. Test with the OS set to *light* — that is the
+  case that proves it. `--c-paper` and `--c-ink` deliberately keep their printed
+  light/dark values: they are literal anchors, not background/foreground.
+  `.section--dark` sets its text to `--c-paper` and `.btn--primary:hover` mixes
+  toward `--c-ink` to darken, so flipping those two would blank the river band's
+  type and make the order button lighten on hover. Only the semantic tokens
+  carry night values. Contrast has no second theme to fall back on, so measure
+  new colors against `--c-surface` (#161B17), not the page — that is where the
+  faint type actually sits, and it is the stricter of the two.
 - **The browser pane is Chromium.** It cannot catch Safari-specific bugs, and it
   sometimes fails to composite images into screenshots — if an image area looks
   blank, verify by measuring the element or probing decoded pixels via canvas

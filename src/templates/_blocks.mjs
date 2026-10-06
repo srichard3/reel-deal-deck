@@ -265,6 +265,26 @@ export function tuckBox({ eager = false } = {}) {
  * prices are real and published, and the button goes somewhere useful rather
  * than nowhere. `ready` is false in that state so a page can say so.
  */
+/* Where "wholesale" points, resolved once, for the same reason as orderState():
+ * the header, the drawer and the footer must never disagree, and the
+ * destination changes as the store is set up.
+ *
+ *   1. shop.accountUrl  — the real Shopify customer login, once it exists
+ *   2. the apply path   — but only while applications are actually live
+ *   3. /wholesale/      — the prices and the terms, which is always true
+ *
+ * Step 2 matters: with `account.live` false the apply page renders an email
+ * address and nothing else, and sending every visitor from the top of every
+ * page to that would be worse than sending them to the prices.
+ */
+export function wholesaleState(site) {
+  const account = site?.pricing?.wholesale?.account || {};
+  const login = site?.shop?.accountUrl || '';
+  if (login) return { url: login, key: 'login', external: /^https?:\/\//i.test(login) };
+  if (account.live && account.applyPath) return { url: account.applyPath, key: 'apply', external: false };
+  return { url: '/wholesale/', key: 'info', external: false };
+}
+
 export function orderState(site) {
   const s = (site && site.shop) || {};
   const fallback = s.fallback || '/deck/#order';

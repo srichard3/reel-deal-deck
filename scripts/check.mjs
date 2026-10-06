@@ -13,7 +13,7 @@
  *   • a title over 60 chars or a description over 160 — truncated in the SERP,
  *     which is a measurable click-through loss on every impression
  *   • a missing canonical or OG tag — duplicate-URL dilution, dead share cards
- *   • an og:image that 404s — every share of that page previews as a grey box
+ *   • an og:image that 404s — every share of that page previews as a gray box
  *   • an <img> with no alt — inaccessible, and image search cannot read it
  *   • malformed JSON-LD — rich results silently stop appearing
  *   • any external or http:// reference — this site is strictly self-hosted;

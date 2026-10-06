@@ -10,7 +10,7 @@ export const meta = {
   path: '/fly-fishing-by-state/',
   title: 'Fly Fishing by State',
   description:
-    'Fly fishing guides by US state: what trout are there, where to fish, when to go, and what licence you need. Written state by state, not templated.',
+    'Fly fishing guides by US state: what trout are there, where to fish, when to go, and what license you need. Written state by state, not templated.',
   priority: 0.7,
   changefreq: 'monthly',
   bodyClass: 'page-states',
@@ -62,9 +62,9 @@ export default function ({ site, states }) {
     <p class="eyebrow">By state</p>
     <h1 class="h1 page-head__title">Fly fishing by state</h1>
     <p class="page-head__lede lede">
-      Trout water is regional. The species, the hatches, the season and the licence rules
+      Trout water is regional. The species, the hatches, the season and the license rules
       all change at a state line, so these are written one state at a time &mdash; named
-      rivers, a real calendar, and a link to the agency that actually issues the licence.
+      rivers, a real calendar, and a link to the agency that actually issues the license.
     </p>
   </header>
 </div>

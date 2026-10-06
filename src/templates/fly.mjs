@@ -72,7 +72,7 @@ export default function ({ fly, flies, site }) {
   const next = flies[(idx + 1) % flies.length];
 
   /* Cross-linking is the whole SEO play: never fewer than four outbound links
-     to sibling flies. Fall back to same-type neighbours if pairsWith is thin. */
+     to sibling flies. Fall back to same-type neighbors if pairsWith is thin. */
   const bySlug = new Map(flies.map((f) => [f.slug, f]));
   const related = [];
   for (const s of list(fly.pairsWith)) {

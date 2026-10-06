@@ -174,12 +174,12 @@ export default function ({ b }) {
           ['Cold water (below ~50°F)', 'Deep, slow pools and pool tails; soft inside bends', 'Metabolism is low; fish will not hold in current or move far for food'],
           ['Prime range (~55–65°F)', 'Riffles, seams, pocket water — spread through the river', 'Comfortable and actively feeding across all water types'],
           ['Warm water (above ~68°F)', 'Riffles, pool heads, spring seeps, tributary mouths', 'Chasing dissolved oxygen, which cold and broken water holds more of'],
-          ['High or coloured water', 'Tight to the banks, inside seams, behind any obstruction', 'The main current is unfishable for them; the edges are not'],
+          ['High or colored water', 'Tight to the banks, inside seams, behind any obstruction', 'The main current is unfishable for them; the edges are not'],
           ['Low, clear water', 'Deep pools, undercuts, shade — and mostly at dawn and dusk', 'No cover in the shallows; predation risk is high'],
         ]
       )}
       ${b.warn(
-        'When water reaches the upper 60s Fahrenheit, catch-and-release mortality rises sharply and many agencies close or restrict fishing. Carry a stream thermometer, and stop fishing on your own judgement before a regulation makes you. Check your state agency for current restrictions — Idaho’s are published at <a href="https://idfg.idaho.gov/rules/fish">idfg.idaho.gov/rules/fish</a>.'
+        'When water reaches the upper 60s Fahrenheit, catch-and-release mortality rises sharply and many agencies close or restrict fishing. Carry a stream thermometer, and stop fishing on your own judgment before a regulation makes you. Check your state agency for current restrictions — Idaho’s are published at <a href="https://idfg.idaho.gov/rules/fish">idfg.idaho.gov/rules/fish</a>.'
       )}
     `)}
 

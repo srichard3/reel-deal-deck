@@ -83,7 +83,7 @@ export const meta = {
  *
  * The big figure is the DECK, on both cards, and it is the same number on both
  * because it is the same deck at the same price. What differs is the shipping,
- * so that is the highlighted band rather than a grey line: "+ $6.95 shipping"
+ * so that is the highlighted band rather than a gray line: "+ $6.95 shipping"
  * against "Free shipping". The delivered total sits underneath as the sum.
  *
  * An earlier version made the big figure the delivered total, which put $26.90
@@ -286,63 +286,11 @@ ${retailCards(site)}
   </div>
 </section>
 
-<!-- ============================================================ SPECS == -->
-<section class="section wrap">
-  <p class="eyebrow">Specification</p>
-  <h2 class="h2">What is in the tuck box</h2>
-
-  <div class="buy-specs">
-    <div class="buy-specs__row">
-      <p class="buy-specs__key">Cards</p>
-      <p class="buy-specs__val">${esc(p.cardCount)} cards, every one an original hand-drawn fly with what it imitates. Standard ranks and suits throughout, two jokers &mdash; you can deal a hand of poker with it.</p>
-    </div>
-    <div class="buy-specs__row">
-      <p class="buy-specs__key">Size</p>
-      <p class="buy-specs__val">${esc(p.dimensions)}</p>
-    </div>
-    <div class="buy-specs__row">
-      <p class="buy-specs__key">Stock &amp; finish</p>
-      <p class="buy-specs__val">${esc(p.stock)}</p>
-    </div>
-    <div class="buy-specs__row">
-      <p class="buy-specs__key">Materials</p>
-      <p class="buy-specs__val">${esc(p.material)}</p>
-    </div>
-    <div class="buy-specs__row">
-      <p class="buy-specs__key">Recyclable</p>
-      <p class="buy-specs__val">${esc(p.recyclable)}</p>
-    </div>
-    <!-- Recyclability confirmed by Ken and Audrey: the deck carries the same
-         material specification as any Bicycle deck from USPCC. Do not add an
-         FSC chain-of-custody number or any certification mark on top of this;
-         that is a separate claim and it is not ours to make. -->
-    <div class="buy-specs__row">
-      <p class="buy-specs__key">Origin</p>
-      <p class="buy-specs__val">
-        ${esc(p.origin || 'Made in the USA')} &mdash; printed by ${esc(p.manufacturer)},
-        drawn and packed in ${esc((site.location || {}).city)}, ${esc((site.location || {}).regionName)}.
-        <a href="/story/#made-in-the-usa">Why that mattered to us</a>.
-      </p>
-    </div>
-    <div class="buy-specs__row">
-      <p class="buy-specs__key">Made by</p>
-      <p class="buy-specs__val">Ken and Audrey, a father and daughter in ${esc((site.location || {}).city)}, ${esc((site.location || {}).regionName)}</p>
-    </div>
-    <div class="buy-specs__row">
-      <p class="buy-specs__key">Price</p>
-      <p class="buy-specs__val">${money(per)} a deck. ${money(ship)} postage on one; free on ${esc(inWords(from))} or more.</p>
-    </div>
-  </div>
-  <!-- Confirmed: every card carries a standard rank and suit index alongside
-       the fly, and the two extra cards are the jokers. "You can deal a hand of
-       poker with it" is therefore literally true. -->
-</section>
-
 <!-- ===================================================== CONSERVATION == -->
 <section class="section section--sunk">
   <div class="wrap wrap--narrow text-center stack" style="--gap:var(--s-4)">
     <p class="eyebrow">Conservation</p>
-    <h2 class="h2">A portion of every deck goes to ${esc((site.conservation || {}).partner)}</h2>
+    <h2 class="h2">${esc((site.conservation || {}).partner)} gets a cut of every deck</h2>
     <p class="lede mx-auto">
       A deck of flies is a nice object. Water with fish in it is the point.
     </p>

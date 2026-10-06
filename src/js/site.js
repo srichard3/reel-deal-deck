@@ -15,90 +15,9 @@
     if (el && el.addEventListener) el.addEventListener(type, fn, opts);
   }
 
-  /* ------------------------------------------------------------- theme -- */
-  /* The inline script in head.html has already applied the stored theme so
-     there is no flash; here we only handle the toggle and the icon state.  */
-
-  var THEME_KEY = 'rdd-theme';
-  var ICON = { light: '☼', dark: '☾' }; /* white sun / last-quarter moon */
-
-  function storedTheme() {
-    try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
-  }
-
-  function systemTheme() {
-    try {
-      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark' : 'light';
-    } catch (e) { return 'light'; }
-  }
-
-  function activeTheme() {
-    return root.dataset.theme || storedTheme() || systemTheme();
-  }
-
-  function paintToggles(theme) {
-    var isDark = theme === 'dark';
-    var toggles = doc.querySelectorAll('[data-theme-toggle]');
-    for (var i = 0; i < toggles.length; i++) {
-      var btn = toggles[i];
-      btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-      btn.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-      btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-      var icon = btn.querySelector('[data-theme-icon]');
-      /* show the theme you would switch TO */
-      if (icon) icon.textContent = isDark ? ICON.light : ICON.dark;
-    }
-  }
-
-  /* head.html ships two media-scoped <meta name="theme-color"> tags, which the
-     OS honours but a manual override cannot reach. Once the visitor has picked
-     a theme explicitly, publish an unscoped tag carrying the page's real
-     background so the browser chrome follows the choice. The value is read
-     back out of the cascade rather than hard-coded, so tokens.css stays the
-     single source of truth. No stored preference? No tag, and the media
-     queries keep doing their job. */
-  function paintThemeColor() {
-    var meta = doc.querySelector('meta[name="theme-color"][data-rdd-theme-color]');
-    if (!storedTheme()) {
-      if (meta && meta.parentNode) meta.parentNode.removeChild(meta);
-      return;
-    }
-    var bg;
-    try { bg = getComputedStyle(doc.body).backgroundColor; } catch (e) { return; }
-    if (!bg || bg === 'transparent' || bg.indexOf('rgba(0, 0, 0, 0)') === 0) return;
-    if (!meta) {
-      meta = doc.createElement('meta');
-      meta.setAttribute('name', 'theme-color');
-      meta.setAttribute('data-rdd-theme-color', '');
-      doc.head.appendChild(meta);
-    }
-    meta.setAttribute('content', bg);
-  }
-
-  function applyTheme(theme) {
-    root.dataset.theme = theme;
-    try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* private mode */ }
-    paintToggles(theme);
-    paintThemeColor();
-  }
-
-  (function initTheme() {
-    var toggles = doc.querySelectorAll('[data-theme-toggle]');
-    paintToggles(activeTheme());
-    paintThemeColor();
-    for (var i = 0; i < toggles.length; i++) {
-      on(toggles[i], 'click', function () {
-        applyTheme(activeTheme() === 'dark' ? 'light' : 'dark');
-      });
-    }
-    /* follow the OS until the visitor has expressed a preference */
-    try {
-      var mq = window.matchMedia('(prefers-color-scheme: dark)');
-      var listen = mq.addEventListener ? mq.addEventListener.bind(mq, 'change') : null;
-      if (listen) listen(function () { if (!storedTheme()) { paintToggles(systemTheme()); } });
-    } catch (e) { /* no matchMedia */ }
-  })();
+  /* No theme block, and no toggle: the site is dark, always. The palette is
+     one set of tokens in tokens.css with `color-scheme: dark`, so there is
+     nothing to store, nothing to restore before first paint, and no flash. */
 
   /* -------------------------------------------------------- mobile nav -- */
 

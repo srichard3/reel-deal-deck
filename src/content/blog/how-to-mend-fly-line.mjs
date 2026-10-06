@@ -33,7 +33,7 @@ export const meta = {
     steps: [
       { name: 'Cast with slack', text: 'Stop the rod high and let the line fall with a few gentle curves. Slack buys the fly a drag-free head start before you have to do anything.' },
       { name: 'Mend immediately', text: 'Mend within a second of the line landing, while it still sits on the surface. A mend attempted after the current grabs the line will move the fly.' },
-      { name: 'Lift, then flip', text: 'Raise the rod tip to lift the belly of the line clear of the water, then roll it upstream in a semicircle. Keep the rod tip travelling in an arc, not sideways.' },
+      { name: 'Lift, then flip', text: 'Raise the rod tip to lift the belly of the line clear of the water, then roll it upstream in a semicircle. Keep the rod tip traveling in an arc, not sideways.' },
       { name: 'Leave the fly alone', text: 'A correct mend moves line and leaves the fly where it is. If the fly twitches, you lifted too much line or flipped too hard.' },
       { name: 'Follow the drift', text: 'Track the fly with the rod tip as it comes down, feeding slack if needed. Mend again as often as the current requires.' },
     ],
@@ -85,7 +85,7 @@ export default function ({ b }) {
       <ul>
         <li>
           <strong>Compare it to the bubbles.</strong> Pick a bubble or a piece of foam beside
-          your fly. If the fly is travelling at a different speed to that bubble, it is
+          your fly. If the fly is traveling at a different speed to that bubble, it is
           dragging.
         </li>
         <li>

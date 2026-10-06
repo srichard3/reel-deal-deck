@@ -2,7 +2,7 @@
    THE REEL DEAL DECK — base
    --------------------------------------------------------------------------
    Reset, document defaults, layout primitives, typography and utilities.
-   Consumes tokens.css only. No hard-coded colours, type sizes or spacing.
+   Consumes tokens.css only. No hard-coded colors, type sizes or spacing.
    ========================================================================== */
 
 /* --------------------------------------------------------------- reset -- */
@@ -135,12 +135,9 @@ table { border-collapse: collapse; width: 100%; }
   color: var(--c-text);
 }
 
-/* In night-fishing mode the river band sinks further so it still reads as
-   a distinct, deeper stratum rather than a lighter panel. */
-:root[data-theme="dark"] .section--dark { --sec-dark-bg: color-mix(in oklab, var(--c-river) 52%, var(--c-ink)); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .section--dark { --sec-dark-bg: color-mix(in oklab, var(--c-river) 52%, var(--c-ink)); }
-}
+/* The river band sinks further than the page so it reads as a distinct, deeper
+   stratum rather than a lighter panel. */
+.section--dark { --sec-dark-bg: color-mix(in oklab, var(--c-river) 52%, var(--c-ink)); }
 
 /* ---------------------------------------------------------- typography -- */
 
@@ -257,8 +254,8 @@ table { border-collapse: collapse; width: 100%; }
 .prose em { font-style: italic; }
 
 /* :not(.btn) matters. A button inside prose is a button, not a link in a
-   sentence, and this rule outranks .btn's own colour — (0,1,1) against (0,1,0).
-   It was repainting every .btn in an article the accent colour, which on
+   sentence, and this rule outranks .btn's own color — (0,1,1) against (0,1,0).
+   It was repainting every .btn in an article the accent color, which on
    .btn--primary means accent text on an accent background: the order button in
    blog posts was green on green, with a prose underline to match. */
 .prose a:not(.btn) {

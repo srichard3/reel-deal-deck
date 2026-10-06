@@ -10,7 +10,7 @@
  *   - Instagram's own oEmbed and Graph endpoints need an access token; there is
  *     no anonymous feed API.
  *   - Scraping server-side does not work. Instagram serves og: tags to
- *     recognised crawlers and to real browser sessions, and returns a bare app
+ *     recognized crawlers and to real browser sessions, and returns a bare app
  *     shell to a plain fetch — verified, it comes back with no og:title at all.
  *   - Its CDN URLs are signed and expire within days, so hotlinking a thumbnail
  *     produces a broken image by the end of the week.

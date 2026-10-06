@@ -2,7 +2,7 @@
  *
  * The programmatic tier. Its whole defensibility rests on each page carrying
  * real, distinct, checkable detail — named waters, a genuine hatch calendar,
- * the state's own licence figures with a link to the agency. If two of these
+ * the state's own license figures with a link to the agency. If two of these
  * pages ever read like the same page with a name swapped, the tier is not
  * worth publishing. See docs/GROWTH-PLAN.md, tier 3.
  *
@@ -16,7 +16,7 @@ export default function ({ state: st, states, site, flies }) {
   const base = site.url.replace(/\/$/, '');
   const path = `/fly-fishing-in-${st.slug}/`;
   const url = base + path;
-  const lic = st.licence || {};
+  const lic = st.license || {};
 
   const bySlug = new Map(flies.map((f) => [f.slug, f]));
   const stateFlies = (st.flies || []).map((s) => bySlug.get(s)).filter(Boolean);
@@ -25,8 +25,8 @@ export default function ({ state: st, states, site, flies }) {
 
   const faqs = [
     {
-      q: `Do you need a fishing licence to fly fish in ${st.name}?`,
-      a: `Yes. ${lic.agency} issues them. As of ${lic.priceYear}, an adult annual resident licence is ${lic.residentAnnual} and a non-resident licence is ${lic.nonResidentAnnual}. ${lic.priceNote}`,
+      q: `Do you need a fishing license to fly fish in ${st.name}?`,
+      a: `Yes. ${lic.agency} issues them. As of ${lic.priceYear}, an adult annual resident license is ${lic.residentAnnual} and a non-resident license is ${lic.nonResidentAnnual}. ${lic.priceNote}`,
     },
     {
       q: `What trout are in ${st.name}?`,
@@ -146,17 +146,17 @@ export default function ({ state: st, states, site, flies }) {
     </section>
 
     <section class="state-section" aria-labelledby="lic-h">
-      <h2 class="h2" id="lic-h">Do you need a licence to fly fish in ${esc(st.name)}?</h2>
+      <h2 class="h2" id="lic-h">Do you need a license to fly fish in ${esc(st.name)}?</h2>
       <div class="prose">
         <p>
-          Yes. Licences are issued by
-          <a href="${esc(lic.licenceUrl)}" rel="noopener">${esc(lic.agency)}</a>.
+          Yes. Licenses are issued by
+          <a href="${esc(lic.licenseUrl)}" rel="noopener">${esc(lic.agency)}</a>.
         </p>
       </div>
       <div class="post-tablewrap" tabindex="0">
         <table class="post-table">
-          <caption class="post-table__caption">Adult annual fishing licence, ${esc(lic.priceYear)}</caption>
-          <thead><tr><th scope="col">Licence</th><th scope="col">Price</th></tr></thead>
+          <caption class="post-table__caption">Adult annual fishing license, ${esc(lic.priceYear)}</caption>
+          <thead><tr><th scope="col">License</th><th scope="col">Price</th></tr></thead>
           <tbody>
             <tr><td>Resident, annual</td><td>${esc(lic.residentAnnual)}</td></tr>
             <tr><td>Non-resident, annual</td><td>${esc(lic.nonResidentAnnual)}</td></tr>
@@ -187,10 +187,10 @@ export default function ({ state: st, states, site, flies }) {
     <section class="state-section" aria-labelledby="more-h">
       <h2 class="h3" id="more-h">Keep reading</h2>
       <ul class="state-rules">
-        <li><a href="/blog/do-i-need-a-fishing-license/">Do I need a fishing licence?</a> — how licensing works across states</li>
+        <li><a href="/blog/do-i-need-a-fishing-license/">Do I need a fishing license?</a> — how licensing works across states</li>
         <li><a href="/blog/how-to-read-water-fly-fishing/">How to read water</a> — where trout hold, anywhere</li>
         <li><a href="/blog/best-time-of-day-to-fly-fish/">Best time of day to fly fish</a> — the seasonal logic behind the table above</li>
-        <li><a href="/flies/">The Fly-brary</a> — every fly in the deck, explained</li>
+        <li><a href="/flies/">Our Fly-brary</a> — every fly in the deck, explained</li>
       </ul>
       ${others.length ? `<p class="cluster" style="margin-block-start:var(--s-5)">
         ${others.map((o) => `<a class="btn btn--quiet btn--sm" href="/fly-fishing-in-${esc(o.slug)}/">Fly fishing in ${esc(o.name)}</a>`).join('\n        ')}

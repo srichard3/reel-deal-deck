@@ -98,7 +98,7 @@ export const meta = {
       name: "What's in the deck",
       url: 'https://reeldealdeck.com/cards/',
       description:
-        'How a Reel Deal Deck card is laid out, the two-colour suit system, the four suits, the three specials, the engraved back and box, and how the deck is printed.',
+        'How a Reel Deal Deck card is laid out, the two-color suit system, the four suits, the three specials, the engraved back and box, and how the deck is printed.',
       isPartOf: {
         '@type': 'WebSite',
         name: 'The Reel Deal Deck',
@@ -210,7 +210,7 @@ function suitInk(site) {
       <p class="section-num" aria-hidden="true">2&#9829;</p>
       <h2 class="h2" id="ink-h">Green and brown, not red and black</h2>
       <p class="lede">
-        ${esc(craft.suits || 'A two-colour deck: green replaces red on hearts and diamonds, bark brown replaces black on spades and clubs.')}
+        ${esc(craft.suits || 'A two-color deck: green replaces red on hearts and diamonds, bark brown replaces black on spades and clubs.')}
       </p>
     </div>
 
@@ -227,7 +227,7 @@ function suitInk(site) {
 
     <p class="lede" style="margin-block-start:var(--s-7);max-inline-size:var(--measure)">
       It still deals and reads like a normal deck &mdash; four suits, thirteen ranks, the same
-      corner index in the same corner. The colours come off the tuck box and the card back,
+      corner index in the same corner. The colors come off the tuck box and the card back,
       so a hand of cards looks like the river it came from rather than a casino.
     </p>
   </div>
@@ -459,7 +459,7 @@ function printing(site) {
 }
 
 function styles() {
-  /* Scoped to this page. Tokens only — no literal colours. Declared in the
+  /* Scoped to this page. Tokens only — no literal colors. Declared in the
      handover report; fold into components.css if it earns its keep. */
   return `<style>
 .cards-anatomy { display: grid; gap: var(--s-7); align-items: start; }

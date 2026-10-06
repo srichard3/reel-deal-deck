@@ -14,10 +14,13 @@
     </nav>
 
     <div class="site-header__actions">
-      <button class="theme-toggle" type="button" data-theme-toggle
-              aria-label="Switch colour theme" title="Switch colour theme">
-        <span aria-hidden="true" data-theme-icon>&#9789;</span>
-      </button>
+      <!-- Wholesale sits beside Order now rather than in the nav: it is for a
+           different visitor entirely, and a shop owner should not have to go
+           hunting. Ghost, not primary — Order now stays the one filled button
+           on the page, so the two never compete. Both are hidden below 62rem
+           by `.site-header__actions .btn`; the drawer below carries it there,
+           pointed at the same resolved URL. -->
+      <a class="btn btn--ghost btn--sm" href="{{ meta.wholesaleUrl }}">Wholesale</a>
       <a class="btn btn--primary btn--sm" href="{{ meta.orderUrl }}" rel="{{ meta.orderRel }}" target="{{ meta.orderTarget }}">Order now</a>
       <button class="nav-toggle" type="button" data-nav-toggle
               aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
@@ -39,7 +42,7 @@
       <li><a href="/flies/">Fly-brary</a></li>
       <li><a href="/conservation/">Conservation</a></li>
       <li><a href="/gifts/">Gifts</a></li>
-      <li><a href="/wholesale/">Wholesale</a></li>
+      <li><a href="{{ meta.wholesaleUrl }}">Wholesale</a></li>
     </ul>
     <a class="btn btn--primary btn--block" href="{{ meta.orderUrl }}" rel="{{ meta.orderRel }}" target="{{ meta.orderTarget }}">{{ meta.orderCta }}</a>
   </div>

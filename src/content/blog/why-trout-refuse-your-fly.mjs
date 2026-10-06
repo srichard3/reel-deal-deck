@@ -25,7 +25,7 @@ export const meta = {
     },
     {
       q: 'Does fly size matter more than pattern?',
-      a: 'Yes, consistently. Trout key on size and silhouette far more than on exact colour or dressing. Dropping two hook sizes solves more refusals than switching to a different pattern in the same size.',
+      a: 'Yes, consistently. Trout key on size and silhouette far more than on exact color or dressing. Dropping two hook sizes solves more refusals than switching to a different pattern in the same size.',
     },
   ],
   howTo: null,
@@ -76,14 +76,14 @@ export default function ({ b }) {
 
     ${b.section('How do I know if drag is the problem?', `
       <p>
-        Stop watching the fly and watch the foam beside it. If your fly is travelling at a
+        Stop watching the fly and watch the foam beside it. If your fly is traveling at a
         different speed to the bubbles in the same seam, it is dragging — and a trout notices
         that long before you do.
       </p>
       <p>
         The classic signature is a fish that rises confidently, tracks the fly for a foot, and
         then peels away at the last moment. It committed on silhouette and rejected on
-        behaviour.
+        behavior.
       </p>
       <p>
         Micro-drag is the version that defeats good anglers: movement too small to see at
@@ -177,7 +177,7 @@ export default function ({ b }) {
     ${b.section('When should you finally change the fly?', `
       <p>
         After the other five. And when you do, change <strong>one variable at a time</strong>,
-        starting with size, then stage, then colour, then pattern. Changing everything at once
+        starting with size, then stage, then color, then pattern. Changing everything at once
         means that when something works you have learned nothing.
       </p>
       <p>

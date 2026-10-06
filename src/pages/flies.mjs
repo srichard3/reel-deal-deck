@@ -23,7 +23,7 @@ export const meta = {
 /* Flashcards. The deck exists because Ken went looking for fly-fishing
    flashcards and could not find a set, so the free version of it belongs here.
    Name on the front, what it imitates on the back — that is the association the
-   printed deck is teaching, and the one a reader wants to practise. */
+   printed deck is teaching, and the one a reader wants to practice. */
 function flashData(list) {
   const SUIT = { hearts: '\u2665', diamonds: '\u2666', spades: '\u2660', clubs: '\u2663' };
   const cards = list
@@ -96,7 +96,7 @@ export default function ({ site, flies, posts }) {
   const base = site.url.replace(/\/$/, '');
 
   if (!flies.length) {
-    return `<div class="wrap section"><h1 class="h1">Fly-brary</h1>
+    return `<div class="wrap section"><h1 class="h1">Our Fly-brary</h1>
       <p class="lede">No fly data yet.</p></div>`;
   }
 
@@ -163,7 +163,7 @@ export default function ({ site, flies, posts }) {
          box — while the library also carries the bonus card. Stating a library
          total would contradict the product claim, so it states neither. -->
     <p class="eyebrow">Free reference &middot; no sign-up, no paywall</p>
-    <h1 class="h1 page-head__title">The Fly-brary</h1>
+    <h1 class="h1 page-head__title">Our Fly-brary</h1>
     <p class="page-head__lede lede">
       Everything we know about fly fishing, in one place and free. Ken built this deck
       because he wanted to learn the flies himself, so it would be a bit rich to charge

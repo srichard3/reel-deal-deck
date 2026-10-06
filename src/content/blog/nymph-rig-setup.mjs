@@ -183,7 +183,7 @@ export default function ({ b }) {
         { name: 'Drag', text: 'If the indicator is moving faster than the bubbles beside it, the flies are being dragged. Mend upstream.' },
         { name: 'Weight', text: 'Add a shot. In fast or deep water the rig may not reach the bottom within the drift at all.' },
         { name: 'Position', text: 'You may be fishing the wrong water. Trout hold in specific places, not evenly across a run.' },
-        { name: 'Pattern', text: 'Last. Change the dropper before the anchor, and change size before colour.' },
+        { name: 'Pattern', text: 'Last. Change the dropper before the anchor, and change size before color.' },
       ])}
       <p>
         The order matters. Anglers reliably work this list backwards, and spend an afternoon

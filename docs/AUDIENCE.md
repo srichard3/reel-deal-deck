@@ -4,7 +4,7 @@ Owner: Agent 1 (research & design system). Written 26 Aug 2026.
 
 Everything below is sourced. Where a number does not exist in public data, this
 document says so and reasons from what is available rather than inventing one.
-Source quality is graded inline: **[primary]** = the organisation that collected
+Source quality is graded inline: **[primary]** = the organization that collected
 the data, **[trade]** = industry press reporting it, **[weak]** = vendor or agency
 marketing content, useful as a directional signal only.
 
@@ -96,7 +96,7 @@ thing, competing with fear of buying a boring thing.** A hand-drawn 54-card deck
 resolves both — it cannot be the wrong size, the wrong weight, or a duplicate of
 something in the recipient's vest, and it does not look like socks.
 
-Two supporting behaviours:
+Two supporting behaviors:
 
 - **Only 43% of consumers say they would buy a product with zero ratings or
   reviews**, and confidence rises with review volume for 39%. **[weak — vendor
@@ -143,7 +143,7 @@ What their web presentation actually does:
   her grandson Joe. No "our family has always believed…".
 - **Proves craft with operations, not adjectives** — flies tied in house, named
   domestic partners, a stated inventory standard.
-- **Plain product photography and archive material** (the 1928 catalogue) rather
+- **Plain product photography and archive material** (the 1928 catalog) rather
   than staged lifestyle shots.
 
 The pattern that reads as genuine: **specific, dated, named, checkable, and

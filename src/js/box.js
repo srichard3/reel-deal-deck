@@ -77,7 +77,7 @@
   /* Turn the box by yaw about the screen's vertical and pitch about its
      horizontal — in that frame, not the box's. Pre-multiplication is the whole
      trick: post-multiplying would turn it about its own axes, which is the
-     behaviour that made the old version feel stuck once it was tipped over. */
+     behavior that made the old version feel stuck once it was tipped over. */
   function turn(yaw, pitch) {
     if (!yaw && !pitch) return;
     m = orthonormalize(mul(mul(rotX(pitch), rotY(yaw)), m));
@@ -291,7 +291,7 @@
     apply();
   }
 
-  /* A hint, injected so it never appears without the behaviour it describes. */
+  /* A hint, injected so it never appears without the behavior it describes. */
   var hint = document.createElement('p');
   hint.className = 'tuck__hint';
   hint.textContent = 'Drag to turn it';

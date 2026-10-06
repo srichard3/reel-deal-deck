@@ -9,7 +9,7 @@ Owner: content. Scope: `src/content/blog/*.mjs` only. Governed by `docs/BLOG-CON
 **There are no measured search volumes in this document, and there must never be any.** We do not have
 a paid keyword tool. Any figure of the form "8,100 searches/month" that appears in an SEO plan without
 a tool behind it is fabricated, and fabricated numbers get planned against for years. So this backlog
-ranks **relative demand** and **winnability**, both stated as judgements with the evidence that
+ranks **relative demand** and **winnability**, both stated as judgments with the evidence that
 produced them.
 
 How the picture was assembled:
@@ -36,7 +36,7 @@ How the picture was assembled:
 **Winnability, stated plainly.** A site with one commit cannot take "how to fly fish". It can take
 "how far above the fly does a strike indicator go", because that is a specific question with a
 specific numeric answer, and the pages currently answering it bury the number in paragraph nine.
-Every entry below carries a winnability judgement on that basis.
+Every entry below carries a winnability judgment on that basis.
 
 Sources consulted while building this plan are listed in section 6.
 
@@ -61,7 +61,7 @@ reaches a product that teaches 54 fly patterns.
 | 5 | Dry fly or nymph — which should I fish? | technique | **High.** Decision question, table-shaped, and the honest answer (nymph most days) is stated hesitantly elsewhere. | parachute-adams, pheasant-tail-nymph, woolly-bugger |
 | 6 | How do I read water and find trout? | technique | **Medium-high.** Gink and Gasoline own a good version. Winnable by being structural: named water types, each self-contained, each with what to fish. | elk-hair-caddis, pats-rubber-legs |
 | 7 | What flies do I actually need to start? | basics | **High.** Perfect bridge. Must be a *selection strategy* page (sizes, categories, how many), never a pattern explainer — patterns live in /flies/. | adams, pheasant-tail-nymph, elk-hair-caddis, woolly-bugger, zebra-midge |
-| 8 | Do I need a fishing licence to fly fish? | practical | **High.** High intent, low competition from anglers (state agencies rank, but they answer per-state). Our win is the national framing + "check your state" done properly. | — (none; regulatory) |
+| 8 | Do I need a fishing license to fly fish? | practical | **High.** High intent, low competition from anglers (state agencies rank, but they answer per-state). Our win is the national framing + "check your state" done properly. | — (none; regulatory) |
 | 9 | How do I set up a strike-indicator nymph rig? | technique | **High.** Specific numeric answers (indicator at 1.5–2× depth, shot 12–18in above the point fly) that incumbents bury. | pheasant-tail-nymph, zebra-midge, perdigon |
 | 10 | What is the best time of day to fly fish? | seasons | **Medium-high.** Heavily covered, but almost always seasonally vague. Winnable with a season × time-of-day table plus water temperature bands. | zebra-midge, blue-wing-olive |
 | 11 | How much does it cost to start fly fishing? | practical | Medium. Demand is huge; competition is affiliate-driven. Winnable only if we publish honest ranges with sources and refuse to recommend products. |chubby-chernobyl |
@@ -132,7 +132,7 @@ a Fly Library page at `/flies/<slug>/`, and a second page targeting it costs us 
 - `when to fish a <pattern>` / `best time for <pattern>`
 - `how to tie a <pattern>` (dressing, materials, recipe)
 - `<pattern> vs <pattern>` where both are named patterns (e.g. Adams vs Parachute Adams)
-- `best <pattern> colours/variants`
+- `best <pattern> colors/variants`
 - any article whose `<h1>` contains a pattern name from `data/flies.json`
 
 **Permitted, and the distinction that keeps it clean:**
@@ -191,9 +191,9 @@ Publisher and community pages used to audit incumbent coverage and query phrasin
 - Idaho Fish and Game — *Licenses, tags, and permits* — https://idfg.idaho.gov/licenses
 - Idaho Fish and Game — *Fishing Seasons and Rules* — https://idfg.idaho.gov/rules/fish
 - Virginia DWR — *Catch and Release Best Practices* — https://dwr.virginia.gov/blog/grab-a-big-net-and-keep-your-hands-wet-catch-and-release-best-practices/
-- Take Me Fishing (RBFF) — state licence portal — https://www.takemefishing.org/
+- Take Me Fishing (RBFF) — state license portal — https://www.takemefishing.org/
 - Trout Unlimited — https://www.tu.org/
 
 <!-- TODO-CONFIRM: no paid keyword tool was used. If one is ever licensed, re-rank sections 2 and 3
-     against measured volume and difficulty, and replace the winnability judgements with data. Do not
+     against measured volume and difficulty, and replace the winnability judgments with data. Do not
      retro-fit numbers to this document from memory or estimation. -->

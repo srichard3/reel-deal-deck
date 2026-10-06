@@ -51,14 +51,14 @@ extractable. They are requirements, not suggestions.
    section must make sense alone — no "as mentioned above".
 5. **Say the quiet part.** State units, ranges and caveats explicitly ("a 9-foot 5-weight, the most
    common trout setup in North America"). Vague copy cannot be quoted.
-6. **Source real claims.** Anything about regulations, licences, biology or safety needs a link to a
+6. **Source real claims.** Anything about regulations, licenses, biology or safety needs a link to a
    primary source (a state wildlife agency, not another blog).
 7. **Freshness.** Every post carries `date` and, when edited, `updated`. Both render visibly and in schema.
 
 ### Honesty rules
 
 - Never invent statistics, prices, study results or expert quotes.
-- Licence and regulation content varies by state — say so, link to the state agency, never give a
+- License and regulation content varies by state — say so, link to the state agency, never give a
   specific legal answer for all 50 states.
 - No medical, legal or safety advice beyond "check with the relevant authority".
 - Anything unverifiable goes in as a `TODO-CONFIRM` HTML comment, never as an invented fact.

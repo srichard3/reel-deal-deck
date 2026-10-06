@@ -17,7 +17,7 @@ export const meta = {
     },
     {
       q: 'Does the exact pattern matter?',
-      a: 'Less than size, depth and drift. A trout in moving water judges silhouette and size before colour, and a fly at the wrong depth is not judged at all. Get those three right with an ordinary pattern before you go looking for a better fly.',
+      a: 'Less than size, depth and drift. A trout in moving water judges silhouette and size before color, and a fly at the wrong depth is not judged at all. Get those three right with an ordinary pattern before you go looking for a better fly.',
     },
     {
       q: 'What size flies should I start with?',
@@ -90,7 +90,7 @@ export default function ({ b }) {
           ['Terrestrial', `${b.flyLink('beetle')}`, '#12, #14', 'Summer, wind, and grassy banks'],
           ['Big buoyant dry', `${b.flyLink('chubby-chernobyl')}`, '#8, #10', 'Doubles as the indicator on a dry-dropper rig'],
           ['Streamer', `${b.flyLink('woolly-bugger')}`, '#8, #10', 'Covers water fast; works when the surface tells you nothing'],
-          ['Wildcard', `${b.flyLink('san-juan-worm')}`, '#12', 'High, coloured water, when nothing subtle is being seen'],
+          ['Wildcard', `${b.flyLink('san-juan-worm')}`, '#12', 'High, colored water, when nothing subtle is being seen'],
         ]
       )}
       <p>
@@ -104,8 +104,8 @@ export default function ({ b }) {
       <p>
         A trout holding in moving current has a fraction of a second to accept or reject something
         drifting past. In that window it is reading, roughly in order: <strong>size</strong>, then
-        <strong>silhouette</strong>, then <strong>behaviour</strong> (is it drifting naturally?), then
-        colour. Pattern name comes nowhere.
+        <strong>silhouette</strong>, then <strong>behavior</strong> (is it drifting naturally?), then
+        color. Pattern name comes nowhere.
       </p>
       <p>
         This is why the same dressing in three sizes is more useful than three different dressings in
@@ -125,7 +125,7 @@ export default function ({ b }) {
         },
         {
           name: 'Pick the category first',
-          text: 'Rises and insects on the surface mean a dry fly. Nothing showing means a nymph. High, coloured or very low light means a streamer. The category decision matters far more than the pattern decision.',
+          text: 'Rises and insects on the surface mean a dry fly. Nothing showing means a nymph. High, colored or very low light means a streamer. The category decision matters far more than the pattern decision.',
         },
         {
           name: 'Match the size you can see',
@@ -163,7 +163,7 @@ export default function ({ b }) {
       </p>
     `)}
 
-    ${b.section('How should I organise and look after them?', `
+    ${b.section('How should I organize and look after them?', `
       <p>
         One box, sorted by category rather than by pattern &mdash; dries in one row, nymphs in
         another, streamers in a third. Sorting by category matches the way you actually decide on the

@@ -183,7 +183,7 @@
   function successCopy(kind) {
     switch (kind) {
       case 'wholesale':
-        return '<strong>Enquiry saved.</strong> Nothing has been ordered and no account has been opened. ' +
+        return '<strong>Inquiry saved.</strong> Nothing has been ordered and no account has been opened. ' +
                'This site is pre-launch, so your details were stored in this browser only — ' +
                'email <a href="mailto:support@reeldealdeck.com">support@reeldealdeck.com</a> and we will reply personally.';
       case 'reserve':

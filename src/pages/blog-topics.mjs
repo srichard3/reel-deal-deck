@@ -61,7 +61,7 @@ const SCOPE = {
     not: 'Hatch-by-hatch pattern selection.',
   },
   practical: {
-    covers: ['Licences and where to check the rules', 'What fly fishing costs to start', 'Catch-and-release handling and etiquette'],
+    covers: ['Licenses and where to check the rules', 'What fly fishing costs to start', 'Catch-and-release handling and etiquette'],
     not: 'Legal advice — regulations are set by each state agency.',
   },
 };

@@ -5,8 +5,8 @@
    components.css and are used, not redefined.
    ========================================================================== */
 
-/* --- suit colour ---------------------------------------------------------
-   components.css colours every index with --c-accent. On a real card only
+/* --- suit color ---------------------------------------------------------
+   components.css colors every index with --c-accent. On a real card only
    hearts and diamonds are red; spades and clubs are black. For a brand whose
    whole identity is a playing card, this is not a detail worth getting wrong. */
 .playing-card__index[data-suit="spades"],
