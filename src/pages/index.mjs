@@ -130,9 +130,21 @@ function cardFan(flies) {
       </li>`;
   };
 
+  /* The scrub pad is deliberately the FIRST child and sits below every card in
+     the stacking order. It still receives every touch, because the whole fan is
+     pointer-events:none — the card, the link and the art all are, and on a
+     coarse pointer the sliver is switched off too. So on a phone the pad is the
+     only thing in the fan that hits, which is what lets a drag walk the deck
+     without any card's anchor firing. The one exception is the picked card's
+     art, which is given pointer-events:auto and a z-index above the pad, so a
+     second tap lands on its link and navigates.
+
+     It is inert on a mouse: fan.js never arms it, and CSS leaves it
+     pointer-events:none outside (hover: none). Desktop is untouched. */
   return `
-    <div class="fan-stage">
+    <div class="fan-stage" data-fan-stage>
       <ul class="fan" style="--fan-n:${list.length};--fan-mid:${mid}">
+        <li class="fan__scrub" data-fan-scrub aria-hidden="true"></li>
 ${list.map(card).join('\n')}
       </ul>
     </div>`;
@@ -234,5 +246,6 @@ ${instagramStrip(site, instagram, {
 })}
 
 <script src="/js/box.js" defer></script>
+<script src="/js/fan.js" defer></script>
 `;
 }

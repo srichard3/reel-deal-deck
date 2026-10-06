@@ -2811,6 +2811,16 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   block-size: calc(var(--fan-ch) * 2.25);
 }
 
+/* The touch scrub pad. Covers the fan, sits under every card, and hits nothing
+   until fan.js arms it on a coarse pointer — see the block at the end of this
+   section. On a mouse it does not exist as far as the page is concerned. */
+.fan__scrub {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
 /* --- layer 1: position and stacking. Hits nothing. ---------------------- */
 
 .fan__card {
@@ -2869,7 +2879,11 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   pointer-events: none;
   /* Bottom center: a card grows up out of the fan and its base stays put. */
   transform-origin: 50% 100%;
-  transform: translateY(var(--lift)) scale(var(--pop));
+  /* --nudge is 0 for every card at rest, and for every card on a desktop. Only a
+     PICKED card on a phone takes the value fan.js measured for it, via
+     --nudge-at below — applying it at rest would shift cards sideways in the
+     closed fan, which is exactly the bug this comment replaces. */
+  transform: translateX(var(--nudge, 0px)) translateY(var(--lift)) scale(var(--pop));
   border-radius: var(--r-card-art);
   /* The card art is cropped to its own keyline, so this radius is the card's
      own. See --r-card-art in tokens.css — it was measured, not guessed. */
@@ -2888,11 +2902,14 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 
 /* --- the lift ----------------------------------------------------------- */
 
+/* Three ways in, one appearance: pointer, keyboard, and the touch scrub. */
 .fan__card:hover,
-.fan__card:focus-within { z-index: 60; }
+.fan__card:focus-within,
+.fan__card.is-picked { z-index: 60; }
 
 .fan__card:hover .fan__art,
-.fan__card:focus-within .fan__art {
+.fan__card:focus-within .fan__art,
+.fan__card.is-picked .fan__art {
   --lift: calc(var(--fan-lift) * -1);
   --pop: var(--fan-pop);
   box-shadow: 0 2px 8px rgb(0 0 0 / .2), 0 18px 36px rgb(0 0 0 / .28);
@@ -2946,16 +2963,87 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   .fan__name { transition: none; }
 }
 
-/* A fan sized to a phone would be slivers a few pixels wide. It keeps its real
-   size and the stage scrolls instead. There is no hover on a phone, so a tap
-   goes straight to the card's page — and the strip is the tap target, so it is
-   widened here to stay comfortably tappable. */
-@media (pointer: coarse) {
-  .fan { --fan-cw: 104px; }
+/* There is no hover on a touch screen, and a :hover that latches on tap leaves a
+   card stuck up. Neutralise it; the pick below is what lifts a card there. */
+@media (hover: none) {
   .fan__card:hover { z-index: calc(var(--i) + 1); }
   .fan__card:hover .fan__art { --lift: 0px; --pop: 1; }
   .fan__card:hover .fan__name { opacity: 0; }
 }
+
+/* --- the touch scrub ------------------------------------------------------
+   Hold and drag to walk the deck, release to keep a card up, tap it to open it.
+
+   Everything here hangs off .is-scrubbable, which fan.js adds only on a coarse
+   pointer. That is not decoration: with JS off, or on a mouse, none of it
+   applies and the fan is exactly what it was — full-size cards, a stage that
+   scrolls on a phone, and a tap that goes straight to the card's page.
+
+   Why a phone needed its own answer at all: the fan is 7.44 card widths across,
+   so at the old 104px card it was 774px inside a 390px screen. Half the deck
+   was off the side, and each card showed an 11px strip, so a tap was a guess
+   that navigated immediately. Nothing previewed, and most of the deck was
+   unreachable. */
+
+.fan-stage.is-scrubbable {
+  /* No scroll container: the horizontal axis belongs to the scrub now. But the
+     rotated cards spill ~20px past the fan's own box, which used to be absorbed
+     by the scrolling stage and would otherwise give the whole PAGE a 4px
+     horizontal scroll. `clip` stops that without creating a scroll container,
+     and it is the one value that lets the other axis stay `visible`.
+     It is safe only because every lifted card is nudged inside the screen
+     first — measured, all 54 land within 8px of each edge. Without that this
+     would cut a third off the end cards. */
+  overflow-x: clip;
+  overflow-y: visible;
+  /* Horizontal is ours, vertical stays the page's — the same bargain the tuck
+     box makes. fan.js also drops any gesture that is more vertical than
+     horizontal, so a scroll that starts on the fan still scrolls. */
+  touch-action: pan-y;
+  /* Room for a card at --fan-pop to stand up without hitting the section above.
+     Measured against the picked card's top, not guessed. */
+  padding-block-start: calc(var(--s-6) + 4.5rem);
+}
+
+.fan-stage.is-scrubbable .fan {
+  /* Fit all 54 on screen. Scrubbing a strip you cannot see is pointless, and
+     7.44 is the fan's width in card widths, so this is the largest card that
+     puts the whole deck inside the viewport. */
+  --fan-cw: min(clamp(76px, 13vw, 150px), calc((100vw - 2rem) / 7.44));
+  /* Each card is now a few pixels wide, so the picked one has to carry the
+     whole preview. It is the only thing you can tap, which is also what keeps
+     the real target well over the 24px minimum. */
+  --fan-pop: 2.2;
+  --fan-lift: 1.4rem;
+}
+
+/* The sliver is a mouse target. Here it would be ~6px, so it is switched off
+   and the pad underneath takes every touch instead. */
+.fan-stage.is-scrubbable .fan__link::after { pointer-events: none; }
+.fan-stage.is-scrubbable .fan__scrub { pointer-events: auto; }
+
+/* The picked card is the one tappable thing in the fan. It sits at z-index 60,
+   above the pad, so a tap lands on it rather than picking again. */
+.fan-stage.is-scrubbable .fan__card.is-picked .fan__art {
+  pointer-events: auto;
+  /* Only now, and only here: slide it back inside the screen. */
+  --nudge: var(--nudge-at, 0px);
+}
+
+/* Its name is always up, because on a phone it is the only label you get. */
+.fan-stage.is-scrubbable .fan__card.is-picked .fan__name { opacity: 1; }
+
+/* Calibration measures where each card WOULD stand up, so it has to see the
+   final geometry rather than the first frame of a 120ms transition. */
+.fan.is-calibrating .fan__art { transition: none; }
+.fan.is-calibrating .fan__card.is-picked .fan__art { --nudge: var(--nudge-at, 0px); }
+
+/* For the length of one elementFromPoint call, fan.js turns the wedges back on
+   so it can ask the browser which card is under the finger using the very same
+   hit map that drives hover on a desktop. Switching them back off afterwards is
+   what keeps a stray tap off a 6px strip from navigating. */
+.fan.is-probing .fan__link::after { pointer-events: auto; }
+.fan.is-probing .fan__card.is-picked .fan__art { pointer-events: none; }
 
 /* The founding question on /story/ — the one line the whole page turns on, so
    it is set apart rather than buried in a paragraph of its own size. */

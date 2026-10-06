@@ -193,6 +193,57 @@ at 54 cards it is ~18px at any card size — under the 24px WCAG 2.5.8 minimum, 
 known exception carried by the full list at `/flies/`. Showing half the deck got
 it to 25px if that trade is ever wanted.
 
+**The fan has two interactions, and the phone one is all in `src/js/fan.js`.**
+That file returns before touching the DOM unless `(pointer: coarse)` matches, so
+the desktop fan is exactly the CSS it always was. Everything it adds hangs off
+`.is-scrubbable`, which it puts on the stage — with JS off, a phone falls back to
+the old behaviour. On a phone: **drag walks the deck, release leaves that card
+up, tap it to open it.**
+
+Why a phone needed its own answer: the fan is 7.44 card widths across, so at the
+old 104px card it was 774px inside a 390px screen. Half the deck sat outside a
+scroll container and each card showed an 11px strip, so a tap was a guess that
+navigated with no preview. On touch the fan is shrunk to fit the screen, the
+wedges are switched off, and a full-size pad **underneath** every card takes the
+touches — it works because the card, the link and the art are all
+`pointer-events: none`, so events fall through to it. The one exception is the
+picked card's art, which gets `pointer-events: auto` and sits at `z-index: 60`,
+so a second tap opens it.
+
+**The x-to-card mapping is a probed table, built once, forced non-decreasing.**
+The fan is an arc: the middle rides high and the ends droop, so one probe row met
+cards 15–45 and missed the other 23. Probing several rows fixes coverage but
+makes the answer depend on where the thumb sits vertically, so the same drag
+could step backwards. Instead `fan.js` probes every pixel across the fan once,
+clamps the result to be non-decreasing, and scrubs off the table — selection is a
+pure function of x. **It cannot be built at load**: `elementFromPoint` takes
+viewport coordinates and the fan is ~1900px below the fold, so every probe
+returns null. It is built when the fan first intersects, via
+`requestIdleCallback(fn, {timeout: 1200})`, costing ~65ms off the critical path;
+`pointerdown` builds it synchronously only as a fallback (~79ms).
+**The IntersectionObserver must not disconnect until a build succeeds** — it
+fired on a rootMargin while the fan was still off-screen, the build bailed, and
+the calibration never ran.
+
+**A lifted card is nudged back on screen, and the nudge is measured twice.**
+At `--fan-pop` the end cards reached 53px past each edge at 320px. `fan.js` pops
+each card once and writes a correction to `--nudge-at`; CSS applies it only to a
+picked card, because applying it at rest shifts cards sideways in the closed fan.
+`translateX` runs along the **card's own x-axis**, and end cards are rotated ~40°,
+so a 61px nudge moved one only 47px across the screen — the code applies a probe
+offset, measures the response, and scales by it rather than modelling a cosine.
+`.fan-stage.is-scrubbable` is then `overflow-x: clip` / `overflow-y: visible` to
+absorb the ~20px the rotated cards spill past the fan's box, which would
+otherwise give the whole page a 4px horizontal scroll. **That clip is only safe
+because the nudges land every card inside 8px of each edge** — without them it
+cuts a third off the end cards.
+
+**A scrub must never navigate, and where the click landed cannot decide that.**
+A drag always ends with the lifted card under the finger, so "did the click hit
+the picked card" is true after every scrub. `fan.js` carries a `didScrub` flag
+through to the click instead. Verify by dispatching a drag and asserting zero
+anchor activations, then a tap on the picked card and asserting exactly one.
+
 **The stage does not clip on desktop.** A lifted card rises out over whatever is
 above it, which is the point. `.fan-stage` is only a scroll container below
 48rem, where the fan is wider than the screen and there is no hover anyway — and
