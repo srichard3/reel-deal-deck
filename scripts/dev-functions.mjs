@@ -45,7 +45,7 @@ for (const entry of await readdir(dir)) {
   if (typeof mod.default === 'function') routes.set(route, mod.default);
 }
 
-createServer(async (req, res) => {
+const server = createServer(async (req, res) => {
   const url = decodeURIComponent(req.url.split('?')[0]);
   const fn = routes.get(url);
   if (!fn) return serveStatic(req, res);
@@ -72,7 +72,22 @@ createServer(async (req, res) => {
   const buf = Buffer.from(await out.arrayBuffer());
   res.writeHead(out.status, Object.fromEntries(out.headers));
   res.end(buf);
-}).listen(PORT, () => {
+});
+
+/* A stale server from an earlier run is the usual reason this fails, and Node's
+   default is an unhandled 'error' event and twelve lines of stack. Say what
+   happened and how to clear it. */
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\n  Port ${PORT} is already in use — most likely a dev server still running from earlier.\n`);
+    console.error(`  Free it with:   lsof -ti:${PORT} | xargs kill -9`);
+    console.error(`  Or use another: PORT=8899 npm run dev:fn\n`);
+    process.exit(1);
+  }
+  throw err;
+});
+
+server.listen(PORT, () => {
   console.log(`\n  dist/ + functions → http://localhost:${PORT}`);
   for (const r of routes.keys()) console.log(`    ${r}`);
   console.log(`  wholesale form: ${process.env.WHOLESALE_LIVE === '1' ? 'ON' : 'OFF (set WHOLESALE_LIVE=1)'}\n`);
