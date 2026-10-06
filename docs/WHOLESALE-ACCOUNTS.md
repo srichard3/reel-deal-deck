@@ -212,6 +212,37 @@ until a human approves. Re-test if the segment query is ever edited.
 
 ---
 
+## 2c. One account per shop
+
+**Shopify guarantees unique emails.** That is the only hard constraint, and it
+is Shopify's, not ours — `customerCreate` refuses a second account on an address
+that already exists, whatever this function does.
+
+Two things make that read correctly to an applicant:
+
+- The email is **lowercased** before anything compares it, because Shopify
+  stores and matches it lowercased. Otherwise `Sam@Shop.com` sails past our own
+  pre-check and only Shopify catches it.
+- Shopify's **customer search index lags about five seconds** behind
+  `customerCreate` (measured 2026-10-06). So the pre-check can look up an email,
+  find nothing, and be wrong — an applicant who double-clicks hits exactly that.
+  The function therefore also catches Shopify's own "Email has already been
+  taken" and returns the same 409. **That** is the check that guarantees one
+  account per email; the earlier lookup exists to answer before a file is
+  uploaded, not to be the guarantee.
+
+**What none of this prevents: the same shop applying twice on two addresses.**
+`buyer@shop.com` and `owner@shop.com` are two different people as far as every
+system here is concerned, and sometimes genuinely are. There is no technical fix
+that does not also reject legitimate second buyers at the same business.
+
+That is what `REVIEW_ONLY=1` is for. Applications queue as `wholesale-pending`,
+and the business name and address are on the customer record where a human can
+see that Silver Creek Outfitters already has an account. Approving is one tag
+change; merging two records is not.
+
+---
+
 ## 3. The environment variables
 
 Netlify → Site configuration → Environment variables:

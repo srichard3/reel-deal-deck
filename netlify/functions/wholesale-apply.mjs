@@ -209,6 +209,11 @@ export default async (request) => {
   const data = {};
   for (const k of [...REQUIRED, ...OPTIONAL]) data[k] = field(k);
 
+  /* Shopify stores and compares emails lowercased, so compare ours the same
+     way. Without this, Sam@Shop.com does not match the existing sam@shop.com in
+     our own pre-check and the duplicate only surfaces as a Shopify error. */
+  data.email = data.email.toLowerCase();
+
   const missing = REQUIRED.filter((k) => !data[k]);
   if (missing.length) return json(400, { error: 'Some required details are missing.', fields: missing });
 
@@ -357,6 +362,22 @@ export default async (request) => {
         metafields,
       },
     });
+    /* The pre-check above is not enough on its own: Shopify's customer SEARCH
+       index lags roughly five seconds behind customerCreate (measured
+       2026-10-06), so an applicant who double-clicks, or retries straight away,
+       passes a lookup that genuinely cannot see the record yet. Shopify itself
+       always enforces unique emails, so treat its refusal as the same answer
+       the pre-check would have given rather than as a server fault. This is the
+       check that actually guarantees one account per email; the earlier one
+       exists to answer before a file is uploaded. */
+    const createErrs = signedUp.customerCreate?.userErrors || [];
+    if (createErrs.some((e) => /email/i.test(String(e.field)) && /taken/i.test(e.message))) {
+      return json(409, {
+        error: 'There is already an account on that email address. Please sign in instead — Shopify will email you a code.',
+        fields: ['email'],
+        existing: true,
+      });
+    }
     assertNoUserErrors('customerCreate', signedUp.customerCreate);
 
     /* ----------------------------------------------------------- the cart -- */

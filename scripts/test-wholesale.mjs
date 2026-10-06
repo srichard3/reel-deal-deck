@@ -164,6 +164,58 @@ for (const [name, run, want] of cases) {
   console.log(`${noUpload ? '  ok  ' : ' FAIL '} the permit is not uploaded before that check (no orphan file)`);
 }
 
+/* THE DUPLICATE RACE. Shopify's customer search index lags about five seconds
+   behind customerCreate (measured 2026-10-06), so the pre-check can look up an
+   email, find nothing, and be wrong — an applicant who double-clicks hits it.
+   Shopify refuses the create itself, and that refusal has to read as "you
+   already have an account", not as a server fault. Stubbed so the lookup finds
+   NOTHING and the create reports the email taken: exactly the race. */
+{
+  const origFetch = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    const b = String(init?.body || '');
+    const ok = (o) => new Response(JSON.stringify({ data: o }), {
+      status: 200, headers: { 'content-type': 'application/json' } });
+    if (!b.includes('{')) return new Response('', { status: 200 });
+    if (b.includes('byEmail')) return ok({ customers: { nodes: [] } });   /* index is behind */
+    if (b.includes('stagedUploadsCreate')) return ok({ stagedUploadsCreate: {
+      stagedTargets: [{ url: 'https://example.invalid/upload', resourceUrl: 'x', parameters: [] }],
+      userErrors: [] } });
+    if (b.includes('fileCreate')) return ok({ fileCreate: {
+      files: [{ id: 'gid://shopify/GenericFile/1' }], userErrors: [] } });
+    if (b.includes('customerCreate')) return ok({ customerCreate: {
+      customer: null, userErrors: [{ field: ['email'], message: 'Email has already been taken' }] } });
+    throw new Error('blocked in test');
+  };
+  const origError = console.error;
+  console.error = () => {};
+  const r = await fn(post(body()));
+  const j = await r.clone().json().catch(() => ({}));
+  globalThis.fetch = origFetch;
+  console.error = origError;
+
+  const good = r.status === 409 && j.existing === true;
+  if (!good) fail++;
+  console.log(`${good ? '  ok  ' : ' FAIL '} ${r.status}  (want 409)  a duplicate the search index missed still reads as a sign-in`);
+}
+
+/* The email is lowercased before anything compares it, because Shopify stores
+   and matches it lowercased. Sam@Shop.com must not become a second account. */
+{
+  const seen = [];
+  const origFetch = globalThis.fetch;
+  globalThis.fetch = async (url, init) => { seen.push(String(init?.body || '')); throw new Error('blocked in test'); };
+  const origError = console.error;
+  console.error = () => {};
+  await fn(post(body({ email: 'Sam.Rivers@Example.COM' })));
+  globalThis.fetch = origFetch;
+  console.error = origError;
+  const q = seen.find((b) => b.includes('byEmail')) || '';
+  const lower = q.includes('sam.rivers@example.com') && !q.includes('Sam.Rivers@Example.COM');
+  if (!lower) fail++;
+  console.log(`${lower ? '  ok  ' : ' FAIL '} the email is lowercased before it is looked up`);
+}
+
 /* unset credentials must say so rather than pretending the application failed */
 delete process.env.SHOPIFY_ADMIN_TOKEN;
 const res = await fn(post(body()));
