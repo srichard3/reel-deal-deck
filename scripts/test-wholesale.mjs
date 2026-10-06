@@ -151,16 +151,17 @@ for (const [name, run, want] of cases) {
   console.log(`${noCustPhone ? '  ok  ' : ' FAIL '} no customer-level phone (Shopify requires it unique)`);
 }
 
-/* An email that already has an account is a sign-in, not a signup — and it is
+/* An email that has ALREADY APPLIED is a sign-in, not a signup — and it is
    answered BEFORE the permit is staged, so a repeat applicant cannot leave an
-   orphaned tax document in Shopify Files. */
+   orphaned tax document in Shopify Files. (An existing account with no
+   wholesale tag is a different case entirely, and is tested above.) */
 {
   const calls = [];
   const origFetch3 = globalThis.fetch;
   globalThis.fetch = async (url, init) => {
     calls.push(String(init?.body || ''));
     return new Response(JSON.stringify({
-      data: { customers: { nodes: [{ id: 'gid://shopify/Customer/1' }] } },
+      data: { customers: { nodes: [{ id: 'gid://shopify/Customer/1', tags: ['wholesale'], addresses: [] }] } },
     }), { status: 200, headers: { 'content-type': 'application/json' } });
   };
   const r = await fn(post(body()));
@@ -168,9 +169,79 @@ for (const [name, run, want] of cases) {
 
   const okDup = r.status === 409;
   const noUpload = !calls.some((c) => c.includes('stagedUploadsCreate'));
-  if (!okDup || !noUpload) fail++;
-  console.log(`${okDup ? '  ok  ' : ' FAIL '} ${r.status}  (want 409)  an existing email is a sign-in, not a signup`);
+  if (!okDup) fail++;
+  if (!noUpload) fail++;
+  console.log(`${okDup ? '  ok  ' : ' FAIL '} ${r.status}  (want 409)  an email that already applied is a sign-in`);
   console.log(`${noUpload ? '  ok  ' : ' FAIL '} the permit is not uploaded before that check (no orphan file)`);
+}
+
+/* A RETAIL BUYER UPGRADING. The likely path to a wholesale account is a shop
+   owner who bought one deck to look at it — creating an account at checkout —
+   and now wants to stock it. Refusing that left no way forward at all: the form
+   said "sign in instead" and signing in gave them nothing, because an account
+   without the tag is a retail account. Only an email that has ALREADY applied
+   is refused now. */
+function withExisting(nodes, sink) {
+  const ok = (o) => new Response(JSON.stringify({ data: o }), {
+    status: 200, headers: { 'content-type': 'application/json' } });
+  return async (url, init) => {
+    const b = String(init?.body || '');
+    if (sink) sink.push(b);
+    if (!b.includes('{')) return new Response('', { status: 200 });
+    if (b.includes('byEmail')) return ok({ customers: { nodes } });
+    if (b.includes('stagedUploadsCreate')) return ok({ stagedUploadsCreate: {
+      stagedTargets: [{ url: 'https://example.invalid/upload', resourceUrl: 'x', parameters: [] }], userErrors: [] } });
+    if (b.includes('fileCreate')) return ok({ fileCreate: { files: [{ id: 'gid://shopify/GenericFile/1' }], userErrors: [] } });
+    if (b.includes('tagsAdd')) return ok({ tagsAdd: { node: { id: 'gid://shopify/Customer/9' }, userErrors: [] } });
+    if (b.includes('customerUpdate')) return ok({ customerUpdate: { customer: { id: 'gid://shopify/Customer/9' }, userErrors: [] } });
+    if (b.includes('customerCreate')) return ok({ customerCreate: { customer: { id: 'gid://shopify/Customer/9' }, userErrors: [] } });
+    throw new Error('blocked in test');
+  };
+}
+
+{
+  const sent = [];
+  const origFetch = globalThis.fetch;
+  const origError = console.error;
+  console.error = () => {};
+
+  /* a retail customer: no wholesale tag, and an address already on file */
+  globalThis.fetch = withExisting(
+    [{ id: 'gid://shopify/Customer/9', tags: ['newsletter'], addresses: [{ id: 'a1' }] }], sent);
+  const r = await fn(post(body()));
+  globalThis.fetch = origFetch;
+  console.error = origError;
+
+  const accepted = r.status === 200;
+  if (!accepted) fail++;
+  console.log(`${accepted ? '  ok  ' : ' FAIL '} ${r.status}  (want 200)  a retail buyer with no wholesale tag can apply`);
+
+  /* tagsAdd, not customerUpdate(tags:) — the latter REPLACES the tag list */
+  const usedTagsAdd = sent.some((b) => b.includes('tagsAdd'));
+  const upd = sent.find((b) => b.includes('customerUpdate')) || '';
+  const keptTags = usedTagsAdd && !upd.includes('"tags"');
+  if (!keptTags) fail++;
+  console.log(`${keptTags ? '  ok  ' : ' FAIL '} their existing tags are added to, not replaced`);
+
+  /* addresses REPLACES the address book, so it must not be sent when they
+     already have one — a retail buyer's home address is not ours to overwrite */
+  const keptAddress = !upd.includes('"addresses"');
+  if (!keptAddress) fail++;
+  console.log(`${keptAddress ? '  ok  ' : ' FAIL '} their existing address is left alone`);
+}
+
+{
+  const origFetch = globalThis.fetch;
+  const origError = console.error;
+  console.error = () => {};
+  globalThis.fetch = withExisting(
+    [{ id: 'gid://shopify/Customer/9', tags: ['wholesale-pending'], addresses: [] }]);
+  const r = await fn(post(body()));
+  globalThis.fetch = origFetch;
+  console.error = origError;
+  const refused = r.status === 409;
+  if (!refused) fail++;
+  console.log(`${refused ? '  ok  ' : ' FAIL '} ${r.status}  (want 409)  an email that already applied is still refused`);
 }
 
 /* THE DUPLICATE RACE. Shopify's customer search index lags about five seconds

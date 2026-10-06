@@ -272,16 +272,29 @@ export default async (request) => {
        turns out to be taken — an orphan nobody will ever look at, holding
        somebody's tax document. Ask the cheap question first.
 
-       An account that already exists is a login, not a signup. Say so rather
-       than silently re-tagging somebody else's record: the email is the
-       username, so this is the one place an attacker could try to attach their
-       own details to a shop that already has an account. */
+       An existing account is NOT automatically a refusal. The common path is a
+       shop owner who bought one deck retail to look at it — which created an
+       account at checkout — and now wants to stock it. Refusing them left no
+       way forward at all: the form said "sign in instead", and signing in gave
+       them nothing, because an account without the tag is just a retail
+       account. They could never become a wholesale customer.
+
+       Refuse only an email that has ALREADY applied. The earlier worry was
+       somebody attaching their details to a shop that already has an account,
+       and that reasoning held while accounts had passwords. Signing in is now
+       an emailed code, so an applicant cannot reach an inbox they do not own:
+       the worst case is a nuisance application sitting in the review queue,
+       which is what REVIEW_ONLY is for. */
     const found = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
-      query byEmail($q: String!) { customers(first: 1, query: $q) { nodes { id } } }`,
+      query byEmail($q: String!) {
+        customers(first: 1, query: $q) { nodes { id tags addresses { id } } }
+      }`,
       { q: `email:"${data.email.replace(/"/g, '')}"` });
-    if (found.customers.nodes[0]) {
+    const existing = found.customers.nodes[0] || null;
+    const alreadyApplied = (existing?.tags || []).some((t) => t === tag || t === 'wholesale' || t === 'wholesale-pending');
+    if (alreadyApplied) {
       return json(409, {
-        error: 'There is already an account on that email address. Please sign in instead — Shopify will email you a code.',
+        error: 'There is already a wholesale account on that email address. Please sign in instead — Shopify will email you a code.',
         fields: ['email'],
         existing: true,
       });
@@ -368,43 +381,85 @@ export default async (request) => {
     if (data.notes) metafields.push({ namespace: 'wholesale', key: 'notes', type: 'multi_line_text_field', value: data.notes.slice(0, 2000) });
     if (permitId) metafields.push({ namespace: 'wholesale', key: 'resale_permit', type: 'file_reference', value: permitId });
 
-    const signedUp = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
-      mutation newCustomer($input: CustomerInput!) {
-        customerCreate(input: $input) { customer { id } userErrors { field message } }
-      }`, {
-      input: {
-        email: data.email,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        /* NO customer-level phone, deliberately. Shopify enforces a UNIQUE
-           phone across customers: a second buyer at the same shop, or a shop
-           that already exists as a retail customer, fails customerCreate with
-           "Phone has already been taken" and the applicant is told something
-           went wrong. The number is already on the address below, where no
-           such rule applies and where it is actually needed — that is the
-           phone a courier calls. */
-        tags: [tag],
-        addresses,
-        metafields,
-      },
-    });
-    /* The pre-check above is not enough on its own: Shopify's customer SEARCH
-       index lags roughly five seconds behind customerCreate (measured
-       2026-10-06), so an applicant who double-clicks, or retries straight away,
-       passes a lookup that genuinely cannot see the record yet. Shopify itself
-       always enforces unique emails, so treat its refusal as the same answer
-       the pre-check would have given rather than as a server fault. This is the
-       check that actually guarantees one account per email; the earlier one
-       exists to answer before a file is uploaded. */
-    const createErrs = signedUp.customerCreate?.userErrors || [];
-    if (createErrs.some((e) => /email/i.test(String(e.field)) && /taken/i.test(e.message))) {
-      return json(409, {
-        error: 'There is already an account on that email address. Please sign in instead — Shopify will email you a code.',
-        fields: ['email'],
-        existing: true,
+    if (existing) {
+      /* An account that exists but has never applied: a retail buyer stocking
+         up. Add to it rather than replace it.
+
+         tagsAdd, NOT customerUpdate(tags:) — on CustomerInput `tags` REPLACES
+         the whole list, so updating would quietly strip any other tag the
+         record carries. Same reasoning for the address: `addresses` replaces
+         the address book, so the business address is only written when there
+         is nothing there to lose. A retail buyer's home address is not ours to
+         overwrite, and they confirm the shipping address at checkout anyway. */
+      const tagged = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+        mutation addTag($id: ID!, $tags: [String!]!) {
+          tagsAdd(id: $id, tags: $tags) { node { id } userErrors { field message } }
+        }`, { id: existing.id, tags: [tag] });
+      assertNoUserErrors('tagsAdd', tagged.tagsAdd);
+
+      const input = { id: existing.id, metafields };
+      if (!(existing.addresses || []).length) input.addresses = addresses;
+      const updated = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+        mutation upd($input: CustomerInput!) {
+          customerUpdate(input: $input) { customer { id } userErrors { field message } }
+        }`, { input });
+      assertNoUserErrors('customerUpdate', updated.customerUpdate);
+    } else {
+      const signedUp = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+        mutation newCustomer($input: CustomerInput!) {
+          customerCreate(input: $input) { customer { id } userErrors { field message } }
+        }`, {
+        input: {
+          email: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          /* NO customer-level phone, deliberately. Shopify enforces a UNIQUE
+             phone across customers: a second buyer at the same shop, or a shop
+             that already exists as a retail customer, fails customerCreate with
+             "Phone has already been taken" and the applicant is told something
+             went wrong. The number is already on the address below, where no
+             such rule applies and where it is actually needed — that is the
+             phone a courier calls. */
+          tags: [tag],
+          addresses,
+          metafields,
+        },
       });
+      /* The pre-check is not enough on its own: Shopify's customer SEARCH index
+         lags roughly five seconds behind customerCreate (measured 2026-10-06),
+         so an applicant who double-clicks passes a lookup that genuinely cannot
+         see the record yet. Shopify always enforces unique emails, so treat its
+         refusal as an answer rather than a server fault — and since an existing
+         account is no longer a refusal, resolve it the same way the pre-check
+         would have: find the record and add to it. */
+      const createErrs = signedUp.customerCreate?.userErrors || [];
+      if (createErrs.some((e) => /email/i.test(String(e.field)) && /taken/i.test(e.message))) {
+        const again = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+          query byEmail($q: String!) {
+            customers(first: 1, query: $q) { nodes { id tags } }
+          }`, { q: `email:"${data.email.replace(/"/g, '')}"` });
+        const race = again.customers.nodes[0];
+        if (!race || (race.tags || []).some((t) => t === 'wholesale' || t === 'wholesale-pending')) {
+          return json(409, {
+            error: 'There is already a wholesale account on that email address. Please sign in instead — Shopify will email you a code.',
+            fields: ['email'],
+            existing: true,
+          });
+        }
+        const tagged = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+          mutation addTag($id: ID!, $tags: [String!]!) {
+            tagsAdd(id: $id, tags: $tags) { node { id } userErrors { field message } }
+          }`, { id: race.id, tags: [tag] });
+        assertNoUserErrors('tagsAdd', tagged.tagsAdd);
+        const updated = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+          mutation upd($input: CustomerInput!) {
+            customerUpdate(input: $input) { customer { id } userErrors { field message } }
+          }`, { input: { id: race.id, metafields } });
+        assertNoUserErrors('customerUpdate', updated.customerUpdate);
+      } else {
+        assertNoUserErrors('customerCreate', signedUp.customerCreate);
+      }
     }
-    assertNoUserErrors('customerCreate', signedUp.customerCreate);
 
     /* ----------------------------------------------------------- the cart -- */
     /* A cart that already knows who they are and where it ships, with the
