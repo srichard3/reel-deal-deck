@@ -17,6 +17,7 @@ import { readFile, readdir, mkdir, writeFile, cp, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
+import { loadEnv } from './scripts/env.mjs';
 
 // fileURLToPath (not URL.pathname) — the repo path may contain spaces or other
 // percent-encoded characters that pathname would hand back still encoded.
@@ -35,6 +36,10 @@ const read = (p) => readFile(p, 'utf8');
  *
  * Unset (the normal case, and any root-served host) it is a no-op.
  */
+/* Local .env first: `npm run dev:fn` runs this build in its own process,
+   before the dev server starts, so WHOLESALE_LIVE has to be read here too. */
+loadEnv();
+
 const BASE = (process.env.BASE_PATH || '').replace(/\/+$/, '');
 
 /* NOINDEX=1 keeps a staging deploy out of search results. It emits a

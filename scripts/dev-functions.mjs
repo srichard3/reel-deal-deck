@@ -27,23 +27,12 @@ import { Readable } from 'node:stream';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { serveStatic } from './serve.mjs';
+import { loadEnv } from './env.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PORT = Number(process.env.PORT || 8888);
 
-/* .env, parsed here rather than with --env-file so a missing file is fine and
-   the command works the same whether or not Shopify is configured yet. Values
-   already in the environment win, so `FOO=1 npm run dev:fn` overrides a line. */
-try {
-  const text = await readFile(path.join(ROOT, '.env'), 'utf8');
-  for (const line of text.split('\n')) {
-    const m = /^\s*([\w.-]+)\s*=\s*(.*)\s*$/.exec(line);
-    if (!m || line.trim().startsWith('#')) continue;
-    const value = m[2].replace(/^(['"])(.*)\1$/, '$2');
-    if (!(m[1] in process.env)) process.env[m[1]] = value;
-  }
-  console.log('loaded .env');
-} catch { /* no .env is a normal state — the function then reports 503 */ }
+if (loadEnv(ROOT)) console.log('loaded .env');
 
 /* Mount every function by the path it declares, so this file never carries a
    second copy of the routing table that could drift from the real one. */
