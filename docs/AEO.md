@@ -247,6 +247,14 @@ parameter and `/404/` rules where they are:
 # and leave the rest allowed. Do not disallow Googlebot or Bingbot under any
 # circumstances — those are the search crawlers, and Google-Extended is a
 # separate token that has no effect on Search ranking.
+#
+# NOTE ON THE TRACKING-PARAMETER RULES ABOVE: a crawler obeys only the most
+# specific group that matches it, so the named agents below do NOT inherit the
+# `Disallow: /*?*utm_` family from `User-agent: *`. That is accepted rather than
+# repeated eleven times: this site never emits a URL carrying those parameters,
+# they only arrive on inbound links, and the cost of an assistant crawling a
+# tagged duplicate is a little wasted crawl budget. Googlebot and Bingbot are
+# NOT named here, so they still match `*` and still get the rules.
 # ---------------------------------------------------------------------------
 
 # OpenAI
