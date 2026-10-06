@@ -293,7 +293,14 @@ export default async (request) => {
       }`, {
       files: [{
         originalSource: target.resourceUrl,
-        contentType: ext === 'pdf' ? 'FILE' : 'IMAGE',
+        /* FILE for everything, never IMAGE. Declaring IMAGE makes Shopify try
+           to DECODE the upload, and it cannot decode every format a phone
+           produces — a HEIC from an iPhone camera lands as a FAILED file, the
+           metafield then cannot reference it, and the applicant is told to
+           email us instead. We never render this in a gallery; it is a tax
+           document on a customer record. Stored as a generic file it is kept
+           byte for byte whatever the format. */
+        contentType: 'FILE',
         alt: `Resale permit — ${data.business}`,
       }],
     });
@@ -338,7 +345,13 @@ export default async (request) => {
         email: data.email,
         firstName: data.firstName,
         lastName: data.lastName,
-        phone: data.phone || null,
+        /* NO customer-level phone, deliberately. Shopify enforces a UNIQUE
+           phone across customers: a second buyer at the same shop, or a shop
+           that already exists as a retail customer, fails customerCreate with
+           "Phone has already been taken" and the applicant is told something
+           went wrong. The number is already on the address below, where no
+           such rule applies and where it is actually needed — that is the
+           phone a courier calls. */
         tags: [tag],
         addresses,
         metafields,

@@ -90,6 +90,58 @@ for (const [name, run, want] of cases) {
   console.log(`${okSmuggle ? '  ok  ' : ' FAIL '} undeclared fields never reach Shopify (${inSent}), a response (${inBody}) or a log (${inLogs})`);
 }
 
+/* Two things that cost a real applicant a signup on 2026-10-06, both of which
+   surfaced only as "something went wrong setting up the account":
+
+   1. The permit was registered as IMAGE for anything that was not a PDF, so
+      Shopify tried to DECODE it. A HEIC from an iPhone camera — the default
+      format a phone produces — landed as a FAILED file and the metafield could
+      not reference it. It is a tax document, never rendered; FILE always.
+
+   2. The customer carried a phone number, and Shopify enforces a unique phone
+      across customers. A second buyer at the same shop, or a shop that already
+      exists as a retail customer, failed with "Phone has already been taken".
+      The number belongs on the address, which has no such rule. */
+{
+  const sent = [];
+  const origFetch = globalThis.fetch;
+  /* Answer each Shopify call well enough to reach the next one, so the two
+     payloads under test are actually built. A stub that throws immediately
+     proves nothing — the first version of this test passed the phone check and
+     failed the file check because fileCreate never ran. */
+  globalThis.fetch = async (url, init) => {
+    const b = String(init?.body || '');
+    sent.push(b);
+    const ok = (o) => new Response(JSON.stringify({ data: o }), {
+      status: 200, headers: { 'content-type': 'application/json' } });
+    if (!b.includes('{')) return new Response('', { status: 200 });   /* the staged PUT */
+    if (b.includes('byEmail')) return ok({ customers: { nodes: [] } });
+    if (b.includes('stagedUploadsCreate')) return ok({ stagedUploadsCreate: {
+      stagedTargets: [{ url: 'https://example.invalid/upload', resourceUrl: 'x', parameters: [] }],
+      userErrors: [] } });
+    if (b.includes('fileCreate')) return ok({ fileCreate: {
+      files: [{ id: 'gid://shopify/GenericFile/1' }], userErrors: [] } });
+    if (b.includes('customerCreate')) return ok({ customerCreate: {
+      customer: { id: 'gid://shopify/Customer/1' }, userErrors: [] } });
+    throw new Error('blocked in test');
+  };
+  const origError = console.error;
+  console.error = () => {};
+  await fn(post(body({}, new File([new Uint8Array(64)], 'permit.heic', { type: 'image/heic' }))));
+  globalThis.fetch = origFetch;
+  console.error = origError;
+
+  const fileCall = sent.find((b) => b.includes('fileCreate')) || '';
+  const asFile = fileCall.includes('"contentType":"FILE"') && !fileCall.includes('"IMAGE"');
+  if (!asFile) fail++;
+  console.log(`${asFile ? '  ok  ' : ' FAIL '} a HEIC permit is registered as FILE, never IMAGE`);
+
+  const custCall = sent.find((b) => b.includes('customerCreate')) || '';
+  const noCustPhone = custCall !== '' && !/"phone":"[^"]*","tags"/.test(custCall);
+  if (!noCustPhone) fail++;
+  console.log(`${noCustPhone ? '  ok  ' : ' FAIL '} no customer-level phone (Shopify requires it unique)`);
+}
+
 /* An email that already has an account is a sign-in, not a signup — and it is
    answered BEFORE the permit is staged, so a repeat applicant cannot leave an
    orphaned tax document in Shopify Files. */
