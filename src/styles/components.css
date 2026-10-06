@@ -2356,19 +2356,35 @@ a.card-face.card-face:nth-child(even):active {
   transform-style: preserve-3d;
   transform: var(--tf);
   transition: transform 480ms var(--ease);
-  /* Yaw is ours, vertical panning stays the page's. A hero that eats an upward
-     swipe on a phone is a trap, so pitch is a mouse, pen and keyboard gesture.
-     Touch still reaches every face: yaw alone walks all four sides, and the
-     keyboard reaches the top and the base. */
-  touch-action: pan-y;
+  /* The box owns every gesture that starts on it, both axes. This was pan-y —
+     the page kept vertical scrolling — which made the box almost unturnable on
+     a phone: any drag with a bit of vertical in it, which is most of them, got
+     taken by the scroller mid-turn.
+
+     The trade is real and was chosen deliberately: a swipe that starts ON the
+     box no longer scrolls the page. Scrolling works everywhere else, including
+     the margins either side of it, and the box is centred so both are
+     reachable. If this ever feels like a trap, the fix is to go back to pan-y
+     and accept that pitch is mouse-only. */
+  touch-action: none;
 }
 /* Only offer the grab cursor where box.js is there to honour it. Without JS
    this is a handsome 3D box that does not turn, and it should not pretend. */
 html:not(.no-js) .tuck__box { cursor: grab; }
 
-/* Dragging across a box made of six <img> elements otherwise selects the text
-   around it and, in Chrome, starts a native image drag. */
-.tuck__box {
+/* THE TUCK BOX AND THE CARD FAN ARE THINGS YOU GRAB, NOT TEXT YOU READ.
+   A drag across either is a gesture, and the browser's default is to paint it
+   as a text selection: on the fan it highlighted every card name the pointer
+   crossed and left them stuck highlighted, and on the box it selected the
+   copy around it. Selection is switched off across both widgets, not just the
+   images inside them — the fan's name labels were the ones actually showing up
+   yellow, and they are not <img>.
+
+   Scoped to the widgets themselves. `.fan-foot` and everything else on the page
+   sit outside, so ordinary copyable text stays copyable, and the fly names are
+   all selectable in full at /flies/. */
+.tuck,
+.fan-stage {
   -webkit-user-select: none;
           user-select: none;
 }

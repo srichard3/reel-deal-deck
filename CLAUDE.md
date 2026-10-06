@@ -354,11 +354,29 @@ be unchanged by it, at every pitch** — including 90, 105 and 135 degrees, wher
 the old version failed. Read the authored `--tf`, never `getComputedStyle`,
 which returns the mid-transition interpolation.
 
-**`touch-action: pan-y` on the box is deliberate.** Yaw is ours, vertical panning
-stays the page's: a hero that eats an upward swipe on a phone is a trap. So pitch
-is a mouse, pen and keyboard gesture. Touch still reaches every face — yaw alone
-walks all four sides — and the arrow keys are the only way to reach the top and
-the base without a pointer, which is why they are not a nicety.
+**`touch-action: none` on the box, and the trade was made with eyes open.** It
+was `pan-y` on the reasoning that a hero which eats an upward swipe is a trap.
+In practice that was worse: almost every real drag has some vertical in it, so
+the scroller kept stealing the gesture mid-turn and the box was close to
+unturnable on a phone. Now the box owns both axes, pitch works on touch, and a
+swipe that starts ON the box does not scroll the page.
+
+What keeps that from being the trap: the box is centred and does not span the
+screen — at 375px it is 215px wide with 84px and 76px of scrollable gutter
+either side — and everything below the hero scrolls normally. If it ever needs
+reverting, `pan-y` is the one-word change, and pitch goes back to mouse-only.
+
+**Neither the box nor the fan is selectable text.** `user-select: none` is on
+`.tuck` and `.fan-stage` as wholes, not just the images inside them: a drag
+across the fan was painting a text selection over every card name it crossed and
+leaving them stuck highlighted. `.fan-foot` and the rest of the page sit outside
+both, so ordinary copyable prose is untouched.
+
+Verify this with a REAL pointer drag, not synthetic MouseEvents — synthetic
+events do not drive native text selection at all, so they report "nothing
+selected" whether or not the rule is there, and will happily confirm a fix that
+does not exist. Drag across ordinary prose first as a control and check it
+selects something.
 
 **Card art is cropped to its own keyline, and `--r-card-art` matches it.** The
 scans carried ~2px of paper outside the printed outline; rounding the corners

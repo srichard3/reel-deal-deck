@@ -156,9 +156,10 @@
     var dt = Math.max(now - lastMoveT, 1);
 
     var dYaw = (e.clientX - lastX) * YAW_PER_PX;
-    /* touch-action: pan-y hands vertical gestures to the page, so on a phone
-       this is zero and the browser is already scrolling. Nothing to special-case
-       — the events simply do not arrive. */
+    /* The box is touch-action: none, so BOTH axes arrive on a phone too and
+       pitch is no longer a mouse-only gesture. It was pan-y, which handed any
+       gesture with vertical in it to the page scroller — and since almost every
+       real drag has some, the box was close to unturnable on a phone. */
     var dPitch = -(e.clientY - lastY) * PITCH_PER_PX;
     turn(dYaw, dPitch);
 
