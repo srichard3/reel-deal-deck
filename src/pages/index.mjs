@@ -115,13 +115,23 @@ function cardFan(flies) {
     /* Three layers, and the split matters: .fan__card and .fan__link never
        move, and every visual transform happens on .fan__art inside them. See
        the note on .fan__art in components.css — when the card itself grew, it
-       moved out from under the pointer and the hover oscillated. */
+       moved out from under the pointer and the hover oscillated.
+
+       `sizes` has to describe what the fan REALLY renders, or the browser buys
+       the wrong file. It used to claim 104px on phones, written before the fan
+       was made to fit the screen on touch — the cards are 46px there now, so
+       every phone was fetching a 240w to paint 46 CSS px. 13vw is accurate from
+       375px all the way up until the clamp caps the card at 150px, which is
+       72rem, so the whole thing is two clauses.
+
+       Candidates follow from that: 160w covers a phone at 3x (146px), 300w
+       covers every desktop at 2x (267-300px), 400w is there for 3x desktop. */
     return `      <li class="fan__card" style="--i:${i}">
         <a class="fan__link" href="/flies/${esc(f.slug)}/">
           <span class="fan__art">
-            <img class="fan__img" src="${esc(f.image)}-240.webp"
-                 srcset="${esc(f.image)}-240.webp 240w, ${esc(f.image)}-400.webp 400w"
-                 sizes="(max-width: 46rem) 104px, (max-width: 64rem) 13vw, 150px"
+            <img class="fan__img" src="${esc(f.image)}-300.webp"
+                 srcset="${esc(f.image)}-160.webp 160w, ${esc(f.image)}-300.webp 300w, ${esc(f.image)}-400.webp 400w"
+                 sizes="(max-width: 72rem) 13vw, 150px"
                  width="400" height="559"
                  loading="lazy" decoding="async" draggable="false" alt="">
           </span>

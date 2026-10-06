@@ -280,13 +280,32 @@ sweep across the fan left a wake of still-animating cards that read as lag. The
 neighbor lean is one card either side for the same reason: each `:has()` rule
 is sibling-invalidation work on every hover change, times 54.
 
-**The fan is the homepage's whole image budget.** 54 faces, so each `<img>`
-offers a 240 and a 400 with `sizes` stops that match what the CSS really
-renders. A phone at 2x takes the 240s (~845kB), a desktop retina screen takes
-the 400s (~1.6MB), everything is `loading="lazy"`, and the section is well below
-the fold. `scripts/card-thumbs.mjs` makes the 240s by downscaling the ALREADY
-WATERMARKED `-400`s, which is safe to re-run — unlike `scripts/watermark.mjs`,
-it cannot stack a second mark.
+**The fan is the homepage's whole image budget, and `sizes` has to tell the
+truth.** 54 faces, offered at 160w / 300w / 400w. Measured in a browser: a phone
+takes the 160s and the page is **0.78MB**, a 2x laptop takes the 300s and the
+page is **1.66MB**.
+
+It was 240w/400w with `sizes="(max-width: 46rem) 104px, …"`, which was written
+before the fan was made to fit the screen on touch. Cards are **46 css px** on a
+375px phone now, so every phone was buying a 240w to paint 46px, and every
+laptop skipped straight to the 400w. Fixing the stops alone took the desktop
+page from 2.15MB to 1.66MB and the phone from 1.14MB to 0.78MB, with no visible
+change. **Re-derive `sizes` whenever `--fan-cw` changes** — card width is
+`clamp(76px, 13vw, 150px)`, capped on a coarse pointer at `(100vw - 2rem)/7.44`,
+and `13vw` happens to track both until the 150px cap at 72rem, which is why the
+attribute is two clauses.
+
+`scripts/card-thumbs.mjs` makes them from the ALREADY WATERMARKED `-800`s, which
+is safe to re-run — unlike `scripts/watermark.mjs`, it cannot stack a second
+mark. Going from the 800 rather than the 400 means a 300 is not a resize of a
+resize.
+
+**`loading="lazy"` does NOT stop these loading.** The fan sits ~640px below the
+fold and Chrome's lazy threshold on a fast connection is well over 1000px, so
+all 54 fetch on page load whether or not anyone scrolls — verified by measuring
+with `scrollY` at 0. Deferring them for real needs an IntersectionObserver and
+makes the images JS-dependent, which has not been done. Do not assume the
+attribute is buying anything here.
 
 **The Fly-brary is the hub for everything that is not the product or the people.**
 Four doors at the top of `/flies/`: what's in the deck (`/cards/`), the flies,

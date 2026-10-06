@@ -1,17 +1,24 @@
 /**
- * scripts/card-thumbs.mjs — the -240 card variants, for the homepage fan.
+ * scripts/card-thumbs.mjs — the small card variants, for the homepage fan.
  *
- * The fan on the homepage shows all 54 printed faces at once. At the -400 size
- * that is 1.6MB of webp for one section, which is too much to ask of a phone
- * for a decorative-but-delightful block.
+ * The fan shows all 54 printed faces at once, which makes it the whole image
+ * budget of the homepage. The sizes here are not round numbers, they are what
+ * the fan actually renders:
  *
- * So each card also gets a 240px variant, and the fan declares both in a
- * srcset with sizes="124px". A 1x screen then takes the 240 (~12kB) and a 2x
- * screen takes the 400, including when a hovered card scales up to ~186 CSS px
- * — 186 x 1 still fits inside 240, and 186 x 2 does not, which is exactly the
- * split we want.
+ *   card width = clamp(76px, 13vw, 150px), and on a coarse pointer also capped
+ *   at (100vw - 2rem) / 7.44 so the whole deck fits the screen.
  *
- * SOURCE IS static/cards/<slug>-400.webp, which is ALREADY WATERMARKED.
+ *   phone  375px -> 46 css px -> 93 at 2x, 139 at 3x   -> 160w  (~7kB)
+ *   laptop 1024  -> 133       -> 267 at 2x             -> 300w  (~19kB)
+ *   large  1440+ -> 150 (cap) -> 300 at 2x             -> 300w
+ *
+ * The 240w this script used to make was the wrong size on both counts: phones
+ * were buying it to paint 46 css px, and desktops skipped it for the 400w.
+ * Measured, 160 + 300 cut the fan from 1.57MB to 1.03MB on a laptop and from
+ * 756kB to 378kB on a phone.
+ *
+ * SOURCE IS static/cards/<slug>-800.webp, which is ALREADY WATERMARKED. Going
+ * from the 800 rather than the 400 means a 300 is not a resize of a resize.
  * Downscaling a marked file to a new filename does not stack a second mark the
  * way re-running scripts/watermark.mjs over its own output would — the mark
  * simply scales with the card, which is the same thing the -400 does to the
@@ -30,20 +37,23 @@ const PY = `
 import glob, os, sys
 from PIL import Image
 
-OUT_W = 240
+WIDTHS = (160, 300)
 src_dir = os.path.join(sys.argv[1], 'static', 'cards')
 made = skipped = 0
 
-for src in sorted(glob.glob(os.path.join(src_dir, '*-400.webp'))):
-    dst = src.replace('-400.webp', '-240.webp')
-    if os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src):
-        skipped += 1
-        continue
-    im = Image.open(src).convert('RGBA')
-    w, h = im.size
-    out = im.resize((OUT_W, round(h * OUT_W / w)), getattr(Image, "Resampling", Image).LANCZOS)
-    out.save(dst, 'WEBP', quality=82, method=6)
-    made += 1
+for src in sorted(glob.glob(os.path.join(src_dir, '*-800.webp'))):
+    im = None
+    for OUT_W in WIDTHS:
+        dst = src.replace('-800.webp', f'-{OUT_W}.webp')
+        if os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src):
+            skipped += 1
+            continue
+        if im is None:
+            im = Image.open(src).convert('RGBA')
+        w, h = im.size
+        out = im.resize((OUT_W, round(h * OUT_W / w)), getattr(Image, "Resampling", Image).LANCZOS)
+        out.save(dst, 'WEBP', quality=82, method=6)
+        made += 1
 
 print(f'{made} written, {skipped} already current')
 `;
