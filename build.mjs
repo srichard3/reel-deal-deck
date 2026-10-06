@@ -71,6 +71,12 @@ const site = JSON.parse(await read(path.join(ROOT, 'data/site.json')));
    configured canonical host gains the base suffix. */
 if (process.env.SITE_URL) site.url = process.env.SITE_URL.replace(/\/$/, '');
 else if (BASE) site.url = site.url.replace(/\/$/, '') + BASE;
+/* WHOLESALE_LIVE=1 switches the application form on for THIS BUILD ONLY, so a
+   local `netlify dev` can exercise it without editing data/site.json and
+   risking that edit being committed. It is an override, never a default: the
+   committed value stays false until the store is open and the Shopify
+   environment variables are set. See docs/WHOLESALE-ACCOUNTS.md. */
+if (process.env.WHOLESALE_LIVE === '1') site.pricing.wholesale.account.live = true;
 /* Every card gets a page, bonus cards included. `bonus: true` affects the
    marketed COUNT only — see site.product.cardCount and cardCountNote. The deck
    is advertised as 54 unique cards (52 standard + 2 jokers), which is the
