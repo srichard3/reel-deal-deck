@@ -497,25 +497,28 @@ static page is theatre. `wholesaleState()` in `_blocks.mjs` resolves the gate,
 the login and the signup URLs once at build time, because `.html` pages and
 partials substitute tokens and cannot branch.
 
-**The signup sets a password, which forces the order of the Shopify calls.**
-The Admin API cannot set one — `CustomerInput` has no password field — so
-`netlify/functions/wholesale-apply.mjs` creates the customer through the
-**Storefront API** first, then tags and decorates the record through Admin, then
-exchanges the password for an access token so they land signed in. This needs
-Shopify on **classic customer accounts**; the new ones are passwordless email
-codes and have no password to set. `SHOPIFY_STOREFRONT_TOKEN` is therefore
-required, not optional, and the function 503s without it.
+**The signup collects NO password, and must not start.** Shopify's current
+customer accounts sign in with an emailed code, so there is no credential to
+collect. That is what lets `netlify/functions/wholesale-apply.mjs` create the
+customer in a single Admin `customerCreate` — tags, address and the permit on
+the record from birth. The old Classic flow needed three calls across two APIs
+because only the Storefront API can set a password. Do not reintroduce one, and
+do not switch the store to classic accounts to enable it.
+`SHOPIFY_STOREFRONT_TOKEN` is **optional**: it only pre-fills the cart.
 
-**The password is never in `data`.** Everything in `REQUIRED`/`OPTIONAL` lands
-there, and `data` is what reaches metafields, error payloads and logs. The
-password is read on its own, held in one variable, and handed to Shopify.
-`npm run test:wholesale` asserts it appears in neither a response body nor a log
-line across four failure paths — keep that test passing rather than trusting the
-comment.
+**`REQUIRED`/`OPTIONAL` is the entire input surface.** Everything in them lands
+in `data`, and `data` is what reaches metafields and error payloads. Anything
+else in the POST is dropped — which matters most for `tags`, since the tag IS
+the trade price. `npm run test:wholesale` posts poison in six field names and
+asserts none of it reaches Shopify, a response or a log; keep that passing
+rather than trusting the comment.
 
-**An email that already has an account is a 409, not an update.** The email is
-the username, so silently re-tagging an existing record would let someone attach
-their own business details and address to a shop that already has an account.
+**An email that already has an account is a 409, not an update** — and that
+check runs BEFORE the permit is staged. The email is the username, so silently
+re-tagging an existing record would let someone attach their own business
+details and address to a shop that already has an account. Checking first also
+means a repeat applicant never leaves an orphaned tax document in Shopify
+Files. Both halves are asserted by `npm run test:wholesale`.
 
 **Wholesale prices are not gated by this site, and could not be.** They come
 from a Shopify automatic discount scoped to the `wholesale` customer segment

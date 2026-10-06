@@ -103,9 +103,9 @@ export default function wholesaleApply({ site }) {
   <p class="eyebrow">Trade</p>
   <h1 class="h1">Open a wholesale account</h1>
   <p class="lede">
-    Your business details, a copy of your resale certificate, and a password. You are set up
-    straight away, and you land logged in with your pricing showing and your shipping address
-    already filled in.
+    Your business details and a copy of your resale certificate. That is it — there is no
+    password to choose. You are set up straight away, and when you sign in we email you a
+    code. Your pricing then shows on every page, with your shipping address already filled in.
   </p>
 
   <!-- No prices here. This page sits in FRONT of the gate, so anything printed
@@ -138,7 +138,7 @@ export default function wholesaleApply({ site }) {
 ${field({ id: 'business', label: 'Shop or business name', required: true, autocomplete: 'organization', full: true })}
 ${field({ id: 'contact', label: 'Your name', required: true, autocomplete: 'name' })}
 ${field({ id: 'role', label: 'Your role', autocomplete: 'organization-title', placeholder: 'Owner, buyer, manager' })}
-${field({ id: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email', help: 'This is your username.' })}
+${field({ id: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email', help: 'This is how you sign in — we email you a code.' })}
 ${field({ id: 'phone', label: 'Phone', type: 'tel', required: true, autocomplete: 'tel' })}
 ${field({ id: 'address1', label: 'Street address', required: true, autocomplete: 'address-line1', full: true })}
 ${field({ id: 'address2', label: 'Suite, unit or floor', autocomplete: 'address-line2', full: true })}
@@ -149,13 +149,9 @@ ${field({ id: 'country', label: 'Country', as: 'select', required: true, autocom
 ${field({ id: 'taxId', label: 'Resale certificate number', full: true, help: 'Whatever your state calls it. It goes on the account so we do not have to ask again.' })}
 ${field({ id: 'website', label: 'Website or Instagram', full: true, placeholder: 'So we can see what kind of shop you run' })}
 
-      <!-- The password is the account. It is sent once, straight to Shopify,
-           and is never stored, logged or echoed by anything we run — see the
-           note in netlify/functions/wholesale-apply.mjs. autocomplete
-           new-password is what tells a password manager to offer to generate
-           and save one. -->
-${field({ id: 'password', label: 'Choose a password', type: 'password', required: true, autocomplete: 'new-password', help: 'At least 8 characters. Your email above is the username.' })}
-${field({ id: 'password2', label: 'Confirm password', type: 'password', required: true, autocomplete: 'new-password' })}
+      <!-- No password field, and that is not an omission. Shopify signs these
+           accounts in with a code emailed at the time, so there is no
+           credential for this form to collect or for us to carry. -->
 
       <div class="field ws-form__full">
         <label class="label" for="ws-permit">Resale certificate</label>

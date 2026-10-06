@@ -17,28 +17,39 @@ pricing real, and the two things this design deliberately does not do.
         └─ "Create an account"
                  ▼
 /wholesale/apply/                     a static page, like every other page
-        │  multipart POST (incl. the password they choose)
+        │  multipart POST (no password — there is none)
         ▼
 /api/wholesale-apply                  netlify/functions/wholesale-apply.mjs
         │                             (the only server-side code in the repo)
+        ├─ rejects an email that already has an account  →  409, before
+        │     anything is uploaded, so no orphan file is left behind
         ├─ uploads the resale certificate  →  Shopify Files
-        ├─ creates the customer WITH THEIR PASSWORD  →  Storefront API
-        │     (the Admin API cannot set one — CustomerInput has no
-        │      password field — so this call has to come first)
-        ├─ tags it `wholesale` and attaches the certificate  →  Admin API
-        ├─ exchanges the password for a customer access token, so they
-        │  land signed in rather than being asked to log in they just made
-        └─ builds a Storefront cart carrying their email + shipping address
+        ├─ creates the customer in ONE Admin call: tags, address and
+        │     the certificate all on the record from birth
+        └─ builds a Storefront cart carrying their email + shipping
+              address (optional — skipped without a Storefront token)
         │
         ▼
-Shopify, signed in                    pricing resolves, they check out
+Shopify                               they sign in with an emailed code,
+                                      pricing resolves, they check out
 ```
 
-**Shopify must be on CLASSIC customer accounts.** The newer "customer accounts"
-are passwordless — a one-time code by email — and have no password to set or
-check, so `customerCreate(password:)` and `customerAccessTokenCreate` do not
-exist for them and this flow cannot work. Settings → Customer accounts →
-**Classic**. This is the one setting that silently breaks everything else here.
+**There is no password, and that is deliberate.** Shopify's current customer
+accounts sign people in with a code emailed at the time. Nothing here collects,
+carries or stores a credential, which is the cheapest possible way to get that
+part right.
+
+It also makes the code much smaller. The older **Classic** accounts did have
+passwords, and only the Storefront API could set one — `CustomerInput` has no
+password field — so the account had to be born on Storefront, found again by
+email, and decorated by Admin: three calls across two APIs, with a window in
+which an untagged wholesale customer existed. One Admin `customerCreate` now
+does all of it, and there is no such window.
+
+**Do not switch the store to Classic accounts.** Nothing here needs it, Shopify
+is steering merchants away from it, and reintroducing a password is a larger
+change than adding a field to the form — see the header of
+`netlify/functions/wholesale-apply.mjs`.
 
 **Prices are not gated by this website, and could not be.** Anything a browser
 can work out, a visitor can work out. `/wholesale/` is a gate in the sense that
@@ -157,7 +168,7 @@ Netlify → Site configuration → Environment variables:
 |---|---|---|
 | `SHOPIFY_STORE_DOMAIN` | `reeldealdeck.myshopify.com` | yes |
 | `SHOPIFY_ADMIN_TOKEN` | `shpat_…` | yes |
-| `SHOPIFY_STOREFRONT_TOKEN` | `…` | **yes** — it is the only API that can set a password, so without it no account can be created at all |
+| `SHOPIFY_STOREFRONT_TOKEN` | `…` | no — it only pre-fills the cart. Without it signup still succeeds and the applicant lands on `WHOLESALE_PORTAL_URL` |
 | `SHOPIFY_WHOLESALE_VARIANT_ID` | `gid://shopify/ProductVariant/123…` | for the pre-filled cart |
 | `WHOLESALE_PORTAL_URL` | the wholesale collection URL | fallback landing page |
 | `SHOPIFY_API_VERSION` | `2025-10` | no — see below |

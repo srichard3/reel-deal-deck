@@ -17,7 +17,6 @@ const good = {
   business: 'Henry’s Fork Anglers', contact: 'Sam Rivers', email: 'sam@example.com',
   phone: '208-555-0101', address1: '12 Main St', city: 'Eagle', region: 'ID',
   postal: '83616', country: 'US',
-  password: 'correct-horse', password2: 'correct-horse',
 };
 const pdf = (bytes = 1024, type = 'application/pdf') =>
   new File([new Uint8Array(bytes)], 'permit.pdf', { type });
@@ -39,18 +38,12 @@ const cases = [
   ['no permit attached', () => fn(post(body({}, null))), 400],
   ['permit over 10MB', () => fn(post(body({}, pdf(11 * 1024 * 1024)))), 400],
   ['permit of a disallowed type', () => fn(post(body({}, pdf(1024, 'application/zip')))), 400],
-  /* The password is the only credential in front of trade pricing. */
-  ['no password', () => fn(post(body({ password: null, password2: null }))), 400],
-  ['password under 8 characters', () => fn(post(body({ password: 'short1', password2: 'short1' }))), 400],
-  ['passwords that do not match', () => fn(post(body({ password2: 'something-else' }))), 400],
-  ['absurdly long password', () => fn(post(body({ password: 'x'.repeat(200), password2: 'x'.repeat(200) }))), 400],
 ];
 
 let fail = 0;
 process.env.SHOPIFY_STORE_DOMAIN = 'test.myshopify.com';
 process.env.SHOPIFY_ADMIN_TOKEN = 'shpat_test';
-/* Required now, not optional: only the Storefront API can set a password, so
-   without this there is no account to create. */
+/* Optional: it only pre-fills the cart. The account is Admin-only now. */
 process.env.SHOPIFY_STOREFRONT_TOKEN = 'sfat_test';
 for (const [name, run, want] of cases) {
   const res = await run();
@@ -61,40 +54,60 @@ for (const [name, run, want] of cases) {
   console.log(`${ok ? '  ok  ' : ' FAIL '} ${String(got).padEnd(4)} (want ${want})  ${name}${j.error ? '  — "' + j.error + '"' : ''}`);
 }
 
-/* THE PASSWORD MUST NOT LEAK. The code claims it never reaches a response
-   body or a log line; this is that claim, tested rather than asserted in a
-   comment. Every failure path is exercised with a distinctive password and
-   both channels are captured. */
+/* NOTHING UNDECLARED REACHES SHOPIFY. There is no password to leak any more,
+   so the risk moved: the danger is now a crafted POST smuggling a field onto
+   the customer record — `tags` would be the prize, since the tag IS the trade
+   price. REQUIRED and OPTIONAL are the whole input surface; this proves it by
+   posting poison in several field names and reading the outbound GraphQL. */
 {
-  const SECRET = 'zQ7-unmistakable-passphrase';
-  const seen = [];
+  const POISON = 'zQ7-unmistakable-value';
+  const sent = [];
+  const origFetch2 = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    sent.push(String(init?.body || ''));
+    throw new Error('blocked in test');
+  };
   const origError = console.error;
-  const origLog = console.log;
+  const seen = [];
   console.error = (...a) => seen.push(a.map(String).join(' '));
 
-  const origFetch2 = globalThis.fetch;
-  globalThis.fetch = async () => { throw new Error('blocked in test'); };
-
-  const bodies = [];
-  for (const variant of [
-    {},                                   /* valid, dies at Shopify */
-    { business: null },                   /* validation failure */
-    { email: 'nope' },                    /* validation failure */
-    { password2: 'does-not-match' },      /* mismatch */
-  ]) {
-    const r = await fn(post(body({ password: SECRET, password2: SECRET, ...variant })));
-    bodies.push(await r.text());
-  }
+  const r = await fn(post(body({
+    password: POISON, password2: POISON, tags: POISON, id: POISON,
+    customerTag: POISON, metafields: POISON,
+  })));
+  const text = await r.text();
 
   globalThis.fetch = origFetch2;
   console.error = origError;
-  console.log = origLog;
 
-  const inBody = bodies.filter((b) => b.includes(SECRET)).length;
-  const inLogs = seen.filter((l) => l.includes(SECRET)).length;
-  const okLeak = inBody === 0 && inLogs === 0;
-  if (!okLeak) fail++;
-  console.log(`${okLeak ? '  ok  ' : ' FAIL '} password never reaches a response body (${inBody}) or a log line (${inLogs})`);
+  const inSent = sent.filter((b) => b.includes(POISON)).length;
+  const inBody = text.includes(POISON) ? 1 : 0;
+  const inLogs = seen.filter((l) => l.includes(POISON)).length;
+  const okSmuggle = inSent === 0 && inBody === 0 && inLogs === 0;
+  if (!okSmuggle) fail++;
+  console.log(`${okSmuggle ? '  ok  ' : ' FAIL '} undeclared fields never reach Shopify (${inSent}), a response (${inBody}) or a log (${inLogs})`);
+}
+
+/* An email that already has an account is a sign-in, not a signup — and it is
+   answered BEFORE the permit is staged, so a repeat applicant cannot leave an
+   orphaned tax document in Shopify Files. */
+{
+  const calls = [];
+  const origFetch3 = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    calls.push(String(init?.body || ''));
+    return new Response(JSON.stringify({
+      data: { customers: { nodes: [{ id: 'gid://shopify/Customer/1' }] } },
+    }), { status: 200, headers: { 'content-type': 'application/json' } });
+  };
+  const r = await fn(post(body()));
+  globalThis.fetch = origFetch3;
+
+  const okDup = r.status === 409;
+  const noUpload = !calls.some((c) => c.includes('stagedUploadsCreate'));
+  if (!okDup || !noUpload) fail++;
+  console.log(`${okDup ? '  ok  ' : ' FAIL '} ${r.status}  (want 409)  an existing email is a sign-in, not a signup`);
+  console.log(`${noUpload ? '  ok  ' : ' FAIL '} the permit is not uploaded before that check (no orphan file)`);
 }
 
 /* unset credentials must say so rather than pretending the application failed */
@@ -104,13 +117,23 @@ const ok = res.status === 503;
 if (!ok) fail++;
 console.log(`${ok ? '  ok  ' : ' FAIL '} ${res.status}  (want 503)  unconfigured says signup is off`);
 
-/* and the same for the storefront token, which is what sets the password */
+/* The storefront token, by contrast, is OPTIONAL: it only pre-fills the cart.
+   Without it the signup must still go through — the account is what earns the
+   pricing, and a worse landing page is not a failed application. */
 process.env.SHOPIFY_ADMIN_TOKEN = 'shpat_test';
 delete process.env.SHOPIFY_STOREFRONT_TOKEN;
-const resSf = await fn(post(body()));
-const okSf = resSf.status === 503;
-if (!okSf) fail++;
-console.log(`${okSf ? '  ok  ' : ' FAIL '} ${resSf.status}  (want 503)  no storefront token means no signup`);
+{
+  const origFetch4 = globalThis.fetch;
+  globalThis.fetch = async () => { throw new Error('blocked in test'); };
+  const origError = console.error;
+  console.error = () => {};
+  const resSf = await fn(post(body()));
+  globalThis.fetch = origFetch4;
+  console.error = origError;
+  const okSf = resSf.status !== 503;
+  if (!okSf) fail++;
+  console.log(`${okSf ? '  ok  ' : ' FAIL '} ${resSf.status}  (not 503)  no storefront token still allows signup`);
+}
 process.env.SHOPIFY_STOREFRONT_TOKEN = 'sfat_test';
 
 /* a valid application must get past validation and actually try Shopify */

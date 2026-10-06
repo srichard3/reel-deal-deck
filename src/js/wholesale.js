@@ -15,15 +15,6 @@
   if (!form) return;
 
   var status = form.querySelector('[data-ws-status]');
-  /* Clear the mismatch message the moment they start correcting it, so the
-     field is not stuck red while they retype. */
-  var pwA = document.getElementById('ws-password');
-  var pwB = document.getElementById('ws-password2');
-  if (pwB && typeof pwB.setCustomValidity === 'function') {
-    var clear = function () { pwB.setCustomValidity(''); };
-    pwB.addEventListener('input', clear);
-    if (pwA) pwA.addEventListener('input', clear);
-  }
 
   var submit = form.querySelector('[data-ws-submit]');
   var file = form.querySelector('#ws-permit');
@@ -63,16 +54,6 @@
 
     /* Let the browser's own validation speak first — it is better at this and
        it is localised. */
-    /* Check the two passwords match before the browser's own validation runs,
-       so "those do not match" arrives in the same pass as every other field
-       error rather than as a second round trip. The server checks it again —
-       this is a courtesy, not the rule. */
-    var pw = form.querySelector('#ws-password');
-    var pw2 = form.querySelector('#ws-password2');
-    if (pw && pw2 && typeof pw2.setCustomValidity === 'function') {
-      pw2.setCustomValidity(pw.value === pw2.value ? '' : 'Those two passwords do not match.');
-    }
-
     if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
 
     submit.disabled = true;

@@ -7,19 +7,26 @@
  * has to land somewhere a static host cannot provide.
  *
  * What it does, in order:
- *   0. creates the Shopify customer WITH THE PASSWORD they chose. Only the
- *      Storefront API can do that — Admin's CustomerInput has no password
- *      field — so the account is made there and decorated by Admin after.
- *      Shopify must be on CLASSIC customer accounts for this to exist at all;
- *      the new ones are passwordless email codes. See docs/WHOLESALE-ACCOUNTS.
  *   1. validates the application (server-side — the client checks are a
  *      courtesy, not a control)
- *   2. uploads the resale permit into Shopify Files
- *   3. creates or updates the Shopify customer, tagged `wholesale`, with the
- *      permit attached to the customer record as a metafield
- *   4. builds a Storefront cart carrying their email and shipping address, with
- *      the minimum order already in it
- *   5. returns the cart URL for the browser to follow
+ *   2. rejects an email that already has an account — that is a sign-in
+ *   3. uploads the resale permit into Shopify Files
+ *   4. creates the Shopify customer in ONE Admin call, tagged `wholesale`,
+ *      with the address and the permit on the record from birth
+ *   5. builds a Storefront cart carrying their email and shipping address, with
+ *      the minimum order already in it (optional — skipped without a
+ *      Storefront token)
+ *   6. returns the cart URL for the browser to follow
+ *
+ * THERE IS NO PASSWORD HERE, deliberately. Shopify's current customer accounts
+ * sign people in with an emailed code, so there is no credential for this form
+ * to collect, for this function to carry, or for us to get wrong. It also means
+ * the account is created with the Admin API alone: the older Classic flow had
+ * to create it through the Storefront API purely because Admin's CustomerInput
+ * has no password field, then find it again and decorate it — three calls and
+ * two APIs to do what one now does. If you are tempted to reintroduce a
+ * password, read docs/WHOLESALE-ACCOUNTS.md first; it is a larger change than
+ * adding a field.
  *
  * ZERO DEPENDENCIES, like the rest of the repo. Netlify Functions v2 hands us a
  * standard Request, so `await request.formData()` parses the multipart upload
@@ -62,18 +69,13 @@ const PERMIT_TYPES = {
 };
 
 /* Fields the applicant must give us. Anything not in here is ignored entirely,
-   so a crafted POST cannot smuggle extra properties onto the customer.
-
-   The password is deliberately NOT in either list. Everything in them lands in
-   `data`, and `data` is what gets written to metafields, put in error payloads
-   and, when something breaks, logged. The password is read on its own, held in
-   one variable, handed to Shopify, and never goes near any of that. */
+   so a crafted POST cannot smuggle extra properties onto the customer: these
+   two lists are the whole input surface, and everything in them lands in
+   `data`, which is what gets written to metafields and put in error payloads.
+   Nothing secret belongs in here — and since the accounts are passwordless,
+   nothing secret is collected at all. */
 const REQUIRED = ['business', 'contact', 'email', 'phone', 'address1', 'city', 'region', 'postal'];
 const OPTIONAL = ['address2', 'country', 'website', 'taxId', 'role', 'notes'];
-
-/* Shopify's own floor is 5 characters. 8 is the floor here: this account sees
-   trade pricing, and it is the only credential in front of it. */
-const MIN_PASSWORD = 8;
 
 const json = (status, body) =>
   new Response(JSON.stringify(body), {
@@ -112,14 +114,15 @@ export default async (request) => {
   const storefrontToken = process.env.SHOPIFY_STOREFRONT_TOKEN;
   const variantId = process.env.SHOPIFY_WHOLESALE_VARIANT_ID;
 
-  /* The storefront token is no longer optional. The Admin API cannot set a
-     password, so without it there is no way to create an account at all —
-     only a half-made customer record nobody can log into. Fail loudly here
-     rather than part-way through. */
-  if (!store || !adminToken || !storefrontToken) {
+  /* The Admin pair is the whole requirement: it creates the account, and the
+     account is the thing that earns trade pricing. The Storefront token is
+     optional again now that no password needs setting — without it the signup
+     still succeeds and the applicant lands on WHOLESALE_PORTAL_URL instead of
+     a cart with their address already in it. */
+  if (!store || !adminToken) {
     /* Misconfiguration is ours, not the applicant's — say so plainly rather
        than pretending the application failed. */
-    console.error('wholesale-apply: SHOPIFY_STORE_DOMAIN, SHOPIFY_ADMIN_TOKEN or SHOPIFY_STOREFRONT_TOKEN is not set');
+    console.error('wholesale-apply: SHOPIFY_STORE_DOMAIN or SHOPIFY_ADMIN_TOKEN is not set');
     return json(503, { error: 'Wholesale signup is not switched on yet. Please email us instead.' });
   }
 
@@ -152,19 +155,6 @@ export default async (request) => {
     return json(400, { error: 'That email address does not look right.', fields: ['email'] });
   }
 
-  /* Read straight out of the form and kept out of `data` on purpose. */
-  const password = String(form.get('password') ?? '');
-  const password2 = String(form.get('password2') ?? '');
-  if (password.length < MIN_PASSWORD) {
-    return json(400, { error: `Please choose a password of at least ${MIN_PASSWORD} characters.`, fields: ['password'] });
-  }
-  if (password.length > 72) {
-    return json(400, { error: 'That password is too long. 72 characters is the limit.', fields: ['password'] });
-  }
-  if (password !== password2) {
-    return json(400, { error: 'Those two passwords do not match.', fields: ['password2'] });
-  }
-
   const permit = form.get('permit');
   if (!permit || typeof permit === 'string' || !permit.size) {
     return json(400, { error: 'Please attach your resale permit.', fields: ['permit'] });
@@ -180,6 +170,27 @@ export default async (request) => {
   const tag = process.env.REVIEW_ONLY === '1' ? 'wholesale-pending' : 'wholesale';
 
   try {
+    /* ----------------------------------------------------- already here? -- */
+    /* Checked BEFORE the permit is uploaded. The other order works, but it
+       stages a file into Shopify Files and then abandons it when the email
+       turns out to be taken — an orphan nobody will ever look at, holding
+       somebody's tax document. Ask the cheap question first.
+
+       An account that already exists is a login, not a signup. Say so rather
+       than silently re-tagging somebody else's record: the email is the
+       username, so this is the one place an attacker could try to attach their
+       own details to a shop that already has an account. */
+    const found = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+      query byEmail($q: String!) { customers(first: 1, query: $q) { nodes { id } } }`,
+      { q: `email:"${data.email.replace(/"/g, '')}"` });
+    if (found.customers.nodes[0]) {
+      return json(409, {
+        error: 'There is already an account on that email address. Please sign in instead — Shopify will email you a code.',
+        fields: ['email'],
+        existing: true,
+      });
+    }
+
     /* ------------------------------------------------------- the permit -- */
     /* Staged upload: Shopify hands back a signed URL, we PUT the bytes
        straight at it, then register the result as a File. The permit never
@@ -225,8 +236,14 @@ export default async (request) => {
     const permitId = created.fileCreate.files[0]?.id;
 
     /* ------------------------------------------------------ the customer -- */
-    /* Upsert rather than create: a shop that applies twice should end up with
-       one customer, not a duplicate and a confusing "email taken" error. */
+    /* ONE Admin call, because there is no password to set.
+       The old flow could not do this: only the Storefront API can set a
+       password, so the account had to be born there and then be found again
+       and decorated by Admin — three calls, two APIs, and a window in which a
+       customer existed untagged. Passwordless accounts have no such
+       constraint, so the record is created complete: tags, address and
+       metafields in the same mutation that creates it. There is no moment at
+       which an untagged wholesale customer exists. */
     const [firstName, ...rest] = data.contact.split(/\s+/);
     const addresses = [{
       address1: data.address1,
@@ -251,92 +268,21 @@ export default async (request) => {
     if (data.notes) metafields.push({ namespace: 'wholesale', key: 'notes', type: 'multi_line_text_field', value: data.notes.slice(0, 2000) });
     if (permitId) metafields.push({ namespace: 'wholesale', key: 'resale_permit', type: 'file_reference', value: permitId });
 
-    const found = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
-      query byEmail($q: String!) { customers(first: 1, query: $q) { nodes { id tags } } }`,
-      { q: `email:"${data.email.replace(/"/g, '')}"` });
-    const existing = found.customers.nodes[0];
-
-    /* An account that already exists is a login, not a signup. Say so rather
-       than silently re-tagging somebody else's record — the email is the
-       username, so this is the one place an attacker could try to attach their
-       own details to a shop that already has an account. */
-    if (existing) {
-      return json(409, {
-        error: 'There is already an account on that email address. Please log in instead, or use the password reset on the login page.',
-        fields: ['email'],
-        existing: true,
-      });
-    }
-
-    /* THE PASSWORD GOES TO SHOPIFY AND NOWHERE ELSE.
-       The Admin API cannot set one — CustomerInput has no password field — so
-       the account is created through the STOREFRONT API, which can. That means
-       the order here is forced: create with the password first, then tag and
-       decorate the record with the Admin API afterwards.
-
-       The storefront token is the public kind, so nothing secret rides along;
-       the password is in the request body over TLS, exactly as a login would
-       be. It is never written to a metafield, never returned, and never logged:
-       the catch at the bottom logs `err`, and no error path puts it there. */
-    const signedUp = await shopify(storefront, storefrontToken, 'X-Shopify-Storefront-Access-Token', `
-      mutation signup($input: CustomerCreateInput!) {
-        customerCreate(input: $input) {
-          customer { id }
-          customerUserErrors { field message code }
-        }
+    const signedUp = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+      mutation newCustomer($input: CustomerInput!) {
+        customerCreate(input: $input) { customer { id } userErrors { field message } }
       }`, {
       input: {
         email: data.email,
-        password,
         firstName: firstName || data.business,
         lastName: rest.join(' ') || null,
         phone: data.phone || null,
-        /* They asked for an account; that is consent to be emailed about it,
-           and nothing more. Marketing consent is not implied and not set. */
-        acceptsMarketing: false,
+        tags: [tag],
+        addresses,
+        metafields,
       },
     });
     assertNoUserErrors('customerCreate', signedUp.customerCreate);
-
-    /* Find it by email rather than trusting the Storefront id shape, then put
-       everything the Storefront API has no concept of onto the record. */
-    const after = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
-      query byEmail($q: String!) { customers(first: 1, query: $q) { nodes { id } } }`,
-      { q: `email:"${data.email.replace(/"/g, '')}"` });
-    const customerId = after.customers.nodes[0]?.id;
-    if (!customerId) throw new Error('customer created but could not be read back');
-
-    const decorated = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
-      mutation upd($input: CustomerInput!) {
-        customerUpdate(input: $input) { customer { id } userErrors { field message } }
-      }`, {
-      input: { id: customerId, tags: [tag], addresses, metafields },
-    });
-    assertNoUserErrors('customerUpdate', decorated.customerUpdate);
-
-    /* ------------------------------------------------------- logged in -- */
-    /* Signing up and then being asked to log in is a silly way to meet
-       somebody. Exchange the password we already have for an access token so
-       they arrive inside their account with pricing showing.
-
-       The token is returned to the browser, which is where a session belongs;
-       the password is not, and is now out of scope for good. If this step
-       fails the account still exists and still works — they just have to log
-       in once — so it never fails the signup. */
-    let accessToken = null;
-    try {
-      const auth = await shopify(storefront, storefrontToken, 'X-Shopify-Storefront-Access-Token', `
-        mutation login($input: CustomerAccessTokenCreateInput!) {
-          customerAccessTokenCreate(input: $input) {
-            customerAccessToken { accessToken expiresAt }
-            customerUserErrors { field message code }
-          }
-        }`, { input: { email: data.email, password } });
-      assertNoUserErrors('customerAccessTokenCreate', auth.customerAccessTokenCreate);
-      accessToken = auth.customerAccessTokenCreate.customerAccessToken?.accessToken || null;
-    } catch (err) {
-      console.error('wholesale-apply: sign-in after signup failed —', err.message);
-    }
 
     /* ----------------------------------------------------------- the cart -- */
     /* A cart that already knows who they are and where it ships, with the
@@ -384,7 +330,7 @@ export default async (request) => {
       }
     }
 
-    return json(200, { ok: true, redirect, accessToken, pending: tag === 'wholesale-pending' });
+    return json(200, { ok: true, redirect, pending: tag === 'wholesale-pending' });
   } catch (err) {
     /* Shopify's messages can name internal ids and fields. Log them, and give
        the applicant something true and actionable instead. */
