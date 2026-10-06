@@ -17,7 +17,7 @@ npm run build && npm run check   # must stay at 0 errors, 0 warnings
 |---|---|---|---|
 | 0 | **The remaining photographs.** Four have arrived and are on `/story/` and `/conservation/`. Still open: the printed info card, **the original artwork beside the finished card** (the most valuable image the site could have), the packing table, and **one portrait of Audrey alone** — without it neither founder card can carry a face. `docs/PHOTO-PLAN.md` has the shot list. | Ken & Audrey | `logos-and-photos-new/` |
 | 1 | **The Shopify storefront URL.** Everything else about ordering is done; this one field turns ~60 buttons into real checkout. | Ken & Audrey | `data/site.json` → `shop.url`. See `docs/COMMERCE.md` |
-| 2 | **The domain.** `reeldealdeck.com` is printed on the cards and is not registered to us yet. | Ken | — |
+| 2 | **Where the domain points.** `reeldealdeck.com` has been registered since March 2026 and currently serves a password-protected Shopify store (`kxr1gv-mb.myshopify.com`). It needs to serve this site instead, with Shopify moved to `shop.reeldealdeck.com`. Needs admin access to that store. | Ken & Audrey | `docs/DEPLOY.md` |
 
 ---
 

@@ -37,8 +37,14 @@ Both must report **0 errors**. A change can pass one and fail the other.
 ## Current state
 
 - **Live at** https://srichard3.github.io/reel-deal-deck/ — deliberately `noindex`
-- **`reeldealdeck.com` is not bought yet.** Nothing compounds until it is. The
-  printed cards already display that address, so it is urgent for a non-SEO reason.
+- **`reeldealdeck.com` IS registered** — since 2026-03-17, at GoDaddy, paid to
+  2029. The earlier note here said otherwise and was wrong; it was never checked.
+  **It currently points at a Shopify store**, `kxr1gv-mb.myshopify.com`, named
+  "The Reel Deal Deck" and password-protected. Ken or Audrey set that up.
+  So the blocker is not buying a domain, it is deciding what sits at the apex —
+  see `docs/DEPLOY.md`. The plan of record: this site at the apex and `www`,
+  Shopify moved to `shop.reeldealdeck.com`, DNS left at GoDaddy so the
+  `secureserver.net` MX records keep `support@reeldealdeck.com` alive.
 - **Ordering is live. There is no Kickstarter and no pre-order** — both were
   removed site-wide. Checkout will be Shopify; `site.shop.url` is still empty, so
   every order CTA falls back to `/deck/#order`.
