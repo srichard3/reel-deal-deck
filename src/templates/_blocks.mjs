@@ -237,13 +237,13 @@ export function tuckBox({ eager = false } = {}) {
         <div class="tuck__stage">
           <div class="tuck__box" data-tuck-box
                role="img"
-               aria-label="The Reel Deal Deck tuck box: an engraved green case with two rising trout, a fan of three fly cards on the front, and &lsquo;54 Unique Cards, Hand Illustrated in Exquisite Detail&rsquo; down the spine">
+               aria-label="The Reel Deal Deck tuck box, turnable from any angle: an engraved green case with two rising trout, a fan of three fly cards on the front, &lsquo;54 Unique Cards, Hand Illustrated in Exquisite Detail&rsquo; down the spine, and on the base the barcode, Homer Fry Ranch, LLC of Eagle, Idaho, and Made in the USA">
             <div class="tuck__face tuck__face--front">${face('front', 600, 836, eager)}</div>
             <div class="tuck__face tuck__face--back">${face('back', 600, 836)}</div>
             <div class="tuck__face tuck__face--left">${face('left', 156, 836)}</div>
             <div class="tuck__face tuck__face--right">${face('right', 156, 836)}</div>
             <div class="tuck__face tuck__face--top">${face('top', 600, 156)}</div>
-            <div class="tuck__face tuck__face--bottom"></div>
+            <div class="tuck__face tuck__face--bottom">${face('bottom', 600, 156)}</div>
           </div>
         </div>
         <div class="tuck__shadow" aria-hidden="true"></div>

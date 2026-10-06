@@ -3,20 +3,21 @@
  * dieline, for the interactive 3D box on the homepage.
  *
  * Source: "new assets/Fly_Deck_Box T-020_v8.pdf" (gitignored, from USPCC).
- * Output: static/brand/box3d-{front,back,left,right,top}.webp
+ * Output: static/brand/box3d-{front,back,left,right,top,bottom}.webp
  *
  * WHY THESE NUMBERS
  * -----------------
  * The dieline prints its fold and cut lines in cyan, so the panel boundaries
  * are measurable rather than guessed. Detecting the cyan dashes at 300dpi puts
  * the vertical folds at x = 449, 646, 1415, 1621, 2390 and the horizontal ones
- * at y = 581, 778, 1846. That gives:
+ * at y = 581, 778, 1846, 2052. That gives:
  *
  *     front / back   769 x 1068
  *     spine (depth)  ~200 wide
  *     top flap       769 x 197   (= the depth, which is the check that the
  *                                 reading is right: the flap that folds over
  *                                 the top is exactly as deep as the box)
+ *     bottom flap    769 x 206   (the same check, from the other end)
  *
  * so W : H : D = 1 : 1.389 : 0.26. A real poker tuck is 2.5 x 3.5 x 0.65in,
  * which is 1 : 1.4 : 0.26. The CSS in components.css uses the same ratios.
@@ -24,8 +25,14 @@
  * Two fixes are applied on the way out:
  *   - the cyan score lines cross the printed artwork, so they are painted out
  *     by filling each cyan pixel from the nearest clean pixel above or below;
- *   - the top flap is printed upside down on the dieline, because it folds
- *     over, so it is rotated 180 degrees.
+ *   - the top and bottom flaps are printed upside down on the dieline, because
+ *     each folds over, so both are rotated 180 degrees.
+ *
+ * The bottom flap hangs below the BACK panel, not the front, and carries the
+ * legal line and the retail barcode: "Homer Fry Ranch, LLC / Eagle, Idaho
+ * (c)2026 / Manufactured by The United States Playing Card Company / Made in
+ * the USA". It is the only panel with the UPC on it, which is why the base of
+ * the 3D box is worth showing rather than leaving as a flat green glue flap.
  *
  * Both spines are emitted at the same width even though the measured crops
  * differ by 9px. They are the same panel on the real box, and a box whose two
@@ -67,7 +74,7 @@ im = Image.open(sheet).convert('RGB')
 
 # Fold/cut lines measured from the cyan die layer at 300dpi.
 XF = [449, 646, 1415, 1621, 2390]
-YF = [581, 778, 1846]
+YF = [581, 778, 1846, 2052]
 I  = 4                                  # inset past the dash itself
 
 PANELS = {
@@ -76,12 +83,15 @@ PANELS = {
   'left':  (XF[0], YF[1], XF[1], YF[2]),
   'right': (XF[2], YF[1], XF[3], YF[2]),
   'top':   (XF[1], YF[0], XF[2], YF[1]),
+  # Below the BACK panel, so its x range is the back's, not the front's.
+  'bottom': (XF[3], YF[2], XF[4], YF[3]),
 }
 
 # Output sizes hold the real ratios exactly: D/W = 200/769 = 0.26.
 W, H = 600, 836
 D = round(W * 200 / 769)
-SIZES = {'front': (W, H), 'back': (W, H), 'left': (D, H), 'right': (D, H), 'top': (W, D)}
+SIZES = {'front': (W, H), 'back': (W, H), 'left': (D, H), 'right': (D, H),
+         'top': (W, D), 'bottom': (W, D)}
 
 # Ghostscript renders the PANTONE 364 C separation at #4A7637 no matter which
 # colour flags it is given — blue 55 where the ink is 43, which reads grey
@@ -132,8 +142,8 @@ for name, (x0, y0, x1, y1) in PANELS.items():
     arr, n_fixed, n_total = fix_ink(strip_cyan(np.asarray(c)))
     c = Image.fromarray(arr)
     print('    %-6s ink pixels recoloured: %5.1f%%' % (name, n_fixed / n_total * 100))
-    if name == 'top':
-        c = c.rotate(180)               # printed inverted; it folds over
+    if name in ('top', 'bottom'):
+        c = c.rotate(180)               # printed inverted; each folds over
     c = c.resize(SIZES[name], getattr(Image, 'Resampling', Image).LANCZOS)
     p = '%s/box3d-%s.webp' % (out, name)
     # Lossy, deliberately. webp's colour transform lands the flat ink on

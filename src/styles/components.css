@@ -2305,7 +2305,11 @@ a.card-face.card-face:nth-child(even):active {
   --bd: calc(var(--bw) * 0.26);
   --rx: -14deg;          /* resting three-quarter view; box.js takes over */
   --ry: -26deg;
-  --spin: 0deg;
+  /* The whole orientation, in one place. CSS owns it as two Euler angles, which
+     is all a resting pose needs. box.js replaces it with a matrix3d the moment
+     anyone takes hold, because Euler angles gimbal-lock when the box is turned
+     past vertical and this box now turns all the way over. */
+  --tf: rotateX(var(--rx)) rotateY(var(--ry));
   display: grid;
   place-items: center;
   padding-block: var(--s-5);
@@ -2327,9 +2331,13 @@ a.card-face.card-face:nth-child(even):active {
   width: var(--bw);
   height: var(--bh);
   transform-style: preserve-3d;
-  transform: rotateX(var(--rx)) rotateY(calc(var(--ry) + var(--spin)));
+  transform: var(--tf);
   transition: transform 480ms var(--ease);
-  touch-action: pan-y;          /* let the page still scroll vertically */
+  /* Yaw is ours, vertical panning stays the page's. A hero that eats an upward
+     swipe on a phone is a trap, so pitch is a mouse, pen and keyboard gesture.
+     Touch still reaches every face: yaw alone walks all four sides, and the
+     keyboard reaches the top and the base. */
+  touch-action: pan-y;
 }
 /* Only offer the grab cursor where box.js is there to honour it. Without JS
    this is a handsome 3D box that does not turn, and it should not pretend. */
@@ -2387,8 +2395,9 @@ html:not(.no-js) .tuck__box { cursor: grab; }
 .tuck__face--top    { transform: rotateX(90deg) translateZ(calc(var(--bh) / 2)); }
 .tuck__face--bottom { transform: rotateX(-90deg) translateZ(calc(var(--bh) / 2)); }
 
-/* The base of a tuck box is a plain glue flap — no artwork to show. */
-.tuck__face--bottom { background-color: #3f6625; }
+/* The base carries the barcode, the legal line and "Made in the USA", so it is
+   a real panel cut from the dieline like the other five — not the flat glue
+   flap it used to be. It is the reason the box turns all the way over. */
 
 @media (prefers-reduced-motion: reduce) {
   .tuck__box { transition: none; }

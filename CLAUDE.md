@@ -257,10 +257,39 @@ cached. Never tell someone to hard-refresh instead.
 **The hero tuck box is CSS, not a 3D library.** It is `tuckBox()` in
 `_blocks.mjs` and renders on both `/` and `/deck/`; any page using it must load
 `src/js/box.js`, and only one page should pass `eager`. A cuboid is six rectangles, so
-three.js would be 150kB to draw a box. `scripts/box-panels.mjs` cuts the six panels out of the printer's dieline (gitignored) by detecting its cyan fold
+three.js would be 150kB to draw a box. `scripts/box-panels.mjs` cuts all six panels out of the printer's dieline (gitignored) by detecting its cyan fold
 lines, and `.tuck` in components.css folds them with transforms at the measured
 ratios W:H:D = 1 : 1.393 : 0.26. The resting angle is CSS, so it is still a 3D
 box with JS off; `src/js/box.js` only adds dragging, keyboard and the idle sway.
+
+**All six panels are printed, including the base.** It hangs below the BACK
+panel on the dieline (not the front, like the top flap) and carries the UPC, the
+legal line and "Made in the USA". Both flaps are printed inverted because both
+fold over, so both are rotated 180 degrees on the way out. It used to be a flat
+green rectangle, which is why the box used to be clamped.
+
+**The box's orientation is a matrix, and gestures are applied in WORLD space.**
+`box.js` holds a 3x3 rotation and writes it to `--tf` as a `matrix3d`; CSS owns
+only the resting pose, as `rotateX(var(--rx)) rotateY(var(--ry))`, which is all
+a pose that never moves needs. Two Euler angles were enough while pitch was
+clamped to an 80-degree band. They are not now: pitch the box a quarter turn and
+its yaw axis lies along the view direction, so dragging sideways spins it in the
+picture plane instead of turning it — it stops following your hand exactly where
+it is most interesting. Every gesture **pre-multiplies** (`R_world · M`); post-
+multiplying turns the box about its own axes, which is that same bug. Re-
+orthonormalize every frame or accumulated error shears the box.
+
+Verify a change by asserting the invariant, not by eye: a horizontal drag is a
+rotation about the screen's vertical, so **every basis vector's Y component must
+be unchanged by it, at every pitch** — including 90, 105 and 135 degrees, where
+the old version failed. Read the authored `--tf`, never `getComputedStyle`,
+which returns the mid-transition interpolation.
+
+**`touch-action: pan-y` on the box is deliberate.** Yaw is ours, vertical panning
+stays the page's: a hero that eats an upward swipe on a phone is a trap. So pitch
+is a mouse, pen and keyboard gesture. Touch still reaches every face — yaw alone
+walks all four sides — and the arrow keys are the only way to reach the top and
+the base without a pointer, which is why they are not a nicety.
 
 **Card art is cropped to its own keyline, and `--r-card-art` matches it.** The
 scans carried ~2px of paper outside the printed outline; rounding the corners
