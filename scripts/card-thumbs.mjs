@@ -38,6 +38,13 @@ import glob, os, sys
 from PIL import Image
 
 WIDTHS = (160, 300)
+# 82 was inherited from the full-size card pipeline, where it is right. These
+# are painted at 46-150 css px, so the browser downscales them again and hides
+# what the encoder gives up. Checked by eye at the real render size on the four
+# busiest cards AND on the engraved back at 2x zoom — q82 through q60 were
+# indistinguishable, including in the hackle fibres and the engraving's line
+# work. 70 takes most of the available saving and still leaves a wide margin.
+QUALITY = 70
 src_dir = os.path.join(sys.argv[1], 'static', 'cards')
 made = skipped = 0
 
@@ -52,7 +59,7 @@ for src in sorted(glob.glob(os.path.join(src_dir, '*-800.webp'))):
             im = Image.open(src).convert('RGBA')
         w, h = im.size
         out = im.resize((OUT_W, round(h * OUT_W / w)), getattr(Image, "Resampling", Image).LANCZOS)
-        out.save(dst, 'WEBP', quality=82, method=6)
+        out.save(dst, 'WEBP', quality=QUALITY, method=6)
         made += 1
 
 print(f'{made} written, {skipped} already current')

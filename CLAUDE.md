@@ -285,12 +285,27 @@ truth.** 54 faces, offered at 160w / 300w / 400w. Measured in a browser: a phone
 takes the 160s and the page is **0.78MB**, a 2x laptop takes the 300s and the
 page is **1.66MB**.
 
-It was 240w/400w with `sizes="(max-width: 46rem) 104px, …"`, which was written
-before the fan was made to fit the screen on touch. Cards are **46 css px** on a
-375px phone now, so every phone was buying a 240w to paint 46px, and every
-laptop skipped straight to the 400w. Fixing the stops alone took the desktop
-page from 2.15MB to 1.66MB and the phone from 1.14MB to 0.78MB, with no visible
-change. **Re-derive `sizes` whenever `--fan-cw` changes** — card width is
+It was 240w/400w at quality 82, with `sizes="(max-width: 46rem) 104px, …"` that
+was written before the fan was made to fit the screen on touch. Cards are **46
+css px** on a 375px phone now, so every phone was buying a 240w to paint 46px,
+and every laptop skipped straight to the 400w.
+
+Two fixes, measured in a browser at each step:
+
+| | desktop 1024@2x | phone 375@2x |
+|---|---|---|
+| was | 2.15 MB | 1.16 MB |
+| right `sizes` + 160/300 | 1.66 MB | 0.78 MB |
+| + quality 70 | **1.42 MB** | **0.56 MB** |
+
+**Quality is 70, not the 82 the full-size pipeline uses**, because these are
+painted at 46–150 css px and the browser downscales them again, which hides
+what the encoder gave up. Checked by eye at the true render size on the four
+busiest cards and on the engraved back at 2x zoom: q82 through q60 were
+indistinguishable, in the hackle fibres and in the engraving's line work. Do not
+raise it back to 82 on the assumption that it matters — look first, at 266px.
+
+**Re-derive `sizes` whenever `--fan-cw` changes** — card width is
 `clamp(76px, 13vw, 150px)`, capped on a coarse pointer at `(100vw - 2rem)/7.44`,
 and `13vw` happens to track both until the 150px cap at 72rem, which is why the
 attribute is two clauses.
