@@ -243,6 +243,52 @@ change; merging two records is not.
 
 ---
 
+## 2d. The welcome email
+
+**Shopify sends nothing** when a customer is created through the Admin API.
+Verified 2026-10-06 by reading the new customer's own event timeline, which logs
+every email the store sends and showed one line: "created this customer".
+
+**Shopify Flow cannot fill the gap either.** Its only customer-facing action is
+a MARKETING email, which refuses anyone without marketing consent — and these
+applicants have none, because the form promises them none. Flow's `Send internal
+email` works and is the right tool for notifying *you*; it is not a route to the
+applicant.
+
+So the function sends it, through **Resend**. A welcome message about an account
+somebody just asked for is transactional rather than marketing, which is why it
+may be sent without consent — and why it has to stay that way. No offers, no
+products, nothing that is not about this account. The moment it carries
+marketing it needs consent and this reasoning collapses.
+
+It is **optional**: with `RESEND_API_KEY` unset nothing is sent, and the signup
+is unaffected. The on-screen message already tells the applicant what to do.
+
+Two rules it is built around, both tested:
+
+- **Only after Shopify accepts the account.** The call is the last thing before
+  the 200, so there is no path that emails somebody whose account was refused.
+  An email saying "your account is open" to a rejected applicant is worse than
+  no email at all.
+- **It can never fail the signup.** The account exists; a missing welcome note
+  is not a reason to tell somebody to email us by hand.
+
+### Setting it up
+
+| Variable | Example |
+|---|---|
+| `RESEND_API_KEY` | `re_...` from resend.com |
+| `RESEND_FROM` | `The Reel Deal Deck <hello@send.reeldealdeck.com>` |
+| `SHOPIFY_SHOP_URL` | `https://shop.reeldealdeck.com` — makes the email link straight to the sign-in page |
+| `SUPPORT_EMAIL` | the reply-to; defaults to `reeldealdeck@gmail.com` |
+
+**Verify a SUBDOMAIN in Resend — `send.reeldealdeck.com`, not the root.** The
+root domain already carries a GoDaddy SPF record for the mailbox, and a second
+SPF record on the same name breaks both. A subdomain gets its own SPF and DKIM
+and leaves the existing mail setup untouched.
+
+---
+
 ## 3. The environment variables
 
 Netlify → Site configuration → Environment variables:

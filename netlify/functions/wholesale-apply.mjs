@@ -161,6 +161,60 @@ async function adminAccessToken(store) {
   return cachedToken.value;
 }
 
+/* ----------------------------------------------------------- welcome -- */
+/* Shopify sends NOTHING when a customer is created through the Admin API —
+   verified 2026-10-06 by reading the customer's own event timeline, which logs
+   every email the store sends and showed only "created this customer". And
+   Shopify Flow cannot fill the gap: its only customer-facing action is a
+   MARKETING email, which refuses anyone without marketing consent, and these
+   applicants have none because the form promises them none.
+
+   So it is sent from here. A welcome message about an account somebody just
+   asked for is transactional, not marketing, which is exactly why it may be
+   sent without consent — and why it must stay that: no offers, no products,
+   nothing that is not about this account.
+
+   Optional on purpose. With RESEND_API_KEY unset nothing is sent and the
+   signup is unaffected; the on-screen message already tells them what to do. */
+async function sendWelcome(data, { pending, shopUrl }) {
+  const key = process.env.RESEND_API_KEY;
+  const from = process.env.RESEND_FROM;
+  if (!key || !from) return false;
+
+  const login = shopUrl ? `${shopUrl.replace(/\/$/, '')}/account` : null;
+  const lines = pending
+    ? [
+      `Thanks ${data.firstName} — we have your wholesale application for ${data.business}, and your resale certificate.`,
+      'We will confirm within one business day. You will not need to do anything until then.',
+    ]
+    : [
+      `You are set up, ${data.firstName} — ${data.business} now has a wholesale account.`,
+      login
+        ? `Sign in at ${login} with this email address. We send you a code; there is no password to remember.`
+        : 'Sign in at our shop with this email address. We send you a code; there is no password to remember.',
+      'Your trade pricing then shows on every page. The smallest order is two bricks, which is 24 decks, and shipping is free on trade orders.',
+    ];
+  const text = `${lines.join('\n\n')}\n\nAny questions, just reply to this email.\n\n— Ken and Audrey\nThe Reel Deal Deck`;
+
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', authorization: `Bearer ${key}` },
+    body: JSON.stringify({
+      from,
+      to: [data.email],
+      /* So a reply reaches a person, not a no-reply void. */
+      reply_to: process.env.SUPPORT_EMAIL || 'reeldealdeck@gmail.com',
+      subject: pending ? 'We have your wholesale application' : 'Your wholesale account is open',
+      text,
+    }),
+  });
+  if (!res.ok) {
+    /* Body only — never the Authorization header, which carries the key. */
+    throw new Error(`resend ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  }
+  return true;
+}
+
 function assertNoUserErrors(label, payload) {
   const errs = payload?.userErrors || payload?.customerUserErrors || [];
   if (errs.length) throw new Error(`${label}: ${errs.map((e) => e.message).join('; ')}`);
@@ -507,7 +561,19 @@ export default async (request) => {
       }
     }
 
-    return json(200, { ok: true, redirect, pending: tag === 'wholesale-pending' });
+    /* Last thing before success, so there is no path that emails somebody
+       whose account Shopify did not accept: every failure above has already
+       returned or thrown. Never allowed to fail the signup either — the
+       account exists, and a missing welcome note is not worth telling an
+       applicant to email us by hand. */
+    const pending = tag === 'wholesale-pending';
+    try {
+      await sendWelcome(data, { pending, shopUrl: process.env.SHOPIFY_SHOP_URL });
+    } catch (err) {
+      console.error('wholesale-apply: welcome email failed —', err.message);
+    }
+
+    return json(200, { ok: true, redirect, pending });
   } catch (err) {
     /* Shopify's messages can name internal ids and fields. Log them, and give
        the applicant something true and actionable instead. */

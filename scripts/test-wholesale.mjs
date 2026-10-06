@@ -296,6 +296,89 @@ function withExisting(nodes, sink) {
   console.log(`${lower ? '  ok  ' : ' FAIL '} the email is lowercased before it is looked up`);
 }
 
+/* THE WELCOME EMAIL. Only on a signup Shopify actually accepted — an email
+   saying "your account is open" to somebody whose account was refused is worse
+   than no email at all. And it must never be able to fail the signup: the
+   account exists either way. */
+{
+  const origFetch = globalThis.fetch;
+  const origError = console.error;
+  console.error = () => {};
+  process.env.RESEND_API_KEY = 'test-key';
+  process.env.RESEND_FROM = 'Reel Deal <hello@send.example.com>';
+
+  const resendCalls = () => sent.filter((u) => String(u).includes('api.resend.com')).length;
+  let sent = [];
+  const shop = (nodes, createErrors = []) => async (url, init) => {
+    sent.push(url);
+    const b = String(init?.body || '');
+    const ok = (o) => new Response(JSON.stringify({ data: o }), {
+      status: 200, headers: { 'content-type': 'application/json' } });
+    if (String(url).includes('api.resend.com')) return new Response('{"id":"1"}', { status: 200 });
+    if (!b.includes('{')) return new Response('', { status: 200 });
+    if (b.includes('byEmail')) return ok({ customers: { nodes } });
+    if (b.includes('stagedUploadsCreate')) return ok({ stagedUploadsCreate: {
+      stagedTargets: [{ url: 'https://example.invalid/upload', resourceUrl: 'x', parameters: [] }], userErrors: [] } });
+    if (b.includes('fileCreate')) return ok({ fileCreate: { files: [{ id: 'gid://shopify/GenericFile/1' }], userErrors: [] } });
+    if (b.includes('customerCreate')) return ok({ customerCreate: {
+      customer: createErrors.length ? null : { id: 'gid://shopify/Customer/9' }, userErrors: createErrors } });
+    throw new Error('blocked in test');
+  };
+
+  /* 1. a signup Shopify accepted */
+  sent = []; globalThis.fetch = shop([]);
+  let r = await fn(post(body()));
+  const sentOnSuccess = r.status === 200 && resendCalls() === 1;
+  if (!sentOnSuccess) fail++;
+  console.log(`${sentOnSuccess ? '  ok  ' : ' FAIL '} the welcome email is sent once, on a successful signup`);
+
+  /* 2. an email Shopify refused — nothing may be sent */
+  sent = []; globalThis.fetch = shop([], [{ field: ['email'], message: 'Email has already been taken' }]);
+  r = await fn(post(body()));
+  const silentOnRefusal = r.status === 409 && resendCalls() === 0;
+  if (!silentOnRefusal) fail++;
+  console.log(`${silentOnRefusal ? '  ok  ' : ' FAIL '} ${r.status}  nothing is emailed when Shopify refuses the account`);
+
+  /* 3. a submission rejected before Shopify is reached at all */
+  sent = []; globalThis.fetch = shop([]);
+  r = await fn(post(body({ postal: 'abc' })));
+  const silentOnInvalid = r.status === 400 && resendCalls() === 0;
+  if (!silentOnInvalid) fail++;
+  console.log(`${silentOnInvalid ? '  ok  ' : ' FAIL '} ${r.status}  nothing is emailed when the form is invalid`);
+
+  /* 4. Resend itself down — the account exists, so the signup still succeeds,
+        and the failure must not drag the API key into a log line with it. */
+  sent = [];
+  const logged = [];
+  console.error = (...a) => logged.push(a.map(String).join(' '));
+  globalThis.fetch = async (url, init) => {
+    if (String(url).includes('api.resend.com')) return new Response('upstream down', { status: 500 });
+    return shop([])(url, init);
+  };
+  r = await fn(post(body()));
+  const bodyText = await r.clone().text();
+  console.error = () => {};
+  const survives = r.status === 200;
+  if (!survives) fail++;
+  console.log(`${survives ? '  ok  ' : ' FAIL '} ${r.status}  (want 200)  a failed welcome email does not fail the signup`);
+
+  const keyLeaked = logged.some((l) => l.includes('test-key')) || bodyText.includes('test-key');
+  if (keyLeaked) fail++;
+  console.log(`${keyLeaked ? ' FAIL ' : '  ok  '} the Resend key reaches neither a log line nor a response`);
+
+  /* 5. unconfigured: no key, no email, no change */
+  delete process.env.RESEND_API_KEY;
+  delete process.env.RESEND_FROM;
+  sent = []; globalThis.fetch = shop([]);
+  r = await fn(post(body()));
+  const offByDefault = r.status === 200 && resendCalls() === 0;
+  if (!offByDefault) fail++;
+  console.log(`${offByDefault ? '  ok  ' : ' FAIL '} with no RESEND_API_KEY nothing is sent and the signup is unaffected`);
+
+  globalThis.fetch = origFetch;
+  console.error = origError;
+}
+
 /* unset credentials must say so rather than pretending the application failed */
 delete process.env.SHOPIFY_ADMIN_TOKEN;
 const res = await fn(post(body()));
