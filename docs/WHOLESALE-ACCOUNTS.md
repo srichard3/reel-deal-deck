@@ -175,7 +175,7 @@ Netlify → Site configuration → Environment variables:
 | `SHOPIFY_STOREFRONT_TOKEN` | `…` | no — it only pre-fills the cart. Without it signup still succeeds and the applicant lands on `WHOLESALE_PORTAL_URL` |
 | `SHOPIFY_WHOLESALE_VARIANT_ID` | `gid://shopify/ProductVariant/123…` | for the pre-filled cart |
 | `WHOLESALE_PORTAL_URL` | the wholesale collection URL | fallback landing page |
-| `SHOPIFY_API_VERSION` | `2025-10` | no — see below |
+| `SHOPIFY_API_VERSION` | `2026-10` | no — see below |
 | `REVIEW_ONLY` | `1` | no — see below |
 
 Without the first two, the form says wholesale signup is not switched on yet and

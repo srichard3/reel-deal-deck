@@ -53,10 +53,16 @@
 
 export const config = { path: '/api/wholesale-apply' };
 
-/* Shopify's API is versioned quarterly and old versions are retired. Pinned
-   here, overridable, and worth checking against Shopify's release notes before
-   launch rather than discovering it from a 400. */
-const API_VERSION = process.env.SHOPIFY_API_VERSION || '2025-10';
+/* Shopify versions its API quarterly and supports each release for about a
+   year. 2025-10 was the pin here until 2026-10-06, by which point it was twelve
+   months old and at the edge of retirement — moved forward after seeing
+   Shopify's own app form default to 2026-10.
+
+   Pinned rather than floating on purpose: an unpinned version means Shopify
+   changing a field breaks signup without a commit on our side. Check it against
+   their release notes roughly once a year, or override SHOPIFY_API_VERSION in
+   the environment to test a newer one before changing this line. */
+const API_VERSION = process.env.SHOPIFY_API_VERSION || '2026-10';
 
 const MAX_BYTES = 10 * 1024 * 1024;          /* 10MB — a photo of a permit */
 const PERMIT_TYPES = {
