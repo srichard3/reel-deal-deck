@@ -196,6 +196,35 @@ async function sendWelcome(data, { pending, shopUrl }) {
     ];
   const text = `${lines.join('\n\n')}\n\nAny questions, just reply to this email.\n\n— Ken and Audrey\nThe Reel Deal Deck`;
 
+  /* Both parts, always. A great many people read mail with images off, and a
+     fair number of corporate clients strip HTML outright — the text part is
+     not a formality, it is what a real share of shops will actually read. It
+     is also what keeps this out of spam filters that distrust image-only mail. */
+  const esc = (v) => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const logo = process.env.EMAIL_LOGO_URL;
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FAF9F5;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FAF9F5;">
+    <tr><td align="center" style="padding:32px 16px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#FFFFFF;border:1px solid #E6E3DA;border-radius:10px;">
+        <tr><td style="padding:28px 28px 8px 28px;">
+          ${logo ? `<img src="${esc(logo)}" width="64" alt="The Reel Deal Deck" style="display:block;border:0;height:auto;">` : ''}
+        </td></tr>
+        <tr><td style="padding:8px 28px 4px 28px;font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.4;color:#1B1A16;">
+          <strong>${esc(pending ? 'We have your application' : 'Your wholesale account is open')}</strong>
+        </td></tr>
+        ${lines.map((l) => `<tr><td style="padding:8px 28px;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#2E2C26;">${esc(l)}</td></tr>`).join('')}
+        <tr><td style="padding:16px 28px 8px 28px;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#5C5A52;">
+          Any questions, just reply to this email.
+        </td></tr>
+        <tr><td style="padding:0 28px 28px 28px;font-family:Georgia,'Times New Roman',serif;font-size:15px;color:#1B1A16;">
+          &mdash; Ken and Audrey<br><span style="color:#5C5A52;font-size:13px;">The Reel Deal Deck &middot; Eagle, Idaho</span>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+  </body></html>`;
+
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { 'content-type': 'application/json', authorization: `Bearer ${key}` },
@@ -206,6 +235,7 @@ async function sendWelcome(data, { pending, shopUrl }) {
       reply_to: process.env.SUPPORT_EMAIL || 'reeldealdeck@gmail.com',
       subject: pending ? 'We have your wholesale application' : 'Your wholesale account is open',
       text,
+      html,
     }),
   });
   if (!res.ok) {

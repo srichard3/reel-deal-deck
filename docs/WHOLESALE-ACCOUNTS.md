@@ -281,6 +281,22 @@ Two rules it is built around, both tested:
 | `RESEND_FROM` | `The Reel Deal Deck <hello@send.reeldealdeck.com>` |
 | `SHOPIFY_SHOP_URL` | `https://shop.reeldealdeck.com` — makes the email link straight to the sign-in page |
 | `SUPPORT_EMAIL` | the reply-to; defaults to `reeldealdeck@gmail.com` |
+| `EMAIL_LOGO_URL` | optional logo at the top of the HTML part |
+
+The logo is hosted on **Shopify's CDN**, not on reeldealdeck.com. Our own host
+sits behind Netlify access control, and an image a recipient cannot load is
+worse than no image: it leaves a broken frame in every inbox. Shopify's file CDN
+is public, already in use for the permits, and outlives any change to our DNS.
+
+The email is sent as **both** parts, text and HTML, always. A great many people
+read mail with images off and some clients strip HTML entirely, so the text part
+is what a real share of shops will actually read — and image-only mail is a
+spam-filter signal in itself.
+
+**A sender avatar in Gmail is BIMI**, and it needs a Verified Mark Certificate:
+roughly $1,000 a year and a registered trademark. The DMARC half of the
+requirement is already met (`p=quarantine`), the certificate is not, and it is
+not worth buying. Gmail shows a letter avatar.
 
 **Verify a SUBDOMAIN in Resend — `send.reeldealdeck.com`, not the root.** The
 root domain already carries a GoDaddy SPF record for the mailbox, and a second
