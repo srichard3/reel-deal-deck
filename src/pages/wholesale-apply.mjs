@@ -125,7 +125,7 @@ export default function wholesaleApply({ site }) {
     our shop system going live, and we would rather say so than hand you a form that quietly
     fails.</p>
     <p style="margin-block-end:0">
-      Email <a href="mailto:${esc(email)}?subject=Wholesale%20account">${esc(email)}</a> with your
+      Use <a href="/contact/">our contact form</a> with your
       business name, address, phone and a photo of your resale permit, and we will set the account
       up by hand and reply with your pricing. It is the two of us reading it, so it will not sit in
       a queue.
@@ -134,7 +134,7 @@ export default function wholesaleApply({ site }) {
   <noscript>
     <p class="notice notice--info">
       This form needs JavaScript to attach your permit. Email
-      <a href="mailto:${esc(email)}?subject=Wholesale%20account">${esc(email)}</a> with your business
+      <a href="/contact/">our contact form</a> with your business
       name, address, phone and a photo of your resale permit instead, and we will set the account up
       by hand and reply with the link.
     </p>
@@ -192,7 +192,7 @@ ${field({ id: 'website', label: 'Website or Instagram', full: true, placeholder:
     <p class="help">
       By applying you are telling us this is a business buying for resale. We keep your details to
       set up and run the account, and nothing else &mdash; no marketing list, no third parties.
-      Questions first? <a href="mailto:${esc(email)}">${esc(email)}</a>.
+      Questions first? <a href="/contact/">Write to us</a>.
     </p>
   </form>`}
 

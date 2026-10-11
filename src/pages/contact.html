@@ -18,7 +18,6 @@
           "description": "The Reel Deal Deck is a 54-card fly-fishing playing card deck made by Ken and Audrey, a father-and-daughter team in Eagle, Idaho. Every card carries an original hand-drawn fly, a plain-English note on what it imitates, and the hook sizes it is usually tied in. It is printed by The United States Playing Card Company on genuine Bicycle stock, retails at $19.95, and a contribution from every deck goes to Trout Unlimited.",
           "logo": "https://reeldealdeck.com/brand/logo-512.png",
           "image": "https://reeldealdeck.com/og/default.png",
-          "email": "reeldealdeck@gmail.com",
           "foundingLocation": "Eagle, Idaho, United States",
           "knowsAbout": [
                 "Fly fishing",
@@ -59,7 +58,6 @@
       "@type": "LocalBusiness",
       "name": "The Reel Deal Deck",
       "url": "https://reeldealdeck.com/",
-      "email": "reeldealdeck@gmail.com",
       "description": "Maker of a 54-card fly-fishing playing card deck with original hand-drawn flies, printed on genuine Bicycle stock.",
       "address": {
         "@type": "PostalAddress",
@@ -72,11 +70,13 @@
 }
 -->
 
-<!-- One address for everything: reeldealdeck@gmail.com, confirmed by Ken and
-     Audrey as the only inbox. There is no wholesale@ or press@ to split out, and
-     no street address, phone or published hours — the subject-line prefixes on
-     the three cards below are what sorts the mail. If a second inbox ever
-     exists, add it to site.social and to the JSON-LD contactPoints together.
+<!-- NO ADDRESS ON THIS PAGE, deliberately — not in the markup, not in a
+     comment, not in the JSON-LD. Comments ship to the browser and structured
+     data is the first thing a harvester reads. It was published here and in the
+     footer of all 98 pages, and the spam started within days of launch.
+     The inbox is configuration now: SUPPORT_EMAIL, read by
+     netlify/functions/contact.mjs, which is the only thing that knows it.
+     There is still only one inbox; the topic field on the form sorts the mail.
 
      The "few business days" reply window is a stated policy, not a fact from
      site.json. Soften it rather than letting it go stale.
@@ -113,9 +113,7 @@
           Questions about the deck, the flies, the printing, an order on its way, or a
           pattern you think we got wrong. Corrections from anglers are genuinely welcome.
         </p>
-        <address class="contact-card__addr">
-          <a href="mailto:reeldealdeck@gmail.com">reeldealdeck@gmail.com</a>
-        </address>
+        <p class="card__text"><a href="#write">Write to us &darr;</a></p>
       </div>
 
       <div class="card">
@@ -125,9 +123,7 @@
           Brick and case pricing for shops, outfitters and lodges. Tell us your shop, your
           location and rough quantities and we can be useful in one reply.
         </p>
-        <address class="contact-card__addr">
-          <a href="mailto:reeldealdeck@gmail.com?subject=Wholesale%20inquiry">reeldealdeck@gmail.com</a>
-        </address>
+        <p class="card__text"><a href="#write">Write to us &darr;</a></p>
         <p class="card__text"><a href="/wholesale/">Wholesale details &rarr;</a></p>
       </div>
 
@@ -138,9 +134,7 @@
           Interviews, review samples, and high-resolution card art. We can supply the original
           illustrations, the card backs and the tuck box on request.
         </p>
-        <address class="contact-card__addr">
-          <a href="mailto:reeldealdeck@gmail.com?subject=Press%20inquiry">reeldealdeck@gmail.com</a>
-        </address>
+        <p class="card__text"><a href="#write">Write to us &darr;</a></p>
       </div>
     </div>
 
@@ -164,8 +158,9 @@
       Or use the form. It reaches the same inbox.
     </p>
 
-    <form class="stack" data-capture="contact" action="#" method="post"
+    <form class="stack cx-form" data-contact action="/api/contact" method="post" hidden
           style="--gap:var(--s-5);margin-block-start:var(--s-6)">
+      <div class="cx-form__grid">
       <div class="form-row">
         <div class="field">
           <label class="label" for="contact-name">Your name <span class="label__req" aria-hidden="true">&#9830;</span></label>
@@ -202,14 +197,32 @@
       </div>
 
       <div class="cluster" style="--gap:var(--s-4)">
-        <button class="btn btn--primary btn--lg" type="submit">Send message</button>
+        <button class="btn btn--primary btn--lg" type="submit" data-contact-submit>Send message</button>
         <p class="help" id="contact-email-help" style="margin:0">
           We only use your address to answer you. Fields marked
           <span class="label__req" aria-hidden="true">&#9830;</span><span class="visually-hidden">with a diamond</span>
           are required.
         </p>
       </div>
+
+      <!-- Bots fill every field they can see; people never see this one. The
+           function answers 200 and does nothing when it is set, so a bot
+           cannot tell it was caught. -->
+      <div class="ws-apply__trap" aria-hidden="true">
+        <label for="contact-company_website_url">Do not fill this in</label>
+        <input id="contact-company_website_url" name="company_website_url" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      </div>
+
+      <p class="cx-form__status" data-contact-status role="status" aria-live="polite"></p>
     </form>
+
+    <noscript>
+      <p class="notice notice--info">
+        This form needs JavaScript. If you have it switched off, reach us on
+        <a href="{{ site.social.instagram }}" rel="me noopener">Instagram</a> and we will reply there.
+      </p>
+    </noscript>
   </div>
 </section>
 
@@ -244,3 +257,4 @@
   color: var(--c-green);
 }
 </style>
+<script src="/js/contact.js" defer></script>

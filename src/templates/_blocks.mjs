@@ -191,7 +191,15 @@ export function organizationSchema(site, { full = false } = {}) {
     description: b.description,
     logo: base ? `${base}/brand/logo-512.png` : undefined,
     image: base ? `${base}/og/default.png` : undefined,
-    email: site?.social?.email || undefined,
+    /* NO email, deliberately. Structured data is the first thing an address
+       harvester parses, and this node is emitted on every page that is about
+       the business — six copies of the inbox, machine-readable, on a public
+       site. Google does not rank on it and a `contactPoint` with a URL serves
+       a reader better. The inbox is configuration now: SUPPORT_EMAIL, known
+       only to netlify/functions/contact.mjs. */
+    contactPoint: base
+      ? { '@type': 'ContactPoint', contactType: 'customer support', url: `${base}/contact/` }
+      : undefined,
     foundingLocation: b.foundingLocation || undefined,
     knowsAbout: b.knowsAbout || undefined,
     address: site?.location
@@ -292,8 +300,8 @@ export function wholesaleState(site) {
     url: '/wholesale/',
     applyUrl: account.applyPath || '/wholesale/apply/',
     live: account.live === true,
-    loginUrl: login || (email ? `mailto:${email}?subject=Wholesale%20login` : '/wholesale/apply/'),
-    loginLabel: login ? 'Log in' : 'Email us for access',
+    loginUrl: login || '/contact/',
+    loginLabel: login ? 'Log in' : 'Ask us for access',
     loginRel: /^https?:\/\//i.test(login) ? 'noopener' : '',
     loginReady: Boolean(login),
   };

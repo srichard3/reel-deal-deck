@@ -1,17 +1,14 @@
-/* Suggest a fly — turn the form into a real email.
+/* Suggest a fly — send the form to Ken and Audrey.
  *
- * This site has no backend, and the other forms say so: data-capture writes to
- * localStorage and tells the reader that is all it did. That is honest for a
- * waiting list. It would be a lie here, because a suggestion is only worth
- * making if somebody receives it.
+ * This used to compose a mailto:, which meant the inbox had to be printed on
+ * the page for the link to point at. That is exactly what address harvesters
+ * read, and it is why the spam started. It now posts to /api/contact, which
+ * knows the address and never renders it.
  *
- * So the form composes a message and hands it over two ways: mailto: for anyone
- * with a mail client, and the text itself with a copy button for everyone else
- * — webmail users, locked-down machines, phones with no account configured.
- * A mailto: alone silently fails for all of those.
- *
- * Progressive enhancement: with this file absent the form still submits nowhere,
- * so the markup keeps a plain mailto: address alongside it. Nothing is stored.
+ * The composed text and its copy button stay. A mailto: silently failed for
+ * webmail users, locked-down machines and phones with no mail account, and the
+ * same people are the ones most likely to hit a network error here — so they
+ * keep a copy of what they wrote either way.
  */
 (function () {
   'use strict';
@@ -19,14 +16,7 @@
   var form = document.querySelector('[data-suggest]');
   if (!form) return;
 
-  /* The address lives in data/site.json and is rendered into the fallback link
-     below the form. Read it from there rather than repeating it: a second copy
-     of a value is exactly how this project once shipped two different prices. */
-  var manual = document.querySelector('[data-suggest-manual] a[href^="mailto:"]');
-  var TO = manual
-    ? manual.getAttribute('href').replace(/^mailto:/, '').split('?')[0]
-    : '';
-  if (!TO) return;
+  var ENDPOINT = '/api/contact';
 
   var out = document.createElement('div');
   out.className = 'suggest__out';
@@ -59,7 +49,7 @@
 
     var h = document.createElement('p');
     h.className = 'suggest__out-title';
-    h.textContent = 'Your email is ready';
+    h.textContent = 'Sending your suggestion…';
     out.appendChild(h);
 
     var p = document.createElement('p');
@@ -109,14 +99,6 @@
     });
     row.appendChild(copy);
 
-    var again = document.createElement('a');
-    again.className = 'btn btn--quiet btn--sm';
-    again.href = 'mailto:' + TO +
-      '?subject=' + encodeURIComponent(msg.subject) +
-      '&body=' + encodeURIComponent(msg.body);
-    again.textContent = 'Open my mail app again';
-    row.appendChild(again);
-
     out.appendChild(row);
     out.hidden = false;
   }
@@ -131,16 +113,25 @@
 
     var msg = compose();
     render(msg);
-
-    /* Some mail clients truncate a very long mailto: body, and the reader can
-       always copy instead, so this is the convenience path rather than the
-       guaranteed one. */
-    try {
-      window.location.href = 'mailto:' + TO +
-        '?subject=' + encodeURIComponent(msg.subject) +
-        '&body=' + encodeURIComponent(msg.body);
-    } catch (err) { /* the rendered message is still on the page */ }
-
     out.scrollIntoView({ block: 'nearest' });
+
+    var fd = new FormData();
+    fd.append('topic', 'suggestion');
+    fd.append('name', val('name') || 'Anonymous');
+    fd.append('email', val('email'));
+    fd.append('message', msg.subject + '\n\n' + msg.body);
+
+    var note = out.querySelector('.suggest__out-title');
+    fetch(ENDPOINT, { method: 'POST', body: fd })
+      .then(function (res) { return res.ok; })
+      .catch(function () { return false; })
+      .then(function (sent) {
+        if (!note) return;
+        /* The composed text stays on the page either way, so a failure here
+           costs the reader their wording — not their work. */
+        note.textContent = sent
+          ? 'Sent — thank you. Here is what went to them:'
+          : 'That did not send. Copy the message below and use the contact form.';
+      });
   });
 })();

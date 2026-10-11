@@ -69,7 +69,7 @@ export default function press({ site }) {
     ['Based', `${site.location.city}, ${site.location.regionName}, USA`],
     ['Conservation', `${site.conservation.partner} Business member; a contribution from every deck`],
     ['Status', p.availabilityNote],
-    ['Contact', site.social.email],
+    ['Contact', 'reeldealdeck.com/contact/'],
   ];
 
   const assets = [
@@ -91,7 +91,7 @@ export default function press({ site }) {
     <h1 class="h1 page-head__title">Everything you need to write about us</h1>
     <p class="page-head__lede lede">
       Boilerplate, facts and artwork, all on one page. Anything you cannot find here,
-      email <a href="mailto:${esc(site.social.email)}">${esc(site.social.email)}</a> and we will send it
+      use the <a href="/contact/">contact form</a> and we will send it
       the same day &mdash; there are two of us, so it will be Ken or Audrey who replies.
     </p>
   </header>
@@ -173,7 +173,7 @@ export default function press({ site }) {
   <p class="lede">${orderLine(site)}</p>
   <p class="cluster" style="justify-content:center">
     ${orderCta(site)}
-    <a class="btn btn--ghost" href="mailto:${esc(site.social.email)}">Email us</a>
+    <a class="btn btn--ghost" href="/contact/">Contact us</a>
   </p>
 </section>`;
 }

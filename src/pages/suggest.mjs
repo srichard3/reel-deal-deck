@@ -120,6 +120,12 @@ export default function suggest({ site, flies }) {
           <input class="input" id="sg-name" name="name" type="text" autocomplete="name"
                  placeholder="So we can credit you">
         </div>
+        <div class="field">
+          <label class="label" for="sg-email">Email <span class="label__opt">(optional)</span></label>
+          <input class="input" id="sg-email" name="email" type="email" autocomplete="email"
+                 placeholder="Only if you want a reply" aria-describedby="sg-email-help">
+          <p class="help" id="sg-email-help">Leave it blank and the suggestion still reaches us.</p>
+        </div>
       </div>
 
       <div class="cluster" style="--gap:var(--s-4)">
@@ -131,16 +137,17 @@ export default function suggest({ site, flies }) {
       </div>
     </form>
 
-    <!-- The no-JS path, and the fallback for anyone without a mail client. CSS
-         hides the form on .no-js, because a form whose submit button reloads
-         the page and empties the fields is worse than no form. The address is
-         the one the contact page publishes. -->
+    <!-- The no-JS path. CSS hides the form on .no-js, because a form whose
+         submit button reloads the page and empties the fields is worse than no
+         form. No address here: this page used to publish one, and a rendered
+         mailto: is what harvesters read. /contact/ posts to a function that
+         knows the inbox; nothing on the page does. -->
     <div class="suggest__manual" data-suggest-manual>
-      <p class="suggest__manual-title">Prefer to just email us?</p>
+      <p class="suggest__manual-title">Prefer to write it out yourself?</p>
       <p>
-        Email <a href="mailto:${esc(email)}?subject=Fly%20suggestion%20for%20Volume%202">${esc(email)}</a>
-        with the fly&rsquo;s name, what it imitates and where you fish it. That is all
-        we need, and it reaches exactly the same two people.
+        Use <a href="/contact/">our contact form</a> with the fly&rsquo;s name, what it
+        imitates and where you fish it. That is all we need, and it reaches exactly
+        the same two people.
       </p>
     </div>
   </div>

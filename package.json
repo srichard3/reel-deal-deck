@@ -13,6 +13,7 @@
     "serve": "node scripts/serve.mjs",
     "check": "node scripts/check.mjs",
     "test:wholesale": "node scripts/test-wholesale.mjs",
-    "dev:fn": "node build.mjs && node scripts/dev-functions.mjs"
+    "dev:fn": "node build.mjs && node scripts/dev-functions.mjs",
+    "test:contact": "node scripts/test-contact.mjs"
   }
 }

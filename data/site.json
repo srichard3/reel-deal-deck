@@ -58,7 +58,8 @@
     "tiktok": "https://tiktok.com/@reeldealdeck",
     "facebook": "https://www.facebook.com/people/The-Reel-Deal-Deck/61577516271432/",
     "youtube": "",
-    "email": "reeldealdeck@gmail.com"
+    "email": "reeldealdeck@gmail.com",
+    "emailNote": "CONFIGURATION ONLY — do not render this into a page. It was in the footer partial, so it shipped on all 98 pages, plus the Organization JSON-LD on six more; the spam started within days of the site going public. Harvesters read markup, comments and structured data alike. Every route to it is now /contact/, which posts to netlify/functions/contact.mjs; the function reads SUPPORT_EMAIL from the environment and is the only thing that knows the address. If you need a mailto: again, you do not — add a topic to the contact form instead."
   },
   "nav": [
     {

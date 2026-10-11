@@ -56,7 +56,11 @@
         <li><a href="{{ site.social.instagram }}" rel="me noopener">Instagram</a></li>
         <li><a href="{{ site.social.tiktok }}" rel="me noopener">TikTok</a></li>
         <li><a href="{{ site.social.facebook }}" rel="me noopener">Facebook</a></li>
-        <li><a href="mailto:{{ site.social.email }}">{{ site.social.email }}</a></li>
+        <!-- A link, not the address. This partial renders into all 98 pages, so
+             a mailto: here was 98 copies of the inbox on a public site — which
+             is how the spam started. /contact/ posts to a function that knows
+             the address; nothing rendered does. -->
+        <li><a href="/contact/">Contact us</a></li>
       </ul>
     </div>
   </div>
