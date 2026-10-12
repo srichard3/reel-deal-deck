@@ -153,31 +153,5 @@ export default function suggest({ site, flies }) {
   </div>
 </section>
 
-<section class="section section--sunk">
-  <div class="wrap wrap--narrow">
-    <h2 class="h2">What happens to it</h2>
-    <div class="prose">
-      <p>
-        It arrives in the same inbox as everything else, and Ken and Audrey read
-        it. That is the whole process &mdash; there is no panel and no voting.
-      </p>
-      <p>
-        We are not going to promise your fly makes the cut. A deck is
-        ${esc(count)} slots and the arguments about the last ten are the hardest
-        part of building one. What we can promise is that a pattern suggested by
-        somebody who actually fishes it beats one we picked off a list, so these
-        genuinely change the deck.
-      </p>
-      <p>
-        If we do draw it, we will ask before putting your name anywhere.
-      </p>
-    </div>
-    <p class="cluster" style="margin-block-start:var(--s-6);--gap:var(--s-3)">
-      <a class="btn btn--ghost" href="/flies/">See what is already in ${esc(edition)}</a>
-      <a class="btn btn--quiet" href="/deck/">The deck itself</a>
-    </p>
-  </div>
-</section>
-
 <script src="/js/suggest.js" defer></script>`;
 }
