@@ -1613,5 +1613,516 @@
       "priceNote": "Figures are the 2026–27 rates and include the mandatory $4 Habitat Management and Access Validation on top of the $35 resident and $90 non-resident annual licence. A further $10 Habitat Stamp is required to fish Forest Service or BLM land. Prices change — check with the agency before you buy."
     },
     "localNote": null
+  },
+  {
+    "slug": "tennessee",
+    "name": "Tennessee",
+    "abbr": "TN",
+    "region": "Southern Appalachians",
+    "answer": "Tennessee fly fishing is tailwater fishing below TVA dams plus native brook trout in the Smokies, with brown and rainbow trout as the mainstays. The South Holston, Watauga, Clinch and Caney Fork are the headline rivers. A licence is required from age 16, trout needs a supplemental licence, and the dam release schedule decides your day.",
+    "summary": "The South Holston's sulphur hatch, which runs most of the year, plus Smokies brook trout. Check the TVA generation schedule before you drive.",
+    "whatMakesItDifferent": "Tennessee's trout fishing was built by the Tennessee Valley Authority, and one piece of engineering explains the best of it. The South Holston has a labyrinth weir below the main dam, built to put oxygen back into water drawn from the bottom of the reservoir, and the oxygenated, cold, stable river below it produces a sulphur hatch that runs for most of the year rather than for three weeks in June. Anglers come from several states away to fish a mayfly hatch in February. The flip side is that every one of these rivers is operated for power generation: the water can rise several feet inside an hour, and wading becomes floating. Above the tailwaters sit the streams of the Great Smoky Mountains, which are the opposite in every respect — small, free-flowing, and holding the southernmost native brook trout in the country.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Wild and self-sustaining in the South Holston and the Watauga."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Wild in the tailwaters and the Smokies, and stocked almost everywhere else."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Native Southern Appalachian strain, in the highest and coldest Smokies streams."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The warmer middle Tennessee rivers, and very good in their own right."
+      }
+    ],
+    "waters": [
+      {
+        "name": "South Holston River",
+        "note": "The sulphur hatch that made the state's reputation, and a slot limit protecting its wild browns."
+      },
+      {
+        "name": "Watauga River",
+        "note": "The South Holston's neighbour. Bigger water, strong caddis, and fewer anglers."
+      },
+      {
+        "name": "Clinch River",
+        "note": "Below Norris Dam. Famous for large browns and for the care its sulphurs demand."
+      },
+      {
+        "name": "Caney Fork River",
+        "note": "Below Center Hill, within reach of Nashville. Generation-dependent and worth planning around."
+      },
+      {
+        "name": "Hiwassee River",
+        "note": "Cherokee National Forest. Pocket water, wadeable at low flow, and genuinely scenic."
+      },
+      {
+        "name": "Great Smoky Mountains streams",
+        "note": "Little River, Abrams Creek and the high brook trout water. A TN or NC licence is valid."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "Sulphurs on the South Holston even in the cold, with midges and blue-wing olives alongside."
+      },
+      {
+        "window": "April – May",
+        "what": "Quill Gordons and March browns in the Smokies, caddis on the tailwaters. The best weeks for both."
+      },
+      {
+        "window": "June – August",
+        "what": "Heavy afternoon generation for power demand. Fish early, fish high in the mountains, or fish from a boat."
+      },
+      {
+        "window": "September – October",
+        "what": "Flows settle, terrestrials come into their own, and the Smokies are at their best."
+      },
+      {
+        "window": "November – December",
+        "what": "Brown trout spawn in the tailwaters. Stay off the gravel and watch for seasonal restrictions."
+      }
+    ],
+    "flies": [
+      "blue-wing-olive",
+      "elk-hair-caddis",
+      "pheasant-tail-nymph",
+      "zebra-midge",
+      "green-weenie",
+      "parachute-adams"
+    ],
+    "regulations": [
+      "A licence is required from age 16, and a supplemental trout licence is required on top of it. Tennessee does not sell a resident fishing-only annual licence: a resident who wants to fish for trout buys the combination hunt and fish licence plus the trout supplemental.",
+      "The non-resident annual licence comes in two forms — with trout and without — and the trout version costs twice as much.",
+      "TVA sets the generation schedule, not the wildlife agency. Check releases before you travel and again before you wade.",
+      "The South Holston and other tailwaters carry slot limits and tackle restrictions protecting wild brown trout.",
+      "Great Smoky Mountains National Park has its own rules. A Tennessee or North Carolina licence is valid inside it."
+    ],
+    "license": {
+      "agency": "Tennessee Wildlife Resources Agency",
+      "licenseUrl": "https://www.tn.gov/twra/license-sales.html",
+      "rulesUrl": "https://www.tn.gov/twra/fishing.html",
+      "residentAnnual": "$54",
+      "nonResidentAnnual": "$98",
+      "priceYear": "2026",
+      "priceNote": "The resident total is the $33 combination hunt and fish annual licence plus the $21 annual trout supplemental — there is no resident fishing-only annual licence. The non-resident figure is the $98 annual all-species licence, which includes trout; a non-resident licence without trout is $49. Processing fees are extra. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "vermont",
+    "name": "Vermont",
+    "abbr": "VT",
+    "region": "New England",
+    "answer": "Vermont fly fishing is small-river and mountain-stream fishing, with wild brown trout, native brook trout, rainbows and landlocked Atlantic salmon. The Battenkill, the White River and the Winooski are the headline waters. A licence is required from age 15, and the trout season on most streams runs from April into late October.",
+    "summary": "The Battenkill, which humbles people, and Green Mountain brook trout streams. Manchester is where American fly fishing became a business.",
+    "whatMakesItDifferent": "Manchester, Vermont is the commercial birthplace of American fly fishing. Orvis was founded there in 1856 and is still there, the American Museum of Fly Fishing is a few minutes away, and the Battenkill runs between them. That river is the most quietly difficult trout stream in the Northeast: cold, clear, low in nutrients, and holding wild brown trout in modest numbers that have seen a great many flies. Nobody fishes the Battenkill for numbers. What Vermont gives you instead, once you leave the valley, is an enormous amount of small wild water — hundreds of miles of Green Mountain brook trout streams that no guide books and almost nobody fishes, reached by pulling off a dirt road and walking upstream. The state is small enough that both are a morning's drive apart.",
+    "species": [
+      {
+        "name": "Brook trout",
+        "note": "Native, and the default fish in the mountain streams. Small, bright and abundant."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Wild in the Battenkill and the larger valley rivers, and not easily fooled."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "The White River and the Winooski hold wild, strong, lake-run fish in spring."
+      },
+      {
+        "name": "Landlocked Atlantic salmon",
+        "note": "Lake Champlain and Lake Memphremagog tributaries, running in spring and autumn."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Battenkill River",
+        "note": "Famously hard. Wild browns, gin-clear water and a long history of humility."
+      },
+      {
+        "name": "White River",
+        "note": "A long free-flowing river with wild rainbows and a run of lake fish in spring."
+      },
+      {
+        "name": "Winooski River",
+        "note": "Lake Champlain tributary. Steelhead and landlocked salmon below the falls."
+      },
+      {
+        "name": "Lamoille River",
+        "note": "Mixed browns and rainbows, good hatches, and easier than the Battenkill."
+      },
+      {
+        "name": "Otter Creek",
+        "note": "Slower, warmer water holding big browns and, lower down, pike."
+      },
+      {
+        "name": "Clyde River",
+        "note": "Northeast Kingdom. Landlocked salmon running out of Memphremagog in autumn."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "April",
+        "what": "The general trout season opens on the second Saturday. High cold water, and nymphs more than dries."
+      },
+      {
+        "window": "May",
+        "what": "Hendricksons, then caddis. The rivers drop and the dry-fly fishing starts in earnest."
+      },
+      {
+        "window": "June",
+        "what": "The best month. Sulphurs, March browns and evening caddis on every river in the state."
+      },
+      {
+        "window": "July – August",
+        "what": "Low water. Fish the mountain brook trout streams and the terrestrials, and go early."
+      },
+      {
+        "window": "September – October",
+        "what": "Landlocked salmon running, brown trout colouring up, and the season closing at the end of October on most streams."
+      }
+    ],
+    "flies": [
+      "hares-ear-nymph",
+      "elk-hair-caddis",
+      "march-brown",
+      "rusty-spinner",
+      "ant",
+      "blue-wing-olive"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 15.",
+      "Most trout streams run a season from the second Saturday in April to the end of October. A number of waters are open year-round, and some are catch and release outside the season.",
+      "Vermont has designated trout management areas with their own tackle and harvest rules — check the stretch before you fish it.",
+      "Landlocked salmon and lake trout carry their own seasons and limits on the Champlain and Memphremagog tributaries."
+    ],
+    "license": {
+      "agency": "Vermont Fish and Wildlife Department",
+      "licenseUrl": "https://www.vtfishandwildlife.com/fishvt",
+      "rulesUrl": "https://vtfishandwildlife.com/fish/fishing-regulations",
+      "residentAnnual": "$28",
+      "nonResidentAnnual": "$54",
+      "priceYear": "2026",
+      "priceNote": "Figures are the 2026 rates for an annual fishing licence, and match the fee schedule set in Vermont statute. There is no separate trout stamp. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "maine",
+    "name": "Maine",
+    "abbr": "ME",
+    "region": "New England",
+    "answer": "Maine fly fishing is remote pond and river fishing for native brook trout and landlocked Atlantic salmon, with some wild browns and rainbows in the south. The Rapid River, Grand Lake Stream, the Kennebec and the Moosehead ponds are the headline waters. A licence is required from age 16, and the season turns on ice-out rather than on a calendar.",
+    "summary": "Nearly all of America's remaining wild brook trout ponds are in Maine. Landlocked salmon on streamers at ice-out, and water you reach by canoe.",
+    "whatMakesItDifferent": "Maine holds something no other state does. The great majority of the United States' remaining wild, self-sustaining brook trout *ponds* are inside its borders — hundreds of small cold waters in the north and west that have never been stocked and never needed to be, holding native brook trout in the landscape they evolved in. Reaching them means a logging road, a canoe on the roof and no mobile signal, which is exactly why they still exist. The state's other tradition is the streamer. Landlocked Atlantic salmon chase smelt into the rivers as soon as the ice goes out in May, and the Maine streamer patterns tied to imitate those smelt — long, slim, feather-winged — are an American fly-tying school in their own right. Both of these are calendar-proof: here you plan a trip around ice-out, not around a date.",
+    "species": [
+      {
+        "name": "Brook trout",
+        "note": "Native and wild, in rivers and in hundreds of unstocked ponds. The reason to come."
+      },
+      {
+        "name": "Landlocked Atlantic salmon",
+        "note": "Chasing smelt at ice-out, and jumping more than a trout has any right to."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Southern and central rivers, and some of the larger lakes."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Less widespread, chiefly in the south."
+      },
+      {
+        "name": "Lake trout",
+        "note": "Called togue here. Deep lakes, and reachable on a fly at ice-out."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Rapid River",
+        "note": "Between Richardson and Umbagog. Big wild brook trout and heavy, hard wading."
+      },
+      {
+        "name": "Grand Lake Stream",
+        "note": "Three miles of landlocked salmon water, and the birthplace of the Grand Laker canoe."
+      },
+      {
+        "name": "Kennebec — East Outlet",
+        "note": "Below Moosehead Lake. Salmon and brook trout in powerful water."
+      },
+      {
+        "name": "Roach River",
+        "note": "Fly fishing only, with salmon and brook trout running out of Moosehead in autumn."
+      },
+      {
+        "name": "West Branch Penobscot",
+        "note": "Below Ripogenus. Famous salmon water and genuinely remote."
+      },
+      {
+        "name": "The remote ponds",
+        "note": "Hundreds of unstocked brook trout waters in the north and west, reached by road and canoe."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "April – early May",
+        "what": "Ice-out. Streamers for landlocked salmon chasing smelt — the most Maine fishing there is."
+      },
+      {
+        "window": "Late May – June",
+        "what": "The best weeks. Hatches on the ponds, brook trout rising, and the blackflies at their worst."
+      },
+      {
+        "window": "July – August",
+        "what": "Warm water pushes fish deep. Head north, fish the spring holes, and fish early and late."
+      },
+      {
+        "window": "September",
+        "what": "Salmon and brook trout run up the rivers to spawn. Cold mornings and the best river fishing of the year."
+      },
+      {
+        "window": "October – March",
+        "what": "Most waters close at the end of September, with extended catch-and-release water into October and ice fishing after that."
+      }
+    ],
+    "flies": [
+      "muddler-minnow",
+      "woolly-bugger",
+      "soft-hackle",
+      "elk-hair-caddis",
+      "hares-ear-nymph",
+      "blue-wing-olive"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16.",
+      "Many waters are designated fly fishing only or artificial lures only, and those designations are listed water by water in the law book rather than applied statewide.",
+      "Using live fish as bait is prohibited on a long list of waters, to protect native brook trout from introduced species. The prohibition is taken seriously.",
+      "General open-water season on most waters runs from 1 April to 30 September, with extended catch-and-release seasons on some rivers into October.",
+      "The rules are set per water with codes in the law book. Look up the pond or stream before you drive to it."
+    ],
+    "license": {
+      "agency": "Maine Department of Inland Fisheries and Wildlife",
+      "licenseUrl": "https://www.maine.gov/ifw/fishing-boating/fishing/laws-rules/license-requirements.html",
+      "rulesUrl": "https://www.maine.gov/ifw/fishing-boating/fishing/laws-rules/index.html",
+      "residentAnnual": "$30",
+      "nonResidentAnnual": "$83",
+      "priceYear": "2026",
+      "priceNote": "Figures are the 2026 rates for a season fishing licence, ages 16 and over, and exclude the agent fee. They match the fee schedule set in Maine statute. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "virginia",
+    "name": "Virginia",
+    "abbr": "VA",
+    "region": "Mid-Atlantic",
+    "answer": "Virginia fly fishing is native brook trout fishing in mountain headwaters, with limestone spring creeks in the Valley and tailwaters below the big dams. Shenandoah National Park, Mossy Creek and the Jackson River are the headline waters. A licence is required from age 16, and a separate trout licence is needed only on designated stocked waters.",
+    "summary": "Native brook trout in Shenandoah National Park, a limestone spring creek at Mossy Creek, and tailwater browns on the Jackson and the Smith.",
+    "whatMakesItDifferent": "Shenandoah National Park has around seventy wild brook trout streams inside it, and they are the point of fishing in Virginia. They are small — a rod length across in places — steep, overhung with rhododendron, and they hold native Southern Appalachian brook trout that have never been stocked over. Fishing them is short casts, a lot of climbing and a lot of looking at where not to put your feet, and the fish rarely reach ten inches. Nobody who does it regularly cares. The useful thing to understand about Virginia is that its licensing follows this split exactly: the separate trout licence is required only on designated *stocked* trout waters. The wild brook trout streams in the park and the national forests need the ordinary freshwater licence and nothing more, which makes the best fishing in the state also the cheapest.",
+    "species": [
+      {
+        "name": "Brook trout",
+        "note": "Native Southern Appalachian strain, wild in the mountain headwaters. Rarely large, and worth the walk."
+      },
+      {
+        "name": "Brown trout",
+        "note": "The Jackson and Smith tailwaters, and Mossy Creek, where they get genuinely big."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Wild in some mountain streams and stocked through much of the rest."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The James, the New and the Shenandoah. Excellent, and the right answer in July."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Shenandoah National Park streams",
+        "note": "The Rapidan, Hughes River and Jeremys Run among about seventy. Native brook trout, single hook, mostly catch and release."
+      },
+      {
+        "name": "Mossy Creek",
+        "note": "A limestone spring creek in the Valley. Large browns, no cover for the angler, and a long leader."
+      },
+      {
+        "name": "Jackson River",
+        "note": "Tailwater below Gathright Dam. Cold all summer, with wild browns and a contested access history."
+      },
+      {
+        "name": "Smith River",
+        "note": "Below Philpott Dam. A long cold tailwater holding wild brown trout."
+      },
+      {
+        "name": "Rapidan River",
+        "note": "Herbert Hoover built his summer camp on it for the fishing. Still native brook trout water."
+      },
+      {
+        "name": "James River",
+        "note": "Not trout, but the best smallmouth river in the state and a proper summer alternative."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – February",
+        "what": "Stocked water is being stocked, and the tailwaters fish. Cold, quiet and uncrowded."
+      },
+      {
+        "window": "March – April",
+        "what": "The mountain streams wake up. Quill Gordons, blue quills and the first good brook trout fishing."
+      },
+      {
+        "window": "May – June",
+        "what": "The best weeks. Caddis, sulphurs and March browns, and Mossy Creek before the weed takes over."
+      },
+      {
+        "window": "July – August",
+        "what": "Hot and low. Fish terrestrials high in the mountains early, or switch to smallmouth on the James."
+      },
+      {
+        "window": "September – December",
+        "what": "Cooling water, terrestrials holding on, autumn stocking from October, and brook trout in spawning colour."
+      }
+    ],
+    "flies": [
+      "royal-wulff",
+      "parachute-adams",
+      "elk-hair-caddis",
+      "pheasant-tail-nymph",
+      "beetle",
+      "ant"
+    ],
+    "regulations": [
+      "A freshwater fishing licence is required from age 16.",
+      "A separate trout licence is required in addition on designated stocked trout waters. It is not required to fish wild, unstocked trout water — which includes most of the national park and national forest brook trout streams.",
+      "Shenandoah National Park requires a Virginia licence, and its own rules sit on top: artificial lures with a single hook, and catch and release on most streams.",
+      "Some fee fishing areas need a separate daily permit on top of the licence.",
+      "Special regulation waters — Mossy Creek among them — carry their own tackle and harvest rules and sometimes require landowner permission. Check before you go."
+    ],
+    "license": {
+      "agency": "Virginia Department of Wildlife Resources",
+      "licenseUrl": "https://dwr.virginia.gov/fishing/regulations/licenses/",
+      "rulesUrl": "https://dwr.virginia.gov/fishing/regulations/",
+      "residentAnnual": "$56",
+      "nonResidentAnnual": "$120",
+      "priceYear": "2026",
+      "priceNote": "Figures are the current published rates for a one-year freshwater licence plus the trout licence — $28 and $28 for residents, $72 and $48 for non-residents. The trout licence is only needed on designated stocked trout waters, so an angler fishing wild brook trout streams pays the freshwater figure alone. Issuance fees are included. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "alaska",
+    "name": "Alaska",
+    "abbr": "AK",
+    "region": "Alaska",
+    "answer": "Alaska fly fishing is trout fishing driven by salmon, with enormous wild rainbow trout, Dolly Varden, Arctic grayling and five species of Pacific salmon. Bristol Bay, the Kenai and the Naknek are the headline waters. A licence is required from 18 for residents and 16 for visitors, and the season runs from June into October.",
+    "summary": "Rainbow trout that follow spawning salmon and feed on their eggs. Bristol Bay in September is the biggest trout fishing in North America.",
+    "whatMakesItDifferent": "Everywhere else, a trout river feeds its trout. In Alaska the ocean does it. Millions of salmon return to spawn each summer, and the rainbow trout, char and grayling organise their entire year around that arrival — holding behind spawning sockeye, eating loose eggs through the autumn, then eating the flesh of dead fish after the run collapses. It is why a Bristol Bay rainbow can reach thirty inches in a river that freezes for half the year, and why the biggest trout of the season come in September, behind the salmon, rather than in the warm months. It also sets what the fishing looks like: egg patterns and flesh flies more than mayflies, heavy tippet, and in many places a float plane because there is no road. Plan around the run, not around the weather, and treat bears as a certainty rather than a risk.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "The Bristol Bay fish are the largest wild rainbows in the world, and mostly catch and release."
+      },
+      {
+        "name": "Dolly Varden",
+        "note": "Native char, abundant and often overlooked. They follow the salmon as closely as the rainbows do."
+      },
+      {
+        "name": "Arctic grayling",
+        "note": "Widespread in the clear interior streams. Willing, beautiful, and happy to take a dry fly."
+      },
+      {
+        "name": "Sockeye salmon",
+        "note": "The run that feeds everything else. Peak in June and July."
+      },
+      {
+        "name": "King salmon",
+        "note": "The largest Pacific salmon, and the one that needs its own stamp."
+      },
+      {
+        "name": "Silver salmon",
+        "note": "August into October, and the most willing of the salmon to chase a fly."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Naknek River",
+        "note": "Bristol Bay. Very large rainbows, and heavy water that fishes best from a boat."
+      },
+      {
+        "name": "Kvichak River",
+        "note": "Drains Lake Iliamna. The classic big-rainbow river, fished behind the sockeye."
+      },
+      {
+        "name": "Alagnak River",
+        "note": "A wild and scenic river with braided water and every species in it."
+      },
+      {
+        "name": "Kenai River",
+        "note": "Road accessible from Anchorage, which is rare here. Big rainbows and a lot of company."
+      },
+      {
+        "name": "Brooks River",
+        "note": "Katmai National Park. Famous fishing and famous bears, in the same hundred yards."
+      },
+      {
+        "name": "Talachulitna River",
+        "note": "A fly-out river north of Anchorage, with rainbows, grayling and silvers."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "June",
+        "what": "The season opens. Rainbows recovering after spawning, grayling rising, and the first sockeye arriving."
+      },
+      {
+        "window": "July",
+        "what": "Peak sockeye. Mouse patterns and leeches for rainbows before the eggs start coming."
+      },
+      {
+        "window": "August",
+        "what": "Eggs everywhere, and silver salmon arriving. Fishing gets easier and busier."
+      },
+      {
+        "window": "September",
+        "what": "The best weeks of the year. Big rainbows feeding hard on eggs and flesh, and the crowds thinning."
+      },
+      {
+        "window": "October – May",
+        "what": "Freeze-up. Most lodges close by early October and the rivers are ice until late spring."
+      }
+    ],
+    "flies": [
+      "egg-pattern",
+      "woolly-bugger",
+      "deer-hair-mouse",
+      "clouser-minnow",
+      "muddler-minnow",
+      "soft-hackle"
+    ],
+    "regulations": [
+      "Residents need a licence from age 18; non-residents from age 16.",
+      "A king salmon stamp is required to fish for king salmon, including catch and release. It is not needed for trout, char or grayling.",
+      "Many of the best rainbow waters are catch and release with single barbless hooks, and some are fly fishing only. The rules are set river by river.",
+      "Emergency orders open and close fisheries in-season, sometimes within a day, in response to salmon escapement. Check before you fly.",
+      "Bears are not a hazard to plan around later. Fish with other people, carry deterrent, and give a fish you have hooked up if a bear wants it."
+    ],
+    "license": {
+      "agency": "Alaska Department of Fish and Game",
+      "licenseUrl": "https://www.adfg.alaska.gov/index.cfm?adfg=license.pricinglist",
+      "rulesUrl": "https://www.adfg.alaska.gov/index.cfm?adfg=fishregulations.main",
+      "residentAnnual": "$20",
+      "nonResidentAnnual": "$100",
+      "priceYear": "2026",
+      "priceNote": "Figures are ADF&G's 2026 rates for an annual sport fishing licence. Non-residents can also buy 1, 3, 7 and 14-day licences for $15, $30, $45 and $75. A king salmon stamp is extra — $10 for residents, $100 for a non-resident annual — and is only needed to fish for kings. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
   }
 ]
