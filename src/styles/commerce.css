@@ -1034,6 +1034,17 @@
 
 .ws-apply__back { margin-block-start: var(--s-7); font-size: var(--t-sm); }
 
+/* The confirmation that replaces the form. It is not a notice box: at this
+   point it IS the page, so it reads as body copy with a button under it. */
+.ws-done__text {
+  margin-block: var(--s-5) 0;
+  font-size: var(--t-lg);
+  color: var(--c-text);
+}
+.ws-done__actions { margin-block: var(--s-6) 0; }
+.ws-done__actions[hidden] { display: none; }
+.ws-done .help { margin-block-start: var(--s-5); }
+
 
 /* ==========================================================================
    WHOLESALE HERO — /wholesale/

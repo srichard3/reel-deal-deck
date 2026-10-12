@@ -61,6 +61,35 @@
     status.className = 'ws-apply__status' + (kind ? ' is-' + kind : '');
   }
 
+  /* A finished application has to LOOK finished. Hiding the fields and
+     printing a green line under them leaves the heading and the lede in
+     place — both of which are instructions for the thing that was just
+     done — so the reader is left on what reads like the form they already
+     filled in, wondering why they are still here. Swap the whole page. */
+  var head = document.querySelector('[data-ws-head]');
+  var lede = document.querySelector('[data-ws-lede]');
+  var done = document.querySelector('[data-ws-done]');
+  var doneText = document.querySelector('[data-ws-done-text]');
+  var doneActions = document.querySelector('[data-ws-done-actions]');
+  var doneHelp = document.querySelector('[data-ws-done-help]');
+  var back = document.querySelector('[data-ws-back]');
+
+  function finish(opts) {
+    if (!done) { say(opts.text, 'ok'); return; }
+    if (head) head.textContent = opts.heading;
+    if (lede) lede.textContent = opts.lede;
+    doneText.textContent = opts.text;
+    if (doneActions) doneActions.hidden = !opts.signIn;
+    if (doneHelp) doneHelp.hidden = !opts.signIn;
+    done.hidden = false;
+    form.hidden = true;
+    if (back) back.hidden = true;
+    /* The confirmation is above where they were looking — the button was at
+       the bottom of a long form. Without this they see an apparently blank
+       page. */
+    if (head && head.scrollIntoView) head.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+
   /* Focusing the bad field is not enough on a form this long: the reader is
      often looking at the message by the button, several fields away, and
      nothing on screen says WHICH one. Mark it, and clear the mark the moment
@@ -137,9 +166,13 @@
           return;
         }
         if (r.body.pending) {
-          say('Thank you — your application is in. We will email you once it is approved.', 'ok');
-          form.querySelector('.ws-form__grid').hidden = true;
-          submit.hidden = true;
+          finish({
+            heading: 'Application received',
+            lede: 'We have your details and your resale certificate.',
+            text: 'The two of us read these ourselves, so it will not sit in a queue. '
+              + 'We will email you as soon as the account is open.',
+            signIn: false,
+          });
           return;
         }
         if (r.body.redirect) {
@@ -158,10 +191,13 @@
            discount reads from indexes a few seconds behind the tag (about
            twelve, measured), so somebody who clicks straight through can
            briefly see retail prices. */
-        say('You are set up. Sign in at the shop with this email — we send a code, '
-          + 'there is no password — and your trade pricing will be showing within a minute.', 'ok');
-        form.querySelector('.ws-form__grid').hidden = true;
-        submit.hidden = true;
+        finish({
+          heading: 'Your account is open',
+          lede: 'No approval to wait for and no password to choose — the account exists now.',
+          text: 'Sign in at the shop with this email and your trade pricing will be showing '
+            + 'within a minute.',
+          signIn: true,
+        });
       })
       .catch(function () {
         say('We could not reach the server. Check your connection and try again.', 'error');

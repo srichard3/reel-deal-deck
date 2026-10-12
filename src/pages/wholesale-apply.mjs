@@ -109,8 +109,8 @@ export default function wholesaleApply({ site }) {
 
 <section class="section wrap wrap--narrow">
   <p class="eyebrow">Trade</p>
-  <h1 class="h1">Open a wholesale account</h1>
-  <p class="lede">
+  <h1 class="h1" data-ws-head>Open a wholesale account</h1>
+  <p class="lede" data-ws-lede>
     Your business details and a copy of your resale certificate. That is it — there is no
     password to choose. You are set up straight away, and when you sign in we email you a
     code. Your pricing then shows on every page, with your shipping address already filled in.
@@ -194,9 +194,25 @@ ${field({ id: 'website', label: 'Website or Instagram', full: true, placeholder:
       set up and run the account, and nothing else &mdash; no marketing list, no third parties.
       Questions first? <a href="/contact/">Write to us</a>.
     </p>
-  </form>`}
+  </form>
 
-  <p class="ws-apply__back">
+  <!-- The page a reader lands on after a successful application. It replaces
+       the form rather than appearing under it, because the heading and the
+       lede above are instructions for a thing they have now done — leaving
+       them in place is what makes a finished signup read as an unfinished
+       one. Hidden in the markup and revealed by wholesale.js. -->
+  <div class="ws-done" data-ws-done hidden>
+    <p class="ws-done__text" data-ws-done-text></p>
+    <p class="ws-done__actions" data-ws-done-actions>
+      <a class="btn btn--primary btn--lg" href="${esc(login)}"${loginRel}>${ws.loginReady ? 'Sign in at the shop' : esc(loginLabel)}</a>
+    </p>
+    <p class="help" data-ws-done-help>
+      Signing in emails you a code &mdash; there is no password to remember. Once you are in,
+      your trade pricing shows on every page and your shipping address is already filled in.
+    </p>
+  </div>`}
+
+  <p class="ws-apply__back" data-ws-back>
     <a href="/wholesale/">Back</a> &middot; already have an account?
     <a href="${esc(login)}"${loginRel}>${esc(loginLabel)}</a>
   </p>
