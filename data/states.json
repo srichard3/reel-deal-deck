@@ -547,5 +547,543 @@
       "priceNote": "Figures are the DNR's 2026 rates for an annual all-species fishing license, each including a $1 surcharge. The 2026 license is valid through 31 March 2027. Prices change — check with the agency before you buy."
     },
     "localNote": null
+  },
+  {
+    "slug": "wyoming",
+    "name": "Wyoming",
+    "abbr": "WY",
+    "region": "Mountain West",
+    "answer": "Wyoming fly fishing is big-water tailwater and freestone fishing at altitude, with rainbow, brown, brook and several cutthroat as the mainstays. The North Platte, Snake, Green and the park waters are the headline rivers. A license is required from age 14, and an annual license also needs a Conservation Stamp. June through September is the heart of the season.",
+    "summary": "Tailwater rainbows on the North Platte, native fine-spotted cutthroat on the Snake, and park water that needs its own permit. Hopper fishing in August.",
+    "whatMakesItDifferent": "Wyoming holds two kinds of trout fishing that have very little to do with each other. The North Platte below Gray Reef is a dam-fed tailwater carrying an enormous head of heavy rainbows that eat scuds, leeches and midges all winter, and it fishes when most of the Rockies is frozen. An afternoon west, the Snake around Jackson is a freestone river holding Snake River fine-spotted cutthroat — a trout found in this drainage and almost nowhere else — which rise to a big foam dry with none of the suspicion a tailwater fish shows. Then there is the complication every visitor runs into: a large share of Wyoming's famous water lies inside Yellowstone National Park, which sells its own permit and does not accept the state license. Plan the park as a separate trip with separate paperwork.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "The North Platte tailwaters hold them in numbers and in size."
+      },
+      {
+        "name": "Snake River fine-spotted cutthroat",
+        "note": "Native to the Snake drainage and effectively nowhere else. Freely rises to a dry fly."
+      },
+      {
+        "name": "Yellowstone cutthroat",
+        "note": "Native to the Yellowstone and upper Shoshone drainages."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Strongest on the North Platte and the Green, and hard to move in daylight."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Small mountain streams and beaver ponds across the ranges."
+      },
+      {
+        "name": "Golden trout",
+        "note": "High lakes in the Wind River Range. A long walk, and the reason people make it."
+      },
+      {
+        "name": "Mountain whitefish",
+        "note": "Native and abundant, and a reliable winter fish."
+      }
+    ],
+    "waters": [
+      {
+        "name": "North Platte — Gray Reef",
+        "note": "Tailwater below the dam. Scuds, leeches and midges, and trout heavier than the river looks like it should hold."
+      },
+      {
+        "name": "North Platte — Miracle Mile",
+        "note": "The stretch between Kortes and Pathfinder. Open, windy, and worth it in autumn."
+      },
+      {
+        "name": "Snake River",
+        "note": "Around Jackson. Fine-spotted cutthroat on big dries, with the Tetons for scenery."
+      },
+      {
+        "name": "Green River",
+        "note": "Below Fontenelle. Big water, big browns, and a strong terrestrial season."
+      },
+      {
+        "name": "Yellowstone National Park waters",
+        "note": "The Firehole, Madison and Lamar. A park permit is required; a Wyoming license is not valid."
+      },
+      {
+        "name": "Wind River Range lakes",
+        "note": "Backcountry stillwater for golden and cutthroat trout. A multi-day walk."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "Tailwater fishing. Midges and scuds on the North Platte while the freestone rivers sit under ice."
+      },
+      {
+        "window": "April – May",
+        "what": "Baetis on the tailwaters, then runoff begins. The Platte stays fishable when the Snake does not."
+      },
+      {
+        "window": "June",
+        "what": "Peak snowmelt on the freestone rivers. Salmonflies and golden stones once the water starts to drop."
+      },
+      {
+        "window": "July – August",
+        "what": "Terrestrial season. Hoppers, ants and beetles on the Snake and the Green, and the high lakes finally thaw."
+      },
+      {
+        "window": "September – December",
+        "what": "Baetis, aggressive pre-spawn browns, and the Miracle Mile at its best. Then back to midges."
+      }
+    ],
+    "flies": [
+      "pats-rubber-legs",
+      "chubby-chernobyl",
+      "scud",
+      "grasshopper",
+      "blue-wing-olive",
+      "salmonfly"
+    ],
+    "regulations": [
+      "A fishing license is required from age 14. An annual license must be bought with a Conservation Stamp, which is valid twelve months and covers hunting and fishing both; daily licenses do not need one.",
+      "Yellowstone National Park sells its own fishing permit and a Wyoming license is not valid inside the park. The park's rules, seasons and tackle restrictions are its own.",
+      "Wyoming has no general stream access right of the kind Montana has. The water may be public while the bed beneath it is not — float through, and get permission before you wade private ground.",
+      "Many waters carry their own creel, season and tackle rules, and they change annually. Check the regulations for the stretch you intend to fish."
+    ],
+    "license": {
+      "agency": "Wyoming Game and Fish Department",
+      "licenseUrl": "https://wgfd.wyo.gov/licenses-applications/license-fee-list",
+      "rulesUrl": "https://wgfd.wyo.gov/regulations",
+      "residentAnnual": "$48.50",
+      "nonResidentAnnual": "$123.50",
+      "priceYear": "2026",
+      "priceNote": "Wyoming sells fishing in two parts. The resident total is a $27 twelve-month fishing license plus the $21.50 Conservation Stamp; the non-resident total is $102 plus the same $21.50 stamp. The stamp is valid twelve months from purchase and covers hunting as well. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "utah",
+    "name": "Utah",
+    "abbr": "UT",
+    "region": "Mountain West",
+    "answer": "Utah fly fishing is tailwater and mountain lake fishing in desert country, with rainbow, brown and brook trout, three native cutthroat subspecies and a well-known tiger trout fishery. The Green, Provo and Weber are the headline rivers. A license is required from age 12, and most waters are open all year.",
+    "summary": "The Green below Flaming Gorge, clear enough to count fish from the trail. Technical tailwaters on the Provo, and tiger trout in the mountain lakes.",
+    "whatMakesItDifferent": "The Green River below Flaming Gorge is the reason people fly to Utah. Water released from the bottom of the reservoir runs cold and startlingly clear all year, and the stretch below the dam carries one of the densest trout populations in the United States — clear enough that the trail along the canyon rim is a viewing platform, and you can choose a fish before you cast to it. That visibility cuts both ways: these trout see the angler as plainly as the angler sees them, and long leaders and small flies are not optional. Utah's second quirk is its stillwater. The mountain lakes on Boulder Mountain and the Uintas are stocked with tiger trout, a sterile brown-brook hybrid that grows fast and takes a fly hard, and they have turned alpine lake fishing from a curiosity into a reason to plan a trip.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Widespread, and the backbone of the Green and the Provo."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Wild and large on the Green and the lower Provo."
+      },
+      {
+        "name": "Bonneville cutthroat",
+        "note": "Native to the Bonneville basin, and the state fish."
+      },
+      {
+        "name": "Colorado River cutthroat",
+        "note": "Native in the eastern drainages."
+      },
+      {
+        "name": "Yellowstone cutthroat",
+        "note": "Native in the Bear River drainage in the north."
+      },
+      {
+        "name": "Tiger trout",
+        "note": "A sterile brown-brook hybrid stocked in mountain lakes. Aggressive, and grows quickly."
+      },
+      {
+        "name": "Brook trout",
+        "note": "High streams and lakes across the Uintas and Boulder Mountain."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Green River — A section",
+        "note": "Below Flaming Gorge. Extraordinary trout numbers in water clear enough to sight fish from above."
+      },
+      {
+        "name": "Middle Provo River",
+        "note": "Restored meanders between Jordanelle and Deer Creek. Even flows and a dependable hatch calendar."
+      },
+      {
+        "name": "Lower Provo River",
+        "note": "Below Deer Creek, running into Provo Canyon. Heavier browns and more pressure."
+      },
+      {
+        "name": "Weber River",
+        "note": "Less famous than the Provo and often less crowded, with good brown trout water."
+      },
+      {
+        "name": "Logan River",
+        "note": "Northern canyon water holding native Bonneville cutthroat."
+      },
+      {
+        "name": "Boulder Mountain lakes",
+        "note": "A high plateau of small lakes for tiger, brook and cutthroat trout."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "The Green and the Provo fish all winter. Midges, small Baetis, and very few people."
+      },
+      {
+        "window": "April – May",
+        "what": "Blue-wing olives, then the cicadas on the Green in late May — the busiest and best-known weeks of the year."
+      },
+      {
+        "window": "June",
+        "what": "Runoff on the freestone water. Tailwaters carry the month, and the high lakes begin to open."
+      },
+      {
+        "window": "July – August",
+        "what": "PMDs, terrestrials, and the mountain lakes at their best. Fish the canyon water early in the heat."
+      },
+      {
+        "window": "September – December",
+        "what": "Baetis, pre-spawn browns, and streamer fishing. The tailwaters never close."
+      }
+    ],
+    "flies": [
+      "scud",
+      "zebra-midge",
+      "blue-wing-olive",
+      "pale-morning-dun",
+      "chubby-chernobyl",
+      "balanced-leech"
+    ],
+    "regulations": [
+      "A fishing license is required from age 12. Most Utah waters are open to fishing year-round, with exceptions listed in the guidebook.",
+      "Fishing with two poles at once requires a separate two-pole permit.",
+      "Blue Ribbon and other special-regulation waters carry their own tackle and harvest rules — much of the Green and stretches of the Provo among them.",
+      "Rules are set water by water in the annual fishing guidebook, and they change. Check the stretch before you fish it."
+    ],
+    "license": {
+      "agency": "Utah Division of Wildlife Resources",
+      "licenseUrl": "https://wildlife.utah.gov/fees",
+      "rulesUrl": "https://wildlife.utah.gov/guidebooks/fishing_guidebook.pdf",
+      "residentAnnual": "$40",
+      "nonResidentAnnual": "$120",
+      "priceYear": "2026",
+      "priceNote": "Figures are the DWR's 2026 rates for an adult 365-day fishing license, ages 18 to 64. Non-resident fees rose from $94 to $120 on 1 July 2025. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "oregon",
+    "name": "Oregon",
+    "abbr": "OR",
+    "region": "Pacific Northwest",
+    "answer": "Oregon fly fishing runs from spring-fed trout rivers to summer steelhead on big western water, with wild redband and rainbow trout, cutthroat, brown trout and sea-run steelhead. The Deschutes, Metolius, McKenzie and North Umpqua are the headline rivers. A license is required from age 12, and steelhead and salmon need extra tags.",
+    "summary": "Summer steelhead on the Deschutes and North Umpqua, spring-fed redbands on the Metolius, and the river where the drift boat was invented.",
+    "whatMakesItDifferent": "Oregon is where a trout angler has to decide whether to become a steelhead angler. The lower Deschutes and the North Umpqua hold summer-run steelhead that will come up through several feet of water for a swung fly, and the whole culture around them — two-handed rods, a greased line, first light, long fishless days — is a different sport from matching a hatch. The state then gives you the opposite extreme in the Metolius, which emerges from the ground near Camp Sherman at a near-constant temperature and runs so cold and clear through the pines that its wild redbands are considered some of the most difficult trout in the West. A rule worth knowing before you book: on the lower Deschutes you may float a boat, but you may not fish from one. You get out and wade.",
+    "species": [
+      {
+        "name": "Redband trout",
+        "note": "The native interior rainbow. The Deschutes and Metolius fish are wild and hard-fighting."
+      },
+      {
+        "name": "Summer steelhead",
+        "note": "Deschutes and North Umpqua runs, from roughly July into the autumn."
+      },
+      {
+        "name": "Winter steelhead",
+        "note": "Coastal rivers, from late autumn into spring."
+      },
+      {
+        "name": "Coastal cutthroat",
+        "note": "Small coastal streams and the lower reaches of the bigger rivers."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Widespread, and the main quarry on the McKenzie and the Williamson."
+      },
+      {
+        "name": "Brown trout",
+        "note": "The Williamson and the Wood, where they reach serious size."
+      },
+      {
+        "name": "Bull trout",
+        "note": "Native char, strongest in the Metolius. Protected — check the rules before targeting them."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Lower Deschutes River",
+        "note": "Salmonflies in May, summer steelhead from July. You may float it, but you must fish from the bank."
+      },
+      {
+        "name": "North Umpqua",
+        "note": "A long fly-only stretch of summer steelhead water, and some of the hardest wading in the state."
+      },
+      {
+        "name": "Metolius River",
+        "note": "Spring-fed, gin-clear and cold year-round. Wild redbands with a reputation for refusing everything."
+      },
+      {
+        "name": "McKenzie River",
+        "note": "Where the McKenzie drift boat was developed. Green drakes in early summer."
+      },
+      {
+        "name": "Williamson River",
+        "note": "Big Klamath-basin redbands that run up out of the lake in summer."
+      },
+      {
+        "name": "Rogue River",
+        "note": "Half-pounder steelhead in autumn — small, numerous and a good first swung-fly fish."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "Winter steelhead on the coastal rivers. Blue-wing olives on the Deschutes on grey afternoons."
+      },
+      {
+        "window": "April – May",
+        "what": "The Deschutes salmonfly hatch, usually mid to late May. The best dry-fly weeks of the year."
+      },
+      {
+        "window": "June",
+        "what": "Green drakes on the McKenzie, caddis everywhere, and the high country starting to open."
+      },
+      {
+        "window": "July – September",
+        "what": "Summer steelhead on the Deschutes and North Umpqua. Early and late; the middle of the day is for sleeping."
+      },
+      {
+        "window": "October – December",
+        "what": "Half-pounders on the Rogue, Baetis on the trout rivers, and the first winter fish on the coast."
+      }
+    ],
+    "flies": [
+      "salmonfly",
+      "green-drake",
+      "elk-hair-caddis",
+      "blue-wing-olive",
+      "muddler-minnow",
+      "pale-morning-dun"
+    ],
+    "regulations": [
+      "A fishing license is required from age 12. Targeting salmon, steelhead or sturgeon also needs a Combined Angling Tag.",
+      "A Columbia River Basin Endorsement is required to fish for salmon, steelhead or sturgeon in the Columbia and its tributaries — the Deschutes among them.",
+      "Wild fish are identified by an intact adipose fin. Hatchery fish are fin-clipped, and harvest rules turn on that difference.",
+      "On the lower Deschutes you may not angle from a floating device. Float to the water, then get out and wade.",
+      "Regulations are set zone by zone and change in-season. Check the current rules and any emergency closures before you go."
+    ],
+    "license": {
+      "agency": "Oregon Department of Fish and Wildlife",
+      "licenseUrl": "https://myodfw.com/fishing/licensing-info",
+      "rulesUrl": "https://myodfw.com/fishing/regulations",
+      "residentAnnual": "$50",
+      "nonResidentAnnual": "$138",
+      "priceYear": "2026",
+      "priceNote": "Figures are ODFW's 2026 rates for an annual angling license and include the agent fee. Fees rose in 2026 for the first time since 2020 — the resident licence was $44 and the non-resident $110.50. Salmon, steelhead and sturgeon need a Combined Angling Tag on top. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "new-york",
+    "name": "New York",
+    "abbr": "NY",
+    "region": "Northeast",
+    "answer": "New York fly fishing is Catskill and Adirondack river fishing with a long history, holding wild brown and rainbow trout, native brook trout, and Great Lakes steelhead in the tributaries. The Beaverkill, Willowemoc and Upper Delaware are the headline waters. A license is required from age 16, and most trout streams are catch and release outside the April to October season.",
+    "summary": "Where American dry-fly fishing started. The Beaverkill and Willowemoc, the wild and difficult Upper Delaware, and Adirondack pocket water.",
+    "whatMakesItDifferent": "The Catskills are the birthplace of American dry-fly fishing, and that is a matter of record rather than marketing. Theodore Gordon was tying and fishing upright-winged duns on the Neversink in the 1890s, the Catskill style of tying came out of these valleys, and the Junction Pool at Roscoe — where the Willowemoc meets the Beaverkill — is the most photographed confluence in American angling. Two hours west the Upper Delaware is a different proposition entirely: its flows are governed by releases from New York City's water-supply reservoirs under an interstate agreement, so the river runs cold through a Pennsylvania-latitude summer and holds wild, large and famously selective browns and rainbows. Nobody describes the Delaware as easy. Then, in the Adirondacks, the West Branch of the Ausable is pure pocket water — boulders, seams and short drifts, fished on foot.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Wild and self-sustaining on the Delaware system and much of the Catskills."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Wild in the Upper Delaware, where they run large and spook easily."
+      },
+      {
+        "name": "Brook trout",
+        "note": "The state fish and the only native trout. Adirondack streams and ponds."
+      },
+      {
+        "name": "Steelhead",
+        "note": "Lake Ontario tributaries, chiefly the Salmon River, from autumn into spring."
+      },
+      {
+        "name": "Landlocked Atlantic salmon",
+        "note": "A handful of Adirondack waters and some Lake Ontario tributaries."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Beaverkill River",
+        "note": "The most storied trout stream in the country, and still a genuinely good one."
+      },
+      {
+        "name": "Willowemoc Creek",
+        "note": "Meets the Beaverkill at Junction Pool in Roscoe. Smaller, and often kinder."
+      },
+      {
+        "name": "West Branch Delaware",
+        "note": "Cold reservoir releases, wild browns and rainbows, and fish that refuse for a living."
+      },
+      {
+        "name": "Esopus Creek",
+        "note": "Catskill freestone fed by the Shandaken tunnel, which keeps it cool in summer."
+      },
+      {
+        "name": "West Branch Ausable",
+        "note": "Adirondack pocket water — boulders, seams and short, accurate drifts."
+      },
+      {
+        "name": "Salmon River",
+        "note": "Pulaski. Lake Ontario steelhead and salmon, and crowds to match in the best weeks."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "Catch-and-release season on most trout streams. Midges, and steelhead on the Salmon River."
+      },
+      {
+        "window": "April",
+        "what": "The harvest season opens 1 April. Hendricksons and blue quills as the water warms."
+      },
+      {
+        "window": "May – June",
+        "what": "March browns, sulphurs, then the Delaware green drake and coffin fly. The best weeks of the year."
+      },
+      {
+        "window": "July – August",
+        "what": "Tricos at dawn and terrestrials through the day. The tailwaters hold up when the freestone streams get warm."
+      },
+      {
+        "window": "September – December",
+        "what": "Baetis and isonychia, then steelhead moving into the Lake Ontario tributaries."
+      }
+    ],
+    "flies": [
+      "march-brown",
+      "green-drake",
+      "rusty-spinner",
+      "blue-wing-olive",
+      "elk-hair-caddis",
+      "pheasant-tail-nymph"
+    ],
+    "regulations": [
+      "A fishing license is required from age 16. A licence is valid for 365 days from the date you buy it, not to a fixed calendar date.",
+      "Under the statewide trout stream regulations, most streams run an April to mid-October season for harvest, and are catch and release with artificial lures only for the rest of the year.",
+      "Trout streams are assigned management categories — wild, wild-quality, stocked and stocked-extended — and the category sets the rules for that stretch.",
+      "Saltwater fishing needs a free marine registration instead of a licence.",
+      "Rules differ stream by stream and change. Check the stretch you intend to fish before you go."
+    ],
+    "license": {
+      "agency": "New York State Department of Environmental Conservation",
+      "licenseUrl": "https://dec.ny.gov/regulatory/permits-licenses/sporting-and-use/sporting/fishing-license",
+      "rulesUrl": "https://dec.ny.gov/things-to-do/freshwater-fishing/regulations",
+      "residentAnnual": "$25",
+      "nonResidentAnnual": "$50",
+      "priceYear": "2026",
+      "priceNote": "Figures are DEC's published rates for an annual freshwater fishing licence, residents aged 16 to 69. Residents 70 and over pay $5. The licence runs 365 days from purchase. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "north-carolina",
+    "name": "North Carolina",
+    "abbr": "NC",
+    "region": "Southern Appalachians",
+    "answer": "North Carolina fly fishing is small-stream Appalachian fishing, with native Southern Appalachian brook trout in the headwaters and wild and stocked brown and rainbow trout below them. The Davidson, Nantahala, Tuckasegee and the Smokies streams are the headline waters. A license is required from age 16, and the inland licence covers mountain trout water with no separate stamp.",
+    "summary": "Native brook trout in headwater streams, technical browns on the Davidson, and delayed-harvest water that fishes beautifully from October to June.",
+    "whatMakesItDifferent": "North Carolina classifies every piece of trout water and regulates it by class, and once that clicks the whole state makes sense. Hatchery Supported water is stocked and closes for a month before the spring opening. Wild Trout water is self-sustaining, artificial lures only, and usually small. Catch and Release water is exactly that. And Delayed Harvest — a Southeastern invention — is stocked heavily and run as artificial-lures-only catch and release from October until the first Saturday in June, which turns ordinary streams into excellent fly water through the months when most of the country has stopped fishing. Above all of it sit the native Southern Appalachian brook trout, the 'specks', holding on in cold headwater streams above the places rainbows and browns took over a century ago. They are small, they are beautiful, and reaching them involves more walking than casting.",
+    "species": [
+      {
+        "name": "Brook trout",
+        "note": "Southern Appalachian strain, the only native trout, in high cold headwaters. Locally called specks."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Wild in many mountain streams, and the largest fish in the state."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Wild in much of the mountain water and stocked in the rest."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The warmer valley rivers, and a good hot-weather alternative to trout."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Davidson River",
+        "note": "In Pisgah National Forest. Well-fed, well-educated trout below the hatchery and a reputation for humbling people."
+      },
+      {
+        "name": "Nantahala River",
+        "note": "Delayed-harvest water, cold all summer from the dam release above it."
+      },
+      {
+        "name": "Tuckasegee River",
+        "note": "Big, accessible delayed-harvest water near Sylva — the easiest good trout river in the state to wade."
+      },
+      {
+        "name": "Wilson Creek",
+        "note": "A wild and scenic river in the Grandfather district. Wild trout and real gradient."
+      },
+      {
+        "name": "Great Smoky Mountains streams",
+        "note": "Deep Creek, Oconaluftee and Hazel Creek. Park rules apply, and a NC or Tennessee licence is valid."
+      },
+      {
+        "name": "South Toe River",
+        "note": "Below Mount Mitchell. Cold, small and good brook trout country upstream."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "October – November",
+        "what": "Delayed-harvest water opens 1 October and fishes at its best straight away. Browns colour up and get territorial."
+      },
+      {
+        "window": "December – February",
+        "what": "Nymphs, midges and the occasional blue-wing olive. The delayed-harvest rivers stay open and stay quiet."
+      },
+      {
+        "window": "March",
+        "what": "Hatchery Supported water closes ahead of the spring opening. Wild and delayed-harvest water stays open — and hatches start."
+      },
+      {
+        "window": "April – May",
+        "what": "The spring opening on Hatchery Supported water, Quill Gordons, March browns and caddis. The high country wakes up."
+      },
+      {
+        "window": "June – September",
+        "what": "Terrestrials and small dries on the headwater brook trout streams. Fish high, where the water stays cold."
+      }
+    ],
+    "flies": [
+      "green-weenie",
+      "parachute-adams",
+      "elk-hair-caddis",
+      "pheasant-tail-nymph",
+      "royal-wulff",
+      "yellow-sally"
+    ],
+    "regulations": [
+      "A fishing license is required from age 16. The annual inland fishing licence includes Public Mountain Trout Waters and trout waters on game lands — there is no separate trout stamp to buy on top of it.",
+      "Trout water is regulated by class: Hatchery Supported, Wild Trout, Catch and Release, and Delayed Harvest. Each class has its own season, tackle rules and limits, and the signs at the access point tell you which one you are on.",
+      "Delayed Harvest water is artificial lures only and catch and release from 1 October until the first Saturday in June.",
+      "Hatchery Supported water closes from 1 March until 7am on the first Saturday in April.",
+      "Great Smoky Mountains National Park has its own rules. A North Carolina or Tennessee fishing licence is valid inside it, and no trout stamp is needed."
+    ],
+    "license": {
+      "agency": "North Carolina Wildlife Resources Commission",
+      "licenseUrl": "https://www.ncwildlife.gov/hunting/license-types-and-fees",
+      "rulesUrl": "https://www.ncwildlife.gov/fishing",
+      "residentAnnual": "$32",
+      "nonResidentAnnual": "$56",
+      "priceYear": "2026",
+      "priceNote": "Figures are the 2026 published rates for an annual State Inland Fishing licence, which includes Public Mountain Trout Waters. It does not cover coastal waters, which need a separate licence. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
   }
 ]
