@@ -35,6 +35,31 @@
   # The generator is dependency-free. Nothing to fetch, nothing to cache.
   NETLIFY_USE_YARN = "false"
 
+  # ---------------------------------------------------------------------------
+  # Netlify's secrets scanner fails the build if the VALUE of any environment
+  # variable appears in the published output. It has no way to know which of our
+  # variables are public, so the keys below are declared non-secret by hand.
+  #
+  # Every key listed here is already public by design:
+  #   WHOLESALE_LIVE        the literal "1" — matches any file containing a digit
+  #   SHOPIFY_SHOP_URL      the storefront address; it is every Buy button, and
+  #                         it is committed in data/site.json as shop.url
+  #   SHOPIFY_STORE_DOMAIN  the myshopify host, likewise committed
+  #   SUPPORT_EMAIL         printed on the contact page on purpose
+  #   RESEND_FROM           the From: address on outbound mail
+  #   EMAIL_LOGO_URL        an image served from this very site
+  #
+  # SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET and RESEND_API_KEY are deliberately
+  # NOT listed. Those are credentials, they must never reach dist/, and leaving
+  # them scanned means the build fails loudly if one ever does. Do not add them
+  # here to make a build pass — a hit on those keys is a real incident. The same
+  # rule is enforced locally by scripts/test-wholesale.mjs.
+  #
+  # Never use SECRETS_SCAN_ENABLED=false. That disables the check for everything,
+  # including the three keys above, which is the one outcome this must prevent.
+  # ---------------------------------------------------------------------------
+  SECRETS_SCAN_OMIT_KEYS = "WHOLESALE_LIVE,SHOPIFY_SHOP_URL,SHOPIFY_STORE_DOMAIN,SUPPORT_EMAIL,RESEND_FROM,EMAIL_LOGO_URL"
+
 # Deploy Previews and branch builds must not be indexable — a preview URL that
 # gets crawled competes with the real site for its own keywords. Netlify sets
 # X-Robots-Tag: noindex on *.netlify.app automatically, and the check below
