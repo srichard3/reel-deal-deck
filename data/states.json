@@ -1085,5 +1085,533 @@
       "priceNote": "Figures are the 2026 published rates for an annual State Inland Fishing licence, which includes Public Mountain Trout Waters. It does not cover coastal waters, which need a separate licence. Prices change — check with the agency before you buy."
     },
     "localNote": null
+  },
+  {
+    "slug": "california",
+    "name": "California",
+    "abbr": "CA",
+    "region": "Pacific West",
+    "answer": "California fly fishing runs from Sierra freestone and spring creeks to big valley tailwaters, with rainbow, brown and brook trout, native golden trout in the high country and wild redbands in the north. The Lower Sacramento, Hat Creek, Fall River, Owens and Upper Sacramento are the headline waters. A license is required from age 16, and seasons vary water by water.",
+    "summary": "Spring creeks at Hat Creek and Fall River, big tailwater rainbows on the Lower Sacramento, and golden trout in the High Sierra.",
+    "whatMakesItDifferent": "Almost every hatchery rainbow trout on earth traces back to California. Eggs taken from the McCloud River in the 1870s and 1880s were shipped east and then worldwide, and the rainbow trout now swimming in New Zealand, Patagonia and most of Europe descend from that stock. The state also invented the idea of managing a river for wild fish rather than for stocking: Hat Creek became California's first designated wild trout water in 1971, and the programme that followed is why the spring creeks around Fall River Mills still fish the way they do. Set against that, the practical reality of fishing here is altitude and distance. Golden trout, the state fish, live above 10,000 feet in the Sierra and take a serious walk to reach, while the Lower Sacramento runs through farmland at 300 feet and fishes from a boat. The two have nothing in common except the licence.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Everywhere, and the Lower Sacramento fish are heavy and hard-running."
+      },
+      {
+        "name": "Golden trout",
+        "note": "The state fish. Native to the Kern drainage and planted in High Sierra lakes above 10,000 feet."
+      },
+      {
+        "name": "Brown trout",
+        "note": "The Owens, the East Walker and the Truckee hold the biggest of them."
+      },
+      {
+        "name": "Redband trout",
+        "note": "Native in the McCloud and the far north."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Sierra lakes and small streams, abundant and willing."
+      },
+      {
+        "name": "Lahontan cutthroat",
+        "note": "Native to the eastern Sierra drainages, restored in a handful of waters."
+      },
+      {
+        "name": "Steelhead",
+        "note": "Coastal rivers in winter, under tight and frequently changing rules."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Lower Sacramento River",
+        "note": "Big tailwater below Redding. Heavy rainbows, mostly fished from a drift boat."
+      },
+      {
+        "name": "Hat Creek",
+        "note": "California's first wild trout water. Flat, clear spring-creek fishing that rewards a long leader."
+      },
+      {
+        "name": "Fall River",
+        "note": "Spring-fed and mostly fished from a boat, because wading ruins it. Famously technical."
+      },
+      {
+        "name": "Owens River",
+        "note": "Eastern Sierra. The Upper Owens, the gorge and the wild trout section all fish differently."
+      },
+      {
+        "name": "Upper Sacramento",
+        "note": "Freestone water along the I-5 corridor near Dunsmuir. Accessible and generous."
+      },
+      {
+        "name": "Golden Trout Wilderness",
+        "note": "High Sierra headwaters for native golden trout. Days of walking, small fish, and worth it."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "Tailwaters and the year-round sections. Baetis on the Lower Sacramento, midges elsewhere."
+      },
+      {
+        "window": "April – May",
+        "what": "The general trout opener on many Sierra waters, usually the last Saturday in April. Caddis and the first mayflies."
+      },
+      {
+        "window": "June",
+        "what": "Snowmelt in the Sierra. The valley tailwaters and the spring creeks carry the month."
+      },
+      {
+        "window": "July – August",
+        "what": "PMDs, tricos and terrestrials. The high country opens up and the goldens become reachable."
+      },
+      {
+        "window": "September – December",
+        "what": "The best weeks on the Lower Sacramento and the Owens, then winter steelhead on the coast."
+      }
+    ],
+    "flies": [
+      "humpy",
+      "pale-morning-dun",
+      "blue-wing-olive",
+      "elk-hair-caddis",
+      "hares-ear-nymph",
+      "trico"
+    ],
+    "regulations": [
+      "A fishing license is required from age 16. A licence runs 365 days from the date you buy it.",
+      "Seasons differ by water. Many Sierra waters run from the last Saturday in April to 15 November, while a number of rivers and all the big tailwaters are open year-round.",
+      "Wild Trout and Heritage Trout waters carry their own tackle and harvest rules, often artificial lures with barbless hooks.",
+      "Fishing two rods at once in fresh water needs a Second Rod Validation. Steelhead anglers need a Steelhead Report-Restoration Card.",
+      "Coastal steelhead rules change in-season and some rivers close at short notice. Check before you travel."
+    ],
+    "license": {
+      "agency": "California Department of Fish and Wildlife",
+      "licenseUrl": "https://wildlife.ca.gov/Licensing/Fishing",
+      "rulesUrl": "https://wildlife.ca.gov/Regulations/Freshwater-Fishing",
+      "residentAnnual": "$64.54",
+      "nonResidentAnnual": "$174.14",
+      "priceYear": "2026",
+      "priceNote": "Figures are CDFW's 2026 rates for an annual sport fishing licence, ages 16 and over, and include the agent handling and application fees. Validations and report cards are extra. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "washington",
+    "name": "Washington",
+    "abbr": "WA",
+    "region": "Pacific Northwest",
+    "answer": "Washington fly fishing means one great year-round trout river, a lot of stillwater, and some of the best winter steelhead country left in the lower 48. The Yakima, the Olympic Peninsula rivers and the desert seepage lakes are the headline waters. A license is required from age 15, and steelhead and salmon rules change in-season.",
+    "summary": "The Yakima as the state's one true trout river, Olympic Peninsula winter steelhead, and desert lakes holding rainbows that behave like saltwater fish.",
+    "whatMakesItDifferent": "Washington is not a trout state in the way Montana is, and pretending otherwise leads visitors to the wrong water. It has essentially one major year-round trout river — the Yakima, which runs through sagebrush canyon east of the Cascades and fishes on a proper hatch calendar. What the state has instead is the rainforest rivers of the Olympic Peninsula, where wild winter steelhead come in from the Pacific between December and April, and a network of desert seepage lakes in the Columbia Basin where rainbows feed on scuds and damselflies and grow faster than any river fish. The thing to understand before booking anything is that Washington manages wild steelhead by closing water. Rivers open and shut in-season by emergency rule, sometimes within days, so a trip planned around a specific river needs checking the week you leave and again the morning you go.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "The Yakima's wild rainbows, and the fast-growing fish of the desert lakes."
+      },
+      {
+        "name": "Westslope cutthroat",
+        "note": "Native in the upper Yakima and across the eastern streams."
+      },
+      {
+        "name": "Coastal cutthroat",
+        "note": "Sea-run fish in the lowland rivers and Puget Sound beaches."
+      },
+      {
+        "name": "Winter steelhead",
+        "note": "Olympic Peninsula rivers from December into April. Wild, and tightly protected."
+      },
+      {
+        "name": "Summer steelhead",
+        "note": "Columbia tributaries including the Methow and the Grande Ronde."
+      },
+      {
+        "name": "Bull trout",
+        "note": "Native char, protected. Learn to tell them from a rainbow before you fish the upper rivers."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Yakima River",
+        "note": "The state's one genuine year-round trout river. Canyon water, wild rainbows and cutthroat."
+      },
+      {
+        "name": "Hoh, Sol Duc and Bogachiel",
+        "note": "Olympic Peninsula rainforest rivers. Wild winter steelhead, heavy rain, short days."
+      },
+      {
+        "name": "Skagit River",
+        "note": "Big water with a managed catch-and-release steelhead season when returns allow it."
+      },
+      {
+        "name": "Methow River",
+        "note": "Eastern Cascades. Summer steelhead and good trout water above them."
+      },
+      {
+        "name": "Rocky Ford Creek",
+        "note": "A spring creek in the desert. No wading, big rainbows, and a hard lesson in drag."
+      },
+      {
+        "name": "Lenice and Nunnally Lakes",
+        "note": "Columbia Basin seepage lakes. Fly-only, barbless, and rainbows that run."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "December – April",
+        "what": "Olympic Peninsula winter steelhead. Watch the closures, and bring more rain gear than you think."
+      },
+      {
+        "window": "March – May",
+        "what": "The desert lakes come alive — chironomids first, then damsels. Skwalas on the Yakima in March."
+      },
+      {
+        "window": "June – July",
+        "what": "PMDs and caddis on the Yakima. Mountain streams open as the snow goes."
+      },
+      {
+        "window": "August – September",
+        "what": "Terrestrial season on the Yakima, and summer steelhead on the Methow and Grande Ronde."
+      },
+      {
+        "window": "October – November",
+        "what": "October caddis, Baetis, and the first winter fish reaching the coast."
+      }
+    ],
+    "flies": [
+      "chubby-chernobyl",
+      "blue-wing-olive",
+      "pale-morning-dun",
+      "balanced-leech",
+      "woolly-bugger",
+      "stimulator"
+    ],
+    "regulations": [
+      "A fishing license is required from age 15. The annual freshwater licence includes a Vehicle Access Pass for WDFW land; other state land needs a separate Discover Pass.",
+      "Salmon and steelhead anglers need a catch record card, and from 1 January 2026 a Columbia River Salmon and Steelhead Endorsement to fish for them in the Columbia and many of its tributaries.",
+      "Wild steelhead are release-only across most of the state, and whole rivers close in-season by emergency rule. Check the emergency rules the week you travel.",
+      "Many waters are selective gear rules: no bait, single barbless hooks, and in some cases no fishing from a boat.",
+      "Rules are set water by water in the sport fishing pamphlet and change frequently."
+    ],
+    "license": {
+      "agency": "Washington Department of Fish and Wildlife",
+      "licenseUrl": "https://wdfw.wa.gov/licenses/fishing/types-fees",
+      "rulesUrl": "https://wdfw.wa.gov/fishing/regulations",
+      "residentAnnual": "$39.95",
+      "nonResidentAnnual": "$115.85",
+      "priceYear": "2026",
+      "priceNote": "Figures are WDFW's rates effective 1 January 2026 for an annual freshwater licence, ages 16 to 69, and include the Vehicle Access Pass. Licence fees rose about 38 per cent under 2025 legislation. The Columbia River endorsement is a further $8.75. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "wisconsin",
+    "name": "Wisconsin",
+    "abbr": "WI",
+    "region": "Upper Midwest",
+    "answer": "Wisconsin fly fishing is Driftless Area spring creek fishing, with wild brown trout in extraordinary numbers, native brook trout in the colder headwaters, and Lake Superior steelhead in the north. Timber Coulee, the West Fork of the Kickapoo and Black Earth Creek are the headline waters. You need a licence and an inland trout stamp, and the catch-and-release season starts in January.",
+    "summary": "Driftless Area spring creeks with some of the highest wild brown trout densities in the country, and thousands of acres of easement access.",
+    "whatMakesItDifferent": "The Driftless Area is the part of the upper Midwest the last glaciers missed. No ice sheet flattened it, so instead of the lake-and-bog country around it you get steep wooded coulees, limestone bedrock and hundreds of cold spring creeks running through farmland. Some of those creeks hold wild brown trout at densities that rival anywhere in the United States — thousands of fish per mile in the best stretches — and they are small enough to cross in two strides. The second thing that makes this work is unglamorous and more important: decades of habitat restoration paid for by trout stamps, and a state easement programme that bought public fishing rights across private farmland. You park at a sign, climb a stile and fish, on water somebody else owns. Very few states have made small-stream trout fishing this available to people who do not own land.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Wild and self-sustaining throughout the Driftless, and the main quarry."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Native, and strongest in the coldest headwaters and the northern counties."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Less common inland; the Lake Superior tributaries hold the migratory ones."
+      },
+      {
+        "name": "Steelhead",
+        "note": "Lake Superior and Lake Michigan tributaries, chiefly the Bois Brule."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Timber Coulee Creek",
+        "note": "Near Coon Valley. The restoration project that proved the whole Driftless model works."
+      },
+      {
+        "name": "West Fork Kickapoo River",
+        "note": "Vernon County. Easement access, wild browns and a long season."
+      },
+      {
+        "name": "Black Earth Creek",
+        "note": "Half an hour from Madison, and far better than a creek that close to a city ought to be."
+      },
+      {
+        "name": "Castle Rock Creek",
+        "note": "Grant County spring creek, fertile and open, with sight-fishing in low water."
+      },
+      {
+        "name": "Bois Brule River",
+        "note": "Northern Wisconsin. Steelhead, big browns and a long presidential history."
+      },
+      {
+        "name": "Namekagon River",
+        "note": "A National Scenic Riverway holding wild browns and brook trout."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – April",
+        "what": "The early catch-and-release season. Midges and small nymphs on spring creeks that never freeze."
+      },
+      {
+        "window": "May",
+        "what": "The general season opens the first Saturday. Caddis, Hendricksons and sulphurs — the best hatches of the year."
+      },
+      {
+        "window": "June",
+        "what": "Sulphurs into the evening, and the first good terrestrial fishing as the hay gets cut."
+      },
+      {
+        "window": "July – August",
+        "what": "Hopper season. Low clear water, long leaders and short casts to the undercut banks."
+      },
+      {
+        "window": "September – October",
+        "what": "Tricos, Baetis and pre-spawn browns to the close of the general season on 15 October."
+      }
+    ],
+    "flies": [
+      "scud",
+      "hares-ear-nymph",
+      "blue-wing-olive",
+      "elk-hair-caddis",
+      "grasshopper",
+      "griffiths-gnat"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16, and an inland trout stamp is required in addition to fish for trout on inland waters.",
+      "The early season runs from 1 January to the Friday before the general opener: catch and release, artificial lures only.",
+      "The general inland trout season runs from the first Saturday in May to 15 October.",
+      "A Great Lakes trout and salmon stamp is a separate purchase from the inland trout stamp, for the Lake Michigan and Lake Superior tributaries.",
+      "Streams are classified and regulated individually, and easement access is marked by yellow signs. Respect the crops and the fences."
+    ],
+    "license": {
+      "agency": "Wisconsin Department of Natural Resources",
+      "licenseUrl": "https://dnr.wisconsin.gov/topic/Fishing/outreach/FishingLicenses",
+      "rulesUrl": "https://dnr.wisconsin.gov/topic/fishing/regulations",
+      "residentAnnual": "$30",
+      "nonResidentAnnual": "$65",
+      "priceYear": "2026",
+      "priceNote": "Wisconsin sells trout fishing in two parts. The resident total is a $20 annual fishing licence plus the $10 inland trout stamp; the non-resident total is $55 plus the same $10 stamp. The licence year starts 1 April. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "arkansas",
+    "name": "Arkansas",
+    "abbr": "AR",
+    "region": "Ozarks",
+    "answer": "Arkansas fly fishing is tailwater fishing below deep Ozark reservoirs, with rainbow, brown, brook and cutthroat trout in water far too cold for the latitude. The White River, the Norfork and the Little Red are the headline waters. You need a licence and a trout permit, the fishing is good all year, and the dam release schedule decides your day.",
+    "summary": "World-class brown trout in Ozark tailwaters, fishable twelve months a year — if you read the generation schedule before you drive out.",
+    "whatMakesItDifferent": "Arkansas should not have trout at all. It sits at the latitude of Memphis, and before the dams its rivers ran warm. Then the Corps of Engineers built Bull Shoals, Norfork and Greers Ferry, and the water they release comes off the bottom of very deep reservoirs at around fifty degrees all year. The result is several hundred miles of cold river in the Ozarks, holding brown trout as large as any in North America — the Little Red River produced a world-record brown of 40 pounds 4 ounces in 1992. The catch is that the river is a machine with a switch. When the dam generates, the flow can rise several feet in under an hour and wading water becomes a boat river. Checking the generation schedule before you drive out is not a refinement here; it is the difference between a day's fishing and standing on a gravel bar watching the river come up.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "The reason people come. The White and the Little Red grow them to extraordinary size."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked heavily and abundant throughout the tailwaters."
+      },
+      {
+        "name": "Cutthroat trout",
+        "note": "Stocked in the White and the Norfork, and a genuine novelty this far east."
+      },
+      {
+        "name": "Brook trout",
+        "note": "A small stocked population in the Norfork tailwater."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The warmer Ozark streams above the dams — Crooked Creek and the Buffalo."
+      }
+    ],
+    "waters": [
+      {
+        "name": "White River",
+        "note": "Below Bull Shoals. A hundred miles of cold water and the state's signature trout fishery."
+      },
+      {
+        "name": "North Fork River",
+        "note": "The Norfork tailwater. Short, rich and heavily fished, with a catch-and-release section."
+      },
+      {
+        "name": "Little Red River",
+        "note": "Below Greers Ferry. Where the 40-pound world-record brown came from in 1992."
+      },
+      {
+        "name": "Spring River",
+        "note": "Fed by Mammoth Spring rather than a dam, so it runs cold without a generation schedule."
+      },
+      {
+        "name": "Beaver Tailwater",
+        "note": "Below Beaver Lake. Smaller water, and quieter than the White."
+      },
+      {
+        "name": "Buffalo National River",
+        "note": "Not trout water, but the best smallmouth river in the Ozarks and worth a day."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "Low generation and good wading. Sow bugs, midges and streamers for post-spawn browns."
+      },
+      {
+        "window": "April – May",
+        "what": "Caddis, and the heaviest generation of the year as the reservoirs shed spring rain. Fish from a boat."
+      },
+      {
+        "window": "June – August",
+        "what": "Generation is usually heavy in the afternoon for power demand. Fish early, or fish from a boat."
+      },
+      {
+        "window": "September – October",
+        "what": "Flows settle. Terrestrials, hopper-dropper and the best wading of the year."
+      },
+      {
+        "window": "November – December",
+        "what": "Brown trout spawn. Big fish move, and the spawning shoals carry restrictions — stay off the redds."
+      }
+    ],
+    "flies": [
+      "scud",
+      "san-juan-worm",
+      "egg-pattern",
+      "zebra-midge",
+      "woolly-bugger",
+      "blue-wing-olive"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16, and a trout permit is required in addition to fish the tailwaters or keep a trout.",
+      "The trout permit applies on the tailwaters below Beaver, Bull Shoals, Norfork, Greers Ferry and Lake Greeson — which is to say, on all the water this page is about.",
+      "Stretches of the White and the Norfork are catch and release with artificial lures only, and the boundaries are signed.",
+      "Dam generation is scheduled by the Southwestern Power Administration, not by the Game and Fish Commission. Check the release schedule before you travel and again before you wade.",
+      "Seasonal restrictions protect spawning brown trout in autumn and winter. Check the current rules."
+    ],
+    "license": {
+      "agency": "Arkansas Game and Fish Commission",
+      "licenseUrl": "https://www.agfc.com/resources/licensing/fishing-license-descriptions-and-fees/",
+      "rulesUrl": "https://www.agfc.com/fishing/",
+      "residentAnnual": "$20.50",
+      "nonResidentAnnual": "$80",
+      "priceYear": "2026",
+      "priceNote": "Arkansas sells trout fishing in two parts. The resident total is a $10.50 Fisheries Conservation Licence plus the $10 resident trout permit; the non-resident total is a $60 annual licence plus the $20 non-resident trout permit. Resident licences run to 30 June. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "new-mexico",
+    "name": "New Mexico",
+    "abbr": "NM",
+    "region": "Southwest",
+    "answer": "New Mexico fly fishing is high-desert tailwater and canyon fishing, with rainbow and brown trout, native Rio Grande cutthroat and the rare Gila trout. The San Juan below Navajo Dam is the headline water, with the Rio Grande gorge, the Cimarron and the Pecos behind it. A license is required from age 12, and the San Juan fishes every month of the year.",
+    "summary": "The San Juan Quality Waters below Navajo Dam — tiny flies, enormous rainbows, twelve months a year — plus two of the rarest trout in America.",
+    "whatMakesItDifferent": "Four miles of river carry New Mexico's reputation. The Quality Waters of the San Juan, immediately below Navajo Dam, hold rainbow trout in densities and sizes that make no sense in a desert at 5,700 feet, fed by cold reservoir releases and an inexhaustible supply of midges. The fishing there is a discipline of its own: size 22 to 26 flies, 6X and 7X tippet, and trout that have seen more anglers than almost any fish in the country. People fly in from everywhere, and they fish it in January. The rest of the state pulls in the opposite direction. The Rio Grande runs through a basalt gorge you climb down into, the Cimarron is a small canyon stream you can cross anywhere, and in the remote southwest the Gila trout — one of the rarest trout in North America, brought back from the edge of extinction — is fishable in a small number of waters under its own rules.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "The San Juan fish are the famous ones, and they are famously well-educated."
+      },
+      {
+        "name": "Brown trout",
+        "note": "The Rio Grande, the Chama and the Cimarron, and bigger than the streams suggest."
+      },
+      {
+        "name": "Rio Grande cutthroat",
+        "note": "The state fish and the southernmost cutthroat in the world. Remote headwater streams."
+      },
+      {
+        "name": "Gila trout",
+        "note": "Native to the southwest, recovered from near-extinction, and fishable in a few waters under special rules."
+      },
+      {
+        "name": "Brook trout",
+        "note": "High-country streams and small lakes in the north."
+      }
+    ],
+    "waters": [
+      {
+        "name": "San Juan River — Quality Waters",
+        "note": "Below Navajo Dam. Midges, tiny tippet and very large rainbows, every month of the year."
+      },
+      {
+        "name": "Rio Grande del Norte",
+        "note": "The gorge below Taos. A steep climb in, brown trout and pike-free solitude."
+      },
+      {
+        "name": "Cimarron River",
+        "note": "A small canyon stream below Eagle Nest, holding more and better trout than its size suggests."
+      },
+      {
+        "name": "Pecos River",
+        "note": "Headwaters in the Sangre de Cristos. Easy access and a good first New Mexico river."
+      },
+      {
+        "name": "Rio Chama",
+        "note": "Tailwater below El Vado and Abiquiu. Big browns in autumn."
+      },
+      {
+        "name": "Gila headwaters",
+        "note": "Remote southwest streams holding native Gila trout under their own regulations."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "The San Juan at its quietest and most technical. Midges, and Baetis as the days lengthen."
+      },
+      {
+        "window": "April – May",
+        "what": "Blue-wing olives on the San Juan, and the freestone streams clearing ahead of the mountain snowmelt."
+      },
+      {
+        "window": "June",
+        "what": "Runoff in the high country. The San Juan and the Chama carry the month."
+      },
+      {
+        "window": "July – August",
+        "what": "Monsoon season — afternoon storms that can blow a canyon stream out in an hour. Fish mornings, and watch the sky."
+      },
+      {
+        "window": "September – December",
+        "what": "The best weeks of the year. Baetis, pre-spawn browns, and cool clear water everywhere."
+      }
+    ],
+    "flies": [
+      "zebra-midge",
+      "san-juan-worm",
+      "rs2",
+      "blue-wing-olive",
+      "pale-morning-dun",
+      "griffiths-gnat"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 12. Every angler aged 18 and over also needs a Habitat Management and Access Validation, bought once per licence year.",
+      "A $10 Habitat Stamp is required in addition on Forest Service and Bureau of Land Management land, which covers a great deal of the state's trout water.",
+      "The licence year runs 1 April to 31 March.",
+      "The San Juan Quality Waters are artificial flies and lures with barbless hooks, and the uppermost stretch is catch and release. Limits and boundaries are signed.",
+      "Gila trout waters are opened and closed individually and carry their own rules. Check before you go."
+    ],
+    "license": {
+      "agency": "New Mexico Department of Game and Fish",
+      "licenseUrl": "https://wildlife.dgf.nm.gov/fishing/licenses-permits/",
+      "rulesUrl": "https://wildlife.dgf.nm.gov/fishing/",
+      "residentAnnual": "$39",
+      "nonResidentAnnual": "$94",
+      "priceYear": "2026",
+      "priceNote": "Figures are the 2026–27 rates and include the mandatory $4 Habitat Management and Access Validation on top of the $35 resident and $90 non-resident annual licence. A further $10 Habitat Stamp is required to fish Forest Service or BLM land. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
   }
 ]
