@@ -206,8 +206,8 @@
   "shop": {
     "note": "Where every \"buy\" link on the site points, resolved once by orderState() in src/templates/_blocks.mjs. Checkout is hosted on Shopify, so `url` is the only place the storefront is named. Leave it empty and every CTA falls back to `fallback` — the on-site pricing panel — so the site is never broken while the store is being set up. Never paste a store URL into a page.",
     "provider": "Shopify",
-    "url": "",
-    "urlNote": "TODO-CONFIRM: the Shopify storefront URL. Setting it here repoints every order CTA on the site in one move.",
+    "url": "https://shop.reeldealdeck.com/products/the-reel-deal-deck",
+    "urlNote": "Set 2026-10-12. The PRODUCT page, not the store root: a visitor who has already read the deck page and pressed Order should land on the thing they can buy, not a storefront they have to navigate. Verified 200. Changing this repoints every order CTA on the site in one move; nothing else names the store.",
     "fallback": "/deck/#order",
     "eyebrow": "Ordering now",
     "headline": "The Reel Deal Deck is ready to order.",
