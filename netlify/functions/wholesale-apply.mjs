@@ -182,7 +182,11 @@ async function sendWelcome(data, { pending, shopUrl }) {
   if (!key || !from) return false;
 
   const base = shopUrl ? shopUrl.replace(/\/$/, '') : null;
-  const login = base ? `${base}/account` : null;
+  /* NOT a bare /account. That 302s to Shopify's hosted dashboard, which shows
+     a trade buyer a "Shop now" card for the RETAIL deck — Shopify's page, not
+     our theme, so the card cannot be re-pointed. return_url carries them
+     through sign-in and straight onto the trade ordering page instead. */
+  const login = base ? `${base}/account/login?return_url=${encodeURIComponent('/pages/wholesale')}` : null;
   /* The trade bundles are deliberately unlisted: not in a collection the store
      browses, not in the menu, and the storefront search is switched off. That
      is right for retail and useless for a shop owner who cannot then find
@@ -198,10 +202,10 @@ async function sendWelcome(data, { pending, shopUrl }) {
     : [
       `You are set up, ${data.firstName} — ${data.business} now has a wholesale account.`,
       login
-        ? `Sign in at ${login} with this email address. We send you a code; there is no password to remember.`
+        ? `Sign in here with this email address: ${login} — we send you a code, there is no password to remember, and it takes you straight to your ordering page.`
         : 'Sign in at our shop with this email address. We send you a code; there is no password to remember.',
       shopPage
-        ? `Your ordering page is ${shopPage} — worth bookmarking, because it is not linked from the public shop. Trade pricing shows there once you are signed in.`
+        ? `That ordering page is ${shopPage} — worth bookmarking, because it is not linked from the public shop. Trade pricing shows there once you are signed in.`
         : 'Your trade pricing shows once you are signed in.',
       'The smallest order is two bricks, which is 24 decks, and shipping is free on trade orders.',
     ];
@@ -213,6 +217,15 @@ async function sendWelcome(data, { pending, shopUrl }) {
      is also what keeps this out of spam filters that distrust image-only mail. */
   const esc = (v) => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;')
     .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  /* The text part carries bare URLs, which is right for mail read as text.
+     In the HTML part a bare URL is a long unclickable string in any client
+     that does not auto-link — and the sign-in URL now carries a query string,
+     so it is a long one. Turn them into anchors after escaping. */
+  const linkify = (escaped) => escaped.replace(/https?:\/\/[^\s<]+/g, (m) => {
+    const trail = m.match(/[.,;:]+$/);
+    const url = trail ? m.slice(0, -trail[0].length) : m;
+    return `<a href="${url}" style="color:#2F6B3A;">${url}</a>` + (trail ? trail[0] : '');
+  });
   const logo = process.env.EMAIL_LOGO_URL;
   const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FAF9F5;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FAF9F5;">
@@ -224,7 +237,7 @@ async function sendWelcome(data, { pending, shopUrl }) {
         <tr><td style="padding:8px 28px 4px 28px;font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.4;color:#1B1A16;">
           <strong>${esc(pending ? 'We have your application' : 'Your wholesale account is open')}</strong>
         </td></tr>
-        ${lines.map((l) => `<tr><td style="padding:8px 28px;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#2E2C26;">${esc(l)}</td></tr>`).join('')}
+        ${lines.map((l) => `<tr><td style="padding:8px 28px;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#2E2C26;">${linkify(esc(l))}</td></tr>`).join('')}
         <tr><td style="padding:16px 28px 8px 28px;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#5C5A52;">
           Any questions, just reply to this email.
         </td></tr>

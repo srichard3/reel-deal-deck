@@ -309,8 +309,13 @@ function withExisting(nodes, sink) {
 
   const resendCalls = () => sent.filter((u) => String(u).includes('api.resend.com')).length;
   let sent = [];
+  let lastMail = null;
+  process.env.SHOPIFY_SHOP_URL = 'https://shop.example.com';
   const shop = (nodes, createErrors = []) => async (url, init) => {
     sent.push(url);
+    if (String(url).includes('api.resend.com')) {
+      try { lastMail = JSON.parse(String(init?.body || '{}')); } catch { lastMail = null; }
+    }
     const b = String(init?.body || '');
     const ok = (o) => new Response(JSON.stringify({ data: o }), {
       status: 200, headers: { 'content-type': 'application/json' } });
@@ -331,6 +336,18 @@ function withExisting(nodes, sink) {
   const sentOnSuccess = r.status === 200 && resendCalls() === 1;
   if (!sentOnSuccess) fail++;
   console.log(`${sentOnSuccess ? '  ok  ' : ' FAIL '} the welcome email is sent once, on a successful signup`);
+
+  /* The sign-in link must carry return_url. A bare /account 302s to Shopify's
+     hosted dashboard, which greets a trade buyer with a "Shop now" card for
+     the RETAIL deck — the one place a new wholesaler must not be sent, and
+     the exact thing this link was changed to avoid. */
+  const want = 'https://shop.example.com/account/login?return_url=%2Fpages%2Fwholesale';
+  const mailText = lastMail ? String(lastMail.text || '') : '';
+  const mailHtml = lastMail ? String(lastMail.html || '') : '';
+  const bareAccount = /shop\.example\.com\/account(?!\/login)/.test(mailText + mailHtml);
+  const signInOk = mailText.includes(want) && mailHtml.includes(`href="${want}"`) && !bareAccount;
+  if (!signInOk) fail++;
+  console.log(`${signInOk ? '  ok  ' : ' FAIL '} the welcome email signs them in to the ordering page, never the bare /account dashboard`);
 
   /* 2. an email Shopify refused — nothing may be sent */
   sent = []; globalThis.fetch = shop([], [{ field: ['email'], message: 'Email has already been taken' }]);
