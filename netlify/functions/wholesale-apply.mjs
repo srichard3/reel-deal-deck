@@ -181,7 +181,15 @@ async function sendWelcome(data, { pending, shopUrl }) {
   const from = process.env.RESEND_FROM;
   if (!key || !from) return false;
 
-  const login = shopUrl ? `${shopUrl.replace(/\/$/, '')}/account` : null;
+  const base = shopUrl ? shopUrl.replace(/\/$/, '') : null;
+  const login = base ? `${base}/account` : null;
+  /* The trade bundles are deliberately unlisted: not in a collection the store
+     browses, not in the menu, and the storefront search is switched off. That
+     is right for retail and useless for a shop owner who cannot then find
+     them — so this email carries the one link they need, and it is the only
+     place they reliably get it. Keep it here even if a menu link is added
+     later: a link in the header only helps somebody already on the site. */
+  const shopPage = base ? `${base}/pages/wholesale` : null;
   const lines = pending
     ? [
       `Thanks ${data.firstName} — we have your wholesale application for ${data.business}, and your resale certificate.`,
@@ -192,7 +200,10 @@ async function sendWelcome(data, { pending, shopUrl }) {
       login
         ? `Sign in at ${login} with this email address. We send you a code; there is no password to remember.`
         : 'Sign in at our shop with this email address. We send you a code; there is no password to remember.',
-      'Your trade pricing then shows on every page. The smallest order is two bricks, which is 24 decks, and shipping is free on trade orders.',
+      shopPage
+        ? `Your ordering page is ${shopPage} — worth bookmarking, because it is not linked from the public shop. Trade pricing shows there once you are signed in.`
+        : 'Your trade pricing shows once you are signed in.',
+      'The smallest order is two bricks, which is 24 decks, and shipping is free on trade orders.',
     ];
   const text = `${lines.join('\n\n')}\n\nAny questions, just reply to this email.\n\n— Ken and Audrey\nThe Reel Deal Deck`;
 
