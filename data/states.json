@@ -2632,5 +2632,517 @@
       "priceNote": "Figures are NDOW's published rates for an annual adult fishing licence. There is no separate trout stamp. Pyramid Lake is not covered by this licence at all — it is tribal water with its own permit. Prices change — check with the agency before you buy."
     },
     "localNote": null
+  },
+  {
+    "slug": "ohio",
+    "name": "Ohio",
+    "abbr": "OH",
+    "region": "Great Lakes",
+    "answer": "Ohio fly fishing is steelhead fishing. Lake Erie tributaries between Cleveland and the Pennsylvania line are stocked with steelhead that run in from the lake each autumn and stay into spring, and the state has very little stream trout fishing otherwise. The Rocky, Chagrin, Grand and Conneaut are the headline waters. A licence is required from age 16.",
+    "summary": "Steelhead Alley. Lake Erie tributaries from Cleveland to the Pennsylvania line, fished from October into April by anglers who drive hours for it.",
+    "whatMakesItDifferent": "Ohio has no trout fishing worth planning a trip around, and one of the best steelhead fisheries in the country. The stretch of Lake Erie shoreline from Cleveland east to the Pennsylvania line is known as Steelhead Alley: a run of short, shale-bottomed tributaries that hold no fish at all for half the year and then fill with steelhead when the autumn rain arrives. The fish are stocked as smolts, grow in the lake, and come back at six to ten pounds, which makes this a put-and-take fishery in theory and an extraordinary one in practice. The rivers are small enough to cross and clear quickly after rain, so the whole thing turns on water levels — anglers here watch stream gauges the way Ozark anglers watch generation schedules. Everything else about fishing in Ohio is warmwater.",
+    "species": [
+      {
+        "name": "Steelhead",
+        "note": "The reason to fish Ohio. Stocked as smolts, back from the lake at six to ten pounds."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The Mad River, the Mohican and Lake Erie itself. Genuinely good in summer."
+      },
+      {
+        "name": "Brown trout",
+        "note": "The Mad River holds the state's only meaningful stream population, and it is modest."
+      },
+      {
+        "name": "Largemouth bass and panfish",
+        "note": "Everywhere, and what a fly rod in Ohio mostly does the rest of the year."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Rocky River",
+        "note": "Inside the Cleveland metroparks. The most accessible steelhead water in the state, and the busiest."
+      },
+      {
+        "name": "Chagrin River",
+        "note": "East of Cleveland. Clears a little slower than the Rocky and holds fish well."
+      },
+      {
+        "name": "Grand River",
+        "note": "The longest run of the alley. Takes the most rain and takes the longest to clear."
+      },
+      {
+        "name": "Conneaut Creek",
+        "note": "Right on the Pennsylvania line. The most remote-feeling of the four."
+      },
+      {
+        "name": "Mad River",
+        "note": "Near Springfield. Spring-fed, and the only real brown trout stream in Ohio."
+      },
+      {
+        "name": "Mohican River",
+        "note": "Not trout. Good smallmouth water and a reason to keep the rod in the car in July."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "October – November",
+        "what": "The first fish arrive on autumn rain. Fresh, aggressive and the best weeks for a swung fly."
+      },
+      {
+        "window": "December – February",
+        "what": "Cold and slow. Fish small, fish deep, and go when a thaw puts colour in the water."
+      },
+      {
+        "window": "March – April",
+        "what": "The spring run and the best numbers of the year. Also the most crowded."
+      },
+      {
+        "window": "May – June",
+        "what": "The steelhead are gone. Smallmouth on the inland rivers, and the Mad River fishing well."
+      },
+      {
+        "window": "July – September",
+        "what": "Warmwater fly fishing, or a break. The tributaries are dry gravel until the rain returns."
+      }
+    ],
+    "flies": [
+      "egg-pattern",
+      "woolly-bugger",
+      "clouser-minnow",
+      "hares-ear-nymph",
+      "san-juan-worm",
+      "bass-popper"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16, and runs 365 days from the date you buy it.",
+      "Lake Erie and its tributaries carry their own daily limits and size limits for steelhead, separate from the inland rules.",
+      "Several tributaries run through metropark land with their own access hours and parking rules — those are enforced separately from fishing law.",
+      "Much of the lower river bank is private. Access points are well known and worth planning around.",
+      "Rules are set in the annual fishing regulations, which run from 1 March."
+    ],
+    "license": {
+      "agency": "Ohio Department of Natural Resources, Division of Wildlife",
+      "licenseUrl": "https://ohiodnr.gov/buy-and-apply/hunting-fishing-boating/fishing-resources/fishing-licenses",
+      "rulesUrl": "https://ohiodnr.gov/buy-and-apply/hunting-fishing-boating/fishing-resources/fishing-regulations",
+      "residentAnnual": "$25",
+      "nonResidentAnnual": "$76.96",
+      "priceYear": "2026",
+      "priceNote": "Figures are ODNR's rates for the 2026–27 licence year, 1 March 2026 to 28 February 2027, for a one-year licence. A licence is valid 365 days from purchase. The non-resident figure is high relative to neighbouring states, which matters here because most of the people fishing Steelhead Alley have driven in from one. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "maryland",
+    "name": "Maryland",
+    "abbr": "MD",
+    "region": "Mid-Atlantic",
+    "answer": "Maryland fly fishing is tailwater and mountain stream fishing in a small state, with wild brown trout below the dams and native brook trout in the western headwaters. The Gunpowder Falls and the Savage River are the headline waters. A non-tidal licence and a trout stamp are both required from age 16.",
+    "summary": "The Gunpowder Falls, a wild brown trout tailwater half an hour from Baltimore, and the Savage River's native brook trout in the far west.",
+    "whatMakesItDifferent": "The Gunpowder Falls is the best argument in the country for changing how a dam releases water. Before 1984 the river below Prettyboy Reservoir was a warm, intermittent trickle. A negotiated minimum release of cold bottom water turned it into a self-sustaining wild brown trout fishery inside half an hour of Baltimore, and it has needed no stocking since. It is now a standard case study in tailwater management, and it is a genuinely good river. Maryland's other half sits three hours west in the Appalachian plateau, where the Savage River holds wild browns and native brook trout in water that feels nothing like the Chesapeake watershed below it. One oddity of fishing here as a visitor: Maryland charges non-residents the greater of its own minimum fee or whatever their home state charges a Marylander, so what you pay depends on where you live.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Wild and self-sustaining in the Gunpowder and the Savage. No stocking needed in either."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Native, in the cold western headwaters and the upper Savage system."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Mostly stocked, with some holdover fish in the bigger rivers."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The upper Potomac, which is excellent and fishes all summer."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Gunpowder Falls",
+        "note": "Below Prettyboy Reservoir. Wild browns, catch and release up top, and thirty minutes from Baltimore."
+      },
+      {
+        "name": "Savage River",
+        "note": "Western Maryland tailwater. Wild browns and native brookies, with a strict fly-only section."
+      },
+      {
+        "name": "North Branch Potomac",
+        "note": "A tailwater on the West Virginia line, recovered from acid mine drainage by liming."
+      },
+      {
+        "name": "Big Hunting Creek",
+        "note": "In Catoctin Mountain Park. One of the first fly-fishing-only streams in the United States."
+      },
+      {
+        "name": "Casselman River",
+        "note": "Small western water with a catch-and-release stretch."
+      },
+      {
+        "name": "Upper Potomac",
+        "note": "Not trout. The best smallmouth river in the mid-Atlantic and the right call in August."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "The Gunpowder and the Savage fish all winter. Midges and small nymphs, and nobody about."
+      },
+      {
+        "window": "April – May",
+        "what": "Hendricksons, caddis and sulphurs. The best weeks of the year on every piece of water in the state."
+      },
+      {
+        "window": "June",
+        "what": "Sulphurs into the evening on the Gunpowder, and the western streams at their best."
+      },
+      {
+        "window": "July – August",
+        "what": "Terrestrials early, and the tailwaters hold up when everything else is too warm. Or fish the Potomac for smallmouth."
+      },
+      {
+        "window": "September – December",
+        "what": "Baetis, cooling water, and brown trout moving onto the gravel late in the year."
+      }
+    ],
+    "flies": [
+      "blue-wing-olive",
+      "elk-hair-caddis",
+      "pheasant-tail-nymph",
+      "pale-morning-dun",
+      "beetle",
+      "griffiths-gnat"
+    ],
+    "regulations": [
+      "A non-tidal fishing licence is required from age 16, and a trout stamp is required in addition for anyone fishing for trout in non-tidal waters.",
+      "Non-resident licence fees are reciprocal: you pay Maryland's minimum or whatever your own state charges a Maryland resident, whichever is higher.",
+      "The upper Gunpowder and several other stretches are catch and release with artificial flies only.",
+      "Big Hunting Creek sits in a national park and carries park rules alongside state ones.",
+      "Tidal water needs a different licence entirely, and it does not cover the trout streams."
+    ],
+    "license": {
+      "agency": "Maryland Department of Natural Resources",
+      "licenseUrl": "https://dnr.maryland.gov/pages/service_fishing_license.aspx",
+      "rulesUrl": "https://dnr.maryland.gov/fisheries/pages/regulations/index.aspx",
+      "residentAnnual": "$52",
+      "nonResidentAnnual": "$85",
+      "priceYear": "2026",
+      "priceNote": "The resident total is the $32 annual non-tidal licence plus the $20 resident trout stamp. The non-resident total is the $55 minimum non-tidal licence plus the $30 non-resident trout stamp — a minimum, because Maryland charges non-residents the greater of that figure or what their home state charges a Marylander. Both fees rose recently after decades unchanged. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "connecticut",
+    "name": "Connecticut",
+    "abbr": "CT",
+    "region": "New England",
+    "answer": "Connecticut fly fishing centres on two rivers: the Farmington, a cold tailwater holding wild brown trout, and the Housatonic, a bigger freestone with a long fly-fishing-only stretch. A licence is required from age 16, and a Trout and Salmon Stamp is needed to fish the managed trout water even if you release everything.",
+    "summary": "The Farmington River — one of the best wild brown trout tailwaters in the Northeast, fishable twelve months a year within two hours of New York.",
+    "whatMakesItDifferent": "The West Branch of the Farmington is the reason anglers drive to Connecticut. Cold water released from Hogback Dam keeps the river in the fifties through a New England summer, and the result is a wild, self-sustaining brown trout population in a river you can reach from Manhattan in two hours and fish in any month of the year. It is heavily managed and heavily fished, and it rewards people who treat it as a technical river rather than a stocked one. The Housatonic is the counterweight: bigger, warmer, freestone, with a long fly-fishing-only stretch and a summer caveat — it gets too warm for trout in July and August, and the right answer then is smallmouth. One point of licensing to get right: the Trout and Salmon Stamp is required to fish a Trout Management Area at all, not merely to keep a fish, and the Farmington is one.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Wild and self-sustaining in the West Branch Farmington. The main quarry and a properly difficult one."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked widely, with holdover fish in both main rivers."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Native, in small cold tributaries and the northwest hills."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The Housatonic in summer, when it is too warm for trout."
+      },
+      {
+        "name": "Atlantic salmon",
+        "note": "Broodstock fish released into a few waters each autumn, under their own rules."
+      }
+    ],
+    "waters": [
+      {
+        "name": "West Branch Farmington",
+        "note": "Below Hogback Dam. Cold all summer, wild browns, and year-round catch and release in the permanent TMA."
+      },
+      {
+        "name": "Farmington River — Hartland to Unionville",
+        "note": "A seasonal Trout Management Area: harvest in season, catch and release the rest of the year."
+      },
+      {
+        "name": "Housatonic River",
+        "note": "Big freestone water with a long fly-fishing-only stretch. Too warm for trout in high summer."
+      },
+      {
+        "name": "Salmon River",
+        "note": "A Trout Management Area in the east of the state, and broodstock salmon water in autumn."
+      },
+      {
+        "name": "Mill River",
+        "note": "Small northwest hill water, and a good place to find a wild brook trout."
+      },
+      {
+        "name": "Natchaug River",
+        "note": "Eastern Connecticut, stocked, and quieter than the famous two."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "The Farmington fishes all winter. Midges, small nymphs, and the water never freezes below the dam."
+      },
+      {
+        "window": "April",
+        "what": "Hendricksons, and the general harvest season opening in mid-month on most waters."
+      },
+      {
+        "window": "May – June",
+        "what": "The best weeks anywhere in the state. Caddis, sulphurs, and long evenings on the Farmington."
+      },
+      {
+        "window": "July – August",
+        "what": "The Farmington holds up because of the dam. The Housatonic does not — switch to smallmouth there."
+      },
+      {
+        "window": "September – December",
+        "what": "Baetis and isonychia, broodstock salmon stocked in autumn, and the Farmington quiet again."
+      }
+    ],
+    "flies": [
+      "blue-wing-olive",
+      "elk-hair-caddis",
+      "pheasant-tail-nymph",
+      "rusty-spinner",
+      "griffiths-gnat",
+      "hares-ear-nymph"
+    ],
+    "regulations": [
+      "An inland fishing licence is required from age 16.",
+      "A Trout and Salmon Stamp is required for anyone 16 or over who keeps trout or salmon, OR who fishes in a Trout Management Area, Wild Trout Management Area, Trout Park or Atlantic Salmon Management Area — including catch and release. The Farmington is a TMA.",
+      "Licences run the calendar year and expire on 31 December, rather than running a year from purchase.",
+      "Trout Management Areas differ: the West Branch Farmington is year-round catch and release, while the stretch from Hartland to Unionville allows harvest in season.",
+      "Rules are set water by water and the posted signs at the access points are the shortest way to check."
+    ],
+    "license": {
+      "agency": "Connecticut Department of Energy and Environmental Protection",
+      "licenseUrl": "https://portal.ct.gov/deep/fishing/general-information/fisheries-licenses-and-permits",
+      "rulesUrl": "https://portal.ct.gov/deep/fishing/freshwater-fishing-guide/river-and-stream-regulations",
+      "residentAnnual": "$33",
+      "nonResidentAnnual": "$60",
+      "priceYear": "2026",
+      "priceNote": "The totals are the inland fishing licence plus the Trout and Salmon Stamp — $28 and $5 for residents aged 18 to 64, $55 and $5 for non-residents. Residents 65 and over fish free with annual renewal. Licences expire on 31 December. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "texas",
+    "name": "Texas",
+    "abbr": "TX",
+    "region": "Texas",
+    "answer": "Texas fly fishing for trout means the Guadalupe River below Canyon Dam, the southernmost year-round trout fishery in the United States, stocked with rainbow and brown trout. Elsewhere the fly rod is for Guadalupe bass, largemouth and coastal redfish. A licence is required from age 17, and the trout season runs from late autumn into spring.",
+    "summary": "The Guadalupe below Canyon Dam — the southernmost year-round trout water in America, kept going by the largest Trout Unlimited chapter in the country.",
+    "whatMakesItDifferent": "There should be no trout in Texas, and there is one river's worth. Canyon Dam releases cold water from the bottom of Canyon Lake, and the Guadalupe below it stays cool enough that trout survive the summer in central Texas — the southernmost year-round trout fishery in the United States. It exists because anglers paid for it: Guadalupe River Trout Unlimited, the largest TU chapter in the country, raises the money that stocks the river with larger fish than the state programme would, and negotiates for the dam releases that keep them alive. It is a fishery built by a conservation organisation rather than a wildlife agency, which makes it unusual anywhere. The rest of the state's fly fishing is a different sport entirely — Guadalupe bass in the Hill Country rivers, and redfish on the flats down the coast.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked into the Guadalupe tailwater, and the bulk of what you will catch."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Stocked in smaller numbers, and the fish that holds over and grows."
+      },
+      {
+        "name": "Guadalupe bass",
+        "note": "The state fish, native to the Hill Country rivers and nowhere else in the world."
+      },
+      {
+        "name": "Largemouth bass",
+        "note": "Everywhere, and the fish most Texans actually fish for."
+      },
+      {
+        "name": "Redfish",
+        "note": "The coastal flats. A different trip, and arguably the best fly fishing in the state."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Guadalupe River below Canyon Dam",
+        "note": "The only real trout water in Texas. Cold releases, winter stocking, and special regulation stretches."
+      },
+      {
+        "name": "Llano River",
+        "note": "Hill Country granite and clear water. Guadalupe bass, and wadeable most of the year."
+      },
+      {
+        "name": "Colorado River below Austin",
+        "note": "Tailwater holding bass and the occasional very large one."
+      },
+      {
+        "name": "South Llano",
+        "note": "Spring-fed, clear and pretty, with good Guadalupe bass fishing."
+      },
+      {
+        "name": "Laguna Madre",
+        "note": "Coastal flats for redfish. Shallow, enormous and sight-fished."
+      },
+      {
+        "name": "Devils River",
+        "note": "Remote, difficult to access, and the clearest water in Texas."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "November – December",
+        "what": "Stocking begins on the Guadalupe. The trout season starts as the rest of the state cools off."
+      },
+      {
+        "window": "January – March",
+        "what": "Peak trout months. Cold releases, stocked fish settled in, and comfortable weather to stand in a river."
+      },
+      {
+        "window": "April – May",
+        "what": "The last good trout weeks before the heat. Hill Country bass fishing comes into its own."
+      },
+      {
+        "window": "June – August",
+        "what": "Too hot for trout fishing to be pleasant and often too hot for the fish. Bass at dawn, redfish on the coast."
+      },
+      {
+        "window": "September – October",
+        "what": "Water cools, bass fishing is at its best, and the coast fishes well before the first fronts."
+      }
+    ],
+    "flies": [
+      "woolly-bugger",
+      "san-juan-worm",
+      "zebra-midge",
+      "elk-hair-caddis",
+      "clouser-minnow",
+      "bass-popper"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 17. Everyone under 17 fishes without one, resident or not.",
+      "A freshwater endorsement is required alongside the licence, and the resident and non-resident freshwater packages already include it.",
+      "The licence year runs from the date of sale to 31 August, rather than a year from purchase.",
+      "The Guadalupe has special regulation stretches below Canyon Dam with their own slot limits and tackle rules.",
+      "No licence is needed to fish from the bank inside a Texas state park, for anyone of any age."
+    ],
+    "license": {
+      "agency": "Texas Parks and Wildlife Department",
+      "licenseUrl": "https://tpwd.texas.gov/regulations/outdoor-annual/licenses/fishing-licenses-stamps-tags-packages/fishing-licenses-and-packages",
+      "rulesUrl": "https://tpwd.texas.gov/regulations/outdoor-annual/fishing/",
+      "residentAnnual": "$30",
+      "nonResidentAnnual": "$58",
+      "priceYear": "2026",
+      "priceNote": "Figures are TPWD's rates for the freshwater fishing package, which bundles the licence with the required freshwater endorsement. The licence is valid from the date of sale to 31 August. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "new-hampshire",
+    "name": "New Hampshire",
+    "abbr": "NH",
+    "region": "New England",
+    "answer": "New Hampshire fly fishing is White Mountain stream and northern river fishing, with native brook trout, wild and stocked rainbows and browns, and landlocked Atlantic salmon in the big lakes and the Connecticut headwaters. The Androscoggin, the upper Connecticut and the Swift are the headline waters. A licence is required from age 16.",
+    "summary": "Native brook trout in White Mountain streams, landlocked salmon on the Androscoggin, and the Connecticut headwater lakes in the far north.",
+    "whatMakesItDifferent": "New Hampshire is a brook trout state that happens to contain two serious salmon rivers. The White Mountains are full of small, steep, cold streams holding native brook trout, and nobody fishes most of them — you pull off a forest road, walk up a brook, and catch bright six-inch fish all afternoon. Then in the north the Androscoggin runs out of Umbagog carrying landlocked Atlantic salmon as well as trout, and the three Connecticut Lakes above Pittsburg feed a chain of river sections that fish like the Rangeley country over the Maine line. The state is also unusually honest about its stocking: a great deal of the accessible water is put-and-take and says so, which makes it straightforward to pick between an easy afternoon and a hard walk to wild fish.",
+    "species": [
+      {
+        "name": "Brook trout",
+        "note": "Native, and the default fish in the mountain streams. Small, numerous and willing."
+      },
+      {
+        "name": "Landlocked Atlantic salmon",
+        "note": "The Androscoggin, the Connecticut headwaters and the big lakes. Spring and autumn."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked widely, with wild fish in a few rivers."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Larger rivers and some lakes, and the biggest trout in the state."
+      },
+      {
+        "name": "Lake trout",
+        "note": "Deep lakes, and reachable on a fly just after ice-out."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Androscoggin River",
+        "note": "Out of Umbagog through Errol. Landlocked salmon, rainbows and a famous stretch of pocket water."
+      },
+      {
+        "name": "Upper Connecticut River",
+        "note": "Below the Connecticut Lakes at Pittsburg. Trophy sections, salmon, and the far north."
+      },
+      {
+        "name": "Swift River",
+        "note": "Through the Kancamagus. Small, clear, catch and release in places, and very pretty."
+      },
+      {
+        "name": "Pemigewasset River",
+        "note": "Central and accessible, with stocked and holdover fish and good caddis."
+      },
+      {
+        "name": "Saco River",
+        "note": "North Conway. Stocked, popular and easy to fish with a family."
+      },
+      {
+        "name": "White Mountain brooks",
+        "note": "Hundreds of unnamed native brook trout streams. No guidebook, no company."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "April – May",
+        "what": "Ice-out on the big lakes and salmon on streamers. Rivers high and cold, dropping through May."
+      },
+      {
+        "window": "June",
+        "what": "The best month. Hatches on the rivers, brook trout rising in the mountains, blackflies everywhere."
+      },
+      {
+        "window": "July – August",
+        "what": "Low water. Fish high and early for brook trout, or the tailwater-fed stretches."
+      },
+      {
+        "window": "September",
+        "what": "Salmon running, trout colouring up, and the season closing on many streams at mid-month."
+      },
+      {
+        "window": "October – March",
+        "what": "Limited open water, then ice. A few sections stay open for catch and release."
+      }
+    ],
+    "flies": [
+      "muddler-minnow",
+      "elk-hair-caddis",
+      "royal-wulff",
+      "hares-ear-nymph",
+      "march-brown",
+      "ant"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16. A transaction fee is added to every licence.",
+      "Seasons differ by water and by region, and many streams close in mid-October while some sections stay open for catch and release.",
+      "Fly-fishing-only and catch-and-release stretches are designated individually, including parts of the upper Connecticut and the Swift.",
+      "Landlocked salmon carry their own seasons and limits, separate from the trout rules.",
+      "Rules are set in the annual freshwater fishing digest, by water."
+    ],
+    "license": {
+      "agency": "New Hampshire Fish and Game Department",
+      "licenseUrl": "https://www.wildlife.nh.gov/licenses-and-permits/license-prices",
+      "rulesUrl": "https://www.wildlife.nh.gov/fishing-new-hampshire",
+      "residentAnnual": "$45",
+      "nonResidentAnnual": "$63",
+      "priceYear": "2026",
+      "priceNote": "Figures are Fish and Game's published rates for an annual freshwater fishing licence. A transaction fee of $2.00 is added, or $2.75 when bought online, and a separate fisheries habitat fee is set by department rule. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
   }
 ]
