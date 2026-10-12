@@ -4180,5 +4180,513 @@
       "priceNote": "Figures are ADCNR's published rates for an annual freshwater fishing licence. The non-resident figure applies to most states; Louisiana and Mississippi residents pay more under reciprocal agreements. Licences expire on 31 August whatever date you buy them, so a licence bought in July is worth six weeks. Prices change — check with the agency before you buy."
     },
     "localNote": null
+  },
+  {
+    "slug": "illinois",
+    "name": "Illinois",
+    "abbr": "IL",
+    "region": "Great Lakes",
+    "answer": "Illinois fly fishing means Lake Michigan steelhead and salmon in the north-east, two short stocked trout seasons on inland streams and ponds, and a small corner of Driftless spring creek country in the north-west. A licence is required from age 16, with a separate stamp for inland trout and another for Lake Michigan salmon.",
+    "summary": "Steelhead off the Chicago harbours, two stocked trout openers a year, and a corner of Driftless spring creek country in the north-west.",
+    "whatMakesItDifferent": "Illinois runs its inland trout fishing on two days a year. The state stocks around fifty sites each spring and autumn and opens them on a single Saturday morning in April and another in October, with the water closed to trout fishing in the weeks beforehand so the fish are still there when the whistle goes. It is a put-and-take programme and makes no pretence otherwise. What a fly angler should actually plan around is Lake Michigan: steelhead and salmon run into the harbours and the few short tributaries at the top of the state, and in Chicago you can fish for a steelhead within sight of the skyline. The third piece is easy to miss — the far north-west corner around Galena is the southern tip of the Driftless Area, and the Apple River and its neighbours hold cold spring-fed water of the kind Wisconsin is famous for.",
+    "species": [
+      {
+        "name": "Steelhead",
+        "note": "Lake Michigan fish in the harbours and the north-eastern tributaries, autumn into spring."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked at around fifty inland sites for the spring and autumn seasons."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Stocked in smaller numbers, and holding over in a few cold north-western streams."
+      },
+      {
+        "name": "Chinook and coho salmon",
+        "note": "Autumn runs into the Lake Michigan harbours, ahead of the steelhead."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Lake Michigan harbours",
+        "note": "Chicago and Waukegan. Steelhead and salmon from the walls, which is strange and excellent fishing."
+      },
+      {
+        "name": "Apple River",
+        "note": "The Driftless corner near Galena. Cold spring-fed water and the state's best wild trout habitat."
+      },
+      {
+        "name": "Waukegan Harbor",
+        "note": "The most consistent shore access for lake-run fish in the state."
+      },
+      {
+        "name": "Rock River",
+        "note": "Not trout. Smallmouth in quantity, and a good summer alternative."
+      },
+      {
+        "name": "Kishwaukee River",
+        "note": "One of the cleanest rivers in northern Illinois and full of smallmouth."
+      },
+      {
+        "name": "Stocked inland sites",
+        "note": "Around fifty ponds and streams statewide, opened on one Saturday each April and October."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "October – November",
+        "what": "The autumn trout opener, and the first steelhead and salmon reaching the harbours."
+      },
+      {
+        "window": "December – February",
+        "what": "Harbour steelhead when the ice allows. Cold, awkward and occasionally extraordinary."
+      },
+      {
+        "window": "March – April",
+        "what": "Spring steelhead, then the inland trout opener on the first Saturday in April."
+      },
+      {
+        "window": "May – June",
+        "what": "Hatches on the Driftless streams in the north-west, and smallmouth waking up everywhere else."
+      },
+      {
+        "window": "July – September",
+        "what": "Too warm for inland trout. Smallmouth on the rivers, and salmon staging off the harbours late in the season."
+      }
+    ],
+    "flies": [
+      "egg-pattern",
+      "woolly-bugger",
+      "clouser-minnow",
+      "hares-ear-nymph",
+      "elk-hair-caddis",
+      "san-juan-worm"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16. The licence year begins 1 March.",
+      "An inland trout stamp is required to fish for or possess trout on inland waters, and a separate Lake Michigan salmon stamp covers trout and salmon there.",
+      "Inland trout waters close to trout fishing ahead of each opener, and reopen on the published Saturday morning.",
+      "Lake Michigan and its tributaries have their own seasons and limits, separate from the inland rules.",
+      "Rules are set in the annual digest and the stocked-site list is published each spring and autumn."
+    ],
+    "license": {
+      "agency": "Illinois Department of Natural Resources",
+      "licenseUrl": "https://dnr.illinois.gov/lpr/fishinglicensesfees.html",
+      "rulesUrl": "https://dnr.illinois.gov/fishing.html",
+      "residentAnnual": "$21.50",
+      "nonResidentAnnual": "$38",
+      "priceYear": "2026",
+      "priceNote": "The totals are the annual fishing licence plus the $6.50 inland trout stamp — $15 for residents and $31.50 for non-residents. A Lake Michigan salmon stamp is a further $6.50 and is the one steelhead anglers need. Figures read from the department's own fee table. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "nebraska",
+    "name": "Nebraska",
+    "abbr": "NE",
+    "region": "Great Plains",
+    "answer": "Nebraska fly fishing is Sandhills and Pine Ridge stream fishing, with wild brown and rainbow trout in cold spring-fed creeks in the north-west of a state otherwise given over to warmwater. The Snake River, Long Pine Creek and the Niobrara tributaries are the headline waters. A permit is required from age 16.",
+    "summary": "Spring-fed Sandhills creeks and Pine Ridge canyons holding wild brown trout, in a state almost nobody associates with trout at all.",
+    "whatMakesItDifferent": "The Nebraska Sandhills sit on the Ogallala Aquifer, and water comes up out of them cold and clear all year. The result is a scattering of spring-fed creeks running through grass-covered dunes in the middle of the Great Plains — Long Pine Creek, the Snake, the small tributaries feeding the Niobrara — holding wild brown trout that nobody drives from out of state to catch. Further west, the Pine Ridge country around Chadron breaks into pine-wooded canyons with their own cold streams. None of it is big water and none of it is famous, which is the appeal: this is a state where you can fish a wild brown trout stream on a summer Saturday and not see another angler all day. The practical difficulty is distance — these are long drives on gravel, and access runs through ranch land.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Wild and self-sustaining in the Sandhills and Pine Ridge streams. The main quarry."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked widely and wild in a few cold creeks."
+      },
+      {
+        "name": "Brook trout",
+        "note": "A short list of the coldest headwaters in the north-west."
+      },
+      {
+        "name": "Cutthroat trout",
+        "note": "Stocked in a few Pine Ridge waters — unexpected, this far east."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Snake River",
+        "note": "Cherry County. Spring-fed Sandhills water with wild browns, above and below Snake River Falls."
+      },
+      {
+        "name": "Long Pine Creek",
+        "note": "A cold canyon stream near Ainsworth, and one of the best wild trout streams in the state."
+      },
+      {
+        "name": "Niobrara River tributaries",
+        "note": "Small spring creeks feeding the main river, several holding wild trout."
+      },
+      {
+        "name": "Chadron Creek",
+        "note": "Pine Ridge country. Small, cold and surrounded by ponderosa pine."
+      },
+      {
+        "name": "Soldier Creek",
+        "note": "Near Fort Robinson. Easy access and a good first Nebraska trout stream."
+      },
+      {
+        "name": "Niobrara River",
+        "note": "Not trout where it is famous, but a National Scenic River and worth the canoe trip."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "The spring creeks stay open at the source. Midges, cold wind, and nobody for miles."
+      },
+      {
+        "window": "April – May",
+        "what": "Blue-wing olives and the first caddis. The Sandhills green up and the water stays cold."
+      },
+      {
+        "window": "June",
+        "what": "The best month. Caddis and mayflies in the evening, and long light on the dunes."
+      },
+      {
+        "window": "July – August",
+        "what": "Hopper season, and the spring-fed water holds temperature when the prairie bakes."
+      },
+      {
+        "window": "September – December",
+        "what": "Brown trout colouring up, Baetis on grey days, and the quietest fishing of the year."
+      }
+    ],
+    "flies": [
+      "grasshopper",
+      "elk-hair-caddis",
+      "hares-ear-nymph",
+      "blue-wing-olive",
+      "parachute-adams",
+      "woolly-bugger"
+    ],
+    "regulations": [
+      "A fishing permit is required from age 16. Resident youth aged 15 and under do not need one.",
+      "The Aquatic Habitat Stamp is included in the price of most Nebraska fishing permits rather than bought separately.",
+      "Several streams carry their own length limits and tackle rules. Check the water before you fish it.",
+      "Access across the Sandhills frequently crosses private ranch land. Use marked public access, and ask where you are unsure.",
+      "Rules are set in the annual fishing guide, which the commission publishes each year."
+    ],
+    "license": {
+      "agency": "Nebraska Game and Parks Commission",
+      "licenseUrl": "https://outdoornebraska.gov/permits/permit-pricing/",
+      "rulesUrl": "https://outdoornebraska.gov/guides-maps/fishing-guides-reports/fishing-guide/",
+      "residentAnnual": "$41",
+      "nonResidentAnnual": "$95.50",
+      "priceYear": "2026",
+      "priceNote": "Figures are the commission's 2026 prices for an annual fishing permit, and the Aquatic Habitat Stamp and issue fee are already included. Base fees rose for 2026 and a further rise is proposed for 2027. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "kansas",
+    "name": "Kansas",
+    "abbr": "KS",
+    "region": "Great Plains",
+    "answer": "Kansas has no wild trout. What it has is a winter stocking programme: from 1 December to 31 March the state stocks trout into designated waters across the state, and a trout permit is required to fish them. The rest of the year the fly rod is for smallmouth, wipers and bluegill. A licence is required from age 16.",
+    "summary": "A winter-only trout fishery, stocked from December to March into designated waters — and some of the most underrated warmwater fly fishing in the plains.",
+    "whatMakesItDifferent": "Kansas is honest about what it is. There is no cold water here capable of holding trout through a plains summer, so the state does not pretend: it stocks trout into designated waters from the first of December to the end of March, lets people catch them through the cold months, and stops. Some of those waters are city lakes and some are river stretches below dams, and the programme turns a state with no trout habitat into one where you can reasonably fish for trout in January. The rest of the year is the real fishing, and it is better than its reputation — the Flint Hills streams hold smallmouth in clear rocky water, the reservoirs hold wipers that will chase a streamer hard enough to break your wrist, and nobody is competing with you for any of it.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked into designated waters from December to March. The bulk of the trout programme."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Stocked in smaller numbers at a few sites, and occasionally holding over."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "Flint Hills streams and the clear reservoirs. The best fly fishing in the state."
+      },
+      {
+        "name": "Wiper",
+        "note": "A white bass and striped bass hybrid. Stocked in reservoirs and savage on a streamer."
+      },
+      {
+        "name": "Bluegill and channel catfish",
+        "note": "Everywhere, and what most Kansas fly rods actually do."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Mined Land Wildlife Area",
+        "note": "Old strip-mine pits in the south-east, stocked with trout in winter and deep enough to hold them."
+      },
+      {
+        "name": "Lake Shawnee",
+        "note": "Topeka. A city lake on the winter trout list, and easy to reach."
+      },
+      {
+        "name": "Sand Creek",
+        "note": "Newton. One of the designated stream sites for the winter programme."
+      },
+      {
+        "name": "Cedar Bluff tailwater",
+        "note": "Below the reservoir, stocked in winter and cold enough to hold fish a while."
+      },
+      {
+        "name": "Flint Hills streams",
+        "note": "Not trout. Clear limestone-bed creeks full of smallmouth and worth the drive."
+      },
+      {
+        "name": "Milford and Wilson Reservoirs",
+        "note": "Wipers and white bass on streamers, chasing shad in open water."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "December – March",
+        "what": "The trout season. Stocking runs through the winter at designated Type 1 and Type 2 waters."
+      },
+      {
+        "window": "April – May",
+        "what": "Trout fishing ends and the warmwater season starts. Smallmouth and wipers coming shallow."
+      },
+      {
+        "window": "June – August",
+        "what": "Bluegill on poppers at dusk, catfish on big flies, and smallmouth in the Flint Hills creeks."
+      },
+      {
+        "window": "September – October",
+        "what": "The best warmwater weeks of the year as the reservoirs cool and the bait moves."
+      },
+      {
+        "window": "November",
+        "what": "The quiet month between the two seasons. Stocking begins again on 1 December."
+      }
+    ],
+    "flies": [
+      "woolly-bugger",
+      "zebra-midge",
+      "clouser-minnow",
+      "bass-popper",
+      "san-juan-worm",
+      "egg-pattern"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16, and a trout permit is required in addition to fish designated trout waters in season.",
+      "On Type 1 waters, every angler must hold a trout permit between 1 December and 31 March, whether they are fishing for trout or not.",
+      "On Type 2 waters, only anglers fishing for or keeping trout need the permit.",
+      "Licences run 365 days from purchase rather than to a fixed date.",
+      "The stocked-water list is published by the department each season and changes from year to year."
+    ],
+    "license": {
+      "agency": "Kansas Department of Wildlife and Parks",
+      "licenseUrl": "https://www.ksoutdoors.gov/licenses-permits-fees/fishing-licenses-permit-fees",
+      "rulesUrl": "https://www.ksoutdoors.gov/fishing",
+      "residentAnnual": "$42.50",
+      "nonResidentAnnual": "$92.50",
+      "priceYear": "2026",
+      "priceNote": "The totals are the one-year fishing licence plus the $17.50 adult trout permit — $25 for residents and $75 for non-residents. Both the licence and the permit run 365 days from purchase. Third-party sites widely quote $27.50 resident, $52.50 non-resident and a $14.50 or $20 trout permit; none of those match the department's own fee table, which is where these figures come from."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "rhode-island",
+    "name": "Rhode Island",
+    "abbr": "RI",
+    "region": "New England",
+    "answer": "Rhode Island fly fishing is small-stream and pond fishing in the smallest state, with heavily stocked rainbow, brown and brook trout, a few wild brook trout streams, and some of the best striped bass fly fishing on the coast. The Wood River is the headline water. A licence is required from age 15, and a trout stamp is needed to keep trout.",
+    "summary": "The Wood River and the Wood-Pawcatuck watershed, heavy stocking, wild brook trout in a few headwaters, and stripers twenty minutes away.",
+    "whatMakesItDifferent": "Rhode Island is the smallest state in the country and you can cross its trout fishing in an afternoon, which changes how you use it. There is no destination river here. What there is, is a tight network of small streams and ponds in the south-west — the Wood-Pawcatuck watershed, one of the cleanest river systems in southern New England — stocked heavily each spring and autumn, with a handful of cold headwaters holding wild brook trout that have been there all along. The honest case for fishing here is proximity rather than ambition: a trout stream, a bass pond and a saltwater flat full of striped bass are all within half an hour of each other, and a fly angler who is flexible about species can fish every day of the year without driving far. Treat the trout as one option among three rather than the reason for the trip.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "The bulk of the stocking programme, in streams and ponds across the state."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Stocked, with holdover fish in the deeper and colder water."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Native, and wild in a short list of cold headwater streams."
+      },
+      {
+        "name": "Striped bass",
+        "note": "The coast and the salt ponds. The best fly fishing in Rhode Island, and it is not close."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Wood River",
+        "note": "The best trout water in the state. Heavily stocked, with a fly-fishing-only stretch."
+      },
+      {
+        "name": "Pawcatuck River",
+        "note": "Bigger and slower, holding trout up top and bass lower down."
+      },
+      {
+        "name": "Falls River",
+        "note": "Small, cold and holding wild brook trout in the upper reaches."
+      },
+      {
+        "name": "Carolina Trout Pond",
+        "note": "A managed pond on the stocking list, and a straightforward place to start."
+      },
+      {
+        "name": "Narragansett Bay",
+        "note": "Striped bass on the fly from shore and boat, from May into October."
+      },
+      {
+        "name": "Ninigret Pond",
+        "note": "A salt pond on the south coast. Stripers on the flats and a genuine sight fishery."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "Winter stocking at a few waters, and quiet fishing on the year-round streams."
+      },
+      {
+        "window": "April – May",
+        "what": "Opening day and heavy spring stocking, then the first stripers arriving on the coast."
+      },
+      {
+        "window": "June",
+        "what": "The best month overall — trout still cool in the Wood, and stripers in the salt ponds."
+      },
+      {
+        "window": "July – August",
+        "what": "Too warm for most trout water. Fish the salt at dawn, or the coldest headwaters."
+      },
+      {
+        "window": "September – December",
+        "what": "Autumn stocking, the striper run back south, and the Wood fishing well again."
+      }
+    ],
+    "flies": [
+      "elk-hair-caddis",
+      "hares-ear-nymph",
+      "woolly-bugger",
+      "clouser-minnow",
+      "blue-wing-olive",
+      "pheasant-tail-nymph"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 15, and a Trout Conservation Stamp is required to keep or possess trout.",
+      "Residents aged 65 and over fish free, and are exempt from the trout stamp.",
+      "The licence year runs 1 March to the last day of February.",
+      "Designated fly-fishing-only and catch-and-release areas are posted, including a stretch of the Wood River.",
+      "Saltwater fishing needs a separate recreational saltwater licence, which the freshwater licence does not cover."
+    ],
+    "license": {
+      "agency": "Rhode Island Department of Environmental Management",
+      "licenseUrl": "https://dem.ri.gov/natural-resources-bureau/natural-resources-divisions/fish-wildlife/freshwater-fishing/licenses-0",
+      "rulesUrl": "https://dem.ri.gov/natural-resources-bureau/fish-wildlife/freshwater-fishing",
+      "residentAnnual": "$30",
+      "nonResidentAnnual": "$47",
+      "priceYear": "2026",
+      "priceNote": "The totals are the annual licence plus the $6 Special Trout Conservation Stamp — $24 for residents and $41 for non-residents, from DEM's published fee table. DEM's own FAQ page lists lower figures for buying online, around $21 and $38 with a $5.50 stamp, so the price you pay may depend on where you buy. Check at the checkout."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "delaware",
+    "name": "Delaware",
+    "abbr": "DE",
+    "region": "Mid-Atlantic",
+    "answer": "Delaware has no wild trout and no cold water that holds them through summer. It stocks a handful of streams in the north of the state each spring and autumn, and a trout stamp is required to fish them in season. The rest of the year the fly rod is for smallmouth, snakeheads and striped bass. A licence is required from age 16.",
+    "summary": "A short stocked trout season on a few northern streams, and the cheapest fishing licence in the country at $8.50 for residents.",
+    "whatMakesItDifferent": "Delaware is the second-smallest state and the flattest in the country, and its trout fishing is correspondingly brief and specific: a short list of streams in the rolling northern tip above the fall line — White Clay Creek, the Christina, Wilson Run — stocked in spring and again in autumn, with the trout stamp requirement switched on for those windows and off the rest of the year. Nobody should plan a trip around it. What is worth knowing is that Delaware sells the cheapest fishing licence in the United States at eight dollars and fifty cents for a resident, and that behind the modest trout programme sits genuinely interesting fly water — smallmouth in the upper Brandywine, northern snakehead in the tidal ditches, and striped bass in Delaware Bay that run to a size no trout in the state ever will.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked into the northern streams each spring and autumn, and the bulk of the programme."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Stocked in smaller numbers, with occasional holdovers in the coldest water."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The upper Brandywine and White Clay. The best river fly fishing in the state."
+      },
+      {
+        "name": "Striped bass",
+        "note": "Delaware Bay and the Delaware River, and a serious fly target in spring."
+      },
+      {
+        "name": "Northern snakehead",
+        "note": "Invasive, abundant in the tidal ditches, and an unexpectedly good fly-rod fish."
+      }
+    ],
+    "waters": [
+      {
+        "name": "White Clay Creek",
+        "note": "The best-known trout stream in Delaware, stocked and running through a state park."
+      },
+      {
+        "name": "Christina Creek",
+        "note": "On the stocking list, close to Newark and easy to reach."
+      },
+      {
+        "name": "Wilson Run",
+        "note": "A small stocked stream through Brandywine Creek State Park."
+      },
+      {
+        "name": "Brandywine Creek",
+        "note": "Not trout below the stocked reaches, but good smallmouth water all summer."
+      },
+      {
+        "name": "Nanticoke River",
+        "note": "Tidal, and full of snakeheads and largemouth."
+      },
+      {
+        "name": "Delaware Bay",
+        "note": "Striped bass in spring and autumn, which is the state's real fly fishing."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "March – May",
+        "what": "The spring trout stocking and the opening of the season on the designated streams."
+      },
+      {
+        "window": "May – June",
+        "what": "Trout thin out as the water warms. Smallmouth and stripers take over."
+      },
+      {
+        "window": "July – August",
+        "what": "No trout fishing worth the name. Snakeheads in the ditches and bass at dawn."
+      },
+      {
+        "window": "September – October",
+        "what": "Autumn stocking brings trout back to the northern streams, and the bay fishes well."
+      },
+      {
+        "window": "November – February",
+        "what": "Quiet. A few holdover trout, and striped bass offshore for the determined."
+      }
+    ],
+    "flies": [
+      "woolly-bugger",
+      "clouser-minnow",
+      "hares-ear-nymph",
+      "elk-hair-caddis",
+      "san-juan-worm",
+      "bass-popper"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16, and a trout stamp is required in addition to fish designated trout streams during the stocking seasons.",
+      "Residents aged 65 and over are exempt from the trout stamp.",
+      "Licences run the calendar year rather than a year from purchase.",
+      "A boat fishing licence covers everyone aboard, which is unusual and can be cheaper for a group.",
+      "Tidal water, including the bay, is covered by the Fisherman Information Network registration rather than the freshwater licence — check which you need."
+    ],
+    "license": {
+      "agency": "Delaware Division of Fish and Wildlife",
+      "licenseUrl": "https://dnrec.delaware.gov/fish-wildlife/licenses/fees/",
+      "rulesUrl": "https://dnrec.delaware.gov/fish-wildlife/fishing/regulations/",
+      "residentAnnual": "$12.70",
+      "nonResidentAnnual": "$26.20",
+      "priceYear": "2026",
+      "priceNote": "The totals are the annual fishing licence plus the trout stamp — $8.50 and $4.20 for residents aged 16 to 64, $20 and $6.20 for non-residents. The $8.50 resident licence is the cheapest in the United States. Agent and online service fees of around $2.50 are extra. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
   }
 ]
