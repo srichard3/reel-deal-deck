@@ -17,8 +17,7 @@ npm run build && npm run check   # must stay at 0 errors, 0 warnings
 |---|---|---|---|
 | 0 | **The remaining photographs.** Four have arrived and are on `/story/` and `/conservation/`. Still open: the printed info card, **the original artwork beside the finished card** (the most valuable image the site could have), the packing table, and **one portrait of Audrey alone** — without it neither founder card can carry a face. `docs/PHOTO-PLAN.md` has the shot list. | Ken & Audrey | `logos-and-photos-new/` |
 
-| 1 | **Netlify access control.** The whole site answers `401` — `reeldealdeck.com`, `www` and the `.netlify.app` host alike. Nothing can be read, crawled or linked until this is switched off. | Ken & Audrey | Netlify → Site configuration → Access control |
-| 2 | **`NOINDEX` must stay set until the 401 comes off, and must come off after.** Order matters: lift the 401, check the live pages, then remove `NOINDEX`, redeploy, then submit the sitemap. Removing it while the site still 401s achieves nothing; leaving it on after launch means the site never ranks. | Ken & Audrey | Netlify → environment variables |
+| 1 | **Submit the sitemap** to Search Console and Bing, once a deploy has been verified public and index-able. Nothing blocks this any more; it simply has not been done. | Ken & Audrey | `docs/GROWTH-PLAN.md` phase 2 |
 | 3 | **Shopify terms of service.** `/policies/terms-of-service` returns 404. It is the only place the fishing-information disclaimer lives, and the site now publishes licence figures for all fifty states. | Ken & Audrey | Shopify → Settings → Policies |
 
 ---
@@ -30,6 +29,16 @@ npm run build && npm run check   # must stay at 0 errors, 0 warnings
 | 4 | **A named byline for the guides.** They are attributed to the brand. Ken's name on them is a real expertise signal for both Google and AI answer engines — but a fabricated byline is worse than none. | Ken | `data/site.json` → `blog.authorNote` |
 | 5 | **A portrait of Audrey.** There are now several photographs of Ken and one of them both, but none of Audrey on her own, so the founder cards still carry the K♠/Q♥ marks. The press page still offers card art only. | Audrey | `docs/PHOTO-PLAN.md` |
 | 6 | **Credit for the designer** who drew the cards. Raised more than once and still the founders' call. The site never claims Ken drew them. | Ken & Audrey | `data/site.json` → `story.artNote` |
+
+---
+
+## Resolved — 12 October 2026
+
+| Was | Outcome |
+|---|---|
+| **Netlify access control** returned a site-wide `401` with a JavaScript "Login Redirect" interstitial. | Switched off. `reeldealdeck.com` answers `200`, `www` redirects to the apex. |
+| **`NOINDEX=1`** was set as a Netlify environment variable and every page carried `<meta name="robots" content="noindex, nofollow">`. | Deleted from the Netlify environment. |
+| **Production deploys were failing silently** on Netlify's secrets scanner, so the live site served a build from 6 October with 93 of its 181 pages missing. | No secret was ever leaking: `SHOPIFY_CLIENT_SECRET`, `RESEND_API_KEY` and `SHOPIFY_CLIENT_ID` appear zero times in `dist/`. The scanner was matching `SHOPIFY_SHOP_URL`, which is on all 185 output files because it is every Buy button, and `WHOLESALE_LIVE`, whose value is `1`. `SECRETS_SCAN_OMIT_KEYS` in `netlify.toml` now names the six public variables; the three credentials stay scanned so a genuine leak still fails the build. |
 
 ---
 
