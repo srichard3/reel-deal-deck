@@ -3664,5 +3664,521 @@
       "priceNote": "Figures are the department's published rates for an annual fishing licence, valid 365 days from purchase. There is no trout licence to add. Lake Texoma needs a separate $12 permit. Prices change — check with the agency before you buy."
     },
     "localNote": null
+  },
+  {
+    "slug": "west-virginia",
+    "name": "West Virginia",
+    "abbr": "WV",
+    "region": "Southern Appalachians",
+    "answer": "West Virginia fly fishing is mountain stream and wilderness fishing, with native brook trout in the high country, stocked rainbows and browns in the bigger rivers, and the state's own golden rainbow trout. The Cranberry, the Williams and the Elk are the headline waters. A licence is required from age 15, and trout needs a separate stamp.",
+    "summary": "Wilderness brook trout on the Cranberry and the Williams, limestone-fed browns on the Elk, and the golden rainbow trout the state invented in 1963.",
+    "whatMakesItDifferent": "West Virginia stocks a trout that exists nowhere else as a wild fish. The golden rainbow — a bright yellow-gold mutation found in a state hatchery in 1955 and bred into a strain released for the state's centennial in 1963 — is a West Virginia invention, and you will see them in stocked water all spring looking like someone dropped a goldfish in the river. The serious fishing is elsewhere and quieter. The Cranberry and the Williams run through the Monongahela National Forest with catch-and-release stretches and genuine wilderness around them, the Elk has a limestone-fed section that behaves like a spring creek, and the high headwaters across the Alleghenies hold native brook trout in streams with no names on the map. A state where the best water takes a forest-road drive and a walk tends to stay uncrowded, and this one has.",
+    "species": [
+      {
+        "name": "Brook trout",
+        "note": "Native, the state fish, and wild in hundreds of high Allegheny headwater streams."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Wild in the limestone-influenced sections of the Elk and the South Branch Potomac."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked widely, with holdover fish in the bigger and colder rivers."
+      },
+      {
+        "name": "Golden rainbow trout",
+        "note": "A West Virginia strain bred from a 1955 hatchery mutation and released for the 1963 centennial."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The New, the Greenbrier and the Potomac branches — excellent, and the right call in summer."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Cranberry River",
+        "note": "Monongahela National Forest. Catch-and-release water reached by a gated forest road, and worth the walk."
+      },
+      {
+        "name": "Williams River",
+        "note": "Beside the Cranberry and just as good. Wild and stocked fish, and plenty of room."
+      },
+      {
+        "name": "Elk River",
+        "note": "The limestone section near Slatyfork fishes like a spring creek, with wild browns and real hatches."
+      },
+      {
+        "name": "Seneca Creek",
+        "note": "A wilderness brook trout stream in the Spruce Knob backcountry."
+      },
+      {
+        "name": "South Branch Potomac",
+        "note": "Through Smoke Hole Canyon. Trout up top and smallmouth below."
+      },
+      {
+        "name": "New River",
+        "note": "Not trout. One of the best smallmouth rivers in the eastern United States."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – February",
+        "what": "Winter stocking begins on some waters. Cold, quiet, and midges on the tailwater sections."
+      },
+      {
+        "window": "March – April",
+        "what": "Heavy spring stocking, including the golden rainbows, and the first real hatches."
+      },
+      {
+        "window": "May – June",
+        "what": "The best weeks. Caddis and mayflies on the Elk, and the backcountry brook trout waking up."
+      },
+      {
+        "window": "July – August",
+        "what": "Low warm water. Fish the high headwaters early, or switch to the New for smallmouth."
+      },
+      {
+        "window": "September – December",
+        "what": "Cooling water, brook trout in spawning colour, and autumn stocking on the bigger rivers."
+      }
+    ],
+    "flies": [
+      "royal-wulff",
+      "parachute-adams",
+      "elk-hair-caddis",
+      "pheasant-tail-nymph",
+      "green-weenie",
+      "woolly-bugger"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 15, and a trout stamp is required in addition to fish for trout.",
+      "A conservation stamp is also required alongside the licence. Budget for three separate purchases, not one.",
+      "The Cranberry, the Williams and several other stretches carry catch-and-release and artificial-only rules, marked on the ground.",
+      "A great deal of the best water sits inside the Monongahela National Forest, where some access roads are gated seasonally.",
+      "Rules are set water by water in the annual fishing regulations summary, which takes effect on 1 January."
+    ],
+    "license": {
+      "agency": "West Virginia Division of Natural Resources",
+      "licenseUrl": "https://wvdnr.gov/license-guide/",
+      "rulesUrl": "https://wvdnr.gov/fishing/fishing-regulations/",
+      "residentAnnual": "$33",
+      "nonResidentAnnual": "$63",
+      "priceYear": "2026",
+      "priceNote": "West Virginia sells trout fishing in three parts. Resident: the $18 Class B fishing licence, a $5 conservation stamp and the $10 Class O trout stamp. Non-resident: the $35 Class F licence, a $13 conservation stamp and the $15 Class OO trout stamp. The licence and trout stamp figures are the fees set in West Virginia Code; the agency does not publish a consolidated fee table, so confirm the total in the purchase system before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "new-jersey",
+    "name": "New Jersey",
+    "abbr": "NJ",
+    "region": "Mid-Atlantic",
+    "answer": "New Jersey fly fishing is small-river and freestone fishing in the north-west of the state, with wild brown trout in a handful of streams and heavy stocking everywhere else. The South Branch Raritan, the Big Flat Brook and the Musconetcong are the headline waters. A licence and a trout stamp are both required from age 16.",
+    "summary": "Ken Lockwood Gorge on the South Branch Raritan, wild browns in the north-west, and one of the heaviest stocking programmes in the country.",
+    "whatMakesItDifferent": "New Jersey is the most densely populated state in the country and it still has wild brown trout, which is the whole story in one sentence. The north-west corner — Warren, Sussex and Hunterdon counties — holds limestone-influenced streams and steep freestone water that look nothing like the rest of the state, and a short list of them hold self-sustaining populations that the state manages as wild trout streams with no stocking at all. Around that sits one of the heaviest stocking programmes in America, close to six hundred thousand trout a year into waters that in many cases run through suburbs. The practical consequence is that New Jersey fishing divides sharply by date: opening day and the weeks after it are a crowd, and the wild streams in October are empty.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Wild and self-sustaining in a short list of north-western streams, stocked in many more."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked in enormous numbers, with some holdover fish in the bigger rivers."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Native, in the coldest headwaters of the north-west. The state's only native trout."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The Delaware and the lower Raritan. Very good, and a sensible answer in July."
+      },
+      {
+        "name": "Striped bass",
+        "note": "The Delaware and the coast in spring. A different rod and a different trip."
+      }
+    ],
+    "waters": [
+      {
+        "name": "South Branch Raritan",
+        "note": "Ken Lockwood Gorge is the best-known trout water in the state — a railbed walk and a narrow, rocky river."
+      },
+      {
+        "name": "Big Flat Brook",
+        "note": "Sussex County, with a long fly-fishing-only stretch in Stokes State Forest."
+      },
+      {
+        "name": "Musconetcong River",
+        "note": "Limestone-influenced, with wild browns in sections and good hatches."
+      },
+      {
+        "name": "Pequest River",
+        "note": "Below the state hatchery. Heavily stocked and a good place to start."
+      },
+      {
+        "name": "Paulins Kill",
+        "note": "Improving fast since dam removals opened the river up."
+      },
+      {
+        "name": "Delaware River",
+        "note": "The border water. Smallmouth, shad in spring, and trout up at the New York end."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "Winter trout conservation areas and the year-round streams. Quiet, cold, and the wild fish still eat."
+      },
+      {
+        "window": "April",
+        "what": "Opening day and heavy stocking. Crowded, cheerful, and not the time for the wild water."
+      },
+      {
+        "window": "May – June",
+        "what": "The best hatches of the year. Caddis, sulphurs and march browns on the north-west rivers."
+      },
+      {
+        "window": "July – August",
+        "what": "Too warm for most trout water. Fish the coldest streams at dawn, or go for smallmouth."
+      },
+      {
+        "window": "September – December",
+        "what": "Autumn stocking, cooling water, and the wild streams at their best with nobody on them."
+      }
+    ],
+    "flies": [
+      "march-brown",
+      "elk-hair-caddis",
+      "pheasant-tail-nymph",
+      "blue-wing-olive",
+      "hares-ear-nymph",
+      "woolly-bugger"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16, and a trout stamp is required in addition to fish for or possess trout — whether or not you keep them.",
+      "Residents aged 70 and over need neither a licence nor a trout stamp.",
+      "Licences and stamps run from the date of purchase to 31 December, not a year from purchase.",
+      "Wild Trout Streams are managed without stocking and carry their own tackle and harvest rules.",
+      "Fly-fishing-only stretches, Trout Conservation Areas and Year Round Trout Conservation Areas are each designated separately. Check the stretch before you fish it."
+    ],
+    "license": {
+      "agency": "New Jersey Division of Fish and Wildlife",
+      "licenseUrl": "https://dep.nj.gov/njfw/fishing/freshwater/buy-a-license/",
+      "rulesUrl": "https://dep.nj.gov/njfw/fishing/freshwater/",
+      "residentAnnual": "$33",
+      "nonResidentAnnual": "$54",
+      "priceYear": "2026",
+      "priceNote": "The totals are the annual fishing licence plus the trout stamp — $22.50 and $10.50 for residents aged 16 to 64, $34 and $20 for non-residents. The trout stamp is required to fish for trout at all, not only to keep one. Both expire on 31 December. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "iowa",
+    "name": "Iowa",
+    "abbr": "IA",
+    "region": "Upper Midwest",
+    "answer": "Iowa fly fishing is north-east Iowa spring creek fishing, in the Driftless corner of the state, with stocked rainbows and browns and a growing number of streams holding wild, naturally reproducing trout. A licence is required from age 16 and a trout fee is required on top of it, and the streams fish all year.",
+    "summary": "Around a hundred cold spring creeks in the Driftless corner of north-east Iowa, in a state otherwise given over to corn and catfish.",
+    "whatMakesItDifferent": "Iowa is the last place most anglers would look for trout, and the north-east corner of it is the Driftless Area — the same unglaciated limestone country as western Wisconsin, running across the state line and stopping abruptly. Roughly a hundred cold spring-fed streams run through steep wooded valleys there, in a state that is otherwise some of the flattest and most intensively farmed land in the world. What makes Iowa worth a page rather than a footnote is the direction of travel: the state began as a pure put-and-take fishery and now has a growing list of streams where brown trout reproduce naturally and need no stocking at all, the result of decades of habitat work and landowner easements. The fish are not large. The valleys are beautiful, the water is cold in August, and almost nobody drives to Iowa to fish.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Stocked widely, and naturally reproducing in a growing number of north-east streams."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "The bulk of the stocking programme, and what most anglers catch."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Native to the state and restored to a short list of the coldest streams."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The Upper Iowa and the Turkey. Genuinely good, and the right answer in high summer."
+      }
+    ],
+    "waters": [
+      {
+        "name": "French Creek",
+        "note": "Allamakee County. Wild brown trout, no stocking, and catch-and-release rules."
+      },
+      {
+        "name": "Bloody Run Creek",
+        "note": "Near Marquette. One of the state's best wild brown trout streams."
+      },
+      {
+        "name": "Waterloo Creek",
+        "note": "Right on the Minnesota line, with a long stretch of public access."
+      },
+      {
+        "name": "South Bear Creek",
+        "note": "Winneshiek County. Small, cold and holding naturally reproducing fish."
+      },
+      {
+        "name": "Upper Iowa River",
+        "note": "Bigger water, trout up top and smallmouth below. Canoe country."
+      },
+      {
+        "name": "Maquoketa River — north fork",
+        "note": "Further south, stocked, and an easy introduction to the region."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "The spring creeks never freeze at the source. Midges, few anglers, and catch-and-release sense."
+      },
+      {
+        "window": "April – May",
+        "what": "Stocking begins in earnest. Caddis and the first mayflies, and the valleys greening up."
+      },
+      {
+        "window": "June",
+        "what": "The best month. Evening caddis, sulphurs and long light in the coulees."
+      },
+      {
+        "window": "July – August",
+        "what": "Hopper season. Low clear water, short casts to undercut banks, and cold springs holding the temperature."
+      },
+      {
+        "window": "September – December",
+        "what": "Tricos and Baetis, brown trout colouring up, and the quietest months of the year."
+      }
+    ],
+    "flies": [
+      "scud",
+      "hares-ear-nymph",
+      "elk-hair-caddis",
+      "blue-wing-olive",
+      "grasshopper",
+      "griffiths-gnat"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16, and a trout fee is required in addition to possess trout.",
+      "Anglers under 16 may fish without a licence but still need the trout fee to keep trout.",
+      "A short list of streams is managed as catch and release with artificial lures only — French Creek among them.",
+      "Much of the access is through easements across private farmland. Park where marked and leave the gates as you found them.",
+      "Stocking schedules are published by the DNR and are worth checking if you want company or want to avoid it."
+    ],
+    "license": {
+      "agency": "Iowa Department of Natural Resources",
+      "licenseUrl": "https://www.iowadnr.gov/things-do/fishing/fishing-licenses",
+      "rulesUrl": "https://www.iowadnr.gov/things-do/fishing",
+      "residentAnnual": "$36.50",
+      "nonResidentAnnual": "$65.50",
+      "priceYear": "2026",
+      "priceNote": "The totals are the 2026 annual fishing licence plus the trout fee — $22 and $14.50 for residents, $48 and $17.50 for non-residents. The DNR has proposed increases that would take effect in December 2027, so the 2026 figures stand for now. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "indiana",
+    "name": "Indiana",
+    "abbr": "IN",
+    "region": "Great Lakes",
+    "answer": "Indiana fly fishing means Lake Michigan steelhead in the north-west, a cold tailwater below Brookville Lake in the south-east, and small stocked streams in between. Steelhead, brown and rainbow trout are the quarry. A licence is required from age 18, and a trout and salmon stamp is needed on top of it.",
+    "summary": "Lake Michigan steelhead on Trail Creek and the St. Joseph, and brown trout in the Brookville tailwater at the other end of the state.",
+    "whatMakesItDifferent": "Indiana's two trout fisheries are four hours apart and have nothing in common. In the north-west, a short run of streams drains into Lake Michigan — Trail Creek, the Little Calumet, Salt Creek — and steelhead run up them from autumn into spring, through dune country and old steel towns. The St. Joseph at South Bend adds a fish ladder and one of the better runs in the southern Great Lakes. Then at the opposite corner of the state, the East Fork of the Whitewater below Brookville Lake runs cold off the bottom of the reservoir and holds brown trout year-round, which in southern Indiana is genuinely surprising. Everything between the two is small stocked streams and very good smallmouth water, and the smallmouth is probably the better fishing.",
+    "species": [
+      {
+        "name": "Steelhead",
+        "note": "Lake Michigan fish running the north-west tributaries from autumn into spring."
+      },
+      {
+        "name": "Brown trout",
+        "note": "The Brookville tailwater holds them over, and they reach a decent size."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked into small streams and lakes across the state."
+      },
+      {
+        "name": "Chinook and coho salmon",
+        "note": "Autumn runs into the Lake Michigan tributaries, ahead of the steelhead."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The Tippecanoe, the Sugar and the Blue. Arguably the best fly fishing in Indiana."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Trail Creek",
+        "note": "Michigan City. Small, close and the most fished steelhead water in the state."
+      },
+      {
+        "name": "St. Joseph River",
+        "note": "South Bend. A fish ladder, a long run of water, and the biggest fish of the year."
+      },
+      {
+        "name": "Little Calumet River",
+        "note": "Steelhead through the dune country, with public access along much of it."
+      },
+      {
+        "name": "East Fork Whitewater",
+        "note": "Below Brookville Lake. Cold releases and holdover brown trout in southern Indiana."
+      },
+      {
+        "name": "Tippecanoe River",
+        "note": "Not trout. One of the most biologically diverse rivers in the Midwest and full of smallmouth."
+      },
+      {
+        "name": "Sugar Creek",
+        "note": "Through Turkey Run. Smallmouth, canoes, and a good summer day."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "October – November",
+        "what": "Salmon first, then the first steelhead on autumn rain. The best weeks for a fresh fish."
+      },
+      {
+        "window": "December – February",
+        "what": "Cold and slow. Fish deep and small, and go when a thaw colours the water."
+      },
+      {
+        "window": "March – April",
+        "what": "The spring steelhead run, and the best numbers of the year."
+      },
+      {
+        "window": "May – June",
+        "what": "Steelhead gone. Brookville fishing well, and smallmouth season beginning."
+      },
+      {
+        "window": "July – September",
+        "what": "Smallmouth on the inland rivers, and the tailwater below Brookville holding cold."
+      }
+    ],
+    "flies": [
+      "egg-pattern",
+      "woolly-bugger",
+      "clouser-minnow",
+      "hares-ear-nymph",
+      "san-juan-worm",
+      "bass-popper"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 18, and a trout and salmon stamp is required in addition to fish for or possess trout and salmon.",
+      "Annual licences and stamps run 1 April to 31 March, not a year from purchase.",
+      "Lake Michigan tributaries carry their own seasons, limits and in some cases gear restrictions, separate from the inland rules.",
+      "Several steelhead streams run through public parks and preserves with their own access hours.",
+      "Rules are set in the annual fishing guide and differ between the Lake Michigan tributaries and inland water."
+    ],
+    "license": {
+      "agency": "Indiana Department of Natural Resources",
+      "licenseUrl": "https://www.in.gov/dnr/fish-and-wildlife/licenses-and-permits/license-fees/",
+      "rulesUrl": "https://www.in.gov/dnr/fish-and-wildlife/fishing/",
+      "residentAnnual": "$34",
+      "nonResidentAnnual": "$71",
+      "priceYear": "2026",
+      "priceNote": "The totals are the annual fishing licence plus the $11 trout and salmon stamp — $23 for residents and $60 for non-residents. Licences run 1 April to 31 March. Buying online adds a $3 technology fee; buying in person adds $1. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "alabama",
+    "name": "Alabama",
+    "abbr": "AL",
+    "region": "Southeast",
+    "answer": "Alabama has one trout fishery: the Sipsey Fork below Lewis Smith Dam, where cold water released from the bottom of the reservoir supports stocked rainbow trout year-round. Everywhere else the fly rod is for bass, bream and coastal fish. A licence is required from age 16, and there is no trout stamp.",
+    "summary": "The Sipsey Fork below Lewis Smith Dam — the only trout water in Alabama — plus some of the best bass and bream fly fishing in the South.",
+    "whatMakesItDifferent": "Alabama has exactly one trout stream, and knowing that saves a great deal of driving. The Sipsey Fork of the Black Warrior River runs out of the bottom of Lewis Smith Lake at around fifty degrees, and the few miles below the dam are cold enough to hold stocked rainbow trout through an Alabama summer — the only place in the state where that is true. It is stocked monthly, it is small, and it fishes best when the dam is not generating. What the state has in abundance instead is warmwater fly fishing of a quality that trout anglers tend to underrate: shoal bass and redeye bass in clear rocky rivers, bream on poppers in numbers that make a beginner feel like an expert, and a coast full of redfish. Treat Alabama as a bass-on-a-fly-rod state that happens to have one trout river, and it is excellent.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked into the Sipsey Fork below Lewis Smith Dam, and nowhere else in the state."
+      },
+      {
+        "name": "Redeye bass",
+        "note": "Native to the clear rocky rivers of the north. Small, beautiful and a proper fly-rod fish."
+      },
+      {
+        "name": "Spotted and largemouth bass",
+        "note": "Everywhere, and the backbone of fly fishing here."
+      },
+      {
+        "name": "Bream and shellcracker",
+        "note": "On a popper in May, as good an afternoon as fly fishing offers anywhere."
+      },
+      {
+        "name": "Redfish",
+        "note": "The Mobile Bay delta and the coast. Sight-fished and worth a trip on its own."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Sipsey Fork",
+        "note": "Below Lewis Smith Dam. The state's only trout water, stocked monthly and fished on the generation schedule."
+      },
+      {
+        "name": "Smith Lake tailrace",
+        "note": "The short cold stretch immediately below the dam, where the trout concentrate."
+      },
+      {
+        "name": "Cahaba River",
+        "note": "Shoals, lilies and redeye bass, and one of the most biodiverse rivers in North America."
+      },
+      {
+        "name": "Little River Canyon",
+        "note": "On Lookout Mountain. Clear water, redeye bass and genuine scenery."
+      },
+      {
+        "name": "Mobile-Tensaw Delta",
+        "note": "Enormous backwater country for bass, bream and redfish."
+      },
+      {
+        "name": "Mobile Bay",
+        "note": "Redfish and speckled trout on the flats, which is saltwater fly fishing, licence and all."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "November – March",
+        "what": "Peak trout months on the Sipsey. Cool weather, lower generation, and the most comfortable wading of the year."
+      },
+      {
+        "window": "April – May",
+        "what": "Bream on poppers, bass on the beds, and the best all-round fly fishing in the state."
+      },
+      {
+        "window": "June – August",
+        "what": "Hot. Trout survive only right below the dam. Fish at dawn for bass, or head to the coast."
+      },
+      {
+        "window": "September – October",
+        "what": "Cooling water, redfish on the flats, and river bass feeding hard before winter."
+      },
+      {
+        "window": "Year-round",
+        "what": "The Sipsey holds trout in every month, which no other Alabama water does."
+      }
+    ],
+    "flies": [
+      "woolly-bugger",
+      "bass-popper",
+      "clouser-minnow",
+      "zebra-midge",
+      "san-juan-worm",
+      "elk-hair-caddis"
+    ],
+    "regulations": [
+      "A freshwater fishing licence is required from age 16. There is no trout stamp — the ordinary licence covers the Sipsey Fork.",
+      "Recreational licences expire on 31 August regardless of when you buy them.",
+      "Saltwater fishing needs a separate licence, and the Mobile Bay flats are saltwater.",
+      "Non-resident licence fees differ for residents of Florida, Georgia, Louisiana, Mississippi and Tennessee under reciprocal agreements.",
+      "Generation at Lewis Smith Dam decides whether the Sipsey is wadeable. Check the release schedule before you drive out."
+    ],
+    "license": {
+      "agency": "Alabama Department of Conservation and Natural Resources",
+      "licenseUrl": "https://www.outdooralabama.com/freshwater-fishing-licenses/fw-rec-fishing-licenses-resident",
+      "rulesUrl": "https://www.outdooralabama.com/fishing/freshwater-fishing",
+      "residentAnnual": "$17",
+      "nonResidentAnnual": "$66.25",
+      "priceYear": "2026",
+      "priceNote": "Figures are ADCNR's published rates for an annual freshwater fishing licence. The non-resident figure applies to most states; Louisiana and Mississippi residents pay more under reciprocal agreements. Licences expire on 31 August whatever date you buy them, so a licence bought in July is worth six weeks. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
   }
 ]
