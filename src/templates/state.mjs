@@ -23,13 +23,32 @@ export default function ({ state: st, states, site, flies }) {
 
   const others = states.filter((s) => s.slug !== st.slug);
 
+  /* "What trout are in X?" is the question people type, and it is the right
+     heading for a state whose list is all trout. It is a lie for Alabama,
+     Kansas, Florida and the rest, where the list runs to redfish and bass —
+     and the tier is only worth publishing while every line on it is true.
+     Three cases, because two is not enough: every species a trout or char,
+     some of them, or none at all. The middle case keeps "trout" in the
+     heading, which is what people search for, without claiming a redfish
+     is one. */
+  const TROUT = /trout|cutthroat|cutbow|steelhead|redband|dolly varden|\bchar\b|togue/i;
+  /* A speckled trout is a drum and a sea trout is not a trout either. They are
+     named on the Gulf pages because that is what people call them there, and
+     counting them would put "trout" in a heading for a state that has none. */
+  const NOT_TROUT = /speckled trout|sea ?trout|spotted seatrout/i;
+  const names = (st.species || []).map((sp) => sp.name);
+  const troutCount = names.filter((n) => TROUT.test(n) && !NOT_TROUT.test(n)).length;
+  const speciesQ = troutCount === names.length ? 'What trout are in'
+    : troutCount > 0 ? 'What trout and other fish are in'
+    : 'What fish are in';
+
   const faqs = [
     {
       q: `Do you need a fishing license to fly fish in ${st.name}?`,
       a: `Yes. ${lic.agency} issues them. As of ${lic.priceYear}, an adult annual resident license is ${lic.residentAnnual} and a non-resident license is ${lic.nonResidentAnnual}. ${lic.priceNote}`,
     },
     {
-      q: `What trout are in ${st.name}?`,
+      q: `${speciesQ} ${st.name}?`,
       a: st.species.map((s) => s.name).join(', ') + '.',
     },
     {
@@ -103,7 +122,7 @@ export default function ({ state: st, states, site, flies }) {
     </section>
 
     <section class="state-section" aria-labelledby="species-h">
-      <h2 class="h2" id="species-h">What trout are in ${esc(st.name)}?</h2>
+      <h2 class="h2" id="species-h">${speciesQ} ${esc(st.name)}?</h2>
       <dl class="state-list">
         ${st.species
           .map(

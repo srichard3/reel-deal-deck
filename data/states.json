@@ -4688,5 +4688,529 @@
       "priceNote": "The totals are the annual fishing licence plus the trout stamp — $8.50 and $4.20 for residents aged 16 to 64, $20 and $6.20 for non-residents. The $8.50 resident licence is the cheapest in the United States. Agent and online service fees of around $2.50 are extra. Prices change — check with the agency before you buy."
     },
     "localNote": null
+  },
+  {
+    "slug": "north-dakota",
+    "name": "North Dakota",
+    "abbr": "ND",
+    "region": "Great Plains",
+    "answer": "North Dakota has a small stocked trout fishery in prairie lakes and the Missouri tailwater, and a very large walleye and pike fishery around it. Rainbow, brown and brook trout are stocked into a few dozen waters. A licence is required from age 16, and the real fly fishing here is pike on a streamer.",
+    "summary": "Stocked trout in a few dozen prairie lakes and the Missouri tailwater — and some of the best northern pike fly fishing in the country.",
+    "whatMakesItDifferent": "North Dakota does not have trout habitat in any natural sense, and the state does not pretend otherwise: it stocks rainbow, brown and brook trout into a few dozen small prairie lakes and a short stretch of the Missouri below Garrison Dam, and leaves it at that. Nobody flies in for it. What is genuinely worth a fly rod here is the northern pike, and specifically the pike in Devils Lake and the Missouri system — big, abundant, aggressive, and entirely willing to eat a large streamer in shallow water in spring. The Missouri tailwater below Garrison also runs cold enough to hold trout and salmon, and the chinook fishery there is a real oddity a thousand miles from the sea. Treat this as a pike-and-prairie state that stocks some trout, and it makes sense.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked into small prairie lakes and the Missouri tailwater. The bulk of the trout programme."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Stocked in smaller numbers, with some holding over in the deeper lakes."
+      },
+      {
+        "name": "Brook trout",
+        "note": "A handful of cold waters, mostly in the Turtle Mountains."
+      },
+      {
+        "name": "Northern pike",
+        "note": "The real fly fishing in North Dakota. Shallow, aggressive and everywhere."
+      },
+      {
+        "name": "Chinook salmon",
+        "note": "Lake Sakakawea and the Missouri system. A long way from the ocean."
+      },
+      {
+        "name": "Walleye and smallmouth",
+        "note": "What the rest of the state fishes for, and does very well."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Missouri River below Garrison Dam",
+        "note": "Cold tailwater holding trout and salmon, and the best big water in the state."
+      },
+      {
+        "name": "Devils Lake",
+        "note": "Enormous and full of pike. Shallow bays in spring are as good as fly fishing for pike gets."
+      },
+      {
+        "name": "Turtle Mountain lakes",
+        "note": "Small stocked trout waters in the wooded north, near the Manitoba line."
+      },
+      {
+        "name": "Lake Sakakawea",
+        "note": "Salmon, walleye and pike in a reservoir the size of a small sea."
+      },
+      {
+        "name": "Sheyenne River",
+        "note": "A prairie river with smallmouth and pike, and worth a summer float."
+      },
+      {
+        "name": "Prairie pothole lakes",
+        "note": "Dozens of small stocked trout waters, listed each year by the department."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "April – May",
+        "what": "Ice out. Pike move into the shallow bays and will eat almost anything large."
+      },
+      {
+        "window": "June",
+        "what": "The best month overall. Pike still shallow, stocked trout settled in, and long evenings."
+      },
+      {
+        "window": "July – August",
+        "what": "Hot. The prairie lakes warm up, so fish the Missouri tailwater or go early for pike."
+      },
+      {
+        "window": "September – October",
+        "what": "Cooling water, pike feeding hard again, and salmon staging in the Missouri system."
+      },
+      {
+        "window": "November – March",
+        "what": "Ice. The state becomes an ice-fishing state, and the fly rod goes away."
+      }
+    ],
+    "flies": [
+      "clouser-minnow",
+      "woolly-bugger",
+      "zebra-midge",
+      "egg-pattern",
+      "bass-popper",
+      "muddler-minnow"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16, and a Fishing, Hunting and Furbearer Certificate is required with it.",
+      "Paddlefish snagging needs its own tag in addition to the licence, and the season is managed tightly.",
+      "The stocked trout water list is published by the department each year and changes.",
+      "Free fishing days let residents fish without a licence on four days a year, paddlefish excepted.",
+      "Rules are set in the biennial fishing regulations, currently covering 2026 to 2028."
+    ],
+    "license": {
+      "agency": "North Dakota Game and Fish Department",
+      "licenseUrl": "https://gf.nd.gov/fishing/licensing",
+      "rulesUrl": "https://gf.nd.gov/regulations/fishing",
+      "residentAnnual": "$29",
+      "nonResidentAnnual": "$73",
+      "priceYear": "2026",
+      "priceNote": "The totals are the individual fishing licence plus the required certificate — $27 and $2 for residents, $68 and $5 for non-residents. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "louisiana",
+    "name": "Louisiana",
+    "abbr": "LA",
+    "region": "Gulf Coast",
+    "answer": "Louisiana has no trout and no cold water to hold them. What it has is the best redfish fly fishing in the world: a vast coastal marsh south and east of New Orleans where redfish are sight-fished in inches of water. A basic fishing licence is required from age 18, with a saltwater licence on top for the marsh.",
+    "summary": "No trout at all — and the best redfish sight-fishing on earth, in the marsh south and east of New Orleans.",
+    "whatMakesItDifferent": "There is no trout fishing in Louisiana and there is no point pretending otherwise. What the state has instead is something no trout state can offer: the Mississippi delta marsh, three million acres of shallow brackish water, and redfish in it that can be seen, cast to and caught in water barely deep enough to cover their backs. In winter the marsh water clears and the fish push into ponds you could wade, and a double-figure redfish tailing in eight inches of water is the single best sight-fishing opportunity in North America. The fishery is also unstable in a way worth knowing about — the marsh is disappearing at a rate of a football field every hour or two, and the water being fished today is physically different from the water of twenty years ago.",
+    "species": [
+      {
+        "name": "Redfish",
+        "note": "The reason to come. Sight-fished in the marsh, and the best of it is in winter."
+      },
+      {
+        "name": "Speckled trout",
+        "note": "A drum, not a trout — spotted seatrout. Abundant, and good fun on a fly."
+      },
+      {
+        "name": "Black drum",
+        "note": "Often alongside the redfish, bigger, and considerably harder to feed."
+      },
+      {
+        "name": "Largemouth bass",
+        "note": "The freshwater marsh and the Atchafalaya. Excellent and underfished."
+      },
+      {
+        "name": "Tripletail and jack crevalle",
+        "note": "Nearshore in summer, and a reason to carry a heavier rod."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Biloxi Marsh",
+        "note": "East of New Orleans. The classic winter redfish ground, poled from a skiff."
+      },
+      {
+        "name": "Delacroix",
+        "note": "A maze of ponds and bayous, and the most-fished marsh in the state for good reason."
+      },
+      {
+        "name": "Venice",
+        "note": "The bottom of the Mississippi. Bull redfish, and a long run to get there."
+      },
+      {
+        "name": "Lafitte",
+        "note": "Close to New Orleans, and a straightforward place to start."
+      },
+      {
+        "name": "Atchafalaya Basin",
+        "note": "The largest river swamp in the country. Bass, bream and no salt at all."
+      },
+      {
+        "name": "Calcasieu Lake",
+        "note": "In the south-west. Speckled trout and redfish, and far fewer boats."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "December – February",
+        "what": "The best weeks of the year. Cold fronts clear the water and redfish push into skinny ponds."
+      },
+      {
+        "window": "March – April",
+        "what": "Water warming, fish spreading out, and the spring winds making poling harder."
+      },
+      {
+        "window": "May – June",
+        "what": "Good fishing early and late. Tripletail and jacks appear nearshore."
+      },
+      {
+        "window": "July – August",
+        "what": "Hot, humid and buggy. Fish at first light, or fish the bass water in the shade."
+      },
+      {
+        "window": "September – November",
+        "what": "Bull redfish stage near the passes, and the marsh begins to clear again."
+      }
+    ],
+    "flies": [
+      "clouser-minnow",
+      "bass-popper",
+      "woolly-bugger",
+      "muddler-minnow",
+      "soft-hackle",
+      "san-juan-worm"
+    ],
+    "regulations": [
+      "A basic fishing licence is required from age 18. Anyone 17 and under fishes without one.",
+      "A saltwater licence is required in addition to fish the marsh and the coast, and the basic licence is a prerequisite for it.",
+      "Licences run 365 days from the date of purchase.",
+      "Louisiana and Texas recognise each other's resident licences on shared border waters, excluding the Gulf.",
+      "Redfish and speckled trout carry slot limits and bag limits that have changed recently. Check the current rules."
+    ],
+    "license": {
+      "agency": "Louisiana Department of Wildlife and Fisheries",
+      "licenseUrl": "https://www.wlf.louisiana.gov/page/recreational-fishing-licenses-and-permits",
+      "rulesUrl": "https://www.wlf.louisiana.gov/page/seasons-and-regulations",
+      "residentAnnual": "$32",
+      "nonResidentAnnual": "$128",
+      "priceYear": "2026",
+      "priceNote": "The totals are what a marsh angler actually needs: the basic fishing licence plus the saltwater licence — $17 and $15 for residents, $68 and $60 for non-residents. Freshwater-only anglers need the basic licence alone. Licences run 365 days from purchase. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "mississippi",
+    "name": "Mississippi",
+    "abbr": "MS",
+    "region": "Gulf Coast",
+    "answer": "Mississippi has no trout. Its fly fishing is largemouth and spotted bass in reservoirs and oxbows, bream on poppers through the summer, and redfish and speckled trout on the Gulf coast. A licence is required from age 16, and the cheapest annual option is a combination small-game and fishing licence.",
+    "summary": "No trout anywhere in the state — but oxbow bass, summer bream on poppers, and redfish in the Mississippi Sound.",
+    "whatMakesItDifferent": "Mississippi is a warmwater state from the Tennessee line to the Gulf, and the honest advice is to leave the trout rod at home and bring a six-weight and a box of poppers. The distinctive water here is the oxbow: the Mississippi River has been cutting itself new channels for centuries and leaving old bends behind as crescent-shaped lakes, and those oxbows — Eagle Lake, Chotard, Albemarle — hold largemouth, crappie and bream in cypress and buttonbush cover that is made for a fly. In the north-east the Tennessee-Tombigbee waterway and the clear Bear Creek country offer spotted bass in moving water. And on the coast, the Mississippi Sound and the barrier islands hold redfish and speckled trout with a fraction of the boat traffic Louisiana gets an hour west.",
+    "species": [
+      {
+        "name": "Largemouth bass",
+        "note": "Everywhere, and the backbone of fly fishing in the state."
+      },
+      {
+        "name": "Spotted bass",
+        "note": "The clearer northern rivers and the Tennessee-Tombigbee. Good in current."
+      },
+      {
+        "name": "Bluegill and redear",
+        "note": "On a popper in May, and as much fun as fly fishing gets."
+      },
+      {
+        "name": "Redfish",
+        "note": "The Mississippi Sound and the barrier islands, and much quieter than Louisiana."
+      },
+      {
+        "name": "Speckled trout",
+        "note": "A drum rather than a trout. Coastal, abundant and willing."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Eagle Lake",
+        "note": "A Mississippi River oxbow near Vicksburg. Cypress, bass and bream."
+      },
+      {
+        "name": "Lake Chotard",
+        "note": "Another oxbow, connected to the river in high water and full of fish."
+      },
+      {
+        "name": "Bear Creek",
+        "note": "North-east Mississippi. Clear, rocky and holding spotted bass."
+      },
+      {
+        "name": "Ross Barnett Reservoir",
+        "note": "Near Jackson. Big, accessible, and good in the shallows at dawn."
+      },
+      {
+        "name": "Mississippi Sound",
+        "note": "Redfish and speckled trout along the mainland shore and the marsh edges."
+      },
+      {
+        "name": "Barrier islands",
+        "note": "Horn, Ship and Petit Bois. Sight fishing on sand flats, and a boat ride to get there."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "March – April",
+        "what": "Bass move shallow to spawn. The best bass fly fishing of the year."
+      },
+      {
+        "window": "May – June",
+        "what": "Bream bedding. Poppers at dusk on the oxbows, and the easiest good fishing anywhere."
+      },
+      {
+        "window": "July – August",
+        "what": "Hot and humid. First light and last light only, or head to the coast for redfish."
+      },
+      {
+        "window": "September – October",
+        "what": "Cooling water, bass feeding hard, and the Sound at its best."
+      },
+      {
+        "window": "November – February",
+        "what": "Quiet inland. Redfish on the coast through the winter, and crappie for the patient."
+      }
+    ],
+    "flies": [
+      "bass-popper",
+      "clouser-minnow",
+      "woolly-bugger",
+      "muddler-minnow",
+      "soft-hackle",
+      "san-juan-worm"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16.",
+      "There is no stand-alone annual resident freshwater fishing licence: the cheapest annual option that covers it is the Small Game Hunting and Freshwater Fishing licence.",
+      "Saltwater fishing needs a separate licence, and the Gulf coast is saltwater.",
+      "Annual licences run one calendar year from the date of purchase.",
+      "Agent and processing fees are added to every licence and are not trivial relative to the price."
+    ],
+    "license": {
+      "agency": "Mississippi Department of Wildlife, Fisheries and Parks",
+      "licenseUrl": "https://www.mdwfp.com/licenses-permits/hunting-and-fishing-license-prices",
+      "rulesUrl": "https://www.mdwfp.com/licenses-permits/fishing-license-requirements",
+      "residentAnnual": "$13.49",
+      "nonResidentAnnual": "$75.42",
+      "priceYear": "2026",
+      "priceNote": "Mississippi sells no stand-alone resident freshwater fishing licence. The resident total is the $10 Small Game Hunting and Freshwater Fishing licence plus a $1 agent fee and a $2.49 processing fee. The non-resident total is the $68 freshwater licence plus $3 and $4.42 in fees. Saltwater is separate again — $10 resident, $30 non-resident. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "florida",
+    "name": "Florida",
+    "abbr": "FL",
+    "region": "Gulf Coast",
+    "answer": "Florida has no trout. It has what many anglers consider the best saltwater fly fishing in the world: tarpon, bonefish and permit on the Keys flats, snook and redfish on both coasts, and peacock bass in the canals of Miami. A licence is required from age 16, with separate freshwater and saltwater licences.",
+    "summary": "No trout, and the best saltwater fly fishing on earth. Tarpon, bonefish and permit in the Keys; peacock bass in the Miami canals.",
+    "whatMakesItDifferent": "Florida is where modern saltwater fly fishing was invented, and the Keys are the reason. The flats from Biscayne Bay down to Key West hold bonefish, permit and tarpon in water clear enough and shallow enough to see them in, and the whole discipline of sight-casting a fly to a moving saltwater fish on a flat was worked out there in the middle of the twentieth century. Catching all three in a day is the Grand Slam, and it remains one of the genuinely hard things to do with a fly rod. The rest of the state is almost as good and much cheaper: snook under the lights and in the mangroves, redfish on the Gulf coast flats, and — strangest of all — peacock bass, introduced from the Amazon in the 1980s, now thriving in the drainage canals of suburban Miami and eating a fly within sight of a motorway.",
+    "species": [
+      {
+        "name": "Tarpon",
+        "note": "The Keys and both coasts, spring into summer. Up to two hundred pounds and the hardest to land."
+      },
+      {
+        "name": "Bonefish",
+        "note": "Biscayne Bay and the Keys flats. Fast, spooky and the classic flats fish."
+      },
+      {
+        "name": "Permit",
+        "note": "The hardest of the three to catch on a fly, and the one people obsess over."
+      },
+      {
+        "name": "Snook",
+        "note": "Mangroves, bridges and beaches. Aggressive, and needs its own permit to keep."
+      },
+      {
+        "name": "Redfish",
+        "note": "The Gulf coast flats and the Mosquito Lagoon. Sight-fished and reliable."
+      },
+      {
+        "name": "Peacock bass",
+        "note": "Introduced from South America in the 1980s. Now a Miami canal fish, and a very good one."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Florida Keys flats",
+        "note": "Islamorada to Key West. Bonefish, permit and tarpon, and the birthplace of the sport."
+      },
+      {
+        "name": "Biscayne Bay",
+        "note": "On the edge of Miami. Bonefish and permit within sight of the skyline."
+      },
+      {
+        "name": "Everglades backcountry",
+        "note": "Snook, tarpon and redfish in the mangrove creeks of the park."
+      },
+      {
+        "name": "Mosquito Lagoon",
+        "note": "On the Atlantic coast. Sight-fishing for redfish on sand, and very shallow."
+      },
+      {
+        "name": "Boca Grande Pass",
+        "note": "Tarpon in numbers in late spring, and a circus to match."
+      },
+      {
+        "name": "Miami canals",
+        "note": "Peacock bass in suburban drainage ditches. Unglamorous, and excellent."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "December – February",
+        "what": "Cool and clear. Redfish and snook in the backcountry, and bonefish when the weather holds."
+      },
+      {
+        "window": "March – April",
+        "what": "Tarpon arrive. The flats come alive and the guides are booked a year out."
+      },
+      {
+        "window": "May – June",
+        "what": "Peak tarpon, and the best weeks of the year for a Grand Slam attempt."
+      },
+      {
+        "window": "July – September",
+        "what": "Hot, stormy and quiet. Early mornings, peacock bass in the shade, and hurricane season."
+      },
+      {
+        "window": "October – November",
+        "what": "The water cools, redfish school up, and the snook fishing is at its best."
+      }
+    ],
+    "flies": [
+      "clouser-minnow",
+      "bass-popper",
+      "woolly-bugger",
+      "muddler-minnow",
+      "soft-hackle",
+      "egg-pattern"
+    ],
+    "regulations": [
+      "A licence is required from age 16. Freshwater and saltwater are separate licences, and most Florida fly fishing needs the saltwater one.",
+      "Florida residents who fish only from shore can get a no-cost shoreline saltwater licence. It does not cover fishing from a boat, and non-residents are not eligible.",
+      "A snook permit is required in addition to keep a snook, and a lobster permit for lobster.",
+      "Tarpon over forty inches may not be removed from the water, and a tag is required to possess one.",
+      "Bag limits, closed seasons and slot sizes differ by species and by region, and change often. Check before you fish."
+    ],
+    "license": {
+      "agency": "Florida Fish and Wildlife Conservation Commission",
+      "licenseUrl": "https://myfwc.com/license/recreational/saltwater-fishing/",
+      "rulesUrl": "https://myfwc.com/fishing/saltwater/recreational/",
+      "residentAnnual": "$17",
+      "nonResidentAnnual": "$47",
+      "priceYear": "2026",
+      "priceNote": "Figures are the annual saltwater fishing licence, which is what most fly fishing here needs. The freshwater licence costs the same, and a resident combination of both is $32.50. A snook permit is a further $10. Vendors may add an issuance fee. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "hawaii",
+    "name": "Hawaii",
+    "abbr": "HI",
+    "region": "Pacific",
+    "answer": "Hawaii has one trout fishery: stocked rainbow trout in the Kōkeʻe Public Fishing Area on Kauaʻi, open from mid-June to the end of September. Everywhere else the fly rod is for bonefish on the flats and bluewater species offshore. A freshwater game fishing licence is required from age nine for Kōkeʻe.",
+    "summary": "Stocked rainbow trout at Kōkeʻe on Kauaʻi, open mid-June to September — and bonefish on the flats, which is the real reason to bring a fly rod.",
+    "whatMakesItDifferent": "Hawaii has trout, which surprises people, and the way it runs them surprises people more. The Kōkeʻe Public Fishing Area on Kauaʻi, 3,500 feet up in the cool uplands above Waimea Canyon, is stocked with rainbow trout and opened for a season that runs from the middle of June to the end of September. Nearly all the fish now come from Puʻu Lua Reservoir rather than the streams. The rules are unlike any trout fishery on the mainland: one line, one single barbed hook, no treble hooks, a bag limit of seven — and catch and release is not permitted at all. Every trout you hook must be kept and counted. The rest of Hawaii's fly fishing is saltwater, and the bonefish — called ʻoʻio here — run larger than Caribbean fish and are considered among the hardest in the world to catch.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked at Kōkeʻe on Kauaʻi. The only trout in the state, and only in season."
+      },
+      {
+        "name": "Bonefish",
+        "note": "Called ʻoʻio. Large, extremely wary, and the serious fly target here."
+      },
+      {
+        "name": "Giant trevally",
+        "note": "Ulua. Hunted from the rocks and the flats, and capable of ruining tackle."
+      },
+      {
+        "name": "Bluefin trevally",
+        "note": "Omilu. Smaller, common on the flats, and a realistic fly-rod fish."
+      },
+      {
+        "name": "Barred jack and papio",
+        "note": "Juvenile trevally on the shallow flats, and a good introduction."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Puʻu Lua Reservoir",
+        "note": "Kōkeʻe, Kauaʻi. Where almost all the trout are caught, three quarters of a mile off Mile Marker 12."
+      },
+      {
+        "name": "Kōkeʻe streams and ditches",
+        "note": "In the same area, but stream stocking was discontinued and the fishing there is poor."
+      },
+      {
+        "name": "Kaneohe Bay flats",
+        "note": "Oʻahu. Bonefish on sand and turtle grass, within reach of Honolulu."
+      },
+      {
+        "name": "Molokaʻi south shore",
+        "note": "A long shallow reef flat, and the best bonefish water in the islands."
+      },
+      {
+        "name": "Hilo and Kona coasts",
+        "note": "Big Island. Trevally from the rocks and bluewater a short run offshore."
+      },
+      {
+        "name": "Kahului and Maʻalaea flats",
+        "note": "Maui. Bonefish and papio, and easier wading than most of the state."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "Mid-June – September",
+        "what": "The Kōkeʻe trout season, daily from 6am to 6pm until the end of September."
+      },
+      {
+        "window": "April – October",
+        "what": "The best bonefish months on the flats, with warm water and settled trade winds."
+      },
+      {
+        "window": "November – March",
+        "what": "Winter swells make flats fishing hard on exposed shores. Fish the lee sides."
+      },
+      {
+        "window": "Year-round",
+        "what": "Trevally are available every month, which is more than can be said for the trout."
+      }
+    ],
+    "flies": [
+      "clouser-minnow",
+      "woolly-bugger",
+      "zebra-midge",
+      "soft-hackle",
+      "bass-popper",
+      "muddler-minnow"
+    ],
+    "regulations": [
+      "A freshwater game fishing licence is required from age nine to fish Kōkeʻe. Residents 65 and over fish free.",
+      "The Kōkeʻe season runs from mid-June to 30 September, daily from 6am to 6pm.",
+      "Catch and release is NOT permitted at Kōkeʻe. Every trout caught must be kept and counted against a bag limit of seven.",
+      "One line only, with a single barbed hook, lure or bait. Treble hooks are banned.",
+      "Saltwater fishing is separate: non-residents now need a recreational marine licence, and many species carry size and season limits."
+    ],
+    "license": {
+      "agency": "Hawaiʻi Division of Aquatic Resources",
+      "licenseUrl": "https://dlnr.hawaii.gov/dar/licenses-and-permits/freshwater-game-fishing-license/",
+      "rulesUrl": "https://dlnr.hawaii.gov/dar/fishing/fishing-regulations/",
+      "residentAnnual": "$5",
+      "nonResidentAnnual": "$25",
+      "priceYear": "2026",
+      "priceNote": "Figures are the freshwater game fishing licence, which is what Kōkeʻe requires. Non-resident tourist options are $10 for seven days and $20 for thirty. Residents 65 and over fish free, and minors aged 9 to 15 pay $3. Saltwater fishing is licensed separately. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
   }
 ]
