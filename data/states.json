@@ -2124,5 +2124,513 @@
       "priceNote": "Figures are ADF&G's 2026 rates for an annual sport fishing licence. Non-residents can also buy 1, 3, 7 and 14-day licences for $15, $30, $45 and $75. A king salmon stamp is extra — $10 for residents, $100 for a non-resident annual — and is only needed to fish for kings. Prices change — check with the agency before you buy."
     },
     "localNote": null
+  },
+  {
+    "slug": "arizona",
+    "name": "Arizona",
+    "abbr": "AZ",
+    "region": "Southwest",
+    "answer": "Arizona fly fishing is a desert tailwater at Lees Ferry and native trout streams in the White Mountains, holding rainbow, brown and brook trout plus the native Apache and Gila trout. Lees Ferry, the Black River and Silver Creek are the headline waters. A licence is required from age 10, and Lees Ferry fishes all year.",
+    "summary": "Lees Ferry — fifteen miles of cold clear tailwater in red rock desert — and the Apache trout, the first sport fish ever recovered off the endangered list.",
+    "whatMakesItDifferent": "Arizona has the most improbable trout river in the country. Below Glen Canyon Dam the Colorado runs out at around forty-eight degrees, clear and cold, through red sandstone at the top of the Grand Canyon, and the fifteen miles down to Lees Ferry hold a dense population of rainbow trout in a landscape with saguaro an hour away. Most of it is fished by running a boat upstream from the ferry and wading the gravel bars, because there is no road along the bank. The state's other distinction is quieter and more important. The Apache trout, Arizona's state fish, was listed as endangered in 1967, and in September 2024 it became the first sport fish and the first trout in the United States ever removed from the endangered species list because it had recovered. You can fish for it, in the White Mountain streams it came from.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Lees Ferry holds them in numbers, and the high country is stocked with them."
+      },
+      {
+        "name": "Apache trout",
+        "note": "The state fish, native to the White Mountains. Delisted in 2024 after fifty years of recovery work."
+      },
+      {
+        "name": "Gila trout",
+        "note": "Native to a handful of southeastern streams, and fishable only where it is specifically allowed."
+      },
+      {
+        "name": "Brown trout",
+        "note": "The Black River and some of the larger high-country streams."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Small, cold White Mountain creeks and lakes."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Lees Ferry",
+        "note": "Fifteen miles of Colorado River tailwater below Glen Canyon Dam. Boat up, wade the bars, fish all year."
+      },
+      {
+        "name": "Black River",
+        "note": "White Mountains. Wild browns and Apache trout in genuinely remote canyon water."
+      },
+      {
+        "name": "Silver Creek",
+        "note": "A small spring-fed creek near Show Low, managed for Apache trout and fished hard in winter."
+      },
+      {
+        "name": "West Fork Little Colorado",
+        "note": "Apache trout water on Mount Baldy, above 9,000 feet."
+      },
+      {
+        "name": "Oak Creek",
+        "note": "Through Sedona. Scenic, accessible, busy, and better early in the day."
+      },
+      {
+        "name": "Big Lake",
+        "note": "High-country stillwater at 9,000 feet. Cool all summer when the desert is unbearable."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "Lees Ferry at its best — cold air, warm water, midges, and very few boats."
+      },
+      {
+        "window": "April – May",
+        "what": "The high country is still under snow. Lees Ferry and the lower creeks carry the season."
+      },
+      {
+        "window": "June",
+        "what": "Hot and dry. Fish Lees Ferry early, or get to 9,000 feet in the White Mountains."
+      },
+      {
+        "window": "July – September",
+        "what": "Monsoon. Afternoon storms blow out the small streams in an hour, but they also cool everything down."
+      },
+      {
+        "window": "October – December",
+        "what": "The best weeks in the high country before it closes in, and Lees Ferry settling into winter form."
+      }
+    ],
+    "flies": [
+      "zebra-midge",
+      "scud",
+      "san-juan-worm",
+      "woolly-bugger",
+      "elk-hair-caddis",
+      "parachute-adams"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 10 on any publicly accessible water in the state. A licence is valid one year from the date of purchase.",
+      "Lees Ferry has its own tackle and harvest rules, and the walk-in area at the ferry fishes differently from the water upstream.",
+      "Apache trout waters are managed under a cooperative plan between the state, the White Mountain Apache Tribe and federal agencies. Some are open, some are not.",
+      "Much of the best White Mountain water is on the Fort Apache Reservation, which issues its own permits. An Arizona licence does not cover it.",
+      "Rules are set water by water in the annual fishing regulations."
+    ],
+    "license": {
+      "agency": "Arizona Game and Fish Department",
+      "licenseUrl": "https://www.azgfd.com/fishing-2/licenses-and-regulations/",
+      "rulesUrl": "https://www.azgfd.com/fishing-2/",
+      "residentAnnual": "$37",
+      "nonResidentAnnual": "$55",
+      "priceYear": "2026",
+      "priceNote": "Figures are the general fishing licence rates published in Arizona's own fishing regulations. The licence runs one year from the date you buy it rather than to a fixed date. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "missouri",
+    "name": "Missouri",
+    "abbr": "MO",
+    "region": "Ozarks",
+    "answer": "Missouri fly fishing is spring-fed trout park fishing and Ozark tailwater fishing, with rainbow and brown trout and a few streams of genuinely wild fish. The four trout parks, Lake Taneycomo and the Current River are the headline waters. A licence is required from age 16, trout need a permit or a daily tag, and the parks open on 1 March.",
+    "summary": "Four spring-fed trout parks that open with a siren on 1 March, Lake Taneycomo below Table Rock, and wild McCloud-strain rainbows in Crane Creek.",
+    "whatMakesItDifferent": "Missouri's trout fishing begins with a siren. Four state trout parks sit on enormous cold springs — Bennett Spring, Montauk, Roaring River and Maramec Spring — and at 6.30 on the morning of 1 March a whistle sounds and several thousand people start fishing at once. It is a genuine American tradition, closer to an opening-day football crowd than to a quiet morning on a creek, and the parks are stocked daily through the season for it. You buy a daily trout tag at the gate rather than an annual trout permit. Away from that noise the state hides something much rarer: Crane Creek, a small Ozark stream holding wild rainbow trout descended from the original McCloud River stock brought from California in the 1880s — a strain largely lost in its home water and still swimming here, in a creek you can step across.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked heavily in the parks and the tailwaters; wild and McCloud-strain in a few Ozark creeks."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Lake Taneycomo and the North Fork of the White, where they reach serious size."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The Ozark float streams, and the right answer from June to September."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Bennett Spring State Park",
+        "note": "The busiest of the trout parks. Enormous spring flow, daily stocking, and a crowd on opening day."
+      },
+      {
+        "name": "Montauk State Park",
+        "note": "The headwaters of the Current River. Park water above, wild-ish water below."
+      },
+      {
+        "name": "Lake Taneycomo",
+        "note": "Cold water from the bottom of Table Rock. Not really a lake where it fishes — a big trout river."
+      },
+      {
+        "name": "Current River",
+        "note": "Below Montauk. A clear Ozark river holding trout up top and smallmouth below."
+      },
+      {
+        "name": "Crane Creek",
+        "note": "Wild rainbows descended from 1880s McCloud River stock. Tiny water, spooky fish, and no stocking."
+      },
+      {
+        "name": "North Fork of the White River",
+        "note": "Wild rainbows and large browns in a classic Ozark spring-fed river."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "1 March",
+        "what": "Opening day in the trout parks. A siren, a crowd, and a tradition worth seeing once."
+      },
+      {
+        "window": "March – May",
+        "what": "The parks in full swing, and the best wild-stream fishing of the year as the water warms."
+      },
+      {
+        "window": "June – August",
+        "what": "Hot. Fish the springs and the tailwater early, or float an Ozark river for smallmouth instead."
+      },
+      {
+        "window": "September – October",
+        "what": "Cooling water and the parks quieter. The last weeks of the regular park season run to 31 October."
+      },
+      {
+        "window": "November – February",
+        "what": "Catch-and-release season in the parks, flies only, Friday to Monday. Taneycomo fishes all winter."
+      }
+    ],
+    "flies": [
+      "scud",
+      "zebra-midge",
+      "woolly-bugger",
+      "griffiths-gnat",
+      "elk-hair-caddis",
+      "pheasant-tail-nymph"
+    ],
+    "regulations": [
+      "A fishing permit is required from age 16.",
+      "A trout permit is required to possess trout, except in the trout parks, where you buy a daily trout tag at the park instead.",
+      "A trout permit is required for the winter catch-and-release season in the parks, and year-round on Lake Taneycomo above the US 65 bridge.",
+      "The regular trout park season runs 1 March to 31 October. The winter catch-and-release season is flies only and runs on limited days.",
+      "Blue Ribbon, Red Ribbon and White Ribbon trout areas each carry their own tackle and harvest rules."
+    ],
+    "license": {
+      "agency": "Missouri Department of Conservation",
+      "licenseUrl": "https://mdc.mo.gov/fishing/permits/fishing-permit",
+      "rulesUrl": "https://mdc.mo.gov/fishing/regulations",
+      "residentAnnual": "$26",
+      "nonResidentAnnual": "$81",
+      "priceYear": "2026",
+      "priceNote": "The totals are the 2026 annual fishing permit plus the trout permit — $14 and $12 for residents, $57 and $24 for non-residents. Both rose for 2026, and the non-resident trout permit is new. In the trout parks you buy a daily trout tag instead of the trout permit. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "georgia",
+    "name": "Georgia",
+    "abbr": "GA",
+    "region": "Southern Appalachians",
+    "answer": "Georgia fly fishing is north Georgia mountain stream fishing plus a cold tailwater running through metropolitan Atlanta, holding rainbow, brown and native brook trout. The Chattahoochee, the Toccoa and the Chattooga are the headline waters. A licence is required from age 16, and trout needs a separate trout licence.",
+    "summary": "A genuine trout river inside Atlanta, delayed-harvest water that fishes all winter, and native brook trout in headwaters above 2,000 feet.",
+    "whatMakesItDifferent": "Georgia has a wild brown trout fishery inside a city of six million people. Buford Dam releases water from the bottom of Lake Lanier at around fifty degrees, and the Chattahoochee stays cold all the way down through the northern suburbs and into Atlanta — you can fish a hatch within sight of an interstate, and in August, when the rest of the Southeast is too warm for trout, it is one of the few places still fishing. Upstream, the north Georgia mountains hold the other half of the state: hundreds of miles of small Blue Ridge streams, native brook trout in the coldest and highest of them, and a delayed-harvest programme that turns several ordinary rivers into excellent catch-and-release fly water from November into May. Georgia's trout season is effectively the opposite of most states': the good months are the cold ones.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Wild in the Chattahoochee tailwater and several mountain rivers, and large in the Soque."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Wild in much of the north Georgia water, stocked through the rest."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Native Southern Appalachian strain, in small high headwater streams above about 2,000 feet."
+      },
+      {
+        "name": "Striped bass",
+        "note": "In the lower Chattahoochee in summer — a different fish and a different rod, but they are there."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Chattahoochee River",
+        "note": "Buford Dam down through Atlanta. A cold tailwater inside a metropolitan area, fishable all summer."
+      },
+      {
+        "name": "Toccoa River tailwater",
+        "note": "Below Blue Ridge Dam. Wild browns, generation-dependent, and the best big-fish water in the state."
+      },
+      {
+        "name": "Chattooga River",
+        "note": "Wild and Scenic, on the South Carolina line. Remote, rocky and worth the walk in."
+      },
+      {
+        "name": "Soque River",
+        "note": "Almost entirely private and fished by the day. Large trout, and you pay for the privilege."
+      },
+      {
+        "name": "Dukes Creek",
+        "note": "Smithgall Woods. Reservation only, catch and release, and quiet in a way few southern streams are."
+      },
+      {
+        "name": "Noontootla Creek",
+        "note": "Blue Ridge wild trout water, artificial lures only, with a long-standing size limit."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "November – December",
+        "what": "Delayed-harvest water opens 1 November and fishes beautifully from the first week."
+      },
+      {
+        "window": "January – February",
+        "what": "The Chattahoochee tailwater and the delayed-harvest rivers. Midges, small nymphs, almost nobody out."
+      },
+      {
+        "window": "March – April",
+        "what": "The mountain streams come alive. Quill Gordons, Hendricksons and caddis, and the brookies waking up."
+      },
+      {
+        "window": "May",
+        "what": "The last weeks of delayed harvest, which ends 14 May, and the best hatches of the year."
+      },
+      {
+        "window": "June – October",
+        "what": "Too warm for most mountain streams by day. Fish the tailwaters, or go high and early."
+      }
+    ],
+    "flies": [
+      "parachute-adams",
+      "elk-hair-caddis",
+      "pheasant-tail-nymph",
+      "zebra-midge",
+      "blue-wing-olive",
+      "san-juan-worm"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16, and a separate trout licence is required in addition to fish for trout.",
+      "Delayed-harvest water is artificial lures only and catch and release from 1 November to 14 May.",
+      "Some waters are artificial-lures-only or carry size limits year-round, and a few of the best are reservation-only.",
+      "The Chattooga is shared with South Carolina, and a licence from either state is valid on the main river — but not on its tributaries.",
+      "Rules are set stream by stream. Check the water before you fish it."
+    ],
+    "license": {
+      "agency": "Georgia Department of Natural Resources, Wildlife Resources Division",
+      "licenseUrl": "https://georgiawildlife.com/licenses-permits-passes/choose",
+      "rulesUrl": "https://georgiawildlife.com/fishing",
+      "residentAnnual": "$25",
+      "nonResidentAnnual": "$75",
+      "priceYear": "2026",
+      "priceNote": "The totals are the annual fishing licence plus the annual trout licence — $15 and $10 for residents, $50 and $25 for non-residents. The trout licence is required for any mountain trout fishing. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "minnesota",
+    "name": "Minnesota",
+    "abbr": "MN",
+    "region": "Upper Midwest",
+    "answer": "Minnesota holds three separate trout fisheries: Driftless spring creeks in the southeast, Lake Superior tributaries on the North Shore, and wilderness brook trout lakes in the north. Brown, brook and rainbow trout and steelhead are the quarry. A licence and a trout stamp are required from age 16, and the southeast opens for catch and release on 1 January.",
+    "summary": "Driftless spring creeks in the southeast, North Shore steelhead, and brook trout lakes you reach by canoe. Three fisheries in one state.",
+    "whatMakesItDifferent": "Most states have one trout fishery. Minnesota has three, and they have almost nothing to do with each other. The southeast corner is Driftless country — the same unglaciated limestone geology as western Wisconsin, with hundreds of spring creeks holding wild brown trout, and a winter catch-and-release season that opens on 1 January while the rest of the state is frozen solid. Two hundred and fifty miles north, the streams of the Lake Superior shore drop off the Sawtooth Mountains in a series of waterfalls, and steelhead run up into them in spring as far as the first impassable falls. North of that again, the Arrowhead and the Boundary Waters hold brook trout in small, cold, stocked-once-and-left lakes that you reach by paddling and portaging. One licence covers all three, and no single trip could sensibly take in more than one.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Wild and abundant in the southeast spring creeks, and the main quarry there."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Native. The coldest southeast headwaters and the wilderness lakes in the north."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked in the southeast, and the resident form of the North Shore steelhead."
+      },
+      {
+        "name": "Steelhead",
+        "note": "Lake Superior fish running the North Shore streams in spring."
+      },
+      {
+        "name": "Lake trout",
+        "note": "Deep Boundary Waters lakes, reachable on a fly just after ice-out."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Whitewater River",
+        "note": "The best-known southeast spring creek system, with state park and easement access."
+      },
+      {
+        "name": "Root River",
+        "note": "A long southeast valley system with wild browns and good hatches."
+      },
+      {
+        "name": "Hay Creek",
+        "note": "Near Red Wing. Small, close to the Twin Cities and fished accordingly."
+      },
+      {
+        "name": "Knife River",
+        "note": "North Shore. Steelhead in spring, up to the falls and no further."
+      },
+      {
+        "name": "Baptism River",
+        "note": "Drops off the Sawtooths into Superior. Steep, rocky steelhead water."
+      },
+      {
+        "name": "Boundary Waters brook trout lakes",
+        "note": "Small stocked lakes reached by canoe and portage. Quiet in a way nowhere else is."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "The southeast catch-and-release season. Midges on spring creeks that steam in the cold."
+      },
+      {
+        "window": "April – May",
+        "what": "The harvest season opens in the southeast, and steelhead run the North Shore. The busiest weeks of the year."
+      },
+      {
+        "window": "June",
+        "what": "Hatches in the southeast, ice-out fishing in the north, and the blackflies arriving with both."
+      },
+      {
+        "window": "July – August",
+        "what": "Hopper season on the spring creeks. Low clear water, and fish the evenings."
+      },
+      {
+        "window": "September – December",
+        "what": "Tricos and Baetis, then the season closing and the winter catch-and-release water taking over."
+      }
+    ],
+    "flies": [
+      "scud",
+      "hares-ear-nymph",
+      "griffiths-gnat",
+      "elk-hair-caddis",
+      "grasshopper",
+      "egg-pattern"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16, and a trout and salmon stamp validation is required in addition for designated trout streams and lakes and for Lake Superior.",
+      "Annual licences run from 1 March to the end of February.",
+      "The southeast winter season is catch and release with artificial lures, opening 1 January ahead of the general harvest season in April.",
+      "North Shore steelhead are managed tightly, with wild fish released and rules differing between streams.",
+      "Boundary Waters trout lakes carry their own access rules and, in some cases, permit requirements for entry."
+    ],
+    "license": {
+      "agency": "Minnesota Department of Natural Resources",
+      "licenseUrl": "https://www.dnr.state.mn.us/licenses/fishing/index.html",
+      "rulesUrl": "https://www.dnr.state.mn.us/regulations/fishing/index.html",
+      "residentAnnual": "$35",
+      "nonResidentAnnual": "$61",
+      "priceYear": "2026",
+      "priceNote": "The totals are the 2026 annual individual angling licence plus the $10 trout and salmon stamp validation — $25 for residents and $51 for non-residents, the latter including a $5 surcharge. Agents add a small issuing fee. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "nevada",
+    "name": "Nevada",
+    "abbr": "NV",
+    "region": "Great Basin",
+    "answer": "Nevada fly fishing is desert lake and Great Basin stream fishing, with Lahontan cutthroat, rainbow, brown and brook trout. Pyramid Lake, the Truckee and the East Walker are the headline waters. A state licence is required from age 12, but Pyramid Lake is tribal water and needs a permit from the Paiute Tribe instead.",
+    "summary": "Pyramid Lake, where anglers fish from stepladders for the largest cutthroat trout on earth, and tailwater browns on the East Walker.",
+    "whatMakesItDifferent": "Pyramid Lake is unlike any other trout fishery in the world. It is a desert terminal lake north of Reno, the remnant of an inland sea, and it holds Lahontan cutthroat trout that grow past twenty pounds — the largest cutthroat on earth. The strain fishing there now was thought extinct for decades until a relict population was found in a small creek on the Utah border and brought back. The fishing is strange to watch and stranger to do: anglers stand on aluminium stepladders in the shallows, several feet above the water, casting out over a drop-off they otherwise could not reach. And it is not state water. The lake lies entirely within the Pyramid Lake Paiute Reservation and is fished on a permit issued by the Tribe, bought from the Tribe, under the Tribe's rules — not Nevada's. Buy it from them and ask them what else you need.",
+    "species": [
+      {
+        "name": "Lahontan cutthroat",
+        "note": "Native to the Great Basin, and at Pyramid Lake the largest cutthroat trout anywhere."
+      },
+      {
+        "name": "Brown trout",
+        "note": "The East Walker and the Truckee, where they get large and sulky."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Widespread in the rivers and the stocked mountain lakes."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Small high streams in the Rubies and the Jarbidge country."
+      },
+      {
+        "name": "Bull trout",
+        "note": "The Jarbidge River holds the southernmost population in the world. Protected — do not target them."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Pyramid Lake",
+        "note": "Tribal water, tribal permit. Stepladders, shooting heads and the biggest cutthroat in the world."
+      },
+      {
+        "name": "Truckee River",
+        "note": "Out of Tahoe and through Reno. Big browns, technical water, and more of it public than people expect."
+      },
+      {
+        "name": "East Walker River",
+        "note": "Below Bridgeport Reservoir. A tailwater holding heavy browns, shared with California."
+      },
+      {
+        "name": "Ruby Mountains lakes",
+        "note": "Alpine lakes above Lamoille Canyon, reached on foot. Brook and rainbow trout."
+      },
+      {
+        "name": "Jarbidge River",
+        "note": "Remote northeastern canyon water, and the southernmost bull trout on earth."
+      },
+      {
+        "name": "Angel Lake",
+        "note": "A high cirque lake near Wells. Easy to reach and cold in midsummer."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "October – December",
+        "what": "Pyramid Lake's season opens. Cold, windy, and the fish moving into the shallows."
+      },
+      {
+        "window": "January – March",
+        "what": "The best weeks at Pyramid for a big fish. Dress for standing still in a desert winter."
+      },
+      {
+        "window": "April – June",
+        "what": "Pyramid finishes at the end of June. Mountain streams start as the snow leaves."
+      },
+      {
+        "window": "July – August",
+        "what": "High country and tailwaters only. The East Walker fishes on dam releases through the heat."
+      },
+      {
+        "window": "September",
+        "what": "Cooling water, brown trout colouring up on the Truckee, and the alpine lakes at their best."
+      }
+    ],
+    "flies": [
+      "woolly-bugger",
+      "balanced-leech",
+      "zebra-midge",
+      "blue-wing-olive",
+      "pale-morning-dun",
+      "grasshopper"
+    ],
+    "regulations": [
+      "A Nevada fishing licence is required from age 12 for state waters.",
+      "Pyramid Lake lies entirely within the Pyramid Lake Paiute Reservation and is fished on a permit issued by the Tribe. Buy it from the Tribe, follow their rules and seasons, and ask them directly what else is required — do not assume a Nevada licence covers you there.",
+      "Pyramid Lake is artificial flies and lures with barbless hooks, and has its own season and slot limits set by the Tribe.",
+      "Bull trout in the Jarbidge drainage are protected and may not be targeted.",
+      "The East Walker is shared with California, and the state line matters. Check which licence you need for the stretch you are standing in."
+    ],
+    "license": {
+      "agency": "Nevada Department of Wildlife",
+      "licenseUrl": "https://www.ndow.org/apply-buy/fishing/",
+      "rulesUrl": "https://www.ndow.org/fish/",
+      "residentAnnual": "$40",
+      "nonResidentAnnual": "$80",
+      "priceYear": "2026",
+      "priceNote": "Figures are NDOW's published rates for an annual adult fishing licence. There is no separate trout stamp. Pyramid Lake is not covered by this licence at all — it is tribal water with its own permit. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
   }
 ]
