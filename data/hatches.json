@@ -1,0 +1,1242 @@
+[
+  {
+    "slug": "blue-wing-olive",
+    "name": "Blue-Wing Olive",
+    "aka": [
+      "BWO",
+      "Baetis",
+      "Olive"
+    ],
+    "group": "Mayfly",
+    "scientific": "Baetis and related genera",
+    "answer": "The blue-wing olive is a small olive-bodied mayfly, usually hook size 16 to 22, that hatches in cold, grey, drizzly weather from autumn through spring. It is the most widely distributed mayfly in North America, it hatches in more months than any other, and trout feed on it heavily because it emerges when little else does.",
+    "summary": "The small olive mayfly that hatches on cold grey days from autumn to spring, when almost nothing else does. Sizes 16 to 22.",
+    "whatItIs": "Baetis is a genus of small, slim mayflies found in moving water across almost the whole continent, and the blue-wing olive is what anglers call it at every stage. The dun has a grey-blue wing standing upright over an olive body, and the whole insect is small — a size 18 is typical, and a size 22 is not unusual on a tailwater. What makes it matter out of proportion to its size is the weather it likes: Baetis hatch best on the cold, overcast, drizzly afternoons when a dry fly otherwise looks hopeless, and they produce two or more generations a year, so the same insect carries both the autumn and the spring.",
+    "size": "Hook sizes 16 to 22, most often 18 to 20",
+    "colour": "Olive to olive-brown body, dun-grey upright wings, two tails",
+    "stages": [
+      {
+        "name": "Nymph",
+        "note": "A slim, fast-swimming nymph that darts in short bursts. Trout eat them subsurface all year."
+      },
+      {
+        "name": "Emerger",
+        "note": "The stage that matters most. Baetis struggle in the surface film and trout key on them there rather than on the dun."
+      },
+      {
+        "name": "Dun",
+        "note": "The winged adult riding the surface after emergence, wings up, drifting while they dry."
+      },
+      {
+        "name": "Spinner",
+        "note": "The mated adult, wings spent and flat on the water. Often fished at dusk and frequently missed."
+      }
+    ],
+    "when": [
+      {
+        "window": "March – May",
+        "what": "The spring generation. Peak hatches on cold, wet afternoons; a bright calm day produces almost nothing."
+      },
+      {
+        "window": "June – August",
+        "what": "Sporadic. The bigger summer insects take over and Baetis become a background food item."
+      },
+      {
+        "window": "September – November",
+        "what": "The autumn generation, and the best of the year. Grey days, falling leaves, and trout feeding hard before winter."
+      },
+      {
+        "window": "December – February",
+        "what": "Tailwaters only, on the warmest afternoon of a cold week. Rare, and worth being there for."
+      }
+    ],
+    "where": "Everywhere there is cold moving water. Baetis are the default mayfly of western tailwaters, Appalachian freestone streams, Driftless spring creeks and Catskill rivers alike. If a state page on this site mentions a mayfly in March or October, it is almost certainly this one.",
+    "howToFish": "Fish the emerger before the dun. A soft-hackle or an RS2 in the film, dead drifted and unweighted, outfishes a perfectly tied dun on most days because that is the stage the trout have chosen. Go smaller and finer than feels sensible: 6X tippet and a size 20 is a normal rig. On a heavy hatch, pick one fish, work out its rhythm, and cast to that rhythm rather than to the rise you just saw.",
+    "flies": [
+      "blue-wing-olive",
+      "blue-wing-olive-emerger",
+      "rs2",
+      "barrs-emerger",
+      "parachute-adams",
+      "pheasant-tail-nymph"
+    ],
+    "states": [
+      "colorado",
+      "pennsylvania",
+      "montana",
+      "michigan",
+      "new-york"
+    ],
+    "tips": [
+      "Bad weather is good news. The worse the light and the colder the drizzle, the better a Baetis hatch gets.",
+      "If fish are rising and refusing your dun, you are fishing the wrong stage. Try an emerger in the film.",
+      "Two generations a year means two seasons: spring and autumn. Autumn is usually the better one."
+    ]
+  },
+  {
+    "slug": "pale-morning-dun",
+    "name": "Pale Morning Dun",
+    "aka": [
+      "PMD",
+      "Ephemerella"
+    ],
+    "group": "Mayfly",
+    "scientific": "Ephemerella excrucians and relatives",
+    "answer": "The pale morning dun is a pale yellow-olive mayfly, hook size 14 to 18, that hatches through the middle of the day in early and midsummer. It is the defining western summer hatch, it lasts for weeks rather than days, and trout become extremely selective to it because it is so reliable.",
+    "summary": "The defining western summer mayfly. Pale yellow bodies, midday hatches that run for weeks, and trout that get very fussy about them.",
+    "whatItIs": "The pale morning dun is the western angler's summer mayfly: a medium-small insect with a pale yellow to pale olive body and light dun wings, hatching from late morning into the afternoon from roughly June into August. It is the hatch that rewards patience, because unlike the explosive one-week drakes the PMD runs for weeks on the same river, and trout that see it every day for a month stop making mistakes. The females vary noticeably in colour even on one river — some distinctly yellow, some closer to pink-orange — which is why anglers carry three shades and still get refused.",
+    "size": "Hook sizes 14 to 18, most often 16",
+    "colour": "Pale yellow to pale olive body, sometimes pinkish; light grey wings; three tails",
+    "stages": [
+      {
+        "name": "Nymph",
+        "note": "A squat, dark crawler nymph. Effective for days before the hatch starts and in the hours before it each morning."
+      },
+      {
+        "name": "Emerger",
+        "note": "PMDs are notoriously slow to leave the shuck, and trout exploit it. A cripple or stuck-shuck pattern is often the answer."
+      },
+      {
+        "name": "Dun",
+        "note": "Pale, upright-winged and conspicuous on the water. The stage everyone fishes and the one fish most often refuse."
+      },
+      {
+        "name": "Spinner",
+        "note": "Rusty-bodied and spent-winged, falling in the evening. A rusty spinner fall can be the best hour of the day."
+      }
+    ],
+    "when": [
+      {
+        "window": "Late May – June",
+        "what": "The hatch begins on the warmer rivers. Late morning starts, and fish that have not seen a dry fly all year."
+      },
+      {
+        "window": "July",
+        "what": "Peak. Daily midday hatches, spinner falls in the evening, and increasingly selective trout."
+      },
+      {
+        "window": "August",
+        "what": "Tapering. Hatches start earlier in the morning as the days warm, and the fish are now thoroughly educated."
+      },
+      {
+        "window": "September",
+        "what": "Scattered late emergences on cooler rivers, overlapping with the autumn Baetis."
+      }
+    ],
+    "where": "Western rivers above all: Montana, Idaho, Wyoming, Colorado and the Utah tailwaters. The Henry's Fork and the Missouri below Holter are famous for how difficult their PMD fishing is. Eastern anglers meet the closely related sulphurs, which behave much the same way.",
+    "howToFish": "Expect refusals and plan for them. Carry the dun, a cripple and a rusty spinner, and change stage before you change size. A dead drift matters more here than anywhere — these fish get a long look in flat water. If the fish are rising steadily and ignoring everything, watch what they are actually doing: a nose that barely breaks the surface is eating emergers, not duns.",
+    "flies": [
+      "pale-morning-dun",
+      "split-case-pmd",
+      "rusty-spinner",
+      "barrs-emerger",
+      "pheasant-tail-nymph",
+      "parachute-adams"
+    ],
+    "states": [
+      "montana",
+      "idaho",
+      "wyoming",
+      "colorado",
+      "utah"
+    ],
+    "tips": [
+      "Carry three body shades. PMDs vary river to river and even morning to afternoon.",
+      "The spinner fall at dusk is often better fishing than the hatch, and far less crowded.",
+      "Slow, flat water is where PMD fishing gets hard. Find broken water and the same fly works."
+    ]
+  },
+  {
+    "slug": "green-drake",
+    "name": "Green Drake",
+    "aka": [
+      "Drake",
+      "Western green drake",
+      "Eastern green drake"
+    ],
+    "group": "Mayfly",
+    "scientific": "Drunella grandis in the West, Ephemera guttulata in the East",
+    "answer": "The green drake is a large mayfly, hook size 8 to 12, whose hatch lasts only a week or two but brings the biggest trout in a river to the surface. Western and eastern green drakes are different insects with the same nickname. Anglers plan holidays around it, and the timing is notoriously hard to catch.",
+    "summary": "The hatch anglers book holidays around. Big mayflies, a week or two of it, and the largest trout in the river feeding on the surface.",
+    "whatItIs": "Two quite different insects share this name. In the West, Drunella grandis is a stout olive-green mayfly of fast freestone water, hatching in late June and July. In the East, Ephemera guttulata is a bigger, paler, cream-and-olive burrowing mayfly whose famous emergence on Penns Creek and the Delaware comes in late May and early June, followed by the ghostly white spinner fall anglers call the coffin fly. What they have in common is size and consequence: both are large enough that a trout which has spent the year eating size 20 insects will abandon caution for them, and both hatch for a short, unpredictable window.",
+    "size": "Hook sizes 8 to 12",
+    "colour": "West: dark olive-green body, slate wings. East: cream to pale olive body, heavily mottled wings",
+    "stages": [
+      {
+        "name": "Nymph",
+        "note": "Large and conspicuous. Eastern drakes burrow in silt; western drakes crawl in fast rocky water."
+      },
+      {
+        "name": "Emerger",
+        "note": "A big insect takes a long time to get out of its shuck, and trout take full advantage."
+      },
+      {
+        "name": "Dun",
+        "note": "Unmistakable — a mayfly the size of a small moth drifting down the current."
+      },
+      {
+        "name": "Spinner",
+        "note": "The eastern coffin fly, white and spectral, falling at dusk. One of the great sights in fly fishing."
+      }
+    ],
+    "when": [
+      {
+        "window": "Late May – early June",
+        "what": "The eastern hatch. Penns Creek and the Upper Delaware, and crowds to match."
+      },
+      {
+        "window": "Mid-June",
+        "what": "The eastern hatch moves upstream and north; the Catskills and northern Pennsylvania."
+      },
+      {
+        "window": "Late June – July",
+        "what": "The western hatch on Colorado and Idaho freestone water, moving upriver as the season warms."
+      },
+      {
+        "window": "July",
+        "what": "High-altitude western rivers — the Fryingpan and the Roaring Fork — at the tail of the season."
+      }
+    ],
+    "where": "In the East, Penns Creek, the Upper Delaware and the Catskills. In the West, the Henry's Fork, the Fryingpan, the Roaring Fork and the McKenzie. The state pages for Pennsylvania, New York, Colorado, Idaho and Oregon all name it in their season calendars.",
+    "howToFish": "Be there. That is most of it — the hatch lasts days, not weeks, and shops and forums track it hour by hour. When it is on, fish a larger tippet than you normally would, because the fly is heavy and the fish are big. Many anglers do better in the hour before the hatch on a drake nymph, and better again at dusk on the spinner, than in the chaos of the hatch itself.",
+    "flies": [
+      "green-drake",
+      "parachute-adams",
+      "hares-ear-nymph",
+      "pheasant-tail-nymph"
+    ],
+    "states": [
+      "pennsylvania",
+      "new-york",
+      "colorado",
+      "idaho",
+      "oregon"
+    ],
+    "tips": [
+      "Western and eastern green drakes are different insects. Buy flies for the one you are fishing.",
+      "The spinner fall often beats the hatch, and almost nobody stays for it.",
+      "If you miss the drakes by a week, go upstream or uphill — the hatch climbs as the season warms."
+    ]
+  },
+  {
+    "slug": "march-brown",
+    "name": "March Brown",
+    "aka": [
+      "American march brown",
+      "Maccaffertium"
+    ],
+    "group": "Mayfly",
+    "scientific": "Maccaffertium vicarium",
+    "answer": "The march brown is a large mottled brown mayfly, hook size 10 to 14, hatching in May and June despite its name. It emerges sparsely over several hours rather than in a burst, which keeps trout looking up all afternoon without making them selective. It is a classic eastern and midwestern hatch.",
+    "summary": "A big mottled mayfly that trickles out over hours rather than erupting, keeping trout looking up all afternoon. May and June, not March.",
+    "whatItIs": "The American march brown is a large, handsomely mottled mayfly of eastern and midwestern rivers, and its name is a piece of inherited confusion — it is named after a British insect that hatches in March, while the American one appears in May and June. Its most useful quality is how it emerges: sparsely, a few insects at a time, spread across hours of the afternoon. That is the opposite of a blanket hatch, and it produces a different kind of fishing — trout stay interested all day without ever seeing enough duns to become fussy, which makes it one of the friendliest big-mayfly hatches for a newer angler.",
+    "size": "Hook sizes 10 to 14",
+    "colour": "Mottled tan-brown body, heavily barred and mottled wings, two tails",
+    "stages": [
+      {
+        "name": "Nymph",
+        "note": "A flat, clinging nymph of fast rocky water. A hare's ear is close enough and always has been."
+      },
+      {
+        "name": "Emerger",
+        "note": "Emerges in the film in broken water, which is where a soft-hackle swung downstream works beautifully."
+      },
+      {
+        "name": "Dun",
+        "note": "Large and heavily mottled, drifting a long way before flying. Easy to see and easy to fish."
+      },
+      {
+        "name": "Spinner",
+        "note": "Falls at dusk, often mixed with other species, and frequently the best twenty minutes of the day."
+      }
+    ],
+    "when": [
+      {
+        "window": "Late April",
+        "what": "First emergences on the warmer southern rivers, overlapping with Hendricksons."
+      },
+      {
+        "window": "May",
+        "what": "Peak. Afternoon emergence over several hours, with the best fishing from midday to teatime."
+      },
+      {
+        "window": "June",
+        "what": "Tailing off, and moving to the cooler headwaters and the more northern rivers."
+      },
+      {
+        "window": "Rest of the year",
+        "what": "Nothing on the surface, but the nymph is in the drift all year and a hare's ear never stops working."
+      }
+    ],
+    "where": "Eastern and midwestern freestone rivers: the Catskills, Pennsylvania's limestone and freestone streams, Michigan's Au Sable and Manistee, and the Appalachian waters of Virginia and the Carolinas. The New York, Pennsylvania, Michigan and Vermont pages all name it.",
+    "howToFish": "A sparse hatch means a searching approach rather than a matching one. Fish a visible dun through likely water rather than waiting for a rise, and expect fish to come up for it from a long way down. In faster water, swing a soft-hackle through the tail of a run during the emergence — this is one of the hatches where that old method still beats a dead-drifted dry.",
+    "flies": [
+      "march-brown",
+      "parachute-adams",
+      "hares-ear-nymph",
+      "soft-hackle",
+      "rusty-spinner"
+    ],
+    "states": [
+      "new-york",
+      "pennsylvania",
+      "michigan",
+      "vermont",
+      "virginia"
+    ],
+    "tips": [
+      "Do not wait for a hatch. Fish the dun as a searching pattern through the afternoon.",
+      "A swung soft-hackle during the emergence is the forgotten method, and it still works.",
+      "The name is British and the timing is not. Expect it in May."
+    ]
+  },
+  {
+    "slug": "trico",
+    "name": "Trico",
+    "aka": [
+      "Tricorythodes",
+      "White-winged black",
+      "Trike"
+    ],
+    "group": "Mayfly",
+    "scientific": "Tricorythodes",
+    "answer": "The trico is a tiny black mayfly with white wings, hook size 20 to 26, that hatches at dawn in late summer and falls as a spinner within a few hours. The spinner fall is dense enough to look like smoke over the water, and it produces the most selective dry-fly fishing of the year.",
+    "summary": "Tiny black-and-white mayflies that swarm at dawn in late summer. The spinner fall looks like smoke and the fishing is the fussiest of the year.",
+    "whatItIs": "Tricos are among the smallest mayflies anglers bother to imitate, and they make up for it with numbers. They hatch overnight and at first light, mate in dense swarms above the river through the early morning, and fall spent onto the surface in such quantity that the water can look dusted. The whole cycle is over by mid-morning. The fishing is unusual in that the hatch barely matters — what you are fishing is the spinner fall, on flies of size 22 and smaller, to trout lined up in feeding lanes eating one insect a second and refusing anything that drifts a fraction wrong.",
+    "size": "Hook sizes 20 to 26",
+    "colour": "Black body, white wings; males and females differ, with females often olive-bodied",
+    "stages": [
+      {
+        "name": "Nymph",
+        "note": "Tiny and rarely imitated directly. Not where the fishing is."
+      },
+      {
+        "name": "Dun",
+        "note": "Hatches in the dark and at first light. Brief, and usually over before anglers arrive."
+      },
+      {
+        "name": "Spinner",
+        "note": "The whole point. Spent black bodies and white wings flat in the film, in enormous numbers."
+      },
+      {
+        "name": "Cluster",
+        "note": "Spinners often fall in clumps. A fly tied to imitate two or three at once can beat a single."
+      }
+    ],
+    "when": [
+      {
+        "window": "July",
+        "what": "The first falls begin on the warmer rivers, usually mid to late morning."
+      },
+      {
+        "window": "August",
+        "what": "Peak, and the falls move earlier — dawn to about nine, finished before most anglers have had breakfast."
+      },
+      {
+        "window": "September",
+        "what": "Still strong, starting later again as mornings cool. Often the most comfortable month to fish it."
+      },
+      {
+        "window": "October",
+        "what": "Tailing off, and overlapping with the autumn Baetis."
+      }
+    ],
+    "where": "Spring creeks and tailwaters above all — Silver Creek, the Missouri, the Bighorn, the Delaware, the Driftless creeks of Wisconsin and Minnesota, and the limestone water of Pennsylvania. The Idaho, Montana, Pennsylvania, Wisconsin and Minnesota pages all name it.",
+    "howToFish": "Get there at dawn and accept the tippet. 6X is not enough on most trico water; 7X and a size 22 is a normal rig, and the leader needs to be long. Because the fish eat on a rhythm, cast to where the fish will be rather than where it rose. If you cannot see your fly — and you will not — fish a slightly larger visible dry with the trico on a short dropper behind it.",
+    "flies": [
+      "trico",
+      "griffiths-gnat",
+      "rusty-spinner",
+      "parachute-adams"
+    ],
+    "states": [
+      "idaho",
+      "montana",
+      "pennsylvania",
+      "wisconsin",
+      "minnesota"
+    ],
+    "tips": [
+      "You are fishing the spinner fall, not the hatch. Be on the water before sunrise.",
+      "Use a visible dry as an indicator with the trico trailing eighteen inches behind.",
+      "When the fall is thickest the fishing is hardest. The best minutes are at the start and the end."
+    ]
+  },
+  {
+    "slug": "caddis",
+    "name": "Caddisfly",
+    "aka": [
+      "Sedge",
+      "Caddis",
+      "Elk hair"
+    ],
+    "group": "Caddisfly",
+    "scientific": "Order Trichoptera",
+    "answer": "Caddisflies are moth-like insects with tent-shaped wings that hatch from spring through autumn across almost every trout stream in North America. Trout eat the larva, the pupa and the adult, and the pupa rising to the surface is the stage most often missed. Hook sizes 12 to 20.",
+    "summary": "The most abundant trout food in moving water after midges. Tent-winged adults, cased larvae, and a rising pupa most anglers never fish.",
+    "whatItIs": "Caddisflies are an entire order of insects rather than one hatch, and in most trout streams they outnumber mayflies several times over. The adult looks like a small moth, with wings folded in a tent over its back, and it flutters and skitters rather than drifting serenely like a mayfly. The larvae live in the stream for most of the year, many of them building portable cases out of sand, gravel or twigs. The stage that catches the most fish and gets fished the least is the pupa, which swims to the surface in a bubble of gas and is eaten on the way up by trout that look, from the bank, as if they are taking adults.",
+    "size": "Hook sizes 12 to 20, most often 14 to 16",
+    "colour": "Tan, brown, olive, grey and occasionally bright green, depending on species and river",
+    "stages": [
+      {
+        "name": "Larva",
+        "note": "Lives in the stream all year, often in a case of sand or twigs. A green or cream larva fished deep works anywhere."
+      },
+      {
+        "name": "Pupa",
+        "note": "The most productive and most neglected stage. Rises through the water column in a gas bubble, and trout intercept it there."
+      },
+      {
+        "name": "Adult",
+        "note": "Tent-winged, skittering, and active at dusk. The elk hair caddis is the pattern the world uses."
+      },
+      {
+        "name": "Egg-laying female",
+        "note": "Dives or crawls underwater to lay eggs. A wet caddis fished on the swing imitates it exactly."
+      }
+    ],
+    "when": [
+      {
+        "window": "April – May",
+        "what": "The Mother's Day caddis on western rivers, and the Grannom in the East. Dense, brief and sometimes overwhelming."
+      },
+      {
+        "window": "June – July",
+        "what": "Steady emergence on most rivers, best in the last two hours of light."
+      },
+      {
+        "window": "August – September",
+        "what": "Evening hatches continue, and the egg-laying flights at dusk can be better than the hatch."
+      },
+      {
+        "window": "October",
+        "what": "The October caddis in the West — a big orange insect, size 8 to 10, and the last good dry fly of the year."
+      }
+    ],
+    "where": "Everywhere. If a river holds trout it holds caddis. The Mother's Day caddis on Montana's Yellowstone, the Grannom in Pennsylvania, the Arkansas River caddis hatch that climbs upstream through May, and the October caddis of the Pacific Northwest are the named ones, but the unnamed background hatch is constant.",
+    "howToFish": "Fish the pupa during the hatch and the adult at dusk. A soft-hackle swung across and down imitates a rising pupa better than anything more complicated, and it catches fish while everyone else is casting dries at splashy rises. When trout are taking adults, remember that caddis move — a twitch or a short skate at the end of the drift will often trigger a fish that ignored the dead drift.",
+    "flies": [
+      "elk-hair-caddis",
+      "caddis-pupa",
+      "soft-hackle",
+      "green-weenie",
+      "hares-ear-nymph"
+    ],
+    "states": [
+      "colorado",
+      "montana",
+      "pennsylvania",
+      "oregon",
+      "arkansas"
+    ],
+    "tips": [
+      "A splashy rise usually means pupae, not adults. Swing a soft-hackle through it.",
+      "Caddis skitter. A deliberate twitch at the end of the drift is not cheating.",
+      "The best caddis fishing is in the last hour of light, and most people have gone home."
+    ]
+  },
+  {
+    "slug": "midge",
+    "name": "Midge",
+    "aka": [
+      "Chironomid",
+      "Buzzer",
+      "Griffith's gnat"
+    ],
+    "group": "Midge",
+    "scientific": "Family Chironomidae",
+    "answer": "Midges are tiny two-winged flies, hook size 18 to 26, that hatch in every month of the year including the coldest. On tailwaters and spring creeks they are the single most important trout food by numbers, and they are why winter fly fishing is possible at all.",
+    "summary": "Tiny, year-round, and the reason winter fishing works at all. On tailwaters they are the most important trout food there is.",
+    "whatItIs": "Midges are small two-winged flies — chironomids — and they are the most numerous insect in most trout water. They matter most where other insects struggle: tailwaters with stable cold flows, spring creeks, and any river in January. The larva is a thin worm-like creature, often bright red from haemoglobin, living in the silt. The pupa rises slowly to the surface and hangs in the film, and that slow, defenceless ascent is what trout feed on most. Adults often clump together on the surface in mating balls, which is the entire logic behind the Griffith's gnat.",
+    "size": "Hook sizes 18 to 26, and smaller on hard-fished tailwaters",
+    "colour": "Black, grey, olive, cream and blood red",
+    "stages": [
+      {
+        "name": "Larva",
+        "note": "A thin worm in the silt, frequently red. Fished deep on a dead drift, it works all winter."
+      },
+      {
+        "name": "Pupa",
+        "note": "Rises slowly and hangs under the film. The most eaten stage by a wide margin."
+      },
+      {
+        "name": "Adult",
+        "note": "Tiny and hard to see. Fish take them, but rarely as reliably as the pupa."
+      },
+      {
+        "name": "Cluster",
+        "note": "Mating balls of adults on the surface. A Griffith's gnat is a cluster, not a single midge."
+      }
+    ],
+    "when": [
+      {
+        "window": "December – February",
+        "what": "The main event. On tailwaters this is the only hatch, and trout feed on it steadily."
+      },
+      {
+        "window": "March – May",
+        "what": "Still heavy, now overlapping with Baetis. A midge dropper under a BWO covers both."
+      },
+      {
+        "window": "June – August",
+        "what": "Background food. Eclipsed by bigger insects, but never absent."
+      },
+      {
+        "window": "September – November",
+        "what": "Returning to prominence as the larger hatches fade."
+      }
+    ],
+    "where": "Tailwaters and spring creeks above all — the San Juan, the Bighorn, the Missouri, the Green below Flaming Gorge, Silver Creek, the Swift in Massachusetts. Also every stillwater in the country, where chironomid fishing is a discipline of its own.",
+    "howToFish": "Go smaller than you want to and fish the pupa. A zebra midge under an indicator, dead drifted close to the bottom, is the most consistently productive winter rig in America. In the film, a trailing-shuck emerger beats a dry. If you can see fish rising but cannot see anything on the water, it is midges, and you are probably two hook sizes too big.",
+    "flies": [
+      "zebra-midge",
+      "disco-midge",
+      "snow-cone-midge",
+      "griffiths-gnat",
+      "wd-40",
+      "serendipity"
+    ],
+    "states": [
+      "new-mexico",
+      "colorado",
+      "arkansas",
+      "massachusetts",
+      "utah"
+    ],
+    "tips": [
+      "If fish are rising and you can see nothing on the water, it is midges.",
+      "A Griffith's gnat imitates a cluster of adults, not one midge. That is why it can be fished large.",
+      "Red is not a trick colour. Midge larvae really are blood red."
+    ]
+  },
+  {
+    "slug": "salmonfly",
+    "name": "Salmonfly",
+    "aka": [
+      "Giant stonefly",
+      "Pteronarcys"
+    ],
+    "group": "Stonefly",
+    "scientific": "Pteronarcys californica",
+    "answer": "The salmonfly is a giant stonefly, two to three inches long and tied on hook sizes 4 to 8, that hatches on western freestone rivers in late spring. The hatch moves upstream a few miles a day, lasts about a week in any one place, and brings the largest trout in the river to the surface.",
+    "summary": "Two-inch orange stoneflies on western rivers in June. The hatch climbs the river a few miles a day and the biggest trout eat on top.",
+    "whatItIs": "Pteronarcys californica is the largest insect a western trout will ever eat off the surface — an orange-bodied, dark-winged stonefly big enough to be unmistakable from the bank. The nymph lives in fast rocky water for three or four years before crawling out onto a rock or a willow to hatch, which means the adults appear on the bank rather than on the water, and get blown back onto the river in numbers. The hatch progresses upstream as water temperature climbs, moving a few miles a day, so the same river can be finished at the bottom and not started at the top in the same week.",
+    "size": "Hook sizes 4 to 8",
+    "colour": "Bright orange underbody, dark brown-black wings and thorax",
+    "stages": [
+      {
+        "name": "Nymph",
+        "note": "Large, dark and clinging to rocks for three to four years. A Pat's Rubber Legs is one of the most useful flies in the West."
+      },
+      {
+        "name": "Migration",
+        "note": "Nymphs crawl to the bank before hatching. For a week beforehand, fishing a big nymph tight to the edge is deadly."
+      },
+      {
+        "name": "Adult",
+        "note": "Hatches on land, then blows onto the water. Trout look for them against the bank and under overhanging willows."
+      },
+      {
+        "name": "Egg-laying",
+        "note": "Females return to the water to drop eggs, which is when the surface fishing is at its most frantic."
+      }
+    ],
+    "when": [
+      {
+        "window": "Late May",
+        "what": "First emergences on the lower, warmer reaches. The hatch starts downstream."
+      },
+      {
+        "window": "June",
+        "what": "Peak, climbing the river. A week of it in any one place and the busiest guiding weeks of the year."
+      },
+      {
+        "window": "Early July",
+        "what": "The upper reaches and the high-altitude rivers, as the last of the snowmelt clears."
+      },
+      {
+        "window": "Rest of the year",
+        "what": "No adults, but the nymph is in the river every day of its three-year life and always worth fishing."
+      }
+    ],
+    "where": "Western freestone rivers: Montana's Big Hole, Rock Creek and Madison, Idaho's South Fork of the Snake and Henry's Fork, Oregon's lower Deschutes, and Colorado's Gunnison. The Montana, Idaho, Oregon, Wyoming and Colorado pages all name it.",
+    "howToFish": "Fish the banks, not the middle. The adults are blown off the willows, so the trout are tight to the edge, often in water you would walk through. Use a heavier tippet than the hatch would suggest — 3X is sensible with a size 6 fly and a big fish. In the week before the adults appear, fish a large dark nymph right against the bank and you will often do better than the people who arrive for the hatch itself.",
+    "flies": [
+      "salmonfly",
+      "pats-rubber-legs",
+      "chubby-chernobyl",
+      "stimulator",
+      "madam-x"
+    ],
+    "states": [
+      "montana",
+      "idaho",
+      "oregon",
+      "wyoming",
+      "colorado"
+    ],
+    "tips": [
+      "Fish the bank. The adults fall off willows, not out of the sky.",
+      "Arrive a week early and fish the nymph rather than chase the adults.",
+      "The hatch moves upstream daily. Yesterday's report is already out of date."
+    ]
+  },
+  {
+    "slug": "golden-stone",
+    "name": "Golden Stone",
+    "aka": [
+      "Golden stonefly",
+      "Hesperoperla"
+    ],
+    "group": "Stonefly",
+    "scientific": "Hesperoperla pacifica and relatives",
+    "answer": "The golden stone is a large yellow-gold stonefly, hook size 6 to 12, that hatches just behind the salmonflies on western rivers and keeps going for weeks after they finish. It is smaller, more abundant and far longer-lasting than the salmonfly, which makes it the more useful hatch of the two.",
+    "summary": "The hatch that follows the salmonflies and outlasts them by weeks. Smaller, more abundant, and more useful to plan a trip around.",
+    "whatItIs": "The golden stone lives in the salmonfly's shadow and is the better bet for most anglers. It is a large stonefly — noticeably smaller than a salmonfly, but still a size 8 fly — with a yellow to gold body and tan wings, and it emerges in the same rocky freestone water in the same way, crawling out to hatch on the bank. The difference is duration: where a salmonfly hatch gives a river a week, goldens trickle on for a month or more, which means a trout that has stopped looking up for the giants will still rise for a golden well into July.",
+    "size": "Hook sizes 6 to 12",
+    "colour": "Yellow to golden-tan body, tan wings, dark head markings",
+    "stages": [
+      {
+        "name": "Nymph",
+        "note": "Gold-brown, flat and strong-legged. In the drift all year and one of the best searching nymphs in the West."
+      },
+      {
+        "name": "Migration",
+        "note": "Crawls to the bank to hatch, like the salmonfly. Fish nymphs tight to the edge beforehand."
+      },
+      {
+        "name": "Adult",
+        "note": "Blown onto the water from streamside vegetation through the late morning and afternoon."
+      },
+      {
+        "name": "Egg-laying",
+        "note": "Females drop to the surface to lay. A twitched dry during this is often taken hard."
+      }
+    ],
+    "when": [
+      {
+        "window": "June",
+        "what": "Overlapping the end of the salmonflies and usually in greater numbers."
+      },
+      {
+        "window": "July",
+        "what": "Peak, and the most reliable big dry-fly fishing of the western summer."
+      },
+      {
+        "window": "August",
+        "what": "Tailing off, now mixed with hoppers. A golden stone dry and a hopper are close enough to share a box."
+      },
+      {
+        "window": "Rest of the year",
+        "what": "The nymph is always there. A golden stone nymph works in February as well as July."
+      }
+    ],
+    "where": "The same western freestone rivers as the salmonfly, and usually for longer: the Madison, the Big Hole, Rock Creek, the Deschutes, the Gunnison and the South Fork of the Snake.",
+    "howToFish": "A golden stone dry is one of the great searching flies of the western summer — fish it along the bank and through broken water whether or not you have seen one, because trout remember them for weeks. Hang a nymph eighteen inches below it and you have the most generally useful rig in the Rockies. A gentle twitch imitates an egg-laying female and will convert refusals.",
+    "flies": [
+      "stimulator",
+      "pats-rubber-legs",
+      "chubby-chernobyl",
+      "madam-x",
+      "prince-nymph"
+    ],
+    "states": [
+      "montana",
+      "idaho",
+      "oregon",
+      "colorado",
+      "wyoming"
+    ],
+    "tips": [
+      "Goldens last for weeks. If you miss the salmonflies, you have not missed the season.",
+      "A stimulator with a nymph dropper is the default western summer rig for a reason.",
+      "The nymph is a year-round fly, not a seasonal one."
+    ]
+  },
+  {
+    "slug": "yellow-sally",
+    "name": "Yellow Sally",
+    "aka": [
+      "Little yellow stonefly",
+      "Sally"
+    ],
+    "group": "Stonefly",
+    "scientific": "Isoperla and relatives",
+    "answer": "The yellow sally is a small bright yellow stonefly, hook size 12 to 16, that hatches through the summer on freestone streams across the country. It is far less famous than the big stoneflies and far easier to fish, because trout take it confidently in broken water without much inspection.",
+    "summary": "A small bright yellow stonefly of summer freestone water. Less famous than the giants, easier to fish, and taken without much inspection.",
+    "whatItIs": "Little yellow stoneflies are the summer stonefly nobody plans a trip around and everybody should carry. They are small — size 14 is typical — brilliantly yellow, often with a red or orange spot at the base of the abdomen, and they hatch steadily through the warm months on rocky streams from the Appalachians to the Rockies. Because they are small and common rather than large and brief, trout treat them as ordinary food rather than an event, which is exactly what makes them useful: a yellow sally fished through pocket water in July gets taken without the long inspection a big attractor invites.",
+    "size": "Hook sizes 12 to 16",
+    "colour": "Bright yellow body, often with a red egg sac; pale yellow wings",
+    "stages": [
+      {
+        "name": "Nymph",
+        "note": "Small, slim and pale gold, living in fast gravel. A small pheasant tail covers it adequately."
+      },
+      {
+        "name": "Adult",
+        "note": "Hatches on the bank like all stoneflies, then returns to the water to lay. The stage that matters."
+      },
+      {
+        "name": "Egg-laying",
+        "note": "Females with a red egg sac drop to the surface. A red hot spot on the fly is not decoration."
+      }
+    ],
+    "when": [
+      {
+        "window": "June",
+        "what": "First emergences as the water warms and the runoff clears."
+      },
+      {
+        "window": "July – August",
+        "what": "Peak. Daily activity through the middle of the day in pocket water and riffles."
+      },
+      {
+        "window": "September",
+        "what": "Tapering, overlapping with terrestrials. A sally and a beetle cover most of a September afternoon."
+      },
+      {
+        "window": "Rest of the year",
+        "what": "Nothing on top. The nymph is present but rarely imitated specifically."
+      }
+    ],
+    "where": "Freestone streams everywhere: the southern Appalachians, the Driftless coulees, New England hill streams and the whole Rocky Mountain West. The North Carolina, South Carolina and western state pages all name it.",
+    "howToFish": "Treat it as a searching dry. Fish it upstream through riffles and pocket water with a short line and a lot of casts, and do not wait to see the natural. In the heat of the day, drop a small beadhead eighteen inches below it. The red egg sac matters more than anglers expect — a fly with a red butt genuinely outfishes one without on egg-laying afternoons.",
+    "flies": [
+      "yellow-sally",
+      "stimulator",
+      "humpy",
+      "pheasant-tail-nymph",
+      "elk-hair-caddis"
+    ],
+    "states": [
+      "north-carolina",
+      "south-carolina",
+      "colorado",
+      "montana",
+      "west-virginia"
+    ],
+    "tips": [
+      "Fish it blind through pocket water. You do not need to see the hatch.",
+      "The red egg sac is functional, not decorative. Carry flies that have one.",
+      "Small and yellow beats large and clever on a bright July afternoon."
+    ]
+  },
+  {
+    "slug": "grasshopper",
+    "name": "Grasshopper",
+    "aka": [
+      "Hopper"
+    ],
+    "group": "Terrestrial",
+    "scientific": "Order Orthoptera",
+    "answer": "Grasshoppers are land insects that fall into rivers through late summer, and trout eat them greedily because they are large, slow and helpless. Hopper fishing runs from July to September, works best on windy afternoons along grassy banks, and is the most forgiving big dry-fly fishing of the year.",
+    "summary": "Big, clumsy and helpless in the water. July to September on grassy banks, best in the wind, and the most forgiving dry-fly fishing there is.",
+    "whatItIs": "A grasshopper is not a hatch at all — it is an accident. Hoppers live in the grass beside the river, and when the wind blows or a cow walks through, they end up in the water, where they are large, conspicuous and unable to swim. By August a trout living below a hay meadow has eaten enough of them to have an opinion, and will move a long way for one. This is why hopper fishing is so forgiving: the fish are not inspecting a mayfly for the right number of tails, they are reacting to a big meal that is about to drift past.",
+    "size": "Hook sizes 6 to 12",
+    "colour": "Tan, yellow, olive and pink; pink and purple foam versions work far better than they should",
+    "stages": [
+      {
+        "name": "Adult",
+        "note": "The only stage that matters. Fished dry, tight to the bank, with no finesse required."
+      },
+      {
+        "name": "Drowned",
+        "note": "A sunk hopper fished just under the surface catches fish that have refused the floating one."
+      }
+    ],
+    "when": [
+      {
+        "window": "July",
+        "what": "Hoppers reach a size worth eating. The fishing starts quietly and improves weekly."
+      },
+      {
+        "window": "August",
+        "what": "Peak. Hot, windy afternoons along grassy banks produce the best big-dry fishing of the year."
+      },
+      {
+        "window": "September",
+        "what": "Still excellent, and often better — fewer anglers and trout feeding hard before autumn."
+      },
+      {
+        "window": "First frost",
+        "what": "Over, abruptly. A hard frost ends hopper season in a night."
+      }
+    ],
+    "where": "Anywhere a river runs through grass or hay meadow. The Rockies are famous for it — Montana, Wyoming, Idaho — but Driftless spring creeks in Wisconsin, Minnesota and Iowa produce hopper fishing every bit as good, at a fraction of the cost.",
+    "howToFish": "Cast tight to the bank and let it slap down. This is the one time in fly fishing where a delicate presentation is wrong — a hopper hits the water hard, and the noise is part of the trigger. Fish the windward bank, because that is where the wind is blowing insects in. Hang a beadhead nymph two to three feet below and you have the hopper-dropper, which is probably the most effective summer rig in America.",
+    "flies": [
+      "grasshopper",
+      "madam-x",
+      "chubby-chernobyl",
+      "stimulator"
+    ],
+    "states": [
+      "montana",
+      "wyoming",
+      "wisconsin",
+      "minnesota",
+      "nebraska"
+    ],
+    "tips": [
+      "Let it land hard. A delicate hopper presentation is a wasted one.",
+      "Fish the windward bank — that is where the insects are being blown in.",
+      "A hard frost ends the season overnight. Do not plan a hopper trip for October."
+    ]
+  },
+  {
+    "slug": "ant",
+    "name": "Flying Ant",
+    "aka": [
+      "Ant fall",
+      "Carpenter ant"
+    ],
+    "group": "Terrestrial",
+    "scientific": "Family Formicidae",
+    "answer": "Ants fall onto rivers all summer and swarm in mating flights on warm, humid late-summer afternoons. Trout eat them out of all proportion to their size, and an ant fall can produce selective rising fish on a river with no hatch at all. Hook sizes 14 to 20.",
+    "summary": "The fly that saves blank afternoons. Trout eat ants out of all proportion to their size, and a mating flight can switch a dead river on.",
+    "whatItIs": "Ants are in trout stomachs far more often than anglers expect, and there are two quite different ways they arrive. The first is a steady trickle all summer — ants fall off overhanging branches and get blown off banks, and a single sunk ant drifted along a grassy edge will take fish on the quietest afternoon of the year. The second is the mating flight: on warm, humid days in late summer, winged ants swarm and come down on the water in numbers, and trout that have ignored everything will start rising steadily to something you cannot see unless you look very closely.",
+    "size": "Hook sizes 14 to 20",
+    "colour": "Black, cinnamon-brown and occasionally rust red",
+    "stages": [
+      {
+        "name": "Terrestrial adult",
+        "note": "The wingless ant that falls in from the bank. Fished sunk or in the film, rarely high and dry."
+      },
+      {
+        "name": "Flying ant",
+        "note": "The winged mating form. Falls in swarms and produces genuinely selective fishing."
+      },
+      {
+        "name": "Drowned ant",
+        "note": "Ants sink quickly. A sunk ant fished like a tiny nymph is deadly and almost nobody does it."
+      }
+    ],
+    "when": [
+      {
+        "window": "May – June",
+        "what": "A background food item. Worth fishing along wooded banks when nothing is hatching."
+      },
+      {
+        "window": "July – August",
+        "what": "The best weeks, especially in the hour after a warm, humid morning."
+      },
+      {
+        "window": "Late August – September",
+        "what": "Flying ant falls. Unpredictable, short, and the best of it is remarkable."
+      },
+      {
+        "window": "Rest of the year",
+        "what": "Not a factor. Ants are a warm-weather insect."
+      }
+    ],
+    "where": "Every wooded trout stream in the country. Small streams with overhanging cover — the Appalachians, New England, the Driftless, the Shenandoah brook trout streams — are the best of it, but ant falls happen on big western rivers too.",
+    "howToFish": "Fish it sunk, or at least in the film. Ants do not float high and trout know it, so a high-riding ant pattern is the commonest reason anglers decide ants do not work. On small streams, drift a size 16 black ant along the undercut bank and expect to be surprised. If fish are rising steadily to nothing visible on a humid August afternoon, put on a flying ant before you change anything else.",
+    "flies": [
+      "ant",
+      "beetle",
+      "griffiths-gnat",
+      "parachute-adams"
+    ],
+    "states": [
+      "virginia",
+      "pennsylvania",
+      "north-carolina",
+      "vermont",
+      "new-hampshire"
+    ],
+    "tips": [
+      "Fish it in or under the film. A dry ant sitting high is the usual mistake.",
+      "Humid, warm, late-summer afternoons are when flying ants fall.",
+      "If nothing is hatching and fish are rising, try an ant before anything else."
+    ]
+  },
+  {
+    "slug": "beetle",
+    "name": "Beetle",
+    "aka": [
+      "Japanese beetle",
+      "Terrestrial beetle"
+    ],
+    "group": "Terrestrial",
+    "scientific": "Order Coleoptera",
+    "answer": "Beetles fall into rivers all summer and sink immediately, which is why they catch fish that refuse everything else. They are the most under-used terrestrial in fly fishing, they need no hatch to work, and a size 14 black beetle drifted along a shaded bank is one of the most reliable summer flies there is.",
+    "summary": "The most under-used fly in a summer box. No hatch required, sinks like the real thing, and reliably takes fish that refuse everything else.",
+    "whatItIs": "Beetles are the quiet workhorse of summer terrestrial fishing. They are abundant in streamside vegetation everywhere, they fall in constantly, and they are heavy enough that they sink or ride awash rather than perching on the surface. Trout eat them with no hesitation at all — a beetle is a solid mouthful with no legs thrashing and nothing to inspect. On small wooded streams in the Appalachians they are arguably the single most useful fly in the box from June to September, and on hard-fished eastern limestone water a sunk beetle takes fish that have refused mayfly imitations all morning.",
+    "size": "Hook sizes 12 to 18",
+    "colour": "Black above all, with peacock, green and iridescent versions that match Japanese beetles",
+    "stages": [
+      {
+        "name": "Adult",
+        "note": "The only stage anglers fish. Falls in from overhanging trees and banks."
+      },
+      {
+        "name": "Drowned",
+        "note": "Beetles sink readily. Fished just subsurface they are more realistic than floating."
+      }
+    ],
+    "when": [
+      {
+        "window": "June",
+        "what": "Beetles become numerous as vegetation thickens. Fishing improves through the month."
+      },
+      {
+        "window": "July – August",
+        "what": "Peak, especially on streams with heavy overhanging cover."
+      },
+      {
+        "window": "September",
+        "what": "Still strong, and overlapping with ants and hoppers."
+      },
+      {
+        "window": "First frost",
+        "what": "Finished for the year, like all terrestrials."
+      }
+    ],
+    "where": "Wooded streams above all: Shenandoah National Park, the Smokies, Pennsylvania limestone creeks, New England hill streams, the Driftless coulees. The Virginia, Pennsylvania and Maryland pages all name terrestrials in their summer calendars.",
+    "howToFish": "Drift it tight to the bank, under the branches, where the naturals actually fall. Add a tiny strike indicator or fish it behind a visible dry if you cannot track it, because a sunk beetle is invisible and you will miss takes. A deliberate plop on landing helps rather than hurts — a beetle hitting the water makes a noise, and trout have learned what that noise means.",
+    "flies": [
+      "beetle",
+      "ant",
+      "parachute-adams",
+      "elk-hair-caddis"
+    ],
+    "states": [
+      "virginia",
+      "pennsylvania",
+      "maryland",
+      "north-carolina",
+      "wisconsin"
+    ],
+    "tips": [
+      "Cast under the branches, not into the middle of the river. That is where beetles fall.",
+      "Let it sink. A beetle riding high is the wrong silhouette.",
+      "If you cannot see it, fish it eighteen inches behind a visible dry."
+    ]
+  },
+  {
+    "slug": "scud-and-sowbug",
+    "name": "Scud and Sowbug",
+    "aka": [
+      "Freshwater shrimp",
+      "Cressbug",
+      "Gammarus"
+    ],
+    "group": "Crustacean",
+    "scientific": "Gammarus and Asellus",
+    "answer": "Scuds and sowbugs are small freshwater crustaceans that live year-round in weedy spring creeks and tailwaters. They do not hatch, so trout eat them every day of the year, and on rivers like the Bighorn and the Green they can make up the majority of a trout's diet. Hook sizes 12 to 18.",
+    "summary": "They never hatch, so trout eat them every day. On weedy tailwaters and spring creeks they can be most of a trout's diet.",
+    "whatItIs": "Scuds and sowbugs are crustaceans rather than insects, and that single fact is why they matter so much. They have no emergence, no season and no life cycle an angler needs to track — they simply live in the weed beds all year and get dislodged into the current, which means a trout in a weedy tailwater is eating them every day of its life. Scuds are laterally flattened and swim in short darts; sowbugs are flattened top to bottom and crawl. Both are grey, olive, tan or pinkish-orange, and the orange ones are usually dead or dying, which is why a pink scud works so well.",
+    "size": "Hook sizes 12 to 18",
+    "colour": "Olive, grey and tan alive; pink to orange when dead or egg-laden",
+    "stages": [
+      {
+        "name": "Scud",
+        "note": "Curls when at rest, straightens when swimming. Fish a straighter profile than most patterns suggest."
+      },
+      {
+        "name": "Sowbug",
+        "note": "Flat, grey and slower. The staple food of the Arkansas and Missouri tailwaters."
+      },
+      {
+        "name": "Dead or dying",
+        "note": "Turns orange-pink. A pink scud is not an attractor — it imitates a real, very edible thing."
+      }
+    ],
+    "when": [
+      {
+        "window": "All year",
+        "what": "There is no season. Scuds and sowbugs are available every day on the waters that hold them."
+      },
+      {
+        "window": "Winter",
+        "what": "Most important, because almost nothing else is hatching and trout still need to eat."
+      },
+      {
+        "window": "After high water",
+        "what": "A rise in flow tears weed apart and washes crustaceans loose. The best scud fishing of all."
+      }
+    ],
+    "where": "Weedy tailwaters and spring creeks: the Bighorn, the Green below Flaming Gorge, the San Juan, the White and Norfork in Arkansas, Lake Taneycomo, the Pennsylvania limestone creeks, and the Driftless spring creeks of Wisconsin, Minnesota and Iowa.",
+    "howToFish": "Dead drift it deep, close to the bottom and close to the weed. This is nymphing without a hatch to time, so the variables are depth and drift rather than timing. Fish it immediately after a flow increase if you can — a rising tailwater dislodges crustaceans by the thousand and the trout know it. On spring creeks, a scud drifted along the edge of a weed bed is the most reliable fly in the box.",
+    "flies": [
+      "scud",
+      "zebra-midge",
+      "san-juan-worm",
+      "hares-ear-nymph"
+    ],
+    "states": [
+      "arkansas",
+      "utah",
+      "montana",
+      "new-mexico",
+      "wisconsin"
+    ],
+    "tips": [
+      "Fish it straight, not curled. A curled scud is a resting one, and trout eat the swimming ones.",
+      "Orange and pink are realistic, not gaudy. That is the colour of a dead scud.",
+      "The hours after a flow increase are the best scud fishing you will get."
+    ]
+  },
+  {
+    "slug": "baitfish",
+    "name": "Baitfish and Sculpin",
+    "aka": [
+      "Minnow",
+      "Streamer",
+      "Sculpin"
+    ],
+    "group": "Baitfish",
+    "scientific": "Cottus, Notropis and others",
+    "answer": "Baitfish and sculpins are the largest food a trout eats regularly, and the reason streamer fishing exists. Big trout become fish-eaters as they grow, which is why streamers catch fewer fish but larger ones. Best in high or coloured water, in autumn, and at first and last light.",
+    "summary": "The largest regular meal a trout gets, and the reason streamers exist. Fewer fish, bigger fish, best in coloured water and autumn.",
+    "whatItIs": "Once a trout passes roughly sixteen inches, insects stop paying their way and fish become the efficient meal. Sculpins are the most important of them in most trout rivers: bottom-dwelling, big-headed, poor swimmers that live under rocks and get exposed when the flow changes. Alongside them are dace, shiners, juvenile trout and whitefish. Fishing a streamer is a deliberate trade — you will get far fewer takes than nymphing, and the ones you get will average much larger, because you have stopped fishing for the whole population and started fishing for the fish that eat other fish.",
+    "size": "Hook sizes 2 to 10, and larger on big western rivers",
+    "colour": "Olive, brown, black, white and yellow; dark in coloured water, light in clear",
+    "stages": [
+      {
+        "name": "Sculpin",
+        "note": "Bottom-hugging and clumsy. Fished deep and slow along the bank, with pauses."
+      },
+      {
+        "name": "Minnow and dace",
+        "note": "Mid-column swimmers. Fished faster, with a more even retrieve."
+      },
+      {
+        "name": "Juvenile trout",
+        "note": "Big browns eat their own. A brown-trout-coloured streamer in autumn is not a joke."
+      },
+      {
+        "name": "Leech",
+        "note": "Not a fish, but fished the same way and often on the same day. A black woolly bugger covers both."
+      }
+    ],
+    "when": [
+      {
+        "window": "March – April",
+        "what": "High, cold, coloured water. Fish slow and deep, right against the bank."
+      },
+      {
+        "window": "May – August",
+        "what": "First and last light, and any day the river comes up or colours after rain."
+      },
+      {
+        "window": "September – November",
+        "what": "The best of the year. Pre-spawn browns get aggressive and territorial."
+      },
+      {
+        "window": "Winter",
+        "what": "Slow and deep. Few takes, but the takes are from the largest fish in the river."
+      }
+    ],
+    "where": "Every trout river. The famous streamer fisheries are the big western rivers — Montana's Missouri and Yellowstone, Arkansas's White, Kentucky's Cumberland — but a woolly bugger catches fish in a Pennsylvania limestone creek too.",
+    "howToFish": "Get it to the bank and get it deep. Most streamer fish come within a few feet of the edge or a structure, and most anglers fish too far out and too fast. Vary the retrieve until something answers, and build in pauses — a huge proportion of takes come on the pause, when the fly drops like a wounded fish. Use heavier tippet than feels necessary; 0X to 3X is normal, and the fish are not inspecting.",
+    "flies": [
+      "woolly-bugger",
+      "clouser-minnow",
+      "muddler-minnow",
+      "balanced-leech"
+    ],
+    "states": [
+      "montana",
+      "arkansas",
+      "kentucky",
+      "maine",
+      "alaska"
+    ],
+    "tips": [
+      "Fish the bank. Most streamer eats happen within a rod length of the edge.",
+      "The pause is the trigger. A fly that never stops gets followed and refused.",
+      "Coloured water is an opportunity, not a problem. It is the best streamer condition there is."
+    ]
+  },
+  {
+    "slug": "mouse",
+    "name": "Mouse",
+    "aka": [
+      "Mousing",
+      "Night fishing"
+    ],
+    "group": "Other",
+    "scientific": "Peromyscus and voles",
+    "answer": "Mice and voles swim across rivers at night and fall in from banks, and the largest brown trout in a river will take one off the surface in the dark. Mousing is a night fishery, it catches very few fish, and the fish it catches are the ones nothing else will reach.",
+    "summary": "A night fishery for the biggest brown trout in the river. Very few takes, and the takes are from fish nothing else reaches.",
+    "whatItIs": "Mousing is the most extreme form of the same logic that drives streamer fishing: the biggest trout in a river feed at night, on the largest prey available, in the places they feel safe. Mice and voles genuinely do swim across rivers and fall off undercut banks, and a big brown that will not show itself in daylight will take one with a noise that anglers remember for years. It is a specialist pursuit with a low hit rate. In Michigan it is a tradition on the Au Sable and the Manistee; in Alaska it is a standard tactic for Bristol Bay rainbows in high summer.",
+    "size": "Hook sizes 2 to 6, tied on deer hair or foam",
+    "colour": "Natural brown, grey and black. Colour matters far less than silhouette and wake.",
+    "stages": [
+      {
+        "name": "Swimming mouse",
+        "note": "The target. Fished across and down on a tight line, waking across the surface."
+      },
+      {
+        "name": "Struggling mouse",
+        "note": "A pause or a twitch mid-swing imitates one in trouble, and often draws the take."
+      }
+    ],
+    "when": [
+      {
+        "window": "June – August",
+        "what": "The season. Warm nights, low light and active fish. Moonless nights are usually better."
+      },
+      {
+        "window": "Full dark",
+        "what": "Not dusk. The best fishing often starts an hour after you can no longer see your fly."
+      },
+      {
+        "window": "Daylight",
+        "what": "Occasionally works in Alaska and on heavily wooded streams, but it is a night technique."
+      }
+    ],
+    "where": "Michigan's Au Sable and Manistee are the historic home of it. Alaska's Bristol Bay rivers in summer, Montana's larger rivers at night, and any river with a population of big nocturnal browns.",
+    "howToFish": "Cast across and slightly down, and swim the fly back with a steady tension so it leaves a wake. Do not strike at the sound — wait until you feel weight, which is the hardest discipline in fly fishing. Walk the water in daylight first so you know where you are standing. Use heavy tippet, 0X or 1X, and expect to catch nothing on most nights.",
+    "flies": [
+      "deer-hair-mouse",
+      "woolly-bugger",
+      "muddler-minnow"
+    ],
+    "states": [
+      "michigan",
+      "alaska",
+      "montana",
+      "maine",
+      "wisconsin"
+    ],
+    "tips": [
+      "Do not strike at the splash. Wait for weight.",
+      "Scout the run in daylight. You will be wading it blind.",
+      "A moonless night beats a bright one, and most nights you will catch nothing."
+    ]
+  },
+  {
+    "slug": "egg",
+    "name": "Egg",
+    "aka": [
+      "Roe",
+      "Glo-bug",
+      "Beads"
+    ],
+    "group": "Other",
+    "scientific": "Salmonid ova",
+    "answer": "Trout eat the eggs of spawning fish, and an egg pattern is the most effective fly in the country during and after a salmon, steelhead or trout spawning run. It is not a hatch, it is a food supply, and it works from autumn through spring depending on which fish is spawning.",
+    "summary": "Not a hatch but a food supply. During a spawning run an egg pattern is the most effective fly in the country.",
+    "whatItIs": "Spawning fish produce vast numbers of eggs and a great many of them wash loose, and every trout downstream knows it. In Alaska, rainbows spend the autumn holding behind sockeye and eating what drifts back. In the Great Lakes tributaries, resident trout and steelhead follow salmon runs for the same reason. On western tailwaters, brown trout spawn in autumn and rainbows in spring, and both produce weeks of egg fishing. An egg pattern is often dismissed as unsporting, which is a judgment about taste rather than about whether trout eat them — they do, enormously.",
+    "size": "Hook sizes 8 to 16, or a bead of 6 to 10 millimetres",
+    "colour": "Orange, peach, chartreuse, pale pink and cream. Faded cream imitates a dead egg and often outfishes bright ones.",
+    "stages": [
+      {
+        "name": "Fresh egg",
+        "note": "Bright orange and translucent. Matched by a fresh-coloured bead or yarn egg."
+      },
+      {
+        "name": "Dead egg",
+        "note": "Pale, opaque and cream-white. Frequently the better fly after a run has been going a while."
+      },
+      {
+        "name": "Flesh",
+        "note": "After a Pacific salmon run, decaying flesh drifts too, and a flesh fly takes over from the egg."
+      }
+    ],
+    "when": [
+      {
+        "window": "August – October",
+        "what": "Alaska. Sockeye and other Pacific salmon spawn, and rainbows feed behind them."
+      },
+      {
+        "window": "September – December",
+        "what": "Great Lakes tributaries and western tailwaters. Salmon and brown trout spawning."
+      },
+      {
+        "window": "March – May",
+        "what": "Rainbow and steelhead spawning. The spring egg season on tailwaters and the Great Lakes."
+      },
+      {
+        "window": "Rest of the year",
+        "what": "Not a factor, and an egg fished out of season is just an attractor."
+      }
+    ],
+    "where": "Alaska above all, then the Great Lakes tributaries of Michigan, Ohio, Indiana, New York and Minnesota, and the tailwaters of Arkansas, Missouri and Kentucky during the autumn brown trout spawn.",
+    "howToFish": "Dead drift it on the bottom, downstream of spawning fish rather than among them. The ethical point matters here and is simple: do not fish to fish that are actively on a redd, and do not wade through gravel where eggs are. Fish the run below instead, which is where the eating fish are anyway, and where the biggest trout of the year are very often sitting.",
+    "flies": [
+      "egg-pattern",
+      "san-juan-worm",
+      "woolly-bugger",
+      "zebra-midge"
+    ],
+    "states": [
+      "alaska",
+      "michigan",
+      "ohio",
+      "arkansas",
+      "new-york"
+    ],
+    "tips": [
+      "Fish below the redds, never on them. The feeding fish are downstream anyway.",
+      "A pale, dead-looking egg often beats a bright one after the first week of a run.",
+      "After a Pacific salmon run finishes, switch from eggs to flesh."
+    ]
+  },
+  {
+    "slug": "worm",
+    "name": "Aquatic Worm",
+    "aka": [
+      "San Juan worm",
+      "Annelid",
+      "Squirmy"
+    ],
+    "group": "Other",
+    "scientific": "Class Oligochaeta",
+    "answer": "Aquatic worms live in river silt and get washed into the current whenever flows rise or sediment is disturbed. They are available all year, they need no hatch, and a worm pattern is among the most effective flies in high or dirty water anywhere in the country. Hook sizes 8 to 14.",
+    "summary": "Real, abundant and available every day of the year. The fly to reach for when the river comes up or colours after rain.",
+    "whatItIs": "Aquatic worms are genuine river inhabitants, not a garden worm borrowed for the occasion. They live in silt and gravel in enormous numbers, particularly in tailwaters and nutrient-rich spring creeks, and they get dislodged whenever the flow rises, a dam releases or a storm puts colour in the water. That is the key to fishing them: a worm is a high-water fly. It was popularised on the San Juan in New Mexico, where it remains the most-fished pattern on the river, and it has the same reputation for being unsporting that the egg has, and the same defence — the trout are genuinely eating them.",
+    "size": "Hook sizes 8 to 14",
+    "colour": "Red, wine, pink, brown and cream",
+    "stages": [
+      {
+        "name": "Drifting worm",
+        "note": "Washed loose and tumbling. Fished dead drift on the bottom, with enough weight to stay there."
+      },
+      {
+        "name": "After high water",
+        "note": "The hours after a flow increase are when worms are most available and the fishing is best."
+      }
+    ],
+    "when": [
+      {
+        "window": "All year",
+        "what": "Worms do not hatch and are never out of season."
+      },
+      {
+        "window": "After rain",
+        "what": "The best conditions. Rising, colouring water washes worms into the drift."
+      },
+      {
+        "window": "After a dam release",
+        "what": "The tailwater equivalent, and the reason the San Juan worm exists."
+      },
+      {
+        "window": "Spring runoff",
+        "what": "High dirty water where nothing else is visible. A worm is often the only fly that works."
+      }
+    ],
+    "where": "Tailwaters and rich spring creeks above all: the San Juan in New Mexico, the White and Norfork in Arkansas, the Cumberland in Kentucky, Taneycomo in Missouri, and the Driftless creeks. It works in freestone rivers too, whenever they rise.",
+    "howToFish": "Fish it deep, dead drift, with more weight than you think. In high water, trout move to the edges and the slow seams, so fish the soft water rather than the main current you would fish at normal flow. It is the first fly to try when you arrive at a river that has come up overnight and the second fly to try when nothing else has worked at normal flow.",
+    "flies": [
+      "san-juan-worm",
+      "green-weenie",
+      "scud",
+      "egg-pattern"
+    ],
+    "states": [
+      "new-mexico",
+      "arkansas",
+      "kentucky",
+      "missouri",
+      "colorado"
+    ],
+    "tips": [
+      "It is a high-water fly. Reach for it when the river rises or colours.",
+      "Fish the soft edges in high water, not the main current.",
+      "Aquatic worms are real and abundant. This is imitation, not trickery."
+    ]
+  }
+]

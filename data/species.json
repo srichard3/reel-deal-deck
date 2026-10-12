@@ -1,0 +1,669 @@
+[
+  {
+    "slug": "rainbow-trout",
+    "name": "Rainbow Trout",
+    "scientific": "Oncorhynchus mykiss",
+    "aka": [
+      "Redband",
+      "Bow"
+    ],
+    "family": "Trout",
+    "native": "Native to Pacific drainages of western North America, from Alaska to northern Mexico. Introduced almost everywhere else on earth.",
+    "answer": "The rainbow trout is a silver fish with a pink lateral stripe and small black spots scattered over the back, tail and fins. It is native to the Pacific slope of North America and is now the most widely stocked trout in the world. Steelhead are the same species, having gone to sea and returned.",
+    "summary": "The most widely stocked trout on earth, native only to the Pacific slope. Pink stripe, spots on the tail, and the same species as a steelhead.",
+    "whatItIs": "The rainbow is the trout most people picture, and almost none of its worldwide range is natural. It evolved in the rivers of the Pacific slope, and in the 1870s and 1880s eggs taken from California's McCloud River were shipped east and then abroad, which is why rainbows now swim in New Zealand, Patagonia, Japan and most of Europe. It is hardy, it tolerates warmer water than a brook trout, and it grows fast on hatchery feed, which is exactly why it became the default stocked fish. In its native range it still exists as wild redband and coastal strains, and those fish are a different proposition from a stocked one.",
+    "identify": [
+      {
+        "feature": "Lateral stripe",
+        "note": "A pink to red band along the flank, strongest on spawning fish and faint on lake and sea-run fish."
+      },
+      {
+        "feature": "Spots",
+        "note": "Small black spots scattered over the back, the dorsal fin and — crucially — across the whole tail."
+      },
+      {
+        "feature": "Tail",
+        "note": "Radiating rows of spots across the entire tail. This is the quickest way to separate it from a brown."
+      },
+      {
+        "feature": "No red adipose border",
+        "note": "Unlike a cutthroat, no red or orange slash under the jaw."
+      }
+    ],
+    "range": "Wild and native through the Pacific Northwest, Alaska, California and the interior redband waters of Oregon, Idaho and Nevada. Wild and self-sustaining but introduced across the Rockies, the Great Lakes, the Ozarks and parts of Appalachia. Stocked in every state in this guide that stocks trout at all.",
+    "status": "Secure as a species and abundant. Several native inland redband and coastal strains are of conservation concern in their home drainages, and some are managed under their own rules.",
+    "diet": "Aquatic insects for most of its life — mayfly and caddis nymphs, midges, and adults on the surface. Larger fish add scuds, crustaceans, eggs and baitfish, and in tailwaters a rainbow may live almost entirely on midges and scuds.",
+    "size": "Typically 10 to 18 inches in rivers. Twenty inches is a good fish anywhere; tailwater and lake fish exceed ten pounds.",
+    "howToCatch": "Rainbows feed in the current and hold in faster water than a brown will tolerate, so fish the riffles and the seams. They are the most willing of the trout to take a dry fly and the most forgiving of an imperfect drift, which is why they are the fish most anglers catch first. On tailwaters they become extremely selective to small food, and a size 20 midge and 6X is a normal rig for a fish that would take a size 10 attractor in a freestone river.",
+    "flies": [
+      "parachute-adams",
+      "pheasant-tail-nymph",
+      "zebra-midge",
+      "elk-hair-caddis",
+      "woolly-bugger",
+      "scud"
+    ],
+    "states": [
+      "colorado",
+      "arkansas",
+      "utah",
+      "pennsylvania",
+      "california"
+    ],
+    "tips": [
+      "Spots across the whole tail means rainbow. A brown's tail is nearly clean.",
+      "They hold in faster water than browns. Fish the riffle, not the slow pool.",
+      "A steelhead is a rainbow that went to sea. Same species, different life history."
+    ]
+  },
+  {
+    "slug": "brown-trout",
+    "name": "Brown Trout",
+    "scientific": "Salmo trutta",
+    "aka": [
+      "Brownie",
+      "German brown",
+      "Loch Leven"
+    ],
+    "family": "Trout",
+    "native": "Native to Europe, North Africa and western Asia. First planted in United States waters in 1884, in a tributary of Michigan's Pere Marquette.",
+    "answer": "The brown trout is a buttery gold-brown fish with dark spots and distinctive red or orange spots ringed in pale halos, and an almost unspotted tail. It is not native to North America, it is the wariest of the common trout, and it grows larger and lives longer than the others.",
+    "summary": "Not native, the hardest to fool, and the one that grows biggest. Red spots in pale halos, and a tail that is nearly clean.",
+    "whatItIs": "The brown trout is a European fish that has become the backbone of American trout fishing. Eggs from Germany reached the United States in the 1880s, and the first planting went into a tributary of Michigan's Pere Marquette in 1884. It took hold because it tolerates warmer, siltier water than a brook trout and is far harder to catch than a rainbow — a combination that let it survive rivers that had been logged, dammed and warmed. A big brown is largely nocturnal, territorial and intolerant of mistakes, which is why it has a reputation among anglers out of proportion to its numbers.",
+    "identify": [
+      {
+        "feature": "Red spots",
+        "note": "Orange to red spots ringed with pale halos along the flank. No other common trout has them."
+      },
+      {
+        "feature": "Tail",
+        "note": "Almost unspotted, or lightly spotted at the top only. The clearest field mark."
+      },
+      {
+        "feature": "Colour",
+        "note": "Butter-yellow to olive-brown flanks, darker on the back, often brassy in low water."
+      },
+      {
+        "feature": "Jaw",
+        "note": "Large males develop a pronounced hooked kype in autumn."
+      }
+    ],
+    "range": "Wild and self-sustaining across almost every trout region in the lower 48: the Driftless spring creeks, the Catskills and Pennsylvania limestone, the southern Appalachians, the Ozark tailwaters, and the whole Rocky Mountain West. Rare in Alaska.",
+    "status": "Secure and in places too successful — brown trout compete with and prey on native brook and cutthroat trout, and several states manage them as a problem in headwater streams where natives are being restored.",
+    "diet": "Insects when small; fish, crayfish and anything else that moves once past about sixteen inches. A large brown is a predator first and an insect feeder second, which is why streamers catch disproportionately big ones.",
+    "size": "Twelve to twenty inches in most rivers. Tailwaters produce fish in double figures; the world record for a river-caught brown came from Arkansas's Little Red at 40 pounds 4 ounces in 1992.",
+    "howToCatch": "Fish low light and awkward water. Browns hold under cut banks, beneath overhanging trees and against structure rather than out in the open riffle, and the biggest ones feed at night. A streamer stripped along the bank at dawn, dusk or in coloured water is the classic way to find a large one. In daylight they are the fish most likely to refuse a fly for reasons you will never identify, so fine tippet and a long drift matter more than pattern.",
+    "flies": [
+      "woolly-bugger",
+      "muddler-minnow",
+      "pheasant-tail-nymph",
+      "elk-hair-caddis",
+      "blue-wing-olive",
+      "deer-hair-mouse"
+    ],
+    "states": [
+      "arkansas",
+      "michigan",
+      "pennsylvania",
+      "wisconsin",
+      "kentucky"
+    ],
+    "tips": [
+      "A nearly clean tail and red spots in halos means brown trout.",
+      "The big ones feed at night. Daylight fishing is for the small ones.",
+      "They sit against structure, not in open water. Fish the awkward casts."
+    ]
+  },
+  {
+    "slug": "brook-trout",
+    "name": "Brook Trout",
+    "scientific": "Salvelinus fontinalis",
+    "aka": [
+      "Brookie",
+      "Speckled trout",
+      "Speck",
+      "Squaretail"
+    ],
+    "family": "Char",
+    "native": "Native to eastern North America, from the Appalachians and the upper Midwest north through eastern Canada. Introduced widely in the West.",
+    "answer": "The brook trout is a char, not a true trout, and is the only trout native to most of the eastern United States. It has pale worm-like markings on a dark green back, red spots in blue halos, and white leading edges on orange fins. It needs the coldest, cleanest water of any of them.",
+    "summary": "A char, not a trout, and the only native trout across most of the East. Worm-like markings, blue-haloed red spots, white-edged fins.",
+    "whatItIs": "The brook trout is the native fish of the eastern mountains and the upper Midwest, and it is the one with the strictest requirements: cold, clean, well-oxygenated water, and not much competition. Logging, warming and the arrival of brown and rainbow trout pushed it steadily upstream, and in much of its range it now survives in the headwaters above where the introduced fish can live — small streams, high altitude, small fish. Maine is the exception and the stronghold, holding the great majority of the country's remaining wild brook trout ponds. It is also, by common consent, the most beautiful freshwater fish in North America.",
+    "identify": [
+      {
+        "feature": "Vermiculation",
+        "note": "Pale worm-like squiggles over a dark olive-green back. Unmistakable and unique among the trouts."
+      },
+      {
+        "feature": "Red spots in blue halos",
+        "note": "Scattered along the flank. A brown has red spots in pale halos; a brookie's are ringed in blue."
+      },
+      {
+        "feature": "Fins",
+        "note": "Orange fins with a crisp white leading edge followed by a black line. The best quick field mark."
+      },
+      {
+        "feature": "Tail",
+        "note": "Square or barely forked — hence \"squaretail\"."
+      }
+    ],
+    "range": "Native from Georgia's mountains north through the Appalachians, the Great Lakes states and New England to Labrador. Introduced and wild in the Rockies, the Sierra and the Black Hills, where it is often small, abundant and considered a nuisance to native cutthroat.",
+    "status": "Secure as a species, but the Southern Appalachian strain has lost most of its historic range to warming, logging and introduced trout, and is the subject of restoration work from Georgia to Virginia. Sea-run brook trout — salters — survive in only a handful of coastal streams.",
+    "diet": "Opportunistic and not fussy. Insects of every stage, terrestrials falling from overhanging cover, and in Maine ponds, smelt. Brook trout in headwater streams eat whatever arrives, which is why they are the easiest trout to catch on a dry fly.",
+    "size": "Six to ten inches in headwater streams, and that is normal rather than disappointing. Maine ponds and Labrador rivers produce fish over four pounds.",
+    "howToCatch": "Fish small water, upstream, with short casts and a visible dry fly. In the mountain streams where most brook trout live, presentation matters far less than stealth and approach — the fish will take almost any reasonable dry, but it will not take anything if it saw you coming. A royal wulff or a parachute Adams drifted into pocket water is a complete method for an entire summer.",
+    "flies": [
+      "royal-wulff",
+      "parachute-adams",
+      "elk-hair-caddis",
+      "green-weenie",
+      "ant",
+      "beetle"
+    ],
+    "states": [
+      "maine",
+      "north-carolina",
+      "virginia",
+      "west-virginia",
+      "vermont"
+    ],
+    "tips": [
+      "White-edged orange fins settles it instantly. Nothing else has them.",
+      "They are char, which is why they are patterned in light on dark rather than dark on light.",
+      "Small fish in small water is the normal result. Measure the day differently."
+    ]
+  },
+  {
+    "slug": "cutthroat-trout",
+    "name": "Cutthroat Trout",
+    "scientific": "Oncorhynchus clarkii",
+    "aka": [
+      "Cutt",
+      "Native"
+    ],
+    "family": "Trout",
+    "native": "Native to the interior West and the Pacific coast of North America, in fourteen recognised subspecies occupying distinct drainages.",
+    "answer": "The cutthroat is the native trout of the American West, identified by a red or orange slash under each side of the lower jaw. It exists as many subspecies in separate drainages, several of which are threatened, and it is generally the most willing of all the trout to take a dry fly.",
+    "summary": "The native trout of the West, named for the red slash under the jaw. Many subspecies, several threatened, and the most willing riser of them all.",
+    "whatItIs": "Cutthroat is less one fish than a family of them. Isolated in separate drainages as the West dried and glaciated, they diverged into subspecies that an angler meets as regional fish: Yellowstone cutthroat in the Yellowstone and Snake drainages, westslope west of the Divide, Lahontan in the Great Basin, Bonneville in Utah, Colorado River cutthroat on the Western Slope, Rio Grande cutthroat in New Mexico, greenback in Colorado's Front Range, and the Snake River fine-spotted in Wyoming. They share the throat slash and a reputation for rising freely — cutthroat evolved in nutrient-poor water where hesitating over a mayfly was a bad strategy.",
+    "identify": [
+      {
+        "feature": "The slash",
+        "note": "A red, orange or yellow line under each side of the lower jaw. Sometimes faint, but it is the defining mark."
+      },
+      {
+        "feature": "Spotting",
+        "note": "Varies by subspecies — sparse and large on Yellowstone fish, dense and fine on Snake River fine-spotted."
+      },
+      {
+        "feature": "Body colour",
+        "note": "Olive-gold to brassy, often with rose on the gill plate. Less silver than a rainbow."
+      },
+      {
+        "feature": "Hybrids",
+        "note": "Cutthroat and rainbow interbreed freely. A cutbow shows a faint slash and rainbow spotting."
+      }
+    ],
+    "range": "Interior and coastal West: Montana, Idaho, Wyoming, Colorado, Utah, Nevada, New Mexico, Oregon, Washington, California and Alaska. Each subspecies occupies its own drainage, and the pages for those states say which one you are likely to meet.",
+    "status": "Mixed and often fragile. Several subspecies are listed or petitioned, the greenback and Rio Grande cutthroat occupy a fraction of their historic range, and hybridisation with introduced rainbows is the main threat almost everywhere. Some recovery waters are closed or carry special rules.",
+    "diet": "Insects, and more willingly on the surface than any other trout. Larger fish in big rivers and lakes take baitfish; Lahontan cutthroat at Pyramid Lake live largely on tui chub.",
+    "size": "Ten to sixteen inches in most streams. The South Fork of the Snake and the Yellowstone produce fish over twenty; Lahontan cutthroat at Pyramid Lake pass twenty pounds.",
+    "howToCatch": "Fish a big visible dry fly and do not overthink it. Cutthroat rise to attractors other trout would inspect — a size 10 foam fly on a freestone river in July is a complete answer. They are often slower to take than a rainbow, coming up unhurriedly, which catches people out: wait for the fish to turn down before setting the hook.",
+    "flies": [
+      "chubby-chernobyl",
+      "royal-wulff",
+      "humpy",
+      "stimulator",
+      "parachute-adams",
+      "pats-rubber-legs"
+    ],
+    "states": [
+      "wyoming",
+      "idaho",
+      "montana",
+      "colorado",
+      "nevada"
+    ],
+    "tips": [
+      "Check under the jaw. The slash is the whole identification.",
+      "They rise slowly. Setting too fast is the commonest way to miss them.",
+      "Which subspecies you are catching depends on the drainage. The state pages say which."
+    ]
+  },
+  {
+    "slug": "steelhead",
+    "name": "Steelhead",
+    "scientific": "Oncorhynchus mykiss",
+    "aka": [
+      "Sea-run rainbow",
+      "Chromer"
+    ],
+    "family": "Trout",
+    "native": "Native to Pacific drainages from California to Alaska. Introduced and self-sustaining in the Great Lakes, where the lake takes the place of the ocean.",
+    "answer": "A steelhead is a rainbow trout that migrates to the ocean or a large lake, grows there, and returns to its river to spawn. It is the same species as a rainbow, far larger, bright silver when fresh, and the hardest-fighting fish most trout anglers will ever hook.",
+    "summary": "A rainbow trout that went to sea and came back bigger. Same species, bright silver, and the hardest fight in fresh water.",
+    "whatItIs": "Steelhead are not a separate species but a separate life strategy: some rainbow trout stay in their river all their lives and some run to salt water, grow fast on a far richer diet, and come back years later at six to twenty pounds. In the Great Lakes, introduced rainbows do exactly the same thing using the lake instead of the ocean, which is why Ohio, Michigan, Indiana, New York and Minnesota have steelhead fisheries. Fresh fish straight from the sea or the lake are brilliant chrome with a faint stripe; the longer they are in the river the more they colour up into something that looks like a very large rainbow.",
+    "identify": [
+      {
+        "feature": "Chrome",
+        "note": "A fresh fish is silver-white with almost no visible stripe. Colour develops with time in the river."
+      },
+      {
+        "feature": "Spots",
+        "note": "Small black spots over the back and across the whole tail, as on any rainbow."
+      },
+      {
+        "feature": "Size and build",
+        "note": "Thicker through the shoulder than a resident fish, with a deeply forked tail."
+      },
+      {
+        "feature": "Fin wear",
+        "note": "Hatchery fish usually have a clipped adipose fin. Wild fish have an intact one, and the rules often turn on this."
+      }
+    ],
+    "range": "Pacific coast rivers from California to Alaska, the Columbia basin, the Olympic Peninsula and British Columbia. In the Great Lakes, the tributaries of Ohio, Michigan, Indiana, New York, Pennsylvania, Wisconsin and Minnesota.",
+    "status": "Many wild Pacific populations are in serious decline and several are listed under the Endangered Species Act. Wild steelhead are release-only across much of the West, rivers close in-season by emergency rule, and Great Lakes fisheries are maintained by stocking.",
+    "diet": "In the ocean or lake, baitfish and crustaceans. In the river, adults feed little — they take flies out of aggression, territoriality or residual instinct rather than hunger, which is why egg patterns and swung flies work when nothing imitative does.",
+    "size": "Six to twelve pounds is typical. Great Lakes fish average six to ten; Pacific and British Columbia fish exceed twenty.",
+    "howToCatch": "Two traditions. Swinging a fly on a two-handed rod across and down covers water and produces the grab everyone remembers; nymphing an egg or a stonefly under an indicator catches more fish. Neither is wrong. What matters more is water: steelhead hold in specific, repeatable places, and learning three good runs properly beats fishing ten badly. Expect long blank days as a normal outcome rather than a failure.",
+    "flies": [
+      "egg-pattern",
+      "woolly-bugger",
+      "muddler-minnow",
+      "clouser-minnow"
+    ],
+    "states": [
+      "ohio",
+      "oregon",
+      "washington",
+      "michigan",
+      "new-york"
+    ],
+    "tips": [
+      "An intact adipose fin means a wild fish, and usually means release. Learn to check.",
+      "They are not feeding. Stop trying to match a hatch and start covering water.",
+      "Blank days are normal. The people who catch them are the people who kept going."
+    ]
+  },
+  {
+    "slug": "bull-trout",
+    "name": "Bull Trout",
+    "scientific": "Salvelinus confluentus",
+    "aka": [
+      "Dolly",
+      "Bull"
+    ],
+    "family": "Char",
+    "native": "Native to the cold rivers of the Northwest: Montana, Idaho, Washington, Oregon, Nevada and western Canada.",
+    "answer": "The bull trout is a native char of the cold Northwest, pale-spotted on a dark olive body with no black markings at all on the dorsal fin. It is listed as threatened under the Endangered Species Act, may not be targeted on most waters, and is most often hooked by accident.",
+    "summary": "A threatened native char of the cold Northwest. Pale spots, no black on the dorsal fin, and on most waters you may not fish for it.",
+    "whatItIs": "Bull trout are the char of the interior Northwest and the most demanding fish in this guide about where they live: they need very cold, very clean water with connected migration routes, and they vanished from much of their range as rivers were dammed, logged and warmed. They are predatory, long-lived and capable of travelling great distances between feeding and spawning water. For an angler the practical point is legal rather than technical — bull trout are ESA-listed, they may not be targeted on most waters, and an angler who cannot tell one from a rainbow should learn before fishing the upper rivers of Montana, Idaho or Washington.",
+    "identify": [
+      {
+        "feature": "No black on the dorsal",
+        "note": "The legal field mark. \"No black, put it back.\" A bull trout's dorsal fin has no dark spots or markings."
+      },
+      {
+        "feature": "Pale spots on dark",
+        "note": "Cream, pink or pale yellow spots on an olive-green back, like all char. Never dark spots on light."
+      },
+      {
+        "feature": "Head",
+        "note": "Large, broad and flattened relative to the body. The name is not an accident."
+      },
+      {
+        "feature": "Fins",
+        "note": "White leading edges like a brook trout, but no vermiculation on the back."
+      }
+    ],
+    "range": "Montana west of the Divide, Idaho, Washington, Oregon and a relict population in Nevada's Jarbidge River — the southernmost in the world. Strongest in the Metolius in Oregon and the Flathead system in Montana.",
+    "status": "Listed as threatened under the Endangered Species Act across its United States range. On most waters it may not be targeted at all, and incidental catches must be released immediately without being removed from the water. A few specific waters permit targeted catch and release under state rules.",
+    "diet": "Almost entirely fish once grown — sculpins, whitefish, juvenile trout and salmon. Bull trout are the apex predator of the rivers they live in.",
+    "size": "Commonly 16 to 24 inches where they are healthy; migratory fish exceed ten pounds.",
+    "howToCatch": "In most places you should not be trying. Where it is permitted, bull trout are taken on large streamers fished deep and slow, and they are famous for following a hooked trout to the net. If one takes your fly by accident, keep it in the water, unhook it quickly and let it go — and know the identification before you go, because the law turns on it.",
+    "flies": [
+      "woolly-bugger",
+      "clouser-minnow",
+      "muddler-minnow"
+    ],
+    "states": [
+      "montana",
+      "idaho",
+      "washington",
+      "oregon",
+      "nevada"
+    ],
+    "tips": [
+      "No black on the dorsal fin, put it back. Learn this before you fish the Northwest.",
+      "An incidental catch must stay in the water. Unhook it there.",
+      "They follow hooked fish. A bull trout chasing your rainbow is a sight worth having."
+    ]
+  },
+  {
+    "slug": "lake-trout",
+    "name": "Lake Trout",
+    "scientific": "Salvelinus namaycush",
+    "aka": [
+      "Togue",
+      "Mackinaw",
+      "Laker"
+    ],
+    "family": "Char",
+    "native": "Native to the deep cold lakes of Canada, the Great Lakes, New England and the northern Rockies.",
+    "answer": "The lake trout is the largest char in North America, a deep-water fish with pale spots on a dark body and a deeply forked tail. It is catchable on a fly only in the few weeks after ice-out, when it comes into the shallows, and it grows larger than any other fish in this guide.",
+    "summary": "The largest char on the continent, and reachable on a fly only in the weeks after ice-out. Pale spots, deeply forked tail.",
+    "whatItIs": "Lake trout are a cold, deep, slow-growing fish of the northern lakes, and for most of the year they live far below anything a fly line can reach. The exception is the window after ice-out, when the whole lake is cold and lake trout move into the shallows to feed, and for a few weeks they are one of the great fly-rod fish of the north. They are extremely long-lived — decades, in some populations — and slow to replace themselves, which is why big ones are usually released. In Maine they are called togue, in the upper Midwest lakers, and in the Rockies mackinaw.",
+    "identify": [
+      {
+        "feature": "Pale spots on dark",
+        "note": "Cream or grey spots on a dark green-grey body, often with a marbled appearance. Char patterning."
+      },
+      {
+        "feature": "Deeply forked tail",
+        "note": "The quickest separation from brook trout, which has a square tail."
+      },
+      {
+        "feature": "No red or pink",
+        "note": "No red spots, no pink stripe. A plain fish compared with the trouts."
+      },
+      {
+        "feature": "Size",
+        "note": "Simply larger than anything else in most of the lakes it lives in."
+      }
+    ],
+    "range": "The Great Lakes, Maine and the Adirondacks, the deep lakes of Minnesota and the Boundary Waters, and the high reservoirs and natural lakes of Montana, Wyoming, Colorado and Utah. Introduced where it is not native, sometimes disastrously.",
+    "status": "Secure overall, and in several western lakes a serious problem — lake trout introduced into Yellowstone Lake devastated the native Yellowstone cutthroat, and large-scale netting programmes now run to suppress them. Some waters require anglers to kill lake trout rather than release them.",
+    "diet": "Fish, almost exclusively, once past juvenile size. Smelt, ciscoes, whitefish and juvenile trout.",
+    "size": "Five to fifteen pounds commonly, and far larger in the big northern lakes. The largest freshwater char in North America.",
+    "howToCatch": "Fish the shallows in the weeks after ice-out, with a big streamer on a sinking line, retrieved slowly along drop-offs and rocky points. Later in the year they go deep and the fly rod stops being the right tool. Check local rules carefully: in waters where lake trout are an invasive problem, the regulations may require you to keep every one you catch.",
+    "flies": [
+      "clouser-minnow",
+      "woolly-bugger",
+      "muddler-minnow",
+      "balanced-leech"
+    ],
+    "states": [
+      "maine",
+      "minnesota",
+      "wyoming",
+      "montana",
+      "new-hampshire"
+    ],
+    "tips": [
+      "Ice-out is the window. Miss it and you need downriggers, not a fly rod.",
+      "In some western lakes they are invasive and you may be required to kill them. Check first.",
+      "Deeply forked tail and pale spots: lake trout, not brook trout."
+    ]
+  },
+  {
+    "slug": "golden-trout",
+    "name": "Golden Trout",
+    "scientific": "Oncorhynchus aguabonita",
+    "aka": [
+      "California golden",
+      "Volcano Creek golden"
+    ],
+    "family": "Trout",
+    "native": "Native to the Kern River drainage of California's southern Sierra Nevada, and nowhere else on earth.",
+    "answer": "The golden trout is California's state fish, native only to the Kern River drainage of the southern Sierra and introduced to high lakes across the West. It is brilliant gold and red with dark parr marks retained into adulthood, it lives above 10,000 feet, and reaching one usually means walking.",
+    "summary": "California's state fish, native to one drainage and nowhere else. Brilliant gold and red, above 10,000 feet, and you walk to it.",
+    "whatItIs": "The golden trout is the most striking freshwater fish in North America and the hardest of the common trout to reach. Its natural range is tiny — the Kern River drainage in the southern Sierra Nevada — but it was carried by bucket and packhorse into high lakes across the Sierra, the Wind Rivers of Wyoming and parts of Montana and Idaho, where it survives in alpine water too cold and sterile for anything else. The fish are small, slow-growing and dazzling: gold flanks, a crimson lateral band, orange fins and the dark oval parr marks most trout lose as juveniles.",
+    "identify": [
+      {
+        "feature": "Colour",
+        "note": "Deep gold flanks with a bright red-orange lateral band and red on the cheeks and belly."
+      },
+      {
+        "feature": "Parr marks",
+        "note": "Dark oval marks along the flank, retained into adulthood. No other adult trout keeps them."
+      },
+      {
+        "feature": "Fins",
+        "note": "Orange to red fins, often with white tips on the pelvic and anal fins."
+      },
+      {
+        "feature": "Spots",
+        "note": "Sparse, concentrated towards the tail and the back."
+      }
+    ],
+    "range": "Native to the Kern drainage in California. Introduced and self-sustaining in the high lakes of the Sierra Nevada, Wyoming's Wind River Range, and scattered alpine waters in Montana, Idaho and Washington.",
+    "status": "Of conservation concern in its native range, where hybridisation with introduced rainbow trout and competition from brown trout have reduced genetically pure populations to a handful of headwater streams. The Golden Trout Wilderness exists largely to protect them.",
+    "diet": "Whatever the short alpine summer provides — midges, small mayflies, terrestrials blown onto the lake, and in some waters freshwater shrimp.",
+    "size": "Six to twelve inches is typical and entirely normal. A fish over sixteen inches from a high lake is exceptional.",
+    "howToCatch": "Walk. This is a backpacking fishery — multi-day trips into the Golden Trout Wilderness or the Wind Rivers, and a season that lasts from the thaw in July to the first snows in September. The fishing itself is easy: these fish see almost nobody and will take a small dry fly readily. Carry a light rod, a box of small attractors, and expect altitude to be the hard part rather than the trout.",
+    "flies": [
+      "royal-wulff",
+      "parachute-adams",
+      "griffiths-gnat",
+      "humpy",
+      "elk-hair-caddis"
+    ],
+    "states": [
+      "california",
+      "wyoming",
+      "montana",
+      "idaho"
+    ],
+    "tips": [
+      "Parr marks on an adult trout means golden. Nothing else keeps them.",
+      "The season is July to September. There is snow on either side of it.",
+      "The fish are easy. The walk is the difficulty, and that is the point."
+    ]
+  },
+  {
+    "slug": "arctic-grayling",
+    "name": "Arctic Grayling",
+    "scientific": "Thymallus arcticus",
+    "aka": [
+      "Grayling",
+      "Sailfish of the north"
+    ],
+    "family": "Grayling",
+    "native": "Native to Alaska, northern Canada, and historically to Montana's upper Missouri drainage and Michigan.",
+    "answer": "The Arctic grayling is a salmonid with an enormous sail-like dorsal fin, a small mouth and a silver-purple sheen. In the lower 48 it survives natively only in Montana's Big Hole and a few connected waters; in Alaska it is abundant and rises freely to dry flies all summer.",
+    "summary": "The sail-finned salmonid. Abundant in Alaska, native in the lower 48 only in Montana's Big Hole, and a free riser all summer.",
+    "whatItIs": "Grayling are salmonids but not trout, and the enormous dorsal fin makes them unmistakable — a sail of purple and orange spotted membrane that a hooked fish uses to hold itself in the current. They were once native to Michigan and to Montana's upper Missouri; the Michigan population was extinct by the 1930s after logging and overfishing, and the Montana fluvial population in the Big Hole is now one of the last river-dwelling grayling populations in the lower 48. In Alaska and northern Canada they remain abundant, and they are among the most willing dry-fly fish anywhere.",
+    "identify": [
+      {
+        "feature": "Dorsal fin",
+        "note": "Huge, sail-like, spotted and iridescent. Nothing else in fresh water has one."
+      },
+      {
+        "feature": "Colour",
+        "note": "Silver-grey flanks with a purple or lilac sheen, and a scattering of dark spots on the shoulder."
+      },
+      {
+        "feature": "Mouth",
+        "note": "Small and delicate relative to the body, which is why hooks pull free so easily."
+      },
+      {
+        "feature": "Adipose fin",
+        "note": "Present, confirming it is a salmonid."
+      }
+    ],
+    "range": "Abundant throughout Alaska and northern Canada. In the lower 48, natively only in Montana's Big Hole and Red Rock drainages, with introduced populations in high lakes in Montana, Wyoming, Utah and Colorado.",
+    "status": "Secure in Alaska. The Big Hole fluvial population is a long-running conservation concern and the subject of a major restoration effort; the Michigan population is extinct. Special regulations apply in Montana.",
+    "diet": "Drifting insects, taken in the surface film more readily than almost any other salmonid. Grayling hold in open current and intercept whatever comes down.",
+    "size": "Ten to fourteen inches commonly. Alaskan fish reach eighteen to twenty inches and are considered large.",
+    "howToCatch": "Fish a small dry fly in open current and expect takes. Grayling are not selective and will rise repeatedly, which makes them one of the best fish for a beginner or a child. The difficulty is the mouth — it is small and soft, hooks pull out easily, and a gentle hand on a light tippet lands more fish than a firm one. In Alaska they often sit behind spawning salmon alongside the rainbows.",
+    "flies": [
+      "parachute-adams",
+      "elk-hair-caddis",
+      "griffiths-gnat",
+      "royal-wulff",
+      "pheasant-tail-nymph"
+    ],
+    "states": [
+      "alaska",
+      "montana",
+      "wyoming",
+      "utah"
+    ],
+    "tips": [
+      "The sail-like dorsal fin is the whole identification. Nothing else has it.",
+      "The mouth is soft. Play them gently or you will pull the hook.",
+      "In the lower 48 the native river population is Montana's Big Hole, and it is fragile."
+    ]
+  },
+  {
+    "slug": "dolly-varden",
+    "name": "Dolly Varden",
+    "scientific": "Salvelinus malma",
+    "aka": [
+      "Dolly"
+    ],
+    "family": "Char",
+    "native": "Native to coastal and interior waters of Alaska, British Columbia and the Pacific Northwest.",
+    "answer": "The Dolly Varden is a Pacific char with pale pink and cream spots on an olive body and white-edged fins. It is abundant in Alaska, where it follows spawning salmon upriver to feed on eggs, and it is routinely mistaken for a bull trout, which is a protected species.",
+    "summary": "An abundant Pacific char that follows salmon upriver for the eggs. Routinely confused with the protected bull trout.",
+    "whatItIs": "Dolly Varden are the common char of Alaska and the Pacific Northwest coast, named after a brightly dressed Dickens character. Many populations are anadromous, dropping to salt water to feed and returning to fresh water to overwinter and spawn, and the summer and autumn ecology of an Alaskan Dolly is organised entirely around salmon: they follow the runs upstream and eat loose eggs, growing fast and colouring up brilliantly in the process. The practical complication is that they are extremely difficult to distinguish from bull trout, which are ESA-listed — the two were considered one species until relatively recently.",
+    "identify": [
+      {
+        "feature": "Pale spots on olive",
+        "note": "Cream, pink and pale orange spots scattered on a dark olive body. Char patterning."
+      },
+      {
+        "feature": "Fins",
+        "note": "White leading edges on the lower fins, like other char."
+      },
+      {
+        "feature": "Spawning colour",
+        "note": "Autumn fish develop brilliant orange bellies and red spots; some of the most colourful fish in fresh water."
+      },
+      {
+        "feature": "Versus bull trout",
+        "note": "Very hard to separate in the field. Where both occur, treat an uncertain fish as a bull trout and release it in the water."
+      }
+    ],
+    "range": "Throughout Alaska, coastal British Columbia, and the coastal rivers of Washington and Oregon. In Alaska they are present in almost every river that holds salmon.",
+    "status": "Secure and abundant in Alaska. Southern coastal populations are less robust, and the overlap with threatened bull trout means anglers in Washington, Oregon, Idaho and Montana should know the rules for both.",
+    "diet": "Insects and small fish when young; salmon eggs and flesh once the runs begin. An autumn Dolly in Alaska is essentially an egg-feeding machine.",
+    "size": "Twelve to twenty inches commonly; sea-run fish reach several pounds.",
+    "howToCatch": "In Alaska, fish an egg pattern or a flesh fly below spawning salmon and you will catch them, often in numbers, often alongside the rainbows. Outside Alaska, be careful: where bull trout are present the rules are strict and the two species are hard to tell apart, so know the regulation for the water you are on before you cast.",
+    "flies": [
+      "egg-pattern",
+      "woolly-bugger",
+      "clouser-minnow",
+      "muddler-minnow"
+    ],
+    "states": [
+      "alaska",
+      "washington",
+      "oregon"
+    ],
+    "tips": [
+      "Where bull trout also live, assume an uncertain char is a bull trout and release it.",
+      "Follow the salmon. Dollies sit behind spawning fish and eat eggs all autumn.",
+      "Autumn spawning colour makes them one of the most beautiful fish in fresh water."
+    ]
+  },
+  {
+    "slug": "tiger-trout",
+    "name": "Tiger Trout",
+    "scientific": "Salmo trutta × Salvelinus fontinalis",
+    "aka": [
+      "Tiger"
+    ],
+    "family": "Hybrid",
+    "native": "Not native anywhere. A sterile hybrid of brown trout and brook trout, occurring rarely in the wild and produced deliberately in hatcheries.",
+    "answer": "A tiger trout is a sterile hybrid of a brown trout and a brook trout, marked with dense maze-like vermiculation across the whole body. It occurs occasionally in the wild and is stocked deliberately in several western states because it grows fast, eats aggressively and cannot reproduce.",
+    "summary": "A sterile brown-brook hybrid with maze-like markings. Stocked deliberately because it grows fast, eats hard and cannot breed.",
+    "whatItIs": "The tiger trout is a cross between a female brown trout and a male brook trout. In the wild the pairing almost never produces viable young, which makes a wild tiger a genuine rarity; in a hatchery the cross can be made reliably, and the resulting fish is sterile. That sterility is precisely why fishery managers like it: a tiger trout can be stocked into a lake to control an overpopulation of small fish without ever establishing a breeding population of its own. They are aggressive, grow quickly and fight hard, and the dense vermiculated pattern that covers the entire flank makes them unmistakable.",
+    "identify": [
+      {
+        "feature": "Vermiculation",
+        "note": "Dense maze-like markings over the whole body, not just the back. The defining feature."
+      },
+      {
+        "feature": "Colour",
+        "note": "Brassy gold to olive, with orange fins. Brighter than either parent."
+      },
+      {
+        "feature": "Tail",
+        "note": "Squared like a brook trout rather than forked."
+      },
+      {
+        "feature": "Fins",
+        "note": "Orange with white leading edges, inherited from the brook trout side."
+      }
+    ],
+    "range": "Stocked in mountain lakes and reservoirs across Utah, Wyoming, Colorado, Idaho, Montana and parts of the Northeast. Utah's Boulder Mountain lakes are the best-known tiger trout fishery in the country.",
+    "status": "Not a conservation category at all, since the fish is sterile and entirely managed. Stocking decisions are made water by water.",
+    "diet": "Aggressively piscivorous. Tigers are stocked specifically to eat stunted populations of small fish, and they do.",
+    "size": "Fourteen to twenty inches commonly in managed lakes; the best waters produce fish over five pounds.",
+    "howToCatch": "Fish a streamer, and fish it with movement. Tigers respond to aggression rather than imitation, and a leech or a baitfish pattern stripped quickly will out-produce a dead-drifted nymph most days. In the Utah mountain lakes where they are a target species, a balanced leech under an indicator is the local method and it is extremely effective.",
+    "flies": [
+      "balanced-leech",
+      "woolly-bugger",
+      "clouser-minnow",
+      "muddler-minnow"
+    ],
+    "states": [
+      "utah",
+      "wyoming",
+      "colorado",
+      "idaho"
+    ],
+    "tips": [
+      "Vermiculation over the whole flank, not just the back, means tiger.",
+      "They are sterile, which is why managers can stock them without consequences.",
+      "Fish aggressively. Imitation matters less than movement."
+    ]
+  },
+  {
+    "slug": "mountain-whitefish",
+    "name": "Mountain Whitefish",
+    "scientific": "Prosopium williamsoni",
+    "aka": [
+      "Whitey",
+      "Rocky Mountain whitefish"
+    ],
+    "family": "Whitefish",
+    "native": "Native to the rivers of the Rocky Mountain West and the Pacific Northwest, from Nevada and Utah north into Canada.",
+    "answer": "The mountain whitefish is a native salmonid of western rivers, silver-grey with large scales, a small downturned mouth and no spots. It is frequently dismissed by anglers, it is native where introduced trout are not, and it feeds through the winter when trout fishing is otherwise slow.",
+    "summary": "Native where the trout are not, silver and unspotted, and a willing winter fish that most anglers wrongly dismiss.",
+    "whatItIs": "The mountain whitefish is the most under-appreciated fish in the West. It is a true native of the rivers where rainbows and browns were introduced, it is a salmonid with an adipose fin like any trout, and it is abundant — on many western rivers whitefish outnumber trout substantially. Anglers have historically treated catching one as a disappointment, which says more about fashion than about the fish. They feed hard on nymphs through the cold months when trout are sluggish, they take a dry fly in the evening, and the small downturned mouth means they are a genuine test of a delicate presentation.",
+    "identify": [
+      {
+        "feature": "No spots",
+        "note": "Plain silver-grey flanks with large visible scales. Nothing patterned about it."
+      },
+      {
+        "feature": "Mouth",
+        "note": "Small, downturned and sub-terminal, built for picking nymphs off the bottom."
+      },
+      {
+        "feature": "Adipose fin",
+        "note": "Present — it is a salmonid, and related to the trout it swims with."
+      },
+      {
+        "feature": "Body",
+        "note": "Cylindrical and firm, with a forked tail and a short dorsal fin."
+      }
+    ],
+    "range": "Throughout the Rocky Mountain West and the interior Northwest: Montana, Idaho, Wyoming, Utah, Nevada, Colorado, Oregon and Washington, and north into Canada.",
+    "status": "Native and generally secure, though some populations have declined with warming and sedimentation. A few states have reduced limits in response.",
+    "diet": "Aquatic insect larvae and nymphs taken off the bottom, particularly midges, caddis and small mayflies. They will rise to a dry fly in the evening.",
+    "size": "Ten to sixteen inches commonly; a fish over eighteen inches is a good one.",
+    "howToCatch": "Fish small nymphs deep and dead drift, exactly as you would for trout, and expect to catch them in the slower, deeper runs. Winter is when they become genuinely useful — on a cold January day on a Montana or Idaho river, whitefish will feed when the trout will not, and a size 18 midge pupa on the bottom will keep a day alive. Take them off the hook gently; the small mouth tears easily.",
+    "flies": [
+      "zebra-midge",
+      "pheasant-tail-nymph",
+      "hares-ear-nymph",
+      "scud",
+      "elk-hair-caddis"
+    ],
+    "states": [
+      "montana",
+      "idaho",
+      "wyoming",
+      "utah",
+      "oregon"
+    ],
+    "tips": [
+      "They are native. The trout you came for usually are not.",
+      "Winter is their season. They feed when trout have stopped.",
+      "The small mouth tears easily. Handle them as carefully as a trout."
+    ]
+  }
+]

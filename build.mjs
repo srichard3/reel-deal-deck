@@ -91,6 +91,14 @@ const states = existsSync(path.join(ROOT, 'data/states.json'))
   ? JSON.parse(await read(path.join(ROOT, 'data/states.json')))
   : [];
 
+const hatches = existsSync(path.join(ROOT, 'data/hatches.json'))
+  ? JSON.parse(await read(path.join(ROOT, 'data/hatches.json')))
+  : [];
+
+const speciesList = existsSync(path.join(ROOT, 'data/species.json'))
+  ? JSON.parse(await read(path.join(ROOT, 'data/species.json')))
+  : [];
+
 const flies = existsSync(path.join(ROOT, 'data/flies.json'))
   ? JSON.parse(await read(path.join(ROOT, 'data/flies.json')))
   : [];
@@ -236,7 +244,7 @@ async function buildPages() {
       // JS page: `export const meta = {...}; export default (ctx) => htmlString`
       const mod = await import(pathToFileURL(full).href + `?t=${Date.now()}`);
       const meta = mod.meta;
-      const body = await mod.default({ site, flies, posts: allPosts, states, instagram, meta });
+      const body = await mod.default({ site, flies, posts: allPosts, states, hatches, speciesList, instagram, meta });
       await emit(meta.path, meta, body);
       continue;
     }
@@ -306,6 +314,30 @@ async function buildStates() {
   }
 }
 
+/* ---------------------------------------------------------- hatch pages -- */
+
+async function buildHatches() {
+  const tplPath = path.join(SRC, 'templates', 'hatch.mjs');
+  if (!existsSync(tplPath) || !hatches.length) return;
+  const tpl = await import(pathToFileURL(tplPath).href + `?t=${Date.now()}`);
+  for (const hatch of hatches) {
+    const { meta, body } = await tpl.default({ hatch, hatches, site, flies, states });
+    await emit(meta.path, meta, body);
+  }
+}
+
+/* -------------------------------------------------------- species pages -- */
+
+async function buildSpecies() {
+  const tplPath = path.join(SRC, 'templates', 'species.mjs');
+  if (!existsSync(tplPath) || !speciesList.length) return;
+  const tpl = await import(pathToFileURL(tplPath).href + `?t=${Date.now()}`);
+  for (const species of speciesList) {
+    const { meta, body } = await tpl.default({ species, speciesList, site, flies, states });
+    await emit(meta.path, meta, body);
+  }
+}
+
 /* ---------------------------------------------------------------- assets -- */
 
 async function copyAssets() {
@@ -354,6 +386,8 @@ const posts = (await buildPosts()) || [];
 await buildPages();
 await buildFlies();
 await buildStates();
+await buildHatches();
+await buildSpecies();
 await copyAssets();
 await buildSitemap();
 
