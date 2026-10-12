@@ -19,7 +19,7 @@ npm run build && npm run check   # must stay at 0 errors, 0 warnings
 
 | 1 | **Netlify access control.** The whole site answers `401` — `reeldealdeck.com`, `www` and the `.netlify.app` host alike. Nothing can be read, crawled or linked until this is switched off. | Ken & Audrey | Netlify → Site configuration → Access control |
 | 2 | **`NOINDEX` must stay set until the 401 comes off, and must come off after.** Order matters: lift the 401, check the live pages, then remove `NOINDEX`, redeploy, then submit the sitemap. Removing it while the site still 401s achieves nothing; leaving it on after launch means the site never ranks. | Ken & Audrey | Netlify → environment variables |
-| 3 | **Shopify Payments.** Until a payment provider is activated the store cannot take an order, so every Order button on this site leads to a dead end. | Ken & Audrey | Shopify → Settings → Payments |
+| 3 | **Shopify terms of service.** `/policies/terms-of-service` returns 404. It is the only place the fishing-information disclaimer lives, and the site now publishes licence figures for all fifty states. | Ken & Audrey | Shopify → Settings → Policies |
 
 ---
 
@@ -60,6 +60,8 @@ by inventing a figure.
 | **Where the domain points** | Done. `reeldealdeck.com` and `www` both resolve to Netlify; Shopify moved to `shop.reeldealdeck.com`. |
 | **The customer account login URL** | Set, and pointed at `/account/login?return_url=%2Fpages%2Fwholesale` rather than a bare `/account` — the latter lands a trade buyer on Shopify's hosted dashboard, which advertises the retail deck. |
 | **GitHub Pages** | Taken down 12 October 2026. Netlify is the only host. The staging mirror shipped `noindex` on every page, so nothing was indexed and there is nothing to redirect. |
+| **Shopify Payments** | Appears active. The product page renders the Shop Pay accelerated checkout, which Shopify only shows once Shopify Payments is set up. Confirm in Settings → Payments; this was checked from the storefront, not the admin, and no test order was placed. |
+| **The state tier** | Complete. All fifty states, every licence figure read from the issuing agency's own table. |
 | **Card count** | **54 unique cards** — 52 standard plus the Egg and San Juan Worm jokers, the figure printed on the tuck box. A bonus card ships on top and is never counted into the 54. `data/site.json` → `product.cardCountNote` |
 | **Pricing against cost** | $19.95 retail, $6.95 shipping, $9.97/deck by the brick and $8.97/deck by the master case are confirmed against real cost. `data/site.json` → `pricing` is the only place any of them lives. |
 | **Surnames** | Fry. Ken Fry and Audrey Fry, consistent with `brand.legalName`, Homer Fry Ranch, LLC. Full names carry the schema and the two founder cards; the running copy stays on first names. |
