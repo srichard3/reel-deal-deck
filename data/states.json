@@ -3144,5 +3144,525 @@
       "priceNote": "Figures are Fish and Game's published rates for an annual freshwater fishing licence. A transaction fee of $2.00 is added, or $2.75 when bought online, and a separate fisheries habitat fee is set by department rule. Prices change — check with the agency before you buy."
     },
     "localNote": null
+  },
+  {
+    "slug": "massachusetts",
+    "name": "Massachusetts",
+    "abbr": "MA",
+    "region": "New England",
+    "answer": "Massachusetts fly fishing is tailwater and small-river fishing, with stocked and holdover rainbow and brown trout, native brook trout in the hills, and sea-run brook trout on the Cape. The Swift, the Deerfield and the Westfield are the headline waters. A licence is required from age 15, and the Swift fishes all twelve months.",
+    "summary": "The Swift River below Quabbin — gin-clear, cold all year, and fished on size 24 flies — plus the Deerfield, and sea-run brook trout on Cape Cod.",
+    "whatMakesItDifferent": "The Swift River is one of the strangest trout rivers in the country. It drains Quabbin Reservoir, the vast water supply for Boston, and comes out cold and almost unnaturally clear in every month of the year. Trout are visible, numerous and extremely well educated, and the flies that work are small enough to be a nuisance to tie on — size 24 and down is normal rather than extreme. It is a short river fished very hard, and it is the best winter trout fishing in New England. At the other end of the state, Cape Cod holds something rarer: salters, sea-run brook trout that drop into salt water and come back, one of the last populations of their kind in the United States, kept going by habitat restoration on a handful of small coastal streams.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked widely, with strong holdover populations in the Swift and the Deerfield."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Stocked and holdover, and the largest fish in both main rivers."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Native, in small hill streams in the west and centre of the state."
+      },
+      {
+        "name": "Sea-run brook trout",
+        "note": "Salters, on a few Cape Cod and south coast streams. Rare, protected, and a conservation story."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The Connecticut and the larger ponds, and the right call in July."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Swift River",
+        "note": "Below Quabbin. Cold and clear every month, with the catch-and-release stretch below the hatchery."
+      },
+      {
+        "name": "Deerfield River",
+        "note": "Hydropower releases set the day. Check the schedule; the fishing is excellent when flows are right."
+      },
+      {
+        "name": "Westfield River",
+        "note": "Wild and Scenic, with three branches and genuine wild trout in the upper reaches."
+      },
+      {
+        "name": "Millers River",
+        "note": "Freestone water in the north-centre, recovered from a long industrial past."
+      },
+      {
+        "name": "Red Brook",
+        "note": "A small Cape stream holding salters, restored over decades. Catch and release, and fish it gently."
+      },
+      {
+        "name": "Quabbin Reservoir",
+        "note": "Enormous, cold and full of trout and salmon, with its own access rules and its own permit."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "The Swift. Midges, tiny tippet, and the only consistent trout fishing in New England in February."
+      },
+      {
+        "window": "April – May",
+        "what": "Stocking across the state, hendricksons and caddis, and the Deerfield coming good."
+      },
+      {
+        "window": "June",
+        "what": "The best all-round month. Sulphurs and caddis in the evening on the Deerfield and the Westfield."
+      },
+      {
+        "window": "July – August",
+        "what": "Most freestone water gets too warm. Fish the Swift, the Deerfield below the dam, or go for smallmouth."
+      },
+      {
+        "window": "September – December",
+        "what": "Autumn stocking, cooling water and good streamer fishing, then back to the Swift for the winter."
+      }
+    ],
+    "flies": [
+      "zebra-midge",
+      "griffiths-gnat",
+      "blue-wing-olive",
+      "elk-hair-caddis",
+      "hares-ear-nymph",
+      "clouser-minnow"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 15. It is free for residents aged 15 to 17 and for residents 70 and over.",
+      "A $5 Wildlands Conservation Stamp is added to the first resident licence bought each year, and to every non-resident licence.",
+      "Licences run the calendar year and expire on 31 December, rather than a year from purchase.",
+      "Catch-and-release and artificial-only stretches are designated individually — the Swift below the hatchery among them.",
+      "Sea-run brook trout streams carry their own protections. Treat salter water as catch and release whatever the sign says."
+    ],
+    "license": {
+      "agency": "Massachusetts Division of Fisheries and Wildlife",
+      "licenseUrl": "https://www.mass.gov/info-details/license-types-and-fees",
+      "rulesUrl": "https://www.mass.gov/info-details/freshwater-fishing-regulations",
+      "residentAnnual": "$45",
+      "nonResidentAnnual": "$55",
+      "priceYear": "2026",
+      "priceNote": "The totals are the 2026 freshwater fishing licence plus the $5 Wildlands Conservation Stamp — $40 for residents and $50 for non-residents. The stamp is added to a resident's first licence each year and to every non-resident licence. 2026 is the final step of a five-year phased fee schedule. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "kentucky",
+    "name": "Kentucky",
+    "abbr": "KY",
+    "region": "Upper South",
+    "answer": "Kentucky fly fishing is tailwater fishing, and mostly one tailwater: the Cumberland River below Wolf Creek Dam, which holds very large brown trout and fishes year-round. Hatchery Creek, the Dix and the Elkhorn fill in around it. A licence is required from age 16, and a trout permit is needed only to keep a trout.",
+    "summary": "Seventy-five miles of cold Cumberland River tailwater holding the state's biggest browns, and Hatchery Creek — a trout stream built from nothing in 2016.",
+    "whatMakesItDifferent": "Below Wolf Creek Dam the Cumberland runs cold for something like seventy-five miles, which is an unusual amount of trout water to find in a state most people associate with bourbon and bass. It produces brown trout well into the double figures, it fishes in every month, and like every tailwater it is governed by generation: the river can come up several feet quickly, and the schedule matters more than the hatch chart. The odder thing sits beside it. Hatchery Creek, below the Wolf Creek National Fish Hatchery, is a trout stream that did not exist before 2016 — a mile and a quarter of river engineered from bare ground with riffles, pools, undercut banks and meanders, built to behave like a natural stream. Very few places let you fish a river that was designed.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "The reason to come. The Cumberland grows them past ten pounds and holds them year-round."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked heavily in the Cumberland and the smaller tailwaters, and abundant."
+      },
+      {
+        "name": "Brook trout",
+        "note": "A small native population in the far eastern mountains, and stocked elsewhere."
+      },
+      {
+        "name": "Cutthroat trout",
+        "note": "Stocked into the Cumberland in small numbers, which is a surprise this far east."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "Elkhorn Creek and the Green River. Excellent, and underrated."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Cumberland River",
+        "note": "Below Wolf Creek Dam. Seventy-five miles of cold water and the biggest browns in the state."
+      },
+      {
+        "name": "Hatchery Creek",
+        "note": "Built in 2016 from bare ground. A mile and a quarter of engineered stream that fishes like a real one."
+      },
+      {
+        "name": "Dix River",
+        "note": "Below Herrington Lake. Short, cold and productive when the flow is right."
+      },
+      {
+        "name": "Elkhorn Creek",
+        "note": "Not trout. One of the best smallmouth streams in the eastern United States."
+      },
+      {
+        "name": "Red River",
+        "note": "Through the Gorge. Scenery first, fishing second, but worth a day."
+      },
+      {
+        "name": "Martins Fork",
+        "note": "Far eastern mountain water with native brook trout in the headwaters."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "Low generation and good wading on the Cumberland. Streamers for post-spawn browns."
+      },
+      {
+        "window": "April – May",
+        "what": "Caddis, and heavy generation as the reservoir sheds spring rain. Fish from a boat."
+      },
+      {
+        "window": "June – August",
+        "what": "Generation runs hard in the afternoon for power demand. Early mornings, or a boat."
+      },
+      {
+        "window": "September – October",
+        "what": "Flows settle, terrestrials work, and the wading comes back. The best weeks of the year."
+      },
+      {
+        "window": "November – December",
+        "what": "Brown trout spawn. Big fish move onto gravel — stay off it, and watch for seasonal restrictions."
+      }
+    ],
+    "flies": [
+      "scud",
+      "zebra-midge",
+      "woolly-bugger",
+      "soft-hackle",
+      "san-juan-worm",
+      "blue-wing-olive"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 16. The licence year runs 1 March to the end of February.",
+      "A trout permit is required only to keep trout. An angler fishing catch and release needs the licence alone.",
+      "Generation at Wolf Creek is scheduled by the Corps of Engineers, not by the wildlife department. Check releases before you travel and again before you wade.",
+      "Hatchery Creek has an upper catch-and-release section with its own tackle rules, and a lower section managed differently.",
+      "Seasonal restrictions protect spawning brown trout on the Cumberland in late autumn and winter."
+    ],
+    "license": {
+      "agency": "Kentucky Department of Fish and Wildlife Resources",
+      "licenseUrl": "https://fw.ky.gov/Licenses/pages/fees.aspx",
+      "rulesUrl": "https://fw.ky.gov/Fish/Pages/default.aspx",
+      "residentAnnual": "$24.31",
+      "nonResidentAnnual": "$58.14",
+      "priceYear": "2026",
+      "priceNote": "Figures are the 2026–27 rates for an annual fishing licence. A trout permit, $10.57 for residents and non-residents alike, is needed only to keep trout. Kentucky now adjusts its fees every two years against the Consumer Price Index, which is why they are not round numbers. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "south-carolina",
+    "name": "South Carolina",
+    "abbr": "SC",
+    "region": "Southeast",
+    "answer": "South Carolina fly fishing for trout is confined to the upstate: the Chattooga on the Georgia line, the steep streams of the Jocassee Gorges, and the Saluda tailwater running cold through Columbia. Brown, rainbow and a few native brook trout are the quarry. A licence is required from age 16, and there is no separate trout stamp.",
+    "summary": "Mountain trout in the upstate, the Chattooga on the Georgia line, and a cold tailwater running through the middle of Columbia.",
+    "whatMakesItDifferent": "South Carolina has trout in two places that could not be less alike. In the north-western corner, the Jocassee Gorges rise fast and hold steep, boulder-strewn streams with wild brown and rainbow trout and a few native brook trout in the highest headwaters — small water, hard walking, and nobody about. Then, two hours southeast, the Lower Saluda runs out of the bottom of Lake Murray and stays cold enough to hold trout as it passes through Columbia and joins the Congaree in sight of the city. Fishing a trout river between a highway bridge and a state capital is an odd experience, and the Saluda is one of very few places in the Southeast where it is possible. Worth knowing before you plan anything: a South Carolina freshwater licence costs residents ten dollars, the cheapest in the country among states with trout.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Wild in the upstate streams and stocked in the Saluda, where they hold over."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Wild in the gorges and stocked through the rest of the trout water."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Native Southern Appalachian strain, in the highest and coldest headwaters only."
+      },
+      {
+        "name": "Striped bass",
+        "note": "The lower Saluda and the Congaree. A different fish, and a good reason to carry a bigger rod."
+      },
+      {
+        "name": "Redeye bass",
+        "note": "Upstate rivers. Small, native, and a genuine fly-rod fish in summer."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Chattooga River",
+        "note": "Wild and Scenic, shared with Georgia. Remote, rocky and the best trout water in the state."
+      },
+      {
+        "name": "Lower Saluda River",
+        "note": "Below Lake Murray, through Columbia. Cold releases, trout and stripers, and a city skyline."
+      },
+      {
+        "name": "Chauga River",
+        "note": "Beside the Chattooga and far quieter. Steep, tight and worth the scramble."
+      },
+      {
+        "name": "Eastatoe Creek",
+        "note": "A Heritage Preserve stream in the gorges. Small wild trout in a gorge you climb into."
+      },
+      {
+        "name": "Whitewater River",
+        "note": "Short, steep and cold, dropping toward Lake Jocassee."
+      },
+      {
+        "name": "Lake Jocassee tributaries",
+        "note": "Reached by boat. Cold water, wild fish, and almost no pressure."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "November – February",
+        "what": "The Saluda fishes well and the mountain streams are low and clear. Cold mornings, few people."
+      },
+      {
+        "window": "March – April",
+        "what": "The upstate wakes up. Quill Gordons, blue quills and caddis, and stocking through the spring."
+      },
+      {
+        "window": "May",
+        "what": "The best month in the mountains. Caddis and mayflies, and the water still cold."
+      },
+      {
+        "window": "June – August",
+        "what": "Too warm for most mountain streams by midday. Fish high and early, or the Saluda, or switch to bass."
+      },
+      {
+        "window": "September – October",
+        "what": "Cooling water, terrestrials, and the Chattooga at its best before the leaf season crowds."
+      }
+    ],
+    "flies": [
+      "parachute-adams",
+      "elk-hair-caddis",
+      "green-weenie",
+      "pheasant-tail-nymph",
+      "royal-wulff",
+      "zebra-midge"
+    ],
+    "regulations": [
+      "A freshwater fishing licence is required from age 16. There is no separate trout stamp.",
+      "The licence is valid one year from the date you buy it.",
+      "Trout water is classified into put-and-take, put-grow-and-take and wild trout categories, each with its own limits and tackle rules.",
+      "The Chattooga is shared with Georgia, and a licence from either state is valid on the main river itself — but not on the tributaries.",
+      "Some of the best upstate water lies inside Heritage Preserves and carries access rules of its own."
+    ],
+    "license": {
+      "agency": "South Carolina Department of Natural Resources",
+      "licenseUrl": "https://www.dnr.sc.gov/licenses/pricingresident.html",
+      "rulesUrl": "https://www.dnr.sc.gov/regs/fishing.html",
+      "residentAnnual": "$10",
+      "nonResidentAnnual": "$35",
+      "priceYear": "2026",
+      "priceNote": "Figures are SCDNR's published rates for an annual freshwater fishing licence, valid one year from purchase. Saltwater fishing needs a separate licence. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "south-dakota",
+    "name": "South Dakota",
+    "abbr": "SD",
+    "region": "Great Plains",
+    "answer": "South Dakota fly fishing means the Black Hills, a limestone island of spring-fed streams in the middle of the Great Plains, holding brown, rainbow and brook trout. Spearfish Creek, Rapid Creek and Castle Creek are the headline waters. A licence is required from age 18, and a habitat stamp is required with it.",
+    "summary": "The Black Hills: spring-fed limestone creeks surrounded by prairie that holds no trout at all. Rapid Creek runs through the middle of Rapid City.",
+    "whatMakesItDifferent": "The Black Hills are a geological accident, and the trout fishing follows from it. An uplift of limestone and granite pushes two thousand feet above the surrounding prairie, catches more rain and snow than the plains do, and feeds a network of cold spring creeks in the middle of a landscape that otherwise holds catfish and walleye. Spearfish Creek runs through a canyon with a road beside it; Rapid Creek runs through the centre of Rapid City and then below Pactola Dam as a tailwater; Castle Creek is small enough to jump. None of it is famous, which is the point — you can fish a good brown trout stream here on a Saturday in June and see nobody. The practical catch is scale: this is a hundred miles of trout water in a state the size of England, and everything outside it is warmwater.",
+    "species": [
+      {
+        "name": "Brown trout",
+        "note": "Wild and self-sustaining through most of the Hills. The main quarry and genuinely wary."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Wild in some streams, stocked in others, and strong below Pactola."
+      },
+      {
+        "name": "Brook trout",
+        "note": "The small cold headwaters, especially in the central Hills."
+      },
+      {
+        "name": "Cutthroat trout",
+        "note": "Stocked in a few waters — uncommon, and a pleasant surprise."
+      },
+      {
+        "name": "Walleye and smallmouth",
+        "note": "The Missouri River reservoirs, which is what the rest of the state fishes for."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Spearfish Creek",
+        "note": "Through Spearfish Canyon. Wild browns, limestone water and roadside access all the way up."
+      },
+      {
+        "name": "Rapid Creek",
+        "note": "Through Rapid City and below Pactola Dam. A tailwater and an urban trout stream in one."
+      },
+      {
+        "name": "Castle Creek",
+        "note": "Small central Hills water. Beaver ponds, meadows and brook trout."
+      },
+      {
+        "name": "French Creek",
+        "note": "In Custer State Park. A walk-in canyon stream with wild browns and buffalo for company."
+      },
+      {
+        "name": "Whitewood Creek",
+        "note": "Recovered from a century of mining waste, and now holding trout again."
+      },
+      {
+        "name": "Missouri River tailwaters",
+        "note": "Not trout, but the best big-water fishing in the state and a fair alternative."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "The spring creeks stay open and fishable. Midges, cold hands, and complete solitude."
+      },
+      {
+        "window": "April – May",
+        "what": "Blue-wing olives and the first caddis. Run-off is modest here — the limestone buffers it."
+      },
+      {
+        "window": "June",
+        "what": "The best month. Caddis, mayflies and long evenings, with the canyons green and cool."
+      },
+      {
+        "window": "July – August",
+        "what": "Hoppers and terrestrials. Fish the shaded canyon stretches in the heat of the day."
+      },
+      {
+        "window": "September – December",
+        "what": "Baetis, brown trout colouring up, and the Hills at their quietest and best."
+      }
+    ],
+    "flies": [
+      "parachute-adams",
+      "blue-wing-olive",
+      "elk-hair-caddis",
+      "hares-ear-nymph",
+      "griffiths-gnat",
+      "grasshopper"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 18. Non-residents under 18 do not need one and may take their own limit.",
+      "Anyone 18 or over must buy a habitat stamp when they buy the licence.",
+      "The licence year runs from mid-December through the following January — a little over thirteen months.",
+      "Some Black Hills streams carry their own size and tackle rules, and a few stretches are catch and release.",
+      "Custer State Park has a park entrance requirement of its own, separate from the fishing licence."
+    ],
+    "license": {
+      "agency": "South Dakota Game, Fish and Parks",
+      "licenseUrl": "https://gfp.sd.gov/license-types/",
+      "rulesUrl": "https://gfp.sd.gov/fishing/",
+      "residentAnnual": "$41",
+      "nonResidentAnnual": "$105",
+      "priceYear": "2026",
+      "priceNote": "The totals are the 2026 annual fishing licence plus the mandatory habitat stamp — $31 and $10 for residents, $80 and $25 for non-residents. The resident licence fee includes a $6 statutory surcharge, and agent fees are extra. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "oklahoma",
+    "name": "Oklahoma",
+    "abbr": "OK",
+    "region": "Southern Plains",
+    "answer": "Oklahoma fly fishing for trout exists only below dams and only where cold water is released, chiefly the Lower Mountain Fork at Beavers Bend and the Lower Illinois River. Rainbow and brown trout are stocked into both. A licence is required from age 18, and unlike its neighbours Oklahoma has no separate trout licence.",
+    "summary": "The Lower Mountain Fork below Broken Bow Dam — a genuine year-round trout river in south-eastern Oklahoma — plus the Lower Illinois and the seasonal Blue.",
+    "whatMakesItDifferent": "Every trout in Oklahoma is there because somebody built a dam, and the state is unusually straightforward about it. The Lower Mountain Fork, below Broken Bow Dam in the Ouachitas, is the one that behaves like a real trout river: cold releases all year, a designated trout area with catch-and-release zones and tackle restrictions, and brown trout that hold over and grow. The Lower Illinois below Tenkiller does much the same in the north-east. The Blue River in the south is different again — a seasonal fishery stocked from November to March, fished hard by people who drive down from Dallas and Oklahoma City, and empty the rest of the year. The quiet administrative point that saves visitors money: Arkansas and Missouri both make you buy a separate trout permit, and Oklahoma does not. The ordinary fishing licence covers it.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Stocked into all the trout areas and the bulk of what you will catch."
+      },
+      {
+        "name": "Brown trout",
+        "note": "The Lower Mountain Fork holds them over, and they reach a decent size."
+      },
+      {
+        "name": "Smallmouth bass",
+        "note": "The upper Mountain Fork, the Glover and the Illinois. Excellent in warm weather."
+      },
+      {
+        "name": "Striped bass",
+        "note": "Lake Texoma and its tailwater, which needs its own permit."
+      },
+      {
+        "name": "Largemouth bass and panfish",
+        "note": "What a fly rod in Oklahoma does for most of the year."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Lower Mountain Fork River",
+        "note": "Below Broken Bow Dam at Beavers Bend. The state's only true year-round trout river."
+      },
+      {
+        "name": "Lower Illinois River",
+        "note": "Below Tenkiller. Cold releases, stocked trout, and quieter than the Mountain Fork."
+      },
+      {
+        "name": "Blue River",
+        "note": "Seasonal trout from November to March, then a smallmouth and bass stream the rest of the year."
+      },
+      {
+        "name": "Upper Mountain Fork",
+        "note": "Above the lake. Smallmouth in clear Ouachita water, and beautiful."
+      },
+      {
+        "name": "Glover River",
+        "note": "The last undammed river in Oklahoma. Smallmouth, and worth it for that fact alone."
+      },
+      {
+        "name": "Lake Texoma",
+        "note": "Stripers on a fly, and a separate $12 permit that covers both sides of the state line."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "November – February",
+        "what": "Peak trout season. The Blue is stocked, the Mountain Fork is cold and quiet, and the weather is pleasant."
+      },
+      {
+        "window": "March – April",
+        "what": "The last of the Blue River season, and the Mountain Fork fishing well as the water warms."
+      },
+      {
+        "window": "May – June",
+        "what": "Smallmouth season begins on the Ouachita rivers. Trout fishing narrows to the tailwaters."
+      },
+      {
+        "window": "July – August",
+        "what": "Hot. Trout survive only right below the dams. Fish early, or fish for bass at dusk."
+      },
+      {
+        "window": "September – October",
+        "what": "Cooling water, good bass fishing, and the trout rivers coming back into form."
+      }
+    ],
+    "flies": [
+      "zebra-midge",
+      "woolly-bugger",
+      "san-juan-worm",
+      "scud",
+      "clouser-minnow",
+      "bass-popper"
+    ],
+    "regulations": [
+      "A fishing licence is required from age 18, and it is valid 365 days from purchase.",
+      "There is no separate trout licence or trout stamp in Oklahoma — the ordinary fishing licence covers trout, unlike in Arkansas and Missouri.",
+      "The Lower Mountain Fork trout area is divided into zones with different tackle and harvest rules, including catch-and-release water. The signs mark the boundaries.",
+      "Lake Texoma needs its own $12 permit, which covers both the Oklahoma and Texas sides.",
+      "Some municipal trout sites, including those in Oklahoma City, require a city permit in addition to the state licence."
+    ],
+    "license": {
+      "agency": "Oklahoma Department of Wildlife Conservation",
+      "licenseUrl": "https://www.wildlifedepartment.com/licensing/regs/license-fees",
+      "rulesUrl": "https://www.wildlifedepartment.com/fishing/regs/trout-regulations",
+      "residentAnnual": "$31",
+      "nonResidentAnnual": "$81",
+      "priceYear": "2026",
+      "priceNote": "Figures are the department's published rates for an annual fishing licence, valid 365 days from purchase. There is no trout licence to add. Lake Texoma needs a separate $12 permit. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
   }
 ]
