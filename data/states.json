@@ -208,5 +208,344 @@
       "priceNote": "Figures are the 2026 published rates for an adult annual fishing license. A Trout Permit ($14.97 in 2026) is required in addition, for any trout water. Prices change — check with the agency before you buy."
     },
     "localNote": null
+  },
+  {
+    "slug": "montana",
+    "name": "Montana",
+    "abbr": "MT",
+    "region": "Mountain West",
+    "answer": "Montana fly fishing is big freestone and tailwater river fishing, with rainbow, brown and cutthroat trout as the mainstays and native Arctic grayling in a few drainages. The Madison, Yellowstone, Missouri and Big Hole are the headline rivers. A license is required from age 12, and a Conservation License and AIS Prevention Pass must be bought alongside it. Late June through September is the heart of the season.",
+    "summary": "Big freestone rivers and famous tailwaters: the Madison, Yellowstone, Missouri and Big Hole. Salmonflies in June, hoppers in August, open stream access.",
+    "whatMakesItDifferent": "Montana's Stream Access Law is the thing that sets it apart. Anglers may wade and fish any river or stream below the ordinary high-water mark regardless of who owns the bank, so long as they get in at a bridge, public road or public land. In most of the West a famous river means a famous private ranch; in Montana it means miles of water you can legally stand in. The second difference is scale — the Madison runs as a fifty-mile riffle below Quake Lake, the Yellowstone is the longest undammed river in the lower 48, and the Missouri below Holter is a weed-rich tailwater holding thousands of trout per mile. The flip side is heat: in a dry August, Fish, Wildlife & Parks imposes Hoot Owl restrictions that close rivers in the afternoon, so a Montana trip plans around mornings.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Wild and self-sustaining on the Madison, Missouri and Bighorn."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Strongest on the Missouri, Beaverhead and Bighorn; aggressive and territorial in autumn."
+      },
+      {
+        "name": "Yellowstone cutthroat",
+        "note": "Native to the Yellowstone drainage and the upper river."
+      },
+      {
+        "name": "Westslope cutthroat",
+        "note": "Native west of the Continental Divide — the Blackfoot and upper Clark Fork tributaries."
+      },
+      {
+        "name": "Brook trout",
+        "note": "Small streams, beaver ponds and spring creeks."
+      },
+      {
+        "name": "Bull trout",
+        "note": "Native char, ESA-listed. They may not be targeted on most waters — learn to identify them."
+      },
+      {
+        "name": "Arctic grayling",
+        "note": "The Big Hole holds one of the last native river-dwelling populations in the lower 48."
+      },
+      {
+        "name": "Mountain whitefish",
+        "note": "Native, abundant, and perfectly willing to take a dry fly."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Madison River",
+        "note": "The fifty-mile riffle below Quake Lake. Wade-friendly, crowded in July, and the salmonfly hatch is worth the company."
+      },
+      {
+        "name": "Yellowstone River",
+        "note": "The longest undammed river in the lower 48. Mother's Day caddis before runoff, then cutthroat on dries all summer."
+      },
+      {
+        "name": "Missouri River below Holter Dam",
+        "note": "A tailwater at Craig. Weed-rich, heavy fish, PMDs and Tricos, and Baetis into November."
+      },
+      {
+        "name": "Big Hole River",
+        "note": "Salmonflies in June, and the only river in the lower 48 with a native fluvial grayling population."
+      },
+      {
+        "name": "Bighorn River",
+        "note": "Tailwater below Afterbay. Extraordinary trout numbers, with sow bugs and midges that work all year."
+      },
+      {
+        "name": "Rock Creek",
+        "note": "Near Missoula. Accessible, generous, and a good first Montana river."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "March – April",
+        "what": "Skwala stoneflies on the Bitterroot and lower Clark Fork. Midges and Baetis on the tailwaters."
+      },
+      {
+        "window": "May – mid-June",
+        "what": "Mother's Day caddis on the Yellowstone, then runoff. The tailwaters carry the month."
+      },
+      {
+        "window": "Late June – July",
+        "what": "Salmonflies on the Big Hole, Rock Creek and the Madison, with golden stones and PMDs behind them."
+      },
+      {
+        "window": "August – September",
+        "what": "Hoppers, ants and spruce moths. Watch for Hoot Owl restrictions and fish the mornings."
+      },
+      {
+        "window": "October – February",
+        "what": "Baetis and pre-spawn browns in October, then midges on the Missouri and Bighorn through winter."
+      }
+    ],
+    "flies": [
+      "salmonfly",
+      "pats-rubber-legs",
+      "chubby-chernobyl",
+      "purple-haze",
+      "pale-morning-dun",
+      "grasshopper"
+    ],
+    "regulations": [
+      "A fishing license is required from age 12. A Conservation License and an Angler AIS Prevention Pass must be purchased alongside it before it is valid.",
+      "The Stream Access Law allows public use of rivers and streams below the ordinary high-water mark, but you must enter at a bridge, public road or public land — not across private ground.",
+      "Hoot Owl restrictions close some rivers from 2pm to midnight when water runs too warm. They are announced in-season by FWP.",
+      "Yellowstone National Park issues its own permit. A Montana license is not valid inside the park.",
+      "Bull trout are ESA-listed and may not be targeted on most waters. Rules vary river by river and change annually."
+    ],
+    "license": {
+      "agency": "Montana Fish, Wildlife & Parks",
+      "licenseUrl": "https://fwp.mt.gov/buyandapply/fishinglicenses",
+      "rulesUrl": "https://fwp.mt.gov/fish/regulations",
+      "residentAnnual": "$31",
+      "nonResidentAnnual": "$117.50",
+      "priceYear": "2026",
+      "priceNote": "Montana sells fishing in parts. The resident total is an $8 Conservation License, a $21 season fishing license and a $2 Angler AIS Prevention Pass; the non-resident total is $10, $100 and $7.50. The license year runs 1 March to the end of February. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "colorado",
+    "name": "Colorado",
+    "abbr": "CO",
+    "region": "Mountain West",
+    "answer": "Colorado fly fishing is high-altitude tailwater and mountain river fishing, with rainbow, brown and brook trout plus native cutthroat in the headwaters. The South Platte, Fryingpan, Gunnison, Arkansas and Roaring Fork are the headline waters. A license is required from age 16, anglers 18 to 64 also need a Habitat Stamp, and the tailwaters fish all twelve months.",
+    "summary": "Technical tailwaters and Gold Medal water. Small flies on the South Platte, mysis-fed browns on the Fryingpan, and caddis climbing the Arkansas in May.",
+    "whatMakesItDifferent": "Colorado's rivers are built on snowmelt, which means most freestone water is unfishable brown soup through May and June. The state's fly fishing therefore grew up around dam-released tailwaters that stay cold and clear every month of the year — Cheesman Canyon and the Dream Stream on the South Platte, the Fryingpan below Ruedi, the Blue below Dillon. Those stretches hold a lot of trout that see a lot of anglers and eat very small insects, and that pressure is why Colorado produced so much of the modern technical nymph canon: the RS2, Barr's Emerger and the Copper John were all tied here for exactly this water. The Fryingpan adds a quirk of its own — mysis shrimp flushed out of the reservoir grow browns to a size the river could not otherwise support. Everything also happens high: much of this is fished between 7,000 and 10,000 feet, where afternoon thunderstorms are routine and the first day is slower than you expect.",
+    "species": [
+      {
+        "name": "Rainbow trout",
+        "note": "Widespread, and the main quarry on most tailwaters."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Wild throughout. The Fryingpan's mysis-fed browns are the famous ones."
+      },
+      {
+        "name": "Brook trout",
+        "note": "High-country streams, beaver ponds and alpine lakes. Small and abundant."
+      },
+      {
+        "name": "Cutbow",
+        "note": "Rainbow-cutthroat hybrids, common on the South Platte."
+      },
+      {
+        "name": "Greenback cutthroat",
+        "note": "The state fish. ESA-listed and restricted to a handful of restored headwater streams."
+      },
+      {
+        "name": "Colorado River cutthroat",
+        "note": "Native on the Western Slope."
+      },
+      {
+        "name": "Rio Grande cutthroat",
+        "note": "Native in the southern drainages."
+      }
+    ],
+    "waters": [
+      {
+        "name": "South Platte River",
+        "note": "Cheesman Canyon and the Dream Stream. Gin-clear, heavily fished, and a lesson in long tippet and small flies."
+      },
+      {
+        "name": "Fryingpan River",
+        "note": "Tailwater below Ruedi. Mysis shrimp, outsized browns, and green drakes in July."
+      },
+      {
+        "name": "Roaring Fork River",
+        "note": "Freestone through Basalt and Carbondale. Drakes in summer and a very strong autumn."
+      },
+      {
+        "name": "Gunnison Gorge",
+        "note": "A hike-in canyon below the Black Canyon. Stoneflies, big water, and far fewer people."
+      },
+      {
+        "name": "Arkansas River",
+        "note": "Gold Medal water. The caddis hatch works upstream from Cañon City through May."
+      },
+      {
+        "name": "Blue River",
+        "note": "Tailwater below Dillon, running through Silverthorne. Technical, mysis-fed, and open all winter."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "January – March",
+        "what": "Tailwaters only. Midges, then the first Baetis on warmer afternoons."
+      },
+      {
+        "window": "April – May",
+        "what": "Blue-wing olives, then the Arkansas caddis hatch climbing upstream. Freestone runoff begins."
+      },
+      {
+        "window": "June",
+        "what": "Peak snowmelt. Most freestone rivers are off; fish tailwaters, and the high lakes as they thaw."
+      },
+      {
+        "window": "July – August",
+        "what": "Green drakes on the Fryingpan and Roaring Fork, PMDs, terrestrials, and the high country finally open."
+      },
+      {
+        "window": "September – October",
+        "what": "Baetis, pre-spawn browns and the best few weeks of the year."
+      },
+      {
+        "window": "November – December",
+        "what": "Back to midges and small nymphs on the tailwaters."
+      }
+    ],
+    "flies": [
+      "rs2",
+      "barrs-emerger",
+      "copper-john",
+      "green-drake",
+      "blue-wing-olive",
+      "san-juan-worm"
+    ],
+    "regulations": [
+      "A fishing license is required from age 16. Anglers 18 to 64 must also buy one Habitat Stamp per license year.",
+      "The annual license year runs 1 March to 31 March of the following year — thirteen months.",
+      "Many tailwaters are catch-and-release, artificial flies and lures only, including Cheesman Canyon and much of the Fryingpan.",
+      "Fishing two rods at once requires a Second Rod Stamp.",
+      "Greenback cutthroat recovery streams carry their own rules and some are closed outright. Check the water before you fish it."
+    ],
+    "license": {
+      "agency": "Colorado Parks and Wildlife",
+      "licenseUrl": "https://cpw.state.co.us/activities/fishing/fishing-licenses-and-dates",
+      "rulesUrl": "https://cpw.state.co.us/rules-and-regulations",
+      "residentAnnual": "$44.87",
+      "nonResidentAnnual": "$124.01",
+      "priceYear": "2026",
+      "priceNote": "Figures are CPW's 2026 published rates for an adult annual fishing license. A Habitat Stamp, $12.76 for residents and non-residents alike, is required in addition for anglers 18 to 64. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
+  },
+  {
+    "slug": "michigan",
+    "name": "Michigan",
+    "abbr": "MI",
+    "region": "Great Lakes",
+    "answer": "Michigan fly fishing is spring-fed sand and gravel river fishing, with wild brook, brown and rainbow trout, plus Great Lakes steelhead running the same rivers. The Au Sable, Manistee, Pere Marquette and Muskegon are the headline waters. One all-species license covers everything, inland trout season opens the last Saturday in April, and the Hex hatch in late June is fished after dark.",
+    "summary": "Spring-fed rivers, wild brook trout and night fishing. The Au Sable's Holy Water, the Hex hatch in June, and steelhead on the Pere Marquette.",
+    "whatMakesItDifferent": "Michigan's trout rivers run on groundwater through sand and gravel, so flows and temperatures stay steady and there is no snowmelt blowout to plan around — the season runs on a calendar rather than on the weather. Two things follow from that. The first is the Hex hatch: Hexagenia limbata is a very large burrowing mayfly that emerges after dark in late June and early July on the Au Sable and Manistee, and the whole fishery reorganises around casting blind, in the dark, at the sound of a rising fish. The second is that these rivers are open to the Great Lakes, so the same water that holds resident wild brown trout in June holds steelhead out of Lake Michigan or Lake Huron in November. Michigan also has a good claim on American fly fishing's most-used dry fly: the Adams was tied in Mayfield, Michigan in 1922 by Len Halladay for a visiting angler, Charles Adams, who fished it on the Boardman.",
+    "species": [
+      {
+        "name": "Brook trout",
+        "note": "The state fish and the only native trout. Wild populations are strongest in the Upper Peninsula."
+      },
+      {
+        "name": "Brown trout",
+        "note": "Wild and often large. Brown trout were first planted in United States waters in a Pere Marquette tributary in 1884."
+      },
+      {
+        "name": "Rainbow trout",
+        "note": "Resident stream fish, and the same species as the lake-run steelhead."
+      },
+      {
+        "name": "Steelhead",
+        "note": "Autumn and spring runs out of Lake Michigan and Lake Huron."
+      },
+      {
+        "name": "Chinook and coho salmon",
+        "note": "Autumn runs. Big fish, and not always interested in a fly."
+      }
+    ],
+    "waters": [
+      {
+        "name": "Au Sable River",
+        "note": "The Holy Water, from Burton's Landing to Wakeley Bridge, is flies only and catch and release."
+      },
+      {
+        "name": "Manistee River",
+        "note": "A heavy Hex hatch and a serious night fishery; the lower river gets steelhead."
+      },
+      {
+        "name": "Pere Marquette River",
+        "note": "A flies-only catch-and-release section upstream, and the best-known steelhead water in the state below it."
+      },
+      {
+        "name": "Muskegon River",
+        "note": "Tailwater below Croton Dam. Steelhead in season and good dry-fly water in summer."
+      },
+      {
+        "name": "Boardman River",
+        "note": "Near Traverse City, and where the Adams was first fished."
+      },
+      {
+        "name": "Upper Peninsula streams",
+        "note": "Small, cedar-lined wild brook trout water — the Fox and the Escanaba among them."
+      }
+    ],
+    "seasons": [
+      {
+        "window": "April",
+        "what": "Inland trout season opens the last Saturday in April — 25 April in 2026. Black stoneflies and the first Hendricksons."
+      },
+      {
+        "window": "May",
+        "what": "Hendricksons, then sulphurs and caddis. The best daytime dry-fly fishing of the year."
+      },
+      {
+        "window": "Late June – mid-July",
+        "what": "The Hex hatch, after dark. Big flies, big fish, and a lot of standing still in the dark."
+      },
+      {
+        "window": "July – August",
+        "what": "Tricos and terrestrials in the morning, and mousing after dark for brown trout."
+      },
+      {
+        "window": "September – November",
+        "what": "Salmon first, then steelhead on the Pere Marquette, Muskegon and Manistee."
+      },
+      {
+        "window": "December – March",
+        "what": "Year-round gear-restricted sections stay open, and the bigger rivers hold winter steelhead."
+      }
+    ],
+    "flies": [
+      "adams",
+      "march-brown",
+      "elk-hair-caddis",
+      "hares-ear-nymph",
+      "deer-hair-mouse",
+      "egg-pattern"
+    ],
+    "regulations": [
+      "One all-species fishing license covers trout and salmon — there is no separate trout stamp. Everyone 17 and older needs one.",
+      "The statewide inland trout season opens the last Saturday in April, with a long list of year-round and gear-restricted exceptions.",
+      "The Au Sable Holy Water and the Pere Marquette flies-only water are artificial flies only and catch and release.",
+      "Trout rules are set stretch by stretch under a stream type system. The DNR's inland trout and salmon regulations map is the quickest way to check a specific piece of water before you fish it."
+    ],
+    "license": {
+      "agency": "Michigan Department of Natural Resources",
+      "licenseUrl": "https://www.michigan.gov/dnr/things-to-do/fishing/license-info",
+      "rulesUrl": "https://www.michigan.gov/dnr/things-to-do/fishing/fishing-regulations",
+      "residentAnnual": "$26",
+      "nonResidentAnnual": "$76",
+      "priceYear": "2026",
+      "priceNote": "Figures are the DNR's 2026 rates for an annual all-species fishing license, each including a $1 surcharge. The 2026 license is valid through 31 March 2027. Prices change — check with the agency before you buy."
+    },
+    "localNote": null
   }
 ]
