@@ -185,6 +185,22 @@ export default function deckPage({ site }) {
   for (const node of meta.jsonld) {
     if (node['@type'] !== 'Product') continue;
     node.brand = { '@type': 'Brand', name: site.brand?.name || site.name, slogan: site.brand?.slogan };
+
+    /* `image` is REQUIRED for a Merchant listing. Without it Search Console
+       reports the Product as an invalid item and the page is dropped from
+       merchant rich results entirely — it was missing and the live test caught
+       it. Absolute URLs, built from site.url the same way organizationSchema()
+       does, because a relative path in JSON-LD is not rewritten by applyBase()
+       and would break the GitHub Pages build.
+
+       Two images on purpose: Google asks for more than one aspect ratio, and
+       these are the only two product shots that exist. Replace them with real
+       photographs when the shot list in docs/PHOTO-PLAN.md is delivered. */
+    const imgBase = String(site?.url || '').replace(/\/$/, '');
+    if (imgBase) {
+      node.image = [`${imgBase}/og/deck.png`, `${imgBase}/brand/box-front-1200.webp`];
+    }
+
     node.offers = {
       '@type': 'Offer',
       price: per.toFixed(2),
