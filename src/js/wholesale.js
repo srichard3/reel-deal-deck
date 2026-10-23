@@ -198,7 +198,13 @@
   function finish(opts) {
     if (!done) { say(opts.text, 'ok'); return; }
     if (head) head.textContent = opts.heading;
-    if (lede) lede.textContent = opts.lede;
+    if (lede) {
+      /* Hidden, not emptied. An empty <p> keeps its margin, which leaves a gap
+         under the heading that reads as a missing line rather than a deliberate
+         absence. */
+      lede.textContent = opts.lede || '';
+      lede.hidden = !opts.lede;
+    }
     doneText.textContent = opts.text;
     if (doneActions) doneActions.hidden = !opts.signIn;
     if (doneHelp) doneHelp.hidden = !opts.signIn;
@@ -310,8 +316,12 @@
            briefly see retail prices. */
         finish({
           heading: 'Your account is open',
-          lede: 'No approval to wait for and no password to choose — the account exists now.',
-          text: 'Sign in at the shop with this email and your trade pricing will be showing '
+          /* No lede on purpose. "No approval to wait for and no password to
+             choose" explained a process the reader has just finished and will
+             never repeat — it answered a question nobody has at this point.
+             The heading says the thing; the line below says what to do next. */
+          lede: '',
+          text: 'Sign in at our shop with this email and your trade pricing will be showing '
             + 'within a minute.',
           signIn: true,
         });

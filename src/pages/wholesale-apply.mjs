@@ -224,7 +224,7 @@ ${field({ id: 'website', label: 'Website or Instagram', full: true, placeholder:
   <div class="ws-done" data-ws-done hidden>
     <p class="ws-done__text" data-ws-done-text></p>
     <p class="ws-done__actions" data-ws-done-actions>
-      <a class="btn btn--primary btn--lg" href="${esc(login)}"${loginRel}>${ws.loginReady ? 'Sign in at the shop' : esc(loginLabel)}</a>
+      <a class="btn btn--primary btn--lg" href="${esc(login)}"${loginRel}>${ws.loginReady ? 'Sign in at our shop' : esc(loginLabel)}</a>
     </p>
     <p class="help" data-ws-done-help>
       Signing in emails you a code &mdash; there is no password to remember. Once you are in,
