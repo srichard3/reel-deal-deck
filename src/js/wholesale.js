@@ -56,6 +56,107 @@
   var MAX = 10 * 1024 * 1024;
   var BUSY = 'Setting up your account…';
 
+  var prog     = form.querySelector('[data-ws-prog]');
+  var progTrack= form.querySelector('[data-ws-prog-track]');
+  var progBar  = form.querySelector('[data-ws-prog-bar]');
+  var progStep = form.querySelector('[data-ws-prog-step]');
+
+  /* Shrinking the certificate before it leaves the browser.
+     The upload is the slow part of this form by an order of magnitude: a phone
+     photo of a permit is routinely 3-8MB and it crosses the wire twice, here
+     to Netlify and Netlify to Shopify. Downscaled it is a few hundred KB and
+     the wait stops being a wait.
+
+     SHRINK_FLOOR is why this is not applied to everything. Under a megabyte
+     the upload is already quick and re-encoding only costs quality on a
+     document somebody may need to read, so small files are passed through
+     untouched. PDFs are never touched at all — they are usually the smallest
+     and the cleanest version of the permit anyway. */
+  var SHRINK_FLOOR = 1024 * 1024;   /* leave anything already small alone */
+  var SHRINK_EDGE  = 2000;          /* px on the long edge — a permit stays readable */
+  var SHRINK_Q     = 0.85;
+
+  function shrinkPermit(f) {
+    /* Every bail-out below returns the ORIGINAL file. A slow upload is a bad
+       minute; a corrupted or sideways tax document is a bad account. */
+    if (!f || f.size <= SHRINK_FLOOR) return Promise.resolve(f);
+    if (String(f.type).indexOf('image/') !== 0) return Promise.resolve(f);
+
+    /* createImageBitmap with imageOrientation is required, not preferred.
+       Phone photos carry an EXIF rotation tag, and canvas drawImage works on
+       raw pixels: without the browser applying that tag first, a portrait
+       permit is stored on its side. scripts/photos.mjs solves the same problem
+       the same way for the founders' photographs. If the browser cannot do it,
+       we do not guess — we send the original. */
+    if (typeof createImageBitmap !== 'function' || typeof File !== 'function') {
+      return Promise.resolve(f);
+    }
+
+    return createImageBitmap(f, { imageOrientation: 'from-image' })
+      .then(function (bmp) {
+        var scale = Math.min(1, SHRINK_EDGE / Math.max(bmp.width, bmp.height));
+        if (scale >= 1) { bmp.close && bmp.close(); return f; }
+
+        var canvas = document.createElement('canvas');
+        canvas.width  = Math.round(bmp.width  * scale);
+        canvas.height = Math.round(bmp.height * scale);
+        var ctx = canvas.getContext('2d');
+        if (!ctx) { bmp.close && bmp.close(); return f; }
+        ctx.drawImage(bmp, 0, 0, canvas.width, canvas.height);
+        bmp.close && bmp.close();
+
+        return new Promise(function (resolve) {
+          canvas.toBlob(function (blob) {
+            /* Re-encoding does not always win — a screenshot PNG of a permit
+               can come back larger as a JPEG. Keep whichever is smaller. */
+            if (!blob || blob.size >= f.size) return resolve(f);
+            try {
+              resolve(new File([blob], 'permit.jpg', { type: 'image/jpeg' }));
+            } catch (e) {
+              resolve(f);
+            }
+          }, 'image/jpeg', SHRINK_Q);
+        });
+      })
+      .catch(function () {
+        /* HEIC is the common case here: Safari decodes it, Chrome does not.
+           An undecodable image is sent exactly as it arrived, which is what
+           the function wants anyway — it stores permits as FILE, never IMAGE,
+           so Shopify never tries to decode them either. */
+        return f;
+      });
+  }
+
+  function showProgress(pct, step) {
+    if (!prog) return;
+    prog.hidden = false;
+    if (pct == null) {
+      /* Phase two: bytes are gone, Shopify is working, nobody knows for how
+         long. Stop claiming a number. */
+      prog.classList.add('is-waiting');
+      /* Clear the width the upload phase left on the element. An inline style
+         beats the stylesheet, so without this the travelling "sliver" is still
+         90% of the track and the animation reads as a smear rather than a
+         marker. Caught in the browser, not in review. */
+      progBar.style.removeProperty('inline-size');
+      progTrack.removeAttribute('aria-valuenow');
+    } else {
+      prog.classList.remove('is-waiting');
+      progBar.style.inlineSize = pct + '%';
+      progTrack.setAttribute('aria-valuenow', String(Math.round(pct)));
+    }
+    if (step != null) progStep.textContent = step;
+  }
+
+  function hideProgress() {
+    if (!prog) return;
+    prog.hidden = true;
+    prog.classList.remove('is-waiting');
+    progBar.style.inlineSize = '0%';
+    progStep.textContent = '';
+    progTrack.removeAttribute('aria-valuenow');
+  }
+
   function say(msg, kind) {
     status.textContent = msg || '';
     status.className = 'ws-apply__status' + (kind ? ' is-' + kind : '');
@@ -141,26 +242,22 @@
     submit.disabled = true;
     var label = submit.textContent;
     submit.textContent = BUSY;
-    say(BUSY);
+    submit.classList.add('is-busy');
+    /* Deliberately NOT say(BUSY): the button already reads "Setting up your
+       account…" and the step line below carries the phase, so echoing it here
+       put the same sentence on screen three times. The step line is the live
+       region now, so what gets announced is what is actually happening. */
+    say('');
+    showProgress(0, 'Preparing your certificate…');
 
-    fetch(form.action, { method: 'POST', body: new FormData(form) })
-      .then(function (res) {
-        /* Belt and braces for the one way this can go wrong silently: the page
-           is live but the function is not deployed, so /api/wholesale-apply is
-           a 404 HTML page and res.json() throws. Without this the reader is
-           told their connection failed, which is a lie about their wifi. */
-        return res.text().then(function (text) {
-          try {
-            return { res: res, body: JSON.parse(text) };
-          } catch (e) {
-            return { res: res, body: { error: res.status === 404
-              ? 'Online signup is not switched on yet. Please email us and we will set the account up by hand.'
-              : 'That did not go through. Please email us and we will set the account up by hand.' } };
-          }
-        });
+    shrinkPermit(file && file.files ? file.files[0] : null)
+      .then(function (permit) {
+        var body = new FormData(form);
+        if (permit) body.set('permit', permit, permit.name || 'permit');
+        return send(body);
       })
       .then(function (r) {
-        if (!r.res.ok) {
+        if (!r.ok) {
           say(r.body.error || 'That did not go through. Please try again.', 'error');
           markFields(r.body.fields);
           return;
@@ -199,11 +296,93 @@
           signIn: true,
         });
       })
-      .catch(function () {
-        say('We could not reach the server. Check your connection and try again.', 'error');
+      .catch(function (err) {
+        say(err && err.wsMessage
+          ? err.wsMessage
+          : 'We could not reach the server. Check your connection and try again.', 'error');
       })
       .then(function () {
+        hideProgress();
+        submit.classList.remove('is-busy');
         if (!submit.hidden) { submit.disabled = false; submit.textContent = label; }
       });
   });
+
+  /* The POST, as XMLHttpRequest rather than fetch.
+     fetch() has no upload-progress event — none, by design — so with fetch the
+     page cannot tell the difference between "sending 6MB over a slow uplink"
+     and "hung". That is exactly what this form looked like. xhr.upload
+     .onprogress is the only way a browser reports bytes sent, so the transport
+     is chosen by what it can report, not by what reads better. */
+  function send(body) {
+    return new Promise(function (resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      var settled = false;
+      var slowTimer = null;
+
+      function fail(message) {
+        if (settled) return;
+        settled = true;
+        if (slowTimer) clearTimeout(slowTimer);
+        var err = new Error(message);
+        err.wsMessage = message;
+        reject(err);
+      }
+
+      xhr.open('POST', form.action, true);
+
+      /* 90%, not 100%. The last tenth of this bar belongs to the server work
+         that follows, so the upload finishing does not look like the whole job
+         finishing and then stalling. */
+      xhr.upload.onprogress = function (e) {
+        if (settled || !e.lengthComputable) return;
+        showProgress((e.loaded / e.total) * 90, 'Uploading your certificate…');
+      };
+
+      xhr.upload.onload = function () {
+        if (settled) return;
+        showProgress(null, 'Creating your account…');
+        /* The account, the file and the welcome email are six or seven
+           sequential calls to Shopify. Past a few seconds a reader starts to
+           wonder whether it broke, so say what is happening rather than
+           letting a silent bar carry it. */
+        slowTimer = setTimeout(function () {
+          if (!settled) showProgress(null, 'Almost there — the shop is setting the account up…');
+        }, 7000);
+      };
+
+      /* A ceiling on the whole request. Without one a stalled upstream leaves
+         the reader watching an animation for as long as they are willing to,
+         and the function itself has no timeout either. Better to stop and
+         offer the email route, which always works. */
+      xhr.timeout = 60000;
+      xhr.ontimeout = function () {
+        fail('That is taking longer than it should. Please email us and we will set the account up by hand.');
+      };
+      xhr.onerror = function () {
+        fail('We could not reach the server. Check your connection and try again.');
+      };
+
+      xhr.onload = function () {
+        if (settled) return;
+        settled = true;
+        if (slowTimer) clearTimeout(slowTimer);
+        var parsed;
+        /* Belt and braces for the one way this can go wrong silently: the page
+           is live but the function is not deployed, so /api/wholesale-apply is
+           a 404 HTML page and parsing it throws. Without this the reader is
+           told their connection failed, which is a lie about their wifi. */
+        try {
+          parsed = JSON.parse(xhr.responseText);
+        } catch (e) {
+          parsed = { error: xhr.status === 404
+            ? 'Online signup is not switched on yet. Please email us and we will set the account up by hand.'
+            : 'That did not go through. Please email us and we will set the account up by hand.' };
+        }
+        resolve({ ok: xhr.status >= 200 && xhr.status < 300, status: xhr.status, body: parsed });
+      };
+
+      xhr.send(body);
+    });
+  }
 })();

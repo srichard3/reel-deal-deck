@@ -187,6 +187,26 @@ ${field({ id: 'website', label: 'Website or Instagram', full: true, placeholder:
 
     <p class="ws-apply__status" role="status" aria-live="polite" data-ws-status></p>
 
+    <!-- Progress, hidden until submit.
+         The bar is DETERMINATE while the certificate uploads, because
+         xhr.upload.onprogress reports real bytes, and goes INDETERMINATE the
+         moment the bytes are gone and Shopify is working, because nothing in
+         the browser can know how long that takes. Faking one smooth 0-100
+         across both phases is how a progress bar becomes a liar: it would sit
+         at 99% for the longest part of the wait.
+
+         This is also why the form posts with XMLHttpRequest rather than
+         fetch(): fetch has no upload-progress event at all, which is why the
+         button used to sit on "Setting up your account..." for a minute with
+         nothing moving. -->
+    <div class="ws-prog" data-ws-prog hidden>
+      <div class="ws-prog__track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+           aria-label="Setting up your account" data-ws-prog-track>
+        <div class="ws-prog__bar" data-ws-prog-bar></div>
+      </div>
+      <p class="ws-prog__step" role="status" aria-live="polite" data-ws-prog-step></p>
+    </div>
+
     <button class="btn btn--primary btn--lg" type="submit" data-ws-submit>Open my account</button>
 
     <p class="help">

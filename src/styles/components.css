@@ -3137,3 +3137,86 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   color: var(--c-text);
   max-inline-size: var(--measure);
 }
+
+/* ===== Wholesale apply — progress ======================================== */
+/* Shown only while an application is in flight. Two phases, two behaviours:
+   a real 0-90% while the certificate uploads, then a travelling sliver while
+   Shopify works. See the comment on .ws-prog in src/pages/wholesale-apply.mjs
+   for why it is not one continuous bar. */
+
+.ws-prog {
+  margin: var(--s-3) 0 var(--s-4);
+}
+
+.ws-prog__track {
+  block-size: 4px;
+  border-radius: 999px;
+  background: var(--c-border);
+  overflow: hidden;           /* clips the travelling sliver to the track */
+}
+
+.ws-prog__bar {
+  block-size: 100%;
+  inline-size: 0%;
+  border-radius: inherit;
+  background: var(--c-green);
+  transition: inline-size 180ms linear;
+}
+
+/* Phase two. The bar stops meaning "how far" and starts meaning "still alive",
+   so it is a fixed-width sliver that travels rather than a width that grows. */
+.ws-prog.is-waiting .ws-prog__bar {
+  inline-size: 35%;
+  transition: none;
+  animation: ws-prog-travel 1.4s ease-in-out infinite;
+}
+
+@keyframes ws-prog-travel {
+  from { transform: translateX(-110%); }
+  to   { transform: translateX(400%); }
+}
+
+.ws-prog__step {
+  margin: var(--s-2) 0 0;
+  font-size: 0.875rem;
+  color: var(--c-text-muted);
+}
+
+/* The spinner on the button. ::after rather than an element so the markup
+   stays the same whether or not the form is in flight. */
+.btn.is-busy {
+  position: relative;
+  cursor: progress;
+}
+
+.btn.is-busy::after {
+  content: "";
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  box-sizing: border-box;
+  margin-inline-start: 0.6em;
+  vertical-align: -0.08em;
+  border: 2px solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: 50%;
+  animation: ws-spin 0.7s linear infinite;
+}
+
+@keyframes ws-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Motion is decoration here — every state it conveys is also in the text of
+   .ws-prog__step and the live region above it, so removing it loses nothing.
+   The waiting bar becomes a dim full-width rule, which still reads as "busy"
+   without anything moving. */
+@media (prefers-reduced-motion: reduce) {
+  .ws-prog__bar { transition: none; }
+  .ws-prog.is-waiting .ws-prog__bar {
+    inline-size: 100%;
+    opacity: 0.45;
+    animation: none;
+  }
+  .btn.is-busy::after { animation: none; }
+}
