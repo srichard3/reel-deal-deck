@@ -19,6 +19,20 @@ http://reeldealdeck.com/*        https://reeldealdeck.com/:splat      301!
 http://www.reeldealdeck.com/*    https://reeldealdeck.com/:splat      301!
 https://www.reeldealdeck.com/*   https://reeldealdeck.com/:splat      301!
 
+# realdealdeck.com is the defensive registration against the obvious misspelling
+# ("real" for "reel"). It is a domain ALIAS on the Netlify site, and an alias
+# SERVES the site at 200 rather than redirecting — Netlify only does the
+# automatic www/apex redirect for the PRIMARY domain. Left alone it is a second
+# live address for all 181 pages: the address bar keeps the wrong spelling, the
+# wrong one gets shared, and inbound links split between two hosts. The
+# canonical tag already points home, but a 301 is the real fix.
+# These rules need the alias to stay on the Netlify site — removing it there
+# makes the domain stop resolving instead of redirecting.
+http://realdealdeck.com/*        https://reeldealdeck.com/:splat      301!
+https://realdealdeck.com/*       https://reeldealdeck.com/:splat      301!
+http://www.realdealdeck.com/*    https://reeldealdeck.com/:splat      301!
+https://www.realdealdeck.com/*   https://reeldealdeck.com/:splat      301!
+
 # --- Trailing-slash / index consistency ------------------------------------
 # Every route this site emits is a directory with an index.html, so the
 # canonical form always ends in "/". Netlify's Pretty URLs already 301s
