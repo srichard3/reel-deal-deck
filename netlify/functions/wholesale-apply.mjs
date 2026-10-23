@@ -564,6 +564,19 @@ export default async (request) => {
             customerUpdate(input: $input) { customer { id } userErrors { field message } }
           }`, { input: { id: race.id, metafields } });
         assertNoUserErrors('customerUpdate', updated.customerUpdate);
+      } else if (createErrs.some((e) => /email/i.test(String(e.field)) && /invalid/i.test(e.message))) {
+        /* Shopify's email validation is stricter than this function's and
+           stricter than the browser's: an address with no TLD, or one it reads
+           as disposable, is refused here having passed both. Without this
+           branch that lands in the catch below as a 502 — "something went
+           wrong, email us" — which blames the system for a typo the applicant
+           could fix in five seconds, and leaves the email field unmarked.
+           Same treatment as "has already been taken" above: Shopify's own
+           wording is logged, never shown, because it names internal fields. */
+        return json(400, {
+          error: 'Shopify would not accept that email address. Please check it for a typo — it needs to be an address that can receive mail.',
+          fields: ['email'],
+        });
       } else {
         assertNoUserErrors('customerCreate', signedUp.customerCreate);
       }

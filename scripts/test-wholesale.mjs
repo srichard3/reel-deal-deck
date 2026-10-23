@@ -356,6 +356,24 @@ function withExisting(nodes, sink) {
   if (!silentOnRefusal) fail++;
   console.log(`${silentOnRefusal ? '  ok  ' : ' FAIL '} ${r.status}  nothing is emailed when Shopify refuses the account`);
 
+  /* 2b. an email Shopify calls INVALID rather than taken. Shopify validates
+         harder than this function and harder than the browser, so an address
+         can pass both and still be refused here. That is the applicant's typo
+         to fix, so it must come back as a 400 naming the email field — not as
+         the 502 "something went wrong, email us" that blames the system for a
+         mistake they could correct in five seconds. Nothing may be emailed. */
+  sent = []; globalThis.fetch = shop([], [{ field: ['email'], message: 'Email is invalid' }]);
+  r = await fn(post(body()));
+  const invalidEmail = await r.clone().json().catch(() => ({}));
+  const invalidEmailOk = r.status === 400
+    && Array.isArray(invalidEmail.fields) && invalidEmail.fields.includes('email')
+    /* and it says so in our words, not Shopify's — its messages name internal
+       fields and are not written for the person reading them. */
+    && !/Email is invalid/i.test(String(invalidEmail.error || ''))
+    && resendCalls() === 0;
+  if (!invalidEmailOk) fail++;
+  console.log(`${invalidEmailOk ? '  ok  ' : ' FAIL '} ${r.status}  an email Shopify calls invalid is a field error, not a 502`);
+
   /* 3. a submission rejected before Shopify is reached at all */
   sent = []; globalThis.fetch = shop([]);
   r = await fn(post(body({ postal: 'abc' })));
