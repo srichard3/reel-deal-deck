@@ -356,23 +356,40 @@ function withExisting(nodes, sink) {
   if (!silentOnRefusal) fail++;
   console.log(`${silentOnRefusal ? '  ok  ' : ' FAIL '} ${r.status}  nothing is emailed when Shopify refuses the account`);
 
-  /* 2b. an email Shopify calls INVALID rather than taken. Shopify validates
-         harder than this function and harder than the browser, so an address
-         can pass both and still be refused here. That is the applicant's typo
-         to fix, so it must come back as a 400 naming the email field — not as
-         the 502 "something went wrong, email us" that blames the system for a
-         mistake they could correct in five seconds. Nothing may be emailed. */
-  sent = []; globalThis.fetch = shop([], [{ field: ['email'], message: 'Email is invalid' }]);
+  /* 2b. Any detail Shopify refuses BY NAME is the applicant's to correct, so
+         it must come back as a 400 marking that field — not the 502 "we could
+         not set it up, email us" that blames the system and marks nothing.
+         Shopify validates harder than this function and harder than the
+         browser, so each of these passed both before being refused here.
+         Shopify's own wording must never reach the page: it names internal
+         fields and is not written for the person reading it. */
+  const refusals = [
+    { field: ['input', 'email'], message: 'Email is invalid', want: 'email' },
+    { field: ['input', 'phone'], message: 'Phone is not a valid phone number', want: 'phone' },
+    { field: ['input', 'addresses', '0', 'zip'], message: 'Zip is not valid for province', want: 'postal' },
+    { field: ['input', 'addresses', '0', 'countryCode'], message: 'Country is not supported', want: 'country' },
+  ];
+  for (const c of refusals) {
+    sent = []; globalThis.fetch = shop([], [{ field: c.field, message: c.message }]);
+    r = await fn(post(body()));
+    const j = await r.clone().json().catch(() => ({}));
+    const ok = r.status === 400
+      && Array.isArray(j.fields) && j.fields.includes(c.want)
+      && !String(j.error || '').includes(c.message)
+      && resendCalls() === 0;
+    if (!ok) fail++;
+    console.log(`${ok ? '  ok  ' : ' FAIL '} ${r.status}  Shopify refusing ${JSON.stringify(c.field)} marks "${c.want}", in our words`);
+  }
+
+  /* And the other half of that rule: a refusal naming something this form has
+     no input for must NOT be dressed up as a field error. Marking the wrong
+     box sends somebody to re-type a detail that was never the problem, so an
+     unrecognised field stays a 502 and the honest "email us". */
+  sent = []; globalThis.fetch = shop([], [{ field: ['input', 'taxExemptions'], message: 'Not permitted' }]);
   r = await fn(post(body()));
-  const invalidEmail = await r.clone().json().catch(() => ({}));
-  const invalidEmailOk = r.status === 400
-    && Array.isArray(invalidEmail.fields) && invalidEmail.fields.includes('email')
-    /* and it says so in our words, not Shopify's — its messages name internal
-       fields and are not written for the person reading them. */
-    && !/Email is invalid/i.test(String(invalidEmail.error || ''))
-    && resendCalls() === 0;
-  if (!invalidEmailOk) fail++;
-  console.log(`${invalidEmailOk ? '  ok  ' : ' FAIL '} ${r.status}  an email Shopify calls invalid is a field error, not a 502`);
+  const unknownStays502 = r.status === 502 && resendCalls() === 0;
+  if (!unknownStays502) fail++;
+  console.log(`${unknownStays502 ? '  ok  ' : ' FAIL '} ${r.status}  a refusal naming no form field stays a 502 rather than marking the wrong one`);
 
   /* 3. a submission rejected before Shopify is reached at all */
   sent = []; globalThis.fetch = shop([]);

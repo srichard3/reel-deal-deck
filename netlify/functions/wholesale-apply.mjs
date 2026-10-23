@@ -274,6 +274,60 @@ function assertNoUserErrors(label, payload) {
   if (errs.length) throw new Error(`${label}: ${errs.map((e) => e.message).join('; ')}`);
 }
 
+/* Shopify validates harder than this function and harder than the browser, so
+   a detail can pass both and still be refused: an email with no TLD, a phone
+   it reads as malformed, a postal code that does not belong to the state. Left
+   alone every one of those lands in the catch at the bottom as a 502 — "we
+   could not set up the account, email us" — which blames the system for
+   something the applicant could fix in five seconds and marks no field.
+
+   This maps Shopify's field paths back onto the form's own names so the page
+   can mark the offending input. Shopify's MESSAGE is never passed through: it
+   names internal fields, says things like "Enter a valid value", and is not
+   written for the person reading it. We say which detail was refused in our
+   own words and let them correct it.
+
+   An unrecognised field deliberately returns null and falls through to the
+   502. A wrong field marked on the form is worse than an honest "email us":
+   it sends someone to re-type something that was never the problem. */
+const SHOPIFY_FIELD_MAP = {
+  email: 'email', phone: 'phone', firstname: 'firstName', lastname: 'lastName',
+  address1: 'address1', address2: 'address2', city: 'city', zip: 'postal',
+  province: 'region', provincecode: 'region', country: 'country', countrycode: 'country',
+  company: 'business',
+};
+
+const FIELD_LABEL = {
+  email: 'email address', phone: 'phone number', firstName: 'first name',
+  lastName: 'last name', address1: 'street address', address2: 'address line 2',
+  city: 'city', postal: 'postal code', region: 'state', country: 'country',
+  business: 'business name',
+};
+
+function fieldErrorFrom(errs) {
+  const fields = [];
+  for (const e of errs || []) {
+    /* `field` is a path, not a name: ['input','email'] or
+       ['input','addresses','0','zip']. The last recognised segment is the one
+       that means something to this form. */
+    const path = Array.isArray(e.field) ? e.field : [e.field];
+    for (let i = path.length - 1; i >= 0; i--) {
+      const hit = SHOPIFY_FIELD_MAP[String(path[i] || '').toLowerCase()];
+      if (hit) { if (!fields.includes(hit)) fields.push(hit); break; }
+    }
+  }
+  if (!fields.length) return null;
+
+  const labels = fields.map((f) => FIELD_LABEL[f] || f);
+  const list = labels.length === 1
+    ? labels[0]
+    : labels.slice(0, -1).join(', ') + ' and ' + labels[labels.length - 1];
+  return {
+    error: `Our shop system would not accept the ${list} you entered. Please check it and try again.`,
+    fields,
+  };
+}
+
 export default async (request) => {
   if (request.method !== 'POST') return json(405, { error: 'Use POST.' });
 
@@ -564,20 +618,16 @@ export default async (request) => {
             customerUpdate(input: $input) { customer { id } userErrors { field message } }
           }`, { input: { id: race.id, metafields } });
         assertNoUserErrors('customerUpdate', updated.customerUpdate);
-      } else if (createErrs.some((e) => /email/i.test(String(e.field)) && /invalid/i.test(e.message))) {
-        /* Shopify's email validation is stricter than this function's and
-           stricter than the browser's: an address with no TLD, or one it reads
-           as disposable, is refused here having passed both. Without this
-           branch that lands in the catch below as a 502 — "something went
-           wrong, email us" — which blames the system for a typo the applicant
-           could fix in five seconds, and leaves the email field unmarked.
-           Same treatment as "has already been taken" above: Shopify's own
-           wording is logged, never shown, because it names internal fields. */
-        return json(400, {
-          error: 'Shopify would not accept that email address. Please check it for a typo — it needs to be an address that can receive mail.',
-          fields: ['email'],
-        });
       } else {
+        /* Any detail Shopify refused by name comes back as a field error the
+           applicant can act on. "Already taken" is handled above because it is
+           a 409 with its own wording — sign in rather than correct a typo. */
+        const refused = fieldErrorFrom(createErrs);
+        if (refused) {
+          console.error('wholesale-apply: Shopify refused a field —',
+            createErrs.map((e) => `${JSON.stringify(e.field)}: ${e.message}`).join('; '));
+          return json(400, refused);
+        }
         assertNoUserErrors('customerCreate', signedUp.customerCreate);
       }
     }

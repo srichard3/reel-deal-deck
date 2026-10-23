@@ -94,8 +94,15 @@
 
     return createImageBitmap(f, { imageOrientation: 'from-image' })
       .then(function (bmp) {
+        /* No early return when the image is already under SHRINK_EDGE.
+           That bail-out was the bug: a 2.6MB photo that happens to be 1800px
+           on the long edge went up untouched, because the only thing being
+           considered was dimensions. Weight does not come only from pixel
+           count — a high-quality JPEG, or a PNG screenshot of a permit, is
+           heavy at any size. Re-encoding at scale 1 still roughly halves it,
+           and the smaller-of-the-two check below means a re-encode that does
+           not help is thrown away. */
         var scale = Math.min(1, SHRINK_EDGE / Math.max(bmp.width, bmp.height));
-        if (scale >= 1) { bmp.close && bmp.close(); return f; }
 
         var canvas = document.createElement('canvas');
         canvas.width  = Math.round(bmp.width  * scale);
@@ -109,7 +116,20 @@
           canvas.toBlob(function (blob) {
             /* Re-encoding does not always win — a screenshot PNG of a permit
                can come back larger as a JPEG. Keep whichever is smaller. */
-            if (!blob || blob.size >= f.size) return resolve(f);
+            var kept = blob && blob.size < f.size;
+            /* Deliberate: this is the only way to tell, from a real
+               submission, whether the certificate was shrunk and by how much.
+               It answers "the upload is still slow" without guesswork, and it
+               prints nothing a reader would ever see. */
+            if (window.console && console.debug) {
+              console.debug('[permit] ' + (f.size / 1048576).toFixed(2) + 'MB '
+                + bmp.width + 'x' + bmp.height + ' ' + f.type
+                + (kept
+                    ? ' → ' + (blob.size / 1048576).toFixed(2) + 'MB '
+                      + canvas.width + 'x' + canvas.height + ' jpeg'
+                    : ' → sent as-is (re-encode was not smaller)'));
+            }
+            if (!kept) return resolve(f);
             try {
               resolve(new File([blob], 'permit.jpg', { type: 'image/jpeg' }));
             } catch (e) {
