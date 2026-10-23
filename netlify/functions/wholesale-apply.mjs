@@ -274,6 +274,44 @@ function assertNoUserErrors(label, payload) {
   if (errs.length) throw new Error(`${label}: ${errs.map((e) => e.message).join('; ')}`);
 }
 
+/* Undo the permit upload when the signup does not complete.
+
+   The order of this function is deliberate: the permit goes into Shopify Files
+   BEFORE the customer is created, so the record can be born with tags, address
+   and the certificate all on it in one call, with no moment at which an
+   untagged wholesale customer exists. The price is that every failure after
+   the upload leaves a file behind that no customer record points at.
+
+   The pre-check on the email covers the likeliest failure — applying twice —
+   by returning before anything is uploaded. It cannot cover the rest: Shopify
+   refusing a field, the create racing another submission, or Shopify simply
+   being down. So the upload is undone instead.
+
+   This matters more than tidiness. A resale certificate carries a business's
+   tax ID, and Shopify Files is served from a public CDN with no access check.
+   An orphan is somebody's tax paperwork sitting in a reachable place, attached
+   to no record and known to nobody.
+
+   Best effort by design: it never throws and never changes what the applicant
+   is told. The failure that brought us here is the one worth reporting, and a
+   cleanup that could mask it would be worse than the orphan it prevents. */
+async function discardPermit(admin, adminToken, permitId) {
+  if (!permitId) return;
+  try {
+    const gone = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+      mutation discard($fileIds: [ID!]!) {
+        fileDelete(fileIds: $fileIds) { deletedFileIds userErrors { field message } }
+      }`, { fileIds: [permitId] });
+    const errs = gone.fileDelete?.userErrors || [];
+    if (errs.length) {
+      console.error('wholesale-apply: could not discard the orphaned permit —',
+        errs.map((e) => e.message).join('; '));
+    }
+  } catch (err) {
+    console.error('wholesale-apply: could not discard the orphaned permit —', err.message);
+  }
+}
+
 /* Shopify validates harder than this function and harder than the browser, so
    a detail can pass both and still be refused: an email with no TLD, a phone
    it reads as malformed, a postal code that does not belong to the state. Left
@@ -423,6 +461,11 @@ export default async (request) => {
 
   const tag = process.env.REVIEW_ONLY === '1' ? 'wholesale-pending' : 'wholesale';
 
+  /* Declared out here so the catch at the bottom can undo the upload too —
+     a thrown error orphans a file exactly like a returned one does. */
+  let permitId = null;
+  let cleanupToken = null;
+
   try {
     /* Resolved here rather than at module load so a failed exchange is a 502
        with the real reason in the log, not a dead function. */
@@ -511,7 +554,8 @@ export default async (request) => {
       }],
     });
     assertNoUserErrors('fileCreate', created.fileCreate);
-    const permitId = created.fileCreate.files[0]?.id;
+    permitId = created.fileCreate.files[0]?.id;
+    cleanupToken = adminToken;
 
     /* ------------------------------------------------------ the customer -- */
     /* ONE Admin call, because there is no password to set.
@@ -602,6 +646,10 @@ export default async (request) => {
           }`, { q: `email:"${data.email.replace(/"/g, '')}"` });
         const race = again.customers.nodes[0];
         if (!race || (race.tags || []).some((t) => t === 'wholesale' || t === 'wholesale-pending')) {
+          /* The pre-check could not see this record yet, so the permit is
+             already uploaded. Undo it: the account they will sign in to has
+             its own certificate, and this copy belongs to nobody. */
+          await discardPermit(admin, adminToken, permitId);
           return json(409, {
             error: 'There is already a wholesale account on that email address. Please sign in instead — Shopify will email you a code.',
             fields: ['email'],
@@ -626,6 +674,9 @@ export default async (request) => {
         if (refused) {
           console.error('wholesale-apply: Shopify refused a field —',
             createErrs.map((e) => `${JSON.stringify(e.field)}: ${e.message}`).join('; '));
+          /* They will correct the field and send the whole form again, permit
+             and all, so this upload is already superseded. */
+          await discardPermit(admin, adminToken, permitId);
           return json(400, refused);
         }
         assertNoUserErrors('customerCreate', signedUp.customerCreate);
@@ -695,6 +746,12 @@ export default async (request) => {
     /* Shopify's messages can name internal ids and fields. Log them, and give
        the applicant something true and actionable instead. */
     console.error('wholesale-apply failed:', err?.stack || err);
+    /* Whatever went wrong, no customer came out of it, so anything already in
+       Shopify Files is an orphan. cleanupToken is only set once the upload has
+       actually happened, so this is a no-op for every earlier failure. */
+    if (permitId && cleanupToken) {
+      await discardPermit(admin, cleanupToken, permitId);
+    }
     return json(502, { error: 'Something went wrong setting up the account. Please email us and we will do it by hand.' });
   }
 };

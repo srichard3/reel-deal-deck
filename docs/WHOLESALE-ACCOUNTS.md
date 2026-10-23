@@ -24,6 +24,9 @@ pricing real, and the two things this design deliberately does not do.
         ├─ rejects an email that already has an account  →  409, before
         │     anything is uploaded, so no orphan file is left behind
         ├─ uploads the resale certificate  →  Shopify Files
+        │     and deletes it again if the signup does not complete, so a
+        │     failure never leaves a tax document in Files attached to
+        │     nobody — see discardPermit()
         ├─ creates the customer in ONE Admin call: tags, address and
         │     the certificate all on the record from birth
         └─ builds a Storefront cart carrying their email + shipping

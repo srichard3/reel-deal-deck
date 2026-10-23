@@ -311,8 +311,16 @@ function withExisting(nodes, sink) {
   let sent = [];
   let lastMail = null;
   process.env.SHOPIFY_SHOP_URL = 'https://shop.example.com';
+  /* Bodies, not just URLs: the permit cleanup is a mutation, so proving it ran
+     means reading what was actually sent. */
+  let bodies = [];
+  const deletedFileIds = () => bodies
+    .filter((b) => b.includes('fileDelete'))
+    .map((b) => { try { return JSON.parse(b).variables.fileIds; } catch { return []; } })
+    .flat();
   const shop = (nodes, createErrors = []) => async (url, init) => {
     sent.push(url);
+    bodies.push(String(init?.body || ''));
     if (String(url).includes('api.resend.com')) {
       try { lastMail = JSON.parse(String(init?.body || '{}')); } catch { lastMail = null; }
     }
@@ -327,11 +335,13 @@ function withExisting(nodes, sink) {
     if (b.includes('fileCreate')) return ok({ fileCreate: { files: [{ id: 'gid://shopify/GenericFile/1' }], userErrors: [] } });
     if (b.includes('customerCreate')) return ok({ customerCreate: {
       customer: createErrors.length ? null : { id: 'gid://shopify/Customer/9' }, userErrors: createErrors } });
+    if (b.includes('fileDelete')) return ok({ fileDelete: {
+      deletedFileIds: ['gid://shopify/GenericFile/1'], userErrors: [] } });
     throw new Error('blocked in test');
   };
 
   /* 1. a signup Shopify accepted */
-  sent = []; globalThis.fetch = shop([]);
+  sent = []; bodies = []; globalThis.fetch = shop([]);
   let r = await fn(post(body()));
   const sentOnSuccess = r.status === 200 && resendCalls() === 1;
   if (!sentOnSuccess) fail++;
@@ -350,7 +360,7 @@ function withExisting(nodes, sink) {
   console.log(`${signInOk ? '  ok  ' : ' FAIL '} the welcome email signs them in to the ordering page, never the bare /account dashboard`);
 
   /* 2. an email Shopify refused — nothing may be sent */
-  sent = []; globalThis.fetch = shop([], [{ field: ['email'], message: 'Email has already been taken' }]);
+  sent = []; bodies = []; globalThis.fetch = shop([], [{ field: ['email'], message: 'Email has already been taken' }]);
   r = await fn(post(body()));
   const silentOnRefusal = r.status === 409 && resendCalls() === 0;
   if (!silentOnRefusal) fail++;
@@ -370,29 +380,68 @@ function withExisting(nodes, sink) {
     { field: ['input', 'addresses', '0', 'countryCode'], message: 'Country is not supported', want: 'country' },
   ];
   for (const c of refusals) {
-    sent = []; globalThis.fetch = shop([], [{ field: c.field, message: c.message }]);
+    sent = []; bodies = []; globalThis.fetch = shop([], [{ field: c.field, message: c.message }]);
     r = await fn(post(body()));
     const j = await r.clone().json().catch(() => ({}));
     const ok = r.status === 400
       && Array.isArray(j.fields) && j.fields.includes(c.want)
       && !String(j.error || '').includes(c.message)
-      && resendCalls() === 0;
+      && resendCalls() === 0
+      /* and the permit that was uploaded before the create must not be left
+         behind — they will send the whole form again, certificate and all. */
+      && deletedFileIds().includes('gid://shopify/GenericFile/1');
     if (!ok) fail++;
-    console.log(`${ok ? '  ok  ' : ' FAIL '} ${r.status}  Shopify refusing ${JSON.stringify(c.field)} marks "${c.want}", in our words`);
+    console.log(`${ok ? '  ok  ' : ' FAIL '} ${r.status}  Shopify refusing ${JSON.stringify(c.field)} marks "${c.want}" and discards the permit`);
   }
 
   /* And the other half of that rule: a refusal naming something this form has
      no input for must NOT be dressed up as a field error. Marking the wrong
      box sends somebody to re-type a detail that was never the problem, so an
      unrecognised field stays a 502 and the honest "email us". */
-  sent = []; globalThis.fetch = shop([], [{ field: ['input', 'taxExemptions'], message: 'Not permitted' }]);
+  sent = []; bodies = []; globalThis.fetch = shop([], [{ field: ['input', 'taxExemptions'], message: 'Not permitted' }]);
   r = await fn(post(body()));
   const unknownStays502 = r.status === 502 && resendCalls() === 0;
   if (!unknownStays502) fail++;
   console.log(`${unknownStays502 ? '  ok  ' : ' FAIL '} ${r.status}  a refusal naming no form field stays a 502 rather than marking the wrong one`);
 
+  /* 2c. No orphaned tax document, on any path that gets past the upload.
+
+         The permit reaches Shopify Files BEFORE the customer is created, so
+         the record can be born complete in one call. The cost is that every
+         later failure leaves a file no customer points at — and a resale
+         certificate carries a tax ID on a CDN with no access check, so an
+         orphan is somebody's tax paperwork sitting in a reachable place,
+         attached to nothing. */
+
+  /* the race: the pre-check could not see a record that already existed */
+  sent = []; bodies = []; globalThis.fetch = shop(
+    [{ id: 'gid://shopify/Customer/4', tags: ['wholesale'] }],
+    [{ field: ['input', 'email'], message: 'Email has already been taken' }]);
+  r = await fn(post(body()));
+  const raceCleans = r.status === 409 && resendCalls() === 0;
+  if (!raceCleans) fail++;
+  console.log(`${raceCleans ? '  ok  ' : ' FAIL '} ${r.status}  an email taken before the upload is refused without one`);
+
+  /* Shopify down mid-signup: the create throws rather than answering */
+  sent = []; bodies = [];
+  const base = shop([]);
+  globalThis.fetch = async (url, init) => {
+    const b = String(init?.body || '');
+    if (b.includes('customerCreate')) {
+      sent.push(url); bodies.push(b);
+      return new Response('upstream exploded', { status: 500 });
+    }
+    return base(url, init);
+  };
+  r = await fn(post(body()));
+  const throwCleans = r.status === 502
+    && deletedFileIds().includes('gid://shopify/GenericFile/1')
+    && resendCalls() === 0;
+  if (!throwCleans) fail++;
+  console.log(`${throwCleans ? '  ok  ' : ' FAIL '} ${r.status}  a signup that throws after the upload discards the permit`);
+
   /* 3. a submission rejected before Shopify is reached at all */
-  sent = []; globalThis.fetch = shop([]);
+  sent = []; bodies = []; globalThis.fetch = shop([]);
   r = await fn(post(body({ postal: 'abc' })));
   const silentOnInvalid = r.status === 400 && resendCalls() === 0;
   if (!silentOnInvalid) fail++;
@@ -421,7 +470,7 @@ function withExisting(nodes, sink) {
   /* 5. unconfigured: no key, no email, no change */
   delete process.env.RESEND_API_KEY;
   delete process.env.RESEND_FROM;
-  sent = []; globalThis.fetch = shop([]);
+  sent = []; bodies = []; globalThis.fetch = shop([]);
   r = await fn(post(body()));
   const offByDefault = r.status === 200 && resendCalls() === 0;
   if (!offByDefault) fail++;
