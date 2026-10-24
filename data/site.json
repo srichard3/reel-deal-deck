@@ -247,31 +247,32 @@
       "note": "One deck is $19.95 plus $6.95 shipping. Two or more decks are $19.95 each and shipping is free. There is no quantity discount at retail — the saving is the shipping."
     },
     "wholesale": {
-      "note": "Wholesale is per-deck pricing from a Shopify B2B CATALOG attached to a B2B market; the market matches on the company LOCATION that netlify/functions/wholesale-apply.mjs creates. Nothing here gates it and nothing here is rendered: /wholesale/ is a gate page carrying no trade information. The ORDERABLE UNIT and the quantity rules live in the catalog, not in this file and not in the product catalogue — minimum 24 decks, in increments of 12, so a shop can order two bricks, three, or five. The old model made the bundles themselves the products, which could only ever sell even numbers of bricks.",
-      "minimumUnit": "24 decks (two bricks), then whole bricks",
+      "note": "Wholesale is per-deck pricing, sold in whole units only. The ORDERABLE UNIT is ONE BRICK (12 decks) or one master case (144 decks) — never a loose deck. The MINIMUM is two bricks, and that is a different thing from the unit: a shop orders bricks by the brick, so 2, 3, 5 or 7 are all valid, which the old two-brick SKU could not express — it could only ever sell an even number. An earlier note here said 'Do not add a 12-deck variant'. That rule is RETIRED, deliberately and by decision on 2026-10-24, because the 12-deck variant is now the point. Do not reinstate it.",
+      "minimumUnit": "two bricks (24 decks)",
       "tiers": [
         {
           "id": "brick",
-          "unit": "Per deck, from 24",
-          "decks": 24,
+          "unit": "Brick",
+          "decks": 12,
           "perDeck": 9.97
         },
         {
           "id": "case",
-          "unit": "Per deck, from 144",
+          "unit": "Master case",
           "decks": 144,
           "perDeck": 8.97
         }
       ],
       "account": {
-        "note": "The wholesale account flow. /wholesale/apply/ posts to the Netlify function in netlify/functions/, which creates a B2B COMPANY — company, location and first contact in one Admin call — and stores the resale permit as a company metafield. Trade pricing is the catalog, reached through the B2B market the location matches. There is no `wholesale` tag any more and no automatic discount: the tag granted nothing once the catalog existed. Setup runbook: docs/WHOLESALE-ACCOUNTS.md.",
+        "note": "The wholesale account flow. /wholesale/apply/ posts to the Netlify function in netlify/functions/, which creates the Shopify customer tagged `wholesale`, stores the resale permit on the customer record, and returns a pre-filled cart. Wholesale PRICES are not gated by this site — they come from a Shopify automatic discount targeted at the `wholesale` customer segment, which is what makes the order link safe to share. Setup runbook: docs/WHOLESALE-ACCOUNTS.md.",
         "live": true,
         "liveNote": "The master switch for the application form. FALSE while the site is on GitHub Pages, where /api/wholesale-apply is a 404 and the form has nowhere to post: the page then shows the email route instead of a form that would fail and blame the applicant's connection. Set true the day the site moves to Netlify AND the Shopify environment variables are set — not before, and not one without the other. Nothing else needs changing.",
         "applyPath": "/wholesale/apply/",
+        "customerTag": "wholesale",
         "autoApprove": true,
-        "autoApproveNote": "Approved on signup. REVIEW_ONLY=1 no longer withholds pricing: on a non-Plus plan a catalog attaches to a MARKET and a market matches a location's address, so one company cannot be held back from a market it matches. Direct catalog-to-company assignment, which would allow it, is Plus only. REVIEW_ONLY now only marks the company note. If applications must genuinely be reviewed before pricing, close the form — set live to false — and take them by email."
+        "autoApproveNote": "Approved on signup, confirmed again 2026-10-06: do NOT set REVIEW_ONLY in production. Verified end to end — the function tags `wholesale`, and the customer appears in the Shopify segment the trade discount reads from about twelve seconds later. The resale permit is collected and stored but not checked by anyone before pricing is granted. Set REVIEW_ONLY=1 in the Netlify environment to queue applications as `wholesale-pending` instead — the discount does not match that tag, so nothing else needs changing."
       },
-      "tiersNote": "Quantity price breaks in the B2B catalog, not two products. 24-143 decks at 9.97, 144 and up at 8.97. Shopify's own plan-feature table lists quantity rules and quantity price breaks on Basic."
+      "minimumUnitNote": "NOT enforced by the catalogue any more, and that trade was made with eyes open. While two bricks WAS the SKU, the minimum was structural — you could not buy one. With a one-brick SKU the minimum is a quantity rule, and a quantity rule can be evaded by editing the cart. The quantity input on the trade page carries min=2 as a deterrent, which is honest about being a deterrent. The options that would really enforce it are a Shopify cart-validation function or a paid app; neither is in place. A single brick slipping through is a $119.64 order to fulfil or an email to send, which was judged cheaper than either."
     }
   }
 }

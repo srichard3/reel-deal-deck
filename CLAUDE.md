@@ -52,8 +52,8 @@ Both must report **0 errors**. A change can pass one and fail the other.
   removed site-wide. Checkout will be Shopify; `site.shop.url` is still empty, so
   every order CTA falls back to `/deck/#order`.
 - Retail **$19.95** a deck, **$6.95** shipping on one, **free from two up**.
-  Wholesale **$9.97**/deck by the 12-deck brick, **$8.97**/deck by the 144-deck
-  master case. All of it in `site.pricing` — see below.
+  Wholesale **$9.97**/deck by the 12-deck brick (minimum two bricks),
+  **$8.97**/deck by the 144-deck master case. All of it in `site.pricing` — see below.
 - Nav is three items, in this order: **The Deck · Our Story · Fly-brary**
 - Open decisions in `docs/PUNCH-LIST.md` — the Shopify URL, the Trout Unlimited
   figure, lead time and freight are the blocking ones
@@ -477,8 +477,7 @@ credit arithmetic: ~2.5MB and ~80 requests per homepage visit is ~0.066 credits.
 
 **There is exactly one piece of server-side code, and it is the only reason the
 site must eventually deploy to Netlify.** `netlify/functions/wholesale-apply.mjs` backs
-`/wholesale/apply/`: it creates a B2B **company** — company, location and first
-contact in one Admin call — uploads
+`/wholesale/apply/`: it creates the Shopify customer tagged `wholesale`, uploads
 the resale permit into Shopify Files against that customer, and returns a
 Storefront cart carrying their email and address. It exists because the Admin
 API token can never reach a browser and a static host has nowhere to put an
@@ -487,6 +486,16 @@ dependencies there too — Functions v2 hands you a standard `Request`, so
 `request.formData()` parses the multipart upload and `fetch` is built in. Its
 validation is the security boundary and has the project's only test suite:
 `npm run test:wholesale`, which needs no store and no network.
+
+**The wholesale unit is ONE BRICK, and the two-brick minimum is a deterrent, not
+a wall.** It used to be the other way round: "two bricks" was the sellable SKU,
+so the minimum was structural and a shop could only order an even number of
+them. Three bricks was not expressible, which is why it changed on 2026-10-24.
+An older note in `site.json` said "Do not add a 12-deck variant" — that rule is
+retired, and the 12-deck variant is now the point. The cost is that `min="2"` on
+a quantity input can be evaded by editing the cart; real enforcement needs a
+cart-validation function or a paid app and neither is in place. A stray single
+brick is a $119.64 order to fulfil, which was judged cheaper than either.
 
 **/wholesale/ is a gate page and carries no trade information.** No price, no
 margin, no unit count, no terms — just "log in" or "create an account". That is
@@ -501,12 +510,11 @@ partials substitute tokens and cannot branch.
 **The signup collects NO password, and must not start.** Shopify's current
 customer accounts sign in with an emailed code, so there is no credential to
 collect. That is what lets `netlify/functions/wholesale-apply.mjs` create the
-account in a single Admin `companyCreate` — location, contact and the permit on
+customer in a single Admin `customerCreate` — tags, address and the permit on
 the record from birth. The old Classic flow needed three calls across two APIs
 because only the Storefront API can set a password. Do not reintroduce one, and
 do not switch the store to classic accounts to enable it.
-`SHOPIFY_STOREFRONT_TOKEN` and `SHOPIFY_WHOLESALE_VARIANT_ID` are **gone**: they
-pre-filled a cart with a wholesale SKU, and there is no wholesale SKU now.
+`SHOPIFY_STOREFRONT_TOKEN` is **optional**: it only pre-fills the cart.
 
 **Shopify stopped issuing permanent `shpat_` tokens.** Legacy custom apps could
 not be created from 1 January 2026, so an app made in the Dev Dashboard hands
@@ -518,7 +526,8 @@ legacy app is untouched. `application_cannot_be_found` from that exchange means
 
 **`REQUIRED`/`OPTIONAL` is the entire input surface.** Everything in them lands
 in `data`, and `data` is what reaches metafields and error payloads. Anything
-else in the POST is dropped. `npm run test:wholesale` posts poison in six field names and
+else in the POST is dropped — which matters most for `tags`, since the tag IS
+the trade price. `npm run test:wholesale` posts poison in six field names and
 asserts none of it reaches Shopify, a response or a log; keep that passing
 rather than trusting the comment.
 
@@ -530,15 +539,16 @@ means a repeat applicant never leaves an orphaned tax document in Shopify
 Files. Both halves are asserted by `npm run test:wholesale`.
 
 **Wholesale prices are not gated by this site, and could not be.** They come
-from a Shopify **B2B catalog** attached to a B2B market, and the market matches
-on the company **location** the function creates. That is what makes the order
-link safe to share — a secret URL is not a gate. There is no `wholesale` tag and
-no automatic discount any more: once the catalog existed the tag granted
-nothing. The ordering constraint — minimum 24 decks, increments of 12 — is a
-**quantity rule in the catalog**, enforced by Shopify at checkout rather than by
-a SKU. **A company whose location matches no B2B market gets RETAIL pricing with
-no error anywhere**, so check the market match first when trade pricing does not
-show.
+from a Shopify automatic discount scoped to the `wholesale` customer segment
+that the function tags people into. That is what makes the order link safe to
+share — a secret URL is not a gate. Applications are auto-approved because that
+was asked for; `REVIEW_ONLY=1` queues them as `wholesale-pending` instead, which
+the discount does not match, with no code change. `pricing.wholesale.account.live` is the master switch and is **false**: the
+form, the file input and the script are not emitted at all while the site is on
+Pages, and `/wholesale/apply/` offers an email address instead. Flip it only
+when the site is on Netlify *and* the Shopify variables are set. Runbook,
+including every environment variable and the Shopify setup:
+`docs/WHOLESALE-ACCOUNTS.md`.
 
 **`/suggest/` is the one form that actually delivers.** Everything else using
 `data-capture` writes to localStorage and says so, which is honest for a waiting

@@ -27,9 +27,8 @@ pricing real, and the two things this design deliberately does not do.
         │     and deletes it again if the signup does not complete, so a
         │     failure never leaves a tax document in Files attached to
         │     nobody — see discardPermit()
-        ├─ creates a B2B COMPANY in ONE Admin call: company, location
-        │     and first contact together, so half an account never exists
-        ├─ attaches the certificate and the notes as company metafields
+        ├─ creates the customer in ONE Admin call: tags, address and
+        │     the certificate all on the record from birth
         └─ builds a Storefront cart carrying their email + shipping
               address (optional — skipped without a Storefront token)
         │
@@ -170,52 +169,50 @@ in a browser; the function uses it server-side anyway.
 
 ## 2b. The catalogue, as built
 
-Rebuilt for B2B on 23 October 2026. **There are no wholesale products any more.**
+Created 2026-10-06, revised 2026-10-24. **The unit is now ONE BRICK.**
 
-The trade price is a price on the ordinary deck inside a B2B catalog, so the
-three-SKU catalogue collapsed to one product:
+The earlier version made the bundles the products: "two bricks" was a single
+sellable item, so quantity 2 of it meant 48 decks. That made the minimum
+structural — you could not buy one — but it also meant a shop could only ever
+order an EVEN number of bricks. Three bricks was not expressible. That was the
+reason for the change.
 
-| Product | SKU | Retail | B2B catalog |
-|---|---|---|---|
-| The Reel Deal Deck | `RDD-DECK` | $19.95 | $9.97, break to $8.97 at 144 |
+The trade, stated plainly: **the minimum is no longer enforced by the
+catalogue.** With a one-brick SKU, "two brick minimum" is a quantity rule, and a
+quantity rule can be evaded by editing the cart. The quantity input on the trade
+page carries `min="2"` as a deterrent and is honest about being one. Real
+enforcement would need a Shopify cart-validation function or a paid app, and
+neither is in place. A single brick slipping through is a $119.64 order to
+fulfil or an email to send — judged cheaper than either.
 
-What went, and why each one is a deletion rather than a loss:
+| Product | SKU | Price | Decks | Variant id |
+|---|---|---|---|---|
+| The Reel Deal Deck | `RDD-DECK` | $19.95 | 1 | `gid://shopify/ProductVariant/67619247980634` |
+| Wholesale — Brick | `RDD-WS-BRICK` | $239.28 | 12 | TODO-CONFIRM: the new variant id |
+| Wholesale — Master Case | `RDD-WS-CASE` | $2,583.36 | 144 | `gid://shopify/ProductVariant/67619234873434` |
 
-| Gone | Why it existed | Why it does not now |
+**The wholesale list prices are deliberately 2x the trade price**, so a single
+50% discount produces $119.64 and $1,291.68, and so a visitor who finds the page
+without an account pays full retail rather than trade. One discount rather than
+two per-tier percentages, because **two automatic product discounts do not
+stack** — a cart holding both tiers would silently overcharge.
+
+`SHOPIFY_WHOLESALE_VARIANT_ID` should be the Brick variant, and the function
+pre-fills **two** of them: one brick is the unit, two is the minimum. Asserted by
+`npm run test:wholesale`.
+
+### The discounts
+
+| Discount | What | State |
 |---|---|---|
-| `RDD-WS-BRICK2`, `RDD-WS-CASE` | the bundles WERE the sellable units, because a quantity rule could be evaded and a SKU could not | quantity rules are enforced at checkout by Shopify, not by the theme |
-| List prices at 2x trade | one 50% discount had to serve both tiers, because two automatic product discounts do not stack | the catalog sets 9.97 directly, and the 144 break is a quantity price break |
-| The 50% automatic discount | the only way to price by customer segment | the catalog prices by market |
-| `SHOPIFY_WHOLESALE_VARIANT_ID`, `SHOPIFY_STOREFRONT_TOKEN` | pre-filled a cart with the smallest wholesale SKU | there is no wholesale SKU, and a Storefront cart carries no company context so it would have quoted retail |
+| Free shipping on two or more decks | retail, min qty 2, all customers | **ACTIVE** |
+| Wholesale trade pricing (50%) | the two wholesale products | **scheduled 2030** |
+| Wholesale free shipping | no minimum | **scheduled 2030** |
 
-**The quantity rules are the ordering constraint now**, and they live in the
-catalog: **minimum 24, increment 12**. A shop can order two bricks, three or
-five. The old model could only ever sell an even number of bricks, because the
-unit was two of them.
-
-### The market is the part that silently fails
-
-On Basic, Grow and Advanced a catalog attaches to a **B2B market**, and a B2B
-market matches **company locations** — direct catalog-to-company assignment is
-Plus only. A company whose location matches no market gets **retail pricing,
-with no error anywhere**. There is no "this company is in no market" warning.
-
-So when trade pricing does not show, check in this order:
-
-1. is the company location matched by the B2B market?
-2. is the catalog assigned to that market?
-3. is the catalog active?
-
-Both of the first two are links rather than settings, which is why they are
-easy to leave half-made.
-
-### Tax is not exempted automatically, deliberately
-
-`CompanyLocationInput` accepts `taxExempt` and `taxExemptions`, and the function
-could set them from the certificate it has just uploaded. It does not. Nobody
-reads that certificate before the account opens, and auto-exempting on an
-unverified document makes the uncollected tax our problem. Set it per location,
-by hand, once someone has looked.
+**The two wholesale discounts are parked in 2030 on purpose.** Shopify's API has
+no `customerSelection` on automatic discounts — eligibility is admin-UI only — so
+a discount created live would have given *every visitor* 50% off until someone
+noticed. Before activating either one: Discounts -> the discount -> Eligibility
 -> Specific customer segments -> **Wholesale accounts**, and only then set the
 start date to today.
 

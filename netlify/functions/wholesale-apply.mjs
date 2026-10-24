@@ -11,10 +11,12 @@
  *      courtesy, not a control)
  *   2. rejects an email that already has an account — that is a sign-in
  *   3. uploads the resale permit into Shopify Files
- *   4. creates a B2B COMPANY in ONE Admin call — the company, its location
- *      and its first contact together, so half an account never exists
- *   5. attaches the permit and the application notes as company metafields
- *   6. returns where to go next
+ *   4. creates the Shopify customer in ONE Admin call, tagged `wholesale`,
+ *      with the address and the permit on the record from birth
+ *   5. builds a Storefront cart carrying their email and shipping address, with
+ *      the minimum order already in it (optional — skipped without a
+ *      Storefront token)
+ *   6. returns the cart URL for the browser to follow
  *
  * THERE IS NO PASSWORD HERE, deliberately. Shopify's current customer accounts
  * sign people in with an emailed code, so there is no credential for this form
@@ -33,32 +35,19 @@
  * ---------------------------------------------------------------------------
  * WHAT THIS DOES NOT DO, and you should know before relying on it
  *
- * It does not gate PRICES. Trade pricing is a B2B CATALOG attached to a B2B
- * market, and the market matches on the company LOCATION this function creates.
- * That is what makes the wholesale link safe to leak: without a company and a
- * signed-in contact, the catalog does not apply and the visitor pays retail. A
- * "secret URL" is not a gate and is not used as one here.
- *
- * The practical consequence: an address the B2B market does not match gets
- * RETAIL pricing, silently. There is no error for "this company is in no
- * market". When trade pricing does not show, check the market match first.
+ * It does not gate PRICES. Wholesale prices are attached in Shopify, by an
+ * automatic discount targeted at the `wholesale` customer segment this function
+ * tags people into. That is what makes the wholesale link safe to leak: without
+ * a tagged, logged-in account, the discount does not apply and the visitor pays
+ * the listed price. A "secret URL" is not a gate and is not used as one here.
  *
  * It approves everybody, immediately, because that is what was asked for. The
  * resale permit is collected and stored but NOT checked. A resale certificate
  * is a sales-tax document: auto-approving means anyone who uploads any file
  * gets wholesale pricing, and potentially a tax-exempt sale, before a human has
- * looked.
- *
- * REVIEW_ONLY=1 no longer withholds pricing, and that is a real loss worth
- * stating plainly. It used to tag `wholesale-pending`, which the automatic
- * discount did not match. Under B2B on a non-Plus plan, catalogs attach to
- * MARKETS and markets match on a location's address — there is no way to hold
- * one company back from a market its address matches. Direct catalog-to-company
- * assignment, which would allow it, is Shopify Plus only. REVIEW_ONLY now only
- * marks the company note. If applications genuinely must be reviewed before
- * pricing, the honest switch is to close the form — set
- * pricing.wholesale.account.live to false — and take applications by email.
- * See docs/WHOLESALE-ACCOUNTS.md.
+ * looked. REVIEW_ONLY=1 switches this to tagging `wholesale-pending` instead,
+ * which the discount does not match, so applications queue for approval without
+ * any code change. See docs/WHOLESALE-ACCOUNTS.md.
  * ---------------------------------------------------------------------------
  */
 
@@ -342,9 +331,8 @@ async function discardPermit(admin, adminToken, permitId) {
 const SHOPIFY_FIELD_MAP = {
   email: 'email', phone: 'phone', firstname: 'firstName', lastname: 'lastName',
   address1: 'address1', address2: 'address2', city: 'city', zip: 'postal',
-  province: 'region', provincecode: 'region', zonecode: 'region',
-  country: 'country', countrycode: 'country',
-  company: 'business', name: 'business', recipient: 'business',
+  province: 'region', provincecode: 'region', country: 'country', countrycode: 'country',
+  company: 'business',
 };
 
 const FIELD_LABEL = {
@@ -378,25 +366,12 @@ function fieldErrorFrom(errs) {
   };
 }
 
-/* Shopify wants E.164 on a company address — +12085550101 — and refuses the
-   shapes people actually type: (208) 555-0101, 208.555.0101, +1 208 555 0101.
-   The form already guarantees at least ten digits, so this only reformats.
-
-   It returns null rather than a guess when the digits are not a North American
-   number, and the address then goes up WITHOUT a phone. That is deliberate:
-   the site is domestic by design, a missing phone means a courier has nobody
-   to call, and a malformed one fails the whole signup. The lesser loss wins. */
-function toE164(phone) {
-  const d = String(phone || '').replace(/\D/g, '');
-  if (d.length === 10) return `+1${d}`;
-  if (d.length === 11 && d.startsWith('1')) return `+${d}`;
-  return null;
-}
-
 export default async (request) => {
   if (request.method !== 'POST') return json(405, { error: 'Use POST.' });
 
   const store = process.env.SHOPIFY_STORE_DOMAIN;
+  const storefrontToken = process.env.SHOPIFY_STOREFRONT_TOKEN;
+  const variantId = process.env.SHOPIFY_WHOLESALE_VARIANT_ID;
 
   /* Admin access is the whole requirement: it creates the account, and the
      account is what earns trade pricing. Either form will do — a Dev Dashboard
@@ -415,6 +390,7 @@ export default async (request) => {
   }
 
   const admin = `https://${store}/admin/api/${API_VERSION}/graphql.json`;
+  const storefront = `https://${store}/api/${API_VERSION}/graphql.json`;
 
   /* ---------------------------------------------------------------- input -- */
 
@@ -514,20 +490,13 @@ export default async (request) => {
        an emailed code, so an applicant cannot reach an inbox they do not own:
        the worst case is a nuisance application sitting in the review queue,
        which is what REVIEW_ONLY is for. */
-    /* The question is no longer "does this customer carry the wholesale tag".
-       Under B2B the tag grants nothing — the catalog does — so the only honest
-       test of "already has a trade account" is whether this customer is a
-       contact on a company. companyContactProfiles answers exactly that, and
-       it is empty for the retail buyer the paragraph above describes. */
     const found = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
       query byEmail($q: String!) {
-        customers(first: 1, query: $q) {
-          nodes { id companyContactProfiles { id company { id name } } }
-        }
+        customers(first: 1, query: $q) { nodes { id tags addresses { id } } }
       }`,
       { q: `email:"${data.email.replace(/"/g, '')}"` });
     const existing = found.customers.nodes[0] || null;
-    const alreadyApplied = (existing?.companyContactProfiles || []).length > 0;
+    const alreadyApplied = (existing?.tags || []).some((t) => t === tag || t === 'wholesale' || t === 'wholesale-pending');
     if (alreadyApplied) {
       return json(409, {
         error: 'There is already a wholesale account on that email address. Please sign in instead — Shopify will email you a code.',
@@ -588,166 +557,181 @@ export default async (request) => {
     permitId = created.fileCreate.files[0]?.id;
     cleanupToken = adminToken;
 
-    /* ------------------------------------------------------- the company -- */
-    /* B2B, not a tagged customer.
-
-       ONE companyCreate still makes the whole account — company, location and
-       first contact together — so there is never a moment at which half of one
-       exists. That property is the same as the single customerCreate it
-       replaces; what changed is where the PRICE comes from.
-
-       It used to come from an automatic discount scoped to a `wholesale`
-       customer tag, which is why the products had to be listed at twice the
-       trade price: two per-tier discounts do not stack, so one 50% discount
-       had to serve both. Now it comes from a catalog attached to a B2B market,
-       and a B2B market matches on the company LOCATION.
-
-       That makes the location's address load-bearing rather than decorative.
-       An address the market does not match gets RETAIL pricing, silently —
-       there is no error for "this company is not in a market". If trade
-       pricing is not showing, check the market match before anything else.
-
-       Tax is deliberately NOT exempted. CompanyLocationInput accepts taxExempt
-       and taxExemptions, and it is tempting to set them from the certificate
-       that was uploaded moments ago — but nobody reads that certificate before
-       the account opens. Auto-exempting on an unverified document makes the
-       uncollected tax our problem. Set it per location, by hand, once someone
-       has actually looked at the permit. */
-    const e164 = toE164(data.phone);
-    const countryCode = (data.country || 'US').toUpperCase().slice(0, 2);
-
-    /* Absent, never empty. companyCreate answers a blank string with a bare
-       INVALID_INPUT naming only the parent path, so an empty optional field
-       costs an afternoon to find. Every optional value below is omitted
-       instead of nulled. */
-    const shippingAddress = {
+    /* ------------------------------------------------------ the customer -- */
+    /* ONE Admin call, because there is no password to set.
+       The old flow could not do this: only the Storefront API can set a
+       password, so the account had to be born there and then be found again
+       and decorated by Admin — three calls, two APIs, and a window in which a
+       customer existed untagged. Passwordless accounts have no such
+       constraint, so the record is created complete: tags, address and
+       metafields in the same mutation that creates it. There is no moment at
+       which an untagged wholesale customer exists. */
+    const addresses = [{
       address1: data.address1,
+      address2: data.address2 || null,
       city: data.city,
+      provinceCode: data.region || null,
       zip: data.postal,
-      countryCode,
+      countryCode: (data.country || 'US').toUpperCase().slice(0, 2),
+      company: data.business,
+      phone: data.phone,
       firstName: data.firstName,
       lastName: data.lastName,
-      recipient: data.business,
-    };
-    if (data.address2) shippingAddress.address2 = data.address2;
-    if (data.region) shippingAddress.zoneCode = data.region;
-    if (e164) shippingAddress.phone = e164;
+    }];
 
-    const companyLocation = {
-      name: data.business,
-      billingSameAsShipping: true,
-      shippingAddress,
-    };
-    if (e164) companyLocation.phone = e164;
+    const metafields = [
+      { namespace: 'wholesale', key: 'business_name', type: 'single_line_text_field', value: data.business },
+      { namespace: 'wholesale', key: 'applied_at', type: 'date_time', value: new Date().toISOString() },
+    ];
+    if (data.website) metafields.push({ namespace: 'wholesale', key: 'website', type: 'single_line_text_field', value: data.website });
+    if (data.notes) metafields.push({ namespace: 'wholesale', key: 'notes', type: 'multi_line_text_field', value: data.notes.slice(0, 2000) });
+    if (permitId) metafields.push({ namespace: 'wholesale', key: 'resale_permit', type: 'file_reference', value: permitId });
 
-    const made = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
-      mutation newCompany($input: CompanyCreateInput!) {
-        companyCreate(input: $input) {
-          company {
-            id
-            name
-            locations(first: 1) { nodes { id } }
-            contacts(first: 1) { nodes { id customer { id } } }
-          }
-          userErrors { field message code }
-        }
-      }`, {
-      input: {
-        company: {
-          name: data.business,
-          note: `Applied through reeldealdeck.com on ${new Date().toISOString().slice(0, 10)}.`
-            + (tag === 'wholesale-pending' ? ' REVIEW_ONLY was set — not yet reviewed.' : ''),
-        },
-        companyContact: {
+    if (existing) {
+      /* An account that exists but has never applied: a retail buyer stocking
+         up. Add to it rather than replace it.
+
+         tagsAdd, NOT customerUpdate(tags:) — on CustomerInput `tags` REPLACES
+         the whole list, so updating would quietly strip any other tag the
+         record carries. Same reasoning for the address: `addresses` replaces
+         the address book, so the business address is only written when there
+         is nothing there to lose. A retail buyer's home address is not ours to
+         overwrite, and they confirm the shipping address at checkout anyway. */
+      const tagged = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+        mutation addTag($id: ID!, $tags: [String!]!) {
+          tagsAdd(id: $id, tags: $tags) { node { id } userErrors { field message } }
+        }`, { id: existing.id, tags: [tag] });
+      assertNoUserErrors('tagsAdd', tagged.tagsAdd);
+
+      const input = { id: existing.id, metafields };
+      if (!(existing.addresses || []).length) input.addresses = addresses;
+      const updated = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+        mutation upd($input: CustomerInput!) {
+          customerUpdate(input: $input) { customer { id } userErrors { field message } }
+        }`, { input });
+      assertNoUserErrors('customerUpdate', updated.customerUpdate);
+    } else {
+      const signedUp = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+        mutation newCustomer($input: CustomerInput!) {
+          customerCreate(input: $input) { customer { id } userErrors { field message } }
+        }`, {
+        input: {
           email: data.email,
           firstName: data.firstName,
           lastName: data.lastName,
+          /* NO customer-level phone, deliberately. Shopify enforces a UNIQUE
+             phone across customers: a second buyer at the same shop, or a shop
+             that already exists as a retail customer, fails customerCreate with
+             "Phone has already been taken" and the applicant is told something
+             went wrong. The number is already on the address below, where no
+             such rule applies and where it is actually needed — that is the
+             phone a courier calls. */
+          tags: [tag],
+          addresses,
+          metafields,
         },
-        companyLocation,
-      },
-    });
+      });
+      /* The pre-check is not enough on its own: Shopify's customer SEARCH index
+         lags roughly five seconds behind customerCreate (measured 2026-10-06),
+         so an applicant who double-clicks passes a lookup that genuinely cannot
+         see the record yet. Shopify always enforces unique emails, so treat its
+         refusal as an answer rather than a server fault — and since an existing
+         account is no longer a refusal, resolve it the same way the pre-check
+         would have: find the record and add to it. */
+      const createErrs = signedUp.customerCreate?.userErrors || [];
+      if (createErrs.some((e) => /email/i.test(String(e.field)) && /taken/i.test(e.message))) {
+        const again = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+          query byEmail($q: String!) {
+            customers(first: 1, query: $q) { nodes { id tags } }
+          }`, { q: `email:"${data.email.replace(/"/g, '')}"` });
+        const race = again.customers.nodes[0];
+        if (!race || (race.tags || []).some((t) => t === 'wholesale' || t === 'wholesale-pending')) {
+          /* The pre-check could not see this record yet, so the permit is
+             already uploaded. Undo it: the account they will sign in to has
+             its own certificate, and this copy belongs to nobody. */
+          await discardPermit(admin, adminToken, permitId);
+          return json(409, {
+            error: 'There is already a wholesale account on that email address. Please sign in instead — Shopify will email you a code.',
+            fields: ['email'],
+            existing: true,
+          });
+        }
+        const tagged = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+          mutation addTag($id: ID!, $tags: [String!]!) {
+            tagsAdd(id: $id, tags: $tags) { node { id } userErrors { field message } }
+          }`, { id: race.id, tags: [tag] });
+        assertNoUserErrors('tagsAdd', tagged.tagsAdd);
+        const updated = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
+          mutation upd($input: CustomerInput!) {
+            customerUpdate(input: $input) { customer { id } userErrors { field message } }
+          }`, { input: { id: race.id, metafields } });
+        assertNoUserErrors('customerUpdate', updated.customerUpdate);
+      } else {
+        /* Any detail Shopify refused by name comes back as a field error the
+           applicant can act on. "Already taken" is handled above because it is
+           a 409 with its own wording — sign in rather than correct a typo. */
+        const refused = fieldErrorFrom(createErrs);
+        if (refused) {
+          console.error('wholesale-apply: Shopify refused a field —',
+            createErrs.map((e) => `${JSON.stringify(e.field)}: ${e.message}`).join('; '));
+          /* They will correct the field and send the whole form again, permit
+             and all, so this upload is already superseded. */
+          await discardPermit(admin, adminToken, permitId);
+          return json(400, refused);
+        }
+        assertNoUserErrors('customerCreate', signedUp.customerCreate);
+      }
+    }
 
-    const companyErrs = made.companyCreate?.userErrors || [];
-    if (companyErrs.length) {
-      /* An email Shopify already knows is the one refusal that is not a
-         mistake to correct — they have an account and should sign in. Checked
-         before the field mapping so it keeps its own 409 and its own wording. */
-      const taken = companyErrs.some(
-        (e) => /email/i.test(String(e.field)) && /taken|already|exist/i.test(e.message),
-      );
-      await discardPermit(admin, adminToken, permitId);
-      if (taken) {
-        return json(409, {
-          error: 'There is already a wholesale account on that email address. Please sign in instead — Shopify will email you a code.',
-          fields: ['email'],
-          existing: true,
+    /* ----------------------------------------------------------- the cart -- */
+    /* A cart that already knows who they are and where it ships, with the
+       minimum order in it. Storefront API, because the Admin API has no cart —
+       and the Storefront token is the public kind, scoped to carts and
+       products, so there is nothing secret riding along here. */
+    let redirect = process.env.WHOLESALE_PORTAL_URL || null;
+
+    if (storefrontToken && variantId) {
+      try {
+        const cart = await shopify(storefront, storefrontToken, 'X-Shopify-Storefront-Access-Token', `
+          mutation newCart($input: CartInput!) {
+            cartCreate(input: $input) { cart { checkoutUrl } userErrors { field message } }
+          }`, {
+          input: {
+            /* TWO, not one. The wholesale unit is a single brick now, and the
+               minimum order is two of them — a cart pre-filled with one would
+               sit below the minimum the trade page states, which is a worse
+               first screen than an empty cart. */
+            lines: [{ quantity: 2, merchandiseId: variantId }],
+            buyerIdentity: {
+              email: data.email,
+              phone: data.phone || null,
+              countryCode: (data.country || 'US').toUpperCase().slice(0, 2),
+              deliveryAddressPreferences: [{
+                deliveryAddress: {
+                  address1: data.address1,
+                  address2: data.address2 || null,
+                  city: data.city,
+                  province: data.region || null,
+                  zip: data.postal,
+                  country: (data.country || 'US').toUpperCase().slice(0, 2),
+                  company: data.business,
+                  phone: data.phone,
+                  firstName: data.firstName,
+                  lastName: data.lastName,
+                },
+              }],
+            },
+            attributes: [{ key: 'wholesale_application', value: data.business }],
+          },
         });
+        assertNoUserErrors('cartCreate', cart.cartCreate);
+        redirect = cart.cartCreate.cart?.checkoutUrl || redirect;
+      } catch (err) {
+        /* The account is the thing that matters and it already exists. A cart
+           we could not pre-fill is a worse landing page, not a failed signup. */
+        console.error('wholesale-apply: cart prefill failed —', err.message);
       }
-      const refused = fieldErrorFrom(companyErrs);
-      if (refused) {
-        console.error('wholesale-apply: Shopify refused a field —',
-          companyErrs.map((e) => `${JSON.stringify(e.field)}: ${e.message}`).join('; '));
-        return json(400, refused);
-      }
-      assertNoUserErrors('companyCreate', made.companyCreate);
     }
-
-    const company = made.companyCreate?.company;
-    if (!company?.id) {
-      await discardPermit(admin, adminToken, permitId);
-      throw new Error('companyCreate returned no company and no userErrors');
-    }
-
-    /* Metafields cannot ride along in companyCreate, so they are a second
-       call. The account already exists by this point, and losing the
-       application notes is not worth refusing it, so a failure here is logged
-       rather than raised — the same treatment the welcome email gets.
-
-       The permit is NOT discarded if this fails, unlike every other failure
-       path. An orphaned tax document is worth deleting; a real account whose
-       certificate we threw away is not. The file id goes in the log line so it
-       can be attached by hand. There is no business_name metafield any more —
-       the company's own name is the business name. */
-    const metafields = [
-      { ownerId: company.id, namespace: 'wholesale', key: 'applied_at',
-        type: 'date_time', value: new Date().toISOString() },
-    ];
-    if (data.website) {
-      metafields.push({ ownerId: company.id, namespace: 'wholesale', key: 'website',
-        type: 'single_line_text_field', value: data.website });
-    }
-    if (data.notes) {
-      metafields.push({ ownerId: company.id, namespace: 'wholesale', key: 'notes',
-        type: 'multi_line_text_field', value: data.notes.slice(0, 2000) });
-    }
-    if (permitId) {
-      metafields.push({ ownerId: company.id, namespace: 'wholesale', key: 'resale_permit',
-        type: 'file_reference', value: permitId });
-    }
-
-    try {
-      const setMeta = await shopify(admin, adminToken, 'X-Shopify-Access-Token', `
-        mutation setMeta($metafields: [MetafieldsSetInput!]!) {
-          metafieldsSet(metafields: $metafields) { userErrors { field message } }
-        }`, { metafields });
-      assertNoUserErrors('metafieldsSet', setMeta.metafieldsSet);
-    } catch (err) {
-      console.error(`wholesale-apply: company metafields failed for ${company.id} —`,
-        err.message, permitId ? `permit ${permitId} is unattached` : '');
-    }
-
-    /* ------------------------------------------------------- where next -- */
-    /* No pre-filled cart any more, and that is a deletion rather than a
-       regression. It used to put one unit of the smallest wholesale SKU in a
-       Storefront cart so the applicant landed somewhere useful. Under B2B
-       there is no wholesale SKU to put there — the trade price is a catalog
-       price on the ordinary product — and a Storefront cart built with a
-       public token carries no company context, so it would have priced at
-       retail. A cart that quotes the wrong number is worse than no cart.
-
-       They land on the trade page instead, where signing in is one click and
-       the catalog does the rest. */
-    const redirect = process.env.WHOLESALE_PORTAL_URL || null;
 
     /* Last thing before success, so there is no path that emails somebody
        whose account Shopify did not accept: every failure above has already
