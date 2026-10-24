@@ -52,9 +52,9 @@ Both must report **0 errors**. A change can pass one and fail the other.
   removed site-wide. Checkout will be Shopify; `site.shop.url` is still empty, so
   every order CTA falls back to `/deck/#order`.
 - Retail **$19.95** a deck, **$6.95** shipping on one, **free from two up**.
-  Wholesale **$9.97**/deck by the 12-deck brick (minimum two bricks; **$9.95**
-  shipping on one, free from two up), **$8.97**/deck by the 144-deck master
-  case. All three discounts are **ACTIVE** as of 2026-10-24. All of it in `site.pricing` — see below.
+  Wholesale **$9.97**/deck by the 12-deck brick, **$8.97**/deck by the 144-deck
+  master case. No minimum; **$9.95** shipping on a single brick, free from two
+  up. All three discounts are **ACTIVE** as of 2026-10-24. All of it in `site.pricing` — see below.
 - Nav is three items, in this order: **The Deck · Our Story · Fly-brary**
 - Open decisions in `docs/PUNCH-LIST.md` — the Shopify URL, the Trout Unlimited
   figure, lead time and freight are the blocking ones
@@ -488,21 +488,20 @@ dependencies there too — Functions v2 hands you a standard `Request`, so
 validation is the security boundary and has the project's only test suite:
 `npm run test:wholesale`, which needs no store and no network.
 
-**The wholesale unit is ONE BRICK, and the two-brick minimum is a deterrent, not
-a wall.** It used to be the other way round: "two bricks" was the sellable SKU,
-so the minimum was structural and a shop could only order an even number of
-them. Three bricks was not expressible, which is why it changed on 2026-10-24.
-An older note in `site.json` said "Do not add a 12-deck variant" — that rule is
-retired, and the 12-deck variant is now the point. The cost is that `min="2"` on
-a quantity input can be evaded by editing the cart; real enforcement needs a
-cart-validation function or a paid app and neither is in place. A stray single
-brick is a $119.64 order to fulfil, which was judged cheaper than either.
+**The wholesale unit is ONE BRICK, and there is no minimum.** This moved three
+times on 2026-10-24 and this is the settled shape. "Two bricks" used to be the
+sellable SKU, so the minimum was structural — and a shop could only ever order an
+EVEN number of bricks, which is why it changed. Briefly it was a one-brick SKU
+with `min="2"` on the quantity input, which was a deterrent a cart edit could
+defeat. Now one brick is simply allowed.
 
-What actually closes that gap is the SHIPPING rule, not a validator: **$9.95 on
-a single brick, free from two units up**, so the minimum enforces itself
-economically — the same shape as retail, where one deck carries $6.95 and two do
-not. A shop ordering one brick has paid for the privilege rather than slipped
-through a hole.
+The only thing separating one brick from two is **shipping**: **$9.95 on a single
+brick, free from two up**, the same shape as retail's $6.95-on-one. That needs no
+enforcement, which is why no cart-validation function or paid app was ever built.
+The trade page defaults the quantity field to 2, which steers without refusing.
+
+An older note in `site.json` said "Do not add a 12-deck variant" — that rule is
+retired, and the 12-deck variant is now the point.
 
 **/wholesale/ is a gate page and carries no trade information.** No price, no
 margin, no unit count, no terms — just "log in" or "create an account". That is

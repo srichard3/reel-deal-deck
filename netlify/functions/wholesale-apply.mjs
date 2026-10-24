@@ -697,10 +697,11 @@ export default async (request) => {
             cartCreate(input: $input) { cart { checkoutUrl } userErrors { field message } }
           }`, {
           input: {
-            /* TWO, not one. The wholesale unit is a single brick now, and the
-               minimum order is two of them — a cart pre-filled with one would
-               sit below the minimum the trade page states, which is a worse
-               first screen than an empty cart. */
+            /* TWO, not one, and no longer because of a minimum — there is
+               none. Two is where shipping becomes free, so it is the quantity
+               a new account should find waiting rather than the one that
+               quietly adds $9.95. The trade page defaults to 2 for the same
+               reason. */
             lines: [{ quantity: 2, merchandiseId: variantId }],
             buyerIdentity: {
               email: data.email,

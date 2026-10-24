@@ -440,10 +440,10 @@ function withExisting(nodes, sink) {
   if (!throwCleans) fail++;
   console.log(`${throwCleans ? '  ok  ' : ' FAIL '} ${r.status}  a signup that throws after the upload discards the permit`);
 
-  /* 2d. The pre-filled cart must hold TWO bricks, not one. The wholesale unit
-         is a single brick now and the minimum is two of them, so a cart
-         pre-filled with one lands the applicant below the minimum the trade
-         page states — the first screen of their account contradicting it. */
+  /* 2d. The pre-filled cart must hold TWO bricks, not one — not because of a
+         minimum, there is none, but because two is where shipping becomes
+         free. A cart pre-filled with one quietly adds $9.95 to the first
+         order a new account ever places. */
   sent = []; bodies = [];
   process.env.SHOPIFY_STOREFRONT_TOKEN = 'sf-test';
   process.env.SHOPIFY_WHOLESALE_VARIANT_ID = 'gid://shopify/ProductVariant/1';
@@ -463,7 +463,7 @@ function withExisting(nodes, sink) {
   try { prefillQty = JSON.parse(cartCall).variables.input.lines[0].quantity; } catch {}
   const twoBricks = r.status === 200 && prefillQty === 2;
   if (!twoBricks) fail++;
-  console.log(`${twoBricks ? '  ok  ' : ' FAIL '} the pre-filled cart holds two bricks, the minimum order (got ${prefillQty})`);
+  console.log(`${twoBricks ? '  ok  ' : ' FAIL '} the pre-filled cart holds two bricks, where shipping goes free (got ${prefillQty})`);
   delete process.env.SHOPIFY_STOREFRONT_TOKEN;
   delete process.env.SHOPIFY_WHOLESALE_VARIANT_ID;
 

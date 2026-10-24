@@ -247,8 +247,8 @@
       "note": "One deck is $19.95 plus $6.95 shipping. Two or more decks are $19.95 each and shipping is free. There is no quantity discount at retail — the saving is the shipping."
     },
     "wholesale": {
-      "note": "Wholesale is per-deck pricing, sold in whole units only. The ORDERABLE UNIT is ONE BRICK (12 decks) or one master case (144 decks) — never a loose deck. The MINIMUM is two bricks, and that is a different thing from the unit: a shop orders bricks by the brick, so 2, 3, 5 or 7 are all valid, which the old two-brick SKU could not express — it could only ever sell an even number. An earlier note here said 'Do not add a 12-deck variant'. That rule is RETIRED, deliberately and by decision on 2026-10-24, because the 12-deck variant is now the point. Do not reinstate it.",
-      "minimumUnit": "two bricks (24 decks)",
+      "note": "Wholesale is per-deck pricing, sold in whole units only. The ORDERABLE UNIT is ONE BRICK (12 decks) or one master case (144 decks) — never a loose deck. There is NO MINIMUM, decided 2026-10-24: one brick is a valid order. What used to be a two-brick minimum is now only the shipping threshold, and the trade page defaults the quantity to 2 rather than refusing 1. An earlier note here said 'Do not add a 12-deck variant'. That rule is RETIRED, deliberately, because the 12-deck variant is now the point. Do not reinstate it.",
+      "minimumUnit": null,
       "tiers": [
         {
           "id": "brick",
@@ -272,7 +272,7 @@
         "autoApprove": true,
         "autoApproveNote": "Approved on signup, confirmed again 2026-10-06: do NOT set REVIEW_ONLY in production. Verified end to end — the function tags `wholesale`, and the customer appears in the Shopify segment the trade discount reads from about twelve seconds later. The resale permit is collected and stored but not checked by anyone before pricing is granted. Set REVIEW_ONLY=1 in the Netlify environment to queue applications as `wholesale-pending` instead — the discount does not match that tag, so nothing else needs changing."
       },
-      "minimumUnitNote": "NOT enforced by the catalogue, and it no longer needs to be. While two bricks WAS the SKU the minimum was structural — you could not buy one. With a one-brick SKU it became a quantity rule, and a quantity rule can be evaded by editing the cart. What closes that gap is the SHIPPING rule rather than a validator: a single brick carries $9.95 and two or more ship free, so the minimum enforces itself economically, the same way retail's free-shipping-from-two does. The quantity input on the trade page still carries min=2 as a signpost. A cart-validation function or a paid app would enforce it outright; neither is in place and neither is now worth it.",
+      "minimumUnitNote": "There is no minimum. It went through three shapes in one day and this is the settled one: two bricks WAS the SKU, so the minimum was structural; then the SKU became one brick with min=2 on the input, which was a deterrent a cart edit could defeat; now one brick is simply allowed. The only thing that distinguishes one brick from two is SHIPPING — $9.95 on a single brick, free from two up — which is the same shape as retail and needs no enforcement at all. The trade page sets the quantity field to 2 by default, which steers without refusing.",
       "shipping": {
         "perOrder": 9.95,
         "freeFromUnits": 2,
