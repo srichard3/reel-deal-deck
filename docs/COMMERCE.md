@@ -34,7 +34,7 @@ owners**. That rules more out than it rules in.
 | Real shipping rates | Yes, by weight and zone | Flat rates only, per link | n/a |
 | Inventory count | Yes, stops overselling | No | n/a |
 | Sales tax across states | Yes (Shopify Tax), automatic | Stripe Tax, extra setup + fee | n/a |
-| Wholesale / trade orders | Draft orders, invoices, B2B on higher plans | Manual invoices | n/a |
+| Wholesale / trade orders | **Native B2B — companies, catalogs and quantity rules, on every paid plan since 2 April 2026** | Manual invoices | n/a |
 | Abandoned-cart email | Yes | No | n/a |
 | Works embedded in a static site | Yes — Buy Buttons | Yes — plain links | n/a |
 | Monthly cost | ~$5 Starter, ~$39 Basic | $0 | n/a |

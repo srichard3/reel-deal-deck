@@ -28,7 +28,7 @@
     "cardCount": 54,
     "stock": "Genuine Bicycle Rider Back stock with the patented Air-Cushion finish",
     "material": "FSC-certified paper, starch-based laminating glue, vegetable-based inks",
-    "recyclable": "Yes \u2014 the same material specification as any Bicycle deck",
+    "recyclable": "Yes — the same material specification as any Bicycle deck",
     "recyclableNote": "Confirmed by Ken and Audrey. This is a statement that the deck shares USPCC's Bicycle specification, not a certification claim. Do not add an FSC chain-of-custody number or a recycling mark on top of it.",
     "dimensions": "Poker size, 2.5in x 3.5in",
     "priceCurrency": "USD",
@@ -51,7 +51,7 @@
     "partner": "Trout Unlimited",
     "partnerUrl": "https://www.tu.org/",
     "commitment": "A cut of every deck sold goes to Trout Unlimited.",
-    "commitmentNote": "Ken and Audrey's wording, deliberately without a figure. Do not invent a per-deck dollar amount or a percentage anywhere on the site \u2014 if one is ever decided, it goes here first and every page reads it from here."
+    "commitmentNote": "Ken and Audrey's wording, deliberately without a figure. Do not invent a per-deck dollar amount or a percentage anywhere on the site — if one is ever decided, it goes here first and every page reads it from here."
   },
   "social": {
     "instagram": "https://instagram.com/reeldealdeck",
@@ -214,7 +214,7 @@
     "sub": "54 hand-drawn flies on genuine Bicycle stock, $19.95 a deck, with a contribution to Trout Unlimited from every one of them. Shipping is on us from two decks up.",
     "cta": "Order now",
     "accountUrl": "https://shop.reeldealdeck.com/account/login?return_url=%2Fpages%2Fwholesale",
-    "accountUrlNote": "Set 2026-10-06, re-pointed 2026-10-12. It carries ?return_url=/pages/wholesale ON PURPOSE. Bare /account 302s to Shopify's HOSTED dashboard on shopify.com, which greets a trade buyer with a \u201cShop now\u201d card for the RETAIL deck \u2014 that page is Shopify's, not the theme's, and the card cannot be re-pointed. Verified chain: /account/login?return_url=%2Fpages%2Fwholesale \u2192 /customer_authentication/login?return_to=%2Fpages%2Fwholesale \u2192 OAuth \u2192 /pages/wholesale, so a signed-in wholesaler lands on their ordering page and never sees the dashboard. Every link that uses this is a wholesale link; there is no retail account link on the site. Originally: /account 302s to the Shopify account portal. Deliberately the shop subdomain rather than https://shopify.com/76483067994/account, which is where it redirects — that numeric id is Shopify's and can change, and a link on our own domain does not read as a phishing hop to a shop owner. The store runs NEW_CUSTOMER_ACCOUNTS, so signing in is an emailed code. The signup collects no password: Shopify's current customer accounts sign in with an emailed code, which is what the apply form and the function assume. Do not switch the store to classic accounts. While this is empty the gate at /wholesale/ offers an email address instead of a dead login link; wholesaleState() in src/templates/_blocks.mjs makes that choice once."
+    "accountUrlNote": "Set 2026-10-06, re-pointed 2026-10-12. It carries ?return_url=/pages/wholesale ON PURPOSE. Bare /account 302s to Shopify's HOSTED dashboard on shopify.com, which greets a trade buyer with a “Shop now” card for the RETAIL deck — that page is Shopify's, not the theme's, and the card cannot be re-pointed. Verified chain: /account/login?return_url=%2Fpages%2Fwholesale → /customer_authentication/login?return_to=%2Fpages%2Fwholesale → OAuth → /pages/wholesale, so a signed-in wholesaler lands on their ordering page and never sees the dashboard. Every link that uses this is a wholesale link; there is no retail account link on the site. Originally: /account 302s to the Shopify account portal. Deliberately the shop subdomain rather than https://shopify.com/76483067994/account, which is where it redirects — that numeric id is Shopify's and can change, and a link on our own domain does not read as a phishing hop to a shop owner. The store runs NEW_CUSTOMER_ACCOUNTS, so signing in is an emailed code. The signup collects no password: Shopify's current customer accounts sign in with an emailed code, which is what the apply form and the function assume. Do not switch the store to classic accounts. While this is empty the gate at /wholesale/ offers an email address instead of a dead login link; wholesaleState() in src/templates/_blocks.mjs makes that choice once."
   },
   "pricing": {
     "note": "The one source of pricing truth. src/pages/deck.mjs and src/pages/wholesale.html both read it; the Product JSON-LD offer is built from it. Three units, and they nest: a brick is twelve decks, a master case is twelve bricks.",
@@ -247,31 +247,31 @@
       "note": "One deck is $19.95 plus $6.95 shipping. Two or more decks are $19.95 each and shipping is free. There is no quantity discount at retail — the saving is the shipping."
     },
     "wholesale": {
-      "note": "Wholesale is per-deck pricing, sold in whole units only. The ORDERABLE UNIT is two bricks (24 decks) or one master case (144 decks) — never a single brick and never a loose deck. That constraint is enforced by the Shopify catalogue rather than by a quantity rule: the sellable variants ARE those units, so quantity 2 means 48 decks. Do not add a 12-deck variant.",
-      "minimumUnit": "two bricks",
+      "note": "Wholesale is per-deck pricing from a Shopify B2B CATALOG attached to a B2B market; the market matches on the company LOCATION that netlify/functions/wholesale-apply.mjs creates. Nothing here gates it and nothing here is rendered: /wholesale/ is a gate page carrying no trade information. The ORDERABLE UNIT and the quantity rules live in the catalog, not in this file and not in the product catalogue — minimum 24 decks, in increments of 12, so a shop can order two bricks, three, or five. The old model made the bundles themselves the products, which could only ever sell even numbers of bricks.",
+      "minimumUnit": "24 decks (two bricks), then whole bricks",
       "tiers": [
         {
-          "id": "bricks2",
-          "unit": "Two bricks",
+          "id": "brick",
+          "unit": "Per deck, from 24",
           "decks": 24,
           "perDeck": 9.97
         },
         {
           "id": "case",
-          "unit": "Master case",
+          "unit": "Per deck, from 144",
           "decks": 144,
           "perDeck": 8.97
         }
       ],
       "account": {
-        "note": "The wholesale account flow. /wholesale/apply/ posts to the Netlify function in netlify/functions/, which creates the Shopify customer tagged `wholesale`, stores the resale permit on the customer record, and returns a pre-filled cart. Wholesale PRICES are not gated by this site — they come from a Shopify automatic discount targeted at the `wholesale` customer segment, which is what makes the order link safe to share. Setup runbook: docs/WHOLESALE-ACCOUNTS.md.",
+        "note": "The wholesale account flow. /wholesale/apply/ posts to the Netlify function in netlify/functions/, which creates a B2B COMPANY — company, location and first contact in one Admin call — and stores the resale permit as a company metafield. Trade pricing is the catalog, reached through the B2B market the location matches. There is no `wholesale` tag any more and no automatic discount: the tag granted nothing once the catalog existed. Setup runbook: docs/WHOLESALE-ACCOUNTS.md.",
         "live": true,
         "liveNote": "The master switch for the application form. FALSE while the site is on GitHub Pages, where /api/wholesale-apply is a 404 and the form has nowhere to post: the page then shows the email route instead of a form that would fail and blame the applicant's connection. Set true the day the site moves to Netlify AND the Shopify environment variables are set — not before, and not one without the other. Nothing else needs changing.",
         "applyPath": "/wholesale/apply/",
-        "customerTag": "wholesale",
         "autoApprove": true,
-        "autoApproveNote": "Approved on signup, confirmed again 2026-10-06: do NOT set REVIEW_ONLY in production. Verified end to end — the function tags `wholesale`, and the customer appears in the Shopify segment the trade discount reads from about twelve seconds later. The resale permit is collected and stored but not checked by anyone before pricing is granted. Set REVIEW_ONLY=1 in the Netlify environment to queue applications as `wholesale-pending` instead — the discount does not match that tag, so nothing else needs changing."
-      }
+        "autoApproveNote": "Approved on signup. REVIEW_ONLY=1 no longer withholds pricing: on a non-Plus plan a catalog attaches to a MARKET and a market matches a location's address, so one company cannot be held back from a market it matches. Direct catalog-to-company assignment, which would allow it, is Plus only. REVIEW_ONLY now only marks the company note. If applications must genuinely be reviewed before pricing, close the form — set live to false — and take them by email."
+      },
+      "tiersNote": "Quantity price breaks in the B2B catalog, not two products. 24-143 decks at 9.97, 144 and up at 8.97. Shopify's own plan-feature table lists quantity rules and quantity price breaks on Basic."
     }
   }
 }

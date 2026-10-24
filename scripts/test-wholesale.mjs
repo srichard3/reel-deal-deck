@@ -130,8 +130,13 @@ for (const [name, run, want] of cases) {
       userErrors: [] } });
     if (b.includes('fileCreate')) return ok({ fileCreate: {
       files: [{ id: 'gid://shopify/GenericFile/1' }], userErrors: [] } });
-    if (b.includes('customerCreate')) return ok({ customerCreate: {
-      customer: { id: 'gid://shopify/Customer/1' }, userErrors: [] } });
+    if (b.includes('companyCreate')) return ok({ companyCreate: {
+      company: { id: 'gid://shopify/Company/7', name: 'Test',
+                 locations: { nodes: [{ id: 'gid://shopify/CompanyLocation/8' }] },
+                 contacts: { nodes: [{ id: 'gid://shopify/CompanyContact/9',
+                                       customer: { id: 'gid://shopify/Customer/10' } }] } },
+      userErrors: [] } });
+    if (b.includes('metafieldsSet')) return ok({ metafieldsSet: { userErrors: [] } });
     throw new Error('blocked in test');
   };
   const origError = console.error;
@@ -145,10 +150,19 @@ for (const [name, run, want] of cases) {
   if (!asFile) fail++;
   console.log(`${asFile ? '  ok  ' : ' FAIL '} a HEIC permit is registered as FILE, never IMAGE`);
 
-  const custCall = sent.find((b) => b.includes('customerCreate')) || '';
-  const noCustPhone = custCall !== '' && !/"phone":"[^"]*","tags"/.test(custCall);
-  if (!noCustPhone) fail++;
-  console.log(`${noCustPhone ? '  ok  ' : ' FAIL '} no customer-level phone (Shopify requires it unique)`);
+  /* Shopify wants E.164 on a company address and refuses what people type.
+     And the phone belongs on the ADDRESS, not the contact: a contact is backed
+     by a customer record, Shopify enforces a unique phone across customers, and
+     a second buyer at the same shop would fail the whole signup. */
+  const coCall = sent.find((b) => b.includes('companyCreate')) || '';
+  const e164 = coCall.includes('"phone":"+1');
+  if (!e164) fail++;
+  console.log(`${e164 ? '  ok  ' : ' FAIL '} the company address carries an E.164 phone`);
+
+  let contactPhone = true;
+  try { contactPhone = !JSON.parse(coCall).variables.input.companyContact.phone; } catch { contactPhone = true; }
+  if (!contactPhone) fail++;
+  console.log(`${contactPhone ? '  ok  ' : ' FAIL '} no phone on the company contact (customer phones must be unique)`);
 }
 
 /* An email that has ALREADY APPLIED is a sign-in, not a signup — and it is
@@ -161,7 +175,7 @@ for (const [name, run, want] of cases) {
   globalThis.fetch = async (url, init) => {
     calls.push(String(init?.body || ''));
     return new Response(JSON.stringify({
-      data: { customers: { nodes: [{ id: 'gid://shopify/Customer/1', tags: ['wholesale'], addresses: [] }] } },
+      data: { customers: { nodes: [{ id: 'gid://shopify/Customer/1', companyContactProfiles: [{ id: 'gid://shopify/CompanyContact/1', company: { id: 'gid://shopify/Company/1', name: 'Already Here' } }] }] } },
     }), { status: 200, headers: { 'content-type': 'application/json' } });
   };
   const r = await fn(post(body()));
@@ -192,9 +206,13 @@ function withExisting(nodes, sink) {
     if (b.includes('stagedUploadsCreate')) return ok({ stagedUploadsCreate: {
       stagedTargets: [{ url: 'https://example.invalid/upload', resourceUrl: 'x', parameters: [] }], userErrors: [] } });
     if (b.includes('fileCreate')) return ok({ fileCreate: { files: [{ id: 'gid://shopify/GenericFile/1' }], userErrors: [] } });
-    if (b.includes('tagsAdd')) return ok({ tagsAdd: { node: { id: 'gid://shopify/Customer/9' }, userErrors: [] } });
-    if (b.includes('customerUpdate')) return ok({ customerUpdate: { customer: { id: 'gid://shopify/Customer/9' }, userErrors: [] } });
-    if (b.includes('customerCreate')) return ok({ customerCreate: { customer: { id: 'gid://shopify/Customer/9' }, userErrors: [] } });
+    if (b.includes('companyCreate')) return ok({ companyCreate: {
+      company: { id: 'gid://shopify/Company/7', name: 'Test',
+                 locations: { nodes: [{ id: 'gid://shopify/CompanyLocation/8' }] },
+                 contacts: { nodes: [{ id: 'gid://shopify/CompanyContact/9',
+                                       customer: { id: 'gid://shopify/Customer/10' } }] } },
+      userErrors: [] } });
+    if (b.includes('metafieldsSet')) return ok({ metafieldsSet: { userErrors: [] } });
     throw new Error('blocked in test');
   };
 }
@@ -205,29 +223,26 @@ function withExisting(nodes, sink) {
   const origError = console.error;
   console.error = () => {};
 
-  /* a retail customer: no wholesale tag, and an address already on file */
+  /* a retail customer: a real account, but on no company — the shop owner who
+     bought one deck to look at it and now wants to stock it */
   globalThis.fetch = withExisting(
-    [{ id: 'gid://shopify/Customer/9', tags: ['newsletter'], addresses: [{ id: 'a1' }] }], sent);
+    [{ id: 'gid://shopify/Customer/9', companyContactProfiles: [] }], sent);
   const r = await fn(post(body()));
   globalThis.fetch = origFetch;
   console.error = origError;
 
   const accepted = r.status === 200;
   if (!accepted) fail++;
-  console.log(`${accepted ? '  ok  ' : ' FAIL '} ${r.status}  (want 200)  a retail buyer with no wholesale tag can apply`);
+  console.log(`${accepted ? '  ok  ' : ' FAIL '} ${r.status}  (want 200)  a retail buyer on no company can apply`);
 
-  /* tagsAdd, not customerUpdate(tags:) — the latter REPLACES the tag list */
-  const usedTagsAdd = sent.some((b) => b.includes('tagsAdd'));
-  const upd = sent.find((b) => b.includes('customerUpdate')) || '';
-  const keptTags = usedTagsAdd && !upd.includes('"tags"');
-  if (!keptTags) fail++;
-  console.log(`${keptTags ? '  ok  ' : ' FAIL '} their existing tags are added to, not replaced`);
-
-  /* addresses REPLACES the address book, so it must not be sent when they
-     already have one — a retail buyer's home address is not ours to overwrite */
-  const keptAddress = !upd.includes('"addresses"');
-  if (!keptAddress) fail++;
-  console.log(`${keptAddress ? '  ok  ' : ' FAIL '} their existing address is left alone`);
+  /* Their retail record is not touched at all. Under the tag model this had to
+     add a tag and conditionally write an address, and both were destructive
+     operations guarded by hand — CustomerInput replaces the tag list and the
+     address book wholesale. B2B removes the whole hazard: the account is a
+     separate company object, and the customer is only linked to it. */
+  const untouched = !sent.some((b) => b.includes('customerUpdate') || b.includes('tagsAdd'));
+  if (!untouched) fail++;
+  console.log(`${untouched ? '  ok  ' : ' FAIL '} their retail customer record is not modified`);
 }
 
 {
@@ -235,7 +250,7 @@ function withExisting(nodes, sink) {
   const origError = console.error;
   console.error = () => {};
   globalThis.fetch = withExisting(
-    [{ id: 'gid://shopify/Customer/9', tags: ['wholesale-pending'], addresses: [] }]);
+    [{ id: 'gid://shopify/Customer/9', companyContactProfiles: [{ id: 'gid://shopify/CompanyContact/1', company: { id: 'gid://shopify/Company/1', name: 'Already Here' } }] }]);
   const r = await fn(post(body()));
   globalThis.fetch = origFetch;
   console.error = origError;
@@ -263,8 +278,13 @@ function withExisting(nodes, sink) {
       userErrors: [] } });
     if (b.includes('fileCreate')) return ok({ fileCreate: {
       files: [{ id: 'gid://shopify/GenericFile/1' }], userErrors: [] } });
-    if (b.includes('customerCreate')) return ok({ customerCreate: {
-      customer: null, userErrors: [{ field: ['email'], message: 'Email has already been taken' }] } });
+    if (b.includes('companyCreate')) return ok({ companyCreate: {
+      company: null,
+      userErrors: [{ field: ['input', 'companyContact', 'email'],
+                     message: 'Email has already been taken' }] } });
+    if (b.includes('metafieldsSet')) return ok({ metafieldsSet: { userErrors: [] } });
+    if (b.includes('fileDelete')) return ok({ fileDelete: {
+      deletedFileIds: ['gid://shopify/GenericFile/1'], userErrors: [] } });
     throw new Error('blocked in test');
   };
   const origError = console.error;
@@ -333,10 +353,16 @@ function withExisting(nodes, sink) {
     if (b.includes('stagedUploadsCreate')) return ok({ stagedUploadsCreate: {
       stagedTargets: [{ url: 'https://example.invalid/upload', resourceUrl: 'x', parameters: [] }], userErrors: [] } });
     if (b.includes('fileCreate')) return ok({ fileCreate: { files: [{ id: 'gid://shopify/GenericFile/1' }], userErrors: [] } });
-    if (b.includes('customerCreate')) return ok({ customerCreate: {
-      customer: createErrors.length ? null : { id: 'gid://shopify/Customer/9' }, userErrors: createErrors } });
     if (b.includes('fileDelete')) return ok({ fileDelete: {
       deletedFileIds: ['gid://shopify/GenericFile/1'], userErrors: [] } });
+    if (b.includes('companyCreate')) return ok({ companyCreate: {
+      company: createErrors.length ? null : {
+        id: 'gid://shopify/Company/7', name: 'Test',
+        locations: { nodes: [{ id: 'gid://shopify/CompanyLocation/8' }] },
+        contacts: { nodes: [{ id: 'gid://shopify/CompanyContact/9',
+                              customer: { id: 'gid://shopify/Customer/10' } }] } },
+      userErrors: createErrors } });
+    if (b.includes('metafieldsSet')) return ok({ metafieldsSet: { userErrors: [] } });
     throw new Error('blocked in test');
   };
 
@@ -415,7 +441,7 @@ function withExisting(nodes, sink) {
 
   /* the race: the pre-check could not see a record that already existed */
   sent = []; bodies = []; globalThis.fetch = shop(
-    [{ id: 'gid://shopify/Customer/4', tags: ['wholesale'] }],
+    [{ id: 'gid://shopify/Customer/4', companyContactProfiles: [{ id: 'gid://shopify/CompanyContact/1', company: { id: 'gid://shopify/Company/1', name: 'Already Here' } }] }],
     [{ field: ['input', 'email'], message: 'Email has already been taken' }]);
   r = await fn(post(body()));
   const raceCleans = r.status === 409 && resendCalls() === 0;
@@ -427,7 +453,7 @@ function withExisting(nodes, sink) {
   const base = shop([]);
   globalThis.fetch = async (url, init) => {
     const b = String(init?.body || '');
-    if (b.includes('customerCreate')) {
+    if (b.includes('companyCreate')) {
       sent.push(url); bodies.push(b);
       return new Response('upstream exploded', { status: 500 });
     }
