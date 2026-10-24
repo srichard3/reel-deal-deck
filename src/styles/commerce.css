@@ -909,7 +909,14 @@
    WHOLESALE BAND — /deck/#wholesale
    Two units, their deck counts and their per-deck price, on the dark band.
    It was a sentence at the foot of the price panel, which is the one place a
-   buyer spending $1,291.68 would not look.
+   buyer spending four figures would not look.
+
+   NO TRADE FIGURE IN THIS COMMENT, and that is the rule rather than an
+   accident of phrasing. A CSS comment ships verbatim in dist/styles/, so it is
+   as public as the page itself — this one named the master-case price until
+   2026-10-24. Trade prices live in data/site.json and nowhere a reader can
+   reach. The same trap as example markup in a partial's comment: comments
+   ship.
    ========================================================================== */
 
 .ws-units {
