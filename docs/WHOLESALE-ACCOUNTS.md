@@ -177,18 +177,38 @@ structural — you could not buy one — but it also meant a shop could only eve
 order an EVEN number of bricks. Three bricks was not expressible. That was the
 reason for the change.
 
+**The two-brick product was repurposed rather than replaced**, on 2026-10-24,
+which is why the variant id is unchanged and `SHOPIFY_WHOLESALE_VARIANT_ID` did
+not need touching. Two identifiers did not follow the rename and are recorded
+here as they actually are, not as they should be:
+
+| | now | ideally |
+|---|---|---|
+| handle | `wholesale-two-bricks` | `wholesale-brick` |
+| SKU | `RDD-WS-BRICK2` | `RDD-WS-BRICK` |
+
+The **handle is deliberately left alone**: the trade page looks the product up
+with `all_products['wholesale-two-bricks']`, nothing links to the product URL,
+and renaming it breaks that lookup until the section is edited in the same
+breath. The **SKU is worth fixing** — it is printed on packing slips and appears
+in every export, and nothing in code reads it.
+
 The trade, stated plainly: **the minimum is no longer enforced by the
 catalogue.** With a one-brick SKU, "two brick minimum" is a quantity rule, and a
 quantity rule can be evaded by editing the cart. The quantity input on the trade
-page carries `min="2"` as a deterrent and is honest about being one. Real
-enforcement would need a Shopify cart-validation function or a paid app, and
-neither is in place. A single brick slipping through is a $119.64 order to
-fulfil or an email to send — judged cheaper than either.
+page carries `min="2"` as a signpost.
+
+What actually closes the gap is **the shipping rule, not a validator**: a single
+brick carries **$9.95** and two or more ship free, so the minimum enforces itself
+economically — the same shape as retail, where one deck carries $6.95 and two do
+not. A shop that orders one brick anyway has paid for the privilege rather than
+slipped through a hole. A cart-validation function or a paid app would enforce it
+outright; neither is in place and neither is now worth it.
 
 | Product | SKU | Price | Decks | Variant id |
 |---|---|---|---|---|
 | The Reel Deal Deck | `RDD-DECK` | $19.95 | 1 | `gid://shopify/ProductVariant/67619247980634` |
-| Wholesale — Brick | `RDD-WS-BRICK` | $239.28 | 12 | TODO-CONFIRM: the new variant id |
+| Wholesale — Brick | `RDD-WS-BRICK2` | $239.28 | 12 | `gid://shopify/ProductVariant/67619234840666` |
 | Wholesale — Master Case | `RDD-WS-CASE` | $2,583.36 | 144 | `gid://shopify/ProductVariant/67619234873434` |
 
 **The wholesale list prices are deliberately 2x the trade price**, so a single
@@ -206,8 +226,8 @@ pre-fills **two** of them: one brick is the unit, two is the minimum. Asserted b
 | Discount | What | State |
 |---|---|---|
 | Free shipping on two or more decks | retail, min qty 2, all customers | **ACTIVE** |
-| Wholesale trade pricing (50%) | the two wholesale products | **scheduled 2030** |
-| Wholesale free shipping | no minimum | **scheduled 2030** |
+| Wholesale trade pricing (50%) | the two wholesale products | **ACTIVE** (confirmed 2026-10-24) |
+| Wholesale free shipping | **two units or more** — a single brick pays $9.95 | **ACTIVE** |
 
 **The two wholesale discounts are parked in 2030 on purpose.** Shopify's API has
 no `customerSelection` on automatic discounts — eligibility is admin-UI only — so

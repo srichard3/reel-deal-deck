@@ -52,8 +52,9 @@ Both must report **0 errors**. A change can pass one and fail the other.
   removed site-wide. Checkout will be Shopify; `site.shop.url` is still empty, so
   every order CTA falls back to `/deck/#order`.
 - Retail **$19.95** a deck, **$6.95** shipping on one, **free from two up**.
-  Wholesale **$9.97**/deck by the 12-deck brick (minimum two bricks),
-  **$8.97**/deck by the 144-deck master case. All of it in `site.pricing` — see below.
+  Wholesale **$9.97**/deck by the 12-deck brick (minimum two bricks; **$9.95**
+  shipping on one, free from two up), **$8.97**/deck by the 144-deck master
+  case. All three discounts are **ACTIVE** as of 2026-10-24. All of it in `site.pricing` — see below.
 - Nav is three items, in this order: **The Deck · Our Story · Fly-brary**
 - Open decisions in `docs/PUNCH-LIST.md` — the Shopify URL, the Trout Unlimited
   figure, lead time and freight are the blocking ones
@@ -496,6 +497,12 @@ retired, and the 12-deck variant is now the point. The cost is that `min="2"` on
 a quantity input can be evaded by editing the cart; real enforcement needs a
 cart-validation function or a paid app and neither is in place. A stray single
 brick is a $119.64 order to fulfil, which was judged cheaper than either.
+
+What actually closes that gap is the SHIPPING rule, not a validator: **$9.95 on
+a single brick, free from two units up**, so the minimum enforces itself
+economically — the same shape as retail, where one deck carries $6.95 and two do
+not. A shop ordering one brick has paid for the privilege rather than slipped
+through a hole.
 
 **/wholesale/ is a gate page and carries no trade information.** No price, no
 margin, no unit count, no terms — just "log in" or "create an account". That is

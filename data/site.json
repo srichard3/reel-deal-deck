@@ -272,7 +272,12 @@
         "autoApprove": true,
         "autoApproveNote": "Approved on signup, confirmed again 2026-10-06: do NOT set REVIEW_ONLY in production. Verified end to end — the function tags `wholesale`, and the customer appears in the Shopify segment the trade discount reads from about twelve seconds later. The resale permit is collected and stored but not checked by anyone before pricing is granted. Set REVIEW_ONLY=1 in the Netlify environment to queue applications as `wholesale-pending` instead — the discount does not match that tag, so nothing else needs changing."
       },
-      "minimumUnitNote": "NOT enforced by the catalogue any more, and that trade was made with eyes open. While two bricks WAS the SKU, the minimum was structural — you could not buy one. With a one-brick SKU the minimum is a quantity rule, and a quantity rule can be evaded by editing the cart. The quantity input on the trade page carries min=2 as a deterrent, which is honest about being a deterrent. The options that would really enforce it are a Shopify cart-validation function or a paid app; neither is in place. A single brick slipping through is a $119.64 order to fulfil or an email to send, which was judged cheaper than either."
+      "minimumUnitNote": "NOT enforced by the catalogue, and it no longer needs to be. While two bricks WAS the SKU the minimum was structural — you could not buy one. With a one-brick SKU it became a quantity rule, and a quantity rule can be evaded by editing the cart. What closes that gap is the SHIPPING rule rather than a validator: a single brick carries $9.95 and two or more ship free, so the minimum enforces itself economically, the same way retail's free-shipping-from-two does. The quantity input on the trade page still carries min=2 as a signpost. A cart-validation function or a paid app would enforce it outright; neither is in place and neither is now worth it.",
+      "shipping": {
+        "perOrder": 9.95,
+        "freeFromUnits": 2,
+        "note": "Confirmed 2026-10-24. $9.95 on a single brick, free from two units up — the same shape as retail, where one deck carries $6.95 and two or more do not. A master case is twelve bricks, so it always ships free."
+      }
     }
   }
 }
