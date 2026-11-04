@@ -1,8 +1,8 @@
 <!--meta
 {
   "path": "/gifts/",
-  "title": "Fly Fishing Gifts They Don't Own",
-  "description": "A fly fishing gift that does not end up in a drawer: 54 hand-drawn flies on genuine Bicycle stock, made in the USA. $19.95, and shipping is free on two or more.",
+  "title": "Gifts for Someone Who Loves Fly Fishing",
+  "description": "Ten gifts that work for an angler, rated by how easily you could get them wrong \u2014 and the short list of things not to buy. From someone who makes one of them.",
   "priority": 0.9,
   "changefreq": "monthly",
   "bodyClass": "page-gifts",
@@ -54,6 +54,30 @@
         },
         {
           "@type": "Question",
+          "name": "What is a good fly fishing gift under $25?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Small tools they are forever losing \u2014 nippers, forceps, a zinger, a hook hone \u2014 or a deck of fly cards. Both clear the two tests that matter at this price: nothing to size, and no brand they have already settled on. Flies also sit under $25 but are the hardest thing on this page to buy for somebody else, because the right ones depend on their water and the month."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do you buy someone who already has all the fly fishing gear?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stop buying gear. The gifts that land for somebody with a full kit are an experience, a contribution or an object: a day with a guide on water they already fish, a membership to a conservation group working on their river, or something that is not equipment at all. An angler with everything has everything precisely because they choose it themselves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a gift card a cop-out for a fly fisherman?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, and for tackle it is usually the best answer available. Lines, leaders and packs are exactly the things an angler has already decided about, so a gift card to the fly shop nearest the water they fish buys the right version of the thing you would have bought wrong \u2014 and keeps the money with a shop that keeps that river staffed."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "What if they do not like it?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -72,37 +96,326 @@
 <section class="section wrap">
   <div class="wrap--narrow">
     <p class="eyebrow">Gift guide</p>
-    <h1 class="h1">A fly fishing gift for someone who already owns everything</h1>
+    <h1 class="h1">Gifts for someone who loves fly fishing</h1>
+
+    <!-- Answer-first, like every other page on this site: 40-60 words, directly
+         under the h1, before any other prose. This is the block an answer engine
+         lifts, and the one a frightened gift-buyer reads before deciding whether
+         to keep reading. It leads with the warning, not the product, because the
+         warning is the useful part and the product is only one of ten answers. -->
     <p class="lede">
-      You are not going to out-guess an angler on gear. They have opinions about tippet. What they
-      almost certainly do not have is fifty-four hand-drawn flies on a deck of real playing cards,
-      each one telling you what it imitates &mdash; the sort of thing that gets opened, turned over,
-      and then shown to somebody else.
+      You are not going to out-guess an angler on gear. They have opinions about tippet. The safe
+      gifts are the ones with nothing to size and nothing to match &mdash; a day with a guide, a gift
+      card to their shop, small tools they are forever losing. The risky ones are rods, reels, waders
+      and boots. Here are ten that work, and the short list to avoid.
     </p>
 
-    <p class="buy-avail">
-      <span class="buy-avail__dot" aria-hidden="true"></span>
-      ${{ site.pricing.retail.perDeck }} a deck &middot; {{ site.product.origin }} &middot; free shipping on two or more
+    <p class="help">
+      We make one of the ten. It is at number four, priced and rated the same way as the rest, and
+      the three above it cost more than we charge.
     </p>
 
-    <p class="buy-hero__note">
-      No size to get wrong, no rod weight to match, nothing to check against what they already own.
-      One deck is ${{ site.pricing.retail.perDeck }} plus ${{ site.pricing.retail.shipping }} postage; from two up we pay the
-      postage, which is worth knowing if you fancy keeping one yourself.
+    <p class="cluster">
+      <a class="btn btn--ghost" href="#gifts">Jump to the ten</a>
+      <a class="btn btn--ghost" href="#avoid">What not to buy</a>
+    </p>
+  </div>
+</section>
+
+<!-- ======================================================= AVOID == -->
+<!-- This section goes FIRST, before the list and before anything we sell, and
+     that placement is the whole argument for the page existing.
+
+     Every other fly-fishing gift guide is paid by the click on the expensive
+     item, so none of them will ever open by telling you not to buy a rod. We
+     are not paid that way — we sell one $19.95 thing and none of the gear —
+     which makes "do not buy the gear" both true and free for us to say. It is
+     also the single most useful paragraph for the person actually searching:
+     they are not trying to find the best gift, they are trying not to get it
+     wrong. Do not move this below the list to get the product higher. -->
+<section class="section section--sunk" id="avoid">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow">Start here</p>
+    <h2 class="h2">What not to buy</h2>
+    <p class="lede">
+      Four categories cause nearly every returned fly-fishing gift. They are the expensive ones,
+      which is why most gift guides lead with them.
     </p>
 
-    <div class="cluster">
-      <a class="btn btn--primary btn--lg" href="{{ meta.orderUrl }}" rel="{{ meta.orderRel }}" target="{{ meta.orderTarget }}">{{ meta.orderCta }}</a>
-      <a class="btn btn--ghost btn--lg" href="/deck/">See the deck itself</a>
-    </div>
+    <ul class="avoid-list">
+      <li class="avoid-list__item">
+        <h3 class="avoid-list__head">Rods and reels</h3>
+        <p class="avoid-list__body">
+          A rod is chosen by weight, length and action against the water somebody fishes and the reel
+          they already own. An angler who wants a new one has usually had the exact model in mind for
+          months. This is the most expensive way to get a gift wrong.
+        </p>
+      </li>
+      <li class="avoid-list__item">
+        <h3 class="avoid-list__head">Waders and boots</h3>
+        <p class="avoid-list__body">
+          Sized, and sized unusually &mdash; stockingfoot waders are bought a size by height and build,
+          and boots go over them rather than on a bare foot. Even people who know the angler's shoe
+          size get this wrong.
+        </p>
+      </li>
+      <li class="avoid-list__item">
+        <h3 class="avoid-list__head">Anything with a brand loyalty attached</h3>
+        <p class="avoid-list__body">
+          Lines, leaders, floatant, packs. These look like safe consumables and are not: most anglers
+          have settled on one and will quietly not use another.
+        </p>
+      </li>
+      <li class="avoid-list__item">
+        <h3 class="avoid-list__head">A fly rod &ldquo;starter kit&rdquo; for someone who already fishes</h3>
+        <p class="avoid-list__body">
+          Fine for a true beginner, and faintly insulting to anyone past their first season. If you are
+          not sure which they are, assume past it.
+        </p>
+      </li>
+    </ul>
+
+    <p class="help">
+      None of the above is sold here, which is why we can say it plainly. If you want the short
+      version to send to somebody else: <strong>if it is sized, or if they would have an opinion
+      about the brand, do not buy it.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ======================================================== PICKER == -->
+<!-- Three questions, not four. This reader is anxious and in a hurry — every
+     extra question is a chance to close the tab. It filters the ten below
+     rather than navigating anywhere, so it cannot strand anybody, and the list
+     is fully readable with JS off: gifts.js only adds the filtering. -->
+<section class="section wrap" id="picker">
+  <div class="wrap--narrow">
+    <p class="eyebrow">Narrow it down</p>
+    <h2 class="h2">Three questions</h2>
+    <p class="lede">Answer what you know. Anything you skip stays in.</p>
+
+    <form class="gpick" data-gpick hidden>
+      <fieldset class="gpick__q">
+        <legend class="gpick__legend">Who is it for?</legend>
+        <div class="gpick__opts">
+          <label class="gpick__opt"><input type="radio" name="who" value="any" checked><span>Not sure</span></label>
+          <label class="gpick__opt"><input type="radio" name="who" value="experienced"><span>They have fished for years</span></label>
+          <label class="gpick__opt"><input type="radio" name="who" value="beginner"><span>Just starting out</span></label>
+          <label class="gpick__opt"><input type="radio" name="who" value="kid"><span>A child</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="gpick__q">
+        <legend class="gpick__legend">How much do you want to spend?</legend>
+        <div class="gpick__opts">
+          <label class="gpick__opt"><input type="radio" name="budget" value="any" checked><span>No limit</span></label>
+          <label class="gpick__opt"><input type="radio" name="budget" value="1"><span>Under $25</span></label>
+          <label class="gpick__opt"><input type="radio" name="budget" value="2"><span>$25 to $100</span></label>
+          <label class="gpick__opt"><input type="radio" name="budget" value="3"><span>More than $100</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="gpick__q">
+        <legend class="gpick__legend">How badly would you mind getting it wrong?</legend>
+        <div class="gpick__opts">
+          <label class="gpick__opt"><input type="radio" name="risk" value="any" checked><span>I will take my chances</span></label>
+          <label class="gpick__opt"><input type="radio" name="risk" value="low"><span>It has to be safe</span></label>
+        </div>
+      </fieldset>
+
+      <p class="gpick__count" role="status" aria-live="polite" data-gpick-count></p>
+    </form>
+  </div>
+</section>
+
+<!-- ========================================================== TEN == -->
+<!-- The order is deliberate and the first entry is not ours.
+
+     A guided day is the best gift in this sport and costs five to twenty times
+     what we charge. Putting it at number one, and meaning it, is what earns the
+     reader's trust for the nine that follow — including ours at number four. A
+     guide that opens with its own product is the least believed page on the
+     internet, and we would rather be read than be first.
+
+     NO BRAND NAMES AND NO EXACT PRICES anywhere in this list, deliberately.
+     Price bands do not go stale, a named product does: it is discontinued, it
+     changes price, or it turns out to be bad, and this page would be quietly
+     wrong for years. It also keeps the list honest — we are describing kinds of
+     gift, not steering anybody to a shop. The one exception is our own deck,
+     where the price is read from site.pricing like everywhere else.
+
+     The RISK column is the reason to read this page rather than another one.
+     Nobody searching this has asked "what is best"; they have asked "what is
+     safe". No other gift guide answers that question. -->
+<section class="section section--sunk" id="gifts">
+  <div class="wrap">
+    <p class="eyebrow">The ten</p>
+    <h2 class="h2">Gifts that work, in order of how hard they are to get wrong</h2>
+
+    <ol class="gift-grid" data-gift-list>
+
+      <li class="gift" data-g-budget="3" data-g-risk="low" data-g-who="experienced beginner">
+        <p class="gift__rank">01</p>
+        <h3 class="gift__name">A day with a guide</h3>
+        <p class="gift__meta"><span class="gift__band">$$$</span> <span class="gift__risk gift__risk--low">Hard to get wrong</span></p>
+        <p class="gift__body">
+          The best gift in the sport and the one almost nobody buys themselves, because it feels like
+          an indulgence next to a thing you keep. A half day on water they already fish teaches more
+          than a season of guessing, and on unfamiliar water it is the difference between a trip and a
+          long walk. Book through a fly shop near the water rather than a directory; they know who is
+          good with beginners and who is better with somebody who already casts well.
+        </p>
+        <p class="gift__why"><strong>Why it is safe:</strong> nothing to size, nothing to match, and
+        the date can be left open.</p>
+      </li>
+
+      <li class="gift" data-g-budget="2" data-g-risk="low" data-g-who="experienced beginner kid">
+        <p class="gift__rank">02</p>
+        <h3 class="gift__name">A gift card to their local fly shop</h3>
+        <p class="gift__meta"><span class="gift__band">$$</span> <span class="gift__risk gift__risk--low">Hard to get wrong</span></p>
+        <p class="gift__body">
+          This is the honest answer to everything in the &ldquo;what not to buy&rdquo; list above. They
+          pick the line, the leader and the brand they have already decided on, and the money stays
+          with the shop that keeps their river staffed with people who know it. Find the shop nearest
+          the water they fish, not the one nearest their house.
+        </p>
+        <p class="gift__why"><strong>Why it is safe:</strong> it converts every risky gift on this page
+        into a safe one.</p>
+      </li>
+
+      <li class="gift" data-g-budget="1" data-g-risk="low" data-g-who="experienced beginner kid">
+        <p class="gift__rank">03</p>
+        <h3 class="gift__name">The small tools they keep losing</h3>
+        <p class="gift__meta"><span class="gift__band">$</span> <span class="gift__risk gift__risk--low">Hard to get wrong</span></p>
+        <p class="gift__body">
+          Nippers, forceps, a zinger, a hook hone. Every one of these ends up in a river, in a car
+          footwell or in last year's jacket, and nobody has ever been annoyed to own a spare. This is
+          the exception to the brand-loyalty rule: these are cheap enough that a second one is useful
+          even if it is not their usual.
+        </p>
+        <p class="gift__why"><strong>Why it is safe:</strong> consumable, cheap, and genuinely always
+        needed again.</p>
+      </li>
+
+      <li class="gift gift--ours" data-g-budget="1" data-g-risk="low" data-g-who="experienced beginner kid">
+        <p class="gift__rank">04</p>
+        <h3 class="gift__name">A deck of fly cards</h3>
+        <p class="gift__meta"><span class="gift__band">$</span> <span class="gift__risk gift__risk--low">Hard to get wrong</span></p>
+        <p class="gift__body">
+          Fifty-four classic flies, one to a card, each saying what it imitates. It answers the
+          &ldquo;what do I tie on&rdquo; question at the truck, and it is a real deck, so it also plays
+          poker. This is the one we make &mdash; ${{ site.pricing.retail.perDeck }} a deck, {{ site.product.origin }} &mdash;
+          and it is on this list for the same reason as the other nine: there is no size, no
+          compatibility and no brand to get wrong.
+        </p>
+        <p class="gift__why"><strong>Why it is safe:</strong> useful to a beginner, interesting to
+        somebody thirty years in, and wrong for neither.</p>
+        <p class="gift__cta">
+          <a class="btn btn--primary" href="{{ meta.orderUrl }}" rel="{{ meta.orderRel }}" target="{{ meta.orderTarget }}">{{ meta.orderCta }}</a>
+          <a class="btn btn--ghost" href="/deck/">See what is on the cards</a>
+        </p>
+      </li>
+
+      <li class="gift" data-g-budget="2" data-g-risk="low" data-g-who="experienced beginner">
+        <p class="gift__rank">05</p>
+        <h3 class="gift__name">A membership to a conservation group</h3>
+        <p class="gift__meta"><span class="gift__band">$$</span> <span class="gift__risk gift__risk--low">Hard to get wrong</span></p>
+        <p class="gift__body">
+          Most anglers mean to join something and never get round to it. A membership in their name
+          puts money into the water they fish and usually comes with a magazine and a local chapter
+          that runs work days and river cleanups. Pick a group that works on their river if you can
+          find one; a national membership is a fine fallback.
+        </p>
+        <p class="gift__why"><strong>Why it is safe:</strong> nothing to size, and it says you were
+        paying attention to what they care about.</p>
+      </li>
+
+      <li class="gift" data-g-budget="2" data-g-risk="med" data-g-who="experienced beginner">
+        <p class="gift__rank">06</p>
+        <h3 class="gift__name">A proper sun hat</h3>
+        <p class="gift__meta"><span class="gift__band">$$</span> <span class="gift__risk gift__risk--med">Mostly safe</span></p>
+        <p class="gift__body">
+          Wide brim all the way round, not a cap. Anglers stand in reflected light for hours and most
+          of them own a hat that is too small for the job. Sizing is forgiving &mdash; most are one size
+          with a drawcord &mdash; but colour and shape are a matter of taste, which is the only reason
+          this is not in the top five.
+        </p>
+        <p class="gift__why"><strong>Where it goes wrong:</strong> they may already have one they love.
+        Keep the receipt.</p>
+      </li>
+
+      <li class="gift" data-g-budget="1" data-g-risk="med" data-g-who="experienced beginner">
+        <p class="gift__rank">07</p>
+        <h3 class="gift__name">A book about fishing rather than about tackle</h3>
+        <p class="gift__meta"><span class="gift__band">$</span> <span class="gift__risk gift__risk--med">Mostly safe</span></p>
+        <p class="gift__body">
+          Essays and accounts of places age far better than instruction, and the people who fish most
+          tend to read about it in winter. Instruction is riskier: it dates, and it implies they need
+          teaching. If you know a river they love, a book about that river is close to unbeatable.
+        </p>
+        <p class="gift__why"><strong>Where it goes wrong:</strong> taste, and the chance they own it.</p>
+      </li>
+
+      <li class="gift" data-g-budget="2" data-g-risk="med" data-g-who="experienced">
+        <p class="gift__rank">08</p>
+        <h3 class="gift__name">A print of a fly, a fish or a river</h3>
+        <p class="gift__meta"><span class="gift__band">$$</span> <span class="gift__risk gift__risk--med">Mostly safe</span></p>
+        <p class="gift__body">
+          Something for the wall of an office rather than the back of a truck. A plate of a classic fly
+          pattern, or a map or picture of water they know, does what no piece of equipment does: it
+          sits where other people see it and gets asked about.
+        </p>
+        <p class="gift__why"><strong>Where it goes wrong:</strong> entirely a matter of their taste and
+        their walls.</p>
+      </li>
+
+      <li class="gift" data-g-budget="2" data-g-risk="high" data-g-who="beginner kid">
+        <p class="gift__rank">09</p>
+        <h3 class="gift__name">A fly box</h3>
+        <p class="gift__meta"><span class="gift__band">$$</span> <span class="gift__risk gift__risk--high">Easy to get wrong</span></p>
+        <p class="gift__body">
+          A good gift for somebody in their first season or two, who does not yet have a system. For
+          anybody else it is close to hopeless: foam against slit foam against magnetic, size, how it
+          sits in which pocket. Experienced anglers have settled this question and will not re-open it
+          for a present.
+        </p>
+        <p class="gift__why"><strong>Where it goes wrong:</strong> they already have the one they like,
+        and it is the one they like.</p>
+      </li>
+
+      <li class="gift" data-g-budget="1" data-g-risk="high" data-g-who="beginner kid">
+        <p class="gift__rank">10</p>
+        <h3 class="gift__name">Flies themselves</h3>
+        <p class="gift__meta"><span class="gift__band">$</span> <span class="gift__risk gift__risk--high">Easy to get wrong</span></p>
+        <p class="gift__body">
+          The obvious idea and the hardest one on this list. Flies are chosen for a water, a season and
+          a hook size, and the ones an angler needs in April are not the ones they need in August. If
+          you are going to do it anyway &mdash; and it is lovely when it lands &mdash; buy a small
+          selection of classics rather than guessing at a hatch, and buy them from the shop nearest
+          their water.
+        </p>
+        <p class="gift__why"><strong>If you are going to try:</strong> the
+        <a href="/flies/">Fly-brary</a> lists fifty-five classics and what each one imitates, which is
+        a better starting point than a bargain assortment.</p>
+      </li>
+
+    </ol>
+
+    <p class="help" data-gpick-empty hidden>
+      Nothing on the list matches all three answers. Widen one of them &mdash; most likely the budget.
+    </p>
   </div>
 </section>
 
 <!-- ==================================================== WHY IT LANDS == -->
 <section class="section section--sunk">
   <div class="wrap">
-    <p class="eyebrow">Why it lands</p>
+    <p class="eyebrow">More on number four</p>
     <h2 class="h2">The rare gift you can buy for an expert without knowing anything</h2>
+    <p class="lede">
+      This is the one we make, so take the rest of the page as the evidence for it rather than this
+      section. Four reasons it keeps working as a present:
+    </p>
 
     <div class="buy-why">
       <div class="buy-why__item">
@@ -246,7 +559,7 @@
 <!-- ==================================================== OBJECTIONS == -->
 <section class="section wrap">
   <p class="eyebrow">Before you decide</p>
-  <h2 class="h2">The five things gift-buyers ask us</h2>
+  <h2 class="h2">What gift-buyers ask us</h2>
 
   <div class="gift-objections">
     <div class="gift-objection">
@@ -308,6 +621,21 @@
           honestly that it is tight than let you find that out from a tracking number.
         </p>
       </div>
+    </div>
+
+    <div class="gift-objection">
+      <h3 class="gift-objection__q">What is a good fly fishing gift under $25?</h3>
+      <div><p class="gift-objection__a">Small tools they are forever losing — nippers, forceps, a zinger, a hook hone — or a deck of fly cards. Both clear the two tests that matter at this price: nothing to size, and no brand they have already settled on. Flies also sit under $25 but are the hardest thing on this page to buy for somebody else, because the right ones depend on their water and the month.</p></div>
+    </div>
+
+    <div class="gift-objection">
+      <h3 class="gift-objection__q">What do you buy someone who already has all the fly fishing gear?</h3>
+      <div><p class="gift-objection__a">Stop buying gear. The gifts that land for somebody with a full kit are an experience, a contribution or an object: a day with a guide on water they already fish, a membership to a conservation group working on their river, or something that is not equipment at all. An angler with everything has everything precisely because they choose it themselves.</p></div>
+    </div>
+
+    <div class="gift-objection">
+      <h3 class="gift-objection__q">Is a gift card a cop-out for a fly fisherman?</h3>
+      <div><p class="gift-objection__a">No, and for tackle it is usually the best answer available. Lines, leaders and packs are exactly the things an angler has already decided about, so a gift card to the fly shop nearest the water they fish buys the right version of the thing you would have bought wrong — and keeps the money with a shop that keeps that river staffed.</p></div>
     </div>
 
     <div class="gift-objection">
@@ -404,6 +732,18 @@
       <p class="cx-crosslink__name">Our Fly-brary</p>
       <p class="cx-crosslink__body">All 54 flies, free to read. Useful if you want to sound informed.</p>
     </a>
+    <a class="cx-crosslink__item" href="/conservation/">
+      <p class="cx-crosslink__name">Conservation, and gift number five</p>
+      <p class="cx-crosslink__body">What a membership actually pays for, and why we are members rather than partners.</p>
+    </a>
+    <a class="cx-crosslink__item" href="/fly-fishing-by-state/">
+      <p class="cx-crosslink__name">Where they fish</p>
+      <p class="cx-crosslink__body">Fifty states: seasons, species and the water. Useful for picking a guide or a book.</p>
+    </a>
+    <a class="cx-crosslink__item" href="/blog/">
+      <p class="cx-crosslink__name">The Virtual Guide</p>
+      <p class="cx-crosslink__body">Knots, technique and tackle, written for somebody starting out.</p>
+    </a>
     <a class="cx-crosslink__item" href="/wholesale/">
       <p class="cx-crosslink__name">Buying a dozen or more</p>
       <p class="cx-crosslink__body">Clubs, chapters, corporate gifting and shops start here.</p>
@@ -412,3 +752,5 @@
 </section>
 
 <script src="/js/commerce.js" defer></script>
+
+<script src="/js/gifts.js" defer></script>

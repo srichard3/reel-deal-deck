@@ -1103,3 +1103,69 @@
 }
 
 .ws-hero__actions { margin-block-start: var(--s-6); }
+
+/* ===== /gifts/ — the guide ============================================== */
+/* The page is a gift GUIDE that happens to contain one thing we sell, so the
+   ten entries are styled identically and ours gets no visual promotion beyond
+   a left edge. A highlighted card would undo the point of listing it fourth. */
+
+.avoid-list { list-style: none; margin: var(--s-6) 0 var(--s-5); padding: 0;
+              display: grid; gap: var(--s-5); }
+@media (min-width: 40rem) { .avoid-list { grid-template-columns: 1fr 1fr; } }
+.avoid-list__head { margin: 0 0 var(--s-2); font-size: 1.05rem; line-height: 1.3; }
+.avoid-list__body { margin: 0; color: var(--c-text-muted); }
+
+/* ---- the picker ---- */
+.gpick { margin: var(--s-5) 0 0; display: grid; gap: var(--s-5); }
+.gpick__q { border: 0; margin: 0; padding: 0; min-inline-size: 0; }
+.gpick__legend { padding: 0; margin: 0 0 var(--s-3); font-size: .78rem;
+                 letter-spacing: .12em; text-transform: uppercase;
+                 color: var(--c-text-muted); }
+.gpick__opts { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+
+/* The radio is the control and stays in the accessibility tree; the pill is
+   its label. Hiding the input with display:none would take it off the keyboard
+   entirely, so it is clipped instead and :focus-visible is drawn on the pill. */
+.gpick__opt input { position: absolute; inline-size: 1px; block-size: 1px;
+                    overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.gpick__opt span { display: inline-block; padding: .55em 1em; border-radius: 999px;
+                   border: 1px solid var(--c-border); color: var(--c-text-muted);
+                   font-size: .95rem; cursor: pointer;
+                   transition: border-color .12s ease, color .12s ease, background-color .12s ease; }
+.gpick__opt input:checked + span { border-color: var(--c-green);
+                   color: var(--c-green); background: rgba(143, 191, 102, .08); }
+.gpick__opt input:focus-visible + span { outline: 2px solid var(--c-green); outline-offset: 2px; }
+.gpick__opt span:hover { border-color: var(--c-green); }
+.gpick__count { margin: 0; font-size: .9rem; color: var(--c-text-muted); }
+
+/* ---- the ten ---- */
+.gift-grid { list-style: none; margin: var(--s-6) 0 0; padding: 0;
+             display: grid; gap: var(--s-5); }
+@media (min-width: 48rem) { .gift-grid { grid-template-columns: 1fr 1fr; } }
+
+.gift { border: 1px solid var(--c-border); border-radius: var(--r-card);
+        padding: var(--s-5); background: var(--c-surface);
+        display: flex; flex-direction: column; }
+.gift[hidden] { display: none; }        /* beats the flex above */
+.gift--ours { border-inline-start: 3px solid var(--c-green); }
+
+.gift__rank { margin: 0 0 var(--s-2); font-size: .78rem; letter-spacing: .14em;
+              color: var(--c-text-muted); }
+.gift__name { margin: 0 0 var(--s-3); font-size: 1.25rem; line-height: 1.25; }
+.gift__meta { margin: 0 0 var(--s-4); display: flex; flex-wrap: wrap; gap: var(--s-2);
+              align-items: center; }
+.gift__band { font-weight: 600; color: var(--c-text-muted); letter-spacing: .05em; }
+
+/* Colour is NOT the only carrier here — each pill says "Hard to get wrong",
+   "Mostly safe" or "Easy to get wrong" in words, because the whole point of
+   the column is lost on anyone who cannot separate the three greens/ambers. */
+.gift__risk { font-size: .72rem; font-weight: 600; letter-spacing: .06em;
+              text-transform: uppercase; padding: .3em .7em; border-radius: 999px;
+              border: 1px solid currentColor; }
+.gift__risk--low  { color: var(--c-green); }
+.gift__risk--med  { color: var(--c-egg); }
+.gift__risk--high { color: var(--c-worm); }
+
+.gift__body { margin: 0 0 var(--s-4); }
+.gift__why { margin: 0; font-size: .92rem; color: var(--c-text-muted); }
+.gift__cta { margin: var(--s-4) 0 0; display: flex; flex-wrap: wrap; gap: var(--s-3); }
