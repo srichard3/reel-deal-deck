@@ -3220,3 +3220,51 @@ html:not(.no-js) .tuck__box { cursor: grab; }
   }
   .btn.is-busy::after { animation: none; }
 }
+
+/* ===== /what-fly-to-use/ — the fly picker ============================== */
+/* Shares the pill vocabulary with /gifts/ but keeps its own class names: the
+   two pages filter different things and will drift, and one shared .pick would
+   make every change to either a change to both. */
+
+.pick { display: grid; gap: var(--s-5); margin: 0 0 var(--s-6); }
+.pick__q { border: 0; margin: 0; padding: 0; min-inline-size: 0; }
+.pick__legend { padding: 0; margin: 0 0 var(--s-3); font-size: .78rem;
+                letter-spacing: .12em; text-transform: uppercase; color: var(--c-text-muted); }
+.pick__opts { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+
+/* Clipped, not display:none — the radio stays the control and stays on the
+   keyboard; the pill is only its label. */
+.pick__opt input { position: absolute; inline-size: 1px; block-size: 1px;
+                   overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.pick__opt span { display: inline-block; padding: .55em 1em; border-radius: 999px;
+                  border: 1px solid var(--c-border); color: var(--c-text-muted);
+                  font-size: .95rem; cursor: pointer;
+                  transition: border-color .12s ease, color .12s ease, background-color .12s ease; }
+.pick__opt input:checked + span { border-color: var(--c-green); color: var(--c-green);
+                  background: rgba(143, 191, 102, .08); }
+.pick__opt input:focus-visible + span { outline: 2px solid var(--c-green); outline-offset: 2px; }
+.pick__opt span:hover { border-color: var(--c-green); }
+
+.pick__hint { margin: var(--s-3) 0 0; font-size: .9rem; color: var(--c-text-muted); }
+.pick__count { margin: 0; font-weight: 600; }
+.pick__nothing { margin: 0 0 var(--s-5); padding: var(--s-4) var(--s-5);
+                 border: 1px solid var(--c-border); border-inline-start: 3px solid var(--c-egg);
+                 border-radius: var(--r-card); background: var(--c-surface); }
+
+.pfly-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-4);
+             grid-template-columns: 1fr; }
+@media (min-width: 34rem) { .pfly-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 60rem) { .pfly-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.pfly { display: flex; gap: var(--s-4); align-items: flex-start;
+        border: 1px solid var(--c-border); border-radius: var(--r-card);
+        padding: var(--s-4); background: var(--c-surface); }
+.pfly[hidden] { display: none; }          /* beats the flex above */
+.pfly__art { flex: 0 0 4.5rem; }
+.pfly__art .card-face { display: block; }
+.pfly__text { min-inline-size: 0; }       /* lets long names wrap instead of overflowing */
+.pfly__name { margin: 0 0 var(--s-2); font-size: 1.02rem; line-height: 1.25; }
+.pfly__meta { margin: 0 0 var(--s-2); display: flex; flex-wrap: wrap; gap: var(--s-2);
+              font-size: .8rem; color: var(--c-text-muted); }
+.pfly__sizes { font-variant-numeric: tabular-nums; }
+.pfly__imitates { margin: 0; font-size: .9rem; color: var(--c-text-muted); }

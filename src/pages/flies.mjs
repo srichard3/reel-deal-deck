@@ -240,6 +240,17 @@ export default function ({ site, flies, posts }) {
 
 
 <div class="wrap library" id="the-flies">
+  <!-- The filters below answer "find me this fly". The picker answers the
+       question somebody standing in a river actually has, which is the other
+       way round: they know the conditions and not the pattern. Four doors is
+       the hub's layout (2 then 4 columns, never auto-fit), so this sits here
+       instead — next to the filters it complements rather than above them. -->
+  <p class="library-picker">
+    Not sure what you are looking for?
+    <a href="/what-fly-to-use/">Answer three questions about the water</a> and we will narrow
+    these ${flies.length} down for you.
+  </p>
+
   <form class="library-filters" data-fly-filter hidden>
     <div class="library-filters__row">
       <div class="field library-filters__search">
