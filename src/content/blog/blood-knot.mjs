@@ -40,7 +40,7 @@ export const meta = {
   related: ['double-surgeons-knot', 'leader-vs-tippet', 'best-fly-fishing-knots'],
   relatedFlies: ['parachute-adams', 'pheasant-tail-nymph'],
   sources: [
-    { label: 'Orvis Learning Center — Leader and tippet basics', url: 'https://howtoflyfish.orvis.com/beginner-fly-fishing/tackle-and-gear/leaders-and-tippet' },
+    { label: 'NetKnots — How to tie a Blood Knot', url: 'https://www.netknots.com/fishing_knots/blood-knot' },
   ],
 };
 

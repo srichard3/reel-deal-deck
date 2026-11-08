@@ -39,7 +39,7 @@ export const meta = {
   related: ['how-to-set-up-a-fly-rod', 'leader-vs-tippet', 'best-fly-fishing-knots'],
   relatedFlies: ['woolly-bugger', 'elk-hair-caddis'],
   sources: [
-    { label: 'Orvis Learning Center — Rigging a fly rod', url: 'https://howtoflyfish.orvis.com/beginner-fly-fishing/tackle-and-gear/rigging-your-fly-rod' },
+    { label: 'NetKnots — How to tie a Nail Knot', url: 'https://www.netknots.com/fishing_knots/nail-knot' },
   ],
 };
 

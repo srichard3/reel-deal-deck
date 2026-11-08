@@ -47,10 +47,6 @@ export const meta = {
       label: 'Gink and Gasoline — 10 Types of Water That Always Hold Trout',
       url: 'https://www.ginkandgasoline.com/fly-fishing-tips-technique/10-types-of-water-that-always-hold-trout/',
     },
-    {
-      label: 'University of Kentucky — A Beginner’s Guide to Rods, Reels, and Lines',
-      url: 'https://www.uky.edu/~agrdanny/flyfish/newfaq.htm',
-    },
   ],
 };
 

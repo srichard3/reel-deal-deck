@@ -39,7 +39,7 @@ export const meta = {
   related: ['blood-knot', 'leader-vs-tippet', 'tippet-size-for-fly-size'],
   relatedFlies: ['pheasant-tail-nymph', 'elk-hair-caddis'],
   sources: [
-    { label: 'Orvis Learning Center — Leader and tippet basics', url: 'https://howtoflyfish.orvis.com/beginner-fly-fishing/tackle-and-gear/leaders-and-tippet' },
+    { label: 'NetKnots — How to tie a Surgeon’s Knot', url: 'https://www.netknots.com/fishing_knots/surgeons-knot' },
   ],
 };
 

@@ -33,10 +33,6 @@ export const meta = {
   relatedFlies: ['woolly-bugger', 'adams', 'clouser-minnow', 'griffiths-gnat'],
   sources: [
     {
-      label: 'University of Kentucky — A Beginner’s Guide to Rods, Reels, and Lines',
-      url: 'https://www.uky.edu/~agrdanny/flyfish/newfaq.htm',
-    },
-    {
       label: 'Hatch Magazine — Understanding Leaders and Tippets',
       url: 'https://www.hatchmag.com/articles/understanding-leaders-and-tippets/7711248',
     },

@@ -39,7 +39,7 @@ export const meta = {
   related: ['nail-knot', 'how-to-set-up-a-fly-rod', 'leader-vs-tippet'],
   relatedFlies: ['parachute-adams', 'woolly-bugger'],
   sources: [
-    { label: 'Orvis Learning Center — Rigging a fly rod', url: 'https://howtoflyfish.orvis.com/beginner-fly-fishing/tackle-and-gear/rigging-your-fly-rod' },
+    { label: 'NetKnots — How to tie a Perfection Loop', url: 'https://www.netknots.com/fishing_knots/perfection-loop' },
   ],
 };
 
