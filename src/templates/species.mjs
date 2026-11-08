@@ -69,7 +69,11 @@ export default function ({ species: sp, speciesList, site, flies, states }) {
   const meta = {
     path,
     title: titleWithin(sp.name, ': How to Identify'),
-    description: leadWith(sp.name, sp.summary),
+    /* leadWith() prefixes the name, which costs ~17 chars and pushed one
+       species (cutthroat trout) past the limit, where the template clamped it
+       mid-word. A hand-written field is the escape hatch, so the index card
+       keeps its own copy instead of being shortened to suit the SERP. */
+    description: sp.metaDescription || leadWith(sp.name, sp.summary),
     priority: 0.7,
     changefreq: 'yearly',
     bodyClass: 'page-species',
