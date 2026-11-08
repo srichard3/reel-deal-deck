@@ -13,6 +13,39 @@
 import { esc, flyCard } from './_shared.mjs';
 import { organizationSchema } from './_blocks.mjs';
 
+
+/* The brand suffix build.mjs appends costs 21 of the 60 characters a title
+   gets, so a family suffix has to be measured, not assumed: ": Identification,
+   Range and Habitat" was the obvious choice and puts every one of these pages
+   over the limit. These two helpers keep that from happening silently.
+
+   titleWithin() adds the suffix only when the result still fits, and falls
+   back to the bare name otherwise. One hatch — Baitfish and Sculpin — takes
+   the fallback. A conditional suffix is slightly inconsistent; a title the
+   gate rejects, or a truncated one in a search result, is worse.
+
+   leadWith() puts the subject at the front of the description, because these
+   summaries were written to follow a heading that already said what the page
+   was about and so most of them never name their own subject. It SKIPS any
+   summary that already mentions it, rather than producing "Midge: midges
+   are…". */
+const TITLE_MAX = 60;
+const BRAND_SUFFIX = ' — The Reel Deal Deck'.length;
+
+function titleWithin(base, suffix) {
+  return base.length + suffix.length + BRAND_SUFFIX <= TITLE_MAX ? base + suffix : base;
+}
+
+function leadWith(name, summary) {
+  /* The WHOLE name, not its words. Matching word by word meant any summary
+     containing "trout" counted as naming Brook Trout, Brown Trout, Lake Trout
+     and nine others — which is nearly every summary here, so almost nothing
+     got the prefix it needed. */
+  const named = summary.toLowerCase().includes(name.toLowerCase());
+  const text = named ? summary : `${name}: ${summary[0].toLowerCase()}${summary.slice(1)}`;
+  return text.length > 158 ? `${text.slice(0, 155)}…` : text;
+}
+
 export default function ({ species: sp, speciesList, site, flies, states }) {
   const base = site.url.replace(/\/$/, '');
   const path = `/species/${sp.slug}/`;
@@ -35,8 +68,8 @@ export default function ({ species: sp, speciesList, site, flies, states }) {
 
   const meta = {
     path,
-    title: sp.name,
-    description: sp.summary.length > 158 ? sp.summary.slice(0, 155) + '…' : sp.summary,
+    title: titleWithin(sp.name, ': How to Identify'),
+    description: leadWith(sp.name, sp.summary),
     priority: 0.7,
     changefreq: 'yearly',
     bodyClass: 'page-species',
