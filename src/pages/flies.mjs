@@ -232,6 +232,22 @@ export default function ({ site, flies, posts }) {
        guide — and a third card would turn a choice into a menu. This is the
        aside it actually is, but up here where someone who already knows their
        fly is missing does not have to scroll the whole list to say so. -->
+  <!-- The guide's topic map, and not a fifth door for the same reason the
+       suggest line below is not one: the hub grid uses explicit column counts
+       (2 then 4, never auto-fit), so a fifth card strands one on its own row.
+
+       It belongs on THIS page specifically. The topic map's own job is to say
+       what each guide topic covers and what it deliberately leaves alone, and
+       every one of those boundaries is drawn against the Fly-brary — "not
+       here: which fly to tie on, that is a pattern question". Until now it was
+       reachable only from the foot of an article, which is the one place a
+       reader has already stopped browsing. -->
+  <p class="hub__aside">
+    Browsing rather than searching? The Virtual Guide&rsquo;s
+    <a href="/blog/topics/">topic map</a> says what each topic covers &mdash; and what it
+    leaves to the flies below.
+  </p>
+
   <p class="hub__aside">
     Know one we missed? <a href="/suggest/">Tell us what belongs in Volume 2</a> &mdash;
     the next deck is not written yet.
