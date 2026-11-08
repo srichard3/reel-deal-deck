@@ -58,6 +58,20 @@ https://www.realdealdeck.com/*   https://reeldealdeck.com/:splat      301!
 /fly-library/*                   /flies/:splat                        301
 /patterns/*                      /flies/:splat                        301
 
+# --- Topic hubs ------------------------------------------------------------
+# /knots/ and /blog/knots/ are what people type and what a forum post gets
+# wrong. The real page is /blog/topics/knots/.
+#
+# NOT an anchor redirect. blog-topics.mjs used to say to redirect the old
+# /blog/#knots anchor here, which cannot be done at all — a browser never
+# sends the fragment to the server, so no rule can ever match one. The anchor
+# still works; the section is still on /blog/. These are the paths a server
+# actually sees.
+/knots                           /blog/topics/knots/                  301
+/knots/*                         /blog/topics/knots/                  301
+/blog/knots                      /blog/topics/knots/                  301
+/blog/knots/*                    /blog/topics/knots/                  301
+
 # --- Retired routes --------------------------------------------------------
 # /preorder/ was a real, linked URL. It is gone: ordering is live and the
 # product page carries the prices, so send anyone holding that link there.

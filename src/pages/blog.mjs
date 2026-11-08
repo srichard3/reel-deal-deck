@@ -132,7 +132,14 @@ export default function ({ site, posts = [], flies = [] }) {
   <section class="blog-group" id="${esc(g.key)}" aria-labelledby="${esc(g.key)}-h">
     <div class="blog-group__head">
       <h2 class="h2 blog-group__title" id="${esc(g.key)}-h">${esc(g.label)}</h2>
-      <p class="blog-group__blurb">${esc(g.blurb)}</p>
+      <p class="blog-group__blurb">${esc(g.blurb)}${
+        /* A topic big enough to have earned its own hub gets a route to it from
+           here, where somebody scanning the index can see it. Only knots so far
+           — the rule and the list of who qualifies are in blog-topics.mjs. */
+        g.key === 'knots'
+          ? ` <a href="/blog/topics/knots/">Which knot for which job &rarr;</a>`
+          : ''
+      }</p>
     </div>
     ${
       g.items.length

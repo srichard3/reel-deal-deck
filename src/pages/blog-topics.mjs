@@ -17,8 +17,18 @@
    being a duplicate of /blog/.
 
    When a topic reaches roughly six or more articles it has earned its own hub:
-   add src/pages/blog-topic-<topic>.mjs, point the anchor here at it, and add
-   the old anchor to static/_redirects. See docs/AEO.md.
+   add src/pages/blog-topic-<topic>.mjs and point this page's heading at it.
+   KNOTS did, on 2026-11-07, at ten articles — see blog-topic-knots.mjs for
+   what has to be on a hub for it not to be the thin content described above.
+   Technique is at nine and has earned one too.
+
+   An earlier version of this note also said to "add the old anchor to
+   static/_redirects". That cannot be done: /blog/#knots is a fragment, and a
+   browser never sends the fragment to the server, so no redirect rule can
+   match it. Nothing breaks — the anchored section stays on /blog/ and the old
+   link still lands in the right place. What IS worth adding is the paths
+   people guess, /knots/ and /blog/knots/, which are real requests a server
+   can see. See docs/AEO.md.
 
    Renders correctly with zero posts.
    ========================================================================== */
@@ -147,7 +157,7 @@ export default function ({ site, posts = [] }) {
     <section class="blog-topic" id="${esc(t.key)}" aria-labelledby="${esc(t.key)}-h">
       <div class="blog-topic__head">
         <h2 class="h3 blog-topic__title" id="${esc(t.key)}-h">
-          <a href="/blog/#${esc(t.key)}">${esc(t.label)}</a>
+          <a href="${t.key === 'knots' ? '/blog/topics/knots/' : `/blog/#${esc(t.key)}`}">${esc(t.label)}</a>
         </h2>
         <p class="blog-topic__count text-faint">${t.items.length} article${t.items.length === 1 ? '' : 's'}</p>
       </div>
