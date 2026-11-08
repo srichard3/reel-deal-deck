@@ -60,7 +60,14 @@ export default function ({ state: st, states, site, flies }) {
   const meta = {
     path,
     title: `Fly Fishing in ${st.name}`,
-    description: st.summary.length > 158 ? st.summary.slice(0, 155) + '…' : st.summary,
+    /* `summary` is the card blurb on /fly-fishing-by-state/, where it
+       sits under a heading that already says the state's name — so it does not
+       name the state itself, and 45 of the 50 never did. A meta description has
+       to: it is read without the page around it, and the query is geographic.
+       Hence a separate hand-written field, falling back to the clamped summary
+       for the five states whose copy already opens with their own name. */
+    description: st.metaDescription
+      || (st.summary.length > 158 ? st.summary.slice(0, 155) + '…' : st.summary),
     priority: 0.8,
     changefreq: 'yearly',
     bodyClass: 'page-state',
