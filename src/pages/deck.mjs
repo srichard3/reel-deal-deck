@@ -37,9 +37,9 @@ const inWords = (n) => WORDS[n] || String(n);
 
 export const meta = {
   path: '/deck/',
-  title: '54 Hand-Drawn Fly Fishing Cards',
+  title: 'Fly Fishing Playing Cards',
   description:
-    '54 original hand-drawn flies, each with what it imitates, on genuine Bicycle stock. $19.95 a deck, and shipping is free on two or more. Made in the USA.',
+    'A deck of 54 fly fishing playing cards: one hand-drawn fly per card with what it imitates, so it reads as a reference and deals as a real deck. $19.95.',
   priority: 1.0,
   changefreq: 'weekly',
   bodyClass: 'page-deck',
@@ -72,6 +72,27 @@ export const meta = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://reeldealdeck.com/' },
         { '@type': 'ListItem', position: 2, name: 'The Deck', item: 'https://reeldealdeck.com/deck/' },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: "Are these reference cards or playing cards?",
+          acceptedAnswer: { '@type': 'Answer', text: "Both, and that is the point of them. Every card is a standard rank and suit on genuine Bicycle stock, so the deck shuffles and deals like any other, and every card also carries one hand-drawn fly and a line saying what it imitates. It is not a laminated card set in a sleeve, and it is not a novelty deck with pictures on the back." },
+        },
+        {
+          '@type': 'Question',
+          name: "Can you identify a fly with them?",
+          acceptedAnswer: { '@type': 'Answer', text: "Up to a point, and it is worth being honest about which point. Fifty-four classic patterns cover most of what you will be handed or sold, and each card names the fly and what it imitates, so a deck will usually settle \u201cwhat is this one called\u201d. It is not a taxonomic key, and it will not identify a local tier's own variation on a standard pattern." },
+        },
+        {
+          '@type': 'Question',
+          name: "Are they waterproof?",
+          acceptedAnswer: { '@type': 'Answer', text: "No. They are playing cards, not laminated field cards, so they belong in a vest pocket, a boat bag or on the bench at home rather than out in the rain. If what you want is something to take into the water, buy a waterproof card set instead \u2014 we would rather say so than have you find out." },
+        },
       ],
     },
   ],
@@ -250,10 +271,24 @@ export default function deckPage({ site }) {
 
     <div class="buy-hero__copy">
       <p class="eyebrow">The Deck</p>
-      <h1 class="h1">${esc(p.name || site.name)}</h1>
+      <!-- The h1 names the CATEGORY, not the brand. "The Reel Deal Deck" is
+           what we call it and nobody searches for it; "fly fishing playing
+           cards" is what somebody types when they want this object and does
+           not yet know we exist. The brand name is a word away, in the lede,
+           on every other page and in the header — it is not at risk.
+
+           The same paragraph carries the other three phrasings people use for
+           the same thing — flash cards, identification cards, pattern
+           reference — because they are four names for one product and one page
+           should answer all four. Four pages would be doorway pages competing
+           with each other. -->
+      <h1 class="h1">Fly fishing playing cards</h1>
       <p class="lede">
-        ${esc(p.cardCount)} flies, every one drawn by hand, on genuine Bicycle stock.
-        ${esc(p.origin || 'Made in the USA')}.
+        ${esc(p.name || site.name)} is a deck of ${esc(p.cardCount)} fly fishing playing cards:
+        one hand-drawn fly to a card, each saying what it imitates. It works as a set of fly
+        identification cards at the vise or in the truck, as flash cards if you are learning the
+        patterns, and as a pattern reference in a vest pocket &mdash; and it still deals a hand of
+        poker, because it is a real deck on genuine Bicycle stock. ${esc(p.origin || 'Made in the USA')}.
       </p>
 
       <div class="buy-price">
@@ -298,6 +333,35 @@ export default function deckPage({ site }) {
 
     <div class="buy-tiers">
 ${retailCards(site)}
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= FAQ == -->
+<!-- Three questions a buyer actually has, and the third one talks somebody
+     out of the purchase on purpose. "Fly identification cards" and "fly
+     pattern reference cards" are things people search for, and some of them
+     mean WATERPROOF field cards. Saying plainly that these are not is worth
+     more than the sale it costs: the alternative is a return and somebody who
+     feels misled. -->
+<section class="section wrap">
+  <div class="wrap--narrow">
+    <p class="eyebrow">Before you order</p>
+    <h2 class="h2">What people ask about the cards</h2>
+
+    <div class="gift-objection">
+      <h3 class="gift-objection__q">Are these reference cards or playing cards?</h3>
+      <div><p class="gift-objection__a">Both, and that is the point of them. Every card is a standard rank and suit on genuine Bicycle stock, so the deck shuffles and deals like any other, and every card also carries one hand-drawn fly and a line saying what it imitates. It is not a laminated card set in a sleeve, and it is not a novelty deck with pictures on the back.</p></div>
+    </div>
+
+    <div class="gift-objection">
+      <h3 class="gift-objection__q">Can you identify a fly with them?</h3>
+      <div><p class="gift-objection__a">Up to a point, and it is worth being honest about which point. Fifty-four classic patterns cover most of what you will be handed or sold, and each card names the fly and what it imitates, so a deck will usually settle “what is this one called”. It is not a taxonomic key, and it will not identify a local tier's own variation on a standard pattern.</p></div>
+    </div>
+
+    <div class="gift-objection">
+      <h3 class="gift-objection__q">Are they waterproof?</h3>
+      <div><p class="gift-objection__a">No. They are playing cards, not laminated field cards, so they belong in a vest pocket, a boat bag or on the bench at home rather than out in the rain. If what you want is something to take into the water, buy a waterproof card set instead — we would rather say so than have you find out.</p></div>
     </div>
   </div>
 </section>

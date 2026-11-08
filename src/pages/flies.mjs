@@ -264,7 +264,9 @@ export default function ({ site, flies, posts }) {
   <p class="library-picker">
     Not sure what you are looking for?
     <a href="/what-fly-to-use/">Answer three questions about the water</a> and we will narrow
-    these ${flies.length} down for you.
+    these ${flies.length} down &mdash; or start with
+    <a href="/best-flies-for-trout/">the twelve that come up most often</a> across our state
+    guides and hatch pages.
   </p>
 
   <form class="library-filters" data-fly-filter hidden>

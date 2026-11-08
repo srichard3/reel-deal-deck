@@ -3268,3 +3268,35 @@ html:not(.no-js) .tuck__box { cursor: grab; }
               font-size: .8rem; color: var(--c-text-muted); }
 .pfly__sizes { font-variant-numeric: tabular-nums; }
 .pfly__imitates { margin: 0; font-size: .9rem; color: var(--c-text-muted); }
+
+/* ===== /best-flies-for-trout/ — the counted ranking ==================== */
+/* The counts are the reason the page exists, so they sit directly under the
+   name in their own row rather than being folded into prose where they would
+   read as decoration. */
+
+.ranked-list { list-style: none; margin: var(--s-6) 0 0; padding: 0;
+               display: grid; gap: var(--s-5); }
+@media (min-width: 52rem) { .ranked-list { grid-template-columns: 1fr 1fr; } }
+
+.ranked { display: grid; grid-template-columns: auto 4.5rem 1fr; gap: var(--s-4);
+          align-items: start; padding: var(--s-5);
+          border: 1px solid var(--c-border); border-radius: var(--r-card);
+          background: var(--c-surface); }
+.ranked__rank { margin: 0; font-size: 1.1rem; font-weight: 600;
+                font-variant-numeric: tabular-nums; color: var(--c-text-muted); }
+.ranked__art .card-face { display: block; }
+.ranked__text { min-inline-size: 0; }
+.ranked__name { margin: 0 0 var(--s-3); font-size: 1.1rem; line-height: 1.25; }
+.ranked__counts { margin: 0 0 var(--s-3); display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4);
+                  font-size: .82rem; color: var(--c-text-muted); }
+.ranked__stat strong { color: var(--c-green); font-variant-numeric: tabular-nums; }
+.ranked__stat--quiet { opacity: .7; }
+.ranked__imitates { margin: 0 0 var(--s-2); font-size: .92rem; }
+.ranked__when { margin: 0; font-size: .88rem; color: var(--c-text-muted); }
+
+@media (max-width: 30rem) {
+  /* The card art is the first thing to go: at 320px the rank, the art and
+     three lines of text cannot all have room, and the text is the content. */
+  .ranked { grid-template-columns: auto 1fr; }
+  .ranked__art { display: none; }
+}

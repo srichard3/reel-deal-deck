@@ -1,9 +1,9 @@
 export const meta = {
   slug: 'what-flies-do-i-need-to-start',
-  title: 'What Flies Do Beginners Need?',
+  title: 'Beginner Fly Fishing Flies',
   question: 'What flies do I actually need to start fly fishing?',
   description:
-    'You need about a dozen patterns, not a hundred — and more sizes of fewer flies. How to build a first fly box that covers a season on trout water.',
+    'A beginner needs about a dozen fly patterns, not a hundred — and more sizes of fewer flies. How to build a first fly box that covers a season on trout water.',
   answer:
     'About a dozen patterns in three or four sizes each will cover a first season: two searching dry flies, two attractor nymphs, a midge, a terrestrial and a streamer. Carry each in sizes 14 through 18. Size and depth matter far more than pattern — buy fewer patterns and more sizes.',
   topic: 'basics',
@@ -189,6 +189,13 @@ export default function ({ b }) {
         experienced anglers are doing when they seem to pick a fly out of thin air. The
         <a href="/flies/">Fly-brary</a> lays out all 54 patterns that way: what each one imitates,
         the sizes to carry, and when it earns its place.
+      </p>
+      <p>
+        If you would rather be handed the shortlist than build one, we counted which patterns come
+        up most often across our fifty state guides and eighteen hatch pages:
+        <a href="/best-flies-for-trout/">the twelve best flies for trout</a>, with the numbers
+        shown. That page answers which flies; this one answers how many, and the two are different
+        questions.
       </p>
       <p>
         Then go and fish the same six flies for a season. Confidence in a fly is not superstition
